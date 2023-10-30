@@ -43,97 +43,97 @@ class Contact extends AbstractResult
      *
      * @var string
      */
-    protected $handle;
+    public $handle;
 
     /**
      * Handle type
      *
      * @var string
      */
-    protected $type;
+    public $type;
 
     /**
      * Name of person
      *
      * @var string
      */
-    protected $name;
+    public $name;
 
     /**
      * Name of organization
      *
      * @var string
      */
-    protected $organization;
+    public $organization;
 
     /**
      * Email address
      *
      * @var string
      */
-    protected $email;
+    public $email;
 
     /**
      * Address field
      *
      * @var array
      */
-    protected $address;
+    public $address;
 
     /**
      * Zipcode of address
      *
      * @var string
      */
-    protected $zipcode;
+    public $zipcode;
 
     /**
      * City of address
      *
      * @var string
      */
-    protected $city;
+    public $city;
 
     /**
      * State of address
      *
      * @var string
      */
-    protected $state;
+    public $state;
 
     /**
      * Country of address
      *
      * @var string
      */
-    protected $country;
+    public $country;
 
     /**
      * Phone number
      *
      * @var string
      */
-    protected $phone;
+    public $phone;
 
     /**
      * Fax number
      *
      * @var string
      */
-    protected $fax;
+    public $fax;
 
     /**
      * Created date of handle
      *
      * @var string
      */
-    protected $created;
+    public $created;
 
     /**
      * Last changed date of handle
      *
      * @var string
      */
-    protected $changed;
+    public $changed;
 
 }

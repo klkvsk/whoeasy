@@ -41,22 +41,22 @@ class Registrar extends AbstractResult
     /**
      * @var string
      */
-    protected $id;
+    public $id;
 
     /**
      * @var string
      */
-    protected $name;
+    public $name;
 
     /**
      * @var string
      */
-    protected $email;
+    public $email;
 
     /**
      * @var string
      */
-    protected $url;
+    public $url;
 
 
     public function toArray(): array
