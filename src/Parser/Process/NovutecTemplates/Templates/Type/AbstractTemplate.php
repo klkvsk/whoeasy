@@ -70,36 +70,6 @@ abstract class AbstractTemplate
      */
     protected ?string $htmlBlock = null;
 
-
-    /**
-     * Writing data to properties
-     */
-    public function __set(string $name, $value): void
-    {
-        $this->{$name} = $value;
-    }
-
-    /**
-     * Checking data
-     */
-    public function __isset(string $name): bool
-    {
-        return isset($this->{$name});
-    }
-
-    /**
-     * Reading data from properties
-     */
-    public function __get(string $name)
-    {
-        if (isset($this->{$name})) {
-            return $this->{$name};
-        }
-
-        return null;
-    }
-
-
     /**
      * Load Template
      *

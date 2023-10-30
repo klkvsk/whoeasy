@@ -66,7 +66,7 @@ class Gtld_networksolutions extends Regex
             '/^Registrar Abuse Contact Email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                     => 'registrar:email',
             '/^Registrar Abuse Contact Phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                     => 'registrar:phone',
             '/^(?>Domain )*Status(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                                => 'status',
-            '/^Whois Server(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                                      => 'ask_whois',
+            '/^Whois Server(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                                      => 'whoisserver',
         ],
         2 => [
             '/^(Registry Registrant|Owner)(\-| )ID(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                  => 'contacts:owner:handle',

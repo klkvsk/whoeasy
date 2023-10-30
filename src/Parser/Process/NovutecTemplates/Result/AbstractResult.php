@@ -26,6 +26,7 @@
 namespace Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result;
 
 use JsonSerializable;
+use stdClass;
 
 /**
  * WhoisParser AbstractResult
@@ -35,36 +36,8 @@ use JsonSerializable;
  * @copyright  Copyright (c) 2007 - 2013 Novutec Inc. (http://www.novutec.com)
  * @license    http://www.apache.org/licenses/LICENSE-2.0
  */
-abstract class AbstractResult implements JsonSerializable
+abstract class AbstractResult extends stdClass implements JsonSerializable
 {
-
-    /**
-     * Writing data to properties
-     */
-    public function __set(string $name, $value): void
-    {
-        $this->{$name} = $value;
-    }
-
-    /**
-     * Checking data
-     */
-    public function __isset(string $name): bool
-    {
-        return isset($this->{$name});
-    }
-
-    /**
-     * Reading data from properties
-     */
-    public function __get(string $name)
-    {
-        if (isset($this->{$name})) {
-            return $this->{$name};
-        }
-
-        return null;
-    }
 
     public function jsonSerialize(): array
     {

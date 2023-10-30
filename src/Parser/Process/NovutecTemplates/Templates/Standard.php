@@ -14,7 +14,7 @@ class Standard extends KeyValue
 
     protected array $regexKeys = [
         'name'                          => '/^Domain Name$/i',
-        'ask_whois'                     => '/^(Registrar )?Whois Server$/i',
+        'whoisserver'                   => '/^(Registrar )?Whois Server$/i',
         'created'                       => '/^(Domain |Record )?Creat(e|ed|ion)( On| Date)?$/i',
         'expires'                       => '/^(Domain |Registrar )?(Registration |Registry )?(Expiration|Expires|Expiry) (On|Date)$/i',
         'changed'                       => '/^(Domain )?(Last )?Updated (On|Date)$/i',
@@ -98,23 +98,4 @@ class Standard extends KeyValue
 
     protected ?string $rateLimit = '/(exceeded the maximum allowable|exceeded your query limit)/i';
 
-
-    public function postProcess(object $WhoisParser): void
-    {
-        $ResultSet = $WhoisParser->getResult();
-
-        // check if there was another whois server
-        if (isset($ResultSet->ask_whois)) {
-            $Config = $WhoisParser->getConfig();
-            $curConfig = $Config->getCurrent();
-            if (strtolower(trim($curConfig['server'])) != strtolower(trim($ResultSet->ask_whois))) {
-                $newConfig = $Config->get(trim($ResultSet->ask_whois));
-                $newConfig['server'] = trim($ResultSet->ask_whois);
-                unset($ResultSet->ask_whois);
-
-                $Config->setCurrent($newConfig);
-                $WhoisParser->call();
-            }
-        }
-    }
 }

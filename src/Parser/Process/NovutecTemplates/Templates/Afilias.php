@@ -66,7 +66,7 @@ class Afilias extends Regex
             '/^(?>Domain )*(Registry )*(Expiration|Expiry|Expires) (On|Date)(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'expires',
             '/^Sponsoring Registrar(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                          => 'registrar:name',
             '/^(?>Domain )*Status(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                            => 'status',
-            '/^Whois Server(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                                  => 'ask_whois',
+            '/^Whois Server(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                                  => 'whoisserver',
             '/^ENS_AuthId(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                                    => 'network:aero_ens_auth_id' ],
 
         2 => [
@@ -198,18 +198,6 @@ class Afilias extends Regex
             $ResultSet->dnssec = false;
         } else {
             $ResultSet->dnssec = true;
-        }
-
-        // check if there was another whois server
-        if (isset($ResultSet->ask_whois)) {
-            $Config = $WhoisParser->getConfig();
-
-            $newConfig = $Config->get(trim($ResultSet->ask_whois));
-            $newConfig['server'] = trim($ResultSet->ask_whois);
-            unset($ResultSet->ask_whois);
-
-            $Config->setCurrent($newConfig);
-            $WhoisParser->call();
         }
     }
 }
