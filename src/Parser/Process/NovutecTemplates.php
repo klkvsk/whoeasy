@@ -8,12 +8,21 @@ use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Templates\Type\AbstractTempla
 
 class NovutecTemplates implements DataProcessorInterface
 {
+    public function __construct(
+        protected string $dateFormat = 'Y-m-d H:i:s',
+    )
+    {
+    }
+
     public function process(WhoisAnswer $answer): void
     {
-        $handler = $this->createTemplate($answer->server, $answer->query);
+        $template = $this->createTemplate($answer->server, $answer->query);
         $result = new NovutecTemplates\Result\Result();
-        $rawData = $handler->translateRawData($answer->rawData);
-        $handler->parse($result, $rawData);
+        $rawData = $template->translateRawData($answer->rawData);
+        $template->parse($result, $rawData);
+        $result->whoisserver ??= $answer->server;
+        $result->template = (new \ReflectionClass($template))->getShortName();
+        $result->formatDates($this->dateFormat);
         $answer->result = $result;
     }
 

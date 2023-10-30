@@ -45,35 +45,28 @@ class Result extends AbstractResult
      *
      * @var string
      */
-    protected $name;
-
-    /**
-     * IDN converted name of domain or IP address
-     *
-     * @var string
-     */
-    protected $idnName;
+    public $name;
 
     /**
      * Status of domain or IP address
      *
      * @var array
      */
-    protected $status;
+    public $status;
 
     /**
      * Array of Nameservers
      *
      * @var array
      */
-    protected $nameserver;
+    public $nameserver;
 
     /**
      * Array of Nameservers IPs
      *
      * @var array
      */
-    protected $ips;
+    public $ips;
 
     /**
      * Created date of domain or IP address
@@ -87,77 +80,57 @@ class Result extends AbstractResult
      *
      * @var string
      */
-    protected $changed;
+    public $changed;
 
     /**
      * Expire date of domain or IP address
      *
      * @var string
      */
-    protected $expires;
+    public $expires;
 
     /**
      * Is domain name or IP address registered
      *
      * @var boolean
      */
-    protected $registered;
+    public $registered;
 
     /**
      * Has domain name DNSSEC
      *
      * @var boolean
      */
-    protected $dnssec;
+    public $dnssec;
 
     /**
      * Queried whois server
      *
      * @var string
      */
-    protected $whoisserver;
+    public $whoisserver;
 
     /**
      * Contact handles of domain name or IP address
      *
      * @var object
      */
-    protected $contacts;
+    public $contacts;
 
     /**
      * Registrar of domain name or IP address
      *
      * @var object
      */
-    protected $registrar;
+    public $registrar;
 
-    /**
-     * Raw response from whois server
-     *
-     * @var array
-     */
-    public $rawdata = [];
 
     /**
      * Network information of domain name or IP address
      *
      * @var object
      */
-    protected $network;
-
-    /**
-     * Exception
-     *
-     * @var string
-     */
-    protected $exception;
-
-    /**
-     * Have contacts been parsed?
-     *
-     * @var boolean
-     */
-    protected $parsedContacts;
+    public $network;
 
     /**
      * Name of the actual template
@@ -199,11 +172,6 @@ class Result extends AbstractResult
 
             $this->lastHandle = strtolower($value);
             $this->lastId++;
-            return;
-        }
-
-        if ($target == 'rawdata') {
-            $this->{$target}[] = $value;
             return;
         }
 
@@ -299,23 +267,35 @@ class Result extends AbstractResult
 
     public function toArray(): array
     {
-        $output = get_object_vars($this);
-        $contacts = [];
-        $network = [];
+        $output = [
+            'name' => $this->name,
+            'status' => $this->status,
+            'created' => $this->created,
+            'changed' => $this->changed,
+            'expires' => $this->expires,
+            'registered' => $this->registered,
+            'registrar' => [],
+            'contacts' => [],
+            'network' => [],
+            'whoisserver' => $this->whoisserver,
+            'nameserver' => $this->nameserver,
+            'ips' => $this->ips,
+            'dnssec' => $this->dnssec,
+        ];
 
         // lookup all contact handles and convert to array
         foreach ($this->contacts as $type => $handle) {
-            foreach ($handle as $number => $object) {
-                $contacts[$type][$number] = $object->toArray();
+            foreach ($handle as $object) {
+                $output['contacts'][$type][] = $object->toArray();
             }
         }
-        $output['contacts'] = $contacts;
 
         if (!empty($this->registrar)) {
             $output['registrar'] = $this->registrar->toArray();
         }
 
         if (!empty($this->network)) {
+            $network = [];
             // lookup network for all properties
             foreach ($this->network as $type => $value) {
                 // if there is an object we need to convert it to array
@@ -330,6 +310,18 @@ class Result extends AbstractResult
                 }
             }
             $output['network'] = $network;
+        }
+
+        $dynamicFields = array_diff_key(
+            get_object_vars($this),
+            get_class_vars(static::class)
+        );
+
+        foreach ($dynamicFields as $field => $value) {
+            if (is_object($value)) {
+                $value = $value->toArray();
+            }
+            $output[$field] = $value;
         }
 
         return $output;
@@ -431,30 +423,8 @@ class Result extends AbstractResult
         return $xml->asXML();
     }
 
-    /**
-     * cleanUp method will be called before output
-     */
-    public function cleanUp($config, $dateformat): void
+    public function formatDates(string $dateformat): void
     {
-        // add WHOIS server to output
-        $this->addItem('whoisserver', ($config['adapter'] === 'http') ? $config['server'] .
-            str_replace('%domain%', $this->name, $config['format']) : $config['server']);
-
-        // remove helper vars from result
-        if (isset($this->lastId)) {
-            unset($this->lastId);
-        }
-
-        if (isset($this->lastHandle)) {
-            unset($this->lastHandle);
-        }
-
-        if (isset($this->network->contacts) && !empty($this->network->contacts)) {
-            $this->network = null;
-        }
-
-        // format dates
-        $this->template = $config['template'];
         $this->changed = $this->formatDate($dateformat, $this->changed);
         $this->created = $this->formatDate($dateformat, $this->created);
         $this->expires = $this->formatDate($dateformat, $this->expires);
@@ -464,13 +434,6 @@ class Result extends AbstractResult
                 $contactObject->created = $this->formatDate($dateformat, $contactObject->created);
                 $contactObject->changed = $this->formatDate($dateformat, $contactObject->changed);
             }
-        }
-
-        // check if contacts have been parsed
-        if (sizeof(get_object_vars($this->contacts)) > 0) {
-            $this->addItem('parsedContacts', true);
-        } else {
-            $this->addItem('parsedContacts', false);
         }
     }
 

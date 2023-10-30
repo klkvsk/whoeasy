@@ -97,6 +97,5 @@ class Is extends Regex
             }
         }
 
-        $ResultSet->rawdata[] = utf8_encode(array_pop($ResultSet->rawdata));
     }
 }

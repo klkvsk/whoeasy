@@ -3,13 +3,15 @@
 namespace Klkvsk\Whoeasy\Parser\Data;
 
 use iterator;
+use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result;
 
 class WhoisAnswer
 {
     public string $text;
     public array $fields;
     public array $groups;
-    public object $result;
+    /** @var \stdClass|Result */
+    public Result|\stdClass $result;
 
     public function __construct(
         public readonly string  $rawData,
