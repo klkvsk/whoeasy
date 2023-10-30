@@ -8,6 +8,8 @@ class Response implements ResponseInterface
         protected string $answer,
     )
     {
+        // convert newlines
+        $this->answer = str_replace("\r", "", $this->answer);
     }
 
     public function getAnswer(): string
