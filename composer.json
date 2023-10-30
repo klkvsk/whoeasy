@@ -1,14 +1,14 @@
 {
-  "name": "novutec/whoisparser",
+  "name": "klkvsk/whoeasy",
   "type": "library",
-  "description": "Lookup domain names, IP addresses and AS numbers by WHOIS.",
+  "description": "Easily lookup domain names, IP addresses and AS numbers by WHOIS.",
   "keywords": [
     "whoisparser",
     "whois",
     "php"
   ],
-  "homepage": "https://github.com/3name/WhoisParser/",
-  "author": "Novutec Inc.",
+  "homepage": "https://github.com/klkvsk/whoeasy",
+  "author": "Misha Kulakovsky",
   "license": "Apache-2.0",
   "require": {
     "novutec/domainparser": ">=2.0.3"
