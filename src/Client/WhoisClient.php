@@ -4,6 +4,7 @@ namespace Klkvsk\Whoeasy\Client;
 
 use Klkvsk\Whoeasy\Client\Adapter\AdapterInterface;
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
+use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
 use Klkvsk\Whoeasy\Client\Registry\ServerRegistryInterface;
 
 class WhoisClient
@@ -40,19 +41,22 @@ class WhoisClient
         $queryType ??= Request::guessQueryType($query);
 
         if (!$server) {
-            $server = $this->registry->findByQuery($query, $queryType);
+            $server = $this->registry->findByQuery($query, $queryType)
+                ?? throw new ClientException('No server in registry matching query: ' . $query);
         }
 
         if (is_string($server)) {
-            $server = $this->registry->findServer($server);
-        }
-
-        if (!$server) {
-            throw new ClientException('no server for: ' . $query);
+            $server = $this->registry->findServer($server)
+                ?? throw new ClientException('No server in registry matching name: ' . $query);
         }
 
         $request = $this->createRequest($server, $query, $queryType);
         $response = $this->handle($request);
+
+        if (empty($response->getAnswer())) {
+            throw (new ClientRequestException('Got empty response from server'))
+                ->withRequest($request);
+        }
 
         return $response->getAnswer();
     }

@@ -9,6 +9,7 @@ use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProvider;
 use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProviderInterface;
 use Klkvsk\Whoeasy\Client\Registry\BuiltinRegistryRegistry;
 use Klkvsk\Whoeasy\Client\Registry\ServerRegistry;
+use Klkvsk\Whoeasy\Client\ServerInfoInterface;
 use Klkvsk\Whoeasy\Client\WhoisClient;
 use Klkvsk\Whoeasy\Parser\Data\WhoisAnswer;
 use Klkvsk\Whoeasy\Parser\Exception\ParserException;
@@ -62,16 +63,17 @@ class Whois
     /**
      * @throws ClientException
      */
-    public static function getRaw($query): string
+    public static function getRaw(string $query, ServerInfoInterface|string $server = null): string
     {
-        return static::factory()->createClient()->lookup($query);
+        return static::factory()->createClient()->lookup($query, $server);
     }
 
     /**
+     * @param string|ServerInfoInterface|null $server
      * @throws ClientException
      * @throws ParserException
      */
-    public static function getParsed($query): WhoisAnswer
+    public static function getParsed(string $query, ServerInfoInterface|string $server = null): WhoisAnswer
     {
         $rawData = static::factory()->createClient()->lookup($query, $server, $queryType);
 
