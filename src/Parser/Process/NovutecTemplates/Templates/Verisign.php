@@ -52,6 +52,7 @@ class Verisign extends Regex
      */
     protected array $blockItems = [
         1 => [ '/whois server:(?>[\x20\t]*)(.+)$/im'      => 'whoisserver',
+               '/domain name:(?>[\x20\t]*)(.+)$/im'       => 'name',
                '/registrar:(?>[\x20\t]*)(.+)$/im'         => 'registrar:name',
                '/registrar iana id:(?>[\x20\t]*)(.+)$/im' => 'registrar:id',
                '/referral url:(?>[\x20\t]*)(.+)$/im'      => 'registrar:url',
