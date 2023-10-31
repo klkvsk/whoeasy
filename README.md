@@ -2,15 +2,16 @@ Whoeasy - smart WHOIS client and parser for PHP
 ====================
 
 Lookup domain names, IP addresses and AS numbers by WHOIS.
-
+Parse answers into structured data.
+Use proxies to counter rate limits.
 
 Installation
 ------------
 
-Install from composer:
+Install from composer (until 1.0 prefer dev-master over releases, it's buggy anyway):
 
 ```shell
-composer install klkvsk/whoeasy
+composer install klkvsk/whoeasy=dev-master
 ```
 
 Usage
@@ -30,8 +31,12 @@ echo $answer->result->registrar->name;
 You can customize the factory by extending `Whois` 
 or you can utilize `WhoisClient` and `WhoisParser` directly.
 
-Whoeasy is easily extensible. You can add your own client adapters, parsers, server configs, etc.
+Whoeasy is easily extensible. 
+You can add your own client adapters, parsers, server configs, proxy providers, etc.
 
+Built in client adapters are:
+- CurlTelnet - default if ext-curl is installed. Supports any proxies curl does.
+- Socket - fallback, uses `stream_socket_client`. Supports only HTTP(s)-tunnel proxies.
 
 Whois-servers registry
 -----
@@ -40,10 +45,13 @@ The list of servers is automatically generated from https://github.com/rfc1036/w
 a default `whois` tool in most Linux distributions. This is the most up-to-date source
 of correct whois servers per tld.
 
+See [BuitinClientRegistry](./src/Client/Registry/BuiltinRegistryRegistry.php) 
+for compiled list. See [generator](./generator) for source lists and build script.
+
 
 ToDos
 -----
-* Querying NIC handles, IP and ASN
+* Querying ASN
 * Using RDAP as an alternative adapter
 * Replace Novutec parsing templates with own 
 

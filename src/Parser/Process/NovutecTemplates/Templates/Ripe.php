@@ -52,15 +52,19 @@ class Ripe extends Regex
      * @var array
      */
     protected array $blockItems = [
-        1 => [ '/^as-block:(?>[\x20\t]*)(.+)$/im' => 'network:as-block',
-               '/^inetnum:(?>[\x20\t]*)(.+)$/im'  => 'network:inetnum',
-               '/^inet6num:(?>[\x20\t]*)(.+)$/im' => 'network:inetnum',
-               '/^netname:(?>[\x20\t]*)(.+)$/im'  => 'network:name',
-               '/^mnt-by:(?>[\x20\t]*)(.+)$/im'   => 'network:maintainer',
-               '/^status:(?>[\x20\t]*)(.+)$/im'   => 'status',
-               '/^org:(?>[\x20\t]*)(.+)$/im'      => 'network:contacts:owner',
-               '/^admin-c:(?>[\x20\t]*)(.+)$/im'  => 'network:contacts:admin',
-               '/^tech-c:(?>[\x20\t]*)(.+)$/im'   => 'network:contacts:tech' ],
+        1 => [ '/^as-block:(?>[\x20\t]*)(.+)$/im'      => 'network:as-block',
+               '/^inetnum:(?>[\x20\t]*)(.+)$/im'       => 'network:inetnum',
+               '/^inet6num:(?>[\x20\t]*)(.+)$/im'      => 'network:inetnum',
+               '/^netname:(?>[\x20\t]*)(.+)$/im'       => 'network:name',
+               '/^created:(?>[\x20\t]*)(.+)$/im'       => 'created',
+               '/^last-modified:(?>[\x20\t]*)(.+)$/im' => 'changed',
+               '/^mnt-by:(?>[\x20\t]*)(.+)$/im'        => 'network:maintainer',
+               '/^status:(?>[\x20\t]*)(.+)$/im'        => 'status',
+               '/^descr:(?>[\x20\t]*)(.+)$/im'         => 'network:description',
+               '/^remarks:(?>[\x20\t]*)(.+)$/im'       => 'network:description',
+               '/^org:(?>[\x20\t]*)(.+)$/im'           => 'network:contacts:owner',
+               '/^admin-c:(?>[\x20\t]*)(.+)$/im'       => 'network:contacts:admin',
+               '/^tech-c:(?>[\x20\t]*)(.+)$/im'        => 'network:contacts:tech' ],
 
         2 => [ '/^organisation:(?>[\x20\t]*)(.+)$/im'  => 'contacts:handle',
                '/^org:(?>[\x20\t]*)(.+)$/im'           => 'contacts:handle',

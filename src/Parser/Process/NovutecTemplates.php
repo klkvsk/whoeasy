@@ -21,7 +21,7 @@ class NovutecTemplates implements DataProcessorInterface
         $rawData = $template->translateRawData($answer->rawData);
         $template->parse($result, $rawData);
         $result->whoisserver ??= $answer->server;
-        $result->template = (new \ReflectionClass($template))->getShortName();
+        $result->template = lcfirst((new \ReflectionClass($template))->getShortName());
         $result->formatDates($this->dateFormat);
         $answer->result = $result;
     }
@@ -47,776 +47,776 @@ class NovutecTemplates implements DataProcessorInterface
 
     protected array $templates = [
         /** @generator-begin=novutec */
-        "whois.iana.org"                 => [
+        "whois.iana.org" => [
             "*" => NovutecTemplates\Templates\Iana::class,
         ],
-        "whois.afrinic.net"              => [
+        "whois.afrinic.net" => [
             "*" => NovutecTemplates\Templates\Afrinic::class,
         ],
-        "whois.apnic.net"                => [
+        "whois.apnic.net" => [
             "*" => NovutecTemplates\Templates\Apnic::class,
         ],
-        "whois.arin.net"                 => [
+        "whois.arin.net" => [
             "*" => NovutecTemplates\Templates\Arin::class,
         ],
-        "whois.krnic.net"                => [
+        "whois.krnic.net" => [
             "*" => NovutecTemplates\Templates\Krnic::class,
         ],
-        "whois.lacnic.net"               => [
+        "whois.lacnic.net" => [
             "*" => NovutecTemplates\Templates\Lacnic::class,
         ],
-        "whois.ripe.net"                 => [
+        "whois.ripe.net" => [
             "*" => NovutecTemplates\Templates\Ripe::class,
         ],
-        "http:\/\/www.nic.ac\/"          => [
+        "http:\/\/www.nic.ac\/" => [
             "*" => NovutecTemplates\Templates\Icb::class,
         ],
-        "whois.aeda.net.ae"              => [
+        "whois.aeda.net.ae" => [
             "*" => NovutecTemplates\Templates\Ae::class,
         ],
-        "whois.aero"                     => [
+        "whois.aero" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.coccaregistry.net"        => [
+        "whois.coccaregistry.net" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.ag"                   => [
+        "whois.nic.ag" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.agency"               => [
+        "whois.nic.agency" => [
             "*" => NovutecTemplates\Templates\Agency::class,
         ],
-        "whois.ai"                       => [
+        "whois.ai" => [
             "*" => NovutecTemplates\Templates\Ai::class,
         ],
-        "whois.amnic.net"                => [
+        "whois.amnic.net" => [
             "*" => NovutecTemplates\Templates\Am::class,
         ],
-        "whois.nic.as"                   => [
+        "whois.nic.as" => [
             "*" => NovutecTemplates\Templates\Asnic::class,
         ],
-        "whois.nic.asia"                 => [
+        "whois.nic.asia" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.at"                   => [
+        "whois.nic.at" => [
             "*" => NovutecTemplates\Templates\At::class,
         ],
-        "whois.audns.net.au"             => [
+        "whois.audns.net.au" => [
             "*" => NovutecTemplates\Templates\Au::class,
         ],
-        "whois.ax"                       => [
+        "whois.ax" => [
             "*" => NovutecTemplates\Templates\Ax::class,
         ],
-        "whois.dns.be"                   => [
+        "whois.dns.be" => [
             "*" => NovutecTemplates\Templates\Be::class,
         ],
-        "whois.register.bg"              => [
+        "whois.register.bg" => [
             "*" => NovutecTemplates\Templates\Bg::class,
         ],
-        "whois1.nic.bi"                  => [
+        "whois1.nic.bi" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "whois.biz"                      => [
+        "whois.biz" => [
             "*" => NovutecTemplates\Templates\Neustar::class,
         ],
-        "whois.nic.bo"                   => [
+        "whois.nic.bo" => [
             "*" => NovutecTemplates\Templates\Bo::class,
         ],
-        "whois.registro.br"              => [
+        "whois.registro.br" => [
             "*" => NovutecTemplates\Templates\Br::class,
         ],
-        "whois.nic.buzz"                 => [
+        "whois.nic.buzz" => [
             "*" => NovutecTemplates\Templates\Buzz::class,
         ],
-        "whois.cctld.by"                 => [
+        "whois.cctld.by" => [
             "*" => NovutecTemplates\Templates\By::class,
         ],
-        "whois2.afilias-grs.net"         => [
+        "whois2.afilias-grs.net" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.cira.ca"                  => [
+        "whois.cira.ca" => [
             "*" => NovutecTemplates\Templates\Ca::class,
         ],
-        "whois.cat"                      => [
+        "whois.cat" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "ccwhois.verisign-grs.com"       => [
+        "ccwhois.verisign-grs.com" => [
             "*" => NovutecTemplates\Templates\Verisign::class,
         ],
-        "whois.nic.cd"                   => [
+        "whois.nic.cd" => [
             "*" => NovutecTemplates\Templates\Cd::class,
         ],
-        "whois.nic.ch"                   => [
+        "whois.nic.ch" => [
             "*" => NovutecTemplates\Templates\Switchnic::class,
         ],
-        "whois.nic.ck"                   => [
+        "whois.nic.ck" => [
             "*" => NovutecTemplates\Templates\Ck::class,
         ],
-        "whois.nic.club"                 => [
+        "whois.nic.club" => [
             "*" => NovutecTemplates\Templates\Club::class,
         ],
-        "netcom.cm"                      => [
+        "netcom.cm" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "whois.cnnic.cn"                 => [
+        "whois.cnnic.cn" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.co"                   => [
+        "whois.nic.co" => [
             "*" => NovutecTemplates\Templates\Neustar::class,
         ],
-        "whois.co.nl"                    => [
+        "whois.co.nl" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.co.no"                    => [
+        "whois.co.no" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.verisign-grs.com"         => [
+        "whois.verisign-grs.com" => [
             "*" => NovutecTemplates\Templates\Verisign::class,
         ],
-        "whois.centralnic.com"           => [
+        "whois.centralnic.com" => [
             "centralnic" => NovutecTemplates\Templates\Afilias::class,
             "com.de"     => NovutecTemplates\Templates\De::class,
             "*"          => NovutecTemplates\Templates\De::class,
         ],
-        "whois.ua"                       => [
+        "whois.ua" => [
             "*" => NovutecTemplates\Templates\Comua::class,
         ],
-        "whois.nic.coop"                 => [
+        "whois.nic.coop" => [
             "*" => NovutecTemplates\Templates\Coop::class,
         ],
-        "whois.nic.cx"                   => [
+        "whois.nic.cx" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.nic.cz"                   => [
+        "whois.nic.cz" => [
             "*" => NovutecTemplates\Templates\Cz::class,
         ],
-        "whois.dk-hostmaster.dk"         => [
+        "whois.dk-hostmaster.dk" => [
             "*" => NovutecTemplates\Templates\Dk::class,
         ],
-        "whois.nic.dm"                   => [
+        "whois.nic.dm" => [
             "*" => NovutecTemplates\Templates\Dm::class,
         ],
-        "whois.nic.dz"                   => [
+        "whois.nic.dz" => [
             "*" => NovutecTemplates\Templates\Dz::class,
         ],
-        "whois.nic.ec"                   => [
+        "whois.nic.ec" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "whois.educause.edu"             => [
+        "whois.educause.edu" => [
             "*" => NovutecTemplates\Templates\Edu::class,
         ],
-        "whois.tld.ee"                   => [
+        "whois.tld.ee" => [
             "*" => NovutecTemplates\Templates\Ee::class,
         ],
-        "whois.nic.es"                   => [
+        "whois.nic.es" => [
             "*" => NovutecTemplates\Templates\Es::class,
         ],
-        "whois.eu"                       => [
+        "whois.eu" => [
             "*" => NovutecTemplates\Templates\Eu::class,
         ],
-        "whois.fi"                       => [
+        "whois.fi" => [
             "*" => NovutecTemplates\Templates\Fi::class,
         ],
-        "whois.usp.ac.fj"                => [
+        "whois.usp.ac.fj" => [
             "*" => NovutecTemplates\Templates\Fj::class,
         ],
-        "whois.nic.fm"                   => [
+        "whois.nic.fm" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "whois.nic.fo"                   => [
+        "whois.nic.fo" => [
             "*" => NovutecTemplates\Templates\Fo::class,
         ],
-        "whois.afnic.fr"                 => [
+        "whois.afnic.fr" => [
             "*" => NovutecTemplates\Templates\Afnic::class,
         ],
-        "whois.adamsnames.com"           => [
+        "whois.adamsnames.com" => [
             "*" => NovutecTemplates\Templates\Adamsnames::class,
         ],
-        "whois.gg"                       => [
+        "whois.gg" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "whois.nic.gl"                   => [
+        "whois.nic.gl" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "whois.hkirc.hk"                 => [
+        "whois.hkirc.hk" => [
             "*" => NovutecTemplates\Templates\Hk::class,
         ],
-        "whois.registry.hm"              => [
+        "whois.registry.hm" => [
             "*" => NovutecTemplates\Templates\Hm::class,
         ],
-        "hu"                             => [
+        "hu" => [
             "*" => NovutecTemplates\Templates\Hu::class,
         ],
-        "whois.pandi.or.id"              => [
+        "whois.pandi.or.id" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.domainregistry.ie"        => [
+        "whois.domainregistry.ie" => [
             "*" => NovutecTemplates\Templates\Ie::class,
         ],
-        "whois.isoc.org.il"              => [
+        "whois.isoc.org.il" => [
             "*" => NovutecTemplates\Templates\Il::class,
         ],
-        "whois.nic.im"                   => [
+        "whois.nic.im" => [
             "*" => NovutecTemplates\Templates\Im::class,
         ],
-        "whois.inregistry.net"           => [
+        "whois.inregistry.net" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.afilias.net"              => [
+        "whois.afilias.net" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.iana.orgd"                => [
+        "whois.iana.orgd" => [
             "*" => NovutecTemplates\Templates\Int_::class,
         ],
-        "http:\/\/www.nic.io\/"          => [
+        "http:\/\/www.nic.io\/" => [
             "*" => NovutecTemplates\Templates\Io::class,
         ],
-        "whois.cmc.iq"                   => [
+        "whois.cmc.iq" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.ir"                   => [
+        "whois.nic.ir" => [
             "*" => NovutecTemplates\Templates\Ir::class,
         ],
-        "whois.isnic.is"                 => [
+        "whois.isnic.is" => [
             "*" => NovutecTemplates\Templates\Is::class,
         ],
-        "whois.nic.it"                   => [
+        "whois.nic.it" => [
             "*" => NovutecTemplates\Templates\It::class,
         ],
-        "whois.je"                       => [
+        "whois.je" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "jobswhois.verisign-grs.com"     => [
+        "jobswhois.verisign-grs.com" => [
             "*" => NovutecTemplates\Templates\Verisign::class,
         ],
-        "whois.jprs.jp"                  => [
+        "whois.jprs.jp" => [
             "*" => NovutecTemplates\Templates\Jp::class,
         ],
-        "whois.kenic.or.ke"              => [
+        "whois.kenic.or.ke" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "whois.domain.kg"                => [
+        "whois.domain.kg" => [
             "*" => NovutecTemplates\Templates\Kg::class,
         ],
-        "whois.kr"                       => [
+        "whois.kr" => [
             "*" => NovutecTemplates\Templates\Kr::class,
         ],
-        "whois.nic.kz"                   => [
+        "whois.nic.kz" => [
             "*" => NovutecTemplates\Templates\Kz::class,
         ],
-        "whois.nic.la"                   => [
+        "whois.nic.la" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.nic.link"                 => [
+        "whois.nic.link" => [
             "*" => NovutecTemplates\Templates\Link::class,
         ],
-        "whois.domreg.lt"                => [
+        "whois.domreg.lt" => [
             "*" => NovutecTemplates\Templates\Lt::class,
         ],
-        "whois.dns.lu"                   => [
+        "whois.dns.lu" => [
             "*" => NovutecTemplates\Templates\Lu::class,
         ],
-        "whois.nic.lv"                   => [
+        "whois.nic.lv" => [
             "*" => NovutecTemplates\Templates\Lv::class,
         ],
-        "whois.nic.ly"                   => [
+        "whois.nic.ly" => [
             "*" => NovutecTemplates\Templates\Ly::class,
         ],
-        "whois.nic.md"                   => [
+        "whois.nic.md" => [
             "*" => NovutecTemplates\Templates\Md::class,
         ],
-        "whois.nic.me"                   => [
+        "whois.nic.me" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.mg"                   => [
+        "whois.nic.mg" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.dotmobiregistry.net"      => [
+        "whois.dotmobiregistry.net" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.ms"                   => [
+        "whois.nic.ms" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.museum"                   => [
+        "whois.museum" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.mx"                       => [
+        "whois.mx" => [
             "*" => NovutecTemplates\Templates\Mx::class,
         ],
-        "whois.na-nic.com.na"            => [
+        "whois.na-nic.com.na" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.name"                 => [
+        "whois.nic.name" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nc"                       => [
+        "whois.nc" => [
             "*" => NovutecTemplates\Templates\Nc::class,
         ],
-        "whois.nic.nyc"                  => [
+        "whois.nic.nyc" => [
             "*" => NovutecTemplates\Templates\Neustar::class,
         ],
-        "whois.nic.net.ng"               => [
+        "whois.nic.net.ng" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.domain-registry.nl"       => [
+        "whois.domain-registry.nl" => [
             "*" => NovutecTemplates\Templates\Nl::class,
         ],
-        "whois.srs.net.nz"               => [
+        "whois.srs.net.nz" => [
             "*" => NovutecTemplates\Templates\Nz::class,
         ],
-        "whois.iis.nu"                   => [
+        "whois.iis.nu" => [
             "*" => NovutecTemplates\Templates\Nu::class,
         ],
-        "whois.registry.om"              => [
+        "whois.registry.om" => [
             "*" => NovutecTemplates\Templates\Om::class,
         ],
-        "whois.pir.org"                  => [
+        "whois.pir.org" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "kero.yachay.pe"                 => [
+        "kero.yachay.pe" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "whois.dns.pl"                   => [
+        "whois.dns.pl" => [
             "*" => NovutecTemplates\Templates\Pl::class,
         ],
-        "whois.nic.pm"                   => [
+        "whois.nic.pm" => [
             "*" => NovutecTemplates\Templates\Afnic::class,
         ],
-        "whois.nic.pr"                   => [
+        "whois.nic.pr" => [
             "*" => NovutecTemplates\Templates\Pr::class,
         ],
-        "whois.pnina.ps"                 => [
+        "whois.pnina.ps" => [
             "*" => NovutecTemplates\Templates\Cocca::class,
         ],
-        "whois.dns.pt"                   => [
+        "whois.dns.pt" => [
             "*" => NovutecTemplates\Templates\Pt::class,
         ],
-        "whois.nic.pw"                   => [
+        "whois.nic.pw" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.registry.qa"              => [
+        "whois.registry.qa" => [
             "*" => NovutecTemplates\Templates\Qa::class,
         ],
-        "whois.nic.re"                   => [
+        "whois.nic.re" => [
             "*" => NovutecTemplates\Templates\Afnic::class,
         ],
-        "whois.rotld.ro"                 => [
+        "whois.rotld.ro" => [
             "*" => NovutecTemplates\Templates\Ro::class,
         ],
-        "whois.rnids.rs"                 => [
+        "whois.rnids.rs" => [
             "*" => NovutecTemplates\Templates\Rs::class,
         ],
-        "whois.iis.se"                   => [
+        "whois.iis.se" => [
             "*" => NovutecTemplates\Templates\Se::class,
         ],
-        "whois.sgnic.sg"                 => [
+        "whois.sgnic.sg" => [
             "*" => NovutecTemplates\Templates\Sg::class,
         ],
-        "http:\/\/www.nic.sh\/"          => [
+        "http:\/\/www.nic.sh\/" => [
             "*" => NovutecTemplates\Templates\Icb::class,
         ],
-        "whois.sk-nic.sk"                => [
+        "whois.sk-nic.sk" => [
             "*" => NovutecTemplates\Templates\Sk::class,
         ],
-        "whois.nic.sm"                   => [
+        "whois.nic.sm" => [
             "*" => NovutecTemplates\Templates\Sm::class,
         ],
-        "whois.nic.so"                   => [
+        "whois.nic.so" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.st"                   => [
+        "whois.nic.st" => [
             "*" => NovutecTemplates\Templates\St::class,
         ],
-        "whois.tcinet.ru"                => [
+        "whois.tcinet.ru" => [
             "xn--p1ai" => NovutecTemplates\Templates\Gtld_rf::class,
             "su"       => NovutecTemplates\Templates\Su::class,
             "*"        => NovutecTemplates\Templates\Su::class,
         ],
-        "whois.nic.support"              => [
+        "whois.nic.support" => [
             "*" => NovutecTemplates\Templates\Support::class,
         ],
-        "whois.sx"                       => [
+        "whois.sx" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.tld.sy"                   => [
+        "whois.tld.sy" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.tel"                  => [
+        "whois.nic.tel" => [
             "*" => NovutecTemplates\Templates\Neustar::class,
         ],
-        "whois.nic.tf"                   => [
+        "whois.nic.tf" => [
             "*" => NovutecTemplates\Templates\Afnic::class,
         ],
-        "whois.thnic.co.th"              => [
+        "whois.thnic.co.th" => [
             "*" => NovutecTemplates\Templates\Th::class,
         ],
-        "whois.dot.tk"                   => [
+        "whois.dot.tk" => [
             "*" => NovutecTemplates\Templates\Tk::class,
         ],
-        "http:\/\/www.nic.tm\/"          => [
+        "http:\/\/www.nic.tm\/" => [
             "*" => NovutecTemplates\Templates\Icb::class,
         ],
-        "whois.ati.tn"                   => [
+        "whois.ati.tn" => [
             "*" => NovutecTemplates\Templates\Tn::class,
         ],
-        "whois.nic.tr"                   => [
+        "whois.nic.tr" => [
             "*" => NovutecTemplates\Templates\Tr::class,
         ],
-        "whois.nic.travel"               => [
+        "whois.nic.travel" => [
             "*" => NovutecTemplates\Templates\Neustar::class,
         ],
-        "tvwhois.verisign-grs.com"       => [
+        "tvwhois.verisign-grs.com" => [
             "*" => NovutecTemplates\Templates\Tv::class,
         ],
-        "whois.twnic.net.tw"             => [
+        "whois.twnic.net.tw" => [
             "*" => NovutecTemplates\Templates\Tw::class,
         ],
-        "whois.tznic.or.tz"              => [
+        "whois.tznic.or.tz" => [
             "*" => NovutecTemplates\Templates\Ee::class,
         ],
-        "whois.co.ug"                    => [
+        "whois.co.ug" => [
             "*" => NovutecTemplates\Templates\Ug::class,
         ],
-        "whois.nic.uk"                   => [
+        "whois.nic.uk" => [
             "*" => NovutecTemplates\Templates\Uk::class,
         ],
-        "whois.nic.us"                   => [
+        "whois.nic.us" => [
             "*" => NovutecTemplates\Templates\Neustar::class,
         ],
-        "whois.nic.org.uy"               => [
+        "whois.nic.org.uy" => [
             "*" => NovutecTemplates\Templates\Uy::class,
         ],
-        "whois.nic.ve"                   => [
+        "whois.nic.ve" => [
             "*" => NovutecTemplates\Templates\Ve::class,
         ],
-        "vunic.vu"                       => [
+        "vunic.vu" => [
             "*" => NovutecTemplates\Templates\Vu::class,
         ],
-        "whois.nic.wf"                   => [
+        "whois.nic.wf" => [
             "*" => NovutecTemplates\Templates\Afnic::class,
         ],
-        "whois.website.ws"               => [
+        "whois.website.ws" => [
             "*" => NovutecTemplates\Templates\Ws::class,
         ],
-        "xn--80ap21a"                    => [
+        "xn--80ap21a" => [
             "*" => NovutecTemplates\Templates\Kz::class,
         ],
-        "cwhois.cnnic.cn"                => [
+        "cwhois.cnnic.cn" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.xxx"                  => [
+        "whois.nic.xxx" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.nic.yt"                   => [
+        "whois.nic.yt" => [
             "*" => NovutecTemplates\Templates\Afnic::class,
         ],
-        "http:\/\/whois.venez.fr\/"      => [
+        "http:\/\/whois.venez.fr\/" => [
             "*" => NovutecTemplates\Templates\Venez::class,
         ],
-        "grs-whois.hichina.com"          => [
+        "grs-whois.hichina.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.007names.com"             => [
+        "whois.007names.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.1api.net"                 => [
+        "whois.1api.net" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois.123-reg.co.uk"            => [
+        "whois.123-reg.co.uk" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.above.com"                => [
+        "whois.above.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.afternic.com"             => [
+        "whois.afternic.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.allearthdomains.com"      => [
+        "whois.allearthdomains.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.antagus.de"               => [
+        "whois.antagus.de" => [
             "*" => NovutecTemplates\Templates\Gtld_vautron::class,
         ],
-        "whois.apisrs.com"               => [
+        "whois.apisrs.com" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.ascio.com"                => [
+        "whois.ascio.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.biglizarddomains.com"     => [
+        "whois.biglizarddomains.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.bizcn.com"                => [
+        "whois.bizcn.com" => [
             "*" => NovutecTemplates\Templates\Gtld_xinnet::class,
         ],
-        "whois.blacknight.com"           => [
+        "whois.blacknight.com" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois.columbianames.com"        => [
+        "whois.columbianames.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.communigal.net"           => [
+        "whois.communigal.net" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.corehub.net"              => [
+        "whois.corehub.net" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.corenic.net"              => [
+        "whois.corenic.net" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.corporatedomains.com"     => [
+        "whois.corporatedomains.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.cps-datensysteme.de"      => [
+        "whois.cps-datensysteme.de" => [
             "*" => NovutecTemplates\Templates\Gtld_cpsdatensysteme::class,
         ],
-        "whois.cronon.net"               => [
+        "whois.cronon.net" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.directnic.com"            => [
+        "whois.directnic.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.discount-domain.com"      => [
+        "whois.discount-domain.com" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.domainarmada.com"         => [
+        "whois.domainarmada.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.domaincomesaround.com"    => [
+        "whois.domaincomesaround.com" => [
             "*" => NovutecTemplates\Templates\Standardliar::class,
         ],
-        "whois.domrobot.com"             => [
+        "whois.domrobot.com" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois2.domain.com"              => [
+        "whois2.domain.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.domain.com"               => [
+        "whois.domain.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.domainprocessor.com"      => [
+        "whois.domainprocessor.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.domainsite.com"           => [
+        "whois.domainsite.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.domainsoftheworld.net"    => [
+        "whois.domainsoftheworld.net" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.domainyeti.com"           => [
+        "whois.domainyeti.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.dreamhost.com"            => [
+        "whois.dreamhost.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.dynadot.com"              => [
+        "whois.dynadot.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.dyndns.com"               => [
+        "whois.dyndns.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.easyspace.com"            => [
+        "whois.easyspace.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.encirca.com"              => [
+        "whois.encirca.com" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.enom.com"                 => [
+        "whois.enom.com" => [
             "*" => NovutecTemplates\Templates\Gtld_enom::class,
         ],
-        "whois.enterprice.net"           => [
+        "whois.enterprice.net" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.eunamesoregon.com"        => [
+        "whois.eunamesoregon.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.eurodns.com"              => [
+        "whois.eurodns.com" => [
             "*" => NovutecTemplates\Templates\Standardliar::class,
         ],
-        "whois.euturbo.com"              => [
+        "whois.euturbo.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.fabulous.com"             => [
+        "whois.fabulous.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.fastdomain.com"           => [
+        "whois.fastdomain.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.findyouadomain.com"       => [
+        "whois.findyouadomain.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.gandi.net"                => [
+        "whois.gandi.net" => [
             "*" => NovutecTemplates\Templates\Gtld_gandi::class,
         ],
-        "whois.gochinadomains.com"       => [
+        "whois.gochinadomains.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.godaddy.com"              => [
+        "whois.godaddy.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.godomaingo.com"           => [
+        "whois.godomaingo.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.inname.net"               => [
+        "whois.inname.net" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois.instra.net"               => [
+        "whois.instra.net" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois.interdomain.net"          => [
+        "whois.interdomain.net" => [
             "*" => NovutecTemplates\Templates\Gtld_melbourneit::class,
         ],
-        "whois.internet.bs"              => [
+        "whois.internet.bs" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.joker.com"                => [
+        "whois.joker.com" => [
             "*" => NovutecTemplates\Templates\Gtld_joker::class,
         ],
-        "whois.markmonitor.com"          => [
+        "whois.markmonitor.com" => [
             "*" => NovutecTemplates\Templates\Gtld_markmonitor::class,
         ],
-        "whois.melbourneit.com"          => [
+        "whois.melbourneit.com" => [
             "*" => NovutecTemplates\Templates\Gtld_melbourneit::class,
         ],
-        "whois.misk.com"                 => [
+        "whois.misk.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.moniker.com"              => [
+        "whois.moniker.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.name.com"                 => [
+        "whois.name.com" => [
             "*" => NovutecTemplates\Templates\Gtld_name::class,
         ],
-        "whois.namebay.com"              => [
+        "whois.namebay.com" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.namecheap.com"            => [
+        "whois.namecheap.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.nameemperor.com"          => [
+        "whois.nameemperor.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.names4ever.com"           => [
+        "whois.names4ever.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.namesbeyond.com"          => [
+        "whois.namesbeyond.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.namesecure.com"           => [
+        "whois.namesecure.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.namesilo.com"             => [
+        "whois.namesilo.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.net-chinese.com.tw"       => [
+        "whois.net-chinese.com.tw" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.networksolutions.com"     => [
+        "whois.networksolutions.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.nicproxy.com"             => [
+        "whois.nicproxy.com" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois.novutec.com"              => [
+        "whois.novutec.com" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois.ovh.com"                  => [
+        "whois.ovh.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.paycenter.com.cn"         => [
+        "whois.paycenter.com.cn" => [
             "*" => NovutecTemplates\Templates\Gtld_xinnet::class,
         ],
-        "whois.pheenix.com"              => [
+        "whois.pheenix.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.planetdomain.com"         => [
+        "whois.planetdomain.com" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.plisk.com"                => [
+        "whois.plisk.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.pocketdomain.com"         => [
+        "whois.pocketdomain.com" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.protondomains.com"        => [
+        "whois.protondomains.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.psi-usa.info"             => [
+        "whois.psi-usa.info" => [
             "*" => NovutecTemplates\Templates\Gtld_psiusa::class,
         ],
         "whois.publicdomainregistry.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.puredomain.com"           => [
+        "whois.puredomain.com" => [
             "*" => NovutecTemplates\Templates\Gtld_variomedia::class,
         ],
-        "whois.register.com"             => [
+        "whois.register.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.registrar.telekom.de"     => [
+        "whois.registrar.telekom.de" => [
             "*" => NovutecTemplates\Templates\Gtld_deutschetelekom::class,
         ],
-        "whois.registrygate.com"         => [
+        "whois.registrygate.com" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois.regtime.net"              => [
+        "whois.regtime.net" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.regtons.com"              => [
+        "whois.regtons.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.rrpproxy.net"             => [
+        "whois.rrpproxy.net" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois.schlund.info"             => [
+        "whois.schlund.info" => [
             "*" => NovutecTemplates\Templates\Gtld_schlund::class,
         ],
-        "whois.skykomishdomains.com"     => [
+        "whois.skykomishdomains.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.srsplus.com"              => [
+        "whois.srsplus.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.subreg.cz"                => [
+        "whois.subreg.cz" => [
             "*" => NovutecTemplates\Templates\Afilias::class,
         ],
-        "whois.tirupatidomains.in"       => [
+        "whois.tirupatidomains.in" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.totalregistrations.com"   => [
+        "whois.totalregistrations.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.tucows.com"               => [
+        "whois.tucows.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.udag.net"                 => [
+        "whois.udag.net" => [
             "*" => NovutecTemplates\Templates\Gtld_rrpproxy::class,
         ],
-        "whois.udomainname.com"          => [
+        "whois.udomainname.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.uniregistrar.com"         => [
+        "whois.uniregistrar.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.uniregistrar.net"         => [
+        "whois.uniregistrar.net" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.webmasters.com"           => [
+        "whois.webmasters.com" => [
             "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
-        "whois.webnames.ru"              => [
+        "whois.webnames.ru" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.wildwestdomains.com"      => [
+        "whois.wildwestdomains.com" => [
             "*" => NovutecTemplates\Templates\Gtld_godaddy::class,
         ],
-        "whois.yesnic.com"               => [
+        "whois.yesnic.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
-        "whois.your-server.de"           => [
+        "whois.your-server.de" => [
             "*" => NovutecTemplates\Templates\Gtld_hetzner::class,
         ],
-        "whois.yourjungle.com"           => [
+        "whois.yourjungle.com" => [
             "*" => NovutecTemplates\Templates\Standard::class,
         ],
         /** @generator-end=novutec */

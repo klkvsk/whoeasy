@@ -1,5 +1,11 @@
 <?php
 
+use function Klkvsk\Whoeasy\ip6prefix2long;
+
+require __DIR__ . '/../src/functions.php';
+
+set_error_handler(fn($s, $m, $f = null, $l = null) => new ErrorException($m, 0, $s, $f, $l), E_ALL);
+
 new class {
     protected array $servers = [];
     protected array $toplevelRefs = [];
@@ -16,6 +22,11 @@ new class {
             'tld_serv_list'        => $this->parseTldServ(...),
             'servers_charset_list' => $this->parseServerCharset(...),
             'nic_handles_list'     => $this->parseNicHandle(...),
+            'ip_del_recovered.h'   => $this->parseIpv4Recovered(...),
+            'ip_del_list'          => $this->parseIpv4(...),
+            'ip6_del_list'         => $this->parseIpv6(...),
+//            'as_del_list'          => $this->parseAsn(...),
+//            'as32_del_list'        => $this->parseAsn(...),
         ];
 
         foreach ($files as $file => $importFn) {
@@ -42,8 +53,8 @@ new class {
             $this->servers,
             [
                 $serverName => [
-                    'uri'      => "whois://$serverName",
-                    'tlds'     => [ ".$tld" ],
+                    'uri'  => "whois://$serverName",
+                    'tlds' => [ ".$tld" ],
                 ],
             ]
         );
@@ -167,6 +178,84 @@ new class {
                 $handle => $server,
             ]
         );
+    }
+
+
+    protected function parseIpv4(string $line): void
+    {
+        if (!preg_match("/^([0-9.]+)\/([0-9]{1,2})\s+([a-z0-9.-]+)/i", $line, $cols)) {
+            throw new UnexpectedValueException("'$line'");
+        }
+
+        [ $_, $ip, $maskBits, $server ] = $cols;
+        if ($server === "UNKNOWN") {
+            return;
+        }
+        $server = strtolower($server);
+        if (!str_contains($server, '.')) {
+            $server = "whois.$server.net";
+        }
+
+        $ipLong = ip2long($ip);
+        if ($ipLong === false) {
+            throw new UnexpectedValueException("bad ip $ip: '$line'");
+        }
+        if ($maskBits > 32 || $maskBits < 0) {
+            throw new UnexpectedValueException("bad subnet: '$line'");
+        }
+
+        $maskLong = 0xFFFFFFFF & (~0 << (32 - (int)$maskBits));
+
+        $this->ipv4Ranges[] = [ $ipLong, $maskLong, $server ];
+    }
+
+    protected function parseIpv6(string $line): void
+    {
+        if (!preg_match('/^([a-f0-9]{4}:[a-f0-9]{4})::\/([0-9]{1,2})\s*(\S+)/i', $line, $cols)) {
+            throw new UnexpectedValueException("'$line'");
+        }
+
+        [ $_, $ip, $maskBits, $server ] = $cols;
+        if ($server === "UNKNOWN") {
+            return;
+        }
+        if ($server === "teredo" || $server === '6to4') {
+            // to do
+            return;
+        }
+
+        $server = strtolower($server);
+        if (!str_contains($server, '.')) {
+            $server = "whois.$server.net";
+        }
+
+        $ipLong = ip6prefix2long($ip);
+        if ($ipLong === false) {
+            throw new UnexpectedValueException("bad ip $ip: '$line'");
+        }
+        if ($maskBits > 32 || $maskBits < 0) {
+            throw new UnexpectedValueException("bad subnet: '$line'");
+        }
+
+        $maskLong = 0xFFFFFFFF & (~0 << (32 - (int)$maskBits));
+
+        $this->ipv6Ranges[] = [ $ipLong, $maskLong, $server ];
+    }
+
+
+    protected function parseIpv4Recovered(string $line): void
+    {
+        if (!preg_match("/^\{\s*(\d+)U?L?\s*,\s*(\d+)U?L?\s*,\s*\"([a-z0-9.-]+)\"/i", $line, $cols)) {
+            throw new UnexpectedValueException("'$line'");
+        }
+
+        [ $_, $ip, $mask, $server ] = $cols;
+        $ip = (int)$ip;
+        $mask = (int)$mask;
+        if ($ip < 0 || $mask < 0 || $ip >= 2**32 || $mask >= 2**32) {
+            throw new UnexpectedValueException("bad range: '$line'");
+        }
+        $this->ipv4Ranges[] = [ $ip, $mask, $server ];
     }
 
     private static function merge(array $a, array $b, bool $allowOverwrite = true): array
@@ -327,6 +416,7 @@ new class {
         return $out;
     }
 
+
     protected function importWhoisListFile(string $file, callable $importFn): void
     {
         $data = file_get_contents($file);
@@ -337,6 +427,12 @@ new class {
         foreach ($lines as $line) {
             $line = trim($line);
             if (str_starts_with($line, '#')) {
+                continue;
+            }
+            if (str_starts_with($line, '/*')) {
+                continue;
+            }
+            if (str_starts_with($line, '//')) {
                 continue;
             }
             if (empty($line)) {
@@ -381,7 +477,7 @@ new class {
                 continue;
             }
             // sort from longest to shortest for iterative matching
-            uasort($templates, fn ($a, $b) => strlen($b) <=> strlen($a));
+            uasort($templates, fn($a, $b) => strlen($b) <=> strlen($a));
 
             // add fallback to first occurred template
             if (!isset($templates['*'])) {
@@ -426,7 +522,25 @@ new class {
                         break;
 
                     case 'ipv4':
+                        foreach ($this->ipv4Ranges as $range) {
+                            [ $ipMin, $mask ] = $range;
+                            $ipMax = $ipMin | ($mask ^ (2**32 - 1));
+                            $modifiedFile[] = $indent . '// ' . long2ip($ipMin) . ' - ' . long2ip($ipMax) . $eol;
+                            $modifiedFile[] = $indent . $this->dumpList($range, $indent, $eol) . ',' . $eol;
+                        }
+                        break;
+
                     case 'ipv6':
+                        foreach ($this->ipv6Ranges as $range) {
+                            [ $ipMin, $mask ] = $range;
+                            $ipMax = $ipMin | ($mask ^ (2**32 - 1));
+                            $rangeFirst = sprintf('%04X:%04X', $ipMin >> 16, $ipMin & (2**16 - 1));
+                            $rangeLast = sprintf('%04X:%04X', $ipMax >> 16, $ipMax & (2**16 - 1));
+                            $modifiedFile[] = $indent . '// ' . $rangeFirst . ' - ' . $rangeLast .  $eol;
+                            $modifiedFile[] = $indent . $this->dumpList($range, $indent, $eol) . ',' . $eol;
+                        }
+                        break;
+
                     case 'asn':
                         break;
 

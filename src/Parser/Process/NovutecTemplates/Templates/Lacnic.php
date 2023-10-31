@@ -44,7 +44,7 @@ class Lacnic extends Regex
      * @var array
      */
     protected array $blocks = [ 1 => '/(inetnum|inet6num):[\s]*(.*?)[\n]{2}/is',
-                                2 => '/nic-hdl:[\s]*(.*?)[\n]{2}/is' ];
+                                2 => '/(irt|role|person|organisation|nic-hdl):[\s]*(.*?)[\n]{2}/is' ];
 
     /**
      * Items for each block
@@ -57,17 +57,21 @@ class Lacnic extends Regex
                '/^netname:(?>[\x20\t]*)(.+)$/im'  => 'network:name',
                '/^mnt-by:(?>[\x20\t]*)(.+)$/im'   => 'network:maintainer',
                '/^status:(?>[\x20\t]*)(.+)$/im'   => 'status',
+               '/^descr:(?>[\x20\t]*)(.+)$/im'    => 'description',
                '/^nserver:(?>[\x20\t]*)(.+)$/im'  => 'nameserver',
                '/^created:(?>[\x20\t]*)(.+)$/im'  => 'created',
                '/^changed:(?>[\x20\t]*)(.+)$/im'  => 'changed',
                '/^admin-c:(?>[\x20\t]*)(.+)$/im'  => 'network:contacts:admin',
                '/^tech-c:(?>[\x20\t]*)(.+)$/im'   => 'network:contacts:tech',
                '/^abuse-c:(?>[\x20\t]*)(.+)$/im'  => 'network:contacts:abuse',
-               '/^owner-c:(?>[\x20\t]*)(.+)$/im'  => 'network:contacts:owner' ],
+               '/^mnt-irt:(?>[\x20\t]*)(.+)$/im'  => 'network:contacts:abuse',
+               '/^owner-c:(?>[\x20\t]*)(.+)$/im'  => 'network:contacts:owner'
+        ],
 
         2 => [ '/^organisation:(?>[\x20\t]*)(.+)$/im'  => 'contacts:handle',
                '/^org:(?>[\x20\t]*)(.+)$/im'           => 'contacts:handle',
                '/^nic-hdl:(?>[\x20\t]*)(.+)$/im'       => 'contacts:handle',
+               '/^irt:(?>[\x20\t]*)(.+)$/im'           => 'contacts:handle',
                '/^org-name:(?>[\x20\t]*)(.+)$/im'      => 'contacts:name',
                '/^role:(?>[\x20\t]*)(.+)$/im'          => 'contacts:name',
                '/^person:(?>[\x20\t]*)(.+)$/im'        => 'contacts:name',

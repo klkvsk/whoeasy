@@ -48,6 +48,11 @@ class Result extends AbstractResult
     public $name;
 
     /**
+     * @var string
+     */
+    public $description;
+
+    /**
      * Status of domain or IP address
      *
      * @var array

@@ -17,6 +17,9 @@
     "ext-curl": "*"
   },
   "autoload": {
+    "files": [
+      "src/functions.php"
+    ],
     "psr-4": {
       "Klkvsk\\Whoeasy\\": "src/"
     }

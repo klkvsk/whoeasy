@@ -7,4437 +7,4437 @@ class BuiltinRegistryRegistry extends ServerRegistry
     /** @noinspection HttpUrlsUsage */
     protected array $servers = [
         /** @generator-begin=servers */
-        "whois.nic.aaa"                      => [
+        "whois.nic.aaa" => [
             "uri"  => "whois://whois.nic.aaa",
             "tlds" => [ ".aaa" ],
         ],
-        "whois.nic.aarp"                     => [
+        "whois.nic.aarp" => [
             "uri"  => "whois://whois.nic.aarp",
             "tlds" => [ ".aarp" ],
         ],
-        "whois.nic.abb"                      => [
+        "whois.nic.abb" => [
             "uri"  => "whois://whois.nic.abb",
             "tlds" => [ ".abb" ],
         ],
-        "whois.nic.abbott"                   => [
+        "whois.nic.abbott" => [
             "uri"  => "whois://whois.nic.abbott",
             "tlds" => [ ".abbott" ],
         ],
-        "whois.nic.abbvie"                   => [
+        "whois.nic.abbvie" => [
             "uri"  => "whois://whois.nic.abbvie",
             "tlds" => [ ".abbvie" ],
         ],
-        "whois.nic.abc"                      => [
+        "whois.nic.abc" => [
             "uri"  => "whois://whois.nic.abc",
             "tlds" => [ ".abc" ],
         ],
-        "whois.nic.able"                     => [
+        "whois.nic.able" => [
             "uri"  => "whois://whois.nic.able",
             "tlds" => [ ".able" ],
         ],
-        "whois.nic.abogado"                  => [
+        "whois.nic.abogado" => [
             "uri"  => "whois://whois.nic.abogado",
             "tlds" => [ ".abogado" ],
         ],
-        "whois.nic.abudhabi"                 => [
+        "whois.nic.abudhabi" => [
             "uri"  => "whois://whois.nic.abudhabi",
             "tlds" => [ ".abudhabi" ],
         ],
-        "whois.nic.academy"                  => [
+        "whois.nic.academy" => [
             "uri"  => "whois://whois.nic.academy",
             "tlds" => [ ".academy" ],
         ],
-        "whois.nic.accenture"                => [
+        "whois.nic.accenture" => [
             "uri"  => "whois://whois.nic.accenture",
             "tlds" => [ ".accenture" ],
         ],
-        "whois.nic.accountant"               => [
+        "whois.nic.accountant" => [
             "uri"  => "whois://whois.nic.accountant",
             "tlds" => [ ".accountant" ],
         ],
-        "whois.nic.accountants"              => [
+        "whois.nic.accountants" => [
             "uri"  => "whois://whois.nic.accountants",
             "tlds" => [ ".accountants" ],
         ],
-        "whois.nic.aco"                      => [
+        "whois.nic.aco" => [
             "uri"  => "whois://whois.nic.aco",
             "tlds" => [ ".aco" ],
         ],
-        "whois.nic.actor"                    => [
+        "whois.nic.actor" => [
             "uri"  => "whois://whois.nic.actor",
             "tlds" => [ ".actor" ],
         ],
-        "whois.nic.ads"                      => [
+        "whois.nic.ads" => [
             "uri"  => "whois://whois.nic.ads",
             "tlds" => [ ".ads" ],
         ],
-        "whois.nic.adult"                    => [
+        "whois.nic.adult" => [
             "uri"  => "whois://whois.nic.adult",
             "tlds" => [ ".adult" ],
         ],
-        "whois.nic.aeg"                      => [
+        "whois.nic.aeg" => [
             "uri"  => "whois://whois.nic.aeg",
             "tlds" => [ ".aeg" ],
         ],
-        "whois.nic.aetna"                    => [
+        "whois.nic.aetna" => [
             "uri"  => "whois://whois.nic.aetna",
             "tlds" => [ ".aetna" ],
         ],
-        "whois.nic.afl"                      => [
+        "whois.nic.afl" => [
             "uri"  => "whois://whois.nic.afl",
             "tlds" => [ ".afl" ],
         ],
-        "whois.nic.africa"                   => [
+        "whois.nic.africa" => [
             "uri"  => "whois://whois.nic.africa",
             "tlds" => [ ".africa" ],
         ],
-        "whois.nic.agakhan"                  => [
+        "whois.nic.agakhan" => [
             "uri"  => "whois://whois.nic.agakhan",
             "tlds" => [ ".agakhan" ],
         ],
-        "whois.nic.agency"                   => [
+        "whois.nic.agency" => [
             "uri"  => "whois://whois.nic.agency",
             "tlds" => [ ".agency" ],
         ],
-        "whois.nic.aig"                      => [
+        "whois.nic.aig" => [
             "uri"  => "whois://whois.nic.aig",
             "tlds" => [ ".aig" ],
         ],
-        "whois.nic.airbus"                   => [
+        "whois.nic.airbus" => [
             "uri"  => "whois://whois.nic.airbus",
             "tlds" => [ ".airbus" ],
         ],
-        "whois.nic.airforce"                 => [
+        "whois.nic.airforce" => [
             "uri"  => "whois://whois.nic.airforce",
             "tlds" => [ ".airforce" ],
         ],
-        "whois.nic.airtel"                   => [
+        "whois.nic.airtel" => [
             "uri"  => "whois://whois.nic.airtel",
             "tlds" => [ ".airtel" ],
         ],
-        "whois.nic.akdn"                     => [
+        "whois.nic.akdn" => [
             "uri"  => "whois://whois.nic.akdn",
             "tlds" => [ ".akdn" ],
         ],
-        "whois.nic.alibaba"                  => [
+        "whois.nic.alibaba" => [
             "uri"  => "whois://whois.nic.alibaba",
             "tlds" => [ ".alibaba" ],
         ],
-        "whois.nic.alipay"                   => [
+        "whois.nic.alipay" => [
             "uri"  => "whois://whois.nic.alipay",
             "tlds" => [ ".alipay" ],
         ],
-        "whois.nic.allfinanz"                => [
+        "whois.nic.allfinanz" => [
             "uri"  => "whois://whois.nic.allfinanz",
             "tlds" => [ ".allfinanz" ],
         ],
-        "whois.nic.allstate"                 => [
+        "whois.nic.allstate" => [
             "uri"  => "whois://whois.nic.allstate",
             "tlds" => [ ".allstate" ],
         ],
-        "whois.nic.ally"                     => [
+        "whois.nic.ally" => [
             "uri"  => "whois://whois.nic.ally",
             "tlds" => [ ".ally" ],
         ],
-        "whois.nic.alsace"                   => [
+        "whois.nic.alsace" => [
             "uri"  => "whois://whois.nic.alsace",
             "tlds" => [ ".alsace" ],
         ],
-        "whois.nic.alstom"                   => [
+        "whois.nic.alstom" => [
             "uri"  => "whois://whois.nic.alstom",
             "tlds" => [ ".alstom" ],
         ],
-        "whois.nic.amazon"                   => [
+        "whois.nic.amazon" => [
             "uri"  => "whois://whois.nic.amazon",
             "tlds" => [ ".amazon" ],
         ],
-        "whois.nic.americanexpress"          => [
+        "whois.nic.americanexpress" => [
             "uri"  => "whois://whois.nic.americanexpress",
             "tlds" => [ ".americanexpress" ],
         ],
-        "whois.nic.americanfamily"           => [
+        "whois.nic.americanfamily" => [
             "uri"  => "whois://whois.nic.americanfamily",
             "tlds" => [ ".americanfamily" ],
         ],
-        "whois.nic.amex"                     => [
+        "whois.nic.amex" => [
             "uri"  => "whois://whois.nic.amex",
             "tlds" => [ ".amex" ],
         ],
-        "whois.nic.amfam"                    => [
+        "whois.nic.amfam" => [
             "uri"  => "whois://whois.nic.amfam",
             "tlds" => [ ".amfam" ],
         ],
-        "whois.nic.amica"                    => [
+        "whois.nic.amica" => [
             "uri"  => "whois://whois.nic.amica",
             "tlds" => [ ".amica" ],
         ],
-        "whois.nic.amsterdam"                => [
+        "whois.nic.amsterdam" => [
             "uri"  => "whois://whois.nic.amsterdam",
             "tlds" => [ ".amsterdam" ],
         ],
-        "whois.nic.analytics"                => [
+        "whois.nic.analytics" => [
             "uri"  => "whois://whois.nic.analytics",
             "tlds" => [ ".analytics" ],
         ],
-        "whois.nic.android"                  => [
+        "whois.nic.android" => [
             "uri"  => "whois://whois.nic.android",
             "tlds" => [ ".android" ],
         ],
-        "whois.nic.anquan"                   => [
+        "whois.nic.anquan" => [
             "uri"  => "whois://whois.nic.anquan",
             "tlds" => [ ".anquan" ],
         ],
-        "whois.nic.anz"                      => [
+        "whois.nic.anz" => [
             "uri"  => "whois://whois.nic.anz",
             "tlds" => [ ".anz" ],
         ],
-        "whois.nic.aol"                      => [
+        "whois.nic.aol" => [
             "uri"  => "whois://whois.nic.aol",
             "tlds" => [ ".aol" ],
         ],
-        "whois.nic.apartments"               => [
+        "whois.nic.apartments" => [
             "uri"  => "whois://whois.nic.apartments",
             "tlds" => [ ".apartments" ],
         ],
-        "whois.nic.app"                      => [
+        "whois.nic.app" => [
             "uri"  => "whois://whois.nic.app",
             "tlds" => [ ".app" ],
         ],
-        "whois.nic.apple"                    => [
+        "whois.nic.apple" => [
             "uri"  => "whois://whois.nic.apple",
             "tlds" => [ ".apple" ],
         ],
-        "whois.nic.aquarelle"                => [
+        "whois.nic.aquarelle" => [
             "uri"  => "whois://whois.nic.aquarelle",
             "tlds" => [ ".aquarelle" ],
         ],
-        "whois.nic.arab"                     => [
+        "whois.nic.arab" => [
             "uri"  => "whois://whois.nic.arab",
             "tlds" => [ ".arab" ],
         ],
-        "whois.nic.aramco"                   => [
+        "whois.nic.aramco" => [
             "uri"  => "whois://whois.nic.aramco",
             "tlds" => [ ".aramco" ],
         ],
-        "whois.nic.archi"                    => [
+        "whois.nic.archi" => [
             "uri"  => "whois://whois.nic.archi",
             "tlds" => [ ".archi" ],
         ],
-        "whois.nic.army"                     => [
+        "whois.nic.army" => [
             "uri"  => "whois://whois.nic.army",
             "tlds" => [ ".army" ],
         ],
-        "whois.nic.art"                      => [
+        "whois.nic.art" => [
             "uri"  => "whois://whois.nic.art",
             "tlds" => [ ".art" ],
         ],
-        "whois.nic.arte"                     => [
+        "whois.nic.arte" => [
             "uri"  => "whois://whois.nic.arte",
             "tlds" => [ ".arte" ],
         ],
-        "whois.nic.asda"                     => [
+        "whois.nic.asda" => [
             "uri"  => "whois://whois.nic.asda",
             "tlds" => [ ".asda" ],
         ],
-        "whois.nic.associates"               => [
+        "whois.nic.associates" => [
             "uri"  => "whois://whois.nic.associates",
             "tlds" => [ ".associates" ],
         ],
-        "whois.nic.athleta"                  => [
+        "whois.nic.athleta" => [
             "uri"  => "whois://whois.nic.athleta",
             "tlds" => [ ".athleta" ],
         ],
-        "whois.nic.attorney"                 => [
+        "whois.nic.attorney" => [
             "uri"  => "whois://whois.nic.attorney",
             "tlds" => [ ".attorney" ],
         ],
-        "whois.nic.auction"                  => [
+        "whois.nic.auction" => [
             "uri"  => "whois://whois.nic.auction",
             "tlds" => [ ".auction" ],
         ],
-        "whois.nic.audi"                     => [
+        "whois.nic.audi" => [
             "uri"  => "whois://whois.nic.audi",
             "tlds" => [ ".audi" ],
         ],
-        "whois.nic.audible"                  => [
+        "whois.nic.audible" => [
             "uri"  => "whois://whois.nic.audible",
             "tlds" => [ ".audible" ],
         ],
-        "whois.nic.audio"                    => [
+        "whois.nic.audio" => [
             "uri"  => "whois://whois.nic.audio",
             "tlds" => [ ".audio" ],
         ],
-        "whois.nic.auspost"                  => [
+        "whois.nic.auspost" => [
             "uri"  => "whois://whois.nic.auspost",
             "tlds" => [ ".auspost" ],
         ],
-        "whois.nic.author"                   => [
+        "whois.nic.author" => [
             "uri"  => "whois://whois.nic.author",
             "tlds" => [ ".author" ],
         ],
-        "whois.nic.auto"                     => [
+        "whois.nic.auto" => [
             "uri"  => "whois://whois.nic.auto",
             "tlds" => [ ".auto" ],
         ],
-        "whois.nic.autos"                    => [
+        "whois.nic.autos" => [
             "uri"  => "whois://whois.nic.autos",
             "tlds" => [ ".autos" ],
         ],
-        "whois.nic.avianca"                  => [
+        "whois.nic.avianca" => [
             "uri"  => "whois://whois.nic.avianca",
             "tlds" => [ ".avianca" ],
         ],
-        "whois.nic.aws"                      => [
+        "whois.nic.aws" => [
             "uri"  => "whois://whois.nic.aws",
             "tlds" => [ ".aws" ],
         ],
-        "whois.nic.axa"                      => [
+        "whois.nic.axa" => [
             "uri"  => "whois://whois.nic.axa",
             "tlds" => [ ".axa" ],
         ],
-        "whois.nic.azure"                    => [
+        "whois.nic.azure" => [
             "uri"  => "whois://whois.nic.azure",
             "tlds" => [ ".azure" ],
         ],
-        "whois.nic.baby"                     => [
+        "whois.nic.baby" => [
             "uri"  => "whois://whois.nic.baby",
             "tlds" => [ ".baby" ],
         ],
-        "whois.nic.baidu"                    => [
+        "whois.nic.baidu" => [
             "uri"  => "whois://whois.nic.baidu",
             "tlds" => [ ".baidu" ],
         ],
-        "whois.nic.banamex"                  => [
+        "whois.nic.banamex" => [
             "uri"  => "whois://whois.nic.banamex",
             "tlds" => [ ".banamex" ],
         ],
-        "whois.nic.bananarepublic"           => [
+        "whois.nic.bananarepublic" => [
             "uri"  => "whois://whois.nic.bananarepublic",
             "tlds" => [ ".bananarepublic" ],
         ],
-        "whois.nic.band"                     => [
+        "whois.nic.band" => [
             "uri"  => "whois://whois.nic.band",
             "tlds" => [ ".band" ],
         ],
-        "whois.nic.bank"                     => [
+        "whois.nic.bank" => [
             "uri"  => "whois://whois.nic.bank",
             "tlds" => [ ".bank" ],
         ],
-        "whois.nic.bar"                      => [
+        "whois.nic.bar" => [
             "uri"  => "whois://whois.nic.bar",
             "tlds" => [ ".bar" ],
         ],
-        "whois.nic.barcelona"                => [
+        "whois.nic.barcelona" => [
             "uri"  => "whois://whois.nic.barcelona",
             "tlds" => [ ".barcelona" ],
         ],
-        "whois.nic.barclaycard"              => [
+        "whois.nic.barclaycard" => [
             "uri"  => "whois://whois.nic.barclaycard",
             "tlds" => [ ".barclaycard" ],
         ],
-        "whois.nic.barclays"                 => [
+        "whois.nic.barclays" => [
             "uri"  => "whois://whois.nic.barclays",
             "tlds" => [ ".barclays" ],
         ],
-        "whois.nic.barefoot"                 => [
+        "whois.nic.barefoot" => [
             "uri"  => "whois://whois.nic.barefoot",
             "tlds" => [ ".barefoot" ],
         ],
-        "whois.nic.bargains"                 => [
+        "whois.nic.bargains" => [
             "uri"  => "whois://whois.nic.bargains",
             "tlds" => [ ".bargains" ],
         ],
-        "whois.nic.baseball"                 => [
+        "whois.nic.baseball" => [
             "uri"  => "whois://whois.nic.baseball",
             "tlds" => [ ".baseball" ],
         ],
-        "whois.nic.basketball"               => [
+        "whois.nic.basketball" => [
             "uri"  => "whois://whois.nic.basketball",
             "tlds" => [ ".basketball" ],
         ],
-        "whois.nic.bauhaus"                  => [
+        "whois.nic.bauhaus" => [
             "uri"  => "whois://whois.nic.bauhaus",
             "tlds" => [ ".bauhaus" ],
         ],
-        "whois.nic.bayern"                   => [
+        "whois.nic.bayern" => [
             "uri"  => "whois://whois.nic.bayern",
             "tlds" => [ ".bayern" ],
         ],
-        "whois.nic.bbc"                      => [
+        "whois.nic.bbc" => [
             "uri"  => "whois://whois.nic.bbc",
             "tlds" => [ ".bbc" ],
         ],
-        "whois.nic.bbt"                      => [
+        "whois.nic.bbt" => [
             "uri"  => "whois://whois.nic.bbt",
             "tlds" => [ ".bbt" ],
         ],
-        "whois.nic.bbva"                     => [
+        "whois.nic.bbva" => [
             "uri"  => "whois://whois.nic.bbva",
             "tlds" => [ ".bbva" ],
         ],
-        "whois.nic.bcg"                      => [
+        "whois.nic.bcg" => [
             "uri"  => "whois://whois.nic.bcg",
             "tlds" => [ ".bcg" ],
         ],
-        "whois.nic.bcn"                      => [
+        "whois.nic.bcn" => [
             "uri"  => "whois://whois.nic.bcn",
             "tlds" => [ ".bcn" ],
         ],
-        "whois.nic.beats"                    => [
+        "whois.nic.beats" => [
             "uri"  => "whois://whois.nic.beats",
             "tlds" => [ ".beats" ],
         ],
-        "whois.nic.beauty"                   => [
+        "whois.nic.beauty" => [
             "uri"  => "whois://whois.nic.beauty",
             "tlds" => [ ".beauty" ],
         ],
-        "whois.nic.beer"                     => [
+        "whois.nic.beer" => [
             "uri"  => "whois://whois.nic.beer",
             "tlds" => [ ".beer" ],
         ],
-        "whois.nic.bentley"                  => [
+        "whois.nic.bentley" => [
             "uri"  => "whois://whois.nic.bentley",
             "tlds" => [ ".bentley" ],
         ],
-        "whois.nic.berlin"                   => [
+        "whois.nic.berlin" => [
             "uri"  => "whois://whois.nic.berlin",
             "tlds" => [ ".berlin" ],
         ],
-        "whois.nic.best"                     => [
+        "whois.nic.best" => [
             "uri"  => "whois://whois.nic.best",
             "tlds" => [ ".best" ],
         ],
-        "whois.nic.bestbuy"                  => [
+        "whois.nic.bestbuy" => [
             "uri"  => "whois://whois.nic.bestbuy",
             "tlds" => [ ".bestbuy" ],
         ],
-        "whois.nic.bet"                      => [
+        "whois.nic.bet" => [
             "uri"  => "whois://whois.nic.bet",
             "tlds" => [ ".bet" ],
         ],
-        "whois.nic.bharti"                   => [
+        "whois.nic.bharti" => [
             "uri"  => "whois://whois.nic.bharti",
             "tlds" => [ ".bharti" ],
         ],
-        "whois.nic.bible"                    => [
+        "whois.nic.bible" => [
             "uri"  => "whois://whois.nic.bible",
             "tlds" => [ ".bible" ],
         ],
-        "whois.nic.bid"                      => [
+        "whois.nic.bid" => [
             "uri"  => "whois://whois.nic.bid",
             "tlds" => [ ".bid" ],
         ],
-        "whois.nic.bike"                     => [
+        "whois.nic.bike" => [
             "uri"  => "whois://whois.nic.bike",
             "tlds" => [ ".bike" ],
         ],
-        "whois.nic.bing"                     => [
+        "whois.nic.bing" => [
             "uri"  => "whois://whois.nic.bing",
             "tlds" => [ ".bing" ],
         ],
-        "whois.nic.bingo"                    => [
+        "whois.nic.bingo" => [
             "uri"  => "whois://whois.nic.bingo",
             "tlds" => [ ".bingo" ],
         ],
-        "whois.nic.bio"                      => [
+        "whois.nic.bio" => [
             "uri"  => "whois://whois.nic.bio",
             "tlds" => [ ".bio" ],
         ],
-        "whois.nic.black"                    => [
+        "whois.nic.black" => [
             "uri"  => "whois://whois.nic.black",
             "tlds" => [ ".black" ],
         ],
-        "whois.nic.blackfriday"              => [
+        "whois.nic.blackfriday" => [
             "uri"  => "whois://whois.nic.blackfriday",
             "tlds" => [ ".blackfriday" ],
         ],
-        "whois.nic.blockbuster"              => [
+        "whois.nic.blockbuster" => [
             "uri"  => "whois://whois.nic.blockbuster",
             "tlds" => [ ".blockbuster" ],
         ],
-        "whois.nic.blog"                     => [
+        "whois.nic.blog" => [
             "uri"  => "whois://whois.nic.blog",
             "tlds" => [ ".blog" ],
         ],
-        "whois.nic.bloomberg"                => [
+        "whois.nic.bloomberg" => [
             "uri"  => "whois://whois.nic.bloomberg",
             "tlds" => [ ".bloomberg" ],
         ],
-        "whois.nic.blue"                     => [
+        "whois.nic.blue" => [
             "uri"  => "whois://whois.nic.blue",
             "tlds" => [ ".blue" ],
         ],
-        "whois.nic.bms"                      => [
+        "whois.nic.bms" => [
             "uri"  => "whois://whois.nic.bms",
             "tlds" => [ ".bms" ],
         ],
-        "whois.nic.bmw"                      => [
+        "whois.nic.bmw" => [
             "uri"  => "whois://whois.nic.bmw",
             "tlds" => [ ".bmw" ],
         ],
-        "whois.nic.bnpparibas"               => [
+        "whois.nic.bnpparibas" => [
             "uri"  => "whois://whois.nic.bnpparibas",
             "tlds" => [ ".bnpparibas" ],
         ],
-        "whois.nic.boats"                    => [
+        "whois.nic.boats" => [
             "uri"  => "whois://whois.nic.boats",
             "tlds" => [ ".boats" ],
         ],
-        "whois.nic.boehringer"               => [
+        "whois.nic.boehringer" => [
             "uri"  => "whois://whois.nic.boehringer",
             "tlds" => [ ".boehringer" ],
         ],
-        "whois.nic.bofa"                     => [
+        "whois.nic.bofa" => [
             "uri"  => "whois://whois.nic.bofa",
             "tlds" => [ ".bofa" ],
         ],
-        "whois.nic.bom"                      => [
+        "whois.nic.bom" => [
             "uri"  => "whois://whois.nic.bom",
             "tlds" => [ ".bom" ],
         ],
-        "whois.nic.bond"                     => [
+        "whois.nic.bond" => [
             "uri"  => "whois://whois.nic.bond",
             "tlds" => [ ".bond" ],
         ],
-        "whois.nic.boo"                      => [
+        "whois.nic.boo" => [
             "uri"  => "whois://whois.nic.boo",
             "tlds" => [ ".boo" ],
         ],
-        "whois.nic.book"                     => [
+        "whois.nic.book" => [
             "uri"  => "whois://whois.nic.book",
             "tlds" => [ ".book" ],
         ],
-        "whois.nic.booking"                  => [
+        "whois.nic.booking" => [
             "uri"  => "whois://whois.nic.booking",
             "tlds" => [ ".booking" ],
         ],
-        "whois.nic.bosch"                    => [
+        "whois.nic.bosch" => [
             "uri"  => "whois://whois.nic.bosch",
             "tlds" => [ ".bosch" ],
         ],
-        "whois.nic.bostik"                   => [
+        "whois.nic.bostik" => [
             "uri"  => "whois://whois.nic.bostik",
             "tlds" => [ ".bostik" ],
         ],
-        "whois.nic.boston"                   => [
+        "whois.nic.boston" => [
             "uri"  => "whois://whois.nic.boston",
             "tlds" => [ ".boston" ],
         ],
-        "whois.nic.bot"                      => [
+        "whois.nic.bot" => [
             "uri"  => "whois://whois.nic.bot",
             "tlds" => [ ".bot" ],
         ],
-        "whois.nic.boutique"                 => [
+        "whois.nic.boutique" => [
             "uri"  => "whois://whois.nic.boutique",
             "tlds" => [ ".boutique" ],
         ],
-        "whois.nic.box"                      => [
+        "whois.nic.box" => [
             "uri"  => "whois://whois.nic.box",
             "tlds" => [ ".box" ],
         ],
-        "whois.nic.bradesco"                 => [
+        "whois.nic.bradesco" => [
             "uri"  => "whois://whois.nic.bradesco",
             "tlds" => [ ".bradesco" ],
         ],
-        "whois.nic.bridgestone"              => [
+        "whois.nic.bridgestone" => [
             "uri"  => "whois://whois.nic.bridgestone",
             "tlds" => [ ".bridgestone" ],
         ],
-        "whois.nic.broadway"                 => [
+        "whois.nic.broadway" => [
             "uri"  => "whois://whois.nic.broadway",
             "tlds" => [ ".broadway" ],
         ],
-        "whois.nic.broker"                   => [
+        "whois.nic.broker" => [
             "uri"  => "whois://whois.nic.broker",
             "tlds" => [ ".broker" ],
         ],
-        "whois.nic.brother"                  => [
+        "whois.nic.brother" => [
             "uri"  => "whois://whois.nic.brother",
             "tlds" => [ ".brother" ],
         ],
-        "whois.nic.brussels"                 => [
+        "whois.nic.brussels" => [
             "uri"  => "whois://whois.nic.brussels",
             "tlds" => [ ".brussels" ],
         ],
-        "whois.nic.build"                    => [
+        "whois.nic.build" => [
             "uri"  => "whois://whois.nic.build",
             "tlds" => [ ".build" ],
         ],
-        "whois.nic.builders"                 => [
+        "whois.nic.builders" => [
             "uri"  => "whois://whois.nic.builders",
             "tlds" => [ ".builders" ],
         ],
-        "whois.nic.business"                 => [
+        "whois.nic.business" => [
             "uri"  => "whois://whois.nic.business",
             "tlds" => [ ".business" ],
         ],
-        "whois.nic.buy"                      => [
+        "whois.nic.buy" => [
             "uri"  => "whois://whois.nic.buy",
             "tlds" => [ ".buy" ],
         ],
-        "whois.nic.buzz"                     => [
+        "whois.nic.buzz" => [
             "uri"  => "whois://whois.nic.buzz",
             "tlds" => [ ".buzz" ],
         ],
-        "whois.nic.bzh"                      => [
+        "whois.nic.bzh" => [
             "uri"     => "whois://whois.nic.bzh",
             "tlds"    => [ ".bzh" ],
             "handles" => [ "-bzh" ],
         ],
-        "whois.nic.cab"                      => [
+        "whois.nic.cab" => [
             "uri"  => "whois://whois.nic.cab",
             "tlds" => [ ".cab" ],
         ],
-        "whois.nic.cafe"                     => [
+        "whois.nic.cafe" => [
             "uri"  => "whois://whois.nic.cafe",
             "tlds" => [ ".cafe" ],
         ],
-        "whois.nic.cal"                      => [
+        "whois.nic.cal" => [
             "uri"  => "whois://whois.nic.cal",
             "tlds" => [ ".cal" ],
         ],
-        "whois.nic.call"                     => [
+        "whois.nic.call" => [
             "uri"  => "whois://whois.nic.call",
             "tlds" => [ ".call" ],
         ],
-        "whois.nic.calvinklein"              => [
+        "whois.nic.calvinklein" => [
             "uri"  => "whois://whois.nic.calvinklein",
             "tlds" => [ ".calvinklein" ],
         ],
-        "whois.nic.cam"                      => [
+        "whois.nic.cam" => [
             "uri"  => "whois://whois.nic.cam",
             "tlds" => [ ".cam" ],
         ],
-        "whois.nic.camera"                   => [
+        "whois.nic.camera" => [
             "uri"  => "whois://whois.nic.camera",
             "tlds" => [ ".camera" ],
         ],
-        "whois.nic.camp"                     => [
+        "whois.nic.camp" => [
             "uri"  => "whois://whois.nic.camp",
             "tlds" => [ ".camp" ],
         ],
-        "whois.nic.canon"                    => [
+        "whois.nic.canon" => [
             "uri"  => "whois://whois.nic.canon",
             "tlds" => [ ".canon" ],
         ],
-        "whois.nic.capetown"                 => [
+        "whois.nic.capetown" => [
             "uri"  => "whois://whois.nic.capetown",
             "tlds" => [ ".capetown" ],
         ],
-        "whois.nic.capital"                  => [
+        "whois.nic.capital" => [
             "uri"  => "whois://whois.nic.capital",
             "tlds" => [ ".capital" ],
         ],
-        "whois.nic.capitalone"               => [
+        "whois.nic.capitalone" => [
             "uri"  => "whois://whois.nic.capitalone",
             "tlds" => [ ".capitalone" ],
         ],
-        "whois.nic.car"                      => [
+        "whois.nic.car" => [
             "uri"  => "whois://whois.nic.car",
             "tlds" => [ ".car" ],
         ],
-        "whois.nic.caravan"                  => [
+        "whois.nic.caravan" => [
             "uri"  => "whois://whois.nic.caravan",
             "tlds" => [ ".caravan" ],
         ],
-        "whois.nic.cards"                    => [
+        "whois.nic.cards" => [
             "uri"  => "whois://whois.nic.cards",
             "tlds" => [ ".cards" ],
         ],
-        "whois.nic.care"                     => [
+        "whois.nic.care" => [
             "uri"  => "whois://whois.nic.care",
             "tlds" => [ ".care" ],
         ],
-        "whois.nic.career"                   => [
+        "whois.nic.career" => [
             "uri"  => "whois://whois.nic.career",
             "tlds" => [ ".career" ],
         ],
-        "whois.nic.careers"                  => [
+        "whois.nic.careers" => [
             "uri"  => "whois://whois.nic.careers",
             "tlds" => [ ".careers" ],
         ],
-        "whois.nic.cars"                     => [
+        "whois.nic.cars" => [
             "uri"  => "whois://whois.nic.cars",
             "tlds" => [ ".cars" ],
         ],
-        "whois.nic.casa"                     => [
+        "whois.nic.casa" => [
             "uri"  => "whois://whois.nic.casa",
             "tlds" => [ ".casa" ],
         ],
-        "whois.nic.case"                     => [
+        "whois.nic.case" => [
             "uri"  => "whois://whois.nic.case",
             "tlds" => [ ".case" ],
         ],
-        "whois.nic.cash"                     => [
+        "whois.nic.cash" => [
             "uri"  => "whois://whois.nic.cash",
             "tlds" => [ ".cash" ],
         ],
-        "whois.nic.casino"                   => [
+        "whois.nic.casino" => [
             "uri"  => "whois://whois.nic.casino",
             "tlds" => [ ".casino" ],
         ],
-        "whois.nic.catering"                 => [
+        "whois.nic.catering" => [
             "uri"  => "whois://whois.nic.catering",
             "tlds" => [ ".catering" ],
         ],
-        "whois.nic.catholic"                 => [
+        "whois.nic.catholic" => [
             "uri"  => "whois://whois.nic.catholic",
             "tlds" => [ ".catholic" ],
         ],
-        "whois.nic.cba"                      => [
+        "whois.nic.cba" => [
             "uri"  => "whois://whois.nic.cba",
             "tlds" => [ ".cba" ],
         ],
-        "whois.nic.cbn"                      => [
+        "whois.nic.cbn" => [
             "uri"  => "whois://whois.nic.cbn",
             "tlds" => [ ".cbn" ],
         ],
-        "whois.nic.cbre"                     => [
+        "whois.nic.cbre" => [
             "uri"  => "whois://whois.nic.cbre",
             "tlds" => [ ".cbre" ],
         ],
-        "whois.nic.cbs"                      => [
+        "whois.nic.cbs" => [
             "uri"  => "whois://whois.nic.cbs",
             "tlds" => [ ".cbs" ],
         ],
-        "whois.nic.center"                   => [
+        "whois.nic.center" => [
             "uri"  => "whois://whois.nic.center",
             "tlds" => [ ".center" ],
         ],
-        "whois.nic.ceo"                      => [
+        "whois.nic.ceo" => [
             "uri"  => "whois://whois.nic.ceo",
             "tlds" => [ ".ceo" ],
         ],
-        "whois.nic.cern"                     => [
+        "whois.nic.cern" => [
             "uri"  => "whois://whois.nic.cern",
             "tlds" => [ ".cern" ],
         ],
-        "whois.nic.cfa"                      => [
+        "whois.nic.cfa" => [
             "uri"  => "whois://whois.nic.cfa",
             "tlds" => [ ".cfa" ],
         ],
-        "whois.nic.cfd"                      => [
+        "whois.nic.cfd" => [
             "uri"  => "whois://whois.nic.cfd",
             "tlds" => [ ".cfd" ],
         ],
-        "whois.nic.chanel"                   => [
+        "whois.nic.chanel" => [
             "uri"  => "whois://whois.nic.chanel",
             "tlds" => [ ".chanel" ],
         ],
-        "whois.nic.channel"                  => [
+        "whois.nic.channel" => [
             "uri"  => "whois://whois.nic.channel",
             "tlds" => [ ".channel" ],
         ],
-        "whois.nic.charity"                  => [
+        "whois.nic.charity" => [
             "uri"  => "whois://whois.nic.charity",
             "tlds" => [ ".charity" ],
         ],
-        "whois.nic.chase"                    => [
+        "whois.nic.chase" => [
             "uri"  => "whois://whois.nic.chase",
             "tlds" => [ ".chase" ],
         ],
-        "whois.nic.chat"                     => [
+        "whois.nic.chat" => [
             "uri"  => "whois://whois.nic.chat",
             "tlds" => [ ".chat" ],
         ],
-        "whois.nic.cheap"                    => [
+        "whois.nic.cheap" => [
             "uri"  => "whois://whois.nic.cheap",
             "tlds" => [ ".cheap" ],
         ],
-        "whois.nic.chintai"                  => [
+        "whois.nic.chintai" => [
             "uri"  => "whois://whois.nic.chintai",
             "tlds" => [ ".chintai" ],
         ],
-        "whois.nic.christmas"                => [
+        "whois.nic.christmas" => [
             "uri"  => "whois://whois.nic.christmas",
             "tlds" => [ ".christmas" ],
         ],
-        "whois.nic.chrome"                   => [
+        "whois.nic.chrome" => [
             "uri"  => "whois://whois.nic.chrome",
             "tlds" => [ ".chrome" ],
         ],
-        "whois.nic.church"                   => [
+        "whois.nic.church" => [
             "uri"  => "whois://whois.nic.church",
             "tlds" => [ ".church" ],
         ],
-        "whois.nic.cipriani"                 => [
+        "whois.nic.cipriani" => [
             "uri"  => "whois://whois.nic.cipriani",
             "tlds" => [ ".cipriani" ],
         ],
-        "whois.nic.circle"                   => [
+        "whois.nic.circle" => [
             "uri"  => "whois://whois.nic.circle",
             "tlds" => [ ".circle" ],
         ],
-        "whois.nic.cisco"                    => [
+        "whois.nic.cisco" => [
             "uri"  => "whois://whois.nic.cisco",
             "tlds" => [ ".cisco" ],
         ],
-        "whois.nic.citadel"                  => [
+        "whois.nic.citadel" => [
             "uri"  => "whois://whois.nic.citadel",
             "tlds" => [ ".citadel" ],
         ],
-        "whois.nic.citi"                     => [
+        "whois.nic.citi" => [
             "uri"  => "whois://whois.nic.citi",
             "tlds" => [ ".citi" ],
         ],
-        "whois.nic.citic"                    => [
+        "whois.nic.citic" => [
             "uri"  => "whois://whois.nic.citic",
             "tlds" => [ ".citic" ],
         ],
-        "whois.nic.city"                     => [
+        "whois.nic.city" => [
             "uri"  => "whois://whois.nic.city",
             "tlds" => [ ".city" ],
         ],
-        "whois.nic.cityeats"                 => [
+        "whois.nic.cityeats" => [
             "uri"  => "whois://whois.nic.cityeats",
             "tlds" => [ ".cityeats" ],
         ],
-        "whois.nic.claims"                   => [
+        "whois.nic.claims" => [
             "uri"  => "whois://whois.nic.claims",
             "tlds" => [ ".claims" ],
         ],
-        "whois.nic.cleaning"                 => [
+        "whois.nic.cleaning" => [
             "uri"  => "whois://whois.nic.cleaning",
             "tlds" => [ ".cleaning" ],
         ],
-        "whois.nic.click"                    => [
+        "whois.nic.click" => [
             "uri"  => "whois://whois.nic.click",
             "tlds" => [ ".click" ],
         ],
-        "whois.nic.clinic"                   => [
+        "whois.nic.clinic" => [
             "uri"  => "whois://whois.nic.clinic",
             "tlds" => [ ".clinic" ],
         ],
-        "whois.nic.clinique"                 => [
+        "whois.nic.clinique" => [
             "uri"  => "whois://whois.nic.clinique",
             "tlds" => [ ".clinique" ],
         ],
-        "whois.nic.clothing"                 => [
+        "whois.nic.clothing" => [
             "uri"  => "whois://whois.nic.clothing",
             "tlds" => [ ".clothing" ],
         ],
-        "whois.nic.cloud"                    => [
+        "whois.nic.cloud" => [
             "uri"  => "whois://whois.nic.cloud",
             "tlds" => [ ".cloud" ],
         ],
-        "whois.nic.club"                     => [
+        "whois.nic.club" => [
             "uri"  => "whois://whois.nic.club",
             "tlds" => [ ".club" ],
         ],
-        "whois.nic.clubmed"                  => [
+        "whois.nic.clubmed" => [
             "uri"  => "whois://whois.nic.clubmed",
             "tlds" => [ ".clubmed" ],
         ],
-        "whois.nic.coach"                    => [
+        "whois.nic.coach" => [
             "uri"  => "whois://whois.nic.coach",
             "tlds" => [ ".coach" ],
         ],
-        "whois.nic.codes"                    => [
+        "whois.nic.codes" => [
             "uri"  => "whois://whois.nic.codes",
             "tlds" => [ ".codes" ],
         ],
-        "whois.nic.coffee"                   => [
+        "whois.nic.coffee" => [
             "uri"  => "whois://whois.nic.coffee",
             "tlds" => [ ".coffee" ],
         ],
-        "whois.nic.college"                  => [
+        "whois.nic.college" => [
             "uri"  => "whois://whois.nic.college",
             "tlds" => [ ".college" ],
         ],
-        "whois.nic.cologne"                  => [
+        "whois.nic.cologne" => [
             "uri"  => "whois://whois.nic.cologne",
             "tlds" => [ ".cologne" ],
         ],
-        "whois.nic.comcast"                  => [
+        "whois.nic.comcast" => [
             "uri"  => "whois://whois.nic.comcast",
             "tlds" => [ ".comcast" ],
         ],
-        "whois.nic.commbank"                 => [
+        "whois.nic.commbank" => [
             "uri"  => "whois://whois.nic.commbank",
             "tlds" => [ ".commbank" ],
         ],
-        "whois.nic.community"                => [
+        "whois.nic.community" => [
             "uri"  => "whois://whois.nic.community",
             "tlds" => [ ".community" ],
         ],
-        "whois.nic.company"                  => [
+        "whois.nic.company" => [
             "uri"  => "whois://whois.nic.company",
             "tlds" => [ ".company" ],
         ],
-        "whois.nic.compare"                  => [
+        "whois.nic.compare" => [
             "uri"  => "whois://whois.nic.compare",
             "tlds" => [ ".compare" ],
         ],
-        "whois.nic.computer"                 => [
+        "whois.nic.computer" => [
             "uri"  => "whois://whois.nic.computer",
             "tlds" => [ ".computer" ],
         ],
-        "whois.nic.comsec"                   => [
+        "whois.nic.comsec" => [
             "uri"  => "whois://whois.nic.comsec",
             "tlds" => [ ".comsec" ],
         ],
-        "whois.nic.condos"                   => [
+        "whois.nic.condos" => [
             "uri"  => "whois://whois.nic.condos",
             "tlds" => [ ".condos" ],
         ],
-        "whois.nic.construction"             => [
+        "whois.nic.construction" => [
             "uri"  => "whois://whois.nic.construction",
             "tlds" => [ ".construction" ],
         ],
-        "whois.nic.consulting"               => [
+        "whois.nic.consulting" => [
             "uri"  => "whois://whois.nic.consulting",
             "tlds" => [ ".consulting" ],
         ],
-        "whois.nic.contact"                  => [
+        "whois.nic.contact" => [
             "uri"  => "whois://whois.nic.contact",
             "tlds" => [ ".contact" ],
         ],
-        "whois.nic.contractors"              => [
+        "whois.nic.contractors" => [
             "uri"  => "whois://whois.nic.contractors",
             "tlds" => [ ".contractors" ],
         ],
-        "whois.nic.cooking"                  => [
+        "whois.nic.cooking" => [
             "uri"  => "whois://whois.nic.cooking",
             "tlds" => [ ".cooking" ],
         ],
-        "whois.nic.cool"                     => [
+        "whois.nic.cool" => [
             "uri"  => "whois://whois.nic.cool",
             "tlds" => [ ".cool" ],
         ],
-        "whois.nic.corsica"                  => [
+        "whois.nic.corsica" => [
             "uri"  => "whois://whois.nic.corsica",
             "tlds" => [ ".corsica" ],
         ],
-        "whois.nic.country"                  => [
+        "whois.nic.country" => [
             "uri"  => "whois://whois.nic.country",
             "tlds" => [ ".country" ],
         ],
-        "whois.nic.coupon"                   => [
+        "whois.nic.coupon" => [
             "uri"  => "whois://whois.nic.coupon",
             "tlds" => [ ".coupon" ],
         ],
-        "whois.nic.coupons"                  => [
+        "whois.nic.coupons" => [
             "uri"  => "whois://whois.nic.coupons",
             "tlds" => [ ".coupons" ],
         ],
-        "whois.nic.courses"                  => [
+        "whois.nic.courses" => [
             "uri"  => "whois://whois.nic.courses",
             "tlds" => [ ".courses" ],
         ],
-        "whois.nic.cpa"                      => [
+        "whois.nic.cpa" => [
             "uri"  => "whois://whois.nic.cpa",
             "tlds" => [ ".cpa" ],
         ],
-        "whois.nic.credit"                   => [
+        "whois.nic.credit" => [
             "uri"  => "whois://whois.nic.credit",
             "tlds" => [ ".credit" ],
         ],
-        "whois.nic.creditcard"               => [
+        "whois.nic.creditcard" => [
             "uri"  => "whois://whois.nic.creditcard",
             "tlds" => [ ".creditcard" ],
         ],
-        "whois.nic.creditunion"              => [
+        "whois.nic.creditunion" => [
             "uri"  => "whois://whois.nic.creditunion",
             "tlds" => [ ".creditunion" ],
         ],
-        "whois.nic.cricket"                  => [
+        "whois.nic.cricket" => [
             "uri"  => "whois://whois.nic.cricket",
             "tlds" => [ ".cricket" ],
         ],
-        "whois.nic.crown"                    => [
+        "whois.nic.crown" => [
             "uri"  => "whois://whois.nic.crown",
             "tlds" => [ ".crown" ],
         ],
-        "whois.nic.crs"                      => [
+        "whois.nic.crs" => [
             "uri"  => "whois://whois.nic.crs",
             "tlds" => [ ".crs" ],
         ],
-        "whois.nic.cruise"                   => [
+        "whois.nic.cruise" => [
             "uri"  => "whois://whois.nic.cruise",
             "tlds" => [ ".cruise" ],
         ],
-        "whois.nic.cruises"                  => [
+        "whois.nic.cruises" => [
             "uri"  => "whois://whois.nic.cruises",
             "tlds" => [ ".cruises" ],
         ],
-        "whois.nic.cuisinella"               => [
+        "whois.nic.cuisinella" => [
             "uri"  => "whois://whois.nic.cuisinella",
             "tlds" => [ ".cuisinella" ],
         ],
-        "whois.nic.cymru"                    => [
+        "whois.nic.cymru" => [
             "uri"  => "whois://whois.nic.cymru",
             "tlds" => [ ".cymru" ],
         ],
-        "whois.nic.cyou"                     => [
+        "whois.nic.cyou" => [
             "uri"  => "whois://whois.nic.cyou",
             "tlds" => [ ".cyou" ],
         ],
-        "whois.nic.dabur"                    => [
+        "whois.nic.dabur" => [
             "uri"  => "whois://whois.nic.dabur",
             "tlds" => [ ".dabur" ],
         ],
-        "whois.nic.dad"                      => [
+        "whois.nic.dad" => [
             "uri"  => "whois://whois.nic.dad",
             "tlds" => [ ".dad" ],
         ],
-        "whois.nic.dance"                    => [
+        "whois.nic.dance" => [
             "uri"  => "whois://whois.nic.dance",
             "tlds" => [ ".dance" ],
         ],
-        "whois.nic.data"                     => [
+        "whois.nic.data" => [
             "uri"  => "whois://whois.nic.data",
             "tlds" => [ ".data" ],
         ],
-        "whois.nic.date"                     => [
+        "whois.nic.date" => [
             "uri"  => "whois://whois.nic.date",
             "tlds" => [ ".date" ],
         ],
-        "whois.nic.dating"                   => [
+        "whois.nic.dating" => [
             "uri"  => "whois://whois.nic.dating",
             "tlds" => [ ".dating" ],
         ],
-        "whois.nic.datsun"                   => [
+        "whois.nic.datsun" => [
             "uri"  => "whois://whois.nic.datsun",
             "tlds" => [ ".datsun" ],
         ],
-        "whois.nic.day"                      => [
+        "whois.nic.day" => [
             "uri"  => "whois://whois.nic.day",
             "tlds" => [ ".day" ],
         ],
-        "whois.nic.dclk"                     => [
+        "whois.nic.dclk" => [
             "uri"  => "whois://whois.nic.dclk",
             "tlds" => [ ".dclk" ],
         ],
-        "whois.nic.dds"                      => [
+        "whois.nic.dds" => [
             "uri"  => "whois://whois.nic.dds",
             "tlds" => [ ".dds" ],
         ],
-        "whois.nic.deal"                     => [
+        "whois.nic.deal" => [
             "uri"  => "whois://whois.nic.deal",
             "tlds" => [ ".deal" ],
         ],
-        "whois.nic.dealer"                   => [
+        "whois.nic.dealer" => [
             "uri"  => "whois://whois.nic.dealer",
             "tlds" => [ ".dealer" ],
         ],
-        "whois.nic.deals"                    => [
+        "whois.nic.deals" => [
             "uri"  => "whois://whois.nic.deals",
             "tlds" => [ ".deals" ],
         ],
-        "whois.nic.degree"                   => [
+        "whois.nic.degree" => [
             "uri"  => "whois://whois.nic.degree",
             "tlds" => [ ".degree" ],
         ],
-        "whois.nic.delivery"                 => [
+        "whois.nic.delivery" => [
             "uri"  => "whois://whois.nic.delivery",
             "tlds" => [ ".delivery" ],
         ],
-        "whois.nic.dell"                     => [
+        "whois.nic.dell" => [
             "uri"  => "whois://whois.nic.dell",
             "tlds" => [ ".dell" ],
         ],
-        "whois.nic.deloitte"                 => [
+        "whois.nic.deloitte" => [
             "uri"  => "whois://whois.nic.deloitte",
             "tlds" => [ ".deloitte" ],
         ],
-        "whois.nic.delta"                    => [
+        "whois.nic.delta" => [
             "uri"  => "whois://whois.nic.delta",
             "tlds" => [ ".delta" ],
         ],
-        "whois.nic.democrat"                 => [
+        "whois.nic.democrat" => [
             "uri"  => "whois://whois.nic.democrat",
             "tlds" => [ ".democrat" ],
         ],
-        "whois.nic.dental"                   => [
+        "whois.nic.dental" => [
             "uri"  => "whois://whois.nic.dental",
             "tlds" => [ ".dental" ],
         ],
-        "whois.nic.dentist"                  => [
+        "whois.nic.dentist" => [
             "uri"  => "whois://whois.nic.dentist",
             "tlds" => [ ".dentist" ],
         ],
-        "whois.nic.desi"                     => [
+        "whois.nic.desi" => [
             "uri"  => "whois://whois.nic.desi",
             "tlds" => [ ".desi" ],
         ],
-        "whois.nic.design"                   => [
+        "whois.nic.design" => [
             "uri"  => "whois://whois.nic.design",
             "tlds" => [ ".design" ],
         ],
-        "whois.nic.dev"                      => [
+        "whois.nic.dev" => [
             "uri"  => "whois://whois.nic.dev",
             "tlds" => [ ".dev" ],
         ],
-        "whois.nic.dhl"                      => [
+        "whois.nic.dhl" => [
             "uri"  => "whois://whois.nic.dhl",
             "tlds" => [ ".dhl" ],
         ],
-        "whois.nic.diamonds"                 => [
+        "whois.nic.diamonds" => [
             "uri"  => "whois://whois.nic.diamonds",
             "tlds" => [ ".diamonds" ],
         ],
-        "whois.nic.diet"                     => [
+        "whois.nic.diet" => [
             "uri"  => "whois://whois.nic.diet",
             "tlds" => [ ".diet" ],
         ],
-        "whois.nic.digital"                  => [
+        "whois.nic.digital" => [
             "uri"  => "whois://whois.nic.digital",
             "tlds" => [ ".digital" ],
         ],
-        "whois.nic.direct"                   => [
+        "whois.nic.direct" => [
             "uri"  => "whois://whois.nic.direct",
             "tlds" => [ ".direct" ],
         ],
-        "whois.nic.directory"                => [
+        "whois.nic.directory" => [
             "uri"  => "whois://whois.nic.directory",
             "tlds" => [ ".directory" ],
         ],
-        "whois.nic.discount"                 => [
+        "whois.nic.discount" => [
             "uri"  => "whois://whois.nic.discount",
             "tlds" => [ ".discount" ],
         ],
-        "whois.nic.discover"                 => [
+        "whois.nic.discover" => [
             "uri"  => "whois://whois.nic.discover",
             "tlds" => [ ".discover" ],
         ],
-        "whois.nic.dish"                     => [
+        "whois.nic.dish" => [
             "uri"  => "whois://whois.nic.dish",
             "tlds" => [ ".dish" ],
         ],
-        "whois.nic.diy"                      => [
+        "whois.nic.diy" => [
             "uri"  => "whois://whois.nic.diy",
             "tlds" => [ ".diy" ],
         ],
-        "whois.nic.dnp"                      => [
+        "whois.nic.dnp" => [
             "uri"  => "whois://whois.nic.dnp",
             "tlds" => [ ".dnp" ],
         ],
-        "whois.nic.docs"                     => [
+        "whois.nic.docs" => [
             "uri"  => "whois://whois.nic.docs",
             "tlds" => [ ".docs" ],
         ],
-        "whois.nic.doctor"                   => [
+        "whois.nic.doctor" => [
             "uri"  => "whois://whois.nic.doctor",
             "tlds" => [ ".doctor" ],
         ],
-        "whois.nic.dog"                      => [
+        "whois.nic.dog" => [
             "uri"  => "whois://whois.nic.dog",
             "tlds" => [ ".dog" ],
         ],
-        "whois.nic.domains"                  => [
+        "whois.nic.domains" => [
             "uri"  => "whois://whois.nic.domains",
             "tlds" => [ ".domains" ],
         ],
-        "whois.nic.dot"                      => [
+        "whois.nic.dot" => [
             "uri"  => "whois://whois.nic.dot",
             "tlds" => [ ".dot" ],
         ],
-        "whois.nic.download"                 => [
+        "whois.nic.download" => [
             "uri"  => "whois://whois.nic.download",
             "tlds" => [ ".download" ],
         ],
-        "whois.nic.drive"                    => [
+        "whois.nic.drive" => [
             "uri"  => "whois://whois.nic.drive",
             "tlds" => [ ".drive" ],
         ],
-        "whois.nic.dtv"                      => [
+        "whois.nic.dtv" => [
             "uri"  => "whois://whois.nic.dtv",
             "tlds" => [ ".dtv" ],
         ],
-        "whois.nic.dubai"                    => [
+        "whois.nic.dubai" => [
             "uri"  => "whois://whois.nic.dubai",
             "tlds" => [ ".dubai" ],
         ],
-        "whois.nic.dunlop"                   => [
+        "whois.nic.dunlop" => [
             "uri"  => "whois://whois.nic.dunlop",
             "tlds" => [ ".dunlop" ],
         ],
-        "whois.nic.dupont"                   => [
+        "whois.nic.dupont" => [
             "uri"  => "whois://whois.nic.dupont",
             "tlds" => [ ".dupont" ],
         ],
-        "whois.nic.durban"                   => [
+        "whois.nic.durban" => [
             "uri"  => "whois://whois.nic.durban",
             "tlds" => [ ".durban" ],
         ],
-        "whois.nic.dvag"                     => [
+        "whois.nic.dvag" => [
             "uri"  => "whois://whois.nic.dvag",
             "tlds" => [ ".dvag" ],
         ],
-        "whois.nic.dvr"                      => [
+        "whois.nic.dvr" => [
             "uri"  => "whois://whois.nic.dvr",
             "tlds" => [ ".dvr" ],
         ],
-        "whois.nic.earth"                    => [
+        "whois.nic.earth" => [
             "uri"  => "whois://whois.nic.earth",
             "tlds" => [ ".earth" ],
         ],
-        "whois.nic.eat"                      => [
+        "whois.nic.eat" => [
             "uri"  => "whois://whois.nic.eat",
             "tlds" => [ ".eat" ],
         ],
-        "whois.nic.eco"                      => [
+        "whois.nic.eco" => [
             "uri"  => "whois://whois.nic.eco",
             "tlds" => [ ".eco" ],
         ],
-        "whois.nic.edeka"                    => [
+        "whois.nic.edeka" => [
             "uri"  => "whois://whois.nic.edeka",
             "tlds" => [ ".edeka" ],
         ],
-        "whois.nic.education"                => [
+        "whois.nic.education" => [
             "uri"  => "whois://whois.nic.education",
             "tlds" => [ ".education" ],
         ],
-        "whois.nic.email"                    => [
+        "whois.nic.email" => [
             "uri"  => "whois://whois.nic.email",
             "tlds" => [ ".email" ],
         ],
-        "whois.nic.emerck"                   => [
+        "whois.nic.emerck" => [
             "uri"  => "whois://whois.nic.emerck",
             "tlds" => [ ".emerck" ],
         ],
-        "whois.nic.energy"                   => [
+        "whois.nic.energy" => [
             "uri"  => "whois://whois.nic.energy",
             "tlds" => [ ".energy" ],
         ],
-        "whois.nic.engineer"                 => [
+        "whois.nic.engineer" => [
             "uri"  => "whois://whois.nic.engineer",
             "tlds" => [ ".engineer" ],
         ],
-        "whois.nic.engineering"              => [
+        "whois.nic.engineering" => [
             "uri"  => "whois://whois.nic.engineering",
             "tlds" => [ ".engineering" ],
         ],
-        "whois.nic.enterprises"              => [
+        "whois.nic.enterprises" => [
             "uri"  => "whois://whois.nic.enterprises",
             "tlds" => [ ".enterprises" ],
         ],
-        "whois.nic.epson"                    => [
+        "whois.nic.epson" => [
             "uri"  => "whois://whois.nic.epson",
             "tlds" => [ ".epson" ],
         ],
-        "whois.nic.equipment"                => [
+        "whois.nic.equipment" => [
             "uri"  => "whois://whois.nic.equipment",
             "tlds" => [ ".equipment" ],
         ],
-        "whois.nic.ericsson"                 => [
+        "whois.nic.ericsson" => [
             "uri"  => "whois://whois.nic.ericsson",
             "tlds" => [ ".ericsson" ],
         ],
-        "whois.nic.erni"                     => [
+        "whois.nic.erni" => [
             "uri"  => "whois://whois.nic.erni",
             "tlds" => [ ".erni" ],
         ],
-        "whois.nic.esq"                      => [
+        "whois.nic.esq" => [
             "uri"  => "whois://whois.nic.esq",
             "tlds" => [ ".esq" ],
         ],
-        "whois.nic.estate"                   => [
+        "whois.nic.estate" => [
             "uri"  => "whois://whois.nic.estate",
             "tlds" => [ ".estate" ],
         ],
-        "whois.nic.etisalat"                 => [
+        "whois.nic.etisalat" => [
             "uri"  => "whois://whois.nic.etisalat",
             "tlds" => [ ".etisalat" ],
         ],
-        "whois.nic.eurovision"               => [
+        "whois.nic.eurovision" => [
             "uri"  => "whois://whois.nic.eurovision",
             "tlds" => [ ".eurovision" ],
         ],
-        "whois.nic.eus"                      => [
+        "whois.nic.eus" => [
             "uri"  => "whois://whois.nic.eus",
             "tlds" => [ ".eus" ],
         ],
-        "whois.nic.events"                   => [
+        "whois.nic.events" => [
             "uri"  => "whois://whois.nic.events",
             "tlds" => [ ".events" ],
         ],
-        "whois.nic.exchange"                 => [
+        "whois.nic.exchange" => [
             "uri"  => "whois://whois.nic.exchange",
             "tlds" => [ ".exchange" ],
         ],
-        "whois.nic.expert"                   => [
+        "whois.nic.expert" => [
             "uri"  => "whois://whois.nic.expert",
             "tlds" => [ ".expert" ],
         ],
-        "whois.nic.exposed"                  => [
+        "whois.nic.exposed" => [
             "uri"  => "whois://whois.nic.exposed",
             "tlds" => [ ".exposed" ],
         ],
-        "whois.nic.express"                  => [
+        "whois.nic.express" => [
             "uri"  => "whois://whois.nic.express",
             "tlds" => [ ".express" ],
         ],
-        "whois.nic.extraspace"               => [
+        "whois.nic.extraspace" => [
             "uri"  => "whois://whois.nic.extraspace",
             "tlds" => [ ".extraspace" ],
         ],
-        "whois.nic.fage"                     => [
+        "whois.nic.fage" => [
             "uri"  => "whois://whois.nic.fage",
             "tlds" => [ ".fage" ],
         ],
-        "whois.nic.fail"                     => [
+        "whois.nic.fail" => [
             "uri"  => "whois://whois.nic.fail",
             "tlds" => [ ".fail" ],
         ],
-        "whois.nic.fairwinds"                => [
+        "whois.nic.fairwinds" => [
             "uri"  => "whois://whois.nic.fairwinds",
             "tlds" => [ ".fairwinds" ],
         ],
-        "whois.nic.faith"                    => [
+        "whois.nic.faith" => [
             "uri"  => "whois://whois.nic.faith",
             "tlds" => [ ".faith" ],
         ],
-        "whois.nic.family"                   => [
+        "whois.nic.family" => [
             "uri"  => "whois://whois.nic.family",
             "tlds" => [ ".family" ],
         ],
-        "whois.nic.fan"                      => [
+        "whois.nic.fan" => [
             "uri"  => "whois://whois.nic.fan",
             "tlds" => [ ".fan" ],
         ],
-        "whois.nic.fans"                     => [
+        "whois.nic.fans" => [
             "uri"  => "whois://whois.nic.fans",
             "tlds" => [ ".fans" ],
         ],
-        "whois.nic.farm"                     => [
+        "whois.nic.farm" => [
             "uri"  => "whois://whois.nic.farm",
             "tlds" => [ ".farm" ],
         ],
-        "whois.nic.farmers"                  => [
+        "whois.nic.farmers" => [
             "uri"  => "whois://whois.nic.farmers",
             "tlds" => [ ".farmers" ],
         ],
-        "whois.nic.fashion"                  => [
+        "whois.nic.fashion" => [
             "uri"  => "whois://whois.nic.fashion",
             "tlds" => [ ".fashion" ],
         ],
-        "whois.nic.fast"                     => [
+        "whois.nic.fast" => [
             "uri"  => "whois://whois.nic.fast",
             "tlds" => [ ".fast" ],
         ],
-        "whois.nic.fedex"                    => [
+        "whois.nic.fedex" => [
             "uri"  => "whois://whois.nic.fedex",
             "tlds" => [ ".fedex" ],
         ],
-        "whois.nic.feedback"                 => [
+        "whois.nic.feedback" => [
             "uri"  => "whois://whois.nic.feedback",
             "tlds" => [ ".feedback" ],
         ],
-        "whois.nic.ferrari"                  => [
+        "whois.nic.ferrari" => [
             "uri"  => "whois://whois.nic.ferrari",
             "tlds" => [ ".ferrari" ],
         ],
-        "whois.nic.ferrero"                  => [
+        "whois.nic.ferrero" => [
             "uri"  => "whois://whois.nic.ferrero",
             "tlds" => [ ".ferrero" ],
         ],
-        "whois.nic.fidelity"                 => [
+        "whois.nic.fidelity" => [
             "uri"  => "whois://whois.nic.fidelity",
             "tlds" => [ ".fidelity" ],
         ],
-        "whois.nic.fido"                     => [
+        "whois.nic.fido" => [
             "uri"  => "whois://whois.nic.fido",
             "tlds" => [ ".fido" ],
         ],
-        "whois.nic.film"                     => [
+        "whois.nic.film" => [
             "uri"  => "whois://whois.nic.film",
             "tlds" => [ ".film" ],
         ],
-        "whois.nic.final"                    => [
+        "whois.nic.final" => [
             "uri"  => "whois://whois.nic.final",
             "tlds" => [ ".final" ],
         ],
-        "whois.nic.finance"                  => [
+        "whois.nic.finance" => [
             "uri"  => "whois://whois.nic.finance",
             "tlds" => [ ".finance" ],
         ],
-        "whois.nic.financial"                => [
+        "whois.nic.financial" => [
             "uri"  => "whois://whois.nic.financial",
             "tlds" => [ ".financial" ],
         ],
-        "whois.nic.fire"                     => [
+        "whois.nic.fire" => [
             "uri"  => "whois://whois.nic.fire",
             "tlds" => [ ".fire" ],
         ],
-        "whois.nic.firestone"                => [
+        "whois.nic.firestone" => [
             "uri"  => "whois://whois.nic.firestone",
             "tlds" => [ ".firestone" ],
         ],
-        "whois.nic.firmdale"                 => [
+        "whois.nic.firmdale" => [
             "uri"  => "whois://whois.nic.firmdale",
             "tlds" => [ ".firmdale" ],
         ],
-        "whois.nic.fish"                     => [
+        "whois.nic.fish" => [
             "uri"  => "whois://whois.nic.fish",
             "tlds" => [ ".fish" ],
         ],
-        "whois.nic.fishing"                  => [
+        "whois.nic.fishing" => [
             "uri"  => "whois://whois.nic.fishing",
             "tlds" => [ ".fishing" ],
         ],
-        "whois.nic.fit"                      => [
+        "whois.nic.fit" => [
             "uri"  => "whois://whois.nic.fit",
             "tlds" => [ ".fit" ],
         ],
-        "whois.nic.fitness"                  => [
+        "whois.nic.fitness" => [
             "uri"  => "whois://whois.nic.fitness",
             "tlds" => [ ".fitness" ],
         ],
-        "whois.nic.flickr"                   => [
+        "whois.nic.flickr" => [
             "uri"  => "whois://whois.nic.flickr",
             "tlds" => [ ".flickr" ],
         ],
-        "whois.nic.flights"                  => [
+        "whois.nic.flights" => [
             "uri"  => "whois://whois.nic.flights",
             "tlds" => [ ".flights" ],
         ],
-        "whois.nic.flir"                     => [
+        "whois.nic.flir" => [
             "uri"  => "whois://whois.nic.flir",
             "tlds" => [ ".flir" ],
         ],
-        "whois.nic.florist"                  => [
+        "whois.nic.florist" => [
             "uri"  => "whois://whois.nic.florist",
             "tlds" => [ ".florist" ],
         ],
-        "whois.nic.flowers"                  => [
+        "whois.nic.flowers" => [
             "uri"  => "whois://whois.nic.flowers",
             "tlds" => [ ".flowers" ],
         ],
-        "whois.nic.fly"                      => [
+        "whois.nic.fly" => [
             "uri"  => "whois://whois.nic.fly",
             "tlds" => [ ".fly" ],
         ],
-        "whois.nic.foo"                      => [
+        "whois.nic.foo" => [
             "uri"  => "whois://whois.nic.foo",
             "tlds" => [ ".foo" ],
         ],
-        "whois.nic.food"                     => [
+        "whois.nic.food" => [
             "uri"  => "whois://whois.nic.food",
             "tlds" => [ ".food" ],
         ],
-        "whois.nic.football"                 => [
+        "whois.nic.football" => [
             "uri"  => "whois://whois.nic.football",
             "tlds" => [ ".football" ],
         ],
-        "whois.nic.ford"                     => [
+        "whois.nic.ford" => [
             "uri"  => "whois://whois.nic.ford",
             "tlds" => [ ".ford" ],
         ],
-        "whois.nic.forex"                    => [
+        "whois.nic.forex" => [
             "uri"  => "whois://whois.nic.forex",
             "tlds" => [ ".forex" ],
         ],
-        "whois.nic.forsale"                  => [
+        "whois.nic.forsale" => [
             "uri"  => "whois://whois.nic.forsale",
             "tlds" => [ ".forsale" ],
         ],
-        "whois.nic.forum"                    => [
+        "whois.nic.forum" => [
             "uri"  => "whois://whois.nic.forum",
             "tlds" => [ ".forum" ],
         ],
-        "whois.nic.foundation"               => [
+        "whois.nic.foundation" => [
             "uri"  => "whois://whois.nic.foundation",
             "tlds" => [ ".foundation" ],
         ],
-        "whois.nic.fox"                      => [
+        "whois.nic.fox" => [
             "uri"  => "whois://whois.nic.fox",
             "tlds" => [ ".fox" ],
         ],
-        "whois.nic.free"                     => [
+        "whois.nic.free" => [
             "uri"  => "whois://whois.nic.free",
             "tlds" => [ ".free" ],
         ],
-        "whois.nic.fresenius"                => [
+        "whois.nic.fresenius" => [
             "uri"  => "whois://whois.nic.fresenius",
             "tlds" => [ ".fresenius" ],
         ],
-        "whois.nic.frl"                      => [
+        "whois.nic.frl" => [
             "uri"  => "whois://whois.nic.frl",
             "tlds" => [ ".frl" ],
         ],
-        "whois.nic.frogans"                  => [
+        "whois.nic.frogans" => [
             "uri"  => "whois://whois.nic.frogans",
             "tlds" => [ ".frogans" ],
         ],
-        "whois.nic.frontdoor"                => [
+        "whois.nic.frontdoor" => [
             "uri"  => "whois://whois.nic.frontdoor",
             "tlds" => [ ".frontdoor" ],
         ],
-        "whois.nic.frontier"                 => [
+        "whois.nic.frontier" => [
             "uri"  => "whois://whois.nic.frontier",
             "tlds" => [ ".frontier" ],
         ],
-        "whois.nic.ftr"                      => [
+        "whois.nic.ftr" => [
             "uri"  => "whois://whois.nic.ftr",
             "tlds" => [ ".ftr" ],
         ],
-        "whois.nic.fujitsu"                  => [
+        "whois.nic.fujitsu" => [
             "uri"  => "whois://whois.nic.fujitsu",
             "tlds" => [ ".fujitsu" ],
         ],
-        "whois.nic.fun"                      => [
+        "whois.nic.fun" => [
             "uri"  => "whois://whois.nic.fun",
             "tlds" => [ ".fun" ],
         ],
-        "whois.nic.fund"                     => [
+        "whois.nic.fund" => [
             "uri"  => "whois://whois.nic.fund",
             "tlds" => [ ".fund" ],
         ],
-        "whois.nic.furniture"                => [
+        "whois.nic.furniture" => [
             "uri"  => "whois://whois.nic.furniture",
             "tlds" => [ ".furniture" ],
         ],
-        "whois.nic.futbol"                   => [
+        "whois.nic.futbol" => [
             "uri"  => "whois://whois.nic.futbol",
             "tlds" => [ ".futbol" ],
         ],
-        "whois.nic.fyi"                      => [
+        "whois.nic.fyi" => [
             "uri"  => "whois://whois.nic.fyi",
             "tlds" => [ ".fyi" ],
         ],
-        "whois.nic.gal"                      => [
+        "whois.nic.gal" => [
             "uri"  => "whois://whois.nic.gal",
             "tlds" => [ ".gal" ],
         ],
-        "whois.nic.gallery"                  => [
+        "whois.nic.gallery" => [
             "uri"  => "whois://whois.nic.gallery",
             "tlds" => [ ".gallery" ],
         ],
-        "whois.nic.gallo"                    => [
+        "whois.nic.gallo" => [
             "uri"  => "whois://whois.nic.gallo",
             "tlds" => [ ".gallo" ],
         ],
-        "whois.nic.gallup"                   => [
+        "whois.nic.gallup" => [
             "uri"  => "whois://whois.nic.gallup",
             "tlds" => [ ".gallup" ],
         ],
-        "whois.nic.game"                     => [
+        "whois.nic.game" => [
             "uri"  => "whois://whois.nic.game",
             "tlds" => [ ".game" ],
         ],
-        "whois.nic.games"                    => [
+        "whois.nic.games" => [
             "uri"  => "whois://whois.nic.games",
             "tlds" => [ ".games" ],
         ],
-        "whois.nic.gap"                      => [
+        "whois.nic.gap" => [
             "uri"  => "whois://whois.nic.gap",
             "tlds" => [ ".gap" ],
         ],
-        "whois.nic.garden"                   => [
+        "whois.nic.garden" => [
             "uri"  => "whois://whois.nic.garden",
             "tlds" => [ ".garden" ],
         ],
-        "whois.nic.gay"                      => [
+        "whois.nic.gay" => [
             "uri"  => "whois://whois.nic.gay",
             "tlds" => [ ".gay" ],
         ],
-        "whois.nic.gbiz"                     => [
+        "whois.nic.gbiz" => [
             "uri"  => "whois://whois.nic.gbiz",
             "tlds" => [ ".gbiz" ],
         ],
-        "whois.nic.gdn"                      => [
+        "whois.nic.gdn" => [
             "uri"  => "whois://whois.nic.gdn",
             "tlds" => [ ".gdn" ],
         ],
-        "whois.nic.gea"                      => [
+        "whois.nic.gea" => [
             "uri"  => "whois://whois.nic.gea",
             "tlds" => [ ".gea" ],
         ],
-        "whois.nic.gent"                     => [
+        "whois.nic.gent" => [
             "uri"  => "whois://whois.nic.gent",
             "tlds" => [ ".gent" ],
         ],
-        "whois.nic.genting"                  => [
+        "whois.nic.genting" => [
             "uri"  => "whois://whois.nic.genting",
             "tlds" => [ ".genting" ],
         ],
-        "whois.nic.george"                   => [
+        "whois.nic.george" => [
             "uri"  => "whois://whois.nic.george",
             "tlds" => [ ".george" ],
         ],
-        "whois.nic.ggee"                     => [
+        "whois.nic.ggee" => [
             "uri"  => "whois://whois.nic.ggee",
             "tlds" => [ ".ggee" ],
         ],
-        "whois.nic.gift"                     => [
+        "whois.nic.gift" => [
             "uri"  => "whois://whois.nic.gift",
             "tlds" => [ ".gift" ],
         ],
-        "whois.nic.gifts"                    => [
+        "whois.nic.gifts" => [
             "uri"  => "whois://whois.nic.gifts",
             "tlds" => [ ".gifts" ],
         ],
-        "whois.nic.gives"                    => [
+        "whois.nic.gives" => [
             "uri"  => "whois://whois.nic.gives",
             "tlds" => [ ".gives" ],
         ],
-        "whois.nic.giving"                   => [
+        "whois.nic.giving" => [
             "uri"  => "whois://whois.nic.giving",
             "tlds" => [ ".giving" ],
         ],
-        "whois.nic.glass"                    => [
+        "whois.nic.glass" => [
             "uri"  => "whois://whois.nic.glass",
             "tlds" => [ ".glass" ],
         ],
-        "whois.nic.gle"                      => [
+        "whois.nic.gle" => [
             "uri"  => "whois://whois.nic.gle",
             "tlds" => [ ".gle" ],
         ],
-        "whois.nic.global"                   => [
+        "whois.nic.global" => [
             "uri"  => "whois://whois.nic.global",
             "tlds" => [ ".global" ],
         ],
-        "whois.nic.globo"                    => [
+        "whois.nic.globo" => [
             "uri"  => "whois://whois.nic.globo",
             "tlds" => [ ".globo" ],
         ],
-        "whois.nic.gmail"                    => [
+        "whois.nic.gmail" => [
             "uri"  => "whois://whois.nic.gmail",
             "tlds" => [ ".gmail" ],
         ],
-        "whois.nic.gmbh"                     => [
+        "whois.nic.gmbh" => [
             "uri"  => "whois://whois.nic.gmbh",
             "tlds" => [ ".gmbh" ],
         ],
-        "whois.nic.gmo"                      => [
+        "whois.nic.gmo" => [
             "uri"  => "whois://whois.nic.gmo",
             "tlds" => [ ".gmo" ],
         ],
-        "whois.nic.gmx"                      => [
+        "whois.nic.gmx" => [
             "uri"  => "whois://whois.nic.gmx",
             "tlds" => [ ".gmx" ],
         ],
-        "whois.nic.godaddy"                  => [
+        "whois.nic.godaddy" => [
             "uri"  => "whois://whois.nic.godaddy",
             "tlds" => [ ".godaddy" ],
         ],
-        "whois.nic.gold"                     => [
+        "whois.nic.gold" => [
             "uri"  => "whois://whois.nic.gold",
             "tlds" => [ ".gold" ],
         ],
-        "whois.nic.goldpoint"                => [
+        "whois.nic.goldpoint" => [
             "uri"  => "whois://whois.nic.goldpoint",
             "tlds" => [ ".goldpoint" ],
         ],
-        "whois.nic.golf"                     => [
+        "whois.nic.golf" => [
             "uri"  => "whois://whois.nic.golf",
             "tlds" => [ ".golf" ],
         ],
-        "whois.nic.goo"                      => [
+        "whois.nic.goo" => [
             "uri"  => "whois://whois.nic.goo",
             "tlds" => [ ".goo" ],
         ],
-        "whois.nic.goodyear"                 => [
+        "whois.nic.goodyear" => [
             "uri"  => "whois://whois.nic.goodyear",
             "tlds" => [ ".goodyear" ],
         ],
-        "whois.nic.goog"                     => [
+        "whois.nic.goog" => [
             "uri"  => "whois://whois.nic.goog",
             "tlds" => [ ".goog" ],
         ],
-        "whois.nic.google"                   => [
+        "whois.nic.google" => [
             "uri"  => "whois://whois.nic.google",
             "tlds" => [ ".google" ],
         ],
-        "whois.nic.gop"                      => [
+        "whois.nic.gop" => [
             "uri"  => "whois://whois.nic.gop",
             "tlds" => [ ".gop" ],
         ],
-        "whois.nic.got"                      => [
+        "whois.nic.got" => [
             "uri"  => "whois://whois.nic.got",
             "tlds" => [ ".got" ],
         ],
-        "whois.nic.grainger"                 => [
+        "whois.nic.grainger" => [
             "uri"  => "whois://whois.nic.grainger",
             "tlds" => [ ".grainger" ],
         ],
-        "whois.nic.graphics"                 => [
+        "whois.nic.graphics" => [
             "uri"  => "whois://whois.nic.graphics",
             "tlds" => [ ".graphics" ],
         ],
-        "whois.nic.gratis"                   => [
+        "whois.nic.gratis" => [
             "uri"  => "whois://whois.nic.gratis",
             "tlds" => [ ".gratis" ],
         ],
-        "whois.nic.green"                    => [
+        "whois.nic.green" => [
             "uri"  => "whois://whois.nic.green",
             "tlds" => [ ".green" ],
         ],
-        "whois.nic.gripe"                    => [
+        "whois.nic.gripe" => [
             "uri"  => "whois://whois.nic.gripe",
             "tlds" => [ ".gripe" ],
         ],
-        "whois.nic.grocery"                  => [
+        "whois.nic.grocery" => [
             "uri"  => "whois://whois.nic.grocery",
             "tlds" => [ ".grocery" ],
         ],
-        "whois.nic.group"                    => [
+        "whois.nic.group" => [
             "uri"  => "whois://whois.nic.group",
             "tlds" => [ ".group" ],
         ],
-        "whois.nic.guardian"                 => [
+        "whois.nic.guardian" => [
             "uri"  => "whois://whois.nic.guardian",
             "tlds" => [ ".guardian" ],
         ],
-        "whois.nic.gucci"                    => [
+        "whois.nic.gucci" => [
             "uri"  => "whois://whois.nic.gucci",
             "tlds" => [ ".gucci" ],
         ],
-        "whois.nic.guge"                     => [
+        "whois.nic.guge" => [
             "uri"  => "whois://whois.nic.guge",
             "tlds" => [ ".guge" ],
         ],
-        "whois.nic.guide"                    => [
+        "whois.nic.guide" => [
             "uri"  => "whois://whois.nic.guide",
             "tlds" => [ ".guide" ],
         ],
-        "whois.nic.guitars"                  => [
+        "whois.nic.guitars" => [
             "uri"  => "whois://whois.nic.guitars",
             "tlds" => [ ".guitars" ],
         ],
-        "whois.nic.guru"                     => [
+        "whois.nic.guru" => [
             "uri"  => "whois://whois.nic.guru",
             "tlds" => [ ".guru" ],
         ],
-        "whois.nic.hair"                     => [
+        "whois.nic.hair" => [
             "uri"  => "whois://whois.nic.hair",
             "tlds" => [ ".hair" ],
         ],
-        "whois.nic.hamburg"                  => [
+        "whois.nic.hamburg" => [
             "uri"  => "whois://whois.nic.hamburg",
             "tlds" => [ ".hamburg" ],
         ],
-        "whois.nic.hangout"                  => [
+        "whois.nic.hangout" => [
             "uri"  => "whois://whois.nic.hangout",
             "tlds" => [ ".hangout" ],
         ],
-        "whois.nic.haus"                     => [
+        "whois.nic.haus" => [
             "uri"  => "whois://whois.nic.haus",
             "tlds" => [ ".haus" ],
         ],
-        "whois.nic.hbo"                      => [
+        "whois.nic.hbo" => [
             "uri"  => "whois://whois.nic.hbo",
             "tlds" => [ ".hbo" ],
         ],
-        "whois.nic.hdfc"                     => [
+        "whois.nic.hdfc" => [
             "uri"  => "whois://whois.nic.hdfc",
             "tlds" => [ ".hdfc" ],
         ],
-        "whois.nic.hdfcbank"                 => [
+        "whois.nic.hdfcbank" => [
             "uri"  => "whois://whois.nic.hdfcbank",
             "tlds" => [ ".hdfcbank" ],
         ],
-        "whois.nic.health"                   => [
+        "whois.nic.health" => [
             "uri"  => "whois://whois.nic.health",
             "tlds" => [ ".health" ],
         ],
-        "whois.nic.healthcare"               => [
+        "whois.nic.healthcare" => [
             "uri"  => "whois://whois.nic.healthcare",
             "tlds" => [ ".healthcare" ],
         ],
-        "whois.nic.help"                     => [
+        "whois.nic.help" => [
             "uri"  => "whois://whois.nic.help",
             "tlds" => [ ".help" ],
         ],
-        "whois.nic.helsinki"                 => [
+        "whois.nic.helsinki" => [
             "uri"  => "whois://whois.nic.helsinki",
             "tlds" => [ ".helsinki" ],
         ],
-        "whois.nic.here"                     => [
+        "whois.nic.here" => [
             "uri"  => "whois://whois.nic.here",
             "tlds" => [ ".here" ],
         ],
-        "whois.nic.hermes"                   => [
+        "whois.nic.hermes" => [
             "uri"  => "whois://whois.nic.hermes",
             "tlds" => [ ".hermes" ],
         ],
-        "whois.nic.hiphop"                   => [
+        "whois.nic.hiphop" => [
             "uri"  => "whois://whois.nic.hiphop",
             "tlds" => [ ".hiphop" ],
         ],
-        "whois.nic.hisamitsu"                => [
+        "whois.nic.hisamitsu" => [
             "uri"  => "whois://whois.nic.hisamitsu",
             "tlds" => [ ".hisamitsu" ],
         ],
-        "whois.nic.hitachi"                  => [
+        "whois.nic.hitachi" => [
             "uri"  => "whois://whois.nic.hitachi",
             "tlds" => [ ".hitachi" ],
         ],
-        "whois.nic.hiv"                      => [
+        "whois.nic.hiv" => [
             "uri"  => "whois://whois.nic.hiv",
             "tlds" => [ ".hiv" ],
         ],
-        "whois.nic.hkt"                      => [
+        "whois.nic.hkt" => [
             "uri"  => "whois://whois.nic.hkt",
             "tlds" => [ ".hkt" ],
         ],
-        "whois.nic.hockey"                   => [
+        "whois.nic.hockey" => [
             "uri"  => "whois://whois.nic.hockey",
             "tlds" => [ ".hockey" ],
         ],
-        "whois.nic.holdings"                 => [
+        "whois.nic.holdings" => [
             "uri"  => "whois://whois.nic.holdings",
             "tlds" => [ ".holdings" ],
         ],
-        "whois.nic.holiday"                  => [
+        "whois.nic.holiday" => [
             "uri"  => "whois://whois.nic.holiday",
             "tlds" => [ ".holiday" ],
         ],
-        "whois.nic.homedepot"                => [
+        "whois.nic.homedepot" => [
             "uri"  => "whois://whois.nic.homedepot",
             "tlds" => [ ".homedepot" ],
         ],
-        "whois.nic.homegoods"                => [
+        "whois.nic.homegoods" => [
             "uri"  => "whois://whois.nic.homegoods",
             "tlds" => [ ".homegoods" ],
         ],
-        "whois.nic.homes"                    => [
+        "whois.nic.homes" => [
             "uri"  => "whois://whois.nic.homes",
             "tlds" => [ ".homes" ],
         ],
-        "whois.nic.homesense"                => [
+        "whois.nic.homesense" => [
             "uri"  => "whois://whois.nic.homesense",
             "tlds" => [ ".homesense" ],
         ],
-        "whois.nic.honda"                    => [
+        "whois.nic.honda" => [
             "uri"  => "whois://whois.nic.honda",
             "tlds" => [ ".honda" ],
         ],
-        "whois.nic.horse"                    => [
+        "whois.nic.horse" => [
             "uri"  => "whois://whois.nic.horse",
             "tlds" => [ ".horse" ],
         ],
-        "whois.nic.hospital"                 => [
+        "whois.nic.hospital" => [
             "uri"  => "whois://whois.nic.hospital",
             "tlds" => [ ".hospital" ],
         ],
-        "whois.nic.host"                     => [
+        "whois.nic.host" => [
             "uri"  => "whois://whois.nic.host",
             "tlds" => [ ".host" ],
         ],
-        "whois.nic.hosting"                  => [
+        "whois.nic.hosting" => [
             "uri"  => "whois://whois.nic.hosting",
             "tlds" => [ ".hosting" ],
         ],
-        "whois.nic.hot"                      => [
+        "whois.nic.hot" => [
             "uri"  => "whois://whois.nic.hot",
             "tlds" => [ ".hot" ],
         ],
-        "whois.nic.hotels"                   => [
+        "whois.nic.hotels" => [
             "uri"  => "whois://whois.nic.hotels",
             "tlds" => [ ".hotels" ],
         ],
-        "whois.nic.hotmail"                  => [
+        "whois.nic.hotmail" => [
             "uri"  => "whois://whois.nic.hotmail",
             "tlds" => [ ".hotmail" ],
         ],
-        "whois.nic.house"                    => [
+        "whois.nic.house" => [
             "uri"  => "whois://whois.nic.house",
             "tlds" => [ ".house" ],
         ],
-        "whois.nic.how"                      => [
+        "whois.nic.how" => [
             "uri"  => "whois://whois.nic.how",
             "tlds" => [ ".how" ],
         ],
-        "whois.nic.hsbc"                     => [
+        "whois.nic.hsbc" => [
             "uri"  => "whois://whois.nic.hsbc",
             "tlds" => [ ".hsbc" ],
         ],
-        "whois.nic.hughes"                   => [
+        "whois.nic.hughes" => [
             "uri"  => "whois://whois.nic.hughes",
             "tlds" => [ ".hughes" ],
         ],
-        "whois.nic.hyatt"                    => [
+        "whois.nic.hyatt" => [
             "uri"  => "whois://whois.nic.hyatt",
             "tlds" => [ ".hyatt" ],
         ],
-        "whois.nic.hyundai"                  => [
+        "whois.nic.hyundai" => [
             "uri"  => "whois://whois.nic.hyundai",
             "tlds" => [ ".hyundai" ],
         ],
-        "whois.nic.ibm"                      => [
+        "whois.nic.ibm" => [
             "uri"  => "whois://whois.nic.ibm",
             "tlds" => [ ".ibm" ],
         ],
-        "whois.nic.icbc"                     => [
+        "whois.nic.icbc" => [
             "uri"  => "whois://whois.nic.icbc",
             "tlds" => [ ".icbc" ],
         ],
-        "whois.nic.ice"                      => [
+        "whois.nic.ice" => [
             "uri"  => "whois://whois.nic.ice",
             "tlds" => [ ".ice" ],
         ],
-        "whois.nic.icu"                      => [
+        "whois.nic.icu" => [
             "uri"  => "whois://whois.nic.icu",
             "tlds" => [ ".icu" ],
         ],
-        "whois.nic.ieee"                     => [
+        "whois.nic.ieee" => [
             "uri"  => "whois://whois.nic.ieee",
             "tlds" => [ ".ieee" ],
         ],
-        "whois.nic.ifm"                      => [
+        "whois.nic.ifm" => [
             "uri"  => "whois://whois.nic.ifm",
             "tlds" => [ ".ifm" ],
         ],
-        "whois.nic.ikano"                    => [
+        "whois.nic.ikano" => [
             "uri"  => "whois://whois.nic.ikano",
             "tlds" => [ ".ikano" ],
         ],
-        "whois.nic.imamat"                   => [
+        "whois.nic.imamat" => [
             "uri"  => "whois://whois.nic.imamat",
             "tlds" => [ ".imamat" ],
         ],
-        "whois.nic.imdb"                     => [
+        "whois.nic.imdb" => [
             "uri"  => "whois://whois.nic.imdb",
             "tlds" => [ ".imdb" ],
         ],
-        "whois.nic.immo"                     => [
+        "whois.nic.immo" => [
             "uri"  => "whois://whois.nic.immo",
             "tlds" => [ ".immo" ],
         ],
-        "whois.nic.immobilien"               => [
+        "whois.nic.immobilien" => [
             "uri"  => "whois://whois.nic.immobilien",
             "tlds" => [ ".immobilien" ],
         ],
-        "whois.nic.inc"                      => [
+        "whois.nic.inc" => [
             "uri"  => "whois://whois.nic.inc",
             "tlds" => [ ".inc" ],
         ],
-        "whois.nic.industries"               => [
+        "whois.nic.industries" => [
             "uri"  => "whois://whois.nic.industries",
             "tlds" => [ ".industries" ],
         ],
-        "whois.nic.infiniti"                 => [
+        "whois.nic.infiniti" => [
             "uri"  => "whois://whois.nic.infiniti",
             "tlds" => [ ".infiniti" ],
         ],
-        "whois.nic.ing"                      => [
+        "whois.nic.ing" => [
             "uri"  => "whois://whois.nic.ing",
             "tlds" => [ ".ing" ],
         ],
-        "whois.nic.ink"                      => [
+        "whois.nic.ink" => [
             "uri"  => "whois://whois.nic.ink",
             "tlds" => [ ".ink" ],
         ],
-        "whois.nic.institute"                => [
+        "whois.nic.institute" => [
             "uri"  => "whois://whois.nic.institute",
             "tlds" => [ ".institute" ],
         ],
-        "whois.nic.insurance"                => [
+        "whois.nic.insurance" => [
             "uri"  => "whois://whois.nic.insurance",
             "tlds" => [ ".insurance" ],
         ],
-        "whois.nic.insure"                   => [
+        "whois.nic.insure" => [
             "uri"  => "whois://whois.nic.insure",
             "tlds" => [ ".insure" ],
         ],
-        "whois.nic.international"            => [
+        "whois.nic.international" => [
             "uri"  => "whois://whois.nic.international",
             "tlds" => [ ".international" ],
         ],
-        "whois.nic.intuit"                   => [
+        "whois.nic.intuit" => [
             "uri"  => "whois://whois.nic.intuit",
             "tlds" => [ ".intuit" ],
         ],
-        "whois.nic.investments"              => [
+        "whois.nic.investments" => [
             "uri"  => "whois://whois.nic.investments",
             "tlds" => [ ".investments" ],
         ],
-        "whois.nic.ipiranga"                 => [
+        "whois.nic.ipiranga" => [
             "uri"  => "whois://whois.nic.ipiranga",
             "tlds" => [ ".ipiranga" ],
         ],
-        "whois.nic.irish"                    => [
+        "whois.nic.irish" => [
             "uri"  => "whois://whois.nic.irish",
             "tlds" => [ ".irish" ],
         ],
-        "whois.nic.ismaili"                  => [
+        "whois.nic.ismaili" => [
             "uri"  => "whois://whois.nic.ismaili",
             "tlds" => [ ".ismaili" ],
         ],
-        "whois.nic.ist"                      => [
+        "whois.nic.ist" => [
             "uri"  => "whois://whois.nic.ist",
             "tlds" => [ ".ist" ],
         ],
-        "whois.nic.istanbul"                 => [
+        "whois.nic.istanbul" => [
             "uri"  => "whois://whois.nic.istanbul",
             "tlds" => [ ".istanbul" ],
         ],
-        "whois.nic.itau"                     => [
+        "whois.nic.itau" => [
             "uri"  => "whois://whois.nic.itau",
             "tlds" => [ ".itau" ],
         ],
-        "whois.nic.itv"                      => [
+        "whois.nic.itv" => [
             "uri"  => "whois://whois.nic.itv",
             "tlds" => [ ".itv" ],
         ],
-        "whois.nic.jaguar"                   => [
+        "whois.nic.jaguar" => [
             "uri"  => "whois://whois.nic.jaguar",
             "tlds" => [ ".jaguar" ],
         ],
-        "whois.nic.java"                     => [
+        "whois.nic.java" => [
             "uri"  => "whois://whois.nic.java",
             "tlds" => [ ".java" ],
         ],
-        "whois.nic.jcb"                      => [
+        "whois.nic.jcb" => [
             "uri"  => "whois://whois.nic.jcb",
             "tlds" => [ ".jcb" ],
         ],
-        "whois.nic.jeep"                     => [
+        "whois.nic.jeep" => [
             "uri"  => "whois://whois.nic.jeep",
             "tlds" => [ ".jeep" ],
         ],
-        "whois.nic.jetzt"                    => [
+        "whois.nic.jetzt" => [
             "uri"  => "whois://whois.nic.jetzt",
             "tlds" => [ ".jetzt" ],
         ],
-        "whois.nic.jewelry"                  => [
+        "whois.nic.jewelry" => [
             "uri"  => "whois://whois.nic.jewelry",
             "tlds" => [ ".jewelry" ],
         ],
-        "whois.nic.jio"                      => [
+        "whois.nic.jio" => [
             "uri"  => "whois://whois.nic.jio",
             "tlds" => [ ".jio" ],
         ],
-        "whois.nic.jll"                      => [
+        "whois.nic.jll" => [
             "uri"  => "whois://whois.nic.jll",
             "tlds" => [ ".jll" ],
         ],
-        "whois.nic.jmp"                      => [
+        "whois.nic.jmp" => [
             "uri"  => "whois://whois.nic.jmp",
             "tlds" => [ ".jmp" ],
         ],
-        "whois.nic.jnj"                      => [
+        "whois.nic.jnj" => [
             "uri"  => "whois://whois.nic.jnj",
             "tlds" => [ ".jnj" ],
         ],
-        "whois.nic.joburg"                   => [
+        "whois.nic.joburg" => [
             "uri"  => "whois://whois.nic.joburg",
             "tlds" => [ ".joburg" ],
         ],
-        "whois.nic.jot"                      => [
+        "whois.nic.jot" => [
             "uri"  => "whois://whois.nic.jot",
             "tlds" => [ ".jot" ],
         ],
-        "whois.nic.joy"                      => [
+        "whois.nic.joy" => [
             "uri"  => "whois://whois.nic.joy",
             "tlds" => [ ".joy" ],
         ],
-        "whois.nic.jpmorgan"                 => [
+        "whois.nic.jpmorgan" => [
             "uri"  => "whois://whois.nic.jpmorgan",
             "tlds" => [ ".jpmorgan" ],
         ],
-        "whois.nic.jprs"                     => [
+        "whois.nic.jprs" => [
             "uri"  => "whois://whois.nic.jprs",
             "tlds" => [ ".jprs" ],
         ],
-        "whois.nic.juegos"                   => [
+        "whois.nic.juegos" => [
             "uri"  => "whois://whois.nic.juegos",
             "tlds" => [ ".juegos" ],
         ],
-        "whois.nic.juniper"                  => [
+        "whois.nic.juniper" => [
             "uri"  => "whois://whois.nic.juniper",
             "tlds" => [ ".juniper" ],
         ],
-        "whois.nic.kaufen"                   => [
+        "whois.nic.kaufen" => [
             "uri"  => "whois://whois.nic.kaufen",
             "tlds" => [ ".kaufen" ],
         ],
-        "whois.nic.kddi"                     => [
+        "whois.nic.kddi" => [
             "uri"  => "whois://whois.nic.kddi",
             "tlds" => [ ".kddi" ],
         ],
-        "whois.nic.kerryhotels"              => [
+        "whois.nic.kerryhotels" => [
             "uri"  => "whois://whois.nic.kerryhotels",
             "tlds" => [ ".kerryhotels" ],
         ],
-        "whois.nic.kerrylogistics"           => [
+        "whois.nic.kerrylogistics" => [
             "uri"  => "whois://whois.nic.kerrylogistics",
             "tlds" => [ ".kerrylogistics" ],
         ],
-        "whois.nic.kerryproperties"          => [
+        "whois.nic.kerryproperties" => [
             "uri"  => "whois://whois.nic.kerryproperties",
             "tlds" => [ ".kerryproperties" ],
         ],
-        "whois.nic.kfh"                      => [
+        "whois.nic.kfh" => [
             "uri"  => "whois://whois.nic.kfh",
             "tlds" => [ ".kfh" ],
         ],
-        "whois.nic.kia"                      => [
+        "whois.nic.kia" => [
             "uri"  => "whois://whois.nic.kia",
             "tlds" => [ ".kia" ],
         ],
-        "whois.nic.kids"                     => [
+        "whois.nic.kids" => [
             "uri"  => "whois://whois.nic.kids",
             "tlds" => [ ".kids" ],
         ],
-        "whois.nic.kim"                      => [
+        "whois.nic.kim" => [
             "uri"  => "whois://whois.nic.kim",
             "tlds" => [ ".kim" ],
         ],
-        "whois.nic.kinder"                   => [
+        "whois.nic.kinder" => [
             "uri"  => "whois://whois.nic.kinder",
             "tlds" => [ ".kinder" ],
         ],
-        "whois.nic.kindle"                   => [
+        "whois.nic.kindle" => [
             "uri"  => "whois://whois.nic.kindle",
             "tlds" => [ ".kindle" ],
         ],
-        "whois.nic.kitchen"                  => [
+        "whois.nic.kitchen" => [
             "uri"  => "whois://whois.nic.kitchen",
             "tlds" => [ ".kitchen" ],
         ],
-        "whois.nic.kiwi"                     => [
+        "whois.nic.kiwi" => [
             "uri"  => "whois://whois.nic.kiwi",
             "tlds" => [ ".kiwi" ],
         ],
-        "whois.nic.koeln"                    => [
+        "whois.nic.koeln" => [
             "uri"  => "whois://whois.nic.koeln",
             "tlds" => [ ".koeln" ],
         ],
-        "whois.nic.komatsu"                  => [
+        "whois.nic.komatsu" => [
             "uri"  => "whois://whois.nic.komatsu",
             "tlds" => [ ".komatsu" ],
         ],
-        "whois.nic.kosher"                   => [
+        "whois.nic.kosher" => [
             "uri"  => "whois://whois.nic.kosher",
             "tlds" => [ ".kosher" ],
         ],
-        "whois.nic.kpmg"                     => [
+        "whois.nic.kpmg" => [
             "uri"  => "whois://whois.nic.kpmg",
             "tlds" => [ ".kpmg" ],
         ],
-        "whois.nic.kpn"                      => [
+        "whois.nic.kpn" => [
             "uri"  => "whois://whois.nic.kpn",
             "tlds" => [ ".kpn" ],
         ],
-        "whois.nic.krd"                      => [
+        "whois.nic.krd" => [
             "uri"  => "whois://whois.nic.krd",
             "tlds" => [ ".krd" ],
         ],
-        "whois.nic.kred"                     => [
+        "whois.nic.kred" => [
             "uri"  => "whois://whois.nic.kred",
             "tlds" => [ ".kred" ],
         ],
-        "whois.nic.kuokgroup"                => [
+        "whois.nic.kuokgroup" => [
             "uri"  => "whois://whois.nic.kuokgroup",
             "tlds" => [ ".kuokgroup" ],
         ],
-        "whois.nic.kyoto"                    => [
+        "whois.nic.kyoto" => [
             "uri"  => "whois://whois.nic.kyoto",
             "tlds" => [ ".kyoto" ],
         ],
-        "whois.nic.lacaixa"                  => [
+        "whois.nic.lacaixa" => [
             "uri"  => "whois://whois.nic.lacaixa",
             "tlds" => [ ".lacaixa" ],
         ],
-        "whois.nic.lamborghini"              => [
+        "whois.nic.lamborghini" => [
             "uri"  => "whois://whois.nic.lamborghini",
             "tlds" => [ ".lamborghini" ],
         ],
-        "whois.nic.lamer"                    => [
+        "whois.nic.lamer" => [
             "uri"  => "whois://whois.nic.lamer",
             "tlds" => [ ".lamer" ],
         ],
-        "whois.nic.lancaster"                => [
+        "whois.nic.lancaster" => [
             "uri"  => "whois://whois.nic.lancaster",
             "tlds" => [ ".lancaster" ],
         ],
-        "whois.nic.land"                     => [
+        "whois.nic.land" => [
             "uri"  => "whois://whois.nic.land",
             "tlds" => [ ".land" ],
         ],
-        "whois.nic.landrover"                => [
+        "whois.nic.landrover" => [
             "uri"  => "whois://whois.nic.landrover",
             "tlds" => [ ".landrover" ],
         ],
-        "whois.nic.lanxess"                  => [
+        "whois.nic.lanxess" => [
             "uri"  => "whois://whois.nic.lanxess",
             "tlds" => [ ".lanxess" ],
         ],
-        "whois.nic.lasalle"                  => [
+        "whois.nic.lasalle" => [
             "uri"  => "whois://whois.nic.lasalle",
             "tlds" => [ ".lasalle" ],
         ],
-        "whois.nic.lat"                      => [
+        "whois.nic.lat" => [
             "uri"  => "whois://whois.nic.lat",
             "tlds" => [ ".lat" ],
         ],
-        "whois.nic.latino"                   => [
+        "whois.nic.latino" => [
             "uri"  => "whois://whois.nic.latino",
             "tlds" => [ ".latino" ],
         ],
-        "whois.nic.latrobe"                  => [
+        "whois.nic.latrobe" => [
             "uri"  => "whois://whois.nic.latrobe",
             "tlds" => [ ".latrobe" ],
         ],
-        "whois.nic.law"                      => [
+        "whois.nic.law" => [
             "uri"  => "whois://whois.nic.law",
             "tlds" => [ ".law" ],
         ],
-        "whois.nic.lawyer"                   => [
+        "whois.nic.lawyer" => [
             "uri"  => "whois://whois.nic.lawyer",
             "tlds" => [ ".lawyer" ],
         ],
-        "whois.nic.lds"                      => [
+        "whois.nic.lds" => [
             "uri"  => "whois://whois.nic.lds",
             "tlds" => [ ".lds" ],
         ],
-        "whois.nic.lease"                    => [
+        "whois.nic.lease" => [
             "uri"  => "whois://whois.nic.lease",
             "tlds" => [ ".lease" ],
         ],
-        "whois.nic.leclerc"                  => [
+        "whois.nic.leclerc" => [
             "uri"  => "whois://whois.nic.leclerc",
             "tlds" => [ ".leclerc" ],
         ],
-        "whois.nic.lefrak"                   => [
+        "whois.nic.lefrak" => [
             "uri"  => "whois://whois.nic.lefrak",
             "tlds" => [ ".lefrak" ],
         ],
-        "whois.nic.legal"                    => [
+        "whois.nic.legal" => [
             "uri"  => "whois://whois.nic.legal",
             "tlds" => [ ".legal" ],
         ],
-        "whois.nic.lego"                     => [
+        "whois.nic.lego" => [
             "uri"  => "whois://whois.nic.lego",
             "tlds" => [ ".lego" ],
         ],
-        "whois.nic.lexus"                    => [
+        "whois.nic.lexus" => [
             "uri"  => "whois://whois.nic.lexus",
             "tlds" => [ ".lexus" ],
         ],
-        "whois.nic.lgbt"                     => [
+        "whois.nic.lgbt" => [
             "uri"  => "whois://whois.nic.lgbt",
             "tlds" => [ ".lgbt" ],
         ],
-        "whois.nic.lidl"                     => [
+        "whois.nic.lidl" => [
             "uri"  => "whois://whois.nic.lidl",
             "tlds" => [ ".lidl" ],
         ],
-        "whois.nic.life"                     => [
+        "whois.nic.life" => [
             "uri"  => "whois://whois.nic.life",
             "tlds" => [ ".life" ],
         ],
-        "whois.nic.lifeinsurance"            => [
+        "whois.nic.lifeinsurance" => [
             "uri"  => "whois://whois.nic.lifeinsurance",
             "tlds" => [ ".lifeinsurance" ],
         ],
-        "whois.nic.lifestyle"                => [
+        "whois.nic.lifestyle" => [
             "uri"  => "whois://whois.nic.lifestyle",
             "tlds" => [ ".lifestyle" ],
         ],
-        "whois.nic.lighting"                 => [
+        "whois.nic.lighting" => [
             "uri"  => "whois://whois.nic.lighting",
             "tlds" => [ ".lighting" ],
         ],
-        "whois.nic.like"                     => [
+        "whois.nic.like" => [
             "uri"  => "whois://whois.nic.like",
             "tlds" => [ ".like" ],
         ],
-        "whois.nic.lilly"                    => [
+        "whois.nic.lilly" => [
             "uri"  => "whois://whois.nic.lilly",
             "tlds" => [ ".lilly" ],
         ],
-        "whois.nic.limited"                  => [
+        "whois.nic.limited" => [
             "uri"  => "whois://whois.nic.limited",
             "tlds" => [ ".limited" ],
         ],
-        "whois.nic.limo"                     => [
+        "whois.nic.limo" => [
             "uri"  => "whois://whois.nic.limo",
             "tlds" => [ ".limo" ],
         ],
-        "whois.nic.lincoln"                  => [
+        "whois.nic.lincoln" => [
             "uri"  => "whois://whois.nic.lincoln",
             "tlds" => [ ".lincoln" ],
         ],
-        "whois.nic.link"                     => [
+        "whois.nic.link" => [
             "uri"  => "whois://whois.nic.link",
             "tlds" => [ ".link" ],
         ],
-        "whois.nic.lipsy"                    => [
+        "whois.nic.lipsy" => [
             "uri"  => "whois://whois.nic.lipsy",
             "tlds" => [ ".lipsy" ],
         ],
-        "whois.nic.live"                     => [
+        "whois.nic.live" => [
             "uri"  => "whois://whois.nic.live",
             "tlds" => [ ".live" ],
         ],
-        "whois.nic.living"                   => [
+        "whois.nic.living" => [
             "uri"  => "whois://whois.nic.living",
             "tlds" => [ ".living" ],
         ],
-        "whois.nic.llc"                      => [
+        "whois.nic.llc" => [
             "uri"  => "whois://whois.nic.llc",
             "tlds" => [ ".llc" ],
         ],
-        "whois.nic.llp"                      => [
+        "whois.nic.llp" => [
             "uri"  => "whois://whois.nic.llp",
             "tlds" => [ ".llp" ],
         ],
-        "whois.nic.loan"                     => [
+        "whois.nic.loan" => [
             "uri"  => "whois://whois.nic.loan",
             "tlds" => [ ".loan" ],
         ],
-        "whois.nic.loans"                    => [
+        "whois.nic.loans" => [
             "uri"  => "whois://whois.nic.loans",
             "tlds" => [ ".loans" ],
         ],
-        "whois.nic.locker"                   => [
+        "whois.nic.locker" => [
             "uri"  => "whois://whois.nic.locker",
             "tlds" => [ ".locker" ],
         ],
-        "whois.nic.locus"                    => [
+        "whois.nic.locus" => [
             "uri"  => "whois://whois.nic.locus",
             "tlds" => [ ".locus" ],
         ],
-        "whois.nic.lol"                      => [
+        "whois.nic.lol" => [
             "uri"  => "whois://whois.nic.lol",
             "tlds" => [ ".lol" ],
         ],
-        "whois.nic.london"                   => [
+        "whois.nic.london" => [
             "uri"  => "whois://whois.nic.london",
             "tlds" => [ ".london" ],
         ],
-        "whois.nic.lotte"                    => [
+        "whois.nic.lotte" => [
             "uri"  => "whois://whois.nic.lotte",
             "tlds" => [ ".lotte" ],
         ],
-        "whois.nic.lotto"                    => [
+        "whois.nic.lotto" => [
             "uri"  => "whois://whois.nic.lotto",
             "tlds" => [ ".lotto" ],
         ],
-        "whois.nic.love"                     => [
+        "whois.nic.love" => [
             "uri"  => "whois://whois.nic.love",
             "tlds" => [ ".love" ],
         ],
-        "whois.nic.lpl"                      => [
+        "whois.nic.lpl" => [
             "uri"  => "whois://whois.nic.lpl",
             "tlds" => [ ".lpl" ],
         ],
-        "whois.nic.lplfinancial"             => [
+        "whois.nic.lplfinancial" => [
             "uri"  => "whois://whois.nic.lplfinancial",
             "tlds" => [ ".lplfinancial" ],
         ],
-        "whois.nic.ltd"                      => [
+        "whois.nic.ltd" => [
             "uri"  => "whois://whois.nic.ltd",
             "tlds" => [ ".ltd" ],
         ],
-        "whois.nic.ltda"                     => [
+        "whois.nic.ltda" => [
             "uri"  => "whois://whois.nic.ltda",
             "tlds" => [ ".ltda" ],
         ],
-        "whois.nic.lundbeck"                 => [
+        "whois.nic.lundbeck" => [
             "uri"  => "whois://whois.nic.lundbeck",
             "tlds" => [ ".lundbeck" ],
         ],
-        "whois.nic.luxe"                     => [
+        "whois.nic.luxe" => [
             "uri"  => "whois://whois.nic.luxe",
             "tlds" => [ ".luxe" ],
         ],
-        "whois.nic.luxury"                   => [
+        "whois.nic.luxury" => [
             "uri"  => "whois://whois.nic.luxury",
             "tlds" => [ ".luxury" ],
         ],
-        "whois.nic.madrid"                   => [
+        "whois.nic.madrid" => [
             "uri"  => "whois://whois.nic.madrid",
             "tlds" => [ ".madrid" ],
         ],
-        "whois.nic.maif"                     => [
+        "whois.nic.maif" => [
             "uri"  => "whois://whois.nic.maif",
             "tlds" => [ ".maif" ],
         ],
-        "whois.nic.maison"                   => [
+        "whois.nic.maison" => [
             "uri"  => "whois://whois.nic.maison",
             "tlds" => [ ".maison" ],
         ],
-        "whois.nic.makeup"                   => [
+        "whois.nic.makeup" => [
             "uri"  => "whois://whois.nic.makeup",
             "tlds" => [ ".makeup" ],
         ],
-        "whois.nic.man"                      => [
+        "whois.nic.man" => [
             "uri"  => "whois://whois.nic.man",
             "tlds" => [ ".man" ],
         ],
-        "whois.nic.management"               => [
+        "whois.nic.management" => [
             "uri"  => "whois://whois.nic.management",
             "tlds" => [ ".management" ],
         ],
-        "whois.nic.mango"                    => [
+        "whois.nic.mango" => [
             "uri"  => "whois://whois.nic.mango",
             "tlds" => [ ".mango" ],
         ],
-        "whois.nic.map"                      => [
+        "whois.nic.map" => [
             "uri"  => "whois://whois.nic.map",
             "tlds" => [ ".map" ],
         ],
-        "whois.nic.market"                   => [
+        "whois.nic.market" => [
             "uri"  => "whois://whois.nic.market",
             "tlds" => [ ".market" ],
         ],
-        "whois.nic.marketing"                => [
+        "whois.nic.marketing" => [
             "uri"  => "whois://whois.nic.marketing",
             "tlds" => [ ".marketing" ],
         ],
-        "whois.nic.markets"                  => [
+        "whois.nic.markets" => [
             "uri"  => "whois://whois.nic.markets",
             "tlds" => [ ".markets" ],
         ],
-        "whois.nic.marriott"                 => [
+        "whois.nic.marriott" => [
             "uri"  => "whois://whois.nic.marriott",
             "tlds" => [ ".marriott" ],
         ],
-        "whois.nic.marshalls"                => [
+        "whois.nic.marshalls" => [
             "uri"  => "whois://whois.nic.marshalls",
             "tlds" => [ ".marshalls" ],
         ],
-        "whois.nic.mattel"                   => [
+        "whois.nic.mattel" => [
             "uri"  => "whois://whois.nic.mattel",
             "tlds" => [ ".mattel" ],
         ],
-        "whois.nic.mba"                      => [
+        "whois.nic.mba" => [
             "uri"  => "whois://whois.nic.mba",
             "tlds" => [ ".mba" ],
         ],
-        "whois.nic.mckinsey"                 => [
+        "whois.nic.mckinsey" => [
             "uri"  => "whois://whois.nic.mckinsey",
             "tlds" => [ ".mckinsey" ],
         ],
-        "whois.nic.med"                      => [
+        "whois.nic.med" => [
             "uri"  => "whois://whois.nic.med",
             "tlds" => [ ".med" ],
         ],
-        "whois.nic.media"                    => [
+        "whois.nic.media" => [
             "uri"  => "whois://whois.nic.media",
             "tlds" => [ ".media" ],
         ],
-        "whois.nic.meet"                     => [
+        "whois.nic.meet" => [
             "uri"  => "whois://whois.nic.meet",
             "tlds" => [ ".meet" ],
         ],
-        "whois.nic.melbourne"                => [
+        "whois.nic.melbourne" => [
             "uri"  => "whois://whois.nic.melbourne",
             "tlds" => [ ".melbourne" ],
         ],
-        "whois.nic.meme"                     => [
+        "whois.nic.meme" => [
             "uri"  => "whois://whois.nic.meme",
             "tlds" => [ ".meme" ],
         ],
-        "whois.nic.memorial"                 => [
+        "whois.nic.memorial" => [
             "uri"  => "whois://whois.nic.memorial",
             "tlds" => [ ".memorial" ],
         ],
-        "whois.nic.men"                      => [
+        "whois.nic.men" => [
             "uri"  => "whois://whois.nic.men",
             "tlds" => [ ".men" ],
         ],
-        "whois.nic.menu"                     => [
+        "whois.nic.menu" => [
             "uri"  => "whois://whois.nic.menu",
             "tlds" => [ ".menu" ],
         ],
-        "whois.nic.merckmsd"                 => [
+        "whois.nic.merckmsd" => [
             "uri"  => "whois://whois.nic.merckmsd",
             "tlds" => [ ".merckmsd" ],
         ],
-        "whois.nic.miami"                    => [
+        "whois.nic.miami" => [
             "uri"  => "whois://whois.nic.miami",
             "tlds" => [ ".miami" ],
         ],
-        "whois.nic.microsoft"                => [
+        "whois.nic.microsoft" => [
             "uri"  => "whois://whois.nic.microsoft",
             "tlds" => [ ".microsoft" ],
         ],
-        "whois.nic.mini"                     => [
+        "whois.nic.mini" => [
             "uri"  => "whois://whois.nic.mini",
             "tlds" => [ ".mini" ],
         ],
-        "whois.nic.mint"                     => [
+        "whois.nic.mint" => [
             "uri"  => "whois://whois.nic.mint",
             "tlds" => [ ".mint" ],
         ],
-        "whois.nic.mit"                      => [
+        "whois.nic.mit" => [
             "uri"  => "whois://whois.nic.mit",
             "tlds" => [ ".mit" ],
         ],
-        "whois.nic.mitsubishi"               => [
+        "whois.nic.mitsubishi" => [
             "uri"  => "whois://whois.nic.mitsubishi",
             "tlds" => [ ".mitsubishi" ],
         ],
-        "whois.nic.mlb"                      => [
+        "whois.nic.mlb" => [
             "uri"  => "whois://whois.nic.mlb",
             "tlds" => [ ".mlb" ],
         ],
-        "whois.nic.mls"                      => [
+        "whois.nic.mls" => [
             "uri"  => "whois://whois.nic.mls",
             "tlds" => [ ".mls" ],
         ],
-        "whois.nic.mma"                      => [
+        "whois.nic.mma" => [
             "uri"  => "whois://whois.nic.mma",
             "tlds" => [ ".mma" ],
         ],
-        "whois.nic.mobile"                   => [
+        "whois.nic.mobile" => [
             "uri"  => "whois://whois.nic.mobile",
             "tlds" => [ ".mobile" ],
         ],
-        "whois.nic.moda"                     => [
+        "whois.nic.moda" => [
             "uri"  => "whois://whois.nic.moda",
             "tlds" => [ ".moda" ],
         ],
-        "whois.nic.moe"                      => [
+        "whois.nic.moe" => [
             "uri"  => "whois://whois.nic.moe",
             "tlds" => [ ".moe" ],
         ],
-        "whois.nic.moi"                      => [
+        "whois.nic.moi" => [
             "uri"  => "whois://whois.nic.moi",
             "tlds" => [ ".moi" ],
         ],
-        "whois.nic.mom"                      => [
+        "whois.nic.mom" => [
             "uri"  => "whois://whois.nic.mom",
             "tlds" => [ ".mom" ],
         ],
-        "whois.nic.monash"                   => [
+        "whois.nic.monash" => [
             "uri"  => "whois://whois.nic.monash",
             "tlds" => [ ".monash" ],
         ],
-        "whois.nic.money"                    => [
+        "whois.nic.money" => [
             "uri"  => "whois://whois.nic.money",
             "tlds" => [ ".money" ],
         ],
-        "whois.nic.monster"                  => [
+        "whois.nic.monster" => [
             "uri"  => "whois://whois.nic.monster",
             "tlds" => [ ".monster" ],
         ],
-        "whois.nic.mormon"                   => [
+        "whois.nic.mormon" => [
             "uri"  => "whois://whois.nic.mormon",
             "tlds" => [ ".mormon" ],
         ],
-        "whois.nic.mortgage"                 => [
+        "whois.nic.mortgage" => [
             "uri"  => "whois://whois.nic.mortgage",
             "tlds" => [ ".mortgage" ],
         ],
-        "whois.nic.moscow"                   => [
+        "whois.nic.moscow" => [
             "uri"  => "whois://whois.nic.moscow",
             "tlds" => [ ".moscow" ],
         ],
-        "whois.nic.moto"                     => [
+        "whois.nic.moto" => [
             "uri"  => "whois://whois.nic.moto",
             "tlds" => [ ".moto" ],
         ],
-        "whois.nic.motorcycles"              => [
+        "whois.nic.motorcycles" => [
             "uri"  => "whois://whois.nic.motorcycles",
             "tlds" => [ ".motorcycles" ],
         ],
-        "whois.nic.mov"                      => [
+        "whois.nic.mov" => [
             "uri"  => "whois://whois.nic.mov",
             "tlds" => [ ".mov" ],
         ],
-        "whois.nic.movie"                    => [
+        "whois.nic.movie" => [
             "uri"  => "whois://whois.nic.movie",
             "tlds" => [ ".movie" ],
         ],
-        "whois.nic.msd"                      => [
+        "whois.nic.msd" => [
             "uri"  => "whois://whois.nic.msd",
             "tlds" => [ ".msd" ],
         ],
-        "whois.nic.mtn"                      => [
+        "whois.nic.mtn" => [
             "uri"  => "whois://whois.nic.mtn",
             "tlds" => [ ".mtn" ],
         ],
-        "whois.nic.mtr"                      => [
+        "whois.nic.mtr" => [
             "uri"  => "whois://whois.nic.mtr",
             "tlds" => [ ".mtr" ],
         ],
-        "whois.nic.music"                    => [
+        "whois.nic.music" => [
             "uri"  => "whois://whois.nic.music",
             "tlds" => [ ".music" ],
         ],
-        "whois.nic.nab"                      => [
+        "whois.nic.nab" => [
             "uri"  => "whois://whois.nic.nab",
             "tlds" => [ ".nab" ],
         ],
-        "whois.nic.nagoya"                   => [
+        "whois.nic.nagoya" => [
             "uri"  => "whois://whois.nic.nagoya",
             "tlds" => [ ".nagoya" ],
         ],
-        "whois.nic.natura"                   => [
+        "whois.nic.natura" => [
             "uri"  => "whois://whois.nic.natura",
             "tlds" => [ ".natura" ],
         ],
-        "whois.nic.navy"                     => [
+        "whois.nic.navy" => [
             "uri"  => "whois://whois.nic.navy",
             "tlds" => [ ".navy" ],
         ],
-        "whois.nic.nba"                      => [
+        "whois.nic.nba" => [
             "uri"  => "whois://whois.nic.nba",
             "tlds" => [ ".nba" ],
         ],
-        "whois.nic.nec"                      => [
+        "whois.nic.nec" => [
             "uri"  => "whois://whois.nic.nec",
             "tlds" => [ ".nec" ],
         ],
-        "whois.nic.netbank"                  => [
+        "whois.nic.netbank" => [
             "uri"  => "whois://whois.nic.netbank",
             "tlds" => [ ".netbank" ],
         ],
-        "whois.nic.netflix"                  => [
+        "whois.nic.netflix" => [
             "uri"  => "whois://whois.nic.netflix",
             "tlds" => [ ".netflix" ],
         ],
-        "whois.nic.network"                  => [
+        "whois.nic.network" => [
             "uri"  => "whois://whois.nic.network",
             "tlds" => [ ".network" ],
         ],
-        "whois.nic.neustar"                  => [
+        "whois.nic.neustar" => [
             "uri"  => "whois://whois.nic.neustar",
             "tlds" => [ ".neustar" ],
         ],
-        "whois.nic.new"                      => [
+        "whois.nic.new" => [
             "uri"  => "whois://whois.nic.new",
             "tlds" => [ ".new" ],
         ],
-        "whois.nic.news"                     => [
+        "whois.nic.news" => [
             "uri"  => "whois://whois.nic.news",
             "tlds" => [ ".news" ],
         ],
-        "whois.nic.next"                     => [
+        "whois.nic.next" => [
             "uri"  => "whois://whois.nic.next",
             "tlds" => [ ".next" ],
         ],
-        "whois.nic.nextdirect"               => [
+        "whois.nic.nextdirect" => [
             "uri"  => "whois://whois.nic.nextdirect",
             "tlds" => [ ".nextdirect" ],
         ],
-        "whois.nic.nexus"                    => [
+        "whois.nic.nexus" => [
             "uri"  => "whois://whois.nic.nexus",
             "tlds" => [ ".nexus" ],
         ],
-        "whois.nic.nfl"                      => [
+        "whois.nic.nfl" => [
             "uri"  => "whois://whois.nic.nfl",
             "tlds" => [ ".nfl" ],
         ],
-        "whois.nic.ngo"                      => [
+        "whois.nic.ngo" => [
             "uri"  => "whois://whois.nic.ngo",
             "tlds" => [ ".ngo" ],
         ],
-        "whois.nic.nhk"                      => [
+        "whois.nic.nhk" => [
             "uri"  => "whois://whois.nic.nhk",
             "tlds" => [ ".nhk" ],
         ],
-        "whois.nic.nico"                     => [
+        "whois.nic.nico" => [
             "uri"  => "whois://whois.nic.nico",
             "tlds" => [ ".nico" ],
         ],
-        "whois.nic.nike"                     => [
+        "whois.nic.nike" => [
             "uri"  => "whois://whois.nic.nike",
             "tlds" => [ ".nike" ],
         ],
-        "whois.nic.nikon"                    => [
+        "whois.nic.nikon" => [
             "uri"  => "whois://whois.nic.nikon",
             "tlds" => [ ".nikon" ],
         ],
-        "whois.nic.ninja"                    => [
+        "whois.nic.ninja" => [
             "uri"  => "whois://whois.nic.ninja",
             "tlds" => [ ".ninja" ],
         ],
-        "whois.nic.nissan"                   => [
+        "whois.nic.nissan" => [
             "uri"  => "whois://whois.nic.nissan",
             "tlds" => [ ".nissan" ],
         ],
-        "whois.nic.nissay"                   => [
+        "whois.nic.nissay" => [
             "uri"  => "whois://whois.nic.nissay",
             "tlds" => [ ".nissay" ],
         ],
-        "whois.nic.nokia"                    => [
+        "whois.nic.nokia" => [
             "uri"  => "whois://whois.nic.nokia",
             "tlds" => [ ".nokia" ],
         ],
-        "whois.nic.norton"                   => [
+        "whois.nic.norton" => [
             "uri"  => "whois://whois.nic.norton",
             "tlds" => [ ".norton" ],
         ],
-        "whois.nic.now"                      => [
+        "whois.nic.now" => [
             "uri"  => "whois://whois.nic.now",
             "tlds" => [ ".now" ],
         ],
-        "whois.nic.nowruz"                   => [
+        "whois.nic.nowruz" => [
             "uri"  => "whois://whois.nic.nowruz",
             "tlds" => [ ".nowruz" ],
         ],
-        "whois.nic.nowtv"                    => [
+        "whois.nic.nowtv" => [
             "uri"  => "whois://whois.nic.nowtv",
             "tlds" => [ ".nowtv" ],
         ],
-        "whois.nic.nra"                      => [
+        "whois.nic.nra" => [
             "uri"  => "whois://whois.nic.nra",
             "tlds" => [ ".nra" ],
         ],
-        "whois.nic.nrw"                      => [
+        "whois.nic.nrw" => [
             "uri"  => "whois://whois.nic.nrw",
             "tlds" => [ ".nrw" ],
         ],
-        "whois.nic.ntt"                      => [
+        "whois.nic.ntt" => [
             "uri"  => "whois://whois.nic.ntt",
             "tlds" => [ ".ntt" ],
         ],
-        "whois.nic.nyc"                      => [
+        "whois.nic.nyc" => [
             "uri"  => "whois://whois.nic.nyc",
             "tlds" => [ ".nyc" ],
         ],
-        "whois.nic.obi"                      => [
+        "whois.nic.obi" => [
             "uri"  => "whois://whois.nic.obi",
             "tlds" => [ ".obi" ],
         ],
-        "whois.nic.observer"                 => [
+        "whois.nic.observer" => [
             "uri"  => "whois://whois.nic.observer",
             "tlds" => [ ".observer" ],
         ],
-        "whois.nic.office"                   => [
+        "whois.nic.office" => [
             "uri"  => "whois://whois.nic.office",
             "tlds" => [ ".office" ],
         ],
-        "whois.nic.okinawa"                  => [
+        "whois.nic.okinawa" => [
             "uri"  => "whois://whois.nic.okinawa",
             "tlds" => [ ".okinawa" ],
         ],
-        "whois.nic.olayan"                   => [
+        "whois.nic.olayan" => [
             "uri"  => "whois://whois.nic.olayan",
             "tlds" => [ ".olayan" ],
         ],
-        "whois.nic.olayangroup"              => [
+        "whois.nic.olayangroup" => [
             "uri"  => "whois://whois.nic.olayangroup",
             "tlds" => [ ".olayangroup" ],
         ],
-        "whois.nic.oldnavy"                  => [
+        "whois.nic.oldnavy" => [
             "uri"  => "whois://whois.nic.oldnavy",
             "tlds" => [ ".oldnavy" ],
         ],
-        "whois.nic.ollo"                     => [
+        "whois.nic.ollo" => [
             "uri"  => "whois://whois.nic.ollo",
             "tlds" => [ ".ollo" ],
         ],
-        "whois.nic.omega"                    => [
+        "whois.nic.omega" => [
             "uri"  => "whois://whois.nic.omega",
             "tlds" => [ ".omega" ],
         ],
-        "whois.nic.one"                      => [
+        "whois.nic.one" => [
             "uri"  => "whois://whois.nic.one",
             "tlds" => [ ".one" ],
         ],
-        "whois.nic.ong"                      => [
+        "whois.nic.ong" => [
             "uri"  => "whois://whois.nic.ong",
             "tlds" => [ ".ong" ],
         ],
-        "whois.nic.onl"                      => [
+        "whois.nic.onl" => [
             "uri"  => "whois://whois.nic.onl",
             "tlds" => [ ".onl" ],
         ],
-        "whois.nic.online"                   => [
+        "whois.nic.online" => [
             "uri"  => "whois://whois.nic.online",
             "tlds" => [ ".online" ],
         ],
-        "whois.nic.ooo"                      => [
+        "whois.nic.ooo" => [
             "uri"  => "whois://whois.nic.ooo",
             "tlds" => [ ".ooo" ],
         ],
-        "whois.nic.open"                     => [
+        "whois.nic.open" => [
             "uri"  => "whois://whois.nic.open",
             "tlds" => [ ".open" ],
         ],
-        "whois.nic.oracle"                   => [
+        "whois.nic.oracle" => [
             "uri"  => "whois://whois.nic.oracle",
             "tlds" => [ ".oracle" ],
         ],
-        "whois.nic.orange"                   => [
+        "whois.nic.orange" => [
             "uri"  => "whois://whois.nic.orange",
             "tlds" => [ ".orange" ],
         ],
-        "whois.nic.organic"                  => [
+        "whois.nic.organic" => [
             "uri"  => "whois://whois.nic.organic",
             "tlds" => [ ".organic" ],
         ],
-        "whois.nic.origins"                  => [
+        "whois.nic.origins" => [
             "uri"  => "whois://whois.nic.origins",
             "tlds" => [ ".origins" ],
         ],
-        "whois.nic.osaka"                    => [
+        "whois.nic.osaka" => [
             "uri"  => "whois://whois.nic.osaka",
             "tlds" => [ ".osaka" ],
         ],
-        "whois.nic.otsuka"                   => [
+        "whois.nic.otsuka" => [
             "uri"  => "whois://whois.nic.otsuka",
             "tlds" => [ ".otsuka" ],
         ],
-        "whois.nic.ott"                      => [
+        "whois.nic.ott" => [
             "uri"  => "whois://whois.nic.ott",
             "tlds" => [ ".ott" ],
         ],
-        "whois.nic.ovh"                      => [
+        "whois.nic.ovh" => [
             "uri"  => "whois://whois.nic.ovh",
             "tlds" => [ ".ovh" ],
         ],
-        "whois.nic.page"                     => [
+        "whois.nic.page" => [
             "uri"  => "whois://whois.nic.page",
             "tlds" => [ ".page" ],
         ],
-        "whois.nic.panasonic"                => [
+        "whois.nic.panasonic" => [
             "uri"  => "whois://whois.nic.panasonic",
             "tlds" => [ ".panasonic" ],
         ],
-        "whois.nic.paris"                    => [
+        "whois.nic.paris" => [
             "uri"  => "whois://whois.nic.paris",
             "tlds" => [ ".paris" ],
         ],
-        "whois.nic.pars"                     => [
+        "whois.nic.pars" => [
             "uri"  => "whois://whois.nic.pars",
             "tlds" => [ ".pars" ],
         ],
-        "whois.nic.partners"                 => [
+        "whois.nic.partners" => [
             "uri"  => "whois://whois.nic.partners",
             "tlds" => [ ".partners" ],
         ],
-        "whois.nic.parts"                    => [
+        "whois.nic.parts" => [
             "uri"  => "whois://whois.nic.parts",
             "tlds" => [ ".parts" ],
         ],
-        "whois.nic.party"                    => [
+        "whois.nic.party" => [
             "uri"  => "whois://whois.nic.party",
             "tlds" => [ ".party" ],
         ],
-        "whois.nic.pay"                      => [
+        "whois.nic.pay" => [
             "uri"  => "whois://whois.nic.pay",
             "tlds" => [ ".pay" ],
         ],
-        "whois.nic.pccw"                     => [
+        "whois.nic.pccw" => [
             "uri"  => "whois://whois.nic.pccw",
             "tlds" => [ ".pccw" ],
         ],
-        "whois.nic.pet"                      => [
+        "whois.nic.pet" => [
             "uri"  => "whois://whois.nic.pet",
             "tlds" => [ ".pet" ],
         ],
-        "whois.nic.pfizer"                   => [
+        "whois.nic.pfizer" => [
             "uri"  => "whois://whois.nic.pfizer",
             "tlds" => [ ".pfizer" ],
         ],
-        "whois.nic.pharmacy"                 => [
+        "whois.nic.pharmacy" => [
             "uri"  => "whois://whois.nic.pharmacy",
             "tlds" => [ ".pharmacy" ],
         ],
-        "whois.nic.phd"                      => [
+        "whois.nic.phd" => [
             "uri"  => "whois://whois.nic.phd",
             "tlds" => [ ".phd" ],
         ],
-        "whois.nic.philips"                  => [
+        "whois.nic.philips" => [
             "uri"  => "whois://whois.nic.philips",
             "tlds" => [ ".philips" ],
         ],
-        "whois.nic.phone"                    => [
+        "whois.nic.phone" => [
             "uri"  => "whois://whois.nic.phone",
             "tlds" => [ ".phone" ],
         ],
-        "whois.nic.photo"                    => [
+        "whois.nic.photo" => [
             "uri"  => "whois://whois.nic.photo",
             "tlds" => [ ".photo" ],
         ],
-        "whois.nic.photography"              => [
+        "whois.nic.photography" => [
             "uri"  => "whois://whois.nic.photography",
             "tlds" => [ ".photography" ],
         ],
-        "whois.nic.photos"                   => [
+        "whois.nic.photos" => [
             "uri"  => "whois://whois.nic.photos",
             "tlds" => [ ".photos" ],
         ],
-        "whois.nic.physio"                   => [
+        "whois.nic.physio" => [
             "uri"  => "whois://whois.nic.physio",
             "tlds" => [ ".physio" ],
         ],
-        "whois.nic.pics"                     => [
+        "whois.nic.pics" => [
             "uri"  => "whois://whois.nic.pics",
             "tlds" => [ ".pics" ],
         ],
-        "whois.nic.pictet"                   => [
+        "whois.nic.pictet" => [
             "uri"  => "whois://whois.nic.pictet",
             "tlds" => [ ".pictet" ],
         ],
-        "whois.nic.pictures"                 => [
+        "whois.nic.pictures" => [
             "uri"  => "whois://whois.nic.pictures",
             "tlds" => [ ".pictures" ],
         ],
-        "whois.nic.pid"                      => [
+        "whois.nic.pid" => [
             "uri"  => "whois://whois.nic.pid",
             "tlds" => [ ".pid" ],
         ],
-        "whois.nic.pin"                      => [
+        "whois.nic.pin" => [
             "uri"  => "whois://whois.nic.pin",
             "tlds" => [ ".pin" ],
         ],
-        "whois.nic.ping"                     => [
+        "whois.nic.ping" => [
             "uri"  => "whois://whois.nic.ping",
             "tlds" => [ ".ping" ],
         ],
-        "whois.nic.pink"                     => [
+        "whois.nic.pink" => [
             "uri"  => "whois://whois.nic.pink",
             "tlds" => [ ".pink" ],
         ],
-        "whois.nic.pioneer"                  => [
+        "whois.nic.pioneer" => [
             "uri"  => "whois://whois.nic.pioneer",
             "tlds" => [ ".pioneer" ],
         ],
-        "whois.nic.pizza"                    => [
+        "whois.nic.pizza" => [
             "uri"  => "whois://whois.nic.pizza",
             "tlds" => [ ".pizza" ],
         ],
-        "whois.nic.place"                    => [
+        "whois.nic.place" => [
             "uri"  => "whois://whois.nic.place",
             "tlds" => [ ".place" ],
         ],
-        "whois.nic.play"                     => [
+        "whois.nic.play" => [
             "uri"  => "whois://whois.nic.play",
             "tlds" => [ ".play" ],
         ],
-        "whois.nic.playstation"              => [
+        "whois.nic.playstation" => [
             "uri"  => "whois://whois.nic.playstation",
             "tlds" => [ ".playstation" ],
         ],
-        "whois.nic.plumbing"                 => [
+        "whois.nic.plumbing" => [
             "uri"  => "whois://whois.nic.plumbing",
             "tlds" => [ ".plumbing" ],
         ],
-        "whois.nic.plus"                     => [
+        "whois.nic.plus" => [
             "uri"  => "whois://whois.nic.plus",
             "tlds" => [ ".plus" ],
         ],
-        "whois.nic.pnc"                      => [
+        "whois.nic.pnc" => [
             "uri"  => "whois://whois.nic.pnc",
             "tlds" => [ ".pnc" ],
         ],
-        "whois.nic.pohl"                     => [
+        "whois.nic.pohl" => [
             "uri"  => "whois://whois.nic.pohl",
             "tlds" => [ ".pohl" ],
         ],
-        "whois.nic.poker"                    => [
+        "whois.nic.poker" => [
             "uri"  => "whois://whois.nic.poker",
             "tlds" => [ ".poker" ],
         ],
-        "whois.nic.politie"                  => [
+        "whois.nic.politie" => [
             "uri"  => "whois://whois.nic.politie",
             "tlds" => [ ".politie" ],
         ],
-        "whois.nic.porn"                     => [
+        "whois.nic.porn" => [
             "uri"  => "whois://whois.nic.porn",
             "tlds" => [ ".porn" ],
         ],
-        "whois.nic.pramerica"                => [
+        "whois.nic.pramerica" => [
             "uri"  => "whois://whois.nic.pramerica",
             "tlds" => [ ".pramerica" ],
         ],
-        "whois.nic.praxi"                    => [
+        "whois.nic.praxi" => [
             "uri"  => "whois://whois.nic.praxi",
             "tlds" => [ ".praxi" ],
         ],
-        "whois.nic.press"                    => [
+        "whois.nic.press" => [
             "uri"  => "whois://whois.nic.press",
             "tlds" => [ ".press" ],
         ],
-        "whois.nic.prime"                    => [
+        "whois.nic.prime" => [
             "uri"  => "whois://whois.nic.prime",
             "tlds" => [ ".prime" ],
         ],
-        "whois.nic.prod"                     => [
+        "whois.nic.prod" => [
             "uri"  => "whois://whois.nic.prod",
             "tlds" => [ ".prod" ],
         ],
-        "whois.nic.productions"              => [
+        "whois.nic.productions" => [
             "uri"  => "whois://whois.nic.productions",
             "tlds" => [ ".productions" ],
         ],
-        "whois.nic.prof"                     => [
+        "whois.nic.prof" => [
             "uri"  => "whois://whois.nic.prof",
             "tlds" => [ ".prof" ],
         ],
-        "whois.nic.progressive"              => [
+        "whois.nic.progressive" => [
             "uri"  => "whois://whois.nic.progressive",
             "tlds" => [ ".progressive" ],
         ],
-        "whois.nic.promo"                    => [
+        "whois.nic.promo" => [
             "uri"  => "whois://whois.nic.promo",
             "tlds" => [ ".promo" ],
         ],
-        "whois.nic.properties"               => [
+        "whois.nic.properties" => [
             "uri"  => "whois://whois.nic.properties",
             "tlds" => [ ".properties" ],
         ],
-        "whois.nic.property"                 => [
+        "whois.nic.property" => [
             "uri"  => "whois://whois.nic.property",
             "tlds" => [ ".property" ],
         ],
-        "whois.nic.protection"               => [
+        "whois.nic.protection" => [
             "uri"  => "whois://whois.nic.protection",
             "tlds" => [ ".protection" ],
         ],
-        "whois.nic.pru"                      => [
+        "whois.nic.pru" => [
             "uri"  => "whois://whois.nic.pru",
             "tlds" => [ ".pru" ],
         ],
-        "whois.nic.prudential"               => [
+        "whois.nic.prudential" => [
             "uri"  => "whois://whois.nic.prudential",
             "tlds" => [ ".prudential" ],
         ],
-        "whois.nic.pub"                      => [
+        "whois.nic.pub" => [
             "uri"  => "whois://whois.nic.pub",
             "tlds" => [ ".pub" ],
         ],
-        "whois.nic.pwc"                      => [
+        "whois.nic.pwc" => [
             "uri"  => "whois://whois.nic.pwc",
             "tlds" => [ ".pwc" ],
         ],
-        "whois.nic.qpon"                     => [
+        "whois.nic.qpon" => [
             "uri"  => "whois://whois.nic.qpon",
             "tlds" => [ ".qpon" ],
         ],
-        "whois.nic.quebec"                   => [
+        "whois.nic.quebec" => [
             "uri"  => "whois://whois.nic.quebec",
             "tlds" => [ ".quebec" ],
         ],
-        "whois.nic.quest"                    => [
+        "whois.nic.quest" => [
             "uri"  => "whois://whois.nic.quest",
             "tlds" => [ ".quest" ],
         ],
-        "whois.nic.racing"                   => [
+        "whois.nic.racing" => [
             "uri"  => "whois://whois.nic.racing",
             "tlds" => [ ".racing" ],
         ],
-        "whois.nic.radio"                    => [
+        "whois.nic.radio" => [
             "uri"  => "whois://whois.nic.radio",
             "tlds" => [ ".radio" ],
         ],
-        "whois.nic.read"                     => [
+        "whois.nic.read" => [
             "uri"  => "whois://whois.nic.read",
             "tlds" => [ ".read" ],
         ],
-        "whois.nic.realestate"               => [
+        "whois.nic.realestate" => [
             "uri"  => "whois://whois.nic.realestate",
             "tlds" => [ ".realestate" ],
         ],
-        "whois.nic.realtor"                  => [
+        "whois.nic.realtor" => [
             "uri"  => "whois://whois.nic.realtor",
             "tlds" => [ ".realtor" ],
         ],
-        "whois.nic.realty"                   => [
+        "whois.nic.realty" => [
             "uri"  => "whois://whois.nic.realty",
             "tlds" => [ ".realty" ],
         ],
-        "whois.nic.recipes"                  => [
+        "whois.nic.recipes" => [
             "uri"  => "whois://whois.nic.recipes",
             "tlds" => [ ".recipes" ],
         ],
-        "whois.nic.red"                      => [
+        "whois.nic.red" => [
             "uri"  => "whois://whois.nic.red",
             "tlds" => [ ".red" ],
         ],
-        "whois.nic.redstone"                 => [
+        "whois.nic.redstone" => [
             "uri"  => "whois://whois.nic.redstone",
             "tlds" => [ ".redstone" ],
         ],
-        "whois.nic.redumbrella"              => [
+        "whois.nic.redumbrella" => [
             "uri"  => "whois://whois.nic.redumbrella",
             "tlds" => [ ".redumbrella" ],
         ],
-        "whois.nic.rehab"                    => [
+        "whois.nic.rehab" => [
             "uri"  => "whois://whois.nic.rehab",
             "tlds" => [ ".rehab" ],
         ],
-        "whois.nic.reise"                    => [
+        "whois.nic.reise" => [
             "uri"  => "whois://whois.nic.reise",
             "tlds" => [ ".reise" ],
         ],
-        "whois.nic.reisen"                   => [
+        "whois.nic.reisen" => [
             "uri"  => "whois://whois.nic.reisen",
             "tlds" => [ ".reisen" ],
         ],
-        "whois.nic.reit"                     => [
+        "whois.nic.reit" => [
             "uri"  => "whois://whois.nic.reit",
             "tlds" => [ ".reit" ],
         ],
-        "whois.nic.reliance"                 => [
+        "whois.nic.reliance" => [
             "uri"  => "whois://whois.nic.reliance",
             "tlds" => [ ".reliance" ],
         ],
-        "whois.nic.ren"                      => [
+        "whois.nic.ren" => [
             "uri"  => "whois://whois.nic.ren",
             "tlds" => [ ".ren" ],
         ],
-        "whois.nic.rent"                     => [
+        "whois.nic.rent" => [
             "uri"  => "whois://whois.nic.rent",
             "tlds" => [ ".rent" ],
         ],
-        "whois.nic.rentals"                  => [
+        "whois.nic.rentals" => [
             "uri"  => "whois://whois.nic.rentals",
             "tlds" => [ ".rentals" ],
         ],
-        "whois.nic.repair"                   => [
+        "whois.nic.repair" => [
             "uri"  => "whois://whois.nic.repair",
             "tlds" => [ ".repair" ],
         ],
-        "whois.nic.report"                   => [
+        "whois.nic.report" => [
             "uri"  => "whois://whois.nic.report",
             "tlds" => [ ".report" ],
         ],
-        "whois.nic.republican"               => [
+        "whois.nic.republican" => [
             "uri"  => "whois://whois.nic.republican",
             "tlds" => [ ".republican" ],
         ],
-        "whois.nic.rest"                     => [
+        "whois.nic.rest" => [
             "uri"  => "whois://whois.nic.rest",
             "tlds" => [ ".rest" ],
         ],
-        "whois.nic.restaurant"               => [
+        "whois.nic.restaurant" => [
             "uri"  => "whois://whois.nic.restaurant",
             "tlds" => [ ".restaurant" ],
         ],
-        "whois.nic.review"                   => [
+        "whois.nic.review" => [
             "uri"  => "whois://whois.nic.review",
             "tlds" => [ ".review" ],
         ],
-        "whois.nic.reviews"                  => [
+        "whois.nic.reviews" => [
             "uri"  => "whois://whois.nic.reviews",
             "tlds" => [ ".reviews" ],
         ],
-        "whois.nic.rexroth"                  => [
+        "whois.nic.rexroth" => [
             "uri"  => "whois://whois.nic.rexroth",
             "tlds" => [ ".rexroth" ],
         ],
-        "whois.nic.rich"                     => [
+        "whois.nic.rich" => [
             "uri"  => "whois://whois.nic.rich",
             "tlds" => [ ".rich" ],
         ],
-        "whois.nic.richardli"                => [
+        "whois.nic.richardli" => [
             "uri"  => "whois://whois.nic.richardli",
             "tlds" => [ ".richardli" ],
         ],
-        "whois.nic.ricoh"                    => [
+        "whois.nic.ricoh" => [
             "uri"  => "whois://whois.nic.ricoh",
             "tlds" => [ ".ricoh" ],
         ],
-        "whois.nic.ril"                      => [
+        "whois.nic.ril" => [
             "uri"  => "whois://whois.nic.ril",
             "tlds" => [ ".ril" ],
         ],
-        "whois.nic.rio"                      => [
+        "whois.nic.rio" => [
             "uri"  => "whois://whois.nic.rio",
             "tlds" => [ ".rio" ],
         ],
-        "whois.nic.rip"                      => [
+        "whois.nic.rip" => [
             "uri"  => "whois://whois.nic.rip",
             "tlds" => [ ".rip" ],
         ],
-        "whois.nic.rocher"                   => [
+        "whois.nic.rocher" => [
             "uri"  => "whois://whois.nic.rocher",
             "tlds" => [ ".rocher" ],
         ],
-        "whois.nic.rocks"                    => [
+        "whois.nic.rocks" => [
             "uri"  => "whois://whois.nic.rocks",
             "tlds" => [ ".rocks" ],
         ],
-        "whois.nic.rodeo"                    => [
+        "whois.nic.rodeo" => [
             "uri"  => "whois://whois.nic.rodeo",
             "tlds" => [ ".rodeo" ],
         ],
-        "whois.nic.rogers"                   => [
+        "whois.nic.rogers" => [
             "uri"  => "whois://whois.nic.rogers",
             "tlds" => [ ".rogers" ],
         ],
-        "whois.nic.room"                     => [
+        "whois.nic.room" => [
             "uri"  => "whois://whois.nic.room",
             "tlds" => [ ".room" ],
         ],
-        "whois.nic.rsvp"                     => [
+        "whois.nic.rsvp" => [
             "uri"  => "whois://whois.nic.rsvp",
             "tlds" => [ ".rsvp" ],
         ],
-        "whois.nic.rugby"                    => [
+        "whois.nic.rugby" => [
             "uri"  => "whois://whois.nic.rugby",
             "tlds" => [ ".rugby" ],
         ],
-        "whois.nic.ruhr"                     => [
+        "whois.nic.ruhr" => [
             "uri"  => "whois://whois.nic.ruhr",
             "tlds" => [ ".ruhr" ],
         ],
-        "whois.nic.run"                      => [
+        "whois.nic.run" => [
             "uri"  => "whois://whois.nic.run",
             "tlds" => [ ".run" ],
         ],
-        "whois.nic.rwe"                      => [
+        "whois.nic.rwe" => [
             "uri"  => "whois://whois.nic.rwe",
             "tlds" => [ ".rwe" ],
         ],
-        "whois.nic.ryukyu"                   => [
+        "whois.nic.ryukyu" => [
             "uri"  => "whois://whois.nic.ryukyu",
             "tlds" => [ ".ryukyu" ],
         ],
-        "whois.nic.saarland"                 => [
+        "whois.nic.saarland" => [
             "uri"  => "whois://whois.nic.saarland",
             "tlds" => [ ".saarland" ],
         ],
-        "whois.nic.safe"                     => [
+        "whois.nic.safe" => [
             "uri"  => "whois://whois.nic.safe",
             "tlds" => [ ".safe" ],
         ],
-        "whois.nic.safety"                   => [
+        "whois.nic.safety" => [
             "uri"  => "whois://whois.nic.safety",
             "tlds" => [ ".safety" ],
         ],
-        "whois.nic.sakura"                   => [
+        "whois.nic.sakura" => [
             "uri"  => "whois://whois.nic.sakura",
             "tlds" => [ ".sakura" ],
         ],
-        "whois.nic.sale"                     => [
+        "whois.nic.sale" => [
             "uri"  => "whois://whois.nic.sale",
             "tlds" => [ ".sale" ],
         ],
-        "whois.nic.salon"                    => [
+        "whois.nic.salon" => [
             "uri"  => "whois://whois.nic.salon",
             "tlds" => [ ".salon" ],
         ],
-        "whois.nic.samsclub"                 => [
+        "whois.nic.samsclub" => [
             "uri"  => "whois://whois.nic.samsclub",
             "tlds" => [ ".samsclub" ],
         ],
-        "whois.nic.samsung"                  => [
+        "whois.nic.samsung" => [
             "uri"  => "whois://whois.nic.samsung",
             "tlds" => [ ".samsung" ],
         ],
-        "whois.nic.sandvik"                  => [
+        "whois.nic.sandvik" => [
             "uri"  => "whois://whois.nic.sandvik",
             "tlds" => [ ".sandvik" ],
         ],
-        "whois.nic.sandvikcoromant"          => [
+        "whois.nic.sandvikcoromant" => [
             "uri"  => "whois://whois.nic.sandvikcoromant",
             "tlds" => [ ".sandvikcoromant" ],
         ],
-        "whois.nic.sanofi"                   => [
+        "whois.nic.sanofi" => [
             "uri"  => "whois://whois.nic.sanofi",
             "tlds" => [ ".sanofi" ],
         ],
-        "whois.nic.sap"                      => [
+        "whois.nic.sap" => [
             "uri"  => "whois://whois.nic.sap",
             "tlds" => [ ".sap" ],
         ],
-        "whois.nic.sarl"                     => [
+        "whois.nic.sarl" => [
             "uri"  => "whois://whois.nic.sarl",
             "tlds" => [ ".sarl" ],
         ],
-        "whois.nic.sas"                      => [
+        "whois.nic.sas" => [
             "uri"  => "whois://whois.nic.sas",
             "tlds" => [ ".sas" ],
         ],
-        "whois.nic.save"                     => [
+        "whois.nic.save" => [
             "uri"  => "whois://whois.nic.save",
             "tlds" => [ ".save" ],
         ],
-        "whois.nic.saxo"                     => [
+        "whois.nic.saxo" => [
             "uri"  => "whois://whois.nic.saxo",
             "tlds" => [ ".saxo" ],
         ],
-        "whois.nic.sbi"                      => [
+        "whois.nic.sbi" => [
             "uri"  => "whois://whois.nic.sbi",
             "tlds" => [ ".sbi" ],
         ],
-        "whois.nic.sbs"                      => [
+        "whois.nic.sbs" => [
             "uri"  => "whois://whois.nic.sbs",
             "tlds" => [ ".sbs" ],
         ],
-        "whois.nic.sca"                      => [
+        "whois.nic.sca" => [
             "uri"  => "whois://whois.nic.sca",
             "tlds" => [ ".sca" ],
         ],
-        "whois.nic.scb"                      => [
+        "whois.nic.scb" => [
             "uri"  => "whois://whois.nic.scb",
             "tlds" => [ ".scb" ],
         ],
-        "whois.nic.schaeffler"               => [
+        "whois.nic.schaeffler" => [
             "uri"  => "whois://whois.nic.schaeffler",
             "tlds" => [ ".schaeffler" ],
         ],
-        "whois.nic.schmidt"                  => [
+        "whois.nic.schmidt" => [
             "uri"  => "whois://whois.nic.schmidt",
             "tlds" => [ ".schmidt" ],
         ],
-        "whois.nic.scholarships"             => [
+        "whois.nic.scholarships" => [
             "uri"  => "whois://whois.nic.scholarships",
             "tlds" => [ ".scholarships" ],
         ],
-        "whois.nic.school"                   => [
+        "whois.nic.school" => [
             "uri"  => "whois://whois.nic.school",
             "tlds" => [ ".school" ],
         ],
-        "whois.nic.schule"                   => [
+        "whois.nic.schule" => [
             "uri"  => "whois://whois.nic.schule",
             "tlds" => [ ".schule" ],
         ],
-        "whois.nic.schwarz"                  => [
+        "whois.nic.schwarz" => [
             "uri"  => "whois://whois.nic.schwarz",
             "tlds" => [ ".schwarz" ],
         ],
-        "whois.nic.science"                  => [
+        "whois.nic.science" => [
             "uri"  => "whois://whois.nic.science",
             "tlds" => [ ".science" ],
         ],
-        "whois.nic.scot"                     => [
+        "whois.nic.scot" => [
             "uri"  => "whois://whois.nic.scot",
             "tlds" => [ ".scot" ],
         ],
-        "whois.nic.search"                   => [
+        "whois.nic.search" => [
             "uri"  => "whois://whois.nic.search",
             "tlds" => [ ".search" ],
         ],
-        "whois.nic.seat"                     => [
+        "whois.nic.seat" => [
             "uri"  => "whois://whois.nic.seat",
             "tlds" => [ ".seat" ],
         ],
-        "whois.nic.secure"                   => [
+        "whois.nic.secure" => [
             "uri"  => "whois://whois.nic.secure",
             "tlds" => [ ".secure" ],
         ],
-        "whois.nic.security"                 => [
+        "whois.nic.security" => [
             "uri"  => "whois://whois.nic.security",
             "tlds" => [ ".security" ],
         ],
-        "whois.nic.seek"                     => [
+        "whois.nic.seek" => [
             "uri"  => "whois://whois.nic.seek",
             "tlds" => [ ".seek" ],
         ],
-        "whois.nic.select"                   => [
+        "whois.nic.select" => [
             "uri"  => "whois://whois.nic.select",
             "tlds" => [ ".select" ],
         ],
-        "whois.nic.sener"                    => [
+        "whois.nic.sener" => [
             "uri"  => "whois://whois.nic.sener",
             "tlds" => [ ".sener" ],
         ],
-        "whois.nic.services"                 => [
+        "whois.nic.services" => [
             "uri"  => "whois://whois.nic.services",
             "tlds" => [ ".services" ],
         ],
-        "whois.nic.seven"                    => [
+        "whois.nic.seven" => [
             "uri"  => "whois://whois.nic.seven",
             "tlds" => [ ".seven" ],
         ],
-        "whois.nic.sew"                      => [
+        "whois.nic.sew" => [
             "uri"  => "whois://whois.nic.sew",
             "tlds" => [ ".sew" ],
         ],
-        "whois.nic.sex"                      => [
+        "whois.nic.sex" => [
             "uri"  => "whois://whois.nic.sex",
             "tlds" => [ ".sex" ],
         ],
-        "whois.nic.sexy"                     => [
+        "whois.nic.sexy" => [
             "uri"  => "whois://whois.nic.sexy",
             "tlds" => [ ".sexy" ],
         ],
-        "whois.nic.sfr"                      => [
+        "whois.nic.sfr" => [
             "uri"  => "whois://whois.nic.sfr",
             "tlds" => [ ".sfr" ],
         ],
-        "whois.nic.shangrila"                => [
+        "whois.nic.shangrila" => [
             "uri"  => "whois://whois.nic.shangrila",
             "tlds" => [ ".shangrila" ],
         ],
-        "whois.nic.sharp"                    => [
+        "whois.nic.sharp" => [
             "uri"  => "whois://whois.nic.sharp",
             "tlds" => [ ".sharp" ],
         ],
-        "whois.nic.shaw"                     => [
+        "whois.nic.shaw" => [
             "uri"  => "whois://whois.nic.shaw",
             "tlds" => [ ".shaw" ],
         ],
-        "whois.nic.shell"                    => [
+        "whois.nic.shell" => [
             "uri"  => "whois://whois.nic.shell",
             "tlds" => [ ".shell" ],
         ],
-        "whois.nic.shia"                     => [
+        "whois.nic.shia" => [
             "uri"  => "whois://whois.nic.shia",
             "tlds" => [ ".shia" ],
         ],
-        "whois.nic.shiksha"                  => [
+        "whois.nic.shiksha" => [
             "uri"  => "whois://whois.nic.shiksha",
             "tlds" => [ ".shiksha" ],
         ],
-        "whois.nic.shoes"                    => [
+        "whois.nic.shoes" => [
             "uri"  => "whois://whois.nic.shoes",
             "tlds" => [ ".shoes" ],
         ],
-        "whois.nic.shop"                     => [
+        "whois.nic.shop" => [
             "uri"  => "whois://whois.nic.shop",
             "tlds" => [ ".shop" ],
         ],
-        "whois.nic.shopping"                 => [
+        "whois.nic.shopping" => [
             "uri"  => "whois://whois.nic.shopping",
             "tlds" => [ ".shopping" ],
         ],
-        "whois.nic.shouji"                   => [
+        "whois.nic.shouji" => [
             "uri"  => "whois://whois.nic.shouji",
             "tlds" => [ ".shouji" ],
         ],
-        "whois.nic.show"                     => [
+        "whois.nic.show" => [
             "uri"  => "whois://whois.nic.show",
             "tlds" => [ ".show" ],
         ],
-        "whois.nic.showtime"                 => [
+        "whois.nic.showtime" => [
             "uri"  => "whois://whois.nic.showtime",
             "tlds" => [ ".showtime" ],
         ],
-        "whois.nic.silk"                     => [
+        "whois.nic.silk" => [
             "uri"  => "whois://whois.nic.silk",
             "tlds" => [ ".silk" ],
         ],
-        "whois.nic.sina"                     => [
+        "whois.nic.sina" => [
             "uri"  => "whois://whois.nic.sina",
             "tlds" => [ ".sina" ],
         ],
-        "whois.nic.singles"                  => [
+        "whois.nic.singles" => [
             "uri"  => "whois://whois.nic.singles",
             "tlds" => [ ".singles" ],
         ],
-        "whois.nic.site"                     => [
+        "whois.nic.site" => [
             "uri"  => "whois://whois.nic.site",
             "tlds" => [ ".site" ],
         ],
-        "whois.nic.ski"                      => [
+        "whois.nic.ski" => [
             "uri"  => "whois://whois.nic.ski",
             "tlds" => [ ".ski" ],
         ],
-        "whois.nic.skin"                     => [
+        "whois.nic.skin" => [
             "uri"  => "whois://whois.nic.skin",
             "tlds" => [ ".skin" ],
         ],
-        "whois.nic.sky"                      => [
+        "whois.nic.sky" => [
             "uri"  => "whois://whois.nic.sky",
             "tlds" => [ ".sky" ],
         ],
-        "whois.nic.skype"                    => [
+        "whois.nic.skype" => [
             "uri"  => "whois://whois.nic.skype",
             "tlds" => [ ".skype" ],
         ],
-        "whois.nic.sling"                    => [
+        "whois.nic.sling" => [
             "uri"  => "whois://whois.nic.sling",
             "tlds" => [ ".sling" ],
         ],
-        "whois.nic.smart"                    => [
+        "whois.nic.smart" => [
             "uri"  => "whois://whois.nic.smart",
             "tlds" => [ ".smart" ],
         ],
-        "whois.nic.smile"                    => [
+        "whois.nic.smile" => [
             "uri"  => "whois://whois.nic.smile",
             "tlds" => [ ".smile" ],
         ],
-        "whois.nic.sncf"                     => [
+        "whois.nic.sncf" => [
             "uri"  => "whois://whois.nic.sncf",
             "tlds" => [ ".sncf" ],
         ],
-        "whois.nic.soccer"                   => [
+        "whois.nic.soccer" => [
             "uri"  => "whois://whois.nic.soccer",
             "tlds" => [ ".soccer" ],
         ],
-        "whois.nic.social"                   => [
+        "whois.nic.social" => [
             "uri"  => "whois://whois.nic.social",
             "tlds" => [ ".social" ],
         ],
-        "whois.nic.softbank"                 => [
+        "whois.nic.softbank" => [
             "uri"  => "whois://whois.nic.softbank",
             "tlds" => [ ".softbank" ],
         ],
-        "whois.nic.software"                 => [
+        "whois.nic.software" => [
             "uri"  => "whois://whois.nic.software",
             "tlds" => [ ".software" ],
         ],
-        "whois.nic.sohu"                     => [
+        "whois.nic.sohu" => [
             "uri"  => "whois://whois.nic.sohu",
             "tlds" => [ ".sohu" ],
         ],
-        "whois.nic.solar"                    => [
+        "whois.nic.solar" => [
             "uri"  => "whois://whois.nic.solar",
             "tlds" => [ ".solar" ],
         ],
-        "whois.nic.solutions"                => [
+        "whois.nic.solutions" => [
             "uri"  => "whois://whois.nic.solutions",
             "tlds" => [ ".solutions" ],
         ],
-        "whois.nic.song"                     => [
+        "whois.nic.song" => [
             "uri"  => "whois://whois.nic.song",
             "tlds" => [ ".song" ],
         ],
-        "whois.nic.sony"                     => [
+        "whois.nic.sony" => [
             "uri"  => "whois://whois.nic.sony",
             "tlds" => [ ".sony" ],
         ],
-        "whois.nic.soy"                      => [
+        "whois.nic.soy" => [
             "uri"  => "whois://whois.nic.soy",
             "tlds" => [ ".soy" ],
         ],
-        "whois.nic.spa"                      => [
+        "whois.nic.spa" => [
             "uri"  => "whois://whois.nic.spa",
             "tlds" => [ ".spa" ],
         ],
-        "whois.nic.space"                    => [
+        "whois.nic.space" => [
             "uri"  => "whois://whois.nic.space",
             "tlds" => [ ".space" ],
         ],
-        "whois.nic.sport"                    => [
+        "whois.nic.sport" => [
             "uri"  => "whois://whois.nic.sport",
             "tlds" => [ ".sport" ],
         ],
-        "whois.nic.spot"                     => [
+        "whois.nic.spot" => [
             "uri"  => "whois://whois.nic.spot",
             "tlds" => [ ".spot" ],
         ],
-        "whois.nic.srl"                      => [
+        "whois.nic.srl" => [
             "uri"  => "whois://whois.nic.srl",
             "tlds" => [ ".srl" ],
         ],
-        "whois.nic.stada"                    => [
+        "whois.nic.stada" => [
             "uri"  => "whois://whois.nic.stada",
             "tlds" => [ ".stada" ],
         ],
-        "whois.nic.staples"                  => [
+        "whois.nic.staples" => [
             "uri"  => "whois://whois.nic.staples",
             "tlds" => [ ".staples" ],
         ],
-        "whois.nic.star"                     => [
+        "whois.nic.star" => [
             "uri"  => "whois://whois.nic.star",
             "tlds" => [ ".star" ],
         ],
-        "whois.nic.statebank"                => [
+        "whois.nic.statebank" => [
             "uri"  => "whois://whois.nic.statebank",
             "tlds" => [ ".statebank" ],
         ],
-        "whois.nic.statefarm"                => [
+        "whois.nic.statefarm" => [
             "uri"  => "whois://whois.nic.statefarm",
             "tlds" => [ ".statefarm" ],
         ],
-        "whois.nic.stc"                      => [
+        "whois.nic.stc" => [
             "uri"  => "whois://whois.nic.stc",
             "tlds" => [ ".stc" ],
         ],
-        "whois.nic.stcgroup"                 => [
+        "whois.nic.stcgroup" => [
             "uri"  => "whois://whois.nic.stcgroup",
             "tlds" => [ ".stcgroup" ],
         ],
-        "whois.nic.stockholm"                => [
+        "whois.nic.stockholm" => [
             "uri"  => "whois://whois.nic.stockholm",
             "tlds" => [ ".stockholm" ],
         ],
-        "whois.nic.storage"                  => [
+        "whois.nic.storage" => [
             "uri"  => "whois://whois.nic.storage",
             "tlds" => [ ".storage" ],
         ],
-        "whois.nic.store"                    => [
+        "whois.nic.store" => [
             "uri"  => "whois://whois.nic.store",
             "tlds" => [ ".store" ],
         ],
-        "whois.nic.stream"                   => [
+        "whois.nic.stream" => [
             "uri"  => "whois://whois.nic.stream",
             "tlds" => [ ".stream" ],
         ],
-        "whois.nic.studio"                   => [
+        "whois.nic.studio" => [
             "uri"  => "whois://whois.nic.studio",
             "tlds" => [ ".studio" ],
         ],
-        "whois.nic.study"                    => [
+        "whois.nic.study" => [
             "uri"  => "whois://whois.nic.study",
             "tlds" => [ ".study" ],
         ],
-        "whois.nic.style"                    => [
+        "whois.nic.style" => [
             "uri"  => "whois://whois.nic.style",
             "tlds" => [ ".style" ],
         ],
-        "whois.nic.sucks"                    => [
+        "whois.nic.sucks" => [
             "uri"  => "whois://whois.nic.sucks",
             "tlds" => [ ".sucks" ],
         ],
-        "whois.nic.supplies"                 => [
+        "whois.nic.supplies" => [
             "uri"  => "whois://whois.nic.supplies",
             "tlds" => [ ".supplies" ],
         ],
-        "whois.nic.supply"                   => [
+        "whois.nic.supply" => [
             "uri"  => "whois://whois.nic.supply",
             "tlds" => [ ".supply" ],
         ],
-        "whois.nic.support"                  => [
+        "whois.nic.support" => [
             "uri"  => "whois://whois.nic.support",
             "tlds" => [ ".support" ],
         ],
-        "whois.nic.surf"                     => [
+        "whois.nic.surf" => [
             "uri"  => "whois://whois.nic.surf",
             "tlds" => [ ".surf" ],
         ],
-        "whois.nic.surgery"                  => [
+        "whois.nic.surgery" => [
             "uri"  => "whois://whois.nic.surgery",
             "tlds" => [ ".surgery" ],
         ],
-        "whois.nic.suzuki"                   => [
+        "whois.nic.suzuki" => [
             "uri"  => "whois://whois.nic.suzuki",
             "tlds" => [ ".suzuki" ],
         ],
-        "whois.nic.swatch"                   => [
+        "whois.nic.swatch" => [
             "uri"  => "whois://whois.nic.swatch",
             "tlds" => [ ".swatch" ],
         ],
-        "whois.nic.swiss"                    => [
+        "whois.nic.swiss" => [
             "uri"  => "whois://whois.nic.swiss",
             "tlds" => [ ".swiss" ],
         ],
-        "whois.nic.sydney"                   => [
+        "whois.nic.sydney" => [
             "uri"  => "whois://whois.nic.sydney",
             "tlds" => [ ".sydney" ],
         ],
-        "whois.nic.systems"                  => [
+        "whois.nic.systems" => [
             "uri"  => "whois://whois.nic.systems",
             "tlds" => [ ".systems" ],
         ],
-        "whois.nic.tab"                      => [
+        "whois.nic.tab" => [
             "uri"  => "whois://whois.nic.tab",
             "tlds" => [ ".tab" ],
         ],
-        "whois.nic.taipei"                   => [
+        "whois.nic.taipei" => [
             "uri"  => "whois://whois.nic.taipei",
             "tlds" => [ ".taipei" ],
         ],
-        "whois.nic.talk"                     => [
+        "whois.nic.talk" => [
             "uri"  => "whois://whois.nic.talk",
             "tlds" => [ ".talk" ],
         ],
-        "whois.nic.taobao"                   => [
+        "whois.nic.taobao" => [
             "uri"  => "whois://whois.nic.taobao",
             "tlds" => [ ".taobao" ],
         ],
-        "whois.nic.target"                   => [
+        "whois.nic.target" => [
             "uri"  => "whois://whois.nic.target",
             "tlds" => [ ".target" ],
         ],
-        "whois.nic.tatamotors"               => [
+        "whois.nic.tatamotors" => [
             "uri"  => "whois://whois.nic.tatamotors",
             "tlds" => [ ".tatamotors" ],
         ],
-        "whois.nic.tatar"                    => [
+        "whois.nic.tatar" => [
             "uri"  => "whois://whois.nic.tatar",
             "tlds" => [ ".tatar" ],
         ],
-        "whois.nic.tattoo"                   => [
+        "whois.nic.tattoo" => [
             "uri"  => "whois://whois.nic.tattoo",
             "tlds" => [ ".tattoo" ],
         ],
-        "whois.nic.tax"                      => [
+        "whois.nic.tax" => [
             "uri"  => "whois://whois.nic.tax",
             "tlds" => [ ".tax" ],
         ],
-        "whois.nic.taxi"                     => [
+        "whois.nic.taxi" => [
             "uri"  => "whois://whois.nic.taxi",
             "tlds" => [ ".taxi" ],
         ],
-        "whois.nic.tci"                      => [
+        "whois.nic.tci" => [
             "uri"  => "whois://whois.nic.tci",
             "tlds" => [ ".tci" ],
         ],
-        "whois.nic.tdk"                      => [
+        "whois.nic.tdk" => [
             "uri"  => "whois://whois.nic.tdk",
             "tlds" => [ ".tdk" ],
         ],
-        "whois.nic.team"                     => [
+        "whois.nic.team" => [
             "uri"  => "whois://whois.nic.team",
             "tlds" => [ ".team" ],
         ],
-        "whois.nic.tech"                     => [
+        "whois.nic.tech" => [
             "uri"  => "whois://whois.nic.tech",
             "tlds" => [ ".tech" ],
         ],
-        "whois.nic.technology"               => [
+        "whois.nic.technology" => [
             "uri"  => "whois://whois.nic.technology",
             "tlds" => [ ".technology" ],
         ],
-        "whois.nic.temasek"                  => [
+        "whois.nic.temasek" => [
             "uri"  => "whois://whois.nic.temasek",
             "tlds" => [ ".temasek" ],
         ],
-        "whois.nic.tennis"                   => [
+        "whois.nic.tennis" => [
             "uri"  => "whois://whois.nic.tennis",
             "tlds" => [ ".tennis" ],
         ],
-        "whois.nic.teva"                     => [
+        "whois.nic.teva" => [
             "uri"  => "whois://whois.nic.teva",
             "tlds" => [ ".teva" ],
         ],
-        "whois.nic.thd"                      => [
+        "whois.nic.thd" => [
             "uri"  => "whois://whois.nic.thd",
             "tlds" => [ ".thd" ],
         ],
-        "whois.nic.theater"                  => [
+        "whois.nic.theater" => [
             "uri"  => "whois://whois.nic.theater",
             "tlds" => [ ".theater" ],
         ],
-        "whois.nic.theatre"                  => [
+        "whois.nic.theatre" => [
             "uri"  => "whois://whois.nic.theatre",
             "tlds" => [ ".theatre" ],
         ],
-        "whois.nic.tiaa"                     => [
+        "whois.nic.tiaa" => [
             "uri"  => "whois://whois.nic.tiaa",
             "tlds" => [ ".tiaa" ],
         ],
-        "whois.nic.tickets"                  => [
+        "whois.nic.tickets" => [
             "uri"  => "whois://whois.nic.tickets",
             "tlds" => [ ".tickets" ],
         ],
-        "whois.nic.tienda"                   => [
+        "whois.nic.tienda" => [
             "uri"  => "whois://whois.nic.tienda",
             "tlds" => [ ".tienda" ],
         ],
-        "whois.nic.tips"                     => [
+        "whois.nic.tips" => [
             "uri"  => "whois://whois.nic.tips",
             "tlds" => [ ".tips" ],
         ],
-        "whois.nic.tires"                    => [
+        "whois.nic.tires" => [
             "uri"  => "whois://whois.nic.tires",
             "tlds" => [ ".tires" ],
         ],
-        "whois.nic.tirol"                    => [
+        "whois.nic.tirol" => [
             "uri"  => "whois://whois.nic.tirol",
             "tlds" => [ ".tirol" ],
         ],
-        "whois.nic.tjmaxx"                   => [
+        "whois.nic.tjmaxx" => [
             "uri"  => "whois://whois.nic.tjmaxx",
             "tlds" => [ ".tjmaxx" ],
         ],
-        "whois.nic.tjx"                      => [
+        "whois.nic.tjx" => [
             "uri"  => "whois://whois.nic.tjx",
             "tlds" => [ ".tjx" ],
         ],
-        "whois.nic.tkmaxx"                   => [
+        "whois.nic.tkmaxx" => [
             "uri"  => "whois://whois.nic.tkmaxx",
             "tlds" => [ ".tkmaxx" ],
         ],
-        "whois.nic.tmall"                    => [
+        "whois.nic.tmall" => [
             "uri"  => "whois://whois.nic.tmall",
             "tlds" => [ ".tmall" ],
         ],
-        "whois.nic.today"                    => [
+        "whois.nic.today" => [
             "uri"  => "whois://whois.nic.today",
             "tlds" => [ ".today" ],
         ],
-        "whois.nic.tokyo"                    => [
+        "whois.nic.tokyo" => [
             "uri"  => "whois://whois.nic.tokyo",
             "tlds" => [ ".tokyo" ],
         ],
-        "whois.nic.tools"                    => [
+        "whois.nic.tools" => [
             "uri"  => "whois://whois.nic.tools",
             "tlds" => [ ".tools" ],
         ],
-        "whois.nic.top"                      => [
+        "whois.nic.top" => [
             "uri"  => "whois://whois.nic.top",
             "tlds" => [ ".top" ],
         ],
-        "whois.nic.toray"                    => [
+        "whois.nic.toray" => [
             "uri"  => "whois://whois.nic.toray",
             "tlds" => [ ".toray" ],
         ],
-        "whois.nic.toshiba"                  => [
+        "whois.nic.toshiba" => [
             "uri"  => "whois://whois.nic.toshiba",
             "tlds" => [ ".toshiba" ],
         ],
-        "whois.nic.total"                    => [
+        "whois.nic.total" => [
             "uri"  => "whois://whois.nic.total",
             "tlds" => [ ".total" ],
         ],
-        "whois.nic.tours"                    => [
+        "whois.nic.tours" => [
             "uri"  => "whois://whois.nic.tours",
             "tlds" => [ ".tours" ],
         ],
-        "whois.nic.town"                     => [
+        "whois.nic.town" => [
             "uri"  => "whois://whois.nic.town",
             "tlds" => [ ".town" ],
         ],
-        "whois.nic.toyota"                   => [
+        "whois.nic.toyota" => [
             "uri"  => "whois://whois.nic.toyota",
             "tlds" => [ ".toyota" ],
         ],
-        "whois.nic.toys"                     => [
+        "whois.nic.toys" => [
             "uri"  => "whois://whois.nic.toys",
             "tlds" => [ ".toys" ],
         ],
-        "whois.nic.trade"                    => [
+        "whois.nic.trade" => [
             "uri"  => "whois://whois.nic.trade",
             "tlds" => [ ".trade" ],
         ],
-        "whois.nic.trading"                  => [
+        "whois.nic.trading" => [
             "uri"  => "whois://whois.nic.trading",
             "tlds" => [ ".trading" ],
         ],
-        "whois.nic.training"                 => [
+        "whois.nic.training" => [
             "uri"  => "whois://whois.nic.training",
             "tlds" => [ ".training" ],
         ],
-        "whois.nic.travelers"                => [
+        "whois.nic.travelers" => [
             "uri"  => "whois://whois.nic.travelers",
             "tlds" => [ ".travelers" ],
         ],
-        "whois.nic.travelersinsurance"       => [
+        "whois.nic.travelersinsurance" => [
             "uri"  => "whois://whois.nic.travelersinsurance",
             "tlds" => [ ".travelersinsurance" ],
         ],
-        "whois.nic.trust"                    => [
+        "whois.nic.trust" => [
             "uri"  => "whois://whois.nic.trust",
             "tlds" => [ ".trust" ],
         ],
-        "whois.nic.trv"                      => [
+        "whois.nic.trv" => [
             "uri"  => "whois://whois.nic.trv",
             "tlds" => [ ".trv" ],
         ],
-        "whois.nic.tube"                     => [
+        "whois.nic.tube" => [
             "uri"  => "whois://whois.nic.tube",
             "tlds" => [ ".tube" ],
         ],
-        "whois.nic.tui"                      => [
+        "whois.nic.tui" => [
             "uri"  => "whois://whois.nic.tui",
             "tlds" => [ ".tui" ],
         ],
-        "whois.nic.tunes"                    => [
+        "whois.nic.tunes" => [
             "uri"  => "whois://whois.nic.tunes",
             "tlds" => [ ".tunes" ],
         ],
-        "whois.nic.tushu"                    => [
+        "whois.nic.tushu" => [
             "uri"  => "whois://whois.nic.tushu",
             "tlds" => [ ".tushu" ],
         ],
-        "whois.nic.tvs"                      => [
+        "whois.nic.tvs" => [
             "uri"  => "whois://whois.nic.tvs",
             "tlds" => [ ".tvs" ],
         ],
-        "whois.nic.ubank"                    => [
+        "whois.nic.ubank" => [
             "uri"  => "whois://whois.nic.ubank",
             "tlds" => [ ".ubank" ],
         ],
-        "whois.nic.ubs"                      => [
+        "whois.nic.ubs" => [
             "uri"  => "whois://whois.nic.ubs",
             "tlds" => [ ".ubs" ],
         ],
-        "whois.nic.unicom"                   => [
+        "whois.nic.unicom" => [
             "uri"  => "whois://whois.nic.unicom",
             "tlds" => [ ".unicom" ],
         ],
-        "whois.nic.university"               => [
+        "whois.nic.university" => [
             "uri"  => "whois://whois.nic.university",
             "tlds" => [ ".university" ],
         ],
-        "whois.nic.uno"                      => [
+        "whois.nic.uno" => [
             "uri"  => "whois://whois.nic.uno",
             "tlds" => [ ".uno" ],
         ],
-        "whois.nic.uol"                      => [
+        "whois.nic.uol" => [
             "uri"  => "whois://whois.nic.uol",
             "tlds" => [ ".uol" ],
         ],
-        "whois.nic.ups"                      => [
+        "whois.nic.ups" => [
             "uri"  => "whois://whois.nic.ups",
             "tlds" => [ ".ups" ],
         ],
-        "whois.nic.vacations"                => [
+        "whois.nic.vacations" => [
             "uri"  => "whois://whois.nic.vacations",
             "tlds" => [ ".vacations" ],
         ],
-        "whois.nic.vana"                     => [
+        "whois.nic.vana" => [
             "uri"  => "whois://whois.nic.vana",
             "tlds" => [ ".vana" ],
         ],
-        "whois.nic.vanguard"                 => [
+        "whois.nic.vanguard" => [
             "uri"  => "whois://whois.nic.vanguard",
             "tlds" => [ ".vanguard" ],
         ],
-        "whois.nic.vegas"                    => [
+        "whois.nic.vegas" => [
             "uri"  => "whois://whois.nic.vegas",
             "tlds" => [ ".vegas" ],
         ],
-        "whois.nic.ventures"                 => [
+        "whois.nic.ventures" => [
             "uri"  => "whois://whois.nic.ventures",
             "tlds" => [ ".ventures" ],
         ],
-        "whois.nic.verisign"                 => [
+        "whois.nic.verisign" => [
             "uri"  => "whois://whois.nic.verisign",
             "tlds" => [ ".verisign" ],
         ],
-        "whois.nic.versicherung"             => [
+        "whois.nic.versicherung" => [
             "uri"  => "whois://whois.nic.versicherung",
             "tlds" => [ ".versicherung" ],
         ],
-        "whois.nic.vet"                      => [
+        "whois.nic.vet" => [
             "uri"  => "whois://whois.nic.vet",
             "tlds" => [ ".vet" ],
         ],
-        "whois.nic.viajes"                   => [
+        "whois.nic.viajes" => [
             "uri"  => "whois://whois.nic.viajes",
             "tlds" => [ ".viajes" ],
         ],
-        "whois.nic.video"                    => [
+        "whois.nic.video" => [
             "uri"  => "whois://whois.nic.video",
             "tlds" => [ ".video" ],
         ],
-        "whois.nic.vig"                      => [
+        "whois.nic.vig" => [
             "uri"  => "whois://whois.nic.vig",
             "tlds" => [ ".vig" ],
         ],
-        "whois.nic.viking"                   => [
+        "whois.nic.viking" => [
             "uri"  => "whois://whois.nic.viking",
             "tlds" => [ ".viking" ],
         ],
-        "whois.nic.villas"                   => [
+        "whois.nic.villas" => [
             "uri"  => "whois://whois.nic.villas",
             "tlds" => [ ".villas" ],
         ],
-        "whois.nic.vin"                      => [
+        "whois.nic.vin" => [
             "uri"  => "whois://whois.nic.vin",
             "tlds" => [ ".vin" ],
         ],
-        "whois.nic.vip"                      => [
+        "whois.nic.vip" => [
             "uri"  => "whois://whois.nic.vip",
             "tlds" => [ ".vip" ],
         ],
-        "whois.nic.virgin"                   => [
+        "whois.nic.virgin" => [
             "uri"  => "whois://whois.nic.virgin",
             "tlds" => [ ".virgin" ],
         ],
-        "whois.nic.visa"                     => [
+        "whois.nic.visa" => [
             "uri"  => "whois://whois.nic.visa",
             "tlds" => [ ".visa" ],
         ],
-        "whois.nic.vision"                   => [
+        "whois.nic.vision" => [
             "uri"  => "whois://whois.nic.vision",
             "tlds" => [ ".vision" ],
         ],
-        "whois.nic.viva"                     => [
+        "whois.nic.viva" => [
             "uri"  => "whois://whois.nic.viva",
             "tlds" => [ ".viva" ],
         ],
-        "whois.nic.vivo"                     => [
+        "whois.nic.vivo" => [
             "uri"  => "whois://whois.nic.vivo",
             "tlds" => [ ".vivo" ],
         ],
-        "whois.nic.vlaanderen"               => [
+        "whois.nic.vlaanderen" => [
             "uri"  => "whois://whois.nic.vlaanderen",
             "tlds" => [ ".vlaanderen" ],
         ],
-        "whois.nic.vodka"                    => [
+        "whois.nic.vodka" => [
             "uri"  => "whois://whois.nic.vodka",
             "tlds" => [ ".vodka" ],
         ],
-        "whois.nic.volkswagen"               => [
+        "whois.nic.volkswagen" => [
             "uri"  => "whois://whois.nic.volkswagen",
             "tlds" => [ ".volkswagen" ],
         ],
-        "whois.nic.volvo"                    => [
+        "whois.nic.volvo" => [
             "uri"  => "whois://whois.nic.volvo",
             "tlds" => [ ".volvo" ],
         ],
-        "whois.nic.vote"                     => [
+        "whois.nic.vote" => [
             "uri"  => "whois://whois.nic.vote",
             "tlds" => [ ".vote" ],
         ],
-        "whois.nic.voting"                   => [
+        "whois.nic.voting" => [
             "uri"  => "whois://whois.nic.voting",
             "tlds" => [ ".voting" ],
         ],
-        "whois.nic.voto"                     => [
+        "whois.nic.voto" => [
             "uri"  => "whois://whois.nic.voto",
             "tlds" => [ ".voto" ],
         ],
-        "whois.nic.voyage"                   => [
+        "whois.nic.voyage" => [
             "uri"  => "whois://whois.nic.voyage",
             "tlds" => [ ".voyage" ],
         ],
-        "whois.nic.wales"                    => [
+        "whois.nic.wales" => [
             "uri"  => "whois://whois.nic.wales",
             "tlds" => [ ".wales" ],
         ],
-        "whois.nic.walmart"                  => [
+        "whois.nic.walmart" => [
             "uri"  => "whois://whois.nic.walmart",
             "tlds" => [ ".walmart" ],
         ],
-        "whois.nic.walter"                   => [
+        "whois.nic.walter" => [
             "uri"  => "whois://whois.nic.walter",
             "tlds" => [ ".walter" ],
         ],
-        "whois.nic.wang"                     => [
+        "whois.nic.wang" => [
             "uri"  => "whois://whois.nic.wang",
             "tlds" => [ ".wang" ],
         ],
-        "whois.nic.wanggou"                  => [
+        "whois.nic.wanggou" => [
             "uri"  => "whois://whois.nic.wanggou",
             "tlds" => [ ".wanggou" ],
         ],
-        "whois.nic.watch"                    => [
+        "whois.nic.watch" => [
             "uri"  => "whois://whois.nic.watch",
             "tlds" => [ ".watch" ],
         ],
-        "whois.nic.watches"                  => [
+        "whois.nic.watches" => [
             "uri"  => "whois://whois.nic.watches",
             "tlds" => [ ".watches" ],
         ],
-        "whois.nic.weather"                  => [
+        "whois.nic.weather" => [
             "uri"  => "whois://whois.nic.weather",
             "tlds" => [ ".weather" ],
         ],
-        "whois.nic.weatherchannel"           => [
+        "whois.nic.weatherchannel" => [
             "uri"  => "whois://whois.nic.weatherchannel",
             "tlds" => [ ".weatherchannel" ],
         ],
-        "whois.nic.webcam"                   => [
+        "whois.nic.webcam" => [
             "uri"  => "whois://whois.nic.webcam",
             "tlds" => [ ".webcam" ],
         ],
-        "whois.nic.weber"                    => [
+        "whois.nic.weber" => [
             "uri"  => "whois://whois.nic.weber",
             "tlds" => [ ".weber" ],
         ],
-        "whois.nic.website"                  => [
+        "whois.nic.website" => [
             "uri"  => "whois://whois.nic.website",
             "tlds" => [ ".website" ],
         ],
-        "whois.nic.wed"                      => [
+        "whois.nic.wed" => [
             "uri"  => "whois://whois.nic.wed",
             "tlds" => [ ".wed" ],
         ],
-        "whois.nic.wedding"                  => [
+        "whois.nic.wedding" => [
             "uri"  => "whois://whois.nic.wedding",
             "tlds" => [ ".wedding" ],
         ],
-        "whois.nic.weibo"                    => [
+        "whois.nic.weibo" => [
             "uri"  => "whois://whois.nic.weibo",
             "tlds" => [ ".weibo" ],
         ],
-        "whois.nic.weir"                     => [
+        "whois.nic.weir" => [
             "uri"  => "whois://whois.nic.weir",
             "tlds" => [ ".weir" ],
         ],
-        "whois.nic.whoswho"                  => [
+        "whois.nic.whoswho" => [
             "uri"  => "whois://whois.nic.whoswho",
             "tlds" => [ ".whoswho" ],
         ],
-        "whois.nic.wien"                     => [
+        "whois.nic.wien" => [
             "uri"  => "whois://whois.nic.wien",
             "tlds" => [ ".wien" ],
         ],
-        "whois.nic.wiki"                     => [
+        "whois.nic.wiki" => [
             "uri"  => "whois://whois.nic.wiki",
             "tlds" => [ ".wiki" ],
         ],
-        "whois.nic.williamhill"              => [
+        "whois.nic.williamhill" => [
             "uri"  => "whois://whois.nic.williamhill",
             "tlds" => [ ".williamhill" ],
         ],
-        "whois.nic.win"                      => [
+        "whois.nic.win" => [
             "uri"  => "whois://whois.nic.win",
             "tlds" => [ ".win" ],
         ],
-        "whois.nic.windows"                  => [
+        "whois.nic.windows" => [
             "uri"  => "whois://whois.nic.windows",
             "tlds" => [ ".windows" ],
         ],
-        "whois.nic.wine"                     => [
+        "whois.nic.wine" => [
             "uri"  => "whois://whois.nic.wine",
             "tlds" => [ ".wine" ],
         ],
-        "whois.nic.winners"                  => [
+        "whois.nic.winners" => [
             "uri"  => "whois://whois.nic.winners",
             "tlds" => [ ".winners" ],
         ],
-        "whois.nic.wme"                      => [
+        "whois.nic.wme" => [
             "uri"  => "whois://whois.nic.wme",
             "tlds" => [ ".wme" ],
         ],
-        "whois.nic.wolterskluwer"            => [
+        "whois.nic.wolterskluwer" => [
             "uri"  => "whois://whois.nic.wolterskluwer",
             "tlds" => [ ".wolterskluwer" ],
         ],
-        "whois.nic.woodside"                 => [
+        "whois.nic.woodside" => [
             "uri"  => "whois://whois.nic.woodside",
             "tlds" => [ ".woodside" ],
         ],
-        "whois.nic.work"                     => [
+        "whois.nic.work" => [
             "uri"  => "whois://whois.nic.work",
             "tlds" => [ ".work" ],
         ],
-        "whois.nic.works"                    => [
+        "whois.nic.works" => [
             "uri"  => "whois://whois.nic.works",
             "tlds" => [ ".works" ],
         ],
-        "whois.nic.world"                    => [
+        "whois.nic.world" => [
             "uri"  => "whois://whois.nic.world",
             "tlds" => [ ".world" ],
         ],
-        "whois.nic.wow"                      => [
+        "whois.nic.wow" => [
             "uri"  => "whois://whois.nic.wow",
             "tlds" => [ ".wow" ],
         ],
-        "whois.nic.wtc"                      => [
+        "whois.nic.wtc" => [
             "uri"  => "whois://whois.nic.wtc",
             "tlds" => [ ".wtc" ],
         ],
-        "whois.nic.wtf"                      => [
+        "whois.nic.wtf" => [
             "uri"  => "whois://whois.nic.wtf",
             "tlds" => [ ".wtf" ],
         ],
-        "whois.nic.xbox"                     => [
+        "whois.nic.xbox" => [
             "uri"  => "whois://whois.nic.xbox",
             "tlds" => [ ".xbox" ],
         ],
-        "whois.nic.xerox"                    => [
+        "whois.nic.xerox" => [
             "uri"  => "whois://whois.nic.xerox",
             "tlds" => [ ".xerox" ],
         ],
-        "whois.nic.xfinity"                  => [
+        "whois.nic.xfinity" => [
             "uri"  => "whois://whois.nic.xfinity",
             "tlds" => [ ".xfinity" ],
         ],
-        "whois.nic.xihuan"                   => [
+        "whois.nic.xihuan" => [
             "uri"  => "whois://whois.nic.xihuan",
             "tlds" => [ ".xihuan" ],
         ],
-        "whois.nic.xin"                      => [
+        "whois.nic.xin" => [
             "uri"  => "whois://whois.nic.xin",
             "tlds" => [ ".xin" ],
         ],
-        "whois.nic.xn--11b4c3d"              => [
+        "whois.nic.xn--11b4c3d" => [
             "uri"  => "whois://whois.nic.xn--11b4c3d",
             "tlds" => [ ".xn--11b4c3d" ],
         ],
-        "whois.nic.xn--1ck2e1b"              => [
+        "whois.nic.xn--1ck2e1b" => [
             "uri"  => "whois://whois.nic.xn--1ck2e1b",
             "tlds" => [ ".xn--1ck2e1b" ],
         ],
-        "whois.nic.xn--1qqw23a"              => [
+        "whois.nic.xn--1qqw23a" => [
             "uri"  => "whois://whois.nic.xn--1qqw23a",
             "tlds" => [ ".xn--1qqw23a" ],
         ],
-        "whois.nic.xn--30rr7y"               => [
+        "whois.nic.xn--30rr7y" => [
             "uri"  => "whois://whois.nic.xn--30rr7y",
             "tlds" => [ ".xn--30rr7y" ],
         ],
-        "whois.nic.xn--3bst00m"              => [
+        "whois.nic.xn--3bst00m" => [
             "uri"  => "whois://whois.nic.xn--3bst00m",
             "tlds" => [ ".xn--3bst00m" ],
         ],
-        "whois.nic.xn--3ds443g"              => [
+        "whois.nic.xn--3ds443g" => [
             "uri"  => "whois://whois.nic.xn--3ds443g",
             "tlds" => [ ".xn--3ds443g" ],
         ],
-        "whois.nic.xn--3pxu8k"               => [
+        "whois.nic.xn--3pxu8k" => [
             "uri"  => "whois://whois.nic.xn--3pxu8k",
             "tlds" => [ ".xn--3pxu8k" ],
         ],
-        "whois.nic.xn--42c2d9a"              => [
+        "whois.nic.xn--42c2d9a" => [
             "uri"  => "whois://whois.nic.xn--42c2d9a",
             "tlds" => [ ".xn--42c2d9a" ],
         ],
-        "whois.nic.xn--45q11c"               => [
+        "whois.nic.xn--45q11c" => [
             "uri"  => "whois://whois.nic.xn--45q11c",
             "tlds" => [ ".xn--45q11c" ],
         ],
-        "whois.nic.xn--4gbrim"               => [
+        "whois.nic.xn--4gbrim" => [
             "uri"  => "whois://whois.nic.xn--4gbrim",
             "tlds" => [ ".xn--4gbrim" ],
         ],
-        "whois.nic.xn--55qw42g"              => [
+        "whois.nic.xn--55qw42g" => [
             "uri"  => "whois://whois.nic.xn--55qw42g",
             "tlds" => [ ".xn--55qw42g" ],
         ],
-        "whois.nic.xn--55qx5d"               => [
+        "whois.nic.xn--55qx5d" => [
             "uri"  => "whois://whois.nic.xn--55qx5d",
             "tlds" => [ ".xn--55qx5d" ],
         ],
-        "whois.nic.xn--5su34j936bgsg"        => [
+        "whois.nic.xn--5su34j936bgsg" => [
             "uri"  => "whois://whois.nic.xn--5su34j936bgsg",
             "tlds" => [ ".xn--5su34j936bgsg" ],
         ],
-        "whois.nic.xn--5tzm5g"               => [
+        "whois.nic.xn--5tzm5g" => [
             "uri"  => "whois://whois.nic.xn--5tzm5g",
             "tlds" => [ ".xn--5tzm5g" ],
         ],
-        "whois.nic.xn--6frz82g"              => [
+        "whois.nic.xn--6frz82g" => [
             "uri"  => "whois://whois.nic.xn--6frz82g",
             "tlds" => [ ".xn--6frz82g" ],
         ],
-        "whois.nic.xn--6qq986b3xl"           => [
+        "whois.nic.xn--6qq986b3xl" => [
             "uri"  => "whois://whois.nic.xn--6qq986b3xl",
             "tlds" => [ ".xn--6qq986b3xl" ],
         ],
-        "whois.nic.xn--80adxhks"             => [
+        "whois.nic.xn--80adxhks" => [
             "uri"  => "whois://whois.nic.xn--80adxhks",
             "tlds" => [ ".xn--80adxhks" ],
         ],
-        "whois.nic.xn--80aqecdr1a"           => [
+        "whois.nic.xn--80aqecdr1a" => [
             "uri"  => "whois://whois.nic.xn--80aqecdr1a",
             "tlds" => [ ".xn--80aqecdr1a" ],
         ],
-        "whois.nic.xn--80asehdb"             => [
+        "whois.nic.xn--80asehdb" => [
             "uri"  => "whois://whois.nic.xn--80asehdb",
             "tlds" => [ ".xn--80asehdb" ],
         ],
-        "whois.nic.xn--80aswg"               => [
+        "whois.nic.xn--80aswg" => [
             "uri"  => "whois://whois.nic.xn--80aswg",
             "tlds" => [ ".xn--80aswg" ],
         ],
-        "whois.nic.xn--8y0a063a"             => [
+        "whois.nic.xn--8y0a063a" => [
             "uri"  => "whois://whois.nic.xn--8y0a063a",
             "tlds" => [ ".xn--8y0a063a" ],
         ],
-        "whois.nic.xn--9dbq2a"               => [
+        "whois.nic.xn--9dbq2a" => [
             "uri"  => "whois://whois.nic.xn--9dbq2a",
             "tlds" => [ ".xn--9dbq2a" ],
         ],
-        "whois.nic.xn--9et52u"               => [
+        "whois.nic.xn--9et52u" => [
             "uri"  => "whois://whois.nic.xn--9et52u",
             "tlds" => [ ".xn--9et52u" ],
         ],
-        "whois.nic.xn--9krt00a"              => [
+        "whois.nic.xn--9krt00a" => [
             "uri"  => "whois://whois.nic.xn--9krt00a",
             "tlds" => [ ".xn--9krt00a" ],
         ],
-        "whois.nic.xn--b4w605ferd"           => [
+        "whois.nic.xn--b4w605ferd" => [
             "uri"  => "whois://whois.nic.xn--b4w605ferd",
             "tlds" => [ ".xn--b4w605ferd" ],
         ],
-        "whois.nic.xn--bck1b9a5dre4c"        => [
+        "whois.nic.xn--bck1b9a5dre4c" => [
             "uri"  => "whois://whois.nic.xn--bck1b9a5dre4c",
             "tlds" => [ ".xn--bck1b9a5dre4c" ],
         ],
-        "whois.nic.xn--c1avg"                => [
+        "whois.nic.xn--c1avg" => [
             "uri"  => "whois://whois.nic.xn--c1avg",
             "tlds" => [ ".xn--c1avg" ],
         ],
-        "whois.nic.xn--c2br7g"               => [
+        "whois.nic.xn--c2br7g" => [
             "uri"  => "whois://whois.nic.xn--c2br7g",
             "tlds" => [ ".xn--c2br7g" ],
         ],
-        "whois.nic.xn--cck2b3b"              => [
+        "whois.nic.xn--cck2b3b" => [
             "uri"  => "whois://whois.nic.xn--cck2b3b",
             "tlds" => [ ".xn--cck2b3b" ],
         ],
-        "whois.nic.xn--cckwcxetd"            => [
+        "whois.nic.xn--cckwcxetd" => [
             "uri"  => "whois://whois.nic.xn--cckwcxetd",
             "tlds" => [ ".xn--cckwcxetd" ],
         ],
-        "whois.nic.xn--cg4bki"               => [
+        "whois.nic.xn--cg4bki" => [
             "uri"  => "whois://whois.nic.xn--cg4bki",
             "tlds" => [ ".xn--cg4bki" ],
         ],
-        "whois.nic.xn--czr694b"              => [
+        "whois.nic.xn--czr694b" => [
             "uri"  => "whois://whois.nic.xn--czr694b",
             "tlds" => [ ".xn--czr694b" ],
         ],
-        "whois.nic.xn--czrs0t"               => [
+        "whois.nic.xn--czrs0t" => [
             "uri"  => "whois://whois.nic.xn--czrs0t",
             "tlds" => [ ".xn--czrs0t" ],
         ],
-        "whois.nic.xn--czru2d"               => [
+        "whois.nic.xn--czru2d" => [
             "uri"  => "whois://whois.nic.xn--czru2d",
             "tlds" => [ ".xn--czru2d" ],
         ],
-        "whois.nic.xn--d1acj3b"              => [
+        "whois.nic.xn--d1acj3b" => [
             "uri"  => "whois://whois.nic.xn--d1acj3b",
             "tlds" => [ ".xn--d1acj3b" ],
         ],
-        "whois.nic.xn--eckvdtc9d"            => [
+        "whois.nic.xn--eckvdtc9d" => [
             "uri"  => "whois://whois.nic.xn--eckvdtc9d",
             "tlds" => [ ".xn--eckvdtc9d" ],
         ],
-        "whois.nic.xn--efvy88h"              => [
+        "whois.nic.xn--efvy88h" => [
             "uri"  => "whois://whois.nic.xn--efvy88h",
             "tlds" => [ ".xn--efvy88h" ],
         ],
-        "whois.nic.xn--fct429k"              => [
+        "whois.nic.xn--fct429k" => [
             "uri"  => "whois://whois.nic.xn--fct429k",
             "tlds" => [ ".xn--fct429k" ],
         ],
-        "whois.nic.xn--fhbei"                => [
+        "whois.nic.xn--fhbei" => [
             "uri"  => "whois://whois.nic.xn--fhbei",
             "tlds" => [ ".xn--fhbei" ],
         ],
-        "whois.nic.xn--fiq228c5hs"           => [
+        "whois.nic.xn--fiq228c5hs" => [
             "uri"  => "whois://whois.nic.xn--fiq228c5hs",
             "tlds" => [ ".xn--fiq228c5hs" ],
         ],
-        "whois.nic.xn--fiq64b"               => [
+        "whois.nic.xn--fiq64b" => [
             "uri"  => "whois://whois.nic.xn--fiq64b",
             "tlds" => [ ".xn--fiq64b" ],
         ],
-        "whois.nic.xn--fjq720a"              => [
+        "whois.nic.xn--fjq720a" => [
             "uri"  => "whois://whois.nic.xn--fjq720a",
             "tlds" => [ ".xn--fjq720a" ],
         ],
-        "whois.nic.xn--flw351e"              => [
+        "whois.nic.xn--flw351e" => [
             "uri"  => "whois://whois.nic.xn--flw351e",
             "tlds" => [ ".xn--flw351e" ],
         ],
-        "whois.nic.xn--fzys8d69uvgm"         => [
+        "whois.nic.xn--fzys8d69uvgm" => [
             "uri"  => "whois://whois.nic.xn--fzys8d69uvgm",
             "tlds" => [ ".xn--fzys8d69uvgm" ],
         ],
-        "whois.nic.xn--g2xx48c"              => [
+        "whois.nic.xn--g2xx48c" => [
             "uri"  => "whois://whois.nic.xn--g2xx48c",
             "tlds" => [ ".xn--g2xx48c" ],
         ],
-        "whois.nic.xn--gckr3f0f"             => [
+        "whois.nic.xn--gckr3f0f" => [
             "uri"  => "whois://whois.nic.xn--gckr3f0f",
             "tlds" => [ ".xn--gckr3f0f" ],
         ],
-        "whois.nic.xn--gk3at1e"              => [
+        "whois.nic.xn--gk3at1e" => [
             "uri"  => "whois://whois.nic.xn--gk3at1e",
             "tlds" => [ ".xn--gk3at1e" ],
         ],
-        "whois.nic.xn--hxt814e"              => [
+        "whois.nic.xn--hxt814e" => [
             "uri"  => "whois://whois.nic.xn--hxt814e",
             "tlds" => [ ".xn--hxt814e" ],
         ],
-        "whois.nic.xn--i1b6b1a6a2e"          => [
+        "whois.nic.xn--i1b6b1a6a2e" => [
             "uri"  => "whois://whois.nic.xn--i1b6b1a6a2e",
             "tlds" => [ ".xn--i1b6b1a6a2e" ],
         ],
-        "whois.nic.xn--imr513n"              => [
+        "whois.nic.xn--imr513n" => [
             "uri"  => "whois://whois.nic.xn--imr513n",
             "tlds" => [ ".xn--imr513n" ],
         ],
-        "whois.nic.xn--io0a7i"               => [
+        "whois.nic.xn--io0a7i" => [
             "uri"  => "whois://whois.nic.xn--io0a7i",
             "tlds" => [ ".xn--io0a7i" ],
         ],
-        "whois.nic.xn--j1aef"                => [
+        "whois.nic.xn--j1aef" => [
             "uri"  => "whois://whois.nic.xn--j1aef",
             "tlds" => [ ".xn--j1aef" ],
         ],
-        "whois.nic.xn--jlq480n2rg"           => [
+        "whois.nic.xn--jlq480n2rg" => [
             "uri"  => "whois://whois.nic.xn--jlq480n2rg",
             "tlds" => [ ".xn--jlq480n2rg" ],
         ],
-        "whois.nic.xn--jvr189m"              => [
+        "whois.nic.xn--jvr189m" => [
             "uri"  => "whois://whois.nic.xn--jvr189m",
             "tlds" => [ ".xn--jvr189m" ],
         ],
-        "whois.nic.xn--kcrx77d1x4a"          => [
+        "whois.nic.xn--kcrx77d1x4a" => [
             "uri"  => "whois://whois.nic.xn--kcrx77d1x4a",
             "tlds" => [ ".xn--kcrx77d1x4a" ],
         ],
-        "whois.nic.xn--kput3i"               => [
+        "whois.nic.xn--kput3i" => [
             "uri"  => "whois://whois.nic.xn--kput3i",
             "tlds" => [ ".xn--kput3i" ],
         ],
-        "whois.nic.xn--mgba3a3ejt"           => [
+        "whois.nic.xn--mgba3a3ejt" => [
             "uri"  => "whois://whois.nic.xn--mgba3a3ejt",
             "tlds" => [ ".xn--mgba3a3ejt" ],
         ],
-        "whois.nic.xn--mgba7c0bbn0a"         => [
+        "whois.nic.xn--mgba7c0bbn0a" => [
             "uri"  => "whois://whois.nic.xn--mgba7c0bbn0a",
             "tlds" => [ ".xn--mgba7c0bbn0a" ],
         ],
-        "whois.nic.xn--mgbaakc7dvf"          => [
+        "whois.nic.xn--mgbaakc7dvf" => [
             "uri"  => "whois://whois.nic.xn--mgbaakc7dvf",
             "tlds" => [ ".xn--mgbaakc7dvf" ],
         ],
-        "whois.nic.xn--mgbab2bd"             => [
+        "whois.nic.xn--mgbab2bd" => [
             "uri"  => "whois://whois.nic.xn--mgbab2bd",
             "tlds" => [ ".xn--mgbab2bd" ],
         ],
-        "whois.nic.xn--mgbca7dzdo"           => [
+        "whois.nic.xn--mgbca7dzdo" => [
             "uri"  => "whois://whois.nic.xn--mgbca7dzdo",
             "tlds" => [ ".xn--mgbca7dzdo" ],
         ],
-        "whois.nic.xn--mgbi4ecexp"           => [
+        "whois.nic.xn--mgbi4ecexp" => [
             "uri"  => "whois://whois.nic.xn--mgbi4ecexp",
             "tlds" => [ ".xn--mgbi4ecexp" ],
         ],
-        "whois.nic.xn--mgbt3dhd"             => [
+        "whois.nic.xn--mgbt3dhd" => [
             "uri"  => "whois://whois.nic.xn--mgbt3dhd",
             "tlds" => [ ".xn--mgbt3dhd" ],
         ],
-        "whois.nic.xn--mk1bu44c"             => [
+        "whois.nic.xn--mk1bu44c" => [
             "uri"  => "whois://whois.nic.xn--mk1bu44c",
             "tlds" => [ ".xn--mk1bu44c" ],
         ],
-        "whois.nic.xn--mxtq1m"               => [
+        "whois.nic.xn--mxtq1m" => [
             "uri"  => "whois://whois.nic.xn--mxtq1m",
             "tlds" => [ ".xn--mxtq1m" ],
         ],
-        "whois.nic.xn--ngbc5azd"             => [
+        "whois.nic.xn--ngbc5azd" => [
             "uri"  => "whois://whois.nic.xn--ngbc5azd",
             "tlds" => [ ".xn--ngbc5azd" ],
         ],
-        "whois.nic.xn--ngbe9e0a"             => [
+        "whois.nic.xn--ngbe9e0a" => [
             "uri"  => "whois://whois.nic.xn--ngbe9e0a",
             "tlds" => [ ".xn--ngbe9e0a" ],
         ],
-        "whois.nic.xn--ngbrx"                => [
+        "whois.nic.xn--ngbrx" => [
             "uri"  => "whois://whois.nic.xn--ngbrx",
             "tlds" => [ ".xn--ngbrx" ],
         ],
-        "whois.nic.xn--nqv7f"                => [
+        "whois.nic.xn--nqv7f" => [
             "uri"  => "whois://whois.nic.xn--nqv7f",
             "tlds" => [ ".xn--nqv7f" ],
         ],
-        "whois.nic.xn--nqv7fs00ema"          => [
+        "whois.nic.xn--nqv7fs00ema" => [
             "uri"  => "whois://whois.nic.xn--nqv7fs00ema",
             "tlds" => [ ".xn--nqv7fs00ema" ],
         ],
-        "whois.nic.xn--nyqy26a"              => [
+        "whois.nic.xn--nyqy26a" => [
             "uri"  => "whois://whois.nic.xn--nyqy26a",
             "tlds" => [ ".xn--nyqy26a" ],
         ],
-        "whois.nic.xn--otu796d"              => [
+        "whois.nic.xn--otu796d" => [
             "uri"     => "whois://whois.nic.xn--otu796d",
             "tlds"    => [ ".xn--otu796d" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.xn--p1acf"                => [
+        "whois.nic.xn--p1acf" => [
             "uri"  => "whois://whois.nic.xn--p1acf",
             "tlds" => [ ".xn--p1acf" ],
         ],
-        "whois.nic.xn--pssy2u"               => [
+        "whois.nic.xn--pssy2u" => [
             "uri"  => "whois://whois.nic.xn--pssy2u",
             "tlds" => [ ".xn--pssy2u" ],
         ],
-        "whois.nic.xn--q9jyb4c"              => [
+        "whois.nic.xn--q9jyb4c" => [
             "uri"  => "whois://whois.nic.xn--q9jyb4c",
             "tlds" => [ ".xn--q9jyb4c" ],
         ],
-        "whois.nic.xn--qcka1pmc"             => [
+        "whois.nic.xn--qcka1pmc" => [
             "uri"  => "whois://whois.nic.xn--qcka1pmc",
             "tlds" => [ ".xn--qcka1pmc" ],
         ],
-        "whois.nic.xn--rhqv96g"              => [
+        "whois.nic.xn--rhqv96g" => [
             "uri"  => "whois://whois.nic.xn--rhqv96g",
             "tlds" => [ ".xn--rhqv96g" ],
         ],
-        "whois.nic.xn--rovu88b"              => [
+        "whois.nic.xn--rovu88b" => [
             "uri"  => "whois://whois.nic.xn--rovu88b",
             "tlds" => [ ".xn--rovu88b" ],
         ],
-        "whois.nic.xn--ses554g"              => [
+        "whois.nic.xn--ses554g" => [
             "uri"  => "whois://whois.nic.xn--ses554g",
             "tlds" => [ ".xn--ses554g" ],
         ],
-        "whois.nic.xn--t60b56a"              => [
+        "whois.nic.xn--t60b56a" => [
             "uri"  => "whois://whois.nic.xn--t60b56a",
             "tlds" => [ ".xn--t60b56a" ],
         ],
-        "whois.nic.xn--tckwe"                => [
+        "whois.nic.xn--tckwe" => [
             "uri"  => "whois://whois.nic.xn--tckwe",
             "tlds" => [ ".xn--tckwe" ],
         ],
-        "whois.nic.xn--tiq49xqyj"            => [
+        "whois.nic.xn--tiq49xqyj" => [
             "uri"  => "whois://whois.nic.xn--tiq49xqyj",
             "tlds" => [ ".xn--tiq49xqyj" ],
         ],
-        "whois.nic.xn--unup4y"               => [
+        "whois.nic.xn--unup4y" => [
             "uri"  => "whois://whois.nic.xn--unup4y",
             "tlds" => [ ".xn--unup4y" ],
         ],
-        "whois.nic.xn--vermgensberater-ctb"  => [
+        "whois.nic.xn--vermgensberater-ctb" => [
             "uri"  => "whois://whois.nic.xn--vermgensberater-ctb",
             "tlds" => [ ".xn--vermgensberater-ctb" ],
         ],
@@ -4445,151 +4445,151 @@ class BuiltinRegistryRegistry extends ServerRegistry
             "uri"  => "whois://whois.nic.xn--vermgensberatung-pwb",
             "tlds" => [ ".xn--vermgensberatung-pwb" ],
         ],
-        "whois.nic.xn--vhquv"                => [
+        "whois.nic.xn--vhquv" => [
             "uri"  => "whois://whois.nic.xn--vhquv",
             "tlds" => [ ".xn--vhquv" ],
         ],
-        "whois.nic.xn--vuq861b"              => [
+        "whois.nic.xn--vuq861b" => [
             "uri"  => "whois://whois.nic.xn--vuq861b",
             "tlds" => [ ".xn--vuq861b" ],
         ],
-        "whois.nic.xn--w4r85el8fhu5dnra"     => [
+        "whois.nic.xn--w4r85el8fhu5dnra" => [
             "uri"  => "whois://whois.nic.xn--w4r85el8fhu5dnra",
             "tlds" => [ ".xn--w4r85el8fhu5dnra" ],
         ],
-        "whois.nic.xn--w4rs40l"              => [
+        "whois.nic.xn--w4rs40l" => [
             "uri"  => "whois://whois.nic.xn--w4rs40l",
             "tlds" => [ ".xn--w4rs40l" ],
         ],
-        "whois.nic.xn--xhq521b"              => [
+        "whois.nic.xn--xhq521b" => [
             "uri"  => "whois://whois.nic.xn--xhq521b",
             "tlds" => [ ".xn--xhq521b" ],
         ],
-        "whois.nic.xn--zfr164b"              => [
+        "whois.nic.xn--zfr164b" => [
             "uri"  => "whois://whois.nic.xn--zfr164b",
             "tlds" => [ ".xn--zfr164b" ],
         ],
-        "whois.nic.xyz"                      => [
+        "whois.nic.xyz" => [
             "uri"  => "whois://whois.nic.xyz",
             "tlds" => [ ".xyz" ],
         ],
-        "whois.nic.yachts"                   => [
+        "whois.nic.yachts" => [
             "uri"  => "whois://whois.nic.yachts",
             "tlds" => [ ".yachts" ],
         ],
-        "whois.nic.yahoo"                    => [
+        "whois.nic.yahoo" => [
             "uri"  => "whois://whois.nic.yahoo",
             "tlds" => [ ".yahoo" ],
         ],
-        "whois.nic.yamaxun"                  => [
+        "whois.nic.yamaxun" => [
             "uri"  => "whois://whois.nic.yamaxun",
             "tlds" => [ ".yamaxun" ],
         ],
-        "whois.nic.yandex"                   => [
+        "whois.nic.yandex" => [
             "uri"  => "whois://whois.nic.yandex",
             "tlds" => [ ".yandex" ],
         ],
-        "whois.nic.yodobashi"                => [
+        "whois.nic.yodobashi" => [
             "uri"  => "whois://whois.nic.yodobashi",
             "tlds" => [ ".yodobashi" ],
         ],
-        "whois.nic.yoga"                     => [
+        "whois.nic.yoga" => [
             "uri"  => "whois://whois.nic.yoga",
             "tlds" => [ ".yoga" ],
         ],
-        "whois.nic.yokohama"                 => [
+        "whois.nic.yokohama" => [
             "uri"  => "whois://whois.nic.yokohama",
             "tlds" => [ ".yokohama" ],
         ],
-        "whois.nic.you"                      => [
+        "whois.nic.you" => [
             "uri"  => "whois://whois.nic.you",
             "tlds" => [ ".you" ],
         ],
-        "whois.nic.youtube"                  => [
+        "whois.nic.youtube" => [
             "uri"  => "whois://whois.nic.youtube",
             "tlds" => [ ".youtube" ],
         ],
-        "whois.nic.yun"                      => [
+        "whois.nic.yun" => [
             "uri"  => "whois://whois.nic.yun",
             "tlds" => [ ".yun" ],
         ],
-        "whois.nic.zappos"                   => [
+        "whois.nic.zappos" => [
             "uri"  => "whois://whois.nic.zappos",
             "tlds" => [ ".zappos" ],
         ],
-        "whois.nic.zara"                     => [
+        "whois.nic.zara" => [
             "uri"  => "whois://whois.nic.zara",
             "tlds" => [ ".zara" ],
         ],
-        "whois.nic.zero"                     => [
+        "whois.nic.zero" => [
             "uri"  => "whois://whois.nic.zero",
             "tlds" => [ ".zero" ],
         ],
-        "whois.nic.zip"                      => [
+        "whois.nic.zip" => [
             "uri"  => "whois://whois.nic.zip",
             "tlds" => [ ".zip" ],
         ],
-        "whois.nic.zone"                     => [
+        "whois.nic.zone" => [
             "uri"  => "whois://whois.nic.zone",
             "tlds" => [ ".zone" ],
         ],
-        "whois.nic.zuerich"                  => [
+        "whois.nic.zuerich" => [
             "uri"  => "whois://whois.nic.zuerich",
             "tlds" => [ ".zuerich" ],
         ],
-        "whois.centralnic.net"               => [
+        "whois.centralnic.net" => [
             "uri"  => "whois://whois.centralnic.net",
             "tlds" => [
                 ".br.com", ".cn.com", ".de.com", ".eu.com", ".gb.com", ".gb.net", ".gr.com",
                 ".hu.com", ".in.net", ".jpn.com", ".no.com", ".qc.com", ".ru.com", ".sa.com",
                 ".se.com", ".se.net", ".uk.com", ".uk.net", ".us.com", ".uy.com", ".web.com",
-                ".za.com",
+                ".za.com"
             ],
         ],
-        "whois.verisign-grs.com"             => [
+        "whois.verisign-grs.com" => [
             "uri"  => "whois://whois.verisign-grs.com",
             "tlds" => [ ".com", ".net" ],
         ],
-        "whois.za.net"                       => [
+        "whois.za.net" => [
             "uri"  => "whois://whois.za.net",
             "tlds" => [ ".za.net" ],
         ],
-        "whois.eu.org"                       => [
+        "whois.eu.org" => [
             "uri"  => "whois://whois.eu.org",
             "tlds" => [ ".eu.org" ],
         ],
-        "whois.za.org"                       => [
+        "whois.za.org" => [
             "uri"  => "whois://whois.za.org",
             "tlds" => [ ".za.org" ],
         ],
-        "whois.pir.org"                      => [
+        "whois.pir.org" => [
             "uri"  => "whois://whois.pir.org",
             "tlds" => [ ".org" ],
         ],
-        "whois.nic.llyw.cymru"               => [
+        "whois.nic.llyw.cymru" => [
             "uri"     => "whois://whois.nic.llyw.cymru",
             "tlds"    => [ ".llyw.cymru" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.gov.scot"                 => [
+        "whois.nic.gov.scot" => [
             "uri"     => "whois://whois.nic.gov.scot",
             "tlds"    => [ ".gov.scot" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.gov.wales"                => [
+        "whois.nic.gov.wales" => [
             "uri"     => "whois://whois.nic.gov.wales",
             "tlds"    => [ ".gov.wales" ],
             "charset" => "utf-8",
         ],
-        "whois.educause.edu"                 => [
+        "whois.educause.edu" => [
             "uri"  => "whois://whois.educause.edu",
             "tlds" => [ ".edu" ],
         ],
-        "whois.dotgov.gov"                   => [
+        "whois.dotgov.gov" => [
             "uri"  => "whois://whois.dotgov.gov",
             "tlds" => [ ".gov" ],
         ],
-        "whois.iana.org"                     => [
+        "whois.iana.org" => [
             "uri"     => "whois://whois.iana.org",
             "tlds"    => [
                 ".ad", ".al", ".aq", ".arpa", ".bl.uk", ".british-library.uk", ".bs", ".bv",
@@ -4598,1179 +4598,1179 @@ class BuiltinRegistryRegistry extends ServerRegistry
                 ".lr", ".mc", ".mh", ".mil", ".mod.uk", ".mp", ".mv", ".ne", ".nhs.uk",
                 ".nls.uk", ".parliament.uk", ".pg", ".police.uk", ".sj", ".sr", ".sz", ".va",
                 ".xn--l1acc", ".xn--mgbai9azgqp6j", ".xn--mgbc0a9azcg", ".xn--mgbcpq6gpa1a",
-                ".xn--mgbpl2fh", ".za", ".zw",
+                ".xn--mgbpl2fh", ".za", ".zw"
             ],
             "comment" => "Sudan",
         ],
-        "whois.ripe.net"                     => [
+        "whois.ripe.net" => [
             "uri"     => "whois://whois.ripe.net",
             "tlds"    => [ ".e164.arpa" ],
             "charset" => "iso-8859-1",
             "handles" => [ "-mnt", "-ripe" ],
         ],
-        "whois.arin.org"                     => [
+        "whois.arin.org" => [
             "uri"  => "whois://whois.arin.org",
             "tlds" => [ ".in-addr.arpa", ".ip6.arpa" ],
         ],
-        "whois.aero"                         => [
+        "whois.aero" => [
             "uri"  => "whois://whois.aero",
             "tlds" => [ ".aero" ],
         ],
-        "whois.nic.asia"                     => [
+        "whois.nic.asia" => [
             "uri"  => "whois://whois.nic.asia",
             "tlds" => [ ".asia" ],
         ],
-        "whois.nic.biz"                      => [
+        "whois.nic.biz" => [
             "uri"  => "whois://whois.nic.biz",
             "tlds" => [ ".biz" ],
         ],
-        "whois.nic.cat"                      => [
+        "whois.nic.cat" => [
             "uri"  => "whois://whois.nic.cat",
             "tlds" => [ ".cat" ],
         ],
-        "whois.nic.coop"                     => [
+        "whois.nic.coop" => [
             "uri"     => "whois://whois.nic.coop",
             "tlds"    => [ ".coop" ],
             "handles" => [ "-coop" ],
         ],
-        "whois.afilias.net"                  => [
+        "whois.afilias.net" => [
             "uri"  => "whois://whois.afilias.net",
             "tlds" => [ ".info", ".mobi" ],
         ],
-        "whois.nic.jobs"                     => [
+        "whois.nic.jobs" => [
             "uri"  => "whois://whois.nic.jobs",
             "tlds" => [ ".jobs" ],
         ],
-        "whois.nic.museum"                   => [
+        "whois.nic.museum" => [
             "uri"  => "whois://whois.nic.museum",
             "tlds" => [ ".museum" ],
         ],
-        "whois.nic.name"                     => [
+        "whois.nic.name" => [
             "uri"  => "whois://whois.nic.name",
             "tlds" => [ ".name" ],
         ],
-        "whois.dotpostregistry.net"          => [
+        "whois.dotpostregistry.net" => [
             "uri"  => "whois://whois.dotpostregistry.net",
             "tlds" => [ ".post" ],
         ],
-        "whois.nic.pro"                      => [
+        "whois.nic.pro" => [
             "uri"  => "whois://whois.nic.pro",
             "tlds" => [ ".pro" ],
         ],
-        "whois.nic.tel"                      => [
+        "whois.nic.tel" => [
             "uri"     => "whois://whois.nic.tel",
             "tlds"    => [ ".tel" ],
             "handles" => [ "-tel" ],
         ],
-        "whois.nic.travel"                   => [
+        "whois.nic.travel" => [
             "uri"  => "whois://whois.nic.travel",
             "tlds" => [ ".travel" ],
         ],
-        "whois.nic.xxx"                      => [
+        "whois.nic.xxx" => [
             "uri"  => "whois://whois.nic.xxx",
             "tlds" => [ ".xxx" ],
         ],
-        "whois.nic.ac"                       => [
+        "whois.nic.ac" => [
             "uri"  => "whois://whois.nic.ac",
             "tlds" => [ ".ac" ],
         ],
-        "whois.aeda.net.ae"                  => [
+        "whois.aeda.net.ae" => [
             "uri"     => "whois://whois.aeda.net.ae",
             "tlds"    => [ ".ae", ".xn--mgbaam7a8h" ],
             "comment" => "United Arab Emirates",
             "charset" => "utf-8",
         ],
-        "whois.nic.af"                       => [
+        "whois.nic.af" => [
             "uri"  => "whois://whois.nic.af",
             "tlds" => [ ".af" ],
         ],
-        "whois.nic.ag"                       => [
+        "whois.nic.ag" => [
             "uri"  => "whois://whois.nic.ag",
             "tlds" => [ ".ag" ],
         ],
-        "whois.nic.ai"                       => [
+        "whois.nic.ai" => [
             "uri"  => "whois://whois.nic.ai",
             "tlds" => [ ".ai" ],
         ],
-        "whois.amnic.net"                    => [
+        "whois.amnic.net" => [
             "uri"     => "whois://whois.amnic.net",
             "tlds"    => [ ".am", ".xn--y9a3aq" ],
             "comment" => "Armenia",
         ],
-        "www.dns.ao"                         => [
+        "www.dns.ao" => [
             "uri"     => "https://www.dns.ao/ao/gca/index.php?id=19",
             "comment" => "www.dns.ao",
             "tlds"    => [ ".ao" ],
         ],
-        "whois.nic.ar"                       => [
+        "whois.nic.ar" => [
             "uri"     => "whois://whois.nic.ar",
             "tlds"    => [ ".ar" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.as"                       => [
+        "whois.nic.as" => [
             "uri"  => "whois://whois.nic.as",
             "tlds" => [ ".as" ],
         ],
-        "whois.nic.priv.at"                  => [
+        "whois.nic.priv.at" => [
             "uri"     => "whois://whois.nic.priv.at",
             "comment" => "\"unofficial\" SLD",
             "tlds"    => [ ".priv.at" ],
         ],
-        "whois.nic.at"                       => [
+        "whois.nic.at" => [
             "uri"     => "whois://whois.nic.at",
             "tlds"    => [ ".at" ],
             "handles" => [ "-nicat" ],
         ],
-        "whois.auda.org.au"                  => [
+        "whois.auda.org.au" => [
             "uri"  => "whois://whois.auda.org.au",
             "tlds" => [ ".au" ],
         ],
-        "whois.nic.aw"                       => [
+        "whois.nic.aw" => [
             "uri"  => "whois://whois.nic.aw",
             "tlds" => [ ".aw" ],
         ],
-        "whois.ax"                           => [
+        "whois.ax" => [
             "uri"     => "whois://whois.ax",
             "comment" => "www.ax",
             "tlds"    => [ ".ax" ],
             "charset" => "utf-8",
         ],
-        "www.gov.az"                         => [
+        "www.gov.az" => [
             "uri"  => "https://www.gov.az/",
             "tlds" => [ ".gov.az" ],
         ],
-        "whois.az"                           => [
+        "whois.az" => [
             "uri"  => "https://whois.az/",
             "tlds" => [ ".az" ],
         ],
-        "nic.ba"                             => [
+        "nic.ba" => [
             "uri"  => "https://nic.ba/",
             "tlds" => [ ".ba" ],
         ],
-        "whois.telecoms.gov.bb"              => [
+        "whois.telecoms.gov.bb" => [
             "uri"  => "https://whois.telecoms.gov.bb/",
             "tlds" => [ ".bb" ],
         ],
-        "bdia.btcl.com.bd"                   => [
+        "bdia.btcl.com.bd" => [
             "uri"     => "https://bdia.btcl.com.bd/",
             "tlds"    => [ ".bd", ".xn--54b7fta0cc" ],
             "comment" => "Bangladesh",
         ],
-        "whois.dns.be"                       => [
+        "whois.dns.be" => [
             "uri"  => "whois://whois.dns.be",
             "tlds" => [ ".be" ],
         ],
-        "whois.registre.bf"                  => [
+        "whois.registre.bf" => [
             "uri"     => "whois://whois.registre.bf",
             "comment" => "http://www.arcep.bf/noms-de-domaine/",
             "tlds"    => [ ".bf" ],
         ],
-        "whois.register.bg"                  => [
+        "whois.register.bg" => [
             "uri"  => "whois://whois.register.bg",
             "tlds" => [ ".bg" ],
         ],
-        "whois.nic.bh"                       => [
+        "whois.nic.bh" => [
             "uri"  => "whois://whois.nic.bh",
             "tlds" => [ ".bh" ],
         ],
-        "whois1.nic.bi"                      => [
+        "whois1.nic.bi" => [
             "uri"  => "whois://whois1.nic.bi",
             "tlds" => [ ".bi" ],
         ],
-        "whois.nic.bj"                       => [
+        "whois.nic.bj" => [
             "uri"  => "whois://whois.nic.bj",
             "tlds" => [ ".bj" ],
         ],
-        "whois.afilias-srs.net"              => [
+        "whois.afilias-srs.net" => [
             "uri"  => "whois://whois.afilias-srs.net",
             "tlds" => [ ".bm", ".pr" ],
         ],
-        "whois.bnnic.bn"                     => [
+        "whois.bnnic.bn" => [
             "uri"  => "whois://whois.bnnic.bn",
             "tlds" => [ ".bn" ],
         ],
-        "whois.nic.bo"                       => [
+        "whois.nic.bo" => [
             "uri"  => "whois://whois.nic.bo",
             "tlds" => [ ".bo" ],
         ],
-        "whois.registro.br"                  => [
+        "whois.registro.br" => [
             "uri"     => "whois://whois.registro.br",
             "tlds"    => [ ".br" ],
             "charset" => "iso-8859-1",
         ],
-        "www.nic.bt"                         => [
+        "www.nic.bt" => [
             "uri"  => "http://www.nic.bt/",
             "tlds" => [ ".bt" ],
         ],
-        "whois.cctld.by"                     => [
+        "whois.cctld.by" => [
             "uri"     => "whois://whois.cctld.by",
             "tlds"    => [ ".by", ".xn--90ais" ],
             "comment" => "Belarus",
         ],
-        "whois.nic.net.bw"                   => [
+        "whois.nic.net.bw" => [
             "uri"  => "whois://whois.nic.net.bw",
             "tlds" => [ ".bw" ],
         ],
-        "whois.afilias-grs.info"             => [
+        "whois.afilias-grs.info" => [
             "uri"  => "whois://whois.afilias-grs.info",
             "tlds" => [ ".bz" ],
         ],
-        "whois.co.ca"                        => [
+        "whois.co.ca" => [
             "uri"  => "whois://whois.co.ca",
             "tlds" => [ ".co.ca" ],
         ],
-        "whois.cira.ca"                      => [
+        "whois.cira.ca" => [
             "uri"     => "whois://whois.cira.ca",
             "tlds"    => [ ".ca" ],
             "charset" => "utf-8",
         ],
-        "ccwhois.verisign-grs.com"           => [
+        "ccwhois.verisign-grs.com" => [
             "uri"  => "whois://ccwhois.verisign-grs.com",
             "tlds" => [ ".cc" ],
         ],
-        "whois.nic.cd"                       => [
+        "whois.nic.cd" => [
             "uri"  => "whois://whois.nic.cd",
             "tlds" => [ ".cd" ],
         ],
-        "whois.nic.ch"                       => [
+        "whois.nic.ch" => [
             "uri"     => "whois://whois.nic.ch",
             "tlds"    => [ ".ch" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.ci"                       => [
+        "whois.nic.ci" => [
             "uri"     => "whois://whois.nic.ci",
             "tlds"    => [ ".ci" ],
             "handles" => [ "-nicci" ],
         ],
-        "whois.nic.cl"                       => [
+        "whois.nic.cl" => [
             "uri"     => "whois://whois.nic.cl",
             "tlds"    => [ ".cl" ],
             "charset" => "utf-8",
         ],
-        "whois.netcom.cm"                    => [
+        "whois.netcom.cm" => [
             "uri"  => "whois://whois.netcom.cm",
             "tlds" => [ ".cm" ],
         ],
-        "whois.edu.cn"                       => [
+        "whois.edu.cn" => [
             "uri"  => "whois://whois.edu.cn",
             "tlds" => [ ".edu.cn" ],
         ],
-        "whois.cnnic.cn"                     => [
+        "whois.cnnic.cn" => [
             "uri"     => "whois://whois.cnnic.cn",
             "tlds"    => [ ".cn" ],
             "charset" => "utf-8",
         ],
-        "whois.uk.co"                        => [
+        "whois.uk.co" => [
             "uri"  => "whois://whois.uk.co",
             "tlds" => [ ".uk.co" ],
         ],
-        "whois.nic.co"                       => [
+        "whois.nic.co" => [
             "uri"  => "whois://whois.nic.co",
             "tlds" => [ ".co" ],
         ],
-        "whois.nic.cr"                       => [
+        "whois.nic.cr" => [
             "uri"  => "whois://whois.nic.cr",
             "tlds" => [ ".cr" ],
         ],
-        "www.nic.cu"                         => [
+        "www.nic.cu" => [
             "uri"  => "https://www.nic.cu/",
             "tlds" => [ ".cu" ],
         ],
-        "www.dns.cv"                         => [
+        "www.dns.cv" => [
             "uri"  => "http://www.dns.cv/",
             "tlds" => [ ".cv" ],
         ],
-        "whois.nic.cx"                       => [
+        "whois.nic.cx" => [
             "uri"  => "whois://whois.nic.cx",
             "tlds" => [ ".cx" ],
         ],
-        "www.nic.cy"                         => [
+        "www.nic.cy" => [
             "uri"  => "https://www.nic.cy/cy-ui/home",
             "tlds" => [ ".cy" ],
         ],
-        "whois.nic.cz"                       => [
+        "whois.nic.cz" => [
             "uri"     => "whois://whois.nic.cz",
             "tlds"    => [ ".cz" ],
             "charset" => "utf-8",
             "handles" => [ "-cznic" ],
         ],
-        "whois.denic.de"                     => [
+        "whois.denic.de" => [
             "uri"     => "whois://whois.denic.de",
             "tlds"    => [ ".de" ],
             "charset" => "utf-8",
         ],
-        "whois.punktum.dk"                   => [
+        "whois.punktum.dk" => [
             "uri"     => "whois://whois.punktum.dk",
             "tlds"    => [ ".dk" ],
             "charset" => "utf-8",
             "options" => [ "--charset=utf-8" ],
             "handles" => [ "-dk" ],
         ],
-        "whois.dmdomains.dm"                 => [
+        "whois.dmdomains.dm" => [
             "uri"  => "whois://whois.dmdomains.dm",
             "tlds" => [ ".dm" ],
         ],
-        "whois.nic.do"                       => [
+        "whois.nic.do" => [
             "uri"  => "whois://whois.nic.do",
             "tlds" => [ ".do" ],
         ],
-        "whois.nic.dz"                       => [
+        "whois.nic.dz" => [
             "uri"     => "whois://whois.nic.dz",
             "tlds"    => [ ".dz", ".xn--lgbbat1ad8j" ],
             "comment" => "Algeria",
         ],
-        "whois.nic.ec"                       => [
+        "whois.nic.ec" => [
             "uri"  => "whois://whois.nic.ec",
             "tlds" => [ ".ec" ],
         ],
-        "whois.tld.ee"                       => [
+        "whois.tld.ee" => [
             "uri"     => "whois://whois.tld.ee",
             "tlds"    => [ ".ee" ],
             "charset" => "utf-8",
         ],
-        "www.dominios.es"                    => [
+        "www.dominios.es" => [
             "uri"  => "https://www.dominios.es/en",
             "tlds" => [ ".es" ],
         ],
-        "whois.eu"                           => [
+        "whois.eu" => [
             "uri"     => "whois://whois.eu",
             "tlds"    => [ ".eu", ".xn--e1a4c", ".xn--qxa6a" ],
             "comment" => "European Union, Greek",
             "charset" => "utf-8",
         ],
-        "whois.fi"                           => [
+        "whois.fi" => [
             "uri"     => "whois://whois.fi",
             "tlds"    => [ ".fi" ],
             "charset" => "iso-8859-1",
         ],
-        "www.whois.fj"                       => [
+        "www.whois.fj" => [
             "uri"  => "whois://www.whois.fj",
             "tlds" => [ ".fj" ],
         ],
-        "whois.nic.fm"                       => [
+        "whois.nic.fm" => [
             "uri"  => "whois://whois.nic.fm",
             "tlds" => [ ".fm" ],
         ],
-        "whois.nic.fo"                       => [
+        "whois.nic.fo" => [
             "uri"     => "whois://whois.nic.fo",
             "tlds"    => [ ".fo" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.fr"                       => [
+        "whois.nic.fr" => [
             "uri"     => "whois://whois.nic.fr",
             "tlds"    => [ ".fr" ],
             "charset" => "utf-8",
             "handles" => [ "-frnic" ],
         ],
-        "whois.nic.ga"                       => [
+        "whois.nic.ga" => [
             "uri"  => "whois://whois.nic.ga",
             "tlds" => [ ".ga" ],
         ],
-        "whois.nic.gd"                       => [
+        "whois.nic.gd" => [
             "uri"  => "whois://whois.nic.gd",
             "tlds" => [ ".gd" ],
         ],
-        "whois.nic.ge"                       => [
+        "whois.nic.ge" => [
             "uri"  => "whois://whois.nic.ge",
             "tlds" => [ ".ge" ],
         ],
-        "whois.mediaserv.net"                => [
+        "whois.mediaserv.net" => [
             "uri"  => "whois://whois.mediaserv.net",
             "tlds" => [ ".gf", ".mq" ],
         ],
-        "whois.gg"                           => [
+        "whois.gg" => [
             "uri"  => "whois://whois.gg",
             "tlds" => [ ".gg" ],
         ],
-        "whois.nic.gh"                       => [
+        "whois.nic.gh" => [
             "uri"  => "whois://whois.nic.gh",
             "tlds" => [ ".gh" ],
         ],
-        "whois2.afilias-grs.net"             => [
+        "whois2.afilias-grs.net" => [
             "uri"  => "whois://whois2.afilias-grs.net",
             "tlds" => [ ".gi", ".lc", ".sc", ".vc" ],
         ],
-        "whois.nic.gl"                       => [
+        "whois.nic.gl" => [
             "uri"  => "whois://whois.nic.gl",
             "tlds" => [ ".gl" ],
         ],
-        "www.nic.gm"                         => [
+        "www.nic.gm" => [
             "uri"  => "http://www.nic.gm/htmlpages/whois.htm",
             "tlds" => [ ".gm" ],
         ],
-        "whois.nic.gp"                       => [
+        "whois.nic.gp" => [
             "uri"  => "whois://whois.nic.gp",
             "tlds" => [ ".gp" ],
         ],
-        "whois.dominio.gq"                   => [
+        "whois.dominio.gq" => [
             "uri"  => "whois://whois.dominio.gq",
             "tlds" => [ ".gq" ],
         ],
-        "grweb.ics.forth.gr"                 => [
+        "grweb.ics.forth.gr" => [
             "uri"     => "https://grweb.ics.forth.gr/public/whois",
             "tlds"    => [ ".gr", ".xn--qxam" ],
             "comment" => "Greece",
         ],
-        "whois.nic.gs"                       => [
+        "whois.nic.gs" => [
             "uri"  => "whois://whois.nic.gs",
             "tlds" => [ ".gs" ],
         ],
-        "www.gt"                             => [
+        "www.gt" => [
             "uri"  => "https://www.gt/sitio/?lang=en",
             "tlds" => [ ".gt" ],
         ],
-        "nic.gw"                             => [
+        "nic.gw" => [
             "uri"  => "https://nic.gw/en/whois/",
             "tlds" => [ ".gw" ],
         ],
-        "whois.registry.gy"                  => [
+        "whois.registry.gy" => [
             "uri"  => "whois://whois.registry.gy",
             "tlds" => [ ".gy" ],
         ],
-        "whois.hkirc.hk"                     => [
+        "whois.hkirc.hk" => [
             "uri"     => "whois://whois.hkirc.hk",
             "tlds"    => [ ".hk", ".xn--j6w193g" ],
             "comment" => "Hong Kong",
             "charset" => "utf-8",
         ],
-        "whois.registry.hm"                  => [
+        "whois.registry.hm" => [
             "uri"  => "whois://whois.registry.hm",
             "tlds" => [ ".hm" ],
         ],
-        "whois.nic.hn"                       => [
+        "whois.nic.hn" => [
             "uri"  => "whois://whois.nic.hn",
             "tlds" => [ ".hn" ],
         ],
-        "whois.dns.hr"                       => [
+        "whois.dns.hr" => [
             "uri"  => "whois://whois.dns.hr",
             "tlds" => [ ".hr" ],
         ],
-        "whois.nic.ht"                       => [
+        "whois.nic.ht" => [
             "uri"  => "whois://whois.nic.ht",
             "tlds" => [ ".ht" ],
         ],
-        "whois.nic.hu"                       => [
+        "whois.nic.hu" => [
             "uri"     => "whois://whois.nic.hu",
             "tlds"    => [ ".hu" ],
             "charset" => "iso-8859-1",
         ],
-        "whois.id"                           => [
+        "whois.id" => [
             "uri"  => "whois://whois.id",
             "tlds" => [ ".id" ],
         ],
-        "whois.weare.ie"                     => [
+        "whois.weare.ie" => [
             "uri"  => "whois://whois.weare.ie",
             "tlds" => [ ".ie" ],
         ],
-        "whois.isoc.org.il"                  => [
+        "whois.isoc.org.il" => [
             "uri"     => "whois://whois.isoc.org.il",
             "tlds"    => [ ".il", ".xn--4dbrk0ce" ],
             "comment" => "Israel",
             "handles" => [ "-il" ],
         ],
-        "whois.nic.im"                       => [
+        "whois.nic.im" => [
             "uri"  => "whois://whois.nic.im",
             "tlds" => [ ".im" ],
         ],
-        "whois.registry.in"                  => [
+        "whois.registry.in" => [
             "uri"     => "whois://whois.registry.in",
             "tlds"    => [
                 ".in", ".xn--2scrj9c", ".xn--3hcrj9c", ".xn--45br5cyl", ".xn--45brj9c",
                 ".xn--fpcrj9c3d", ".xn--gecrj9c", ".xn--h2breg3eve", ".xn--h2brj9c",
                 ".xn--h2brj9c8c", ".xn--mgbbh1a", ".xn--mgbbh1a71e", ".xn--mgbgu82a",
-                ".xn--rvc1e0am3e", ".xn--s9brj9c", ".xn--xkc2dl3a5ee0h",
+                ".xn--rvc1e0am3e", ".xn--s9brj9c", ".xn--xkc2dl3a5ee0h"
             ],
             "comment" => "India, Tamil",
         ],
-        "whois.nic.io"                       => [
+        "whois.nic.io" => [
             "uri"  => "whois://whois.nic.io",
             "tlds" => [ ".io" ],
         ],
-        "whois.cmc.iq"                       => [
+        "whois.cmc.iq" => [
             "uri"     => "whois://whois.cmc.iq",
             "comment" => "Iraq",
             "tlds"    => [ ".iq", ".xn--mgbtx2b" ],
         ],
-        "whois.nic.ir"                       => [
+        "whois.nic.ir" => [
             "uri"     => "whois://whois.nic.ir",
             "tlds"    => [ ".ir", ".xn--mgba3a4f16a" ],
             "comment" => "Iran",
             "charset" => "utf-8",
             "handles" => [ "-irnic" ],
         ],
-        "whois.isnic.is"                     => [
+        "whois.isnic.is" => [
             "uri"     => "whois://whois.isnic.is",
             "tlds"    => [ ".is" ],
             "charset" => "iso-8859-1",
             "handles" => [ "-is" ],
         ],
-        "whois.nic.it"                       => [
+        "whois.nic.it" => [
             "uri"     => "whois://whois.nic.it",
             "tlds"    => [ ".it" ],
             "charset" => "utf-8",
         ],
-        "whois.je"                           => [
+        "whois.je" => [
             "uri"  => "whois://whois.je",
             "tlds" => [ ".je" ],
         ],
-        "www.domain.jo"                      => [
+        "www.domain.jo" => [
             "uri"     => "https://www.domain.jo/FirstPageen.aspx",
             "tlds"    => [ ".jo", ".xn--mgbayh7gpa" ],
             "comment" => "Jordan",
         ],
-        "whois.jprs.jp"                      => [
+        "whois.jprs.jp" => [
             "uri"     => "whois://whois.jprs.jp",
             "tlds"    => [ ".jp" ],
             "charset" => "utf-8",
         ],
-        "whois.kenic.or.ke"                  => [
+        "whois.kenic.or.ke" => [
             "uri"  => "whois://whois.kenic.or.ke",
             "tlds" => [ ".ke" ],
         ],
-        "whois.kg"                           => [
+        "whois.kg" => [
             "uri"     => "whois://whois.kg",
             "tlds"    => [ ".kg" ],
             "charset" => "cp1251",
             "handles" => [ "-kg" ],
         ],
-        "whois.nic.ki"                       => [
+        "whois.nic.ki" => [
             "uri"  => "whois://whois.nic.ki",
             "tlds" => [ ".ki" ],
         ],
-        "whois.nic.kn"                       => [
+        "whois.nic.kn" => [
             "uri"  => "whois://whois.nic.kn",
             "tlds" => [ ".kn" ],
         ],
-        "whois.kr"                           => [
+        "whois.kr" => [
             "uri"     => "whois://whois.kr",
             "tlds"    => [ ".kr", ".xn--3e0b707e" ],
             "comment" => "Korea, Republic of",
             "charset" => "utf-8",
         ],
-        "whois.nic.kw"                       => [
+        "whois.nic.kw" => [
             "uri"  => "whois://whois.nic.kw",
             "tlds" => [ ".kw" ],
         ],
-        "whois.kyregistry.ky"                => [
+        "whois.kyregistry.ky" => [
             "uri"  => "whois://whois.kyregistry.ky",
             "tlds" => [ ".ky" ],
         ],
-        "whois.nic.kz"                       => [
+        "whois.nic.kz" => [
             "uri"     => "whois://whois.nic.kz",
             "tlds"    => [ ".kz", ".xn--80ao21a" ],
             "comment" => "Kazakhstan",
             "charset" => "utf-8",
         ],
-        "whois.nic.la"                       => [
+        "whois.nic.la" => [
             "uri"     => "whois://whois.nic.la",
             "tlds"    => [ ".la", ".xn--q7ce6a" ],
             "comment" => "Lao",
         ],
-        "whois.lbdr.org.lb"                  => [
+        "whois.lbdr.org.lb" => [
             "uri"  => "whois://whois.lbdr.org.lb",
             "tlds" => [ ".lb" ],
         ],
-        "whois.nic.li"                       => [
+        "whois.nic.li" => [
             "uri"     => "whois://whois.nic.li",
             "tlds"    => [ ".li" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.lk"                       => [
+        "whois.nic.lk" => [
             "uri"     => "whois://whois.nic.lk",
             "tlds"    => [ ".lk", ".xn--fzc2c9e2c", ".xn--xkc2al3hye2a" ],
             "comment" => "Sri Lanka, Tamil",
         ],
-        "whois.nic.ls"                       => [
+        "whois.nic.ls" => [
             "uri"  => "whois://whois.nic.ls",
             "tlds" => [ ".ls" ],
         ],
-        "whois.domreg.lt"                    => [
+        "whois.domreg.lt" => [
             "uri"     => "whois://whois.domreg.lt",
             "tlds"    => [ ".lt" ],
             "charset" => "utf-8",
         ],
-        "whois.dns.lu"                       => [
+        "whois.dns.lu" => [
             "uri"     => "whois://whois.dns.lu",
             "tlds"    => [ ".lu" ],
             "charset" => "iso-8859-1",
         ],
-        "whois.nic.lv"                       => [
+        "whois.nic.lv" => [
             "uri"  => "whois://whois.nic.lv",
             "tlds" => [ ".lv" ],
         ],
-        "whois.nic.ly"                       => [
+        "whois.nic.ly" => [
             "uri"  => "whois://whois.nic.ly",
             "tlds" => [ ".ly" ],
         ],
-        "whois.registre.ma"                  => [
+        "whois.registre.ma" => [
             "uri"  => "whois://whois.registre.ma",
             "tlds" => [ ".ma" ],
         ],
-        "whois.nic.md"                       => [
+        "whois.nic.md" => [
             "uri"  => "whois://whois.nic.md",
             "tlds" => [ ".md" ],
         ],
-        "whois.nic.me"                       => [
+        "whois.nic.me" => [
             "uri"     => "whois://whois.nic.me",
             "comment" => "afilias",
             "tlds"    => [ ".me" ],
         ],
-        "whois.nic.mg"                       => [
+        "whois.nic.mg" => [
             "uri"  => "whois://whois.nic.mg",
             "tlds" => [ ".mg" ],
         ],
-        "whois.marnet.mk"                    => [
+        "whois.marnet.mk" => [
             "uri"     => "whois://whois.marnet.mk",
             "tlds"    => [ ".mk", ".xn--d1alf" ],
             "comment" => "Macedonia",
             "charset" => "utf-8",
         ],
-        "whois.nic.ml"                       => [
+        "whois.nic.ml" => [
             "uri"  => "whois://whois.nic.ml",
             "tlds" => [ ".ml" ],
         ],
-        "whois.registry.gov.mm"              => [
+        "whois.registry.gov.mm" => [
             "uri"  => "whois://whois.registry.gov.mm",
             "tlds" => [ ".mm" ],
         ],
-        "whois.nic.mn"                       => [
+        "whois.nic.mn" => [
             "uri"  => "whois://whois.nic.mn",
             "tlds" => [ ".mn" ],
         ],
-        "www.monic.mo"                       => [
+        "www.monic.mo" => [
             "uri"     => "https://www.monic.mo/monic/faces/whois",
             "comment" => "Macao",
             "tlds"    => [ ".mo", ".xn--mix891f" ],
         ],
-        "whois.nic.mr"                       => [
+        "whois.nic.mr" => [
             "uri"     => "whois://whois.nic.mr",
             "tlds"    => [ ".mr", ".xn--mgbah1a3hjkrd" ],
             "comment" => "Mauritania",
         ],
-        "whois.nic.ms"                       => [
+        "whois.nic.ms" => [
             "uri"  => "whois://whois.nic.ms",
             "tlds" => [ ".ms" ],
         ],
-        "whois.nic.org.mt"                   => [
+        "whois.nic.org.mt" => [
             "uri"  => "whois://whois.nic.org.mt",
             "tlds" => [ ".mt" ],
         ],
-        "whois.nic.mu"                       => [
+        "whois.nic.mu" => [
             "uri"     => "whois://whois.nic.mu",
             "tlds"    => [ ".mu" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.mw"                       => [
+        "whois.nic.mw" => [
             "uri"  => "whois://whois.nic.mw",
             "tlds" => [ ".mw" ],
         ],
-        "whois.mx"                           => [
+        "whois.mx" => [
             "uri"  => "whois://whois.mx",
             "tlds" => [ ".mx" ],
         ],
-        "whois.mynic.my"                     => [
+        "whois.mynic.my" => [
             "uri"     => "whois://whois.mynic.my",
             "tlds"    => [ ".my", ".xn--mgbx4cd0ab" ],
             "comment" => "Malaysia AW",
         ],
-        "whois.nic.mz"                       => [
+        "whois.nic.mz" => [
             "uri"  => "whois://whois.nic.mz",
             "tlds" => [ ".mz" ],
         ],
-        "whois.na-nic.com.na"                => [
+        "whois.na-nic.com.na" => [
             "uri"  => "whois://whois.na-nic.com.na",
             "tlds" => [ ".na" ],
         ],
-        "whois.nc"                           => [
+        "whois.nc" => [
             "uri"  => "whois://whois.nc",
             "tlds" => [ ".nc" ],
         ],
-        "whois.nic.nf"                       => [
+        "whois.nic.nf" => [
             "uri"  => "whois://whois.nic.nf",
             "tlds" => [ ".nf" ],
         ],
-        "whois.nic.net.ng"                   => [
+        "whois.nic.net.ng" => [
             "uri"  => "whois://whois.nic.net.ng",
             "tlds" => [ ".ng" ],
         ],
-        "www.nic.ni"                         => [
+        "www.nic.ni" => [
             "uri"  => "https://www.nic.ni/",
             "tlds" => [ ".ni" ],
         ],
-        "whois.domain-registry.nl"           => [
+        "whois.domain-registry.nl" => [
             "uri"  => "whois://whois.domain-registry.nl",
             "tlds" => [ ".nl" ],
         ],
-        "whois.norid.no"                     => [
+        "whois.norid.no" => [
             "uri"     => "whois://whois.norid.no",
             "tlds"    => [ ".no" ],
             "charset" => "iso-8859-1",
             "handles" => [ "-norid" ],
         ],
-        "register.com.np"                    => [
+        "register.com.np" => [
             "uri"  => "https://register.com.np/whois-lookup",
             "tlds" => [ ".np" ],
         ],
-        "www.cenpac.net.nr"                  => [
+        "www.cenpac.net.nr" => [
             "uri"  => "https://www.cenpac.net.nr/dns/whois.html",
             "tlds" => [ ".nr" ],
         ],
-        "whois.iis.nu"                       => [
+        "whois.iis.nu" => [
             "uri"     => "whois://whois.iis.nu",
             "tlds"    => [ ".nu" ],
             "charset" => "utf-8",
         ],
-        "whois.irs.net.nz"                   => [
+        "whois.irs.net.nz" => [
             "uri"  => "whois://whois.irs.net.nz",
             "tlds" => [ ".nz" ],
         ],
-        "whois.registry.om"                  => [
+        "whois.registry.om" => [
             "uri"     => "whois://whois.registry.om",
             "tlds"    => [ ".om", ".xn--mgb9awbf" ],
             "comment" => "Oman",
             "charset" => "utf-8",
         ],
-        "www.nic.pa"                         => [
+        "www.nic.pa" => [
             "uri"  => "http://www.nic.pa/en",
             "tlds" => [ ".pa" ],
         ],
-        "kero.yachay.pe"                     => [
+        "kero.yachay.pe" => [
             "uri"  => "whois://kero.yachay.pe",
             "tlds" => [ ".pe" ],
         ],
-        "whois.registry.pf"                  => [
+        "whois.registry.pf" => [
             "uri"     => "whois://whois.registry.pf",
             "tlds"    => [ ".pf" ],
             "charset" => "utf-8",
         ],
-        "services.ph.net"                    => [
+        "services.ph.net" => [
             "uri"  => "https://services.ph.net/dns/query.pl",
             "tlds" => [ ".edu.ph" ],
         ],
-        "whois.dot.ph"                       => [
+        "whois.dot.ph" => [
             "uri"  => "https://whois.dot.ph/",
             "tlds" => [ ".ph" ],
         ],
-        "whois.pknic.net.pk"                 => [
+        "whois.pknic.net.pk" => [
             "uri"  => "whois://whois.pknic.net.pk",
             "tlds" => [ ".pk" ],
         ],
-        "whois.co.pl"                        => [
+        "whois.co.pl" => [
             "uri"     => "whois://whois.co.pl",
             "comment" => "\"unofficial\" SLD",
             "tlds"    => [ ".co.pl" ],
         ],
-        "whois.dns.pl"                       => [
+        "whois.dns.pl" => [
             "uri"  => "whois://whois.dns.pl",
             "tlds" => [ ".pl" ],
         ],
-        "whois.nic.pm"                       => [
+        "whois.nic.pm" => [
             "uri"  => "whois://whois.nic.pm",
             "tlds" => [ ".pm" ],
         ],
-        "www.pitcairn.pn"                    => [
+        "www.pitcairn.pn" => [
             "uri"  => "http://www.pitcairn.pn/PnRegistry/whois.html",
             "tlds" => [ ".pn" ],
         ],
-        "whois.pnina.ps"                     => [
+        "whois.pnina.ps" => [
             "uri"     => "whois://whois.pnina.ps",
             "tlds"    => [ ".ps", ".xn--ygbi2ammx" ],
             "comment" => "Palestinian Territory",
         ],
-        "whois.dns.pt"                       => [
+        "whois.dns.pt" => [
             "uri"     => "whois://whois.dns.pt",
             "tlds"    => [ ".pt" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.pw"                       => [
+        "whois.nic.pw" => [
             "uri"  => "whois://whois.nic.pw",
             "tlds" => [ ".pw" ],
         ],
-        "www.nic.py"                         => [
+        "www.nic.py" => [
             "uri"  => "https://www.nic.py/consultdompy.php",
             "tlds" => [ ".py" ],
         ],
-        "whois.registry.qa"                  => [
+        "whois.registry.qa" => [
             "uri"     => "whois://whois.registry.qa",
             "tlds"    => [ ".qa", ".xn--wgbl6a" ],
             "comment" => "Qatar",
             "charset" => "utf-8",
         ],
-        "whois.nic.re"                       => [
+        "whois.nic.re" => [
             "uri"     => "whois://whois.nic.re",
             "tlds"    => [ ".re" ],
             "charset" => "utf-8",
         ],
-        "whois.rotld.ro"                     => [
+        "whois.rotld.ro" => [
             "uri"  => "whois://whois.rotld.ro",
             "tlds" => [ ".ro" ],
         ],
-        "whois.rnids.rs"                     => [
+        "whois.rnids.rs" => [
             "uri"     => "whois://whois.rnids.rs",
             "tlds"    => [ ".rs", ".xn--90a3ac" ],
             "comment" => "Serbia",
             "charset" => "utf-8",
         ],
-        "whois.free.net"                     => [
+        "whois.free.net" => [
             "uri"  => "whois://whois.free.net",
             "tlds" => [ ".ac.ru" ],
         ],
-        "whois.informika.ru"                 => [
+        "whois.informika.ru" => [
             "uri"  => "whois://whois.informika.ru",
             "tlds" => [ ".edu.ru" ],
         ],
-        "whois.flexireg.net"                 => [
+        "whois.flexireg.net" => [
             "uri"  => "whois://whois.flexireg.net",
             "tlds" => [ ".com.ru", ".msk.ru", ".msk.su", ".nov.ru", ".nov.su", ".spb.ru", ".spb.su" ],
         ],
-        "whois.nic.net.ru"                   => [
+        "whois.nic.net.ru" => [
             "uri"  => "whois://whois.nic.net.ru",
             "tlds" => [ ".net.ru", ".org.ru", ".pp.ru" ],
         ],
-        "whois.tcinet.ru"                    => [
+        "whois.tcinet.ru" => [
             "uri"     => "whois://whois.tcinet.ru",
             "tlds"    => [ ".ru", ".su", ".xn--p1ai" ],
             "comment" => "Russian Federation",
             "handles" => [ "-ru", "-su" ],
         ],
-        "whois.ricta.org.rw"                 => [
+        "whois.ricta.org.rw" => [
             "uri"     => "whois://whois.ricta.org.rw",
             "comment" => "http://www.ricta.org.rw/",
             "tlds"    => [ ".rw" ],
         ],
-        "whois.nic.net.sa"                   => [
+        "whois.nic.net.sa" => [
             "uri"     => "whois://whois.nic.net.sa",
             "tlds"    => [ ".sa", ".xn--mgberp4a5d4ar" ],
             "comment" => "Saudi Arabia",
             "charset" => "utf-8",
         ],
-        "whois.nic.net.sb"                   => [
+        "whois.nic.net.sb" => [
             "uri"  => "whois://whois.nic.net.sb",
             "tlds" => [ ".sb" ],
         ],
-        "whois.sdnic.sd"                     => [
+        "whois.sdnic.sd" => [
             "uri"  => "whois://whois.sdnic.sd",
             "tlds" => [ ".sd" ],
         ],
-        "whois.iis.se"                       => [
+        "whois.iis.se" => [
             "uri"     => "whois://whois.iis.se",
             "tlds"    => [ ".se" ],
             "charset" => "utf-8",
         ],
-        "whois.sgnic.sg"                     => [
+        "whois.sgnic.sg" => [
             "uri"     => "whois://whois.sgnic.sg",
             "tlds"    => [ ".sg", ".xn--clchc0ea0b2g2a9gcd", ".xn--yfro4i67o" ],
             "comment" => "Singapore, Chinese",
             "charset" => "utf-8",
         ],
-        "whois.nic.sh"                       => [
+        "whois.nic.sh" => [
             "uri"  => "whois://whois.nic.sh",
             "tlds" => [ ".sh" ],
         ],
-        "whois.register.si"                  => [
+        "whois.register.si" => [
             "uri"  => "whois://whois.register.si",
             "tlds" => [ ".si" ],
         ],
-        "whois.sk-nic.sk"                    => [
+        "whois.sk-nic.sk" => [
             "uri"  => "whois://whois.sk-nic.sk",
             "tlds" => [ ".sk" ],
         ],
-        "whois.nic.sl"                       => [
+        "whois.nic.sl" => [
             "uri"  => "whois://whois.nic.sl",
             "tlds" => [ ".sl" ],
         ],
-        "whois.nic.sm"                       => [
+        "whois.nic.sm" => [
             "uri"  => "whois://whois.nic.sm",
             "tlds" => [ ".sm" ],
         ],
-        "whois.nic.sn"                       => [
+        "whois.nic.sn" => [
             "uri"  => "whois://whois.nic.sn",
             "tlds" => [ ".sn" ],
         ],
-        "whois.nic.so"                       => [
+        "whois.nic.so" => [
             "uri"  => "whois://whois.nic.so",
             "tlds" => [ ".so" ],
         ],
-        "whois.nic.ss"                       => [
+        "whois.nic.ss" => [
             "uri"  => "whois://whois.nic.ss",
             "tlds" => [ ".ss" ],
         ],
-        "whois.nic.st"                       => [
+        "whois.nic.st" => [
             "uri"  => "whois://whois.nic.st",
             "tlds" => [ ".st" ],
         ],
-        "svnet.sv"                           => [
+        "svnet.sv" => [
             "uri"  => "https://svnet.sv/",
             "tlds" => [ ".sv" ],
         ],
-        "whois.sx"                           => [
+        "whois.sx" => [
             "uri"  => "whois://whois.sx",
             "tlds" => [ ".sx" ],
         ],
-        "whois.tld.sy"                       => [
+        "whois.tld.sy" => [
             "uri"     => "whois://whois.tld.sy",
             "tlds"    => [ ".sy", ".xn--ogbpf8fl" ],
             "comment" => "Syria",
             "charset" => "utf-8",
         ],
-        "whois.nic.tc"                       => [
+        "whois.nic.tc" => [
             "uri"  => "whois://whois.nic.tc",
             "tlds" => [ ".tc" ],
         ],
-        "whois.nic.td"                       => [
+        "whois.nic.td" => [
             "uri"  => "whois://whois.nic.td",
             "tlds" => [ ".td" ],
         ],
-        "whois.nic.tf"                       => [
+        "whois.nic.tf" => [
             "uri"  => "whois://whois.nic.tf",
             "tlds" => [ ".tf" ],
         ],
-        "whois.nic.tg"                       => [
+        "whois.nic.tg" => [
             "uri"  => "whois://whois.nic.tg",
             "tlds" => [ ".tg" ],
         ],
-        "whois.thnic.co.th"                  => [
+        "whois.thnic.co.th" => [
             "uri"     => "whois://whois.thnic.co.th",
             "tlds"    => [ ".th", ".xn--o3cw4h" ],
             "comment" => "Thailand",
         ],
-        "www.nic.tj"                         => [
+        "www.nic.tj" => [
             "uri"  => "http://www.nic.tj/whois.html",
             "tlds" => [ ".tj" ],
         ],
-        "whois.dot.tk"                       => [
+        "whois.dot.tk" => [
             "uri"  => "whois://whois.dot.tk",
             "tlds" => [ ".tk" ],
         ],
-        "whois.nic.tl"                       => [
+        "whois.nic.tl" => [
             "uri"  => "whois://whois.nic.tl",
             "tlds" => [ ".tl" ],
         ],
-        "whois.nic.tm"                       => [
+        "whois.nic.tm" => [
             "uri"  => "whois://whois.nic.tm",
             "tlds" => [ ".tm" ],
         ],
-        "whois.ati.tn"                       => [
+        "whois.ati.tn" => [
             "uri"     => "whois://whois.ati.tn",
             "tlds"    => [ ".tn", ".xn--pgbs0dh" ],
             "comment" => "Tunisia",
             "charset" => "utf-8",
         ],
-        "whois.tonic.to"                     => [
+        "whois.tonic.to" => [
             "uri"  => "whois://whois.tonic.to",
             "tlds" => [ ".to" ],
         ],
-        "whois.trabis.gov.tr"                => [
+        "whois.trabis.gov.tr" => [
             "uri"     => "whois://whois.trabis.gov.tr",
             "tlds"    => [ ".tr" ],
             "charset" => "utf-8",
         ],
-        "www.nic.tt"                         => [
+        "www.nic.tt" => [
             "uri"  => "https://www.nic.tt/cgi-bin/search.pl",
             "tlds" => [ ".tt" ],
         ],
-        "whois.nic.tv"                       => [
+        "whois.nic.tv" => [
             "uri"  => "whois://whois.nic.tv",
             "tlds" => [ ".tv" ],
         ],
-        "whois.twnic.net.tw"                 => [
+        "whois.twnic.net.tw" => [
             "uri"     => "whois://whois.twnic.net.tw",
             "tlds"    => [ ".tw", ".xn--kprw13d", ".xn--kpry57d" ],
             "comment" => "Taiwan, Traditional Chinese",
             "charset" => "utf-8",
         ],
-        "whois.tznic.or.tz"                  => [
+        "whois.tznic.or.tz" => [
             "uri"  => "whois://whois.tznic.or.tz",
             "tlds" => [ ".tz" ],
         ],
-        "whois.biz.ua"                       => [
+        "whois.biz.ua" => [
             "uri"     => "whois://whois.biz.ua",
             "tlds"    => [ ".biz.ua" ],
             "charset" => "utf-8",
         ],
-        "whois.co.ua"                        => [
+        "whois.co.ua" => [
             "uri"     => "whois://whois.co.ua",
             "tlds"    => [ ".co.ua" ],
             "charset" => "utf-8",
         ],
-        "whois.pp.ua"                        => [
+        "whois.pp.ua" => [
             "uri"     => "whois://whois.pp.ua",
             "tlds"    => [ ".pp.ua" ],
             "charset" => "utf-8",
         ],
-        "whois.ua"                           => [
+        "whois.ua" => [
             "uri"     => "whois://whois.ua",
             "tlds"    => [ ".ua" ],
             "charset" => "utf-8",
             "handles" => [ "-uanic" ],
         ],
-        "whois.co.ug"                        => [
+        "whois.co.ug" => [
             "uri"  => "whois://whois.co.ug",
             "tlds" => [ ".ug" ],
         ],
-        "whois.nic.ac.uk"                    => [
+        "whois.nic.ac.uk" => [
             "uri"     => "whois://whois.nic.ac.uk",
             "tlds"    => [ ".ac.uk" ],
             "charset" => "utf-8",
         ],
-        "whois.gov.uk"                       => [
+        "whois.gov.uk" => [
             "uri"     => "whois://whois.gov.uk",
             "tlds"    => [ ".gov.uk" ],
             "charset" => "utf-8",
         ],
-        "whois.nic.uk"                       => [
+        "whois.nic.uk" => [
             "uri"  => "whois://whois.nic.uk",
             "tlds" => [ ".uk" ],
         ],
-        "whois.nic.gov"                      => [
+        "whois.nic.gov" => [
             "uri"  => "whois://whois.nic.gov",
             "tlds" => [ ".fed.us" ],
         ],
-        "whois.nic.us"                       => [
+        "whois.nic.us" => [
             "uri"  => "whois://whois.nic.us",
             "tlds" => [ ".us" ],
         ],
-        "www.nic.uy"                         => [
+        "www.nic.uy" => [
             "uri"  => "https://www.nic.uy/",
             "tlds" => [ ".edu.uy", ".net.uy", ".org.uy" ],
         ],
-        "www.dominios.gub.uy"                => [
+        "www.dominios.gub.uy" => [
             "uri"  => "https://www.dominios.gub.uy/",
             "tlds" => [ ".gub.uy", ".mil.uy" ],
         ],
-        "nic.com.uy"                         => [
+        "nic.com.uy" => [
             "uri"  => "https://nic.com.uy/v2/consulta-whois",
             "tlds" => [ ".uy" ],
         ],
-        "whois.cctld.uz"                     => [
+        "whois.cctld.uz" => [
             "uri"  => "whois://whois.cctld.uz",
             "tlds" => [ ".uz" ],
         ],
-        "whois.nic.ve"                       => [
+        "whois.nic.ve" => [
             "uri"  => "whois://whois.nic.ve",
             "tlds" => [ ".ve" ],
         ],
-        "whois.nic.vg"                       => [
+        "whois.nic.vg" => [
             "uri"  => "whois://whois.nic.vg",
             "tlds" => [ ".vg" ],
         ],
-        "secure.nic.vi"                      => [
+        "secure.nic.vi" => [
             "uri"  => "https://secure.nic.vi/whois-lookup/",
             "tlds" => [ ".vi" ],
         ],
-        "www.vnnic.vn"                       => [
+        "www.vnnic.vn" => [
             "uri"  => "http://www.vnnic.vn/en",
             "tlds" => [ ".vn" ],
         ],
-        "whois.dnrs.vu"                      => [
+        "whois.dnrs.vu" => [
             "uri"  => "whois://whois.dnrs.vu",
             "tlds" => [ ".vu" ],
         ],
-        "whois.nic.wf"                       => [
+        "whois.nic.wf" => [
             "uri"     => "whois://whois.nic.wf",
             "tlds"    => [ ".wf" ],
             "charset" => "utf-8",
         ],
-        "whois.website.ws"                   => [
+        "whois.website.ws" => [
             "uri"  => "whois://whois.website.ws",
             "tlds" => [ ".ws" ],
         ],
-        "whois.y.net.ye"                     => [
+        "whois.y.net.ye" => [
             "uri"  => "whois://whois.y.net.ye",
             "tlds" => [ ".ye" ],
         ],
-        "whois.nic.yt"                       => [
+        "whois.nic.yt" => [
             "uri"     => "whois://whois.nic.yt",
             "tlds"    => [ ".yt" ],
             "charset" => "utf-8",
         ],
-        "whois.ac.za"                        => [
+        "whois.ac.za" => [
             "uri"  => "whois://whois.ac.za",
             "tlds" => [ ".ac.za" ],
         ],
-        "whois.alt.za"                       => [
+        "whois.alt.za" => [
             "uri"  => "https://whois.alt.za/",
             "tlds" => [ ".alt.za" ],
         ],
-        "whois.registry.net.za"              => [
+        "whois.registry.net.za" => [
             "uri"  => "whois://whois.registry.net.za",
             "tlds" => [ ".co.za" ],
         ],
-        "whois.edu.za"                       => [
+        "whois.edu.za" => [
             "uri"  => "https://whois.edu.za/",
             "tlds" => [ ".edu.za" ],
         ],
-        "whois.gov.za"                       => [
+        "whois.gov.za" => [
             "uri"  => "whois://whois.gov.za",
             "tlds" => [ ".gov.za" ],
         ],
-        "net-whois.registry.net.za"          => [
+        "net-whois.registry.net.za" => [
             "uri"  => "whois://net-whois.registry.net.za",
             "tlds" => [ ".net.za" ],
         ],
-        "org-whois.registry.net.za"          => [
+        "org-whois.registry.net.za" => [
             "uri"  => "whois://org-whois.registry.net.za",
             "tlds" => [ ".org.za" ],
         ],
-        "web-whois.registry.net.za"          => [
+        "web-whois.registry.net.za" => [
             "uri"  => "whois://web-whois.registry.net.za",
             "tlds" => [ ".web.za" ],
         ],
-        "whois.zicta.zm"                     => [
+        "whois.zicta.zm" => [
             "uri"  => "whois://whois.zicta.zm",
             "tlds" => [ ".zm" ],
         ],
-        "whois.imena.bg"                     => [
+        "whois.imena.bg" => [
             "uri"     => "whois://whois.imena.bg",
             "comment" => "Bulgaria",
             "tlds"    => [ ".xn--90ae" ],
         ],
-        "cwhois.cnnic.cn"                    => [
+        "cwhois.cnnic.cn" => [
             "uri"     => "whois://cwhois.cnnic.cn",
             "comment" => "China, Traditional Chinese",
             "tlds"    => [ ".xn--fiqs8s", ".xn--fiqz9s" ],
             "charset" => "utf-8",
         ],
-        "whois.dotukr.com"                   => [
+        "whois.dotukr.com" => [
             "uri"     => "whois://whois.dotukr.com",
             "comment" => "Ukraine",
             "tlds"    => [ ".xn--j1amh" ],
         ],
-        "whois.itdc.ge"                      => [
+        "whois.itdc.ge" => [
             "uri"     => "whois://whois.itdc.ge",
             "comment" => "Georgia",
             "tlds"    => [ ".xn--node" ],
         ],
-        "whois.dotmasr.eg"                   => [
+        "whois.dotmasr.eg" => [
             "uri"     => "whois://whois.dotmasr.eg",
             "comment" => "Egypt",
             "tlds"    => [ ".xn--wgbh1c" ],
         ],
-        "whois.arin.net"                     => [
+        "whois.arin.net" => [
             "uri"     => "whois://whois.arin.net",
             "handles" => [ "-arin" ],
         ],
-        "whois.lacnic.net"                   => [
+        "whois.lacnic.net" => [
             "uri"     => "whois://whois.lacnic.net",
             "handles" => [ "-lacnic" ],
         ],
-        "whois.afrinic.net"                  => [
+        "whois.afrinic.net" => [
             "uri"     => "whois://whois.afrinic.net",
             "handles" => [ "-afrinic" ],
         ],
-        "whois.apnic.net"                    => [
+        "whois.apnic.net" => [
             "uri"     => "whois://whois.apnic.net",
             "handles" => [ "-ap" ],
         ],
-        "whois.afilias.info"                 => [
+        "whois.afilias.info" => [
             "uri"     => "whois://whois.afilias.info",
             "handles" => [ "-lrms" ],
         ],
-        "whois.nic.org.uy"                   => [
+        "whois.nic.org.uy" => [
             "uri"     => "whois://whois.nic.org.uy",
             "handles" => [ "-adnic" ],
         ],
-        "whois.sixxs.net"                    => [
+        "whois.sixxs.net" => [
             "uri"     => "whois://whois.sixxs.net",
             "handles" => [ "-sixxs" ],
         ],
@@ -7352,16 +7352,992 @@ class BuiltinRegistryRegistry extends ServerRegistry
 
     protected array $ipv4Ranges = [
         /** @generator-begin=ipv4 */
+        // 45.4.0.0 - 45.7.255.255
+        [ 755236864, 4294705152, "whois.lacnic.net" ],
+        // 45.8.0.0 - 45.15.255.255
+        [ 755499008, 4294443008, "whois.ripe.net" ],
+        // 45.65.0.0 - 45.65.15.255
+        [ 759234560, 4294963200, "whois.apnic.net" ],
+        // 45.64.0.0 - 45.64.255.255
+        [ 759169024, 4294901760, "whois.apnic.net" ],
+        // 45.65.16.0 - 45.65.31.255
+        [ 759238656, 4294963200, "whois.apnic.net" ],
+        // 45.65.32.0 - 45.65.63.255
+        [ 759242752, 4294959104, "whois.apnic.net" ],
+        // 45.65.64.0 - 45.65.127.255
+        [ 759250944, 4294950912, "whois.ripe.net" ],
+        // 45.65.128.0 - 45.65.255.255
+        [ 759267328, 4294934528, "whois.lacnic.net" ],
+        // 45.66.0.0 - 45.67.255.255
+        [ 759300096, 4294836224, "whois.ripe.net" ],
+        // 45.68.0.0 - 45.71.255.255
+        [ 759431168, 4294705152, "whois.lacnic.net" ],
+        // 45.80.0.0 - 45.95.255.255
+        [ 760217600, 4293918720, "whois.ripe.net" ],
+        // 45.96.0.0 - 45.111.255.255
+        [ 761266176, 4293918720, "whois.afrinic.net" ],
+        // 45.112.0.0 - 45.127.255.255
+        [ 762314752, 4293918720, "whois.apnic.net" ],
+        // 45.128.0.0 - 45.159.255.255
+        [ 763363328, 4292870144, "whois.ripe.net" ],
+        // 45.160.0.0 - 45.191.255.255
+        [ 765460480, 4292870144, "whois.lacnic.net" ],
+        // 45.192.0.0 - 45.207.255.255
+        [ 767557632, 4293918720, "whois.afrinic.net" ],
+        // 45.208.0.0 - 45.215.255.255
+        [ 768606208, 4294443008, "whois.afrinic.net" ],
+        // 45.216.0.0 - 45.219.255.255
+        [ 769130496, 4294705152, "whois.afrinic.net" ],
+        // 45.220.0.0 - 45.221.255.255
+        [ 769392640, 4294836224, "whois.afrinic.net" ],
+        // 45.222.0.0 - 45.222.255.255
+        [ 769523712, 4294901760, "whois.afrinic.net" ],
+        // 45.224.0.0 - 45.239.255.255
+        [ 769654784, 4293918720, "whois.lacnic.net" ],
+        // 45.240.0.0 - 45.247.255.255
+        [ 770703360, 4294443008, "whois.afrinic.net" ],
+        // 45.248.0.0 - 45.255.255.255
+        [ 771227648, 4294443008, "whois.apnic.net" ],
+        // 66.251.128.0 - 66.251.191.255
+        [ 1123778560, 4294950912, "whois.afrinic.net" ],
+        // 72.44.16.0 - 72.44.31.255
+        [ 1210847232, 4294963200, "whois.lacnic.net" ],
+        // 128.201.0.0 - 128.201.255.255
+        [ 2160656384, 4294901760, "whois.lacnic.net" ],
+        // 131.196.0.0 - 131.196.255.255
+        [ 2210660352, 4294901760, "whois.lacnic.net" ],
+        // 137.59.0.0 - 137.59.255.255
+        [ 2302345216, 4294901760, "whois.apnic.net" ],
+        // 139.5.0.0 - 139.5.255.255
+        [ 2332360704, 4294901760, "whois.apnic.net" ],
+        // 139.26.0.0 - 139.26.255.255
+        [ 2333736960, 4294901760, "whois.afrinic.net" ],
+        // 144.48.0.0 - 144.48.255.255
+        [ 2419064832, 4294901760, "whois.apnic.net" ],
+        // 146.196.32.0 - 146.196.63.255
+        [ 2462326784, 4294959104, "whois.apnic.net" ],
+        // 146.196.64.0 - 146.196.127.255
+        [ 2462334976, 4294950912, "whois.apnic.net" ],
+        // 146.196.128.0 - 146.196.255.255
+        [ 2462351360, 4294934528, "whois.afrinic.net" ],
+        // 147.78.0.0 - 147.78.255.255
+        [ 2471362560, 4294901760, "whois.ripe.net" ],
+        // 149.248.0.0 - 149.248.255.255
+        [ 2516058112, 4294901760, "whois.arin.net" ],
+        // 152.89.0.0 - 152.89.255.255
+        [ 2555969536, 4294901760, "whois.ripe.net" ],
+        // 157.119.0.0 - 157.119.255.255
+        [ 2641821696, 4294901760, "whois.apnic.net" ],
+        // 160.19.20.0 - 160.19.23.255
+        [ 2685604864, 4294966272, "whois.apnic.net" ],
+        // 160.19.36.0 - 160.19.39.255
+        [ 2685608960, 4294966272, "whois.afrinic.net" ],
+        // 160.19.44.0 - 160.19.47.255
+        [ 2685611008, 4294966272, "whois.lacnic.net" ],
+        // 160.19.48.0 - 160.19.55.255
+        [ 2685612032, 4294965248, "whois.apnic.net" ],
+        // 160.19.60.0 - 160.19.63.255
+        [ 2685615104, 4294966272, "whois.afrinic.net" ],
+        // 160.19.64.0 - 160.19.67.255
+        [ 2685616128, 4294966272, "whois.apnic.net" ],
+        // 160.19.92.0 - 160.19.95.255
+        [ 2685623296, 4294966272, "whois.ripe.net" ],
+        // 160.19.96.0 - 160.19.103.255
+        [ 2685624320, 4294965248, "whois.afrinic.net" ],
+        // 160.19.112.0 - 160.19.127.255
+        [ 2685628416, 4294963200, "whois.afrinic.net" ],
+        // 160.19.128.0 - 160.19.143.255
+        [ 2685632512, 4294963200, "whois.afrinic.net" ],
+        // 160.19.152.0 - 160.19.155.255
+        [ 2685638656, 4294966272, "whois.afrinic.net" ],
+        // 160.19.168.0 - 160.19.175.255
+        [ 2685642752, 4294965248, "whois.lacnic.net" ],
+        // 160.19.180.0 - 160.19.183.255
+        [ 2685645824, 4294966272, "whois.ripe.net" ],
+        // 160.19.188.0 - 160.19.191.255
+        [ 2685647872, 4294966272, "whois.afrinic.net" ],
+        // 160.19.192.0 - 160.19.199.255
+        [ 2685648896, 4294965248, "whois.afrinic.net" ],
+        // 160.19.200.0 - 160.19.203.255
+        [ 2685650944, 4294966272, "whois.lacnic.net" ],
+        // 160.19.208.0 - 160.19.223.255
+        [ 2685652992, 4294963200, "whois.apnic.net" ],
+        // 160.19.224.0 - 160.19.227.255
+        [ 2685657088, 4294966272, "whois.apnic.net" ],
+        // 160.19.232.0 - 160.19.239.255
+        [ 2685659136, 4294965248, "whois.afrinic.net" ],
+        // 160.19.240.0 - 160.19.255.255
+        [ 2685661184, 4294963200, "whois.lacnic.net" ],
+        // 160.20.0.0 - 160.20.15.255
+        [ 2685665280, 4294963200, "whois.apnic.net" ],
+        // 160.20.20.0 - 160.20.23.255
+        [ 2685670400, 4294966272, "whois.lacnic.net" ],
+        // 160.20.24.0 - 160.20.31.255
+        [ 2685671424, 4294965248, "whois.afrinic.net" ],
+        // 160.20.32.0 - 160.20.35.255
+        [ 2685673472, 4294966272, "whois.lacnic.net" ],
+        // 160.20.40.0 - 160.20.47.255
+        [ 2685675520, 4294965248, "whois.apnic.net" ],
+        // 160.20.48.0 - 160.20.63.255
+        [ 2685677568, 4294963200, "whois.apnic.net" ],
+        // 160.20.64.0 - 160.20.71.255
+        [ 2685681664, 4294965248, "whois.lacnic.net" ],
+        // 160.20.72.0 - 160.20.75.255
+        [ 2685683712, 4294966272, "whois.apnic.net" ],
+        // 160.20.80.0 - 160.20.95.255
+        [ 2685685760, 4294963200, "whois.lacnic.net" ],
+        // 160.20.96.0 - 160.20.103.255
+        [ 2685689856, 4294965248, "whois.ripe.net" ],
+        // 160.20.108.0 - 160.20.111.255
+        [ 2685692928, 4294966272, "whois.ripe.net" ],
+        // 160.20.112.0 - 160.20.115.255
+        [ 2685693952, 4294966272, "whois.afrinic.net" ],
+        // 160.20.144.0 - 160.20.159.255
+        [ 2685702144, 4294963200, "whois.ripe.net" ],
+        // 160.20.160.0 - 160.20.191.255
+        [ 2685706240, 4294959104, "whois.lacnic.net" ],
+        // 160.20.192.0 - 160.20.207.255
+        [ 2685714432, 4294963200, "whois.lacnic.net" ],
+        // 160.20.213.0 - 160.20.213.255
+        [ 2685719808, 4294967040, "whois.afrinic.net" ],
+        // 160.20.214.0 - 160.20.215.255
+        [ 2685720064, 4294966784, "whois.ripe.net" ],
+        // 160.20.217.0 - 160.20.217.255
+        [ 2685720832, 4294967040, "whois.afrinic.net" ],
+        // 160.20.218.0 - 160.20.219.255
+        [ 2685721088, 4294966784, "whois.lacnic.net" ],
+        // 160.20.221.0 - 160.20.221.255
+        [ 2685721856, 4294967040, "whois.afrinic.net" ],
+        // 160.20.222.0 - 160.20.223.255
+        [ 2685722112, 4294966784, "whois.apnic.net" ],
+        // 160.20.225.0 - 160.20.225.255
+        [ 2685722880, 4294967040, "whois.lacnic.net" ],
+        // 160.20.226.0 - 160.20.227.255
+        [ 2685723136, 4294966784, "whois.afrinic.net" ],
+        // 160.20.229.0 - 160.20.229.255
+        [ 2685723904, 4294967040, "whois.ripe.net" ],
+        // 160.20.242.0 - 160.20.243.255
+        [ 2685727232, 4294966784, "whois.lacnic.net" ],
+        // 160.20.246.0 - 160.20.247.255
+        [ 2685728256, 4294966784, "whois.lacnic.net" ],
+        // 160.20.248.0 - 160.20.249.255
+        [ 2685728768, 4294966784, "whois.ripe.net" ],
+        // 160.20.252.0 - 160.20.255.255
+        [ 2685729792, 4294966272, "whois.afrinic.net" ],
+        // 160.202.8.0 - 160.202.15.255
+        [ 2697594880, 4294965248, "whois.apnic.net" ],
+        // 160.202.16.0 - 160.202.31.255
+        [ 2697596928, 4294963200, "whois.ripe.net" ],
+        // 160.202.32.0 - 160.202.63.255
+        [ 2697601024, 4294959104, "whois.apnic.net" ],
+        // 160.202.128.0 - 160.202.255.255
+        [ 2697625600, 4294934528, "whois.apnic.net" ],
+        // 160.238.0.0 - 160.238.0.255
+        [ 2699952128, 4294967040, "whois.apnic.net" ],
+        // 160.238.11.0 - 160.238.11.255
+        [ 2699954944, 4294967040, "whois.afrinic.net" ],
+        // 160.238.12.0 - 160.238.15.255
+        [ 2699955200, 4294966272, "whois.apnic.net" ],
+        // 160.238.16.0 - 160.238.19.255
+        [ 2699956224, 4294966272, "whois.apnic.net" ],
+        // 160.238.21.0 - 160.238.21.255
+        [ 2699957504, 4294967040, "whois.ripe.net" ],
+        // 160.238.24.0 - 160.238.27.255
+        [ 2699958272, 4294966272, "whois.lacnic.net" ],
+        // 160.238.28.0 - 160.238.29.255
+        [ 2699959296, 4294966784, "whois.lacnic.net" ],
+        // 160.238.33.0 - 160.238.33.255
+        [ 2699960576, 4294967040, "whois.apnic.net" ],
+        // 160.238.34.0 - 160.238.35.255
+        [ 2699960832, 4294966784, "whois.apnic.net" ],
+        // 160.238.36.0 - 160.238.39.255
+        [ 2699961344, 4294966272, "whois.ripe.net" ],
+        // 160.238.48.0 - 160.238.49.255
+        [ 2699964416, 4294966784, "whois.afrinic.net" ],
+        // 160.238.50.0 - 160.238.50.255
+        [ 2699964928, 4294967040, "whois.afrinic.net" ],
+        // 160.238.52.0 - 160.238.55.255
+        [ 2699965440, 4294966272, "whois.ripe.net" ],
+        // 160.238.57.0 - 160.238.57.255
+        [ 2699966720, 4294967040, "whois.afrinic.net" ],
+        // 160.238.58.0 - 160.238.59.255
+        [ 2699966976, 4294966784, "whois.apnic.net" ],
+        // 160.238.60.0 - 160.238.61.255
+        [ 2699967488, 4294966784, "whois.ripe.net" ],
+        // 160.238.63.0 - 160.238.63.255
+        [ 2699968256, 4294967040, "whois.lacnic.net" ],
+        // 160.238.64.0 - 160.238.95.255
+        [ 2699968512, 4294959104, "whois.apnic.net" ],
+        // 160.238.96.0 - 160.238.99.255
+        [ 2699976704, 4294966272, "whois.ripe.net" ],
+        // 160.238.101.0 - 160.238.101.255
+        [ 2699977984, 4294967040, "whois.afrinic.net" ],
+        // 160.238.104.0 - 160.238.111.255
+        [ 2699978752, 4294965248, "whois.lacnic.net" ],
+        // 160.238.112.0 - 160.238.127.255
+        [ 2699980800, 4294963200, "whois.ripe.net" ],
+        // 160.238.128.0 - 160.238.255.255
+        [ 2699984896, 4294934528, "whois.lacnic.net" ],
+        // 161.123.0.0 - 161.123.255.255
+        [ 2709192704, 4294901760, "whois.afrinic.net" ],
+        // 162.12.196.0 - 162.12.199.255
+        [ 2718745600, 4294966272, "whois.lacnic.net" ],
+        // 162.12.200.0 - 162.12.207.255
+        [ 2718746624, 4294965248, "whois.ripe.net" ],
+        // 162.12.208.0 - 162.12.215.255
+        [ 2718748672, 4294965248, "whois.apnic.net" ],
+        // 162.12.240.0 - 162.12.247.255
+        [ 2718756864, 4294965248, "whois.apnic.net" ],
+        // 164.160.0.0 - 164.160.255.255
+        [ 2761949184, 4294901760, "whois.afrinic.net" ],
+        // 164.163.0.0 - 164.163.255.255
+        [ 2762145792, 4294901760, "whois.lacnic.net" ],
+        // 192.12.109.0 - 192.12.109.255
+        [ 3222039808, 4294967040, "whois.apnic.net" ],
+        // 192.12.110.0 - 192.12.111.255
+        [ 3222040064, 4294966784, "whois.afrinic.net" ],
+        // 192.12.112.0 - 192.12.115.255
+        [ 3222040576, 4294966272, "whois.lacnic.net" ],
+        // 192.12.116.0 - 192.12.117.255
+        [ 3222041600, 4294966784, "whois.afrinic.net" ],
+        // 192.12.118.0 - 192.12.118.255
+        [ 3222042112, 4294967040, "whois.lacnic.net" ],
+        // 192.26.110.0 - 192.26.110.255
+        [ 3222957568, 4294967040, "whois.apnic.net" ],
+        // 192.42.65.0 - 192.42.65.255
+        [ 3223994624, 4294967040, "whois.ripe.net" ],
+        // 192.47.36.0 - 192.47.36.255
+        [ 3224314880, 4294967040, "whois.afrinic.net" ],
+        // 192.51.188.0 - 192.51.188.255
+        [ 3224615936, 4294967040, "whois.apnic.net" ],
+        // 192.51.240.0 - 192.51.240.255
+        [ 3224629248, 4294967040, "whois.afrinic.net" ],
+        // 192.54.244.0 - 192.54.244.255
+        [ 3224826880, 4294967040, "whois.ripe.net" ],
+        // 192.67.23.0 - 192.67.23.255
+        [ 3225622272, 4294967040, "whois.lacnic.net" ],
+        // 192.68.185.0 - 192.68.185.255
+        [ 3225729280, 4294967040, "whois.lacnic.net" ],
+        // 192.70.192.0 - 192.70.199.255
+        [ 3225862144, 4294965248, "whois.ripe.net" ],
+        // 192.70.200.0 - 192.70.201.255
+        [ 3225864192, 4294966784, "whois.afrinic.net" ],
+        // 192.75.4.0 - 192.75.4.255
+        [ 3226141696, 4294967040, "whois.lacnic.net" ],
+        // 192.75.137.0 - 192.75.137.255
+        [ 3226175744, 4294967040, "whois.apnic.net" ],
+        // 192.75.236.0 - 192.75.236.255
+        [ 3226201088, 4294967040, "whois.afrinic.net" ],
+        // 192.83.207.0 - 192.83.207.255
+        [ 3226717952, 4294967040, "whois.lacnic.net" ],
+        // 192.83.208.0 - 192.83.215.255
+        [ 3226718208, 4294965248, "whois.afrinic.net" ],
+        // 192.83.216.0 - 192.83.216.255
+        [ 3226720256, 4294967040, "whois.ripe.net" ],
+        // 192.91.200.0 - 192.91.200.255
+        [ 3227240448, 4294967040, "whois.afrinic.net" ],
+        // 192.91.254.0 - 192.91.254.255
+        [ 3227254272, 4294967040, "whois.lacnic.net" ],
+        // 192.92.154.0 - 192.92.154.255
+        [ 3227294208, 4294967040, "whois.lacnic.net" ],
+        // 192.94.78.0 - 192.94.78.255
+        [ 3227405824, 4294967040, "whois.ripe.net" ],
+        // 192.135.90.0 - 192.135.91.255
+        [ 3230095872, 4294966784, "whois.apnic.net" ],
+        // 192.135.95.0 - 192.135.95.255
+        [ 3230097152, 4294967040, "whois.lacnic.net" ],
+        // 192.135.99.0 - 192.135.99.255
+        [ 3230098176, 4294967040, "whois.apnic.net" ],
+        // 192.135.100.0 - 192.135.100.255
+        [ 3230098432, 4294967040, "whois.ripe.net" ],
+        // 192.135.185.0 - 192.135.185.255
+        [ 3230120192, 4294967040, "whois.lacnic.net" ],
+        // 192.140.1.0 - 192.140.1.255
+        [ 3230400768, 4294967040, "whois.lacnic.net" ],
+        // 192.140.2.0 - 192.140.3.255
+        [ 3230401024, 4294966784, "whois.ripe.net" ],
+        // 192.140.8.0 - 192.140.15.255
+        [ 3230402560, 4294965248, "whois.lacnic.net" ],
+        // 192.140.16.0 - 192.140.31.255
+        [ 3230404608, 4294963200, "whois.lacnic.net" ],
+        // 192.140.32.0 - 192.140.63.255
+        [ 3230408704, 4294959104, "whois.lacnic.net" ],
+        // 192.140.64.0 - 192.140.127.255
+        [ 3230416896, 4294950912, "whois.lacnic.net" ],
+        // 192.140.128.0 - 192.140.255.255
+        [ 3230433280, 4294934528, "whois.apnic.net" ],
+        // 192.141.0.0 - 192.141.255.255
+        [ 3230466048, 4294901760, "whois.lacnic.net" ],
+        // 192.142.0.0 - 192.143.255.255
+        [ 3230531584, 4294836224, "whois.afrinic.net" ],
+        // 192.144.0.0 - 192.144.63.255
+        [ 3230662656, 4294950912, "whois.ripe.net" ],
+        // 192.144.64.0 - 192.144.71.255
+        [ 3230679040, 4294965248, "whois.lacnic.net" ],
+        // 192.144.72.0 - 192.144.73.255
+        [ 3230681088, 4294966784, "whois.lacnic.net" ],
+        // 192.144.75.0 - 192.144.75.255
+        [ 3230681856, 4294967040, "whois.ripe.net" ],
+        // 192.144.78.0 - 192.144.79.255
+        [ 3230682624, 4294966784, "whois.apnic.net" ],
+        // 192.144.80.0 - 192.144.95.255
+        [ 3230683136, 4294963200, "whois.apnic.net" ],
+        // 192.144.96.0 - 192.144.127.255
+        [ 3230687232, 4294959104, "whois.lacnic.net" ],
+        // 192.145.0.0 - 192.145.127.255
+        [ 3230728192, 4294934528, "whois.ripe.net" ],
+        // 192.145.128.0 - 192.145.191.255
+        [ 3230760960, 4294950912, "whois.afrinic.net" ],
+        // 192.145.192.0 - 192.145.223.255
+        [ 3230777344, 4294959104, "whois.lacnic.net" ],
+        // 192.145.224.0 - 192.145.227.255
+        [ 3230785536, 4294966272, "whois.ripe.net" ],
+        // 192.145.228.0 - 192.145.229.255
+        [ 3230786560, 4294966784, "whois.apnic.net" ],
+        // 192.145.230.0 - 192.145.230.255
+        [ 3230787072, 4294967040, "whois.afrinic.net" ],
+        // 192.153.12.0 - 192.153.12.255
+        [ 3231255552, 4294967040, "whois.lacnic.net" ],
+        // 192.156.144.0 - 192.156.144.255
+        [ 3231485952, 4294967040, "whois.apnic.net" ],
+        // 192.156.220.0 - 192.156.220.255
+        [ 3231505408, 4294967040, "whois.apnic.net" ],
+        // 192.172.232.0 - 192.172.232.255
+        [ 3232557056, 4294967040, "whois.ripe.net" ],
+        // 192.188.82.0 - 192.188.83.255
+        [ 3233567232, 4294966784, "whois.apnic.net" ],
+        // 192.188.248.0 - 192.188.248.255
+        [ 3233609728, 4294967040, "whois.ripe.net" ],
+        // 192.197.113.0 - 192.197.113.255
+        [ 3234164992, 4294967040, "whois.apnic.net" ],
+        // 192.251.230.0 - 192.251.230.255
+        [ 3237733888, 4294967040, "whois.ripe.net" ],
+        // 198.97.38.0 - 198.97.38.255
+        [ 3328255488, 4294967040, "whois.lacnic.net" ],
+        // 199.21.172.0 - 199.21.175.255
+        [ 3340086272, 4294966272, "whois.apnic.net" ],
+        // 199.212.57.0 - 199.212.57.255
+        [ 3352574208, 4294967040, "whois.apnic.net" ],
+        // 204.8.204.0 - 204.8.207.255
+        [ 3423128576, 4294966272, "whois.afrinic.net" ],
+        // 204.11.0.0 - 204.11.3.255
+        [ 3423272960, 4294966272, "whois.ripe.net" ],
+        // 204.48.32.0 - 204.48.33.255
+        [ 3425705984, 4294966784, "whois.ripe.net" ],
+        // 204.52.191.0 - 204.52.191.255
+        [ 3426008832, 4294967040, "whois.apnic.net" ],
+        // 204.225.42.0 - 204.225.43.255
+        [ 3437308416, 4294966784, "whois.lacnic.net" ],
+        // 205.211.83.0 - 205.211.83.255
+        [ 3453178624, 4294967040, "whois.ripe.net" ],
+        // 208.85.156.0 - 208.85.159.255
+        [ 3495271424, 4294966272, "whois.afrinic.net" ],
+        // 216.98.208.0 - 216.98.223.255
+        [ 3630354432, 4294963200, "whois.lacnic.net" ],
+        // 216.250.96.0 - 216.250.111.255
+        [ 3640287232, 4294963200, "whois.apnic.net" ],
+        // 1.0.0.0 - 1.255.255.255
+        [ 16777216, 4278190080, "whois.apnic.net" ],
+        // 2.0.0.0 - 2.255.255.255
+        [ 33554432, 4278190080, "whois.ripe.net" ],
+        // 5.0.0.0 - 5.255.255.255
+        [ 83886080, 4278190080, "whois.ripe.net" ],
+        // 14.0.0.0 - 14.255.255.255
+        [ 234881024, 4278190080, "whois.apnic.net" ],
+        // 24.132.0.0 - 24.135.255.255
+        [ 411303936, 4294705152, "whois.ripe.net" ],
+        // 27.0.0.0 - 27.255.255.255
+        [ 452984832, 4278190080, "whois.apnic.net" ],
+        // 31.0.0.0 - 31.255.255.255
+        [ 520093696, 4278190080, "whois.ripe.net" ],
+        // 36.0.0.0 - 36.255.255.255
+        [ 603979776, 4278190080, "whois.apnic.net" ],
+        // 37.0.0.0 - 37.255.255.255
+        [ 620756992, 4278190080, "whois.ripe.net" ],
+        // 39.0.0.0 - 39.255.255.255
+        [ 654311424, 4278190080, "whois.apnic.net" ],
+        // 41.0.0.0 - 41.255.255.255
+        [ 687865856, 4278190080, "whois.afrinic.net" ],
+        // 42.0.0.0 - 43.255.255.255
+        [ 704643072, 4261412864, "whois.apnic.net" ],
+        // 46.0.0.0 - 46.255.255.255
+        [ 771751936, 4278190080, "whois.ripe.net" ],
+        // 49.0.0.0 - 49.255.255.255
+        [ 822083584, 4278190080, "whois.apnic.net" ],
+        // 51.0.0.0 - 51.255.255.255
+        [ 855638016, 4278190080, "whois.ripe.net" ],
+        // 59.0.0.0 - 59.31.255.255
+        [ 989855744, 4292870144, "whois.nic.or.kr" ],
+        // 58.0.0.0 - 59.255.255.255
+        [ 973078528, 4261412864, "whois.apnic.net" ],
+        // 61.72.0.0 - 61.79.255.255
+        [ 1028128768, 4294443008, "whois.nic.or.kr" ],
+        // 61.80.0.0 - 61.83.255.255
+        [ 1028653056, 4294705152, "whois.nic.or.kr" ],
+        // 61.84.0.0 - 61.85.255.255
+        [ 1028915200, 4294836224, "whois.nic.or.kr" ],
+        // 61.112.0.0 - 61.127.255.255
+        [ 1030750208, 4293918720, "whois.nic.ad.jp" ],
+        // 61.192.0.0 - 61.207.255.255
+        [ 1035993088, 4293918720, "whois.nic.ad.jp" ],
+        // 61.208.0.0 - 61.215.255.255
+        [ 1037041664, 4294443008, "whois.nic.ad.jp" ],
+        // 60.0.0.0 - 61.255.255.255
+        [ 1006632960, 4261412864, "whois.apnic.net" ],
+        // 62.0.0.0 - 62.255.255.255
+        [ 1040187392, 4278190080, "whois.ripe.net" ],
+        // 77.0.0.0 - 77.255.255.255
+        [ 1291845632, 4278190080, "whois.ripe.net" ],
+        // 78.0.0.0 - 79.255.255.255
+        [ 1308622848, 4261412864, "whois.ripe.net" ],
+        // 80.0.0.0 - 95.255.255.255
+        [ 1342177280, 4026531840, "whois.ripe.net" ],
+        // 101.0.0.0 - 101.255.255.255
+        [ 1694498816, 4278190080, "whois.apnic.net" ],
+        // 102.0.0.0 - 102.255.255.255
+        [ 1711276032, 4278190080, "whois.afrinic.net" ],
+        // 103.0.0.0 - 103.255.255.255
+        [ 1728053248, 4278190080, "whois.apnic.net" ],
+        // 105.0.0.0 - 105.255.255.255
+        [ 1761607680, 4278190080, "whois.afrinic.net" ],
+        // 106.0.0.0 - 106.255.255.255
+        [ 1778384896, 4278190080, "whois.apnic.net" ],
+        // 109.0.0.0 - 109.255.255.255
+        [ 1828716544, 4278190080, "whois.ripe.net" ],
+        // 110.0.0.0 - 111.255.255.255
+        [ 1845493760, 4261412864, "whois.apnic.net" ],
+        // 112.160.0.0 - 112.191.255.255
+        [ 1889533952, 4292870144, "whois.nic.or.kr" ],
+        // 115.0.0.0 - 115.15.255.255
+        [ 1929379840, 4293918720, "whois.nic.or.kr" ],
+        // 115.16.0.0 - 115.23.255.255
+        [ 1930428416, 4294443008, "whois.nic.or.kr" ],
+        // 118.32.0.0 - 118.63.255.255
+        [ 1981808640, 4292870144, "whois.nic.or.kr" ],
+        // 119.192.0.0 - 119.223.255.255
+        [ 2009071616, 4292870144, "whois.nic.or.kr" ],
+        // 112.0.0.0 - 119.255.255.255
+        [ 1879048192, 4160749568, "whois.apnic.net" ],
+        // 121.128.0.0 - 121.191.255.255
+        [ 2038431744, 4290772992, "whois.nic.or.kr" ],
+        // 125.128.0.0 - 125.159.255.255
+        [ 2105540608, 4292870144, "whois.nic.or.kr" ],
+        // 120.0.0.0 - 123.255.255.255
+        [ 2013265920, 4227858432, "whois.apnic.net" ],
+        // 124.0.0.0 - 125.255.255.255
+        [ 2080374784, 4261412864, "whois.apnic.net" ],
+        // 126.0.0.0 - 126.255.255.255
+        [ 2113929216, 4278190080, "whois.apnic.net" ],
+        // 0.0.0.0 - 127.255.255.255
+        [ 0, 2147483648, "whois.arin.net" ],
+        // 133.0.0.0 - 133.255.255.255
+        [ 2231369728, 4278190080, "whois.nic.ad.jp" ],
+        // 139.20.0.0 - 139.23.255.255
+        [ 2333343744, 4294705152, "whois.ripe.net" ],
+        // 139.24.0.0 - 139.27.255.255
+        [ 2333605888, 4294705152, "whois.ripe.net" ],
+        // 139.28.0.0 - 139.29.255.255
+        [ 2333868032, 4294836224, "whois.ripe.net" ],
+        // 141.0.0.0 - 141.63.255.255
+        [ 2365587456, 4290772992, "whois.ripe.net" ],
+        // 141.86.0.0 - 141.86.255.255
+        [ 2371223552, 4294901760, "whois.arin.net" ],
+        // 141.64.0.0 - 141.95.255.255
+        [ 2369781760, 4292870144, "whois.ripe.net" ],
+        // 141.96.0.0 - 141.99.255.255
+        [ 2371878912, 4294705152, "whois.ripe.net" ],
+        // 141.100.0.0 - 141.100.255.255
+        [ 2372141056, 4294901760, "whois.ripe.net" ],
+        // 145.0.0.0 - 145.255.255.255
+        [ 2432696320, 4278190080, "whois.ripe.net" ],
+        // 146.48.0.0 - 146.48.255.255
+        [ 2452619264, 4294901760, "whois.ripe.net" ],
+        // 149.202.0.0 - 149.203.255.255
+        [ 2513043456, 4294836224, "whois.ripe.net" ],
+        // 149.204.0.0 - 149.204.255.255
+        [ 2513174528, 4294901760, "whois.ripe.net" ],
+        // 149.206.0.0 - 149.207.255.255
+        [ 2513305600, 4294836224, "whois.ripe.net" ],
+        // 149.208.0.0 - 149.223.255.255
+        [ 2513436672, 4293918720, "whois.ripe.net" ],
+        // 149.224.0.0 - 149.239.255.255
+        [ 2514485248, 4293918720, "whois.ripe.net" ],
+        // 149.240.0.0 - 149.247.255.255
+        [ 2515533824, 4294443008, "whois.ripe.net" ],
+        // 149.248.0.0 - 149.251.255.255
+        [ 2516058112, 4294705152, "whois.ripe.net" ],
+        // 150.183.0.0 - 150.183.255.255
+        [ 2528575488, 4294901760, "whois.nic.or.kr" ],
+        // 150.254.0.0 - 150.254.255.255
+        [ 2533228544, 4294901760, "whois.ripe.net" ],
+        // 150.0.0.0 - 150.255.255.255
+        [ 2516582400, 4278190080, "whois.apnic.net" ],
+        // 151.0.0.0 - 151.63.255.255
+        [ 2533359616, 4290772992, "whois.ripe.net" ],
+        // 151.64.0.0 - 151.95.255.255
+        [ 2537553920, 4292870144, "whois.ripe.net" ],
+        // 151.96.0.0 - 151.99.255.255
+        [ 2539651072, 4294705152, "whois.ripe.net" ],
+        // 151.100.0.0 - 151.100.255.255
+        [ 2539913216, 4294901760, "whois.ripe.net" ],
+        // 153.128.0.0 - 153.255.255.255
+        [ 2575302656, 4286578688, "whois.nic.ad.jp" ],
+        // 153.0.0.0 - 153.255.255.255
+        [ 2566914048, 4278190080, "whois.apnic.net" ],
+        // 154.0.0.0 - 154.255.255.255
+        [ 2583691264, 4278190080, "whois.afrinic.net" ],
+        // 155.232.0.0 - 155.239.255.255
+        [ 2615672832, 4294443008, "whois.afrinic.net" ],
+        // 155.240.0.0 - 155.240.255.255
+        [ 2616197120, 4294901760, "whois.afrinic.net" ],
+        // 160.216.0.0 - 160.219.255.255
+        [ 2698510336, 4294705152, "whois.ripe.net" ],
+        // 160.220.0.0 - 160.220.255.255
+        [ 2698772480, 4294901760, "whois.ripe.net" ],
+        // 160.44.0.0 - 160.47.255.255
+        [ 2687238144, 4294705152, "whois.ripe.net" ],
+        // 160.48.0.0 - 160.63.255.255
+        [ 2687500288, 4293918720, "whois.ripe.net" ],
+        // 160.115.0.0 - 160.115.255.255
+        [ 2691891200, 4294901760, "whois.afrinic.net" ],
+        // 160.116.0.0 - 160.119.255.255
+        [ 2691956736, 4294705152, "whois.afrinic.net" ],
+        // 160.120.0.0 - 160.123.255.255
+        [ 2692218880, 4294705152, "whois.afrinic.net" ],
+        // 160.124.0.0 - 160.124.255.255
+        [ 2692481024, 4294901760, "whois.afrinic.net" ],
+        // 163.156.0.0 - 163.159.255.255
+        [ 2744909824, 4294705152, "whois.ripe.net" ],
+        // 163.160.0.0 - 163.175.255.255
+        [ 2745171968, 4293918720, "whois.ripe.net" ],
+        // 163.195.0.0 - 163.195.255.255
+        [ 2747465728, 4294901760, "whois.afrinic.net" ],
+        // 163.196.0.0 - 163.199.255.255
+        [ 2747531264, 4294705152, "whois.afrinic.net" ],
+        // 163.200.0.0 - 163.203.255.255
+        [ 2747793408, 4294705152, "whois.afrinic.net" ],
+        // 163.0.0.0 - 163.255.255.255
+        [ 2734686208, 4278190080, "whois.apnic.net" ],
+        // 164.0.0.0 - 164.31.255.255
+        [ 2751463424, 4292870144, "whois.ripe.net" ],
+        // 164.32.0.0 - 164.39.255.255
+        [ 2753560576, 4294443008, "whois.ripe.net" ],
+        // 164.40.0.0 - 164.40.255.255
+        [ 2754084864, 4294901760, "whois.ripe.net" ],
+        // 164.128.0.0 - 164.143.255.255
+        [ 2759852032, 4293918720, "whois.ripe.net" ],
+        // 164.146.0.0 - 164.147.255.255
+        [ 2761031680, 4294836224, "whois.afrinic.net" ],
+        // 164.148.0.0 - 164.151.255.255
+        [ 2761162752, 4294705152, "whois.afrinic.net" ],
+        // 165.143.0.0 - 165.143.255.255
+        [ 2777612288, 4294901760, "whois.afrinic.net" ],
+        // 165.144.0.0 - 165.147.255.255
+        [ 2777677824, 4294705152, "whois.afrinic.net" ],
+        // 165.148.0.0 - 165.149.255.255
+        [ 2777939968, 4294836224, "whois.afrinic.net" ],
+        // 169.208.0.0 - 169.223.255.255
+        [ 2848980992, 4293918720, "whois.apnic.net" ],
+        // 171.16.0.0 - 171.31.255.255
+        [ 2869952512, 4293918720, "whois.ripe.net" ],
+        // 171.32.0.0 - 171.33.255.255
+        [ 2871001088, 4294836224, "whois.ripe.net" ],
+        // 171.0.0.0 - 171.255.255.255
+        [ 2868903936, 4278190080, "whois.apnic.net" ],
+        // 175.192.0.0 - 175.255.255.255
+        [ 2948595712, 4290772992, "whois.nic.or.kr" ],
+        // 175.0.0.0 - 175.255.255.255
+        [ 2936012800, 4278190080, "whois.apnic.net" ],
+        // 176.0.0.0 - 176.255.255.255
+        [ 2952790016, 4278190080, "whois.ripe.net" ],
+        // 177.0.0.0 - 177.255.255.255
+        [ 2969567232, 4278190080, "whois.lacnic.net" ],
+        // 178.0.0.0 - 178.255.255.255
+        [ 2986344448, 4278190080, "whois.ripe.net" ],
+        // 179.0.0.0 - 179.255.255.255
+        [ 3003121664, 4278190080, "whois.lacnic.net" ],
+        // 180.0.0.0 - 180.255.255.255
+        [ 3019898880, 4278190080, "whois.apnic.net" ],
+        // 181.0.0.0 - 181.255.255.255
+        [ 3036676096, 4278190080, "whois.lacnic.net" ],
+        // 183.96.0.0 - 183.127.255.255
+        [ 3076521984, 4292870144, "whois.nic.or.kr" ],
+        // 182.0.0.0 - 183.255.255.255
+        [ 3053453312, 4261412864, "whois.apnic.net" ],
+        // 185.0.0.0 - 185.255.255.255
+        [ 3103784960, 4278190080, "whois.ripe.net" ],
+        // 186.0.0.0 - 187.255.255.255
+        [ 3120562176, 4261412864, "whois.lacnic.net" ],
+        // 188.0.0.0 - 188.255.255.255
+        [ 3154116608, 4278190080, "whois.ripe.net" ],
+        // 189.0.0.0 - 189.255.255.255
+        [ 3170893824, 4278190080, "whois.lacnic.net" ],
+        // 190.0.0.0 - 191.255.255.255
+        [ 3187671040, 4261412864, "whois.lacnic.net" ],
+        // 128.0.0.0 - 191.255.255.255
+        [ 2147483648, 3221225472, "whois.arin.net" ],
+        // 192.71.0.0 - 192.71.255.255
+        [ 3225878528, 4294901760, "whois.ripe.net" ],
+        // 192.72.253.0 - 192.72.253.255
+        [ 3226008832, 4294967040, "whois.arin.net" ],
+        // 192.72.254.0 - 192.72.254.255
+        [ 3226009088, 4294967040, "whois.arin.net" ],
+        // 192.72.0.0 - 192.72.255.255
+        [ 3225944064, 4294901760, "whois.apnic.net" ],
+        // 192.106.0.0 - 192.106.255.255
+        [ 3228172288, 4294901760, "whois.ripe.net" ],
+        // 192.114.0.0 - 192.115.255.255
+        [ 3228696576, 4294836224, "whois.ripe.net" ],
+        // 192.116.0.0 - 192.117.255.255
+        [ 3228827648, 4294836224, "whois.ripe.net" ],
+        // 192.118.0.0 - 192.118.255.255
+        [ 3228958720, 4294901760, "whois.ripe.net" ],
+        // 192.162.0.0 - 192.162.255.255
+        [ 3231842304, 4294901760, "whois.ripe.net" ],
+        // 192.164.0.0 - 192.167.255.255
+        [ 3231973376, 4294705152, "whois.ripe.net" ],
+        // 192.0.0.0 - 192.255.255.255
+        [ 3221225472, 4278190080, "whois.arin.net" ],
+        // 193.0.0.0 - 193.255.255.255
+        [ 3238002688, 4278190080, "whois.ripe.net" ],
+        // 194.0.0.0 - 195.255.255.255
+        [ 3254779904, 4261412864, "whois.ripe.net" ],
+        // 196.0.0.0 - 197.255.255.255
+        [ 3288334336, 4261412864, "whois.afrinic.net" ],
+        // 198.0.0.0 - 199.255.255.255
+        [ 3321888768, 4261412864, "whois.arin.net" ],
+        // 200.0.0.0 - 201.255.255.255
+        [ 3355443200, 4261412864, "whois.lacnic.net" ],
+        // 202.11.0.0 - 202.11.255.255
+        [ 3389718528, 4294901760, "whois.nic.ad.jp" ],
+        // 202.13.0.0 - 202.13.255.255
+        [ 3389849600, 4294901760, "whois.nic.ad.jp" ],
+        // 202.15.0.0 - 202.15.255.255
+        [ 3389980672, 4294901760, "whois.nic.ad.jp" ],
+        // 202.16.0.0 - 202.19.255.255
+        [ 3390046208, 4294705152, "whois.nic.ad.jp" ],
+        // 202.20.128.0 - 202.20.255.255
+        [ 3390341120, 4294934528, "whois.nic.or.kr" ],
+        // 202.23.0.0 - 202.23.255.255
+        [ 3390504960, 4294901760, "whois.nic.ad.jp" ],
+        // 202.24.0.0 - 202.25.255.255
+        [ 3390570496, 4294836224, "whois.nic.ad.jp" ],
+        // 202.26.0.0 - 202.26.255.255
+        [ 3390701568, 4294901760, "whois.nic.ad.jp" ],
+        // 202.30.0.0 - 202.31.255.255
+        [ 3390963712, 4294836224, "whois.nic.or.kr" ],
+        // 202.32.0.0 - 202.35.255.255
+        [ 3391094784, 4294705152, "whois.nic.ad.jp" ],
+        // 202.48.0.0 - 202.48.255.255
+        [ 3392143360, 4294901760, "whois.nic.ad.jp" ],
+        // 202.39.128.0 - 202.39.255.255
+        [ 3391586304, 4294934528, "whois.twnic.net" ],
+        // 202.208.0.0 - 202.223.255.255
+        [ 3402629120, 4293918720, "whois.nic.ad.jp" ],
+        // 202.224.0.0 - 202.255.255.255
+        [ 3403677696, 4292870144, "whois.nic.ad.jp" ],
+        // 203.0.0.0 - 203.63.255.255
+        [ 3405774848, 4290772992, "whois.apnic.net" ],
+        // 203.66.0.0 - 203.66.255.255
+        [ 3410100224, 4294901760, "whois.twnic.net" ],
+        // 203.69.0.0 - 203.69.255.255
+        [ 3410296832, 4294901760, "whois.twnic.net" ],
+        // 203.74.0.0 - 203.75.255.255
+        [ 3410624512, 4294836224, "whois.twnic.net" ],
+        // 203.136.0.0 - 203.139.255.255
+        [ 3414687744, 4294705152, "whois.nic.ad.jp" ],
+        // 203.140.0.0 - 203.141.255.255
+        [ 3414949888, 4294836224, "whois.nic.ad.jp" ],
+        // 203.178.0.0 - 203.179.255.255
+        [ 3417440256, 4294836224, "whois.nic.ad.jp" ],
+        // 203.180.0.0 - 203.183.255.255
+        [ 3417571328, 4294705152, "whois.nic.ad.jp" ],
+        // 203.224.0.0 - 203.255.255.255
+        [ 3420454912, 4292870144, "whois.nic.or.kr" ],
+        // 202.0.0.0 - 203.255.255.255
+        [ 3388997632, 4261412864, "whois.apnic.net" ],
+        // 204.0.0.0 - 204.3.255.255
+        [ 3422552064, 4294705152, "rwhois.gin.ntt.net" ],
+        // 204.0.0.0 - 207.255.255.255
+        [ 3422552064, 4227858432, "whois.arin.net" ],
+        // 208.0.0.0 - 209.255.255.255
+        [ 3489660928, 4261412864, "whois.arin.net" ],
+        // 209.94.192.0 - 209.94.223.255
+        [ 3512647680, 4294959104, "whois.lacnic.net" ],
+        // 210.59.128.0 - 210.59.255.255
+        [ 3527114752, 4294934528, "whois.twnic.net" ],
+        // 210.61.0.0 - 210.61.255.255
+        [ 3527213056, 4294901760, "whois.twnic.net" ],
+        // 210.62.252.0 - 210.62.255.255
+        [ 3527343104, 4294966272, "whois.twnic.net" ],
+        // 210.65.0.0 - 210.65.255.255
+        [ 3527475200, 4294901760, "whois.twnic.net" ],
+        // 210.71.128.0 - 210.71.255.255
+        [ 3527901184, 4294934528, "whois.twnic.net" ],
+        // 210.90.0.0 - 210.91.255.255
+        [ 3529113600, 4294836224, "whois.nic.or.kr" ],
+        // 210.92.0.0 - 210.95.255.255
+        [ 3529244672, 4294705152, "whois.nic.or.kr" ],
+        // 210.96.0.0 - 210.127.255.255
+        [ 3529506816, 4292870144, "whois.nic.or.kr" ],
+        // 210.128.0.0 - 210.159.255.255
+        [ 3531603968, 4292870144, "whois.nic.ad.jp" ],
+        // 210.160.0.0 - 210.175.255.255
+        [ 3533701120, 4293918720, "whois.nic.ad.jp" ],
+        // 210.178.0.0 - 210.179.255.255
+        [ 3534880768, 4294836224, "whois.nic.or.kr" ],
+        // 210.180.0.0 - 210.183.255.255
+        [ 3535011840, 4294705152, "whois.nic.or.kr" ],
+        // 210.188.0.0 - 210.191.255.255
+        [ 3535536128, 4294705152, "whois.nic.ad.jp" ],
+        // 210.196.0.0 - 210.199.255.255
+        [ 3536060416, 4294705152, "whois.nic.ad.jp" ],
+        // 210.204.0.0 - 210.207.255.255
+        [ 3536584704, 4294705152, "whois.nic.or.kr" ],
+        // 210.216.0.0 - 210.223.255.255
+        [ 3537371136, 4294443008, "whois.nic.or.kr" ],
+        // 210.224.0.0 - 210.239.255.255
+        [ 3537895424, 4293918720, "whois.nic.ad.jp" ],
+        // 210.240.0.0 - 210.240.255.255
+        [ 3538944000, 4294901760, "whois.twnic.net" ],
+        // 210.241.0.0 - 210.241.63.255
+        [ 3539009536, 4294950912, "whois.twnic.net" ],
+        // 210.241.224.0 - 210.241.255.255
+        [ 3539066880, 4294959104, "whois.twnic.net" ],
+        // 210.242.0.0 - 210.243.255.255
+        [ 3539075072, 4294836224, "whois.twnic.net" ],
+        // 210.248.0.0 - 210.255.255.255
+        [ 3539468288, 4294443008, "whois.nic.ad.jp" ],
+        // 211.0.0.0 - 211.15.255.255
+        [ 3539992576, 4293918720, "whois.nic.ad.jp" ],
+        // 211.16.0.0 - 211.19.255.255
+        [ 3541041152, 4294705152, "whois.nic.ad.jp" ],
+        // 211.20.0.0 - 211.21.255.255
+        [ 3541303296, 4294836224, "whois.twnic.net" ],
+        // 211.22.0.0 - 211.22.255.255
+        [ 3541434368, 4294901760, "whois.twnic.net" ],
+        // 211.32.0.0 - 211.63.255.255
+        [ 3542089728, 4292870144, "whois.nic.or.kr" ],
+        // 211.75.0.0 - 211.75.255.255
+        [ 3544907776, 4294901760, "whois.twnic.net" ],
+        // 211.72.0.0 - 211.72.255.255
+        [ 3544711168, 4294901760, "whois.twnic.net" ],
+        // 211.104.0.0 - 211.111.255.255
+        [ 3546808320, 4294443008, "whois.nic.or.kr" ],
+        // 211.112.0.0 - 211.119.255.255
+        [ 3547332608, 4294443008, "whois.nic.or.kr" ],
+        // 211.120.0.0 - 211.127.255.255
+        [ 3547856896, 4294443008, "whois.nic.ad.jp" ],
+        // 211.128.0.0 - 211.135.255.255
+        [ 3548381184, 4294443008, "whois.nic.ad.jp" ],
+        // 211.168.0.0 - 211.175.255.255
+        [ 3551002624, 4294443008, "whois.nic.or.kr" ],
+        // 211.176.0.0 - 211.191.255.255
+        [ 3551526912, 4293918720, "whois.nic.or.kr" ],
+        // 211.192.0.0 - 211.255.255.255
+        [ 3552575488, 4290772992, "whois.nic.or.kr" ],
+        // 210.0.0.0 - 211.255.255.255
+        [ 3523215360, 4261412864, "whois.apnic.net" ],
+        // 213.154.32.0 - 213.154.63.255
+        [ 3583647744, 4294959104, "whois.afrinic.net" ],
+        // 213.154.64.0 - 213.154.95.255
+        [ 3583655936, 4294959104, "whois.afrinic.net" ],
+        // 212.0.0.0 - 213.255.255.255
+        [ 3556769792, 4261412864, "whois.ripe.net" ],
+        // 214.0.0.0 - 215.255.255.255
+        [ 3590324224, 4261412864, "whois.arin.net" ],
+        // 216.0.0.0 - 216.255.255.255
+        [ 3623878656, 4278190080, "whois.arin.net" ],
+        // 217.0.0.0 - 217.255.255.255
+        [ 3640655872, 4278190080, "whois.ripe.net" ],
+        // 218.36.0.0 - 218.39.255.255
+        [ 3659792384, 4294705152, "whois.nic.or.kr" ],
+        // 218.40.0.0 - 218.47.255.255
+        [ 3660054528, 4294443008, "whois.nic.ad.jp" ],
+        // 218.48.0.0 - 218.55.255.255
+        [ 3660578816, 4294443008, "whois.nic.or.kr" ],
+        // 219.96.0.0 - 219.127.255.255
+        [ 3680501760, 4292870144, "whois.nic.ad.jp" ],
+        // 218.144.0.0 - 218.159.255.255
+        [ 3666870272, 4293918720, "whois.nic.or.kr" ],
+        // 218.160.0.0 - 218.175.255.255
+        [ 3667918848, 4293918720, "whois.twnic.net" ],
+        // 218.216.0.0 - 218.223.255.255
+        [ 3671588864, 4294443008, "whois.nic.ad.jp" ],
+        // 218.224.0.0 - 218.231.255.255
+        [ 3672113152, 4294443008, "whois.nic.ad.jp" ],
+        // 218.232.0.0 - 218.239.255.255
+        [ 3672637440, 4294443008, "whois.nic.or.kr" ],
+        // 219.240.0.0 - 219.241.255.255
+        [ 3689938944, 4294836224, "whois.nic.or.kr" ],
+        // 219.248.0.0 - 219.255.255.255
+        [ 3690463232, 4294443008, "whois.nic.or.kr" ],
+        // 218.0.0.0 - 219.255.255.255
+        [ 3657433088, 4261412864, "whois.apnic.net" ],
+        // 220.64.0.0 - 220.95.255.255
+        [ 3695181824, 4292870144, "whois.nic.or.kr" ],
+        // 220.96.0.0 - 220.99.255.255
+        [ 3697278976, 4294705152, "whois.nic.ad.jp" ],
+        // 220.103.0.0 - 220.103.255.255
+        [ 3697737728, 4294901760, "whois.nic.or.kr" ],
+        // 220.104.0.0 - 220.111.255.255
+        [ 3697803264, 4294443008, "whois.nic.ad.jp" ],
+        // 220.149.0.0 - 220.149.255.255
+        [ 3700752384, 4294901760, "whois.nic.or.kr" ],
+        // 221.138.0.0 - 221.139.255.255
+        [ 3716808704, 4294836224, "whois.nic.or.kr" ],
+        // 221.140.0.0 - 221.143.255.255
+        [ 3716939776, 4294705152, "whois.nic.or.kr" ],
+        // 221.144.0.0 - 221.159.255.255
+        [ 3717201920, 4293918720, "whois.nic.or.kr" ],
+        // 221.160.0.0 - 221.167.255.255
+        [ 3718250496, 4294443008, "whois.nic.or.kr" ],
+        // 222.96.0.0 - 222.111.255.255
+        [ 3730833408, 4293918720, "whois.nic.or.kr" ],
+        // 222.112.0.0 - 222.119.255.255
+        [ 3731881984, 4294443008, "whois.nic.or.kr" ],
+        // 222.120.0.0 - 222.121.255.255
+        [ 3732406272, 4294836224, "whois.nic.or.kr" ],
+        // 222.122.0.0 - 222.122.255.255
+        [ 3732537344, 4294901760, "whois.nic.or.kr" ],
+        // 222.232.0.0 - 222.239.255.255
+        [ 3739746304, 4294443008, "whois.nic.or.kr" ],
+        // 220.0.0.0 - 223.255.255.255
+        [ 3690987520, 4227858432, "whois.apnic.net" ],
         /** @generator-end=ipv4 */
     ];
 
     protected array $ipv6Ranges = [
         /** @generator-begin=ipv6 */
+        // 2001:0200 - 2001:03FF
+        [ 536936960, 4294966784, "whois.apnic.net" ],
+        // 2001:0400 - 2001:05FF
+        [ 536937472, 4294966784, "whois.arin.net" ],
+        // 2001:0600 - 2001:07FF
+        [ 536937984, 4294966784, "whois.ripe.net" ],
+        // 2001:0800 - 2001:0BFF
+        [ 536938496, 4294966272, "whois.ripe.net" ],
+        // 2001:0C00 - 2001:0FFF
+        [ 536939520, 4294966272, "whois.apnic.net" ],
+        // 2001:1000 - 2001:13FF
+        [ 536940544, 4294966272, "whois.lacnic.net" ],
+        // 2001:1400 - 2001:17FF
+        [ 536941568, 4294966272, "whois.ripe.net" ],
+        // 2001:1800 - 2001:19FF
+        [ 536942592, 4294966784, "whois.arin.net" ],
+        // 2001:1A00 - 2001:1BFF
+        [ 536943104, 4294966784, "whois.ripe.net" ],
+        // 2001:1C00 - 2001:1FFF
+        [ 536943616, 4294966272, "whois.ripe.net" ],
+        // 2001:2000 - 2001:3FFF
+        [ 536944640, 4294959104, "whois.ripe.net" ],
+        // 2001:4000 - 2001:41FF
+        [ 536952832, 4294966784, "whois.ripe.net" ],
+        // 2001:4200 - 2001:43FF
+        [ 536953344, 4294966784, "whois.afrinic.net" ],
+        // 2001:4400 - 2001:45FF
+        [ 536953856, 4294966784, "whois.apnic.net" ],
+        // 2001:4600 - 2001:47FF
+        [ 536954368, 4294966784, "whois.ripe.net" ],
+        // 2001:4800 - 2001:49FF
+        [ 536954880, 4294966784, "whois.arin.net" ],
+        // 2001:4A00 - 2001:4BFF
+        [ 536955392, 4294966784, "whois.ripe.net" ],
+        // 2001:4C00 - 2001:4FFF
+        [ 536955904, 4294966272, "whois.ripe.net" ],
+        // 2001:5000 - 2001:5FFF
+        [ 536956928, 4294963200, "whois.ripe.net" ],
+        // 2001:8000 - 2001:BFFF
+        [ 536969216, 4294950912, "whois.apnic.net" ],
+        // 2003:0000 - 2003:3FFF
+        [ 537067520, 4294950912, "whois.ripe.net" ],
+        // 2400:0000 - 2400:0FFF
+        [ 603979776, 4294963200, "whois.nic.or.kr" ],
+        // 2400:0000 - 240F:FFFF
+        [ 603979776, 4293918720, "whois.apnic.net" ],
+        // 2600:0000 - 260F:FFFF
+        [ 637534208, 4293918720, "whois.arin.net" ],
+        // 2610:0000 - 2610:01FF
+        [ 638582784, 4294966784, "whois.arin.net" ],
+        // 2620:0000 - 2620:01FF
+        [ 639631360, 4294966784, "whois.arin.net" ],
+        // 2630:0000 - 263F:FFFF
+        [ 640679936, 4293918720, "whois.arin.net" ],
+        // 2800:0000 - 280F:FFFF
+        [ 671088640, 4293918720, "whois.lacnic.net" ],
+        // 2A00:0000 - 2A0F:FFFF
+        [ 704643072, 4293918720, "whois.ripe.net" ],
+        // 2A10:0000 - 2A1F:FFFF
+        [ 705691648, 4293918720, "whois.ripe.net" ],
+        // 2C00:0000 - 2C0F:FFFF
+        [ 738197504, 4293918720, "whois.afrinic.net" ],
         /** @generator-end=ipv6 */
     ];
 
     protected array $asnRanges = [
         /** @generator-begin=ipv6 */
+        // 2001:0200 - 2001:03FF
+        [ 536936960, 4294966784, "whois.apnic.net" ],
+        // 2001:0400 - 2001:05FF
+        [ 536937472, 4294966784, "whois.arin.net" ],
+        // 2001:0600 - 2001:07FF
+        [ 536937984, 4294966784, "whois.ripe.net" ],
+        // 2001:0800 - 2001:0BFF
+        [ 536938496, 4294966272, "whois.ripe.net" ],
+        // 2001:0C00 - 2001:0FFF
+        [ 536939520, 4294966272, "whois.apnic.net" ],
+        // 2001:1000 - 2001:13FF
+        [ 536940544, 4294966272, "whois.lacnic.net" ],
+        // 2001:1400 - 2001:17FF
+        [ 536941568, 4294966272, "whois.ripe.net" ],
+        // 2001:1800 - 2001:19FF
+        [ 536942592, 4294966784, "whois.arin.net" ],
+        // 2001:1A00 - 2001:1BFF
+        [ 536943104, 4294966784, "whois.ripe.net" ],
+        // 2001:1C00 - 2001:1FFF
+        [ 536943616, 4294966272, "whois.ripe.net" ],
+        // 2001:2000 - 2001:3FFF
+        [ 536944640, 4294959104, "whois.ripe.net" ],
+        // 2001:4000 - 2001:41FF
+        [ 536952832, 4294966784, "whois.ripe.net" ],
+        // 2001:4200 - 2001:43FF
+        [ 536953344, 4294966784, "whois.afrinic.net" ],
+        // 2001:4400 - 2001:45FF
+        [ 536953856, 4294966784, "whois.apnic.net" ],
+        // 2001:4600 - 2001:47FF
+        [ 536954368, 4294966784, "whois.ripe.net" ],
+        // 2001:4800 - 2001:49FF
+        [ 536954880, 4294966784, "whois.arin.net" ],
+        // 2001:4A00 - 2001:4BFF
+        [ 536955392, 4294966784, "whois.ripe.net" ],
+        // 2001:4C00 - 2001:4FFF
+        [ 536955904, 4294966272, "whois.ripe.net" ],
+        // 2001:5000 - 2001:5FFF
+        [ 536956928, 4294963200, "whois.ripe.net" ],
+        // 2001:8000 - 2001:BFFF
+        [ 536969216, 4294950912, "whois.apnic.net" ],
+        // 2003:0000 - 2003:3FFF
+        [ 537067520, 4294950912, "whois.ripe.net" ],
+        // 2400:0000 - 2400:0FFF
+        [ 603979776, 4294963200, "whois.nic.or.kr" ],
+        // 2400:0000 - 240F:FFFF
+        [ 603979776, 4293918720, "whois.apnic.net" ],
+        // 2600:0000 - 260F:FFFF
+        [ 637534208, 4293918720, "whois.arin.net" ],
+        // 2610:0000 - 2610:01FF
+        [ 638582784, 4294966784, "whois.arin.net" ],
+        // 2620:0000 - 2620:01FF
+        [ 639631360, 4294966784, "whois.arin.net" ],
+        // 2630:0000 - 263F:FFFF
+        [ 640679936, 4293918720, "whois.arin.net" ],
+        // 2800:0000 - 280F:FFFF
+        [ 671088640, 4293918720, "whois.lacnic.net" ],
+        // 2A00:0000 - 2A0F:FFFF
+        [ 704643072, 4293918720, "whois.ripe.net" ],
+        // 2A10:0000 - 2A1F:FFFF
+        [ 705691648, 4293918720, "whois.ripe.net" ],
+        // 2C00:0000 - 2C0F:FFFF
+        [ 738197504, 4293918720, "whois.afrinic.net" ],
         /** @generator-end=ipv6 */
     ];
 

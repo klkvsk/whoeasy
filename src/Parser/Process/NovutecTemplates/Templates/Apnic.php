@@ -65,32 +65,14 @@ class Apnic extends Regex
         2 => [ '/^organisation:(?>[\x20\t]*)(.+)$/im'  => 'contacts:handle',
                '/^org:(?>[\x20\t]*)(.+)$/im'           => 'contacts:handle',
                '/^nic-hdl:(?>[\x20\t]*)(.+)$/im'       => 'contacts:handle',
+               '/^irt:(?>[\x20\t]*)(.+)$/im'           => 'contacts:handle',
                '/^org-name:(?>[\x20\t]*)(.+)$/im'      => 'contacts:name',
                '/^role:(?>[\x20\t]*)(.+)$/im'          => 'contacts:name',
                '/^person:(?>[\x20\t]*)(.+)$/im'        => 'contacts:name',
                '/^address:(?>[\x20\t]*)(.+)/im'        => 'contacts:address',
                '/^abuse-mailbox:(?>[\x20\t]*)(.+)$/im' => 'contacts:email',
                '/^phone:(?>[\x20\t]*)(.+)$/im'         => 'contacts:phone',
-               '/^fax-no:(?>[\x20\t]*)(.+)$/im'        => 'contacts:fax' ] ];
-
-    /**
-     * After parsing do something
-     *
-     * If APNIC says the organization is KRNIC then connect to KRNIC and
-     * start over again.
-     *
-     * @param object $WhoisParser
-     * @return void
-     */
-    public function postProcess(object $WhoisParser): void
-    {
-        $ResultSet = $WhoisParser->getResult();
-        $Config = $WhoisParser->getConfig();
-
-        if (isset($ResultSet->network->name) && $ResultSet->network->name === 'KRNIC-KR') {
-            $ResultSet->reset();
-            $Config->setCurrent($Config->get('krnic'));
-            $WhoisParser->call();
-        }
-    }
+               '/^fax-no:(?>[\x20\t]*)(.+)$/im'        => 'contacts:fax' ] ,
+    ];
+    
 }

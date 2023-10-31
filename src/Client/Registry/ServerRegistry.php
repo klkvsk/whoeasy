@@ -7,11 +7,14 @@ use Klkvsk\Whoeasy\Client\RequestInterface;
 use Klkvsk\Whoeasy\Client\ServerInfo;
 use Klkvsk\Whoeasy\Client\ServerInfoInterface;
 use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
+use function Klkvsk\Whoeasy\ip6prefix2long;
 
 class ServerRegistry implements ServerRegistryInterface
 {
     protected array $servers = [];
     protected array $toplevelRefs = [];
+    protected array $ipv4Ranges = [];
+    protected array $ipv6Ranges = [];
 
     public function __construct()
     {
@@ -61,11 +64,29 @@ class ServerRegistry implements ServerRegistryInterface
 
     protected function findByIpv4(string $query): ?ServerInfoInterface
     {
+        $ip = ip2long($query);
+        if ($ip === false) {
+            throw new InvalidArgumentException("bad ipv4: $query");
+        }
+        foreach ($this->ipv4Ranges as [ $subnetIp, $subnetMask, $serverName ]) {
+            if (($ip & $subnetMask) === $subnetIp) {
+                return $this->findServer($serverName);
+            }
+        }
         return null;
     }
 
     protected function findByIpv6(string $query): ?ServerInfoInterface
     {
+        $ipPrefix = ip6prefix2long($query);
+        if ($ipPrefix === false) {
+            throw new InvalidArgumentException("bad ipv6: $query");
+        }
+        foreach ($this->ipv6Ranges as [ $subnetPrefix, $subnetMask, $serverName ]) {
+            if (($ipPrefix & $subnetMask) === $subnetPrefix) {
+                return $this->findServer($serverName);
+            }
+        }
         return null;
     }
 
@@ -78,6 +99,9 @@ class ServerRegistry implements ServerRegistryInterface
 
         return null;
     }
+
+
+
 
 
 }

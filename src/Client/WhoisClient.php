@@ -42,12 +42,12 @@ class WhoisClient
 
         if (!$server) {
             $server = $this->registry->findByQuery($query, $queryType)
-                ?? throw new ClientException('No server in registry matching query: ' . $query);
+                ?? throw new ClientException("No server in registry matching query: $query ($queryType)");
         }
 
         if (is_string($server)) {
             $server = $this->registry->findServer($server)
-                ?? throw new ClientException('No server in registry matching name: ' . $query);
+                ?? throw new ClientException("No server in registry matching name: $server");
         }
 
         $request = $this->createRequest($server, $query, $queryType);
@@ -86,7 +86,7 @@ class WhoisClient
             }
         }
 
-        throw new ClientException('no adapter');
+        throw new ClientException("Could not find adapter for {$request->getServer()->getUri()}");
     }
 
 }
