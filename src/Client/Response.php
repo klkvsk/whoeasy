@@ -9,7 +9,7 @@ class Response implements ResponseInterface
     )
     {
         // convert newlines
-        $this->answer = str_replace("\r", "", $this->answer);
+        $this->answer = trim(str_replace("\r", "", $this->answer));
     }
 
     public function getAnswer(): string
