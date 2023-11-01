@@ -49,6 +49,7 @@ class Gtld_networksolutions extends Regex
         3 => '/(Admin|Administrative)(\-| )(ID|Name|Contact (Name|ID)|Organization)(?>[\x20\t]*):(?>[\x20\t]*)(.*?)(?=(Tech(\-| )(Name|ID|Contact (Name|ID))|Technical ID|CED ID|Name Server|Nameserver))/is',
         4 => '/(Tech|Technical)(\-| )(ID|Name|Contact (Name|ID)|Organization)(?>[\x20\t]*):(?>[\x20\t]*)(.*?)(?=(Name Server|Nameservers|Nameserver|Billing (Name|ID)))/is',
         5 => '/(Name Server|Name Server Name|Nameservers)(?>[\x20\t]*):(?>[\x20\t]*)(.*?)$/is',
+        6 => '/Registrar Abuse Contact (Email|Phone)(?>[\x20\t]*):(?>[\x20\t]*)(.*?)$/is',
     ];
 
     /**
@@ -61,6 +62,7 @@ class Gtld_networksolutions extends Regex
             '/^(?>Domain )*(Create(d)*|Creation) (On|Date)(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                       => 'created',
             '/^(?>Domain )*(Last )*Updated (On|Date)(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                             => 'changed',
             '/^(?>Domain )*(Registration )*(Expiration|Expiry|Expires) (On|Date)(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'expires',
+            '/^(?>Domain )*Name:(?>[\x20\t]*)(.+)$/im'                                                               => 'name',
             '/^Registrar(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                                         => 'registrar:name',
             '/^Registrar IANA ID(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                                 => 'registrar:id',
             '/^Registrar Abuse Contact Email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                     => 'registrar:email',
@@ -110,6 +112,10 @@ class Gtld_networksolutions extends Regex
         5 => [
             '/^(Name Server|Name Server Name|Nameservers)(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'nameserver',
             '/^DNSSEC(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                     => 'dnssec' ],
+        6 => [
+            '/^Registrar Abuse Contact Email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                     => 'registrar:email',
+            '/^Registrar Abuse Contact Phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'                                     => 'registrar:phone',
+        ]
     ];
 
 }
