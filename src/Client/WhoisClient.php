@@ -46,8 +46,15 @@ class WhoisClient
         }
 
         if (is_string($server)) {
-            $server = $this->registry->findServer($server)
-                ?? throw new ClientException("No server in registry matching name: $server");
+            $serverName = $server;
+            $server = $this->registry->findServer($serverName);
+            if (!$server) {
+                $serverAddress = $serverName;
+                if (!str_contains($serverAddress, '://')) {
+                    $serverAddress = 'whois://' . $serverAddress;
+                }
+                $server = new ServerInfo($serverAddress);
+            }
         }
 
         $request = $this->createRequest($server, $query, $queryType);

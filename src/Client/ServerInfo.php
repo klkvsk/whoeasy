@@ -8,7 +8,6 @@ class ServerInfo implements ServerInfoInterface
         protected string  $uri,
         protected ?string $charset = null,
         protected array   $formats = [],
-        protected ?string $template = null,
     )
     {
     }

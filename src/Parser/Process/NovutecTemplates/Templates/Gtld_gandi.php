@@ -35,70 +35,70 @@ use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Templates\Type\Regex;
  * @copyright  Copyright (c) 2007 - 2013 Novutec Inc. (http://www.novutec.com)
  * @license    http://www.apache.org/licenses/LICENSE-2.0
  */
-class Gtld_gandi extends Regex
+class Gtld_gandi extends Gtld_networksolutions
 {
-
-    /**
-     * Blocks within the raw output of the whois
-     *
-     * @var array
-     */
-    protected array $blocks = [ 1 => '/owner-c:(.*?)(?=admin-c)/is',
-                                2 => '/admin-c:(.*?)(?=tech-c)/is', 3 => '/tech-c:(?>[\x20\t]*)(.*?)(?=bill-c)/is',
-                                4 => '/bill-c:(?>[\x20\t]*)(.*?)$/is' ];
-
-    /**
-     * Items for each block
-     *
-     * @var array
-     */
-    protected array $blockItems = [
-        1 => [
-            '/^(?>[\x20\t]*)nic-hdl(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:owner:handle',
-            '/^(?>[\x20\t]*)organisation(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'contacts:owner:organization',
-            '/^(?>[\x20\t]*)person(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'       => 'contacts:owner:name',
-            '/^(?>[\x20\t]*)address(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:owner:address',
-            '/^(?>[\x20\t]*)city(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'         => 'contacts:owner:city',
-            '/^(?>[\x20\t]*)zipcode(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:owner:zipcode',
-            '/^(?>[\x20\t]*)country(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:owner:country',
-            '/^(?>[\x20\t]*)phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:owner:phone',
-            '/^(?>[\x20\t]*)fax(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'          => 'contacts:owner:fax',
-            '/^(?>[\x20\t]*)email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:owner:email',
-            '/^(?>[\x20\t]*)lastupdated(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'  => 'contacts:owner:changed' ],
-        2 => [
-            '/^(?>[\x20\t]*)nic-hdl(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:admin:handle',
-            '/^(?>[\x20\t]*)organisation(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'contacts:admin:organization',
-            '/^(?>[\x20\t]*)person(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'       => 'contacts:admin:name',
-            '/^(?>[\x20\t]*)address(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:admin:address',
-            '/^(?>[\x20\t]*)city(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'         => 'contacts:admin:city',
-            '/^(?>[\x20\t]*)zipcode(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:admin:zipcode',
-            '/^(?>[\x20\t]*)country(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:admin:country',
-            '/^(?>[\x20\t]*)phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:admin:phone',
-            '/^(?>[\x20\t]*)fax(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'          => 'contacts:admin:fax',
-            '/^(?>[\x20\t]*)email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:admin:email',
-            '/^(?>[\x20\t]*)lastupdated(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'  => 'contacts:admin:changed' ],
-        3 => [
-            '/^(?>[\x20\t]*)nic-hdl(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:tech:handle',
-            '/^(?>[\x20\t]*)organisation(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'contacts:tech:organization',
-            '/^(?>[\x20\t]*)person(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'       => 'contacts:tech:name',
-            '/^(?>[\x20\t]*)address(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:tech:address',
-            '/^(?>[\x20\t]*)city(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'         => 'contacts:tech:city',
-            '/^(?>[\x20\t]*)zipcode(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:tech:zipcode',
-            '/^(?>[\x20\t]*)country(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:tech:country',
-            '/^(?>[\x20\t]*)phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:tech:phone',
-            '/^(?>[\x20\t]*)fax(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'          => 'contacts:tech:fax',
-            '/^(?>[\x20\t]*)email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:tech:email',
-            '/^(?>[\x20\t]*)lastupdated(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'  => 'contacts:tech:changed' ],
-        4 => [
-            '/^(?>[\x20\t]*)nic-hdl(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:billing:handle',
-            '/^(?>[\x20\t]*)organisation(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'contacts:billing:organization',
-            '/^(?>[\x20\t]*)person(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'       => 'contacts:billing:name',
-            '/^(?>[\x20\t]*)address(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:billing:address',
-            '/^(?>[\x20\t]*)city(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'         => 'contacts:billing:city',
-            '/^(?>[\x20\t]*)zipcode(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:billing:zipcode',
-            '/^(?>[\x20\t]*)country(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:billing:country',
-            '/^(?>[\x20\t]*)phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:billing:phone',
-            '/^(?>[\x20\t]*)fax(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'          => 'contacts:billing:fax',
-            '/^(?>[\x20\t]*)email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:billing:email',
-            '/^(?>[\x20\t]*)lastupdated(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'  => 'contacts:billing:changed' ] ];
+//
+//    /**
+//     * Blocks within the raw output of the whois
+//     *
+//     * @var array
+//     */
+//    protected array $blocks = [ 1 => '/owner-c:(.*?)(?=admin-c)/is',
+/*                                2 => '/admin-c:(.*?)(?=tech-c)/is', 3 => '/tech-c:(?>[\x20\t]*)(.*?)(?=bill-c)/is',*/
+/*                                4 => '/bill-c:(?>[\x20\t]*)(.*?)$/is' ];*/
+//
+//    /**
+//     * Items for each block
+//     *
+//     * @var array
+//     */
+//    protected array $blockItems = [
+//        1 => [
+/*            '/^(?>[\x20\t]*)nic-hdl(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:owner:handle',*/
+/*            '/^(?>[\x20\t]*)organisation(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'contacts:owner:organization',*/
+/*            '/^(?>[\x20\t]*)person(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'       => 'contacts:owner:name',*/
+/*            '/^(?>[\x20\t]*)address(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:owner:address',*/
+/*            '/^(?>[\x20\t]*)city(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'         => 'contacts:owner:city',*/
+/*            '/^(?>[\x20\t]*)zipcode(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:owner:zipcode',*/
+/*            '/^(?>[\x20\t]*)country(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:owner:country',*/
+/*            '/^(?>[\x20\t]*)phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:owner:phone',*/
+/*            '/^(?>[\x20\t]*)fax(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'          => 'contacts:owner:fax',*/
+/*            '/^(?>[\x20\t]*)email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:owner:email',*/
+/*            '/^(?>[\x20\t]*)lastupdated(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'  => 'contacts:owner:changed' ],*/
+//        2 => [
+/*            '/^(?>[\x20\t]*)nic-hdl(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:admin:handle',*/
+/*            '/^(?>[\x20\t]*)organisation(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'contacts:admin:organization',*/
+/*            '/^(?>[\x20\t]*)person(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'       => 'contacts:admin:name',*/
+/*            '/^(?>[\x20\t]*)address(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:admin:address',*/
+/*            '/^(?>[\x20\t]*)city(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'         => 'contacts:admin:city',*/
+/*            '/^(?>[\x20\t]*)zipcode(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:admin:zipcode',*/
+/*            '/^(?>[\x20\t]*)country(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:admin:country',*/
+/*            '/^(?>[\x20\t]*)phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:admin:phone',*/
+/*            '/^(?>[\x20\t]*)fax(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'          => 'contacts:admin:fax',*/
+/*            '/^(?>[\x20\t]*)email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:admin:email',*/
+/*            '/^(?>[\x20\t]*)lastupdated(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'  => 'contacts:admin:changed' ],*/
+//        3 => [
+/*            '/^(?>[\x20\t]*)nic-hdl(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:tech:handle',*/
+/*            '/^(?>[\x20\t]*)organisation(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'contacts:tech:organization',*/
+/*            '/^(?>[\x20\t]*)person(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'       => 'contacts:tech:name',*/
+/*            '/^(?>[\x20\t]*)address(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:tech:address',*/
+/*            '/^(?>[\x20\t]*)city(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'         => 'contacts:tech:city',*/
+/*            '/^(?>[\x20\t]*)zipcode(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:tech:zipcode',*/
+/*            '/^(?>[\x20\t]*)country(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:tech:country',*/
+/*            '/^(?>[\x20\t]*)phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:tech:phone',*/
+/*            '/^(?>[\x20\t]*)fax(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'          => 'contacts:tech:fax',*/
+/*            '/^(?>[\x20\t]*)email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:tech:email',*/
+/*            '/^(?>[\x20\t]*)lastupdated(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'  => 'contacts:tech:changed' ],*/
+//        4 => [
+/*            '/^(?>[\x20\t]*)nic-hdl(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:billing:handle',*/
+/*            '/^(?>[\x20\t]*)organisation(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im' => 'contacts:billing:organization',*/
+/*            '/^(?>[\x20\t]*)person(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'       => 'contacts:billing:name',*/
+/*            '/^(?>[\x20\t]*)address(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:billing:address',*/
+/*            '/^(?>[\x20\t]*)city(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'         => 'contacts:billing:city',*/
+/*            '/^(?>[\x20\t]*)zipcode(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:billing:zipcode',*/
+/*            '/^(?>[\x20\t]*)country(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'      => 'contacts:billing:country',*/
+/*            '/^(?>[\x20\t]*)phone(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:billing:phone',*/
+/*            '/^(?>[\x20\t]*)fax(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'          => 'contacts:billing:fax',*/
+/*            '/^(?>[\x20\t]*)email(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'        => 'contacts:billing:email',*/
+/*            '/^(?>[\x20\t]*)lastupdated(?>[\x20\t]*):(?>[\x20\t]*)(.+)$/im'  => 'contacts:billing:changed' ] ];*/
 }
