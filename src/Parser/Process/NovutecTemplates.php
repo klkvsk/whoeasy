@@ -371,7 +371,7 @@ class NovutecTemplates implements DataProcessorInterface
             "*" => NovutecTemplates\Templates\Om::class,
         ],
         "whois.pir.org" => [
-            "*" => NovutecTemplates\Templates\Afilias::class,
+            "*" => NovutecTemplates\Templates\Gtld_networksolutions::class,
         ],
         "kero.yachay.pe" => [
             "*" => NovutecTemplates\Templates\Cocca::class,

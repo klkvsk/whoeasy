@@ -463,6 +463,10 @@ new class {
                 $template = 'int_';
             }
 
+            if ($server === 'whois.pir.org') {
+                $template = 'gtld_networksolutions';
+            }
+
             $templateClass = 'NovutecTemplates\\Templates\\' . ucfirst($template) . '::class';
 
             $mapping[$server] ??= [];
