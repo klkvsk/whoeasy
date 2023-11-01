@@ -70,6 +70,11 @@ class WhoisClient
                 ->withRequest($request);
         }
 
+        if (preg_match('/^rate limit exceeded+$/im', $response->getAnswer(), $m)) {
+            throw (new ClientRequestException($m[0]))
+                ->withRequest($request);
+        }
+
         return $response->getAnswer();
     }
 
