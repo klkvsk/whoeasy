@@ -2,6 +2,8 @@
 
 namespace Klkvsk\Whoeasy\Client;
 
+use function Klkvsk\Whoeasy\asn2long;
+
 class Request implements RequestInterface
 {
     const DEFAULT_TIMEOUT = 30.0;
@@ -17,7 +19,13 @@ class Request implements RequestInterface
     )
     {
         $this->queryType = $queryType ?: static::guessQueryType($this->query);
-        $this->queryString = $this->server->formatQuery($this->query, $this->query);
+        if ($this->queryType === self::QUERY_TYPE_DOMAIN) {
+            $this->query = rtrim($this->query, '.');
+        }
+        if ($this->queryType === self::QUERY_TYPE_ASN) {
+            $this->query = 'AS' . asn2long($this->query);
+        }
+        $this->queryString = $this->server->formatQuery($this->query, $this->queryType);
     }
 
     public static function guessQueryType(string $query): string
@@ -25,7 +33,7 @@ class Request implements RequestInterface
         if (preg_match('/-[a-z]$/i', $query)) {
             return self::QUERY_TYPE_NIC_HANDLE;
         }
-        if (preg_match('/^as[0-9]+$/i', $query)) {
+        if (preg_match('/^asn?[0-9]+$/i', $query)) {
             return self::QUERY_TYPE_ASN;
         }
         if (filter_var($query, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {

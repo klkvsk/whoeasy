@@ -7,6 +7,7 @@ use Klkvsk\Whoeasy\Client\RequestInterface;
 use Klkvsk\Whoeasy\Client\ServerInfo;
 use Klkvsk\Whoeasy\Client\ServerInfoInterface;
 use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
+use function Klkvsk\Whoeasy\asn2long;
 use function Klkvsk\Whoeasy\ip6prefix2long;
 
 class ServerRegistry implements ServerRegistryInterface
@@ -15,6 +16,7 @@ class ServerRegistry implements ServerRegistryInterface
     protected array $toplevelRefs = [];
     protected array $ipv4Ranges = [];
     protected array $ipv6Ranges = [];
+    protected array $asnRanges = [];
 
     public function __construct()
     {
@@ -92,16 +94,19 @@ class ServerRegistry implements ServerRegistryInterface
 
     protected function findByAsn(string $asn): ?ServerInfoInterface
     {
-        if (!preg_match('/^asn?\[:-_. ]*([0-9]+)/', $asn, $m)) {
-            return null;
+        $number = asn2long($asn);
+        if ($number === false) {
+            throw new InvalidArgumentException("bad asn: $asn");
         }
-        $number = (int)$m[1];
+
+        foreach ($this->asnRanges as [ $start, $end, $server ]) {
+            if ($start <= $number && $number <= $end) {
+                return $this->findServer($server);
+            }
+        }
 
         return null;
     }
-
-
-
 
 
 }

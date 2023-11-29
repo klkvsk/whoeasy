@@ -1,5 +1,6 @@
 <?php
 
+use function Klkvsk\Whoeasy\asn2long;
 use function Klkvsk\Whoeasy\ip6prefix2long;
 
 require __DIR__ . '/../src/functions.php';
@@ -25,8 +26,8 @@ new class {
             'ip_del_recovered.h'   => $this->parseIpv4Recovered(...),
             'ip_del_list'          => $this->parseIpv4(...),
             'ip6_del_list'         => $this->parseIpv6(...),
-//            'as_del_list'          => $this->parseAsn(...),
-//            'as32_del_list'        => $this->parseAsn(...),
+            'as_del_list'          => $this->parseAsn(...),
+            'as32_del_list'        => $this->parseAsn(...),
         ];
 
         foreach ($files as $file => $importFn) {
@@ -242,6 +243,27 @@ new class {
         $this->ipv6Ranges[] = [ $ipLong, $maskLong, $server ];
     }
 
+    protected function parseAsn(string $line): void
+    {
+        if (!preg_match('/^([0-9.]+)\s+([0-9.]+)\s+([a-z0-9.-]+)/i', $line, $cols)) {
+            throw new UnexpectedValueException("'$line'");
+        }
+
+        [ $_, $start, $end, $server ] = $cols;
+        if ($server === "UNKNOWN") {
+            return;
+        }
+
+        $server = strtolower($server);
+        if (!str_contains($server, '.')) {
+            $server = "whois.$server.net";
+        }
+
+        $start = asn2long($start);
+        $end = asn2long($end);
+
+        $this->asnRanges[] = [ $start, $end, $server ];
+    }
 
     protected function parseIpv4Recovered(string $line): void
     {
@@ -546,6 +568,9 @@ new class {
                         break;
 
                     case 'asn':
+                        foreach ($this->asnRanges as $range) {
+                            $modifiedFile[] = $indent . $this->dumpList($range, $indent, $eol) . ',' . $eol;
+                        }
                         break;
 
                     case 'novutec':

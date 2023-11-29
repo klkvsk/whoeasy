@@ -8275,70 +8275,110 @@ class BuiltinRegistryRegistry extends ServerRegistry
     ];
 
     protected array $asnRanges = [
-        /** @generator-begin=ipv6 */
-        // 2001:0200 - 2001:03FF
-        [ 536936960, 4294966784, "whois.apnic.net" ],
-        // 2001:0400 - 2001:05FF
-        [ 536937472, 4294966784, "whois.arin.net" ],
-        // 2001:0600 - 2001:07FF
-        [ 536937984, 4294966784, "whois.ripe.net" ],
-        // 2001:0800 - 2001:0BFF
-        [ 536938496, 4294966272, "whois.ripe.net" ],
-        // 2001:0C00 - 2001:0FFF
-        [ 536939520, 4294966272, "whois.apnic.net" ],
-        // 2001:1000 - 2001:13FF
-        [ 536940544, 4294966272, "whois.lacnic.net" ],
-        // 2001:1400 - 2001:17FF
-        [ 536941568, 4294966272, "whois.ripe.net" ],
-        // 2001:1800 - 2001:19FF
-        [ 536942592, 4294966784, "whois.arin.net" ],
-        // 2001:1A00 - 2001:1BFF
-        [ 536943104, 4294966784, "whois.ripe.net" ],
-        // 2001:1C00 - 2001:1FFF
-        [ 536943616, 4294966272, "whois.ripe.net" ],
-        // 2001:2000 - 2001:3FFF
-        [ 536944640, 4294959104, "whois.ripe.net" ],
-        // 2001:4000 - 2001:41FF
-        [ 536952832, 4294966784, "whois.ripe.net" ],
-        // 2001:4200 - 2001:43FF
-        [ 536953344, 4294966784, "whois.afrinic.net" ],
-        // 2001:4400 - 2001:45FF
-        [ 536953856, 4294966784, "whois.apnic.net" ],
-        // 2001:4600 - 2001:47FF
-        [ 536954368, 4294966784, "whois.ripe.net" ],
-        // 2001:4800 - 2001:49FF
-        [ 536954880, 4294966784, "whois.arin.net" ],
-        // 2001:4A00 - 2001:4BFF
-        [ 536955392, 4294966784, "whois.ripe.net" ],
-        // 2001:4C00 - 2001:4FFF
-        [ 536955904, 4294966272, "whois.ripe.net" ],
-        // 2001:5000 - 2001:5FFF
-        [ 536956928, 4294963200, "whois.ripe.net" ],
-        // 2001:8000 - 2001:BFFF
-        [ 536969216, 4294950912, "whois.apnic.net" ],
-        // 2003:0000 - 2003:3FFF
-        [ 537067520, 4294950912, "whois.ripe.net" ],
-        // 2400:0000 - 2400:0FFF
-        [ 603979776, 4294963200, "whois.nic.or.kr" ],
-        // 2400:0000 - 240F:FFFF
-        [ 603979776, 4293918720, "whois.apnic.net" ],
-        // 2600:0000 - 260F:FFFF
-        [ 637534208, 4293918720, "whois.arin.net" ],
-        // 2610:0000 - 2610:01FF
-        [ 638582784, 4294966784, "whois.arin.net" ],
-        // 2620:0000 - 2620:01FF
-        [ 639631360, 4294966784, "whois.arin.net" ],
-        // 2630:0000 - 263F:FFFF
-        [ 640679936, 4293918720, "whois.arin.net" ],
-        // 2800:0000 - 280F:FFFF
-        [ 671088640, 4293918720, "whois.lacnic.net" ],
-        // 2A00:0000 - 2A0F:FFFF
-        [ 704643072, 4293918720, "whois.ripe.net" ],
-        // 2A10:0000 - 2A1F:FFFF
-        [ 705691648, 4293918720, "whois.ripe.net" ],
-        // 2C00:0000 - 2C0F:FFFF
-        [ 738197504, 4293918720, "whois.afrinic.net" ],
-        /** @generator-end=ipv6 */
+        /** @generator-begin=asn */
+        [ 248, 251, "whois.ripe.net" ],
+        [ 306, 371, "whois.nic.mil" ],
+        [ 379, 508, "whois.nic.mil" ],
+        [ 1101, 1200, "whois.ripe.net" ],
+        [ 1267, 1275, "whois.ripe.net" ],
+        [ 1877, 1901, "whois.ripe.net" ],
+        [ 2043, 2043, "whois.ripe.net" ],
+        [ 2047, 2047, "whois.ripe.net" ],
+        [ 2057, 2136, "whois.ripe.net" ],
+        [ 2387, 2488, "whois.ripe.net" ],
+        [ 2497, 2528, "whois.nic.ad.jp" ],
+        [ 2585, 2614, "whois.ripe.net" ],
+        [ 2773, 2822, "whois.ripe.net" ],
+        [ 2830, 2879, "whois.ripe.net" ],
+        [ 3154, 3353, "whois.ripe.net" ],
+        [ 4608, 4864, "whois.apnic.net" ],
+        [ 5120, 5376, "whois.nic.mil" ],
+        [ 5377, 5631, "whois.ripe.net" ],
+        [ 5800, 6055, "whois.nic.mil" ],
+        [ 6656, 6911, "whois.ripe.net" ],
+        [ 7467, 7722, "whois.apnic.net" ],
+        [ 8192, 9215, "whois.ripe.net" ],
+        [ 9591, 9622, "whois.nic.ad.jp" ],
+        [ 9628, 9647, "whois.nic.or.kr" ],
+        [ 9683, 9712, "whois.nic.or.kr" ],
+        [ 9753, 9784, "whois.nic.or.kr" ],
+        [ 9840, 9871, "whois.nic.or.kr" ],
+        [ 9943, 9982, "whois.nic.or.kr" ],
+        [ 9990, 10021, "whois.nic.ad.jp" ],
+        [ 10034, 10073, "whois.nic.or.kr" ],
+        [ 10154, 10198, "whois.nic.or.kr" ],
+        [ 9216, 10239, "whois.apnic.net" ],
+        [ 12288, 13311, "whois.ripe.net" ],
+        [ 15360, 16383, "whois.ripe.net" ],
+        [ 17503, 17534, "whois.nic.ad.jp" ],
+        [ 17567, 17616, "whois.nic.or.kr" ],
+        [ 17673, 17704, "whois.nic.ad.jp" ],
+        [ 17832, 17881, "whois.nic.or.kr" ],
+        [ 17930, 17961, "whois.nic.ad.jp" ],
+        [ 18067, 18098, "whois.nic.ad.jp" ],
+        [ 18121, 18152, "whois.nic.ad.jp" ],
+        [ 18259, 18290, "whois.nic.ad.jp" ],
+        [ 18294, 18343, "whois.nic.or.kr" ],
+        [ 17408, 18431, "whois.apnic.net" ],
+        [ 20480, 21503, "whois.ripe.net" ],
+        [ 23552, 23601, "whois.nic.or.kr" ],
+        [ 23612, 23643, "whois.nic.ad.jp" ],
+        [ 23773, 23836, "whois.nic.ad.jp" ],
+        [ 24248, 24297, "whois.nic.ad.jp" ],
+        [ 23552, 24575, "whois.apnic.net" ],
+        [ 24576, 25599, "whois.ripe.net" ],
+        [ 26592, 26623, "whois.lacnic.net" ],
+        [ 27648, 28671, "whois.lacnic.net" ],
+        [ 28672, 29695, "whois.ripe.net" ],
+        [ 30980, 30999, "whois.afrinic.net" ],
+        [ 30720, 31743, "whois.ripe.net" ],
+        [ 34515, 34519, "whois.afrinic.net" ],
+        [ 33792, 35839, "whois.ripe.net" ],
+        [ 36864, 37887, "whois.afrinic.net" ],
+        [ 37888, 37927, "whois.nic.ad.jp" ],
+        [ 38086, 38135, "whois.nic.or.kr" ],
+        [ 38387, 38436, "whois.nic.or.kr" ],
+        [ 38627, 38656, "whois.nic.ad.jp" ],
+        [ 38660, 38709, "whois.nic.or.kr" ],
+        [ 37888, 38911, "whois.apnic.net" ],
+        [ 38912, 39935, "whois.ripe.net" ],
+        [ 40960, 45055, "whois.ripe.net" ],
+        [ 45360, 45409, "whois.nic.or.kr" ],
+        [ 45672, 45691, "whois.nic.ad.jp" ],
+        [ 45963, 46012, "whois.nic.or.kr" ],
+        [ 45056, 46079, "whois.apnic.net" ],
+        [ 47104, 52223, "whois.ripe.net" ],
+        [ 52224, 53247, "whois.lacnic.net" ],
+        [ 55372, 55396, "whois.nic.ad.jp" ],
+        [ 55584, 55633, "whois.nic.or.kr" ],
+        [ 55888, 55912, "whois.nic.ad.jp" ],
+        [ 55296, 56319, "whois.apnic.net" ],
+        [ 56320, 58367, "whois.ripe.net" ],
+        [ 58645, 58654, "whois.nic.ad.jp" ],
+        [ 58784, 58793, "whois.nic.ad.jp" ],
+        [ 59091, 59130, "whois.nic.ad.jp" ],
+        [ 58368, 59391, "whois.apnic.net" ],
+        [ 59392, 61439, "whois.ripe.net" ],
+        [ 61440, 61951, "whois.lacnic.net" ],
+        [ 61952, 62463, "whois.ripe.net" ],
+        [ 63488, 64098, "whois.apnic.net" ],
+        [ 64099, 64197, "whois.lacnic.net" ],
+        [ 1, 64296, "whois.arin.net" ],
+        [ 64297, 64395, "whois.apnic.net" ],
+        [ 64396, 64495, "whois.ripe.net" ],
+        [ 64496, 65534, "whois.ripe.net" ],
+        [ 131077, 131086, "whois.nic.ad.jp" ],
+        [ 131092, 131101, "whois.nic.or.kr" ],
+        [ 131152, 131161, "whois.nic.ad.jp" ],
+        [ 131791, 131890, "whois.nic.or.kr" ],
+        [ 131893, 131992, "whois.nic.ad.jp" ],
+        [ 131072, 196607, "whois.apnic.net" ],
+        [ 196608, 262143, "whois.ripe.net" ],
+        [ 262144, 327679, "whois.lacnic.net" ],
+        [ 327680, 393215, "whois.afrinic.net" ],
+        [ 393216, 458751, "whois.arin.net" ],
+        [ 4200000000, 4294967294, "whois.ripe.net" ],
+        /** @generator-end=asn */
     ];
 
 }
