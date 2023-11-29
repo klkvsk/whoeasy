@@ -11,7 +11,8 @@ use Throwable;
 class FormatDates implements DataProcessorInterface
 {
     public function __construct(
-        protected string $dateFormat = 'Y-m-d H:i:s e'
+        protected string $dateFormat = 'Y-m-d H:i:s e',
+        protected bool   $strict = false,
     )
     {
     }
@@ -34,17 +35,36 @@ class FormatDates implements DataProcessorInterface
 
     public function processValue(string $value): string
     {
-        if (!preg_match('/^\d{1,4}-(\d{1,2}|[a-z]{3})-\d{1,4}[-T ]+\d{1,2}:\d{2}([:.]\d{2})?/i', $value)) {
-            return $value;
+        if (!preg_match('/^\d{1,4}-(\d{1,2}|[a-z]{3})-\d{1,4}[-T ]+\d{1,2}:\d{2}([:.]\d{2})?/i', $value, $m)) {
+            if ($this->strict) {
+                throw new ParserException("Date parsing failed on: " . var_export($value, true));
+            } else {
+                return $value;
+            }
         }
 
+        $onlyDateTime = $m[1];
+
         try {
-            $dt = new DateTime($value);
-            $dt->setTimezone(new DateTimeZone('UTC'));
-            return $dt->format($this->dateFormat);
+            try {
+                $dt = new DateTime($value);
+            } catch (\Throwable $e) {
+                if (str_contains($e->getMessage(), 'timezone could not be found in the database')) {
+                    $dt = new DateTime($onlyDateTime);
+                } else {
+                    throw $e;
+                }
+            }
         } catch (Throwable $e) {
-            throw new ParserException("Date parsing failed on: " . var_export($value, true), 0, $e);
+            if ($this->strict) {
+                throw new ParserException("Date parsing failed on: " . var_export($value, true), 0, $e);
+            } else {
+                return $value;
+            }
         }
+
+        $dt->setTimezone(new DateTimeZone('UTC'));
+        return $dt->format($this->dateFormat);
     }
 
 }
