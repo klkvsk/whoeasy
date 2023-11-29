@@ -13,7 +13,7 @@ function ip6prefix2long(string $ip): int|false
 
 function asn2long(string $asn): int|false
 {
-    if (!preg_match('/^(asn?[:-_. ]*)?([0-9.]+)/', $asn, $m)) {
+    if (!preg_match('/^(asn?[:-_. ]*)?([0-9.]+)/i', $asn, $m)) {
         return false;
     }
     $asParts = explode('.', $m[2]);
