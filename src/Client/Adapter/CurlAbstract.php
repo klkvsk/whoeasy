@@ -37,7 +37,6 @@ abstract class CurlAbstract implements AdapterInterface
 
         curl_setopt_array($curl, $this->options);
         curl_setopt_array($curl, [
-            CURLOPT_PROTOCOLS      => CURLPROTO_TELNET,
             CURLOPT_TIMEOUT_MS     => $request->getTimeout() * 1000,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_PROXY          => $proxy?->getUri(),

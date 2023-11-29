@@ -18,12 +18,13 @@ class NovutecTemplates implements DataProcessorInterface
     {
         $template = $this->createTemplate($answer->server, $answer->query);
         $result = new NovutecTemplates\Result\Result();
-        $rawData = $template->translateRawData($answer->rawData);
+        $rawData = $template->translateRawData($answer->text);
+        $rawData = str_replace('REDACTED FOR PRIVACY', '', $rawData);
         $template->parse($result, $rawData);
         $result->whoisserver ??= $answer->server;
         $result->template = lcfirst((new \ReflectionClass($template))->getShortName());
         $result->formatDates($this->dateFormat);
-        $answer->result = $result;
+        $answer->novutecResult = $result;
     }
 
     protected function createTemplate(?string $server, ?string $query): AbstractTemplate

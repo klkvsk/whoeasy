@@ -55,6 +55,7 @@ class De extends Regex
         1 => [ '/nserver:(?>[\x20\t]*)(.+)$/im'    => 'nameserver',
                '/status:(?>[\x20\t]*)(.+)$/im'     => 'status',
                '/dnskey:(?>[\x20\t]*)(.+)$/im'     => 'dnssec',
+               '/domain:(?>[\x20\t]*)(.+)$/im'     => 'name',
                '/changed:(?>[\x20\t]*)(.+)$/im'    => 'changed',
                '/regaccname:(?>[\x20\t]*)(.+)$/im' => 'registrar:name',
                '/regcccid:(?>[\x20\t]*)(.+)$/im'   => 'registrar:id' ],

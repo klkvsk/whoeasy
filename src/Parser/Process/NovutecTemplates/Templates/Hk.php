@@ -47,7 +47,7 @@ class Hk extends Regex
         1 => '/Registrant Contact Information:(.*?)(?=Administrative|Technical Contact Information)/is',
         2 => '/Administrative Contact Information:(?>[\x20\t]*)(.*?)(?=Technical Contact Information)/is',
         3 => '/Technical Contact Information:(?>[\x20\t]*)(.*?)(?=Name Servers Information)/is',
-        4 => '/Name Servers Information:(?>[\x20\t]*)(.*?)(?=---)/is',
+        4 => '/Name Servers Information:\n\n(?>[\x20\t]*)(.*?)(?=\n\n)/is',
         5 => '/Registrar Name:(?>[\x20\t]*)(.*?)(?=Registrant Contact Information)/is' ];
 
     /**

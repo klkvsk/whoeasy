@@ -2,7 +2,7 @@
 
 namespace Klkvsk\Whoeasy\Client\Registry;
 
-class BuiltinRegistryRegistry extends ServerRegistry
+trait GeneratedServerRegistryData
 {
     /** @noinspection HttpUrlsUsage */
     protected array $servers = [

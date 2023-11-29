@@ -36,7 +36,7 @@ new class {
 
         $this->importNovutecIniFile('novutec.ini');
 
-        $this->generateCode(__DIR__ . '/../src/Client/Registry/BuiltinRegistryRegistry.php');
+        $this->generateCode(__DIR__ . '/../src/Client/Registry/GeneratedServerRegistry.php');
         $this->generateCode(__DIR__ . '/../src/Parser/Process/NovutecTemplates.php');
 
     }

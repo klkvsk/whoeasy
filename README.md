@@ -45,7 +45,7 @@ The list of servers is automatically generated from https://github.com/rfc1036/w
 a default `whois` tool in most Linux distributions. This is the most up-to-date source
 of correct whois servers per tld.
 
-See [BuitinClientRegistry](./src/Client/Registry/BuiltinRegistryRegistry.php) 
+See [generated registry](./src/Client/Registry/GeneratedServerRegistryData.php) 
 for compiled list. See [generator](./generator) for source lists and build script.
 
 

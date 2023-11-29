@@ -11,7 +11,7 @@ $response = Whois::getParsed($argv[1]);
 $key = $argv[2] ?? 'rawData';
 
 echo '## server = ' . $response->server . "\n";
-echo '## template = ' . $response->result?->template . "\n";
+echo '## template = ' . $response->novutecResult?->template . "\n";
 $value = $response->$key;
 echo is_string($value) ? ($value) : json_encode($value, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 echo PHP_EOL;

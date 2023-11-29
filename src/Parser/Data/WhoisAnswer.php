@@ -2,16 +2,15 @@
 
 namespace Klkvsk\Whoeasy\Parser\Data;
 
-use iterator;
-use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result;
+use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result as NovutecResult;
 
 class WhoisAnswer
 {
     public string $text;
     public array $fields;
     public array $groups;
-    /** @var \stdClass|Result */
-    public Result|\stdClass $result;
+    public NovutecResult $novutecResult;
+    public \stdClass $result;
 
     public function __construct(
         public readonly string  $rawData,
@@ -23,7 +22,7 @@ class WhoisAnswer
         $this->text = $this->rawData;
     }
 
-    public function lines(): iterator
+    public function lines(): iterable
     {
         $offset = 0;
         do {

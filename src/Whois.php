@@ -2,20 +2,25 @@
 
 namespace Klkvsk\Whoeasy;
 
+use Klkvsk\Whoeasy\Client\Adapter\CurlHttp;
 use Klkvsk\Whoeasy\Client\Adapter\CurlTelnet;
 use Klkvsk\Whoeasy\Client\Adapter\Socket;
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProvider;
 use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProviderInterface;
-use Klkvsk\Whoeasy\Client\Registry\BuiltinRegistryRegistry;
-use Klkvsk\Whoeasy\Client\Registry\ServerRegistry;
+use Klkvsk\Whoeasy\Client\Registry\BuiltinServerRegistry;
+use Klkvsk\Whoeasy\Client\Registry\GeneratedServerRegistryData;
+use Klkvsk\Whoeasy\Client\Registry\GeneratedServerRegistry;
+use Klkvsk\Whoeasy\Client\Registry\ServerRegistryInterface;
 use Klkvsk\Whoeasy\Client\ServerInfoInterface;
 use Klkvsk\Whoeasy\Client\WhoisClient;
 use Klkvsk\Whoeasy\Parser\Data\WhoisAnswer;
 use Klkvsk\Whoeasy\Parser\Exception\ParserException;
 use Klkvsk\Whoeasy\Parser\Process\CleanComments;
+use Klkvsk\Whoeasy\Parser\Process\CommonStructure;
 use Klkvsk\Whoeasy\Parser\Process\FormatDates;
 use Klkvsk\Whoeasy\Parser\Process\GroupedFields;
+use Klkvsk\Whoeasy\Parser\Process\JsonToText;
 use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates;
 use Klkvsk\Whoeasy\Parser\Process\SimpleFields;
 use Klkvsk\Whoeasy\Parser\WhoisParser;
@@ -23,7 +28,7 @@ use Klkvsk\Whoeasy\Parser\WhoisParser;
 class Whois
 {
     protected ProxyProviderInterface $proxyProvider;
-    protected ServerRegistry $servers;
+    protected ServerRegistryInterface $servers;
     protected array $adapters = [];
 
     protected static ?self $instance = null;
@@ -36,11 +41,13 @@ class Whois
     public function __construct()
     {
         $this->proxyProvider = new ProxyProvider();
-        $this->servers = new BuiltinRegistryRegistry();
+        $this->servers = new BuiltinServerRegistry();
         $this->adapters = [
             extension_loaded('curl')
-                ? new CurlTelnet($this->adapters, $this->proxyProvider)
+                ? new CurlTelnet([], $this->proxyProvider)
                 : new Socket($this->proxyProvider),
+
+            new CurlHttp([], $this->proxyProvider)
         ];
     }
 
@@ -53,10 +60,12 @@ class Whois
     {
         return new WhoisParser([
             new CleanComments(),
+            new JsonToText(),
             new SimpleFields(),
             new GroupedFields(),
             new FormatDates(),
             new NovutecTemplates(),
+            new CommonStructure(),
         ]);
     }
 

@@ -10,16 +10,16 @@ use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
 use function Klkvsk\Whoeasy\asn2long;
 use function Klkvsk\Whoeasy\ip6prefix2long;
 
-class ServerRegistry implements ServerRegistryInterface
+class GeneratedServerRegistry implements ServerRegistryInterface
 {
-    protected array $servers = [];
-    protected array $toplevelRefs = [];
-    protected array $ipv4Ranges = [];
-    protected array $ipv6Ranges = [];
-    protected array $asnRanges = [];
+    use GeneratedServerRegistryData;
 
-    public function __construct()
+    protected ServerRegistryInterface $recursiveRegistry;
+
+    public function __construct(ServerRegistryInterface $rootRegistry = null)
     {
+        // in case with CombinedServerRegistry we need to start lookup from the beginning
+        $this->recursiveRegistry = $rootRegistry ?: $this;
     }
 
     public function findByQuery(string $query, string $queryType = null): ?ServerInfoInterface
@@ -28,10 +28,10 @@ class ServerRegistry implements ServerRegistryInterface
 
         return match ($queryType) {
             RequestInterface::QUERY_TYPE_DOMAIN => $this->findByDomain($query),
-            RequestInterface::QUERY_TYPE_IPV4 => $this->findByIpv4($query),
-            RequestInterface::QUERY_TYPE_IPV6 => $this->findByIpv6($query),
-            RequestInterface::QUERY_TYPE_ASN => $this->findByAsn($query),
-            default => throw new InvalidArgumentException($queryType)
+            RequestInterface::QUERY_TYPE_IPV4   => $this->findByIpv4($query),
+            RequestInterface::QUERY_TYPE_IPV6   => $this->findByIpv6($query),
+            RequestInterface::QUERY_TYPE_ASN    => $this->findByAsn($query),
+            default                             => throw new InvalidArgumentException($queryType)
         };
     }
 
@@ -41,7 +41,7 @@ class ServerRegistry implements ServerRegistryInterface
         do {
             $tld = ".$domain";
             if (isset($this->toplevelRefs[$tld])) {
-                return $this->findServer($this->toplevelRefs[$tld]);
+                return $this->recursiveRegistry->findServer($this->toplevelRefs[$tld]);
             }
             strtok($domain, '.');
             $domain = strtok('');
@@ -60,7 +60,6 @@ class ServerRegistry implements ServerRegistryInterface
             $this->servers[$name]['uri'],
             $this->servers[$name]['charset'] ?? null,
             $this->servers[$name]['formats'] ?? [],
-            $this->servers[$name]['template'] ?? null,
         );
     }
 
@@ -70,9 +69,9 @@ class ServerRegistry implements ServerRegistryInterface
         if ($ip === false) {
             throw new InvalidArgumentException("bad ipv4: $query");
         }
-        foreach ($this->ipv4Ranges as [ $subnetIp, $subnetMask, $serverName ]) {
+        foreach ($this->ipv4Ranges as [$subnetIp, $subnetMask, $serverName]) {
             if (($ip & $subnetMask) === $subnetIp) {
-                return $this->findServer($serverName);
+                return $this->recursiveRegistry->findServer($serverName);
             }
         }
         return null;
@@ -84,9 +83,9 @@ class ServerRegistry implements ServerRegistryInterface
         if ($ipPrefix === false) {
             throw new InvalidArgumentException("bad ipv6: $query");
         }
-        foreach ($this->ipv6Ranges as [ $subnetPrefix, $subnetMask, $serverName ]) {
+        foreach ($this->ipv6Ranges as [$subnetPrefix, $subnetMask, $serverName]) {
             if (($ipPrefix & $subnetMask) === $subnetPrefix) {
-                return $this->findServer($serverName);
+                return $this->recursiveRegistry->findServer($serverName);
             }
         }
         return null;
@@ -99,9 +98,9 @@ class ServerRegistry implements ServerRegistryInterface
             throw new InvalidArgumentException("bad asn: $asn");
         }
 
-        foreach ($this->asnRanges as [ $start, $end, $server ]) {
+        foreach ($this->asnRanges as [$start, $end, $server]) {
             if ($start <= $number && $number <= $end) {
-                return $this->findServer($server);
+                return $this->recursiveRegistry->findServer($server);
             }
         }
 
