@@ -23,7 +23,7 @@ class CommonStructure implements DataProcessorInterface
     public function process(WhoisAnswer $answer): void
     {
         $e = new GroupsExtractor($answer->groups);
-        //echo $answer->text . "\n\n";
+        echo $answer->text . "\n\n";
 
         switch ($answer->queryType) {
             case RequestInterface::QUERY_TYPE_DOMAIN:
@@ -91,6 +91,13 @@ class CommonStructure implements DataProcessorInterface
 
             $contact->type = $contactType;
             $contact->name = $eCon->string($contactType, '*name', '*org*');
+            if ($contactType === 'owner') {
+                // for com.br
+                $ownerid = $e->string('ownerid');
+                if ($ownerid) {
+                    $contact->name .= " ($ownerid)";
+                }
+            }
             $org = $eCon->string('*org*');
             if ($org && $org != $contact->name) {
                 $contact->name ??= "";

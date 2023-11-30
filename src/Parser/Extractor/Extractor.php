@@ -12,6 +12,7 @@ abstract class Extractor
         if (!$value) {
             return null;
         }
+        $value = preg_replace('/[$;#].+$/', '', $value);
         try {
             return new \DateTimeImmutable($value);
         } catch (\Throwable $e) {
