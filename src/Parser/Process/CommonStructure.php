@@ -76,10 +76,9 @@ class CommonStructure implements DataProcessorInterface
             'name*server*', 'nserver', 'ns', 'dns', 'domain*name*server'
         );
 
-        $s->refer = $e->lcstring('refer*to', 'refer');
+        $s->refer = $e->lcstring('refer*to', 'refer', 'reg*whois*', '*whois*server');
 
         $s->registrar = new ContactResult();
-        $s->registrar->type = 'registrar';
         $eReg = $e->group('registrar*')->after('registrar*');
         $s->registrar->name = $eReg->string('registrar', '*name*', '*org*');
         $s->registrar->email = $eReg->lcstring('*abuse*email', '*abuse*', '*email*');
@@ -120,7 +119,7 @@ class CommonStructure implements DataProcessorInterface
         }
 
         if ($s->status) {
-            $s->status = preg_replace('@ https://icann.org[^$, ]*@', '', $s->status);
+            $s->status = preg_replace('@ https?://icann.org[^$, ]*@', '', $s->status);
         }
     }
 
@@ -147,7 +146,7 @@ class CommonStructure implements DataProcessorInterface
             }
         }
 
-        $s->refer = $novutec?->whoisserver ?: $s->refer;
+        $s->refer ??= $novutec->whoisserver;
 
         $s->registrar->name ??= $novutec->registrar->name ?? null;
         $s->registrar->phone ??= $novutec->registrar->phone ?? null;
