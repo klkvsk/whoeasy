@@ -23,15 +23,19 @@ class CommonStructure implements DataProcessorInterface
     public function process(WhoisAnswer $answer): void
     {
         $e = new GroupsExtractor($answer->groups);
-        //echo $answer->text . "\n\n";
+        echo $answer->text . "\n\n";
 
         switch ($answer->queryType) {
             case RequestInterface::QUERY_TYPE_DOMAIN:
                 $s = new DomainResult();
                 $this->domain($e, $s);
-
-                if ($answer->novutecResult instanceof NovutecResult) {
-                    $this->mergeNovutek($s, $answer->novutecResult);
+                $this->mergeNovutek($s, $answer->novutecResult);
+                if ($s->nameservers) {
+                    $s->nameservers = array_map(
+                        // some include resolved ips
+                        fn($ns) => preg_replace('/\s+[0-9a-f.:\s]+$/i', '', $ns),
+                        $s->nameservers
+                    );
                 }
                 break;
 
@@ -75,6 +79,7 @@ class CommonStructure implements DataProcessorInterface
         $s->nameservers = $e->lcarr(
             'name*server*', 'nserver', 'ns', 'dns', 'domain*name*server'
         );
+
 
         $s->refer = $e->lcstring('refer*to', 'refer', 'reg*whois*', '*whois*server');
 

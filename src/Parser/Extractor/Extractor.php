@@ -13,6 +13,7 @@ abstract class Extractor
             return null;
         }
         $value = preg_replace('/[$;#].+$/', '', $value);
+        $value = preg_replace('/^before /', '', $value);
         try {
             return new \DateTimeImmutable($value);
         } catch (\Throwable $e) {
