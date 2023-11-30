@@ -40,6 +40,13 @@ class CommonStructure implements DataProcessorInterface
                         $s->nameservers
                     );
                 }
+
+                if (!$s->status) {
+                    if (preg_match('/(domain not found|^no.+found|nxdomain|^no match|no entries found)/i', $answer->rawData)) {
+                        $s->status = 'NOT FOUND';
+                    }
+                }
+
                 break;
 
             case RequestInterface::QUERY_TYPE_IPV4:
