@@ -36,7 +36,7 @@ class CommonStructure implements DataProcessorInterface
                     );
                     $s->nameservers = array_map(
                     // some include statuses, comments, other additional info
-                        fn($ns) => preg_replace('/\s+[[(#;].+$/i', '', $ns),
+                        fn($ns) => preg_replace('/\s+[[(#;|].+$/i', '', $ns),
                         $s->nameservers
                     );
                 }

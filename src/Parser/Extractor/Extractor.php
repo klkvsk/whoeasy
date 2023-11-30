@@ -14,6 +14,7 @@ abstract class Extractor
         }
         $value = preg_replace('/[$;#].+$/', '', $value);
         $value = preg_replace('/^before /', '', $value);
+        $value = preg_replace('@^(\d{1,2})/(\d{1,2})/(\d{4})@', '$3-$2-$1', $value);
         try {
             return new \DateTimeImmutable($value);
         } catch (\Throwable $e) {
