@@ -23,7 +23,7 @@ class CommonStructure implements DataProcessorInterface
     public function process(WhoisAnswer $answer): void
     {
         $e = new GroupsExtractor($answer->groups);
-        echo $answer->text . "\n\n";
+        //echo $answer->text . "\n\n";
 
         switch ($answer->queryType) {
             case RequestInterface::QUERY_TYPE_DOMAIN:
@@ -157,7 +157,7 @@ class CommonStructure implements DataProcessorInterface
 
         $s->registrar->name ??= $novutec->registrar->name ?? null;
         $s->registrar->phone ??= $novutec->registrar->phone ?? null;
-        $s->registrar->email ??= $novutec->registrar->email ?? null;
+        $s->registrar->email ??= strtolower($novutec->registrar->email ?? null) ?: null;
 
         foreach ($novutec->contacts as $contactType => $contacts) {
             $c = null;
@@ -184,7 +184,7 @@ class CommonStructure implements DataProcessorInterface
                 }
 
                 $c->name ??= $contact?->name ? trim($contact->name) : null;
-                $c->email ??= $contact?->email ? trim($contact->email) : null;
+                $c->email ??= $contact?->email ? strtolower(trim($contact->email)) : null;
                 $c->phone ??= $contact?->phone ? trim($contact->phone) : null;
             }
             if (!in_array($c, $s->contacts) && ($c->name || $c->phone || $c->email)) {

@@ -75,7 +75,11 @@ class WhoisClient
                 ->withRequest($request);
         }
 
-        return $response->getAnswer();
+        $rawData = $response->getAnswer();
+        if ($server->getCharset()) {
+            $rawData = mb_convert_encoding($rawData, 'UTF-8', $server->getCharset());
+        }
+        return $rawData;
     }
 
     protected function createRequest(ServerInfoInterface $server, string $query, string $queryType): RequestInterface

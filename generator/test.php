@@ -16,6 +16,9 @@ $value = $response->$key;
 if (is_object($value) && method_exists($value, 'toArray')) {
     $value = $value->toArray();
 }
-echo is_string($value) ? ($value) : json_encode($value, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+echo is_string($value)
+    ? ($value)
+    : json_encode($value, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR)
+;
 echo PHP_EOL;
 
