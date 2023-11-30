@@ -23,7 +23,7 @@ class CommonStructure implements DataProcessorInterface
     public function process(WhoisAnswer $answer): void
     {
         $e = new GroupsExtractor($answer->groups);
-        echo $answer->text . "\n\n";
+//        echo $answer->text . "\n\n";
 
         switch ($answer->queryType) {
             case RequestInterface::QUERY_TYPE_DOMAIN:

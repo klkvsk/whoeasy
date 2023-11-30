@@ -20,6 +20,9 @@ abstract class Extractor
             if (str_contains($e->getMessage(), 'timezone could not be found in the database')) {
                 $value = preg_replace('@[a-z/]+$@i', '', $value);
                 $value = new \DateTimeImmutable($value, new \DateTimeZone('UTC'));
+            } else if (str_contains($e->getMessage(), 'Double time specification')) {
+                $value = str_replace('.', '-', $value);
+                $value = new \DateTimeImmutable($value);
             } else {
                 throw $e;
             }
