@@ -3,8 +3,6 @@
 namespace Klkvsk\Whoeasy\Parser\Process;
 
 use Klkvsk\Whoeasy\Client\RequestInterface;
-use Klkvsk\Whoeasy\Client\ResponseInterface;
-use Klkvsk\Whoeasy\Parser\Data\AbstractResult;
 use Klkvsk\Whoeasy\Parser\Data\AsnResult;
 use Klkvsk\Whoeasy\Parser\Data\ContactResult;
 use Klkvsk\Whoeasy\Parser\Data\DomainResult;
@@ -28,12 +26,17 @@ class CommonStructure implements DataProcessorInterface
         switch ($answer->queryType) {
             case RequestInterface::QUERY_TYPE_DOMAIN:
                 $s = new DomainResult();
-                $this->domain($e, $s);
+                $this->domain($e, $s, $answer->server);
                 $this->mergeNovutek($s, $answer->novutecResult);
                 if ($s->nameservers) {
                     $s->nameservers = array_map(
-                        // some include resolved ips
+                    // some include resolved ips
                         fn($ns) => preg_replace('/\s+[0-9a-f.:\s]+$/i', '', $ns),
+                        $s->nameservers
+                    );
+                    $s->nameservers = array_map(
+                    // some include statuses, comments, other additional info
+                        fn($ns) => preg_replace('/\s+[[(#;].+$/i', '', $ns),
                         $s->nameservers
                     );
                 }
@@ -59,7 +62,7 @@ class CommonStructure implements DataProcessorInterface
         $answer->result = $s;
     }
 
-    protected function domain(Extractor $e, DomainResult $s)
+    protected function domain(Extractor $e, DomainResult $s, string $whoisServer = null)
     {
         $s->name = $e->lcstring('domain*name', 'domain', 'name');
         $s->status = $e->string('status', 'state', 'domain*status');
@@ -92,31 +95,22 @@ class CommonStructure implements DataProcessorInterface
         $s->contacts = [];
         foreach ([ 'registrant', 'owner', 'admin', 'tech', 'abuse' ] as $contactType) {
             $eCon = $e->group("$contactType*")->after("$contactType*");
-            $contact = new ContactResult();
-
-            $contact->type = $contactType;
-            $contact->name = $eCon->string($contactType, '*name', '*org*');
-            if ($contactType === 'owner') {
-                // for com.br
-                $ownerid = $e->string('ownerid');
-                if ($ownerid) {
-                    $contact->name .= " ($ownerid)";
-                }
-            }
-            $org = $eCon->string('*org*');
-            if ($org && $org != $contact->name) {
-                $contact->name ??= "";
-                if ($contact->name) {
-                    $contact->name .= ", ";
-                }
-                $contact->name .= $org;
-            }
-            $contact->email = $eCon->lcstring('*email');
-            $contact->phone = $eCon->lcstring('*phone');
-
+            $contact = $this->contact($e, $eCon, $contactType);
             if ($contact->name || $contact->email || $contact->phone) {
                 $s->contacts[] = $contact;
             }
+        }
+
+        if ($whoisServer === 'whois.fi') {
+            $eCon = $e->group('holder*');
+            $contact = $this->contact($e, $eCon, 'owner');
+            $regNumber = $eCon->string('reg*number');
+            if ($regNumber) {
+                $contact->name .= " ($regNumber)";
+            }
+            $s->contacts[] = $contact;
+
+            $s->registrar->email ??= $e->group('registrar')->lcstring('www');
         }
 
         if ($e->field('source') === 'TCI') {
@@ -133,6 +127,43 @@ class CommonStructure implements DataProcessorInterface
         if ($s->status) {
             $s->status = preg_replace('@ https?://icann.org[^$, ]*@', '', $s->status);
         }
+    }
+
+    public function contact(Extractor $e, Extractor $eCon, string $contactType): ?ContactResult
+    {
+        $contact = new ContactResult();
+
+        $contact->type = $contactType;
+        $contact->name = $eCon->string($contactType, '*name', '*org*');
+        if ($contactType === 'owner') {
+            // for com.br
+            $ownerid = $e->string('ownerid');
+            if ($ownerid) {
+                $contact->name .= " ($ownerid)";
+            }
+        }
+        $org = $eCon->string('*org*');
+        if ($org && $org != $contact->name) {
+            $contact->name ??= "";
+            if ($contact->name) {
+                $contact->name .= ", ";
+            }
+            $contact->name .= $org;
+        }
+
+        $contact->address =
+            implode(', ', array_filter([
+                $eCon->string('*postal*', '*zip*'),
+                $eCon->string('*country*'),
+                $eCon->string('*city*'),
+                $eCon->string('*state*'),
+                $eCon->string('*address*'),
+            ]));
+
+        $contact->email = $eCon->lcstring('*email');
+        $contact->phone = $eCon->lcstring('*phone');
+
+        return $contact;
     }
 
     public function mergeNovutek(DomainResult $s, NovutecResult $novutec)

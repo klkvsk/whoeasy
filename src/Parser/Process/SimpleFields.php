@@ -31,7 +31,7 @@ class SimpleFields implements DataProcessorInterface
      */
     protected function parseLine(string $line): array
     {
-        if (!preg_match('/^\s*([a-z0-9 -]+)\s*:\s*(.+)\s*$/i', $line, $match)) {
+        if (!preg_match('/^\s*([a-z0-9 -]+)[\s.:-]*[.:-]\s*(.+)\s*$/i', $line, $match)) {
             return [ null, null ];
         }
 
