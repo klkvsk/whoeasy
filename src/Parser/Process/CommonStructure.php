@@ -122,7 +122,7 @@ class CommonStructure implements DataProcessorInterface
         }
     }
 
-    public function mergeNovutek(AbstractResult $s, NovutecResult $novutec)
+    public function mergeNovutek(DomainResult $s, NovutecResult $novutec)
     {
         $s->name ??= $novutec->name ? strtolower($novutec->name) : null;
         if (!isset($s->nameservers) && isset($novutec->nameserver)) {
@@ -136,16 +136,18 @@ class CommonStructure implements DataProcessorInterface
         }
         $s->status ??= implode(', ', $novutec->status);
 
-        if (preg_match('/(redacted for privacy|query the rdds service)/i', $novutec->registrar->phone)) {
-            $novutec->registrar->phone = null;
-        }
-        if (preg_match('/(redacted for privacy|query the rdds service)/i', $novutec->registrar->email)) {
-            $novutec->registrar->email = null;
+        if ($novutec->registrar) {
+            if (preg_match('/(redacted for privacy|query the rdds service)/i', $novutec->registrar->phone ?? '')) {
+                $novutec->registrar->phone = null;
+            }
+            if (preg_match('/(redacted for privacy|query the rdds service)/i', $novutec->registrar->email ?? '')) {
+                $novutec->registrar->email = null;
+            }
         }
 
-        $s->registrar->name ??= $novutec->registrar->name;
-        $s->registrar->phone ??= $novutec->registrar->phone;
-        $s->registrar->email ??= $novutec->registrar->email;
+        $s->registrar->name ??= $novutec->registrar->name ?? null;
+        $s->registrar->phone ??= $novutec->registrar->phone ?? null;
+        $s->registrar->email ??= $novutec->registrar->email ?? null;
 
         foreach ($novutec->contacts as $contactType => $contacts) {
             $c = null;
@@ -164,16 +166,16 @@ class CommonStructure implements DataProcessorInterface
                 $c->type = $contactType;
             }
             foreach ($contacts as $contact) {
-                if (preg_match('/(redacted for privacy|query the rdds service)/i', $contact->phone)) {
+                if (preg_match('/(redacted for privacy|query the rdds service)/i', $contact->phone ?? '')) {
                     $contact->phone = null;
                 }
-                if (preg_match('/(redacted for privacy|query the rdds service)/i', $contact->email)) {
+                if (preg_match('/(redacted for privacy|query the rdds service)/i', $contact->email ?? '')) {
                     $contact->email = null;
                 }
 
-                $c->name ??= $contact->name ? trim($contact->name) : null;
-                $c->email ??= $contact->email ? trim($contact->email) : null;
-                $c->phone ??= $contact->phone ? trim($contact->phone) : null;
+                $c->name ??= $contact?->name ? trim($contact->name) : null;
+                $c->email ??= $contact?->email ? trim($contact->email) : null;
+                $c->phone ??= $contact?->phone ? trim($contact->phone) : null;
             }
             if (!in_array($c, $s->contacts) && ($c->name || $c->phone || $c->email)) {
                 $s->contacts[] = $c;
