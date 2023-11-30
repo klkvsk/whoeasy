@@ -135,7 +135,7 @@ class CommonStructure implements DataProcessorInterface
             $nameservers = array_map(strtolower(...), $nameservers);
             $s->nameservers = $nameservers;
         }
-        $s->status ??= implode(', ', $novutec->status);
+        $s->status ??= implode(', ', (array)$novutec->status);
 
         if ($novutec->registrar) {
             if (preg_match('/(redacted for privacy|query the rdds service)/i', $novutec->registrar->phone ?? '')) {
