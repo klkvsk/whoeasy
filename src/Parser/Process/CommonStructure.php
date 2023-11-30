@@ -4,10 +4,15 @@ namespace Klkvsk\Whoeasy\Parser\Process;
 
 use Klkvsk\Whoeasy\Client\RequestInterface;
 use Klkvsk\Whoeasy\Client\ResponseInterface;
+use Klkvsk\Whoeasy\Parser\Data\AbstractResult;
+use Klkvsk\Whoeasy\Parser\Data\AsnResult;
+use Klkvsk\Whoeasy\Parser\Data\ContactResult;
+use Klkvsk\Whoeasy\Parser\Data\DomainResult;
+use Klkvsk\Whoeasy\Parser\Data\IpResult;
 use Klkvsk\Whoeasy\Parser\Data\WhoisAnswer;
 use Klkvsk\Whoeasy\Parser\Extractor\Extractor;
 use Klkvsk\Whoeasy\Parser\Extractor\GroupsExtractor;
-use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result;
+use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result as NovutecResult;
 
 class CommonStructure implements DataProcessorInterface
 {
@@ -17,40 +22,40 @@ class CommonStructure implements DataProcessorInterface
 
     public function process(WhoisAnswer $answer): void
     {
-        $s = new \stdClass();
         $e = new GroupsExtractor($answer->groups);
-        echo $answer->text . "\n\n";
-
-        $s->type = $answer->queryType;
+        //echo $answer->text . "\n\n";
 
         switch ($answer->queryType) {
             case RequestInterface::QUERY_TYPE_DOMAIN:
+                $s = new DomainResult();
                 $this->domain($e, $s);
 
-                if ($answer->novutecResult instanceof Result) {
+                if ($answer->novutecResult instanceof NovutecResult) {
                     $this->mergeNovutek($s, $answer->novutecResult);
                 }
                 break;
 
             case RequestInterface::QUERY_TYPE_IPV4:
             case RequestInterface::QUERY_TYPE_IPV6:
+                $s = new IpResult();
                 $this->ip($e, $s);
                 break;
 
             case RequestInterface::QUERY_TYPE_ASN:
+                $s = new AsnResult();
                 $this->asn($e, $s);
                 break;
 
             default:
                 throw new \InvalidArgumentException($answer->queryType);
         }
-
+        $s->type = $answer->queryType;
         $s->name ??= $answer->query;
 
         $answer->result = $s;
     }
 
-    protected function domain(Extractor $e, \stdClass $s)
+    protected function domain(Extractor $e, DomainResult $s)
     {
         $s->name = $e->lcstring('domain*name', 'domain', 'name');
         $s->status = $e->string('status', 'state', 'domain*status');
@@ -71,7 +76,8 @@ class CommonStructure implements DataProcessorInterface
             'name*server*', 'nserver', 'ns', 'dns', 'domain*name*server'
         );
 
-        $s->registrar = new \stdClass();
+        $s->registrar = new ContactResult();
+        $s->registrar->type = 'registrar';
         $eReg = $e->group('registrar*')->after('registrar*');
         $s->registrar->name = $eReg->string('registrar', '*name*', '*org*');
         $s->registrar->email = $eReg->lcstring('*abuse*email', '*abuse*', '*email*');
@@ -80,7 +86,7 @@ class CommonStructure implements DataProcessorInterface
         $s->contacts = [];
         foreach ([ 'registrant', 'owner', 'admin', 'tech', 'abuse' ] as $contactType) {
             $eCon = $e->group("$contactType*")->after("$contactType*");
-            $contact = new \stdClass();
+            $contact = new ContactResult();
 
             $contact->type = $contactType;
             $contact->name = $eCon->string($contactType, '*name', '*org*');
@@ -101,7 +107,7 @@ class CommonStructure implements DataProcessorInterface
         }
 
         if ($e->field('source') === 'TCI') {
-            $contact = new \stdClass();
+            $contact = new ContactResult();
             $contact->type = 'registrant';
             $contact->name = $e->string('org');
             $inn = $e->string('taxpayer-id');
@@ -111,10 +117,12 @@ class CommonStructure implements DataProcessorInterface
             $s->contacts[] = $contact;
         }
 
-        $s->status = $s->status ? implode(', ', $s->status) : null;
+        if ($s->status) {
+            $s->status = preg_replace('@ https://icann.org[^$, ]*@', '', $s->status);
+        }
     }
 
-    public function mergeNovutek(\stdClass $s, Result $novutec)
+    public function mergeNovutek(AbstractResult $s, NovutecResult $novutec)
     {
         $s->name ??= $novutec->name ? strtolower($novutec->name) : null;
         if (!isset($s->nameservers) && isset($novutec->nameserver)) {
@@ -152,7 +160,7 @@ class CommonStructure implements DataProcessorInterface
                 }
             }
             if (!$c) {
-                $c = new \stdClass();
+                $c = new ContactResult();
                 $c->type = $contactType;
             }
             foreach ($contacts as $contact) {
@@ -173,18 +181,20 @@ class CommonStructure implements DataProcessorInterface
         }
     }
 
-    protected function ip(Extractor $e, \stdClass $s)
+    protected function ip(Extractor $e, IpResult|AsnResult $s)
     {
-        $s->name = $e->string('netname', 'inetnum', 'netrange');
-        $s->range = $e->string('route', 'inetnum', 'cidr', 'netrange');
-        $s->asn = $e->string('origin-as', 'origin');
+        if ($s instanceof IpResult) {
+            $s->name = $e->string('netname', 'inetnum', 'netrange');
+            $s->range = $e->string('route', 'inetnum', 'cidr', 'netrange');
+            $s->asn = $e->string('origin-as', 'origin');
+        }
 
         $s->created = $e->date('created', 'created*date', 'creation*date', 'created*at', 'regdate');
         $s->changed = $e->date('changed', 'update*date', 'updated*at', 'last*updated', 'last*modified',
             'last*update', 'modified', 'updated');
 
         $eOwn = $e->group('orgname', 'org*name', 'org', '*org*');
-        $o = new \stdClass();
+        $o = new ContactResult();
         $o->name = $eOwn->string('role', 'org', 'org*name') ?: $e->string('descr');
         $o->address =
             implode(', ', array_filter([
@@ -204,7 +214,7 @@ class CommonStructure implements DataProcessorInterface
         foreach ($e->groups as $group) {
             $firstField = array_key_first($group->fields);
             if (preg_match('/org(.+)(name|handle)/i', $firstField, $m)) {
-                $c = new \stdClass();
+                $c = new ContactResult();
                 $c->type = $m[1];
                 $c->name = $group->field("org{$c->type}name");
                 $c->email = $group->field("org{$c->type}email");
@@ -215,7 +225,7 @@ class CommonStructure implements DataProcessorInterface
         $s->contacts = array_values($s->contacts);
     }
 
-    protected function asn(GroupsExtractor $e, \stdClass $s)
+    protected function asn(GroupsExtractor $e, AsnResult $s)
     {
         $this->ip($e, $s);
         $s->name = $e->string('as*name', 'aut*num');

@@ -51,7 +51,6 @@ abstract class Extractor
         if (is_string($value)) {
             $value = explode(',', $value);
         }
-        $value = array_map(fn($v) => preg_replace('@https://icann.org.+$@', '', $v), $value);
         $value = array_map(trim(...), $value);
         sort($value);
         return $value;
