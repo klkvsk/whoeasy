@@ -16,4 +16,5 @@ class DomainResult extends AbstractResult
 
     public ?array $nameservers = null;
 
+    public ?string $refer = null;
 }

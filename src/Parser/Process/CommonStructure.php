@@ -76,6 +76,8 @@ class CommonStructure implements DataProcessorInterface
             'name*server*', 'nserver', 'ns', 'dns', 'domain*name*server'
         );
 
+        $s->refer = $e->lcstring('refer*to', 'refer');
+
         $s->registrar = new ContactResult();
         $s->registrar->type = 'registrar';
         $eReg = $e->group('registrar*')->after('registrar*');
@@ -144,6 +146,8 @@ class CommonStructure implements DataProcessorInterface
                 $novutec->registrar->email = null;
             }
         }
+
+        $s->refer = $novutec?->whoisserver ?: $s->refer;
 
         $s->registrar->name ??= $novutec->registrar->name ?? null;
         $s->registrar->phone ??= $novutec->registrar->phone ?? null;
