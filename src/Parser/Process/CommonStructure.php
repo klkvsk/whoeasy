@@ -72,7 +72,7 @@ class CommonStructure implements DataProcessorInterface
     protected function domain(Extractor $e, DomainResult $s, string $whoisServer = null)
     {
         $s->name = $e->lcstring('domain*name', 'domain', 'name');
-        $s->status = $e->string('status', 'state', 'domain*status');
+        $s->status = implode(', ', $e->arr('status', 'state', 'domain*status'));
         $s->created = $e->date(
             'created', 'created*date', 'creation*date', 'created*at',
             'registered* on', 'registration*date', 'registration*time',
@@ -131,8 +131,43 @@ class CommonStructure implements DataProcessorInterface
             $s->contacts[] = $contact;
         }
 
+        if ($e->field('source') === 'FRNIC') {
+            $eReg = $e->skip(1)->group('registrar');
+            $s->registrar->email ??= $eReg->string('e-mail');
+            $s->registrar->address ??= $eReg->string('address');
+            $s->registrar->phone ??= $eReg->string('phone');
+
+            foreach ([ 'holder-c', 'admin-c', 'tech-c' ] as $contactHandleType) {
+                $contactHandle = $e->string($contactHandleType);
+                if (!$contactHandle) {
+                    continue;
+                }
+                foreach ($e->groups as $eGrp) {
+                    $handle = $eGrp->string('nic-hdl');
+                    if ($handle !== $contactHandle) {
+                        continue;
+                    }
+                    if (isset($s->contacts[$handle])) {
+                        continue;
+                    }
+                    $contact = new ContactResult();
+                    $contact->type = preg_replace('/-c$/', '', $contactHandleType);
+                    $contact->name = $eGrp->string('contact');
+                    $contact->email = $eGrp->string('e-mail');
+                    $contact->address = $eGrp->string('address');
+                    $contact->phone = $eGrp->string('phone');
+                    if ($contact->name || $contact->email || $contact->phone) {
+                        $s->contacts[$handle] = $contact;
+                    }
+                    break;
+                }
+            }
+
+            $s->contacts = array_values($s->contacts);
+        }
+
         if ($s->status) {
-            $s->status = preg_replace('@ https?://icann.org[^$, ]*@', '', $s->status);
+            $s->status = preg_replace('@ https?://(www.)icann.org[^$, ]*@', '', $s->status);
         }
     }
 
@@ -185,7 +220,12 @@ class CommonStructure implements DataProcessorInterface
             $nameservers = array_map(strtolower(...), $nameservers);
             $s->nameservers = $nameservers;
         }
-        $s->status ??= implode(', ', (array)$novutec->status);
+
+        if (!$s->status) {
+            $status = (array)$novutec->status;
+            sort($status);
+            $s->status = implode(', ', (array)$novutec->status);
+        }
 
         if ($novutec->registrar) {
             if (preg_match('/(redacted for privacy|query the rdds service)/i', $novutec->registrar->phone ?? '')) {

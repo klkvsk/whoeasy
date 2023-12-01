@@ -9,12 +9,12 @@ class GroupsExtractor extends Extractor
 
     public function __construct(array $groups)
     {
-        $gg = [];
-        foreach ($groups as $group) {
-            $gg[] = new FieldsExtractor($group);
-        }
+        $groups = array_map(
+            fn ($g) => $g instanceof Extractor ? $g : new FieldsExtractor($g),
+            $groups
+        );
 
-        $this->groups = $gg;
+        $this->groups = $groups;
     }
 
     public function group(string ...$patterns): FieldsExtractor
@@ -29,6 +29,11 @@ class GroupsExtractor extends Extractor
         }
 
         return new FieldsExtractor([]);
+    }
+
+    public function skip(int $numGroups): self
+    {
+        return new self(array_slice($this->groups, $numGroups));
     }
 
     public function field(string ...$patterns): mixed
