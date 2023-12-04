@@ -80,7 +80,7 @@ class CommonStructure implements DataProcessorInterface
             'registered',
         );
         $s->changed = $e->date(
-            'changed', 'update*date', 'updated*at',
+            'changed', 'last-update', 'update*date', 'updated*at',
             'last*updated', 'last*modified', 'last*update', 'modified'
         );
         $s->expires = $e->date('*expir*', 'paid-till', 'free-date');
@@ -133,6 +133,11 @@ class CommonStructure implements DataProcessorInterface
 
         if ($e->field('source') === 'FRNIC') {
             $eReg = $e->skip(1)->group('registrar');
+
+            // data has "changed" field that is not related to domain, but to contact info.
+            // force to use proper "last-update" field:
+            $s->changed = $e->date('last-update');
+
             $s->registrar->email ??= $eReg->string('e-mail');
             $s->registrar->address ??= $eReg->string('address');
             $s->registrar->phone ??= $eReg->string('phone');
