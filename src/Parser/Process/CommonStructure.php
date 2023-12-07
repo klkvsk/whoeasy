@@ -191,7 +191,7 @@ class CommonStructure implements DataProcessorInterface
         }
 
         if ($s->status) {
-            $s->status = preg_replace('@ https?://(www.)icann.org[^$, ]*@', '', $s->status);
+            $s->status = preg_replace('@ https?://(www.)?icann.org[^$, ]*@', '', $s->status);
         }
     }
 
