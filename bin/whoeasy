@@ -1,0 +1,160 @@
+#!/usr/bin/env php
+<?php
+require __DIR__ . '/../vendor/autoload.php';
+
+use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result as NovutecResult;
+use Klkvsk\Whoeasy\Whois;
+
+set_error_handler(
+    fn($severity, $msg, $file = null, $line = null) => new ErrorException($msg, 0, $severity, $file, $line),
+    E_ALL
+);
+
+return new class($argv) {
+
+    protected bool $verbose;
+
+    const FLAGS = [
+        'v' => 'verbose',
+        'h' => 'help',
+    ];
+    const OPTIONS = [
+        's' => 'server',
+        'f' => 'format',
+    ];
+
+    public function __construct(
+        protected array $argv
+    )
+    {
+        $args = $this->parseArgs();
+
+        if ($args['help']) {
+            $this->printUsage();
+            exit(0);
+        }
+        $this->verbose = $args['verbose'];
+        try {
+
+            $server = $args['server'];
+            $format = $args['format'] ?? $args[1] ?? 'result';
+            $target = $args[0] ?? null;
+            if (!$target) {
+                throw new InvalidArgumentException('Target domain is not specified');
+            }
+
+            $response = Whois::getParsed($target, $server);
+
+            if ($this->verbose) {
+                echo '## server = ' . $response->server . "\n";
+                echo '## query = ' . $response->query . "\n";
+            }
+
+            $value = match ($format) {
+                'w', 'raw'           => $response->rawData,
+                'r', 'result'        => $response->result,
+                't', 'text'          => $response->text,
+                'g', 'groups'        => $response->groups,
+                'f', 'fields'        => $response->fields,
+                'n', 'novutecResult' => $response->novutecResult,
+                default              => throw new InvalidArgumentException('Unknown format: ' . $format)
+            };
+
+            if (is_object($value) && method_exists($value, 'toArray')) {
+                $output = $value->toArray();
+            } else {
+                $output = $value;
+            }
+
+            if (!is_string($output)) {
+                $output = json_encode($output, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+            }
+
+            if ($this->verbose && $value instanceof NovutecResult) {
+                echo '## template = ' . $value->template . "\n";
+            }
+
+            echo $output . PHP_EOL;
+
+        } catch (\Throwable $e) {
+            echo $e::class . ': ' . $e->getMessage() . PHP_EOL;
+            if ($this->verbose) {
+                echo $e->getTraceAsString() . PHP_EOL;
+            }
+            $this->printUsage();
+            exit(1);
+        }
+    }
+
+    public function printUsage()
+    {
+        echo "\nUsage:\n";
+        echo "  whoeasy [options] <domain>\n";
+        echo "\n";
+        echo "Options:\n";
+        echo "  -s, --server <server>    use specified whois server\n";
+        echo "  -f, --format <format>    output format\n";
+        echo "  -v, --verbose            show debug output and traces\n";
+        echo "  -h, --help               show this message\n";
+        echo "\n";
+        echo "Formats:\n";
+        echo "  w, raw      raw response\n";
+        echo "  t, text     clean text response (comments removed)\n";
+        echo "  r, result   result object -- default\n";
+        echo "  f, fields   parsed key-value pairs\n";
+        echo "  g, groups   key-value pairs split in blocks\n";
+    }
+
+    public function getFlag(string $short, string $long = null): bool
+    {
+        $opt = getopt($short, (array)$long);
+        return isset($opt[$short]) || isset($opt[$long]);
+    }
+
+    public function getOption(string $short, string $long = null): ?string
+    {
+        $opt = getopt($short . ':', $long ? [ $long . ':' ] : []);
+        return $opt[$short] ?? $opt[$long] ?? null;
+    }
+
+    public function getTarget(): ?string
+    {
+        getopt('', [], $arg);
+        return $this->argv[$arg] ?? null;
+    }
+
+    public function parseArgs(): array
+    {
+        $shorts = '';
+        $longs = [];
+        foreach (self::FLAGS as $short => $long) {
+            $shorts .= $short;
+            $longs[] = $long;
+        }
+        foreach (self::OPTIONS as $short => $long) {
+            $shorts .= $short . ":";
+            $longs[] = $long . ":";
+        }
+        $opt = getopt($shorts, $longs);
+        $result = [];
+        $args = $this->argv;
+        array_shift($args);
+        foreach (self::FLAGS as $short => $long) {
+            $result[$long] = isset($opt[$short]) || isset($opt[$long]);
+            $args = array_filter($args, fn($arg) => $arg !== "-$short" && $arg !== "--$long");
+        }
+        foreach (self::OPTIONS as $short => $long) {
+            $value = $opt[$short] ?? $opt[$long] ?? null;
+            $result[$long] = $value;
+            $args = array_filter($args, fn($arg) => $arg !== "-$short" && $arg !== "--$long" && $arg !== $value);
+        }
+        foreach ($args as $arg) {
+            $result[] = $arg;
+        }
+        return $result;
+    }
+
+};
+
+
+

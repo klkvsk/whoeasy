@@ -10,6 +10,9 @@
   "homepage": "https://github.com/klkvsk/whoeasy",
   "author": "Misha Kulakovsky",
   "license": "Apache-2.0",
+  "bin": [
+    "bin/whoeasy"
+  ],
   "require": {
     "php": ">=8.1",
     "ext-mbstring": "*"
