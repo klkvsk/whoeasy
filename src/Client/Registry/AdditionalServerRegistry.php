@@ -27,6 +27,13 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                     RequestInterface::QUERY_TYPE_IPV6 => 'n + %s',
                 ]
             ),
+            'whois.denic.de' => new ServerInfo(
+                'whois://whois.denic.de',
+                'UTF-8',
+                [
+                    RequestInterface::QUERY_TYPE_DOMAIN => '-T dn %s',
+                ]
+            ),
             default => null,
         };
     }

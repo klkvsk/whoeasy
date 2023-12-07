@@ -47,6 +47,25 @@ class CommonStructure implements DataProcessorInterface
                     }
                 }
 
+                if ($answer->server === 'whois.denic.de') {
+                    $s->status = match ($s->status) {
+                        'free', 'invalid' => "NOT FOUND",
+                        'connect'         => "ACTIVE",
+                        'failed'          => "DISABLED",
+                        default           => $s->status,
+                    };
+                    $s->registrar->name ??= 'DENIC eG';
+                    $s->registrar->phone ??= '+4969272350';
+                    $s->registrar->address ??= 'Theodor-Stern-Kai 1, 60596 Frankfurt am Main, GERMANY';
+                    $s->registrar->email ??= 'info@denic.de';
+
+                    $abuse = new ContactResult();
+                    $abuse->type = 'abuse';
+                    $abuse->name = 'go to www.denic.de';
+                    $abuse->email = 'https://webwhois.denic.de/?lang=en&query=' . $s->name;
+                    $s->contacts[] = $abuse;
+                }
+
                 break;
 
             case RequestInterface::QUERY_TYPE_IPV4:
