@@ -2,7 +2,6 @@
 
 namespace Klkvsk\Whoeasy\Client\Proxy\Provider;
 
-use Klkvsk\Whoeasy\Client\Proxy\Proxy;
 use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
 use Klkvsk\Whoeasy\Client\ServerInfoInterface;
 

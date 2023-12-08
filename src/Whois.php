@@ -9,8 +9,6 @@ use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProvider;
 use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProviderInterface;
 use Klkvsk\Whoeasy\Client\Registry\BuiltinServerRegistry;
-use Klkvsk\Whoeasy\Client\Registry\GeneratedServerRegistryData;
-use Klkvsk\Whoeasy\Client\Registry\GeneratedServerRegistry;
 use Klkvsk\Whoeasy\Client\Registry\ServerRegistryInterface;
 use Klkvsk\Whoeasy\Client\ServerInfoInterface;
 use Klkvsk\Whoeasy\Client\WhoisClient;

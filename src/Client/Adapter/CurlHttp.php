@@ -34,7 +34,8 @@ class CurlHttp extends CurlAbstract implements AdapterInterface
                 $postData = $query[2];
                 break;
             default:
-                throw new \InvalidArgumentException('Invalid query string: ' . $request->getQueryString());
+                throw (new ClientRequestException('Invalid query string: ' . $request->getQueryString()))
+                    ->withRequest($request);
         }
 
         $url = rtrim($request->getServer()->getUri(), '/') . $path;

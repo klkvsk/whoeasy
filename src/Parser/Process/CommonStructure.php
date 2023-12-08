@@ -66,6 +66,14 @@ class CommonStructure implements DataProcessorInterface
                     $s->contacts[] = $abuse;
                 }
 
+                if ($e->string('source') === 'AT-DOM') {
+                    if (preg_match('/\s*\(\s*(http.)\s*\).*$/i', $s->registrar->name ?? '', $m)) {
+                        var_dump($m);die();
+                        $s->registrar->name = str_replace($m[0], '', $s->registrar->name);
+                        $s->registrar->email ??= $m[1];
+                    }
+                }
+
                 break;
 
             case RequestInterface::QUERY_TYPE_IPV4:

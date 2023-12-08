@@ -2,6 +2,8 @@
 <?php
 require $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
 
+use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
+use Klkvsk\Whoeasy\Parser\Data\WhoisAnswer;
 use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result as NovutecResult;
 use Klkvsk\Whoeasy\Whois;
 
@@ -35,7 +37,6 @@ return new class($argv) {
         }
         $this->verbose = $args['verbose'];
         try {
-
             $server = $args['server'];
             $format = $args['format'] ?? $args[1] ?? 'result';
             $target = $args[0] ?? null;
@@ -43,22 +44,31 @@ return new class($argv) {
                 throw new InvalidArgumentException('Target domain is not specified');
             }
 
-            $response = Whois::getParsed($target, $server);
-
-            if ($this->verbose) {
-                echo '## server = ' . $response->server . "\n";
-                echo '## query = ' . $response->query . "\n";
+            try {
+                $result = Whois::getParsed($target, $server);
+                $value = match ($format) {
+                    'w', 'raw'           => $result->rawData,
+                    'r', 'result'        => $result->result,
+                    't', 'text'          => $result->text,
+                    'g', 'groups'        => $result->groups,
+                    'f', 'fields'        => $result->fields,
+                    'n', 'novutecResult' => $result->novutecResult,
+                    default              => throw new InvalidArgumentException('Unknown format: ' . $format)
+                };
+            } catch (\Klkvsk\Whoeasy\Client\Exception\ClientResponseException $e) {
+                $result = new WhoisAnswer(
+                    $e->getResponse()->getAnswer(),
+                    $e->getRequest()->getServer()->getName(),
+                    $e->getRequest()->getQuery(),
+                    $e->getRequest()->getQueryType(),
+                );
+                $value = $e->getMessage();
             }
 
-            $value = match ($format) {
-                'w', 'raw'           => $response->rawData,
-                'r', 'result'        => $response->result,
-                't', 'text'          => $response->text,
-                'g', 'groups'        => $response->groups,
-                'f', 'fields'        => $response->fields,
-                'n', 'novutecResult' => $response->novutecResult,
-                default              => throw new InvalidArgumentException('Unknown format: ' . $format)
-            };
+            if ($this->verbose) {
+                echo '## server = ' . $result->server . "\n";
+                echo '## query = ' . $result->query . "\n";
+            }
 
             if (is_object($value) && method_exists($value, 'toArray')) {
                 $output = $value->toArray();
@@ -76,12 +86,18 @@ return new class($argv) {
 
             echo $output . PHP_EOL;
 
+        } catch (\InvalidArgumentException $e) {
+            echo $e->getMessage() . PHP_EOL;
+            $this->printUsage();
+            exit(2);
         } catch (\Throwable $e) {
             echo $e::class . ': ' . $e->getMessage() . PHP_EOL;
             if ($this->verbose) {
                 echo $e->getTraceAsString() . PHP_EOL;
             }
-            $this->printUsage();
+            if ($e instanceof InvalidArgumentException) {
+                $this->printUsage();
+            }
             exit(1);
         }
     }

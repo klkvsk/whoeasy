@@ -25,7 +25,6 @@
 
 namespace Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Templates;
 
-use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Templates\Type\Regex;
 
 /**
  * Template for IANA #81
