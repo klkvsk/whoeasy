@@ -116,7 +116,7 @@ return new class($argv) {
         echo "Formats:\n";
         echo "  w, raw      raw response\n";
         echo "  t, text     clean text response (comments removed)\n";
-        echo "  r, result   result object -- default\n";
+        echo "  r, result   structured result object [default]\n";
         echo "  f, fields   parsed key-value pairs\n";
         echo "  g, groups   key-value pairs split in blocks\n";
     }

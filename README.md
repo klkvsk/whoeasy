@@ -48,10 +48,33 @@ of correct whois servers per tld.
 See [generated registry](./src/Client/Registry/GeneratedServerRegistryData.php) 
 for compiled list. See [generator](./generator) for source lists and build script.
 
+CLI tool
+--------
+Whoeasy can be used as command line tool:
+```shell
+$ vendor/bin/whoeasy -h
+
+Usage:
+  whoeasy [options] <domain>
+
+Options:
+  -s, --server <server>    use specified whois server
+  -f, --format <format>    output format
+  -v, --verbose            show debug output and traces
+  -h, --help               show this message
+
+Formats:
+  w, raw      raw response
+  t, text     clean text response (comments removed)
+  r, result   structured result object [default]
+  f, fields   parsed key-value pairs
+  g, groups   key-value pairs split in blocks
+
+```
+
 
 ToDos
 -----
-* Querying ASN
 * Using RDAP as an alternative adapter
 * Replace Novutec parsing templates with own 
 
