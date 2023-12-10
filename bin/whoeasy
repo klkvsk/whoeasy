@@ -55,9 +55,11 @@ return new class($argv) {
                     'n', 'novutecResult' => $result->novutecResult,
                     default              => throw new InvalidArgumentException('Unknown format: ' . $format)
                 };
-            } catch (\Klkvsk\Whoeasy\Client\Exception\ClientResponseException $e) {
+            } catch (\Klkvsk\Whoeasy\Client\Exception\ClientRequestException $e) {
                 $result = new WhoisAnswer(
-                    $e->getResponse()->getAnswer(),
+                    $e instanceof \Klkvsk\Whoeasy\Client\Exception\ClientResponseException ?
+                        $e->getResponse()->getAnswer()
+                        : '',
                     $e->getRequest()->getServer()->getName(),
                     $e->getRequest()->getQuery(),
                     $e->getRequest()->getQueryType(),

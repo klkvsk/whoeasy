@@ -128,11 +128,16 @@ class WhoisClient
     protected function getRateLimitPatterns(): array
     {
         return [
-            '/exceeded the maximum allowable/im',
-            '/exceeded your query limit/im',
-            '/quota exceeded/i',
+            '/(reached|exceeded) the maximum allowable/im',
+            '/(reached|exceeded) your (query|request) limit/im',
+            '/quota (exceeded|reached)/i',
             '/try again after/i',
-            '/rate limit exceeded/i',
+            '/request cannot be processed/i',
+            '/try your request again/i',
+            '/(request|rate|query) limit (exceeded|reached)/i',
+            '/(exceeded|reached)( your)? (request|rate|query)( rate)? limit/i',
+            '/excediste la cantidad permitida/i',
+            '/too many (requests|queries)/i',
         ];
     }
 
