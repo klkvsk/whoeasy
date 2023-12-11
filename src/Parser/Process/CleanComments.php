@@ -23,6 +23,7 @@ class CleanComments implements DataProcessorInterface
 
         // leave no more than 2 empty lines in between blocks
         $text = preg_replace("/\n{3,}/", "\n\n", $text);
+        $text = strip_tags($text);
 
         $text = trim($text);
 
