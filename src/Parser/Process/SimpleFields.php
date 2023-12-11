@@ -31,12 +31,12 @@ class SimpleFields implements DataProcessorInterface
      */
     protected function parseLine(string $line): array
     {
-        if (!preg_match('/^\s*([a-z0-9 -]+?)[\s.:-]*[.:-]\s*(.+)\s*$/i', $line, $match)) {
+        if (!preg_match('/^\s*([a-z0-9 -]+)[\s.:-]*[.:-]\s*(.+)\s*$/i', $line, $match)) {
             return [ null, null ];
         }
 
-        $fieldName = $match[1];
-        $fieldValue = $match[2];
+        $fieldName = trim($match[1]);
+        $fieldValue = trim($match[2]);
 
         $fieldName = strtolower($fieldName);
 

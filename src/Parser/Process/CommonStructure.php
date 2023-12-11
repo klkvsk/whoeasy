@@ -88,6 +88,18 @@ class CommonStructure implements DataProcessorInterface
                     }
                 }
 
+                if ($answer->server === 'whois.isoc.org.il') {
+                    if (!$s->created) {
+                        // created field is repeated resulting in some kind of history log
+                        // for actual "changed" extractor took the last value
+                        // here we take the first one as chronologically first
+                        $changedDates = $e->field('changed');
+                        if (is_array($changedDates)) {
+                            $s->created = $e::parseDate(array_shift($changedDates));
+                        }
+                    }
+                }
+
                 // empty strings to nulls in contact
                 foreach ($s->contacts as $contact) {
                     if ($contact->name === '') {
@@ -158,7 +170,7 @@ class CommonStructure implements DataProcessorInterface
             'last*updated', 'last*modified', 'last*update', 'modified',
             'last*update*date',
         );
-        $s->expires = $e->date('*expir*', 'paid-till', 'free-date');
+        $s->expires = $e->date('*expir*', 'paid-till', 'free-date', 'validity');
 
 
         $s->nameservers = $e->lcarr(
