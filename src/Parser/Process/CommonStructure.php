@@ -149,13 +149,14 @@ class CommonStructure implements DataProcessorInterface
         $s->status = implode(', ', $e->arr('status', 'state', 'domain*status', 'registration*status'));
         $s->created = $e->date(
             'created', 'created*date', 'creation*date', 'created*at',
-            'registered* on', 'registration*date', 'registration*time',
+            'registered* on', 'registered*date', 'registration*date', 'registration*time',
             '*commencement*date', 'domain*registration*date', 'domain*creation*date',
             'registered', 'issue*date'
         );
         $s->changed = $e->date(
             'changed', 'last-update', 'update*date', 'updated*at',
-            'last*updated', 'last*modified', 'last*update', 'modified'
+            'last*updated', 'last*modified', 'last*update', 'modified',
+            'last*update*date',
         );
         $s->expires = $e->date('*expir*', 'paid-till', 'free-date');
 

@@ -27,12 +27,16 @@ abstract class Extractor
                 } else if (str_contains($e->getMessage(), 'Double time specification')) {
                     $value = str_replace('.', '-', $value);
                     $value = new \DateTimeImmutable($value);
+                } elseif (preg_match('/^(\d{4})\. (\d{2})\. (\d{2})\./', $value, $m)) {
+                    // .co.kr - 2020. 01. 01.
+                    $value = str_replace($m[0], $m[1] . '-' . $m[2] . '-' . $m[3], $value);
+                    $value = new \DateTimeImmutable($value);
                 } else {
                     throw $e;
                 }
             }
         } catch (\Throwable $e) {
-            throw new ParserException($e->getMessage() . ', value: ' . $value, 0, $e);
+            throw new ParserException($e->getMessage() . ', value: "' . $value . '"', 0, $e);
         }
 
         return $value;
