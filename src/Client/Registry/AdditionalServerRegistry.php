@@ -2,6 +2,7 @@
 
 namespace Klkvsk\Whoeasy\Client\Registry;
 
+use Klkvsk\Whoeasy\Client\Exception\NotScrapeableException;
 use Klkvsk\Whoeasy\Client\Request;
 use Klkvsk\Whoeasy\Client\RequestInterface;
 use Klkvsk\Whoeasy\Client\ServerInfo;
@@ -62,6 +63,14 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                     RequestInterface::QUERY_TYPE_DOMAIN => "GET /whois?%s",
                 ]
             ),
+            "whois.nic.ch" => new ServerInfo(
+                "https://rdap.nic.ch",
+                "UTF-8",
+                [
+                    RequestInterface::QUERY_TYPE_DOMAIN => "GET /domain/%s",
+                ],
+                answerProcessor: static::rdapToWhois(...),
+            ),
             "whois.dot.ph" => new ServerInfo(
                 "https://whois.dot.ph/",
                 "UTF-8",
@@ -81,4 +90,30 @@ class AdditionalServerRegistry implements ServerRegistryInterface
         };
     }
 
+    protected static function rdapToWhois(string $data): string
+    {
+        $json = json_decode($data, true);
+
+        $whois = "domain: " . $json['ldhName'] . "\n";
+        $whois .= "status: " . implode(', ', $json['status']) . "\n";
+        foreach ($json['events'] as $event) {
+            $whois .= "{$event['eventAction']} date: " . $event['eventDate'] . "\n";
+        }
+
+        foreach ($json['entities'] ?? [] as $entity) {
+            foreach ($entity['roles'] as $role) {
+                $whois .= "\n";
+                $whois .= "$role name: " . ($entity['vcardArray'][1][1][3] ?? '') . "\n";
+                $whois .= "$role address: " . implode(', ', array_filter($entity['vcardArray'][1][2][3] ?? [])) . "\n";
+                $whois .= "$role URL: " . $entity['url'] . "\n";
+            }
+        }
+
+        $whois .= "\n";
+        foreach ($json['nameservers'] ?? [] as $nameserver) {
+            $whois .= "nameserver: " . $nameserver['ldhName'] . "\n";
+        }
+
+        return $whois;
+    }
 }

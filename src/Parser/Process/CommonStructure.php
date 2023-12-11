@@ -196,7 +196,8 @@ class CommonStructure implements DataProcessorInterface
         $s->registrar = new ContactResult();
         $eReg = $e->group('registrar*')->after('registrar*');
         $s->registrar->name = $eReg->string('registrar', '*name*', '*org*');
-        $s->registrar->email = $eReg->lcstring('*abuse*email', '*abuse*', '*email*');
+        $s->registrar->address = $eReg->lcstring('*address*');
+        $s->registrar->email = $eReg->lcstring('*abuse*email', '*abuse*', '*email*', '*e-mail*', '*url');
         $s->registrar->phone = $eReg->lcstring('*abuse*phone', '*phone*');
 
         $s->contacts = [];
@@ -307,7 +308,7 @@ class CommonStructure implements DataProcessorInterface
                 $eCon->string('*address*'),
             ]));
 
-        $contact->email = $eCon->lcstring('*email');
+        $contact->email = $eCon->lcstring('*email', '*e-mail', '* mail', '*mailto');
         $contact->phone = $eCon->lcstring('*phone');
 
         return $contact;
