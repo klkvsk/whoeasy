@@ -138,6 +138,7 @@ class WhoisClient
             '/(exceeded|reached)( your)? (request|rate|query)( rate)? limit/i',
             '/excediste la cantidad permitida/i',
             '/too many (requests|queries)/i',
+            '/server is busy/i',
         ];
     }
 
