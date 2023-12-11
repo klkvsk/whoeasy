@@ -21,7 +21,7 @@ class ContactResult extends AbstractResult
     public function isEmpty(): bool
     {
         foreach (get_object_vars($this) as $value) {
-            if ($value !== null) {
+            if ($value !== null && $value !== '') {
                 return false;
             }
         }

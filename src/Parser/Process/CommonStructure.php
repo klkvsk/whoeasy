@@ -88,6 +88,39 @@ class CommonStructure implements DataProcessorInterface
                     }
                 }
 
+                // empty strings to nulls in contact
+                foreach ($s->contacts as $contact) {
+                    if ($contact->name === '') {
+                        $contact->name = null;
+                    }
+                    if ($contact->address === '') {
+                        $contact->address = null;
+                    }
+                    if ($contact->phone === '') {
+                        $contact->phone = null;
+                    }
+                    if ($contact->email === '') {
+                        $contact->email = null;
+                    }
+                }
+
+                // deduplicate owner and registrant in favour to owner
+                foreach ($s->contacts as $i => $contact) {
+                    if ($contact->type === 'owner') {
+                        foreach ($s->contacts as $j => $contact2) {
+                            if ($contact2->type === 'registrant') {
+                                if ($contact->name === $contact2->name
+                                    && $contact->email === $contact2->email
+                                    && $contact->address === $contact2->address
+                                    && $contact->phone === $contact2->phone
+                                ) {
+                                    unset($s->contacts[$j]);
+                                }
+                            }
+                        }
+                    }
+                }
+
                 break;
 
             case RequestInterface::QUERY_TYPE_IPV4:
@@ -118,7 +151,7 @@ class CommonStructure implements DataProcessorInterface
             'created', 'created*date', 'creation*date', 'created*at',
             'registered* on', 'registration*date', 'registration*time',
             '*commencement*date', 'domain*registration*date', 'domain*creation*date',
-            'registered',
+            'registered', 'issue*date'
         );
         $s->changed = $e->date(
             'changed', 'last-update', 'update*date', 'updated*at',
