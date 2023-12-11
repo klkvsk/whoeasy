@@ -80,6 +80,8 @@ class WhoisClient
                 $rawData = mb_convert_encoding($rawData, 'UTF-8', $server->getCharset());
             }
 
+            $rawData = $server->processAnswer($rawData);
+
             foreach ($this->getRateLimitPatterns() as $pattern) {
                 if (preg_match($pattern, $rawData)) {
                     throw new RateLimitException("Rate limit exceeded for {$server->getName()}");
@@ -150,6 +152,7 @@ class WhoisClient
             '/^no data found/im',
             '/^%% not found/im',
             '/is available for registration/i',
+            '/domain is available/i',
             '/^status: (free|available)/mi',
             '/no matching objects found/i',
             '/(objects?|domains?|records?|entry|entries) not found/im',

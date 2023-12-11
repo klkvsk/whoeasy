@@ -62,6 +62,19 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                     RequestInterface::QUERY_TYPE_DOMAIN => "GET /whois?%s",
                 ]
             ),
+            "whois.dot.ph" => new ServerInfo(
+                "https://whois.dot.ph/",
+                "UTF-8",
+                [
+                    RequestInterface::QUERY_TYPE_DOMAIN => "GET /?search=%s",
+                ],
+                answerProcessor: function ($data) {
+                    if (str_contains($data, 'Domain is available.')) {
+                        return 'Domain is available.';
+                    }
+                    return preg_replace('/^.*<pre>(.*)<\/pre>.*$/s', '$1', $data);
+                },
+            ),
             // remap to web version, as port 43 times out
             "whois.tonic.to" => $this->findServer('www.tonic.to'),
             default => null,

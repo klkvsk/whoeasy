@@ -5,21 +5,22 @@ namespace Klkvsk\Whoeasy\Client;
 class ServerInfo implements ServerInfoInterface
 {
     public function __construct(
-        protected string  $uri,
-        protected ?string $charset = null,
-        protected array   $formats = [],
+        protected string    $uri,
+        protected ?string   $charset = null,
+        protected array     $formats = [],
+        protected ?\Closure $answerProcessor = null,
     )
     {
-    }
-
-    public function getUri(): string
-    {
-        return $this->uri;
     }
 
     public function getName(): string
     {
         return parse_url($this->getUri(), PHP_URL_HOST);
+    }
+
+    public function getUri(): string
+    {
+        return $this->uri;
     }
 
     public function getCharset(): ?string
@@ -35,6 +36,16 @@ class ServerInfo implements ServerInfoInterface
     public function getQueryFormat(string $queryType): string
     {
         return $this->formats[$queryType] ?? '%s';
+    }
+
+    public function processAnswer(string $data): string
+    {
+        if ($this->answerProcessor) {
+            $processor = $this->answerProcessor;
+            $data = $processor($data);
+        }
+
+        return $data;
     }
 
 }
