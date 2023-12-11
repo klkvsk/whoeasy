@@ -26,10 +26,16 @@ class CurlTelnet extends CurlAbstract implements AdapterInterface
             CURLOPT_PROTOCOLS => CURLPROTO_TELNET,
             CURLOPT_URL       => "telnet://$host:$port",
             CURLOPT_INFILE    => $input,
-
-            // required at least for whois.fi
-            CURLOPT_TCP_FASTOPEN => true,
         ]);
+
+        switch ($request->getServer()->getName()) {
+            case 'whois.fi':
+                curl_setopt($curl, CURLOPT_TCP_FASTOPEN, true);
+                break;
+
+            default:
+                break;
+        }
     }
 
 }
