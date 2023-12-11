@@ -133,6 +133,7 @@ class WhoisClient
             '/(reached|exceeded) the maximum allowable/im',
             '/(reached|exceeded) your (query|request) limit/im',
             '/quota (exceeded|reached)/i',
+            '/connection limit exceeded/i',
             '/try again (later|after)/i',
             '/request cannot be processed/i',
             '/try your request again/i',
