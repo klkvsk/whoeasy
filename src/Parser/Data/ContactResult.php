@@ -18,5 +18,14 @@ class ContactResult extends AbstractResult
         return $array;
     }
 
+    public function isEmpty(): bool
+    {
+        foreach (get_object_vars($this) as $value) {
+            if ($value !== null) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

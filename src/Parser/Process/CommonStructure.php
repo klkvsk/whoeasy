@@ -68,9 +68,23 @@ class CommonStructure implements DataProcessorInterface
 
                 if ($e->string('source') === 'AT-DOM') {
                     if (preg_match('/\s*\(\s*(http.)\s*\).*$/i', $s->registrar->name ?? '', $m)) {
-                        var_dump($m);die();
                         $s->registrar->name = str_replace($m[0], '', $s->registrar->name);
                         $s->registrar->email ??= $m[1];
+                    }
+                }
+
+                if ($answer->server === 'whois.register.bg') {
+                    $s->name = preg_replace('/\s*\(\s*.+\s*\).*$/i', '', $s->name ?? '');
+                    if (empty($s->contacts)) {
+                        $owner = new ContactResult();
+                        $owner->type = 'registrant';
+                        $owner->name = 'private';
+                        $owner->email = 'see whois at https://www.register.bg/';
+                        $s->contacts[] = $owner;
+                    }
+                    if ($s->registrar->isEmpty()) {
+                        $s->registrar->name = 'Register.BG Ltd.';
+                        $s->registrar->email = 'hostmaster@register.bg';
                     }
                 }
 
@@ -99,7 +113,7 @@ class CommonStructure implements DataProcessorInterface
     protected function domain(Extractor $e, DomainResult $s, string $whoisServer = null)
     {
         $s->name = $e->lcstring('domain*name', 'domain', 'name');
-        $s->status = implode(', ', $e->arr('status', 'state', 'domain*status'));
+        $s->status = implode(', ', $e->arr('status', 'state', 'domain*status', 'registration*status'));
         $s->created = $e->date(
             'created', 'created*date', 'creation*date', 'created*at',
             'registered* on', 'registration*date', 'registration*time',
@@ -243,7 +257,7 @@ class CommonStructure implements DataProcessorInterface
     public function mergeNovutek(DomainResult $s, NovutecResult $novutec)
     {
         $s->name ??= $novutec->name ? strtolower($novutec->name) : null;
-        if (!isset($s->nameservers) && isset($novutec->nameserver)) {
+        if (empty($s->nameservers) && !empty($novutec->nameserver)) {
             $nameservers = $novutec->nameserver;
             if (is_string($nameservers)) {
                 $nameservers = preg_split('/[\n\s,; ]/', $nameservers, -1, PREG_SPLIT_NO_EMPTY);
