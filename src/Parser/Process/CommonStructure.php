@@ -100,6 +100,19 @@ class CommonStructure implements DataProcessorInterface
                     }
                 }
 
+                if (str_ends_with($answer->server, 'tonic.to')) {
+                    if (!$s->nameservers) {
+                        $s->nameservers = [
+                            ...$e->lcarr('primary host name'),
+                            ...$e->lcarr('secondary host name'),
+                        ];
+                        $s->status = $s->status ?: 'OK';
+                        $s->registrar->name ??= 'Tonic Domains Corp.';
+                        $s->registrar->address ??= 'P.O. Box 42, Pt San Quentin, CA 94964, USA';
+                        $s->registrar->email ??= 'hostmaster@tonic.to';
+                    }
+                }
+
                 // empty strings to nulls in contact
                 foreach ($s->contacts as $contact) {
                     if ($contact->name === '') {
@@ -160,7 +173,7 @@ class CommonStructure implements DataProcessorInterface
         $s->name = $e->lcstring('domain*name', 'domain', 'name');
         $s->status = implode(', ', $e->arr('status', 'state', 'domain*status', 'registration*status'));
         $s->created = $e->date(
-            'created', 'created*date', 'creation*date', 'created*at',
+            'created', 'created*date', 'creation*date', 'created*at', 'created*on',
             'registered* on', 'registered*date', 'registration*date', 'registration*time',
             '*commencement*date', 'domain*registration*date', 'domain*creation*date',
             'registered', 'issue*date'
@@ -168,7 +181,7 @@ class CommonStructure implements DataProcessorInterface
         $s->changed = $e->date(
             'changed', 'last-update', 'update*date', 'updated*at',
             'last*updated', 'last*modified', 'last*update', 'modified',
-            'last*update*date',
+            'last*update*date', 'last*edited*'
         );
         $s->expires = $e->date('*expir*', 'paid-till', 'free-date', 'validity');
 
