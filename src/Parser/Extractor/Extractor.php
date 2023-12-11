@@ -15,7 +15,7 @@ abstract class Extractor
             return null;
         }
         $value = preg_replace('/[$;#].+$/', '', $value);
-        $value = preg_replace('/^before /', '', $value);
+        $value = preg_replace('/^before /i', '', $value);
         $value = preg_replace('@^(\d{1,2})/(\d{1,2})/(\d{4})@', '$3-$2-$1', $value);
         try {
             try {
