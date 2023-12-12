@@ -4,6 +4,8 @@ namespace Klkvsk\Whoeasy\Client\Adapter;
 
 use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
 use Klkvsk\Whoeasy\Client\RequestInterface;
+use Klkvsk\Whoeasy\Client\Response;
+use Klkvsk\Whoeasy\Client\ResponseInterface;
 
 class CurlHttp extends CurlAbstract implements AdapterInterface
 {
@@ -19,8 +21,13 @@ class CurlHttp extends CurlAbstract implements AdapterInterface
         $query = preg_split('/\s+/', $request->getQueryString(), 3, PREG_SPLIT_NO_EMPTY);
         switch (count($query)) {
             case 1:
-                $method = 'GET';
-                $path = $query[0];
+                if (preg_match('/^[A-Z]+$/', $query[0])) {
+                    $method = $query[0];
+                    $path = '/';
+                } else {
+                    $method = 'GET';
+                    $path = $query[0];
+                }
                 $postData = null;
                 break;
             case 2:
@@ -50,4 +57,18 @@ class CurlHttp extends CurlAbstract implements AdapterInterface
         }
         curl_setopt_array($curl, $options);
     }
+
+    /** @noinspection PhpComposerExtensionStubsInspection */
+    protected function execCurl($curl): ResponseInterface
+    {
+        $method = curl_getinfo($curl, CURLINFO_EFFECTIVE_METHOD);
+        $data = curl_getinfo($curl, CURLINFO_EFFECTIVE_URL);
+        if ($method === 'NONE') {
+            var_dump($data);
+            return new Response($data);
+        }
+        return parent::execCurl($curl);
+    }
+
+
 }

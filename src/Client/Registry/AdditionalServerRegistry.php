@@ -86,6 +86,15 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             ),
             // remap to web version, as port 43 times out
             "whois.tonic.to" => $this->findServer('www.tonic.to'),
+            "www.dominios.es" => new ServerInfo(
+                'https://nic.es',
+                formats: [
+                    RequestInterface::QUERY_TYPE_DOMAIN => "NONE only-web",
+                ],
+                answerProcessor: function ($data) {
+                    throw new NotScrapeableException("use https://nic.es/sgnd/dominio/publicDetalleDominio.action");
+                },
+            ),
             default => null,
         };
     }
