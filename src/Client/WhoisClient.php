@@ -141,6 +141,7 @@ class WhoisClient
             '/excediste la cantidad permitida/i',
             '/too many (requests|queries)/i',
             '/server is busy/i',
+            '/excessive querying/i',
         ];
     }
 
@@ -150,6 +151,7 @@ class WhoisClient
             '/^no match/im',
             '/^% no match/im',
             '/^no data found/im',
+            '/^nothing found/im',
             '/^%% not found/im',
             '/is available for registration/i',
             '/domain is available/i',
