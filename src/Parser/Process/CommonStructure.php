@@ -197,7 +197,7 @@ class CommonStructure implements DataProcessorInterface
     protected function domain(Extractor $e, DomainResult $s, string $whoisServer = null)
     {
         $s->name = $e->lcstring('domain*name', 'domain', 'name');
-        $s->status = implode(', ', $e->arr('status', 'state', 'domain*status', 'registration*status'));
+        $s->status = implode(', ', $e->arr('status', 'state', 'domain*status', 'registration*status', '*status'));
         $s->created = $e->date(
             'created', 'created*date', 'creation*date', 'created*at', 'created*on',
             'registered* on', 'registered*date', 'registration*date', 'registration*time',

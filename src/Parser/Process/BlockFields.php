@@ -8,24 +8,34 @@ class BlockFields extends SimpleFields
 {
     public function process(WhoisAnswer $answer): void
     {
+        $this->processBlocks('/(?<=\n|^)([a-z0-9- ]+):\n+((?:[ \t]+.+?[\n$])+)/i', $answer);
+
+        // com.tr
+        $this->processBlocks('/(?<=\*\* )([a-z0-9- ]+):\n+((?:[ \t]*.+?[\n$])+)/i', $answer);
+
+    }
+
+    protected function processBlocks(string $regex, WhoisAnswer $answer)
+    {
         $blockFields = [];
 
-        $numBlocks = preg_match_all('/(?<=\n|^)([a-z0-9- ]+):\n+((?:[ \t]+.+?[\n$])+)/i', $answer->rawData, $m);
+        $numBlocks = preg_match_all($regex, $answer->text, $m);
         if (!$numBlocks) {
             return;
         }
         for ($i = 0; $i < $numBlocks; $i++) {
             $field = $m[1][$i];
-            $value = explode("\n", $m[2][$i]);
-            $value = array_map(trim(...), $value);
-            $value = array_filter($value);
-            $value = match (count($value)) {
-                0 => null,
-                1 => $value[0],
-                default => $value,
-            };
-            $value = array_values($value);
-            self::set($blockFields, $field, $value);
+            $lines = explode("\n", $m[2][$i]);
+            $lines = array_map(trim(...), $lines);
+            $lines = array_filter($lines);
+            foreach ($lines as $line) {
+                if (str_contains($line, ': ')) {
+                    [ $key, $value ] = $this->parseLine($line);
+                    self::set($blockFields, $field . ' ' . $key, $value);
+                } else {
+                    self::set($blockFields, $field, $line);
+                }
+            }
         }
 
         $answer->fields ??= [];
