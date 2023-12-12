@@ -181,7 +181,7 @@ class CommonStructure implements DataProcessorInterface
         $s->changed = $e->date(
             'changed', 'last-update', 'update*date', 'updated*at',
             'last*updated', 'last*modified', 'last*update', 'modified',
-            'last*update*date', 'last*edited*'
+            'last*update*date', 'last*update*on', 'last*edited*'
         );
         $s->expires = $e->date('*expir*', 'paid-till', 'free-date', 'validity');
 

@@ -8,15 +8,19 @@ abstract class Extractor
 {
     abstract public function field(string ...$patterns): mixed;
 
-    public static function parseDate(string $value): \DateTimeInterface
+    public static function parseDate(string $value): ?\DateTimeInterface
     {
         $value = preg_replace('/[$;#].+$/', '', $value);
         $value = preg_replace('/^before /i', '', $value);
         $value = preg_replace('@^(\d{1,2})/(\d{1,2})/(\d{4})@', '$3-$2-$1', $value);
+        if (empty($value)) {
+            return null;
+        }
         try {
             try {
                 $value = new \DateTimeImmutable($value);
             } catch (\Throwable $e) {
+                echo $e->getMessage() . PHP_EOL;
                 if (str_contains($e->getMessage(), 'Double time specification')) {
                     $value = str_replace('.', '-', $value);
                     $value = new \DateTimeImmutable($value);
@@ -30,6 +34,9 @@ abstract class Extractor
                     $value = new \DateTimeImmutable($value);
                 } elseif (str_contains($e->getMessage(), 'timezone could not be found in the database')) {
                     $value = preg_replace('@[a-z/]+$@i', '', $value);
+                    if (empty($value)) {
+                        return null;
+                    }
                     $value = new \DateTimeImmutable($value, new \DateTimeZone('UTC'));
                 } else {
                     throw $e;
