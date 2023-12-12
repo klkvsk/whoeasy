@@ -137,7 +137,7 @@ class WhoisClient
             '/request cannot be processed/i',
             '/try your request again/i',
             '/(request|rate|query|connection) limit (exceeded|reached)/i',
-            '/(exceeded|reached)( your)? (request|rate|query|connection)( rate)? limit/i',
+            '/(exceeded|reached)( your| max)? (request|rate|query|connection|command) (rate|limit|rate limit)/i',
             '/excediste la cantidad permitida/i',
             '/too many (requests|queries)/i',
             '/server is busy/i',
