@@ -113,26 +113,28 @@ class CommonStructure implements DataProcessorInterface
                     }
                 }
 
-                if (preg_match('/\nRegistration Service Provider:\n+((?:\s+(.+?)\n+)+)/i', $answer->rawData, $m)) {
+                if ($reseller = $e->field('Registration Service Provider')) {
                     // found in aruba via tucows
-                    $blockLines = explode("\n", $m[1]);
-                    $blockLines = array_map(trim(...), $blockLines);
-                    $blockLines = array_filter($blockLines);
-                    if (!empty($blockLines)) {
+                    if (!empty($reseller)) {
                         $resellerContant = new ContactResult();
                         $resellerContant->type = 'reseller';
-                        $resellerContant->name = $blockLines[0];
-                        foreach ($blockLines as $line) {
-                            if (preg_match('/(https?:[^ ]+)/i', $line, $m)) {
-                                $resellerContant->address = $m[1];
+                        if (is_array($reseller)) {
+                            $resellerContant->name = $reseller[0];
+                            foreach ($reseller as $line) {
+                                if (preg_match('/(https?:[^ ]+)/i', $line, $m)) {
+                                    $resellerContant->address = $m[1];
+                                }
+                                if (preg_match('/([-a-z0-9.]+@[-a-z0-9.]+)/i', $line, $m)) {
+                                    $resellerContant->email = $m[1];
+                                }
+                                if (preg_match('/(\+?[0-9.() -]{8,})/i', $line, $m)) {
+                                    $resellerContant->phone = $m[1];
+                                }
                             }
-                            if (preg_match('/([-a-z0-9.]+@[-a-z0-9.]+)/i', $line, $m)) {
-                                $resellerContant->email = $m[1];
-                            }
-                            if (preg_match('/(\+?[0-9.() -]{8,})/i', $line, $m)) {
-                                $resellerContant->phone = $m[1];
-                            }
+                        } else {
+                            $reseller->name = $reseller;
                         }
+
                         $s->contacts[] = $resellerContant;
                     }
                 }

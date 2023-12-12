@@ -14,6 +14,7 @@ use Klkvsk\Whoeasy\Client\ServerInfoInterface;
 use Klkvsk\Whoeasy\Client\WhoisClient;
 use Klkvsk\Whoeasy\Parser\Data\WhoisAnswer;
 use Klkvsk\Whoeasy\Parser\Exception\ParserException;
+use Klkvsk\Whoeasy\Parser\Process\BlockFields;
 use Klkvsk\Whoeasy\Parser\Process\CleanComments;
 use Klkvsk\Whoeasy\Parser\Process\CommonStructure;
 use Klkvsk\Whoeasy\Parser\Process\FormatDates;
@@ -61,6 +62,7 @@ class Whois
             new JsonToText(),
             new SimpleFields(),
             new GroupedFields(),
+            new BlockFields(),
             new FormatDates(),
             new NovutecTemplates(),
             new CommonStructure(),
