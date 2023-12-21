@@ -20,6 +20,15 @@ class GeneratedServerRegistry implements ServerRegistryInterface
     {
         // in case with CombinedServerRegistry we need to start lookup from the beginning
         $this->recursiveRegistry = $rootRegistry ?: $this;
+
+        $this->applyFixes();
+    }
+
+    private function applyFixes(): void
+    {
+        if (isset($this->servers['whois.kg'])) {
+            $this->servers['whois.kg']['charset'] = 'UTF-8';
+        }
     }
 
     public function findByQuery(string $query, string $queryType = null): ?ServerInfoInterface

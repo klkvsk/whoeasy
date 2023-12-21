@@ -72,6 +72,18 @@ class CommonStructure implements DataProcessorInterface
                         $s->registrar->email ??= $m[1];
                     }
                 }
+                if ($answer->server === 'whois.kg') {
+                    if (preg_match('/\nName servers.+\n\n([\s\S]+?)(\n\n|$)/i', $answer->text, $m)) {
+                        $nameservers = explode("\n", $m[1]);
+                        $nameservers = array_map(trim(...), $nameservers);
+                        $nameservers = array_map(strtolower(...), $nameservers);
+                        $s->nameservers = $nameservers;
+                    }
+                    if (preg_match('/^Domain (\S+)( \((.+?)\))?/', $answer->text, $m)) {
+                        $s->name = strtolower($m[1]);
+                        $s->status = $m[3] ?? null;
+                    }
+                }
 
                 if ($answer->server === 'whois.register.bg') {
                     $s->name = preg_replace('/\s*\(\s*.+\s*\).*$/i', '', $s->name ?? '');
@@ -217,12 +229,13 @@ class CommonStructure implements DataProcessorInterface
             'created', 'created*date', 'creation*date', 'created*at', 'created*on',
             'registered* on', 'registered*date', 'registration*date', 'registration*time',
             '*commencement*date', 'domain*registration*date', 'domain*creation*date',
-            'registered', 'issue*date'
+            'registered', 'issue*date', 'record*created'
         );
         $s->changed = $e->date(
             'changed', 'last-update', 'update*date', 'updated*at',
             'last*updated', 'last*modified', 'last*update', 'modified',
-            'last*update*date', 'last*update*on', 'last*edited*'
+            'last*update*date', 'last*update*on', 'last*edited*',
+            'record*last*update*on'
         );
         $s->expires = $e->date('*expir*', 'paid-till', 'free-date', 'validity');
 
