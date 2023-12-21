@@ -428,16 +428,17 @@ class CommonStructure implements DataProcessorInterface
                 $c->type = $contactType;
             }
             foreach ($contacts as $contact) {
-                if (preg_match('/(redacted for privacy|query the rdds service)/i', $contact->phone ?? '')) {
-                    $contact->phone = null;
-                }
-                if (preg_match('/(redacted for privacy|query the rdds service)/i', $contact->email ?? '')) {
-                    $contact->email = null;
-                }
-
                 $c->name ??= $fixText($contact->name ?? null);
                 $c->email ??= strtolower($fixText($contact->email ?? null) ?: '') ?: null;
                 $c->phone ??= $fixText($contact->phone ?? null);
+
+                if (preg_match('/(redacted for privacy|query the rdds service)/i', $c->phone ?? '')) {
+                    $c->phone = null;
+                }
+                if (preg_match('/(redacted for privacy|query the rdds service)/i', $c->email ?? '')) {
+                    $c->email = null;
+                }
+
             }
             if (!in_array($c, $s->contacts) && ($c->name || $c->phone || $c->email)) {
                 $s->contacts[] = $c;
