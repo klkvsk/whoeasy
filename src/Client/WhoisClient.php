@@ -11,6 +11,7 @@ use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Client\Proxy\Proxy;
 use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
 use Klkvsk\Whoeasy\Client\Registry\ServerRegistryInterface;
+use Klkvsk\Whoeasy\Parser\Process\CleanComments;
 
 class WhoisClient
 {
@@ -97,14 +98,15 @@ class WhoisClient
 
             $rawData = $request->getServer()->processAnswer($rawData);
 
+            $cleanRawData = CleanComments::removeNotices($rawData);
             foreach ($this->getRateLimitPatterns() as $pattern) {
-                if (preg_match($pattern, $rawData)) {
+                if (preg_match($pattern, $cleanRawData)) {
                     throw new RateLimitException("Rate limit exceeded for {$request->getServer()->getName()}");
                 }
             }
 
             foreach ($this->getNotFoundPatterns() as $pattern) {
-                if (preg_match($pattern, $rawData)) {
+                if (preg_match($pattern, $cleanRawData)) {
                     throw new NotFoundException("Nothing found by query '{$request->getQuery()}'");
                 }
             }
