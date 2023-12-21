@@ -101,7 +101,7 @@ class WhoisClient
             $cleanRawData = CleanComments::removeNotices($rawData);
             foreach ($this->getRateLimitPatterns() as $pattern) {
                 if (preg_match($pattern, $cleanRawData)) {
-                    echo $cleanRawData;
+                    //var_dump($pattern);
                     throw new RateLimitException("Rate limit exceeded for {$request->getServer()->getName()}");
                 }
             }

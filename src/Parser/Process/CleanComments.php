@@ -28,13 +28,15 @@ class CleanComments implements DataProcessorInterface
     public static function removeNotices(string $text): string
     {
         $regexps = [
-            '/^\s*for more information.+/im',
+            '/^\W*for more information.+/im',
             '/^.+whois inaccuracy complaint form.+$/im',
-            '/\nNOTICE [\s\S]+?(?=\n\n)/',
-            '/(?<=\n|^)NOTE [\s\S]+?(?=\n\n|$)/',
-            '/\nTERMS OF USE [\s\S]+?\n\n/',
+            '/^.+does not guarantee.+$/im',
+            '/^.+reserves the right to .+$/im',
+            '/\nNOTICE[\s\S]+?(?=\n\n)/',
+            '/(?<=\n|^)NOTE[\s\S]+?(?=\n\n|$)/',
+            '/\nTERMS OF USE[\s\S]+?\n\n/',
             '/^\s*terms of use:.+/im',
-            '/(?<=\n|^)(The|A|An|For|By|All) (.+?\n)+(.+?\.)(?=\n\n|$)/', // multiline that starts and ends like a sentence
+            '/(?<=\n|^)(The|A|An|For|By|All) ((.+?\n)+(.+?\.)|.{80,})(?=\n\n|$)/', // multiline that starts and ends like a sentence
             '/^>>>.+<<<$/m',
             '/^\[ JPRS [\s\S]+?(?=\n[^\[])/'
         ];
