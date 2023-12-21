@@ -163,6 +163,7 @@ class WhoisClient
             '/^status: (free|available)/mi',
             '/no matching objects found/i',
             '/lookup not available for this domain/i',
+            '/domain( you requested)? is not known/i',
             '/(objects?|domains?|records?|entry|entries) not found/im',
             '/no (matching )?(objects?|domains?|records?|entry|entries) found/i',
             '/(object|domain) does not exist/i',
