@@ -59,13 +59,12 @@ class CurlHttp extends CurlAbstract implements AdapterInterface
     }
 
     /** @noinspection PhpComposerExtensionStubsInspection */
-    protected function execCurl($curl): ResponseInterface
+    protected function execCurl($curl): string
     {
         $method = curl_getinfo($curl, CURLINFO_EFFECTIVE_METHOD);
         $data = curl_getinfo($curl, CURLINFO_EFFECTIVE_URL);
         if ($method === 'NONE') {
-            var_dump($data);
-            return new Response($data);
+            return $data;
         }
         return parent::execCurl($curl);
     }

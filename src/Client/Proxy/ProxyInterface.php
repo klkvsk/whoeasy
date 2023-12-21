@@ -2,7 +2,7 @@
 
 namespace Klkvsk\Whoeasy\Client\Proxy;
 
-interface ProxyInterface
+interface ProxyInterface extends \Stringable
 {
     public function getUri(): string;
 }

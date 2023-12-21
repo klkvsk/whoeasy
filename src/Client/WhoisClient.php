@@ -8,6 +8,7 @@ use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
 use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
 use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
 use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
+use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
 use Klkvsk\Whoeasy\Client\Registry\ServerRegistryInterface;
 
 class WhoisClient
@@ -35,14 +36,12 @@ class WhoisClient
         return $this;
     }
 
-    /**
-     * @throws ClientException
-     */
-    public function lookup(
-        string                     $query,
-        string|ServerInfoInterface &$server = null,
-        string                     &$queryType = null,
-    ): string
+    public function createRequest(
+        string $query,
+        ?string $queryType = null,
+        ?ServerInfoInterface $server = null,
+        ?ProxyInterface $proxy = null
+    ): RequestInterface
     {
         $queryType ??= Request::guessQueryType($query);
 
@@ -63,8 +62,19 @@ class WhoisClient
             }
         }
 
-        $request = $this->createRequest($server, $query, $queryType);
-        $response = $this->handle($request);
+        $request = new Request($server, $query, $queryType, $this->timeout);
+
+        if ($proxy) {
+            $request->setProxy($proxy);
+        }
+
+        return $request;
+    }
+
+    public function handle(RequestInterface $request): ResponseInterface
+    {
+        $adapter = $this->chooseAdapter($request);
+        $response = $adapter->handle($request);
 
         try {
             if (empty($response->getAnswer())) {
@@ -76,23 +86,26 @@ class WhoisClient
             }
 
             $rawData = $response->getAnswer();
-            if ($server->getCharset()) {
-                $rawData = mb_convert_encoding($rawData, 'UTF-8', $server->getCharset());
+            if ($request->getServer()->getCharset()) {
+                $rawData = mb_convert_encoding($rawData, 'UTF-8', $request->getServer()->getCharset());
             }
 
-            $rawData = $server->processAnswer($rawData);
+            $rawData = $request->getServer()->processAnswer($rawData);
 
             foreach ($this->getRateLimitPatterns() as $pattern) {
                 if (preg_match($pattern, $rawData)) {
-                    throw new RateLimitException("Rate limit exceeded for {$server->getName()}");
+                    throw new RateLimitException("Rate limit exceeded for {$request->getServer()->getName()}");
                 }
             }
 
             foreach ($this->getNotFoundPatterns() as $pattern) {
                 if (preg_match($pattern, $rawData)) {
-                    throw new NotFoundException("Nothing found by query '$query'");
+                    throw new NotFoundException("Nothing found by query '{$request->getQuery()}'");
                 }
             }
+
+            return $response;
+
         } catch (ClientRequestException|ClientResponseException $e) {
             $e->withRequest($request);
             if ($e instanceof ClientResponseException) {
@@ -100,20 +113,6 @@ class WhoisClient
             }
             throw $e;
         }
-
-        return $rawData;
-    }
-
-    protected function createRequest(ServerInfoInterface $server, string $query, string $queryType): RequestInterface
-    {
-        return new Request($server, $query, $queryType, $this->timeout);
-    }
-
-    public function handle(RequestInterface $request): ResponseInterface
-    {
-        $adapter = $this->chooseAdapter($request);
-
-        return $adapter->handle($request);
     }
 
     protected function chooseAdapter(RequestInterface $request): AdapterInterface

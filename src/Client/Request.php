@@ -2,6 +2,7 @@
 
 namespace Klkvsk\Whoeasy\Client;
 
+use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
 use function Klkvsk\Whoeasy\asn2long;
 
 class Request implements RequestInterface
@@ -10,6 +11,7 @@ class Request implements RequestInterface
 
     protected string $queryType;
     protected string $queryString;
+    protected ?ProxyInterface $proxy = null;
 
     public function __construct(
         protected ServerInfoInterface $server,
@@ -70,4 +72,17 @@ class Request implements RequestInterface
     {
         return $this->timeout;
     }
+
+    public function getProxy(): ?ProxyInterface
+    {
+        return $this->proxy;
+    }
+
+    public function setProxy(?ProxyInterface $proxy): static
+    {
+        $this->proxy = $proxy;
+
+        return $this;
+    }
+
 }

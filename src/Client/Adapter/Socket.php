@@ -8,6 +8,7 @@ use Klkvsk\Whoeasy\Client\Exception\ClientNetworkException;
 use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
 use Klkvsk\Whoeasy\Client\Exception\ProxyConnectException;
 use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProviderInterface;
+use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
 use Klkvsk\Whoeasy\Client\Proxy\SocketProxyInterface;
 use Klkvsk\Whoeasy\Client\RequestInterface;
 use Klkvsk\Whoeasy\Client\Response;
@@ -31,8 +32,17 @@ class Socket implements AdapterInterface
     {
         $timeStart = microtime(true);
 
+        if (!$request->getProxy() && $this->proxyProvider) {
+            $proxy = $this->proxyProvider?->getProxy($request->getServer());
+            $request->setProxy($proxy);
+        }
+
         try {
-            $socket = $this->createSocket($request->getServer(), $request->getTimeout());
+            $socket = $this->createSocket(
+                $request->getServer(),
+                $request->getTimeout(),
+                $request->getProxy(),
+            );
         } catch (ClientRequestException $e) {
             throw $e->withRequest($request);
         }
@@ -71,13 +81,11 @@ class Socket implements AdapterInterface
         return new Response($answer);
     }
 
-    protected function createSocket(ServerInfoInterface $server, int $timeout)
+    protected function createSocket(ServerInfoInterface $server, int $timeout, ProxyInterface $proxy = null)
     {
         $url = parse_url($server->getUri());
         $host = $url['host'];
         $port = $url['port'] ?? 43;
-
-        $proxy = $this->proxyProvider?->getProxy($server);
 
         if ($proxy) {
             if (!$proxy instanceof SocketProxyInterface) {

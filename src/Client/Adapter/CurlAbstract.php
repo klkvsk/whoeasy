@@ -34,23 +34,28 @@ abstract class CurlAbstract implements AdapterInterface
             throw new ClientException('Unable to create cURL handler: ' . $error);
         }
 
-        $proxy = $this->proxyProvider?->getProxy($request->getServer());
+        if (!$request->getProxy() && $this->proxyProvider) {
+            $proxy = $this->proxyProvider?->getProxy($request->getServer());
+            $request->setProxy($proxy);
+        }
 
         curl_setopt_array($curl, $this->options);
         curl_setopt_array($curl, [
             CURLOPT_TIMEOUT_MS     => $request->getTimeout() * 1000,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_PROXY          => $proxy?->getUri(),
+            CURLOPT_PROXY          => $request->getProxy()?->getUri(),
         ]);
 
         $this->setupCurl($curl, $request);
 
         try {
-            return $this->execCurl($curl);
+            return new Response(
+                $this->execCurl($curl)
+            );
         } catch (ClientRequestException $e) {
             if ($e instanceof CurlRequestException) {
-                if ($proxy && in_array($e->getCode(), [ 5, 7, 97 ])) {
-                    $this->proxyProvider->markFailed($proxy);
+                if ($request->getProxy() && in_array($e->getCode(), [ 5, 7, 97 ])) {
+                    $this->proxyProvider->markFailed($request->getProxy());
                 }
             }
 
@@ -61,7 +66,10 @@ abstract class CurlAbstract implements AdapterInterface
     }
 
     /** @noinspection PhpComposerExtensionStubsInspection */
-    protected function execCurl($curl): ResponseInterface
+
+    abstract protected function setupCurl($curl, RequestInterface $request): void;
+
+    protected function execCurl($curl): string
     {
         $answer = curl_exec($curl);
         $errorMessage = curl_error($curl);
@@ -71,9 +79,7 @@ abstract class CurlAbstract implements AdapterInterface
             throw new CurlRequestException(sprintf('%s (code %d)', $errorMessage, $errorCode));
         }
 
-        return new Response($answer);
+        return $answer;
     }
-
-    abstract protected function setupCurl($curl, RequestInterface $request): void;
 
 }

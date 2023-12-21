@@ -2,6 +2,8 @@
 
 namespace Klkvsk\Whoeasy\Client;
 
+use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
+
 interface RequestInterface
 {
     public const QUERY_TYPE_DOMAIN = 'domain';
@@ -19,4 +21,8 @@ interface RequestInterface
     public function getQueryType(): string;
 
     public function getTimeout(): ?float;
+
+    public function getProxy(): ?ProxyInterface;
+
+    public function setProxy(?ProxyInterface $proxy): static;
 }

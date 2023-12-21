@@ -21,14 +21,26 @@ class Proxy implements ProxyInterface
     {
         $parsed = parse_url($uri);
 
-        return new static(
-            $parsed['scheme'] ?? throw new InvalidArgumentException('no type'),
-            $parsed['host'] ?? throw new InvalidArgumentException('no host'),
-            $parsed['port'] ?? throw new InvalidArgumentException('no port'),
+        $type = $parsed['scheme'] ?? 'http';
+
+        // downcast to proper proxy implementation class
+        $class = match ($type) {
+            'http', 'https' => HttpTunnelProxy::class,
+            default         => Proxy::class,
+        };
+
+        return new $class(
+            $type,
+            $parsed['host'] ?? throw new InvalidArgumentException('missing host'),
+            $parsed['port'] ?? throw new InvalidArgumentException('missing port'),
             $parsed['user'] ?? null,
             $parsed['pass'] ?? null
         );
+    }
 
+    public function __toString(): string
+    {
+        return $this->getUri();
     }
 
     public function getUri(): string

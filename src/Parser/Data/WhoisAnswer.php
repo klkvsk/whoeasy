@@ -2,6 +2,10 @@
 
 namespace Klkvsk\Whoeasy\Parser\Data;
 
+use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
+use Klkvsk\Whoeasy\Client\RequestInterface;
+use Klkvsk\Whoeasy\Client\ResponseInterface;
+use Klkvsk\Whoeasy\Client\ServerInfoInterface;
 use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result as NovutecResult;
 
 class WhoisAnswer
@@ -13,10 +17,10 @@ class WhoisAnswer
     public \stdClass $result;
 
     public function __construct(
-        public readonly string  $rawData,
-        public readonly ?string $server = null,
-        public readonly ?string $query = null,
-        public readonly ?string $queryType = null,
+        public readonly string $rawData,
+        public readonly string $query,
+        public readonly string $queryType,
+        public readonly string $server,
     )
     {
         $this->text = $this->rawData;

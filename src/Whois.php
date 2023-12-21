@@ -8,6 +8,7 @@ use Klkvsk\Whoeasy\Client\Adapter\Socket;
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProvider;
 use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProviderInterface;
+use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
 use Klkvsk\Whoeasy\Client\Registry\BuiltinServerRegistry;
 use Klkvsk\Whoeasy\Client\Registry\ServerRegistryInterface;
 use Klkvsk\Whoeasy\Client\ServerInfoInterface;
@@ -72,9 +73,16 @@ class Whois
     /**
      * @throws ClientException
      */
-    public static function getRaw(string $query, ServerInfoInterface|string $server = null): string
+    public static function getRaw(
+        string $query,
+        ServerInfoInterface|string $server = null,
+        ProxyInterface $proxy = null,
+    ): string
     {
-        return static::factory()->createClient()->lookup($query, $server);
+        $client = self::factory()->createClient();
+        $request = $client->createRequest($query, server: $server);
+        $response = $client->handle($request);
+        return $response->getAnswer();
     }
 
     /**
@@ -82,11 +90,23 @@ class Whois
      * @throws ClientException
      * @throws ParserException
      */
-    public static function getParsed(string $query, ServerInfoInterface|string $server = null): WhoisAnswer
+    public static function getParsed(
+        string $query,
+        ServerInfoInterface|string $server = null,
+        ProxyInterface $proxy = null
+    ): WhoisAnswer
     {
-        $rawData = static::factory()->createClient()->lookup($query, $server, $queryType);
+        $client = self::factory()->createClient();
+        $request = $client->createRequest($query, server: $server, proxy: $proxy);
+        $response = $client->handle($request);
 
-        $answer = new WhoisAnswer($rawData, $server->getName(), $query, $queryType);
+        $answer = new WhoisAnswer(
+            $response->getAnswer(),
+            $request->getQuery(),
+            $request->getQueryType(),
+            $request->getServer()->getName(),
+            $request->getProxy(),
+        );
 
         return static::factory()->createParser()->parse($answer);
     }
