@@ -371,9 +371,17 @@ class CommonStructure implements DataProcessorInterface
 
         $s->refer ??= $novutec->whoisserver;
 
-        $s->registrar->name ??= $novutec->registrar->name ?? null;
-        $s->registrar->phone ??= $novutec->registrar->phone ?? null;
-        $s->registrar->email ??= strtolower($novutec->registrar->email ?? '') ?: null;
+        $fixText = function ($t) {
+            $t = implode("\n", (array)$t);
+            $t = explode("\n", $t);
+            $t = array_filter($t);
+            $t = array_map(trim(...), $t);
+            return implode(', ', $t) ?: null;
+        };
+
+        $s->registrar->name ??= $fixText($novutec->registrar->name);
+        $s->registrar->phone ??= $fixText($novutec->registrar->phone);
+        $s->registrar->email ??= strtolower($fixText($novutec->registrar->email) ?? '') ?: null;
 
         foreach ($novutec->contacts as $contactType => $contacts) {
             $c = null;
@@ -399,9 +407,9 @@ class CommonStructure implements DataProcessorInterface
                     $contact->email = null;
                 }
 
-                $c->name ??= $contact?->name ? trim($contact->name) : null;
-                $c->email ??= $contact?->email ? strtolower(trim($contact->email)) : null;
-                $c->phone ??= $contact?->phone ? trim($contact->phone) : null;
+                $c->name ??= $fixText($contact?->name);
+                $c->email ??= strtolower($fixText($contact->email) ?: '') ?: null;
+                $c->phone ??= $fixText($contact?->phone);
             }
             if (!in_array($c, $s->contacts) && ($c->name || $c->phone || $c->email)) {
                 $s->contacts[] = $c;

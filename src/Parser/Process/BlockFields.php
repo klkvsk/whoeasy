@@ -15,15 +15,15 @@ class BlockFields extends SimpleFields
 
     }
 
-    protected function processBlocks(string $regex, WhoisAnswer $answer)
+    protected function processBlocks(string $regex, WhoisAnswer $answer): void
     {
-        $blockFields = [];
-
         $numBlocks = preg_match_all($regex, $answer->text, $m);
         if (!$numBlocks) {
             return;
         }
         for ($i = 0; $i < $numBlocks; $i++) {
+            $blockFields = [];
+
             $field = $m[1][$i];
             $lines = explode("\n", $m[2][$i]);
             $lines = array_map(trim(...), $lines);
@@ -36,13 +36,15 @@ class BlockFields extends SimpleFields
                     self::set($blockFields, $field, $line);
                 }
             }
+
+            $answer->fields ??= [];
+            $answer->fields = array_merge($answer->fields, $blockFields);
+
+            $answer->groups ??= [];
+            $answer->groups[] = $blockFields;
         }
 
-        $answer->fields ??= [];
-        $answer->fields = array_merge($answer->fields, $blockFields);
 
-        $answer->groups ??= [];
-        $answer->groups[] = $blockFields;
     }
 
     public static function set(array &$fields, string $fieldName, $fieldValue): array
