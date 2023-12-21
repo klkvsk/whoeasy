@@ -2,7 +2,6 @@
 
 namespace Klkvsk\Whoeasy\Client\Registry;
 
-use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
 use Klkvsk\Whoeasy\Client\Exception\NotScrapeableException;
 use Klkvsk\Whoeasy\Client\Request;
 use Klkvsk\Whoeasy\Client\RequestInterface;
