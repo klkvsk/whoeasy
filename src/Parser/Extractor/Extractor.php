@@ -10,7 +10,7 @@ abstract class Extractor
 
     public static function parseDate(string $value): ?\DateTimeInterface
     {
-        $value = preg_replace('/[$;#].+$/', '', $value);
+        $value = preg_replace('/[$;#(].+$/', '', $value);
         $value = preg_replace('/^before /i', '', $value);
         $value = preg_replace('@^(\d{1,2})/(\d{1,2})/(\d{4})@', '$3-$2-$1', $value);
         if (empty($value)) {

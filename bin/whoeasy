@@ -11,6 +11,7 @@ set_error_handler(
     fn($severity, $msg, $file = null, $line = null) => new ErrorException($msg, 0, $severity, $file, $line),
     E_ALL
 );
+error_reporting(E_ALL);
 
 return new class($argv) {
 

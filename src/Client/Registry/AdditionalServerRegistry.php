@@ -153,7 +153,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                         throw new MissingRequirementsException('DOM extension must be enabled to parse web response');
                     }
                     $dom = new \DOMDocument();
-                    $dom->loadHTML($data);
+                    @$dom->loadHTML($data);
                     $xpath = new \DOMXPath($dom);
                     /** @noinspection PhpComposerExtensionStubsInspection */
                     /** @var \DOMNodeList|\DOMNode[] $tableRows */
