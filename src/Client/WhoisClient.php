@@ -159,6 +159,7 @@ class WhoisClient
             '/is available for registration/i',
             '/queried (object|domain|record) does not exist/i',
             '/domain is available/i',
+            '/too many lookups/i',
             '/domain( name)? not found/i',
             '/object not found/i',
             '/^status: (free|available)/mi',
