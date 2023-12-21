@@ -7,6 +7,7 @@ use Klkvsk\Whoeasy\Client\Request;
 use Klkvsk\Whoeasy\Client\RequestInterface;
 use Klkvsk\Whoeasy\Client\ServerInfo;
 use Klkvsk\Whoeasy\Client\ServerInfoInterface;
+use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
 
 class AdditionalServerRegistry implements ServerRegistryInterface
 {
@@ -93,6 +94,39 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                 ],
                 answerProcessor: function ($data) {
                     throw new NotScrapeableException("use https://nic.es/sgnd/dominio/publicDetalleDominio.action");
+                },
+            ),
+            "www.nic.tt" => new ServerInfo(
+                'https://www.nic.tt',
+                formats: [
+                    RequestInterface::QUERY_TYPE_DOMAIN => "POST /cgi-bin/search.pl name=%s",
+                ],
+                answerProcessor: function ($data) {
+                    if (!extension_loaded('dom')) {
+                        throw new MissingRequirementsException('DOM extension must be enabled to parse web response');
+                    }
+                    $dom = new \DOMDocument();
+                    $dom->loadHTML($data);
+                    $xpath = new \DOMXPath($dom);
+                    /** @noinspection PhpComposerExtensionStubsInspection */
+                    /** @var \DOMNodeList|\DOMNode[] $tableRows */
+                    $tableRows = $xpath->query('//div[@class="main"]//tr');
+                    $text = '';
+                    foreach ($tableRows as $tableRow) {
+                        $key = $tableRow->firstChild->textContent;
+                        $value = $tableRow->lastChild->textContent;
+                        $value = preg_replace('/\(.+?\)/', '', $value);
+                        if ($key === 'Expiration Date'
+                            && preg_match('/^(.+?)\s+(?:&nbsp;?)*\s+(.+)$/', $value, $m)
+                        ) {
+                            $value = $m[1];
+                            $text .= "Status: $m[2]\n";
+                        }
+                        $text .= "$key: $value\n";
+                    }
+                    $text .= "Registrar Name: NIC.TT\n";
+                    $text .= "Registrar Email: admin@nic.tt\n";
+                    return $text;
                 },
             ),
             default => null,

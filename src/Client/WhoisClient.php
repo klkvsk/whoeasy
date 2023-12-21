@@ -111,7 +111,7 @@ class WhoisClient
                 }
             }
 
-            return $response;
+            return $response->withAnswer($rawData);
 
         } catch (ClientRequestException|ClientResponseException $e) {
             $e->withRequest($request);

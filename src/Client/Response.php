@@ -16,4 +16,11 @@ class Response implements ResponseInterface
     {
         return $this->answer;
     }
+
+    public function withAnswer(string $answer): static
+    {
+        $clone = clone $this;
+        $clone->answer = $answer;
+        return $clone;
+    }
 }

@@ -213,7 +213,7 @@ class CommonStructure implements DataProcessorInterface
 
 
         $s->nameservers = $e->lcarr(
-            'name*server*', 'nserver', 'ns', 'dns', 'domain*name*server'
+            'name*server*', 'nserver', 'ns', 'dns', 'domain*name*server', 'dns*hostnames'
         );
 
 
