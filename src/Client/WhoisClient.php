@@ -154,11 +154,7 @@ class WhoisClient
     protected function getNotFoundPatterns(): array
     {
         return [
-            '/^no match/im',
-            '/^% no match/im',
-            '/^no data found/im',
-            '/^nothing found/im',
-            '/^%% not found/im',
+            '/^[\W\s]*(no match|not found|no data found|nothing found)/im',
             '/is available for registration/i',
             '/domain is available/i',
             '/domain( name)? not found/i',

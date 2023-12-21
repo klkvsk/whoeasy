@@ -33,7 +33,7 @@ class CleanComments implements DataProcessorInterface
             '/(?<=\n|^)NOTE:[\s\S]+?(?=\n\n|$)/',
             '/\nTERMS OF USE:[\s\S]+?\n\n/',
             '/^\s*terms of use:.+/im',
-            '/(?<=\n|^)(The|A|An|For|By|All) [\s\S]+?(?=\n\n|$)/',
+            '/(?<=\n|^)(The|A|An|For|By|All) [\s\S]+?\.(?=\n\n|$)/',
             '/^>>>.+<<<$/m',
         ];
         foreach ($regexps as $regexp) {
