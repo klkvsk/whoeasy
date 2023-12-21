@@ -169,6 +169,7 @@ class WhoisClient
             '/no (matching )?(objects?|domains?|records?|entry|entries) found/i',
             '/(object|domain) does not exist/i',
             '/rate limit exceeded/i',
+            '/^maximum .+? reached.?/mi',
         ];
     }
 
