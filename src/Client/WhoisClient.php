@@ -156,6 +156,7 @@ class WhoisClient
         return [
             '/^[\W\s]*(no match|not found|no data found|nothing found)/im',
             '/is available for registration/i',
+            '/queried (object|domain|record) does not exist/i',
             '/domain is available/i',
             '/domain( name)? not found/i',
             '/object not found/i',

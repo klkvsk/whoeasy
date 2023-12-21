@@ -20,7 +20,6 @@ abstract class Extractor
             try {
                 $value = new \DateTimeImmutable($value);
             } catch (\Throwable $e) {
-                echo $e->getMessage() . PHP_EOL;
                 if (str_contains($e->getMessage(), 'Double time specification')) {
                     $value = str_replace('.', '-', $value);
                     $value = new \DateTimeImmutable($value);

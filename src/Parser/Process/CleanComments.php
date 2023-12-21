@@ -3,6 +3,7 @@
 namespace Klkvsk\Whoeasy\Parser\Process;
 
 use Klkvsk\Whoeasy\Parser\Data\WhoisAnswer;
+use Klkvsk\Whoeasy\Parser\Exception\ParserException;
 
 /**
  * to do: https://github.com/rfc1036/whois/blob/next/data.h#L22
@@ -33,12 +34,15 @@ class CleanComments implements DataProcessorInterface
             '/(?<=\n|^)NOTE:[\s\S]+?(?=\n\n|$)/',
             '/\nTERMS OF USE:[\s\S]+?\n\n/',
             '/^\s*terms of use:.+/im',
-            '/(?<=\n|^)(The|A|An|For|By|All) [\s\S]+?\.(?=\n\n|$)/',
+            '/(?<=\n|^)(The|A|An|For|By|All) (.+?\n)+(.+?\.)(?=\n\n|$)/', // multiline that starts and ends like a sentence
             '/^>>>.+<<<$/m',
-            '/^[ JPRS [\s\S]+?(?=\n[^\[])/'
+            '/^\[ JPRS [\s\S]+?(?=\n[^\[])/'
         ];
         foreach ($regexps as $regexp) {
-            $text = preg_replace($regexp, "\n", $text);
+            $text = preg_replace($regexp, "$regexp\n", $text);
+            if ($text === null) {
+                throw new ParserException("Failed to remove notices with regexp: $regexp");
+            }
         }
         return $text;
     }
