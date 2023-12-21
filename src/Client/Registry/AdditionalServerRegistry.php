@@ -87,6 +87,31 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                 },
             ),
 
+            "www.nic.pa" => new ServerInfo(
+                "http://www.nic.pa/",
+                "UTF-8",
+                [
+                    RequestInterface::QUERY_TYPE_DOMAIN => "GET /en/whois/dominio/%s",
+                ],
+                answerProcessor: function ($data) {
+                    if (str_contains($data, 'The domain doesn\'t exist')) {
+                        return 'Domain is available.';
+                    }
+
+                    if (!preg_match_all('@<li>(.+?): (.+)</li>@', $data, $m)) {
+                        throw new NotScrapeableException("Failed to find data in response");
+                    }
+
+                    $text = '';
+                    foreach ($m[1] as $i => $key) {
+                        $value = $m[2][$i];
+                        $text .= "$key: $value\n";
+                    }
+
+                    return $text;
+                },
+            ),
+
             // remap to web version without captcha
             "grweb.ics.forth.gr" => $this->findServer('www.innoview.gr'),
 

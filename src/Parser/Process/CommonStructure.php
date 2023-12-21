@@ -112,6 +112,21 @@ class CommonStructure implements DataProcessorInterface
                         $s->registrar->email ??= 'hostmaster@tonic.to';
                     }
                 }
+                if (str_ends_with($answer->server, 'nic.pa')) {
+                    if (!$s->nameservers) {
+                        $s->nameservers = [
+                            ...$e->lcarr('primary dns hostname'),
+                            ...$e->lcarr('secondary dns hostname'),
+                        ];
+                        $s->status = $s->status ?: 'OK';
+                        $s->registrar->name ??= 'NIC-Panama';
+                        $s->registrar->email ??= 'http://www.nic.pa/en';
+
+                        if ($s->contacts) {
+                            $s->contacts[0]->name ??= $e->string('organization');
+                        }
+                    }
+                }
 
                 if ($reseller = $e->field('Registration Service Provider')) {
                     // found in aruba via tucows
