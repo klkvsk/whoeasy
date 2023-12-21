@@ -372,7 +372,7 @@ class CommonStructure implements DataProcessorInterface
 
         $s->registrar->name ??= $novutec->registrar->name ?? null;
         $s->registrar->phone ??= $novutec->registrar->phone ?? null;
-        $s->registrar->email ??= strtolower($novutec->registrar->email ?? null) ?: null;
+        $s->registrar->email ??= strtolower($novutec->registrar->email ?? '') ?: null;
 
         foreach ($novutec->contacts as $contactType => $contacts) {
             $c = null;
