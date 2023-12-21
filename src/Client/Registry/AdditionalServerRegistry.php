@@ -2,6 +2,7 @@
 
 namespace Klkvsk\Whoeasy\Client\Registry;
 
+use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
 use Klkvsk\Whoeasy\Client\Exception\NotScrapeableException;
 use Klkvsk\Whoeasy\Client\Request;
 use Klkvsk\Whoeasy\Client\RequestInterface;
@@ -85,6 +86,28 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                     return preg_replace('/^.*<pre>(.*)<\/pre>.*$/s', '$1', $data);
                 },
             ),
+
+            // remap to web version without captcha
+            "grweb.ics.forth.gr" => $this->findServer('www.innoview.gr'),
+
+            "www.innoview.gr" => new ServerInfo(
+                "https://www.innoview.gr",
+                "UTF-8",
+                [
+                    RequestInterface::QUERY_TYPE_DOMAIN => "POST /members/whoisdomain.php whoisdomainname=%s",
+                ],
+                answerProcessor: function ($data) {
+                    if (str_contains($data, 'does not appear to be registered yet')) {
+                        return 'Domain is available.';
+                    }
+                    $text = preg_replace('@^.*<pre>(.*)</pre>.*$@si', '$1', $data);
+                    $text = preg_replace('@\r?\n@', '', $text);
+                    $text = preg_replace('@<br( /)?>@i', "\n", $text);
+                    return $text;
+                },
+            ),
+
+
             // remap to web version, as port 43 times out
             "whois.tonic.to" => $this->findServer('www.tonic.to'),
             "www.dominios.es" => new ServerInfo(
