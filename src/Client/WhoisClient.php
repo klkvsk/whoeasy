@@ -161,11 +161,13 @@ class WhoisClient
             '/^%% not found/im',
             '/is available for registration/i',
             '/domain is available/i',
+            '/domain( name)? not found/i',
+            '/object not found/i',
             '/^status: (free|available)/mi',
             '/no matching objects found/i',
             '/(objects?|domains?|records?|entry|entries) not found/im',
             '/no (matching )?(objects?|domains?|records?|entry|entries) found/i',
-            '/object does not exist/i',
+            '/(object|domain) does not exist/i',
             '/rate limit exceeded/i',
         ];
     }
