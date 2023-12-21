@@ -30,16 +30,16 @@ class CleanComments implements DataProcessorInterface
         $regexps = [
             '/^\s*for more information.+/im',
             '/^.+whois inaccuracy complaint form.+$/im',
-            '/\nNOTICE:[\s\S]+?(?=\n\n)/',
-            '/(?<=\n|^)NOTE:[\s\S]+?(?=\n\n|$)/',
-            '/\nTERMS OF USE:[\s\S]+?\n\n/',
+            '/\nNOTICE [\s\S]+?(?=\n\n)/',
+            '/(?<=\n|^)NOTE [\s\S]+?(?=\n\n|$)/',
+            '/\nTERMS OF USE [\s\S]+?\n\n/',
             '/^\s*terms of use:.+/im',
             '/(?<=\n|^)(The|A|An|For|By|All) (.+?\n)+(.+?\.)(?=\n\n|$)/', // multiline that starts and ends like a sentence
             '/^>>>.+<<<$/m',
             '/^\[ JPRS [\s\S]+?(?=\n[^\[])/'
         ];
         foreach ($regexps as $regexp) {
-            $text = preg_replace($regexp, "$regexp\n", $text);
+            $text = preg_replace($regexp, "\n", $text);
             if ($text === null) {
                 throw new ParserException("Failed to remove notices with regexp: $regexp");
             }
