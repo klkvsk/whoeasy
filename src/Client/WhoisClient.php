@@ -8,6 +8,7 @@ use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
 use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
 use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
 use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
+use Klkvsk\Whoeasy\Client\Proxy\Proxy;
 use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
 use Klkvsk\Whoeasy\Client\Registry\ServerRegistryInterface;
 
@@ -38,9 +39,9 @@ class WhoisClient
 
     public function createRequest(
         string $query,
-        ?string $queryType = null,
-        ?ServerInfoInterface $server = null,
-        ?ProxyInterface $proxy = null
+        string $queryType = null,
+        ServerInfoInterface|string $server = null,
+        ProxyInterface|string $proxy = null
     ): RequestInterface
     {
         $queryType ??= Request::guessQueryType($query);
@@ -62,8 +63,12 @@ class WhoisClient
             }
         }
 
+
         $request = new Request($server, $query, $queryType, $this->timeout);
 
+        if (is_string($proxy)) {
+            $proxy = Proxy::fromUri($proxy);
+        }
         if ($proxy) {
             $request->setProxy($proxy);
         }

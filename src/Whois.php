@@ -76,7 +76,7 @@ class Whois
     public static function getRaw(
         string $query,
         ServerInfoInterface|string $server = null,
-        ProxyInterface $proxy = null,
+        ProxyInterface|string $proxy = null,
     ): string
     {
         $client = self::factory()->createClient();
@@ -93,7 +93,7 @@ class Whois
     public static function getParsed(
         string $query,
         ServerInfoInterface|string $server = null,
-        ProxyInterface $proxy = null
+        ProxyInterface|string $proxy = null
     ): WhoisAnswer
     {
         $client = self::factory()->createClient();
@@ -105,7 +105,6 @@ class Whois
             $request->getQuery(),
             $request->getQueryType(),
             $request->getServer()->getName(),
-            $request->getProxy(),
         );
 
         return static::factory()->createParser()->parse($answer);
