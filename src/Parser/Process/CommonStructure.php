@@ -379,9 +379,9 @@ class CommonStructure implements DataProcessorInterface
             return implode(', ', $t) ?: null;
         };
 
-        $s->registrar->name ??= $fixText($novutec->registrar?->name);
-        $s->registrar->phone ??= $fixText($novutec->registrar?->phone);
-        $s->registrar->email ??= strtolower($fixText($novutec->registrar?->email) ?? '') ?: null;
+        $s->registrar->name ??= $fixText($novutec->registrar->name ?? null);
+        $s->registrar->phone ??= $fixText($novutec->registrar->phone ?? null);
+        $s->registrar->email ??= strtolower($fixText($novutec->registrar->email ?? null) ?? '') ?: null;
 
         foreach ($novutec->contacts as $contactType => $contacts) {
             $c = null;
@@ -407,9 +407,9 @@ class CommonStructure implements DataProcessorInterface
                     $contact->email = null;
                 }
 
-                $c->name ??= $fixText($contact?->name);
-                $c->email ??= strtolower($fixText($contact->email) ?: '') ?: null;
-                $c->phone ??= $fixText($contact?->phone);
+                $c->name ??= $fixText($contact->name ?? null);
+                $c->email ??= strtolower($fixText($contact->email ?? null) ?: '') ?: null;
+                $c->phone ??= $fixText($contact->phone ?? null);
             }
             if (!in_array($c, $s->contacts) && ($c->name || $c->phone || $c->email)) {
                 $s->contacts[] = $c;
