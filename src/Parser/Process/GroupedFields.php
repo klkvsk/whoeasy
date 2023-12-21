@@ -17,7 +17,7 @@ class GroupedFields extends SimpleFields
                     $fields = [];
                 }
             }
-            [ $fieldName, $fieldValue ] = $this->parseLine($line);
+            [ $fieldName, $fieldValue ] = $this->parseLine($line, $answer);
             if ($fieldName && $fieldValue) {
                 self::set($fields, $fieldName, $fieldValue);
             }

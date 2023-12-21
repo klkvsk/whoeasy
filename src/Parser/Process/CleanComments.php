@@ -35,6 +35,7 @@ class CleanComments implements DataProcessorInterface
             '/^\s*terms of use:.+/im',
             '/(?<=\n|^)(The|A|An|For|By|All) [\s\S]+?\.(?=\n\n|$)/',
             '/^>>>.+<<<$/m',
+            '/^[ JPRS [\s\S]+?(?=\n[^\[])/'
         ];
         foreach ($regexps as $regexp) {
             $text = preg_replace($regexp, "\n", $text);

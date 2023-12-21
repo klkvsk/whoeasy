@@ -16,7 +16,7 @@ class SimpleFields implements DataProcessorInterface
     {
         $fields = [];
         foreach ($answer->lines() as $line) {
-            [ $fieldName, $fieldValue ] = $this->parseLine($line);
+            [ $fieldName, $fieldValue ] = $this->parseLine($line, $answer);
             if ($fieldName && $fieldValue) {
                 self::set($fields, $fieldName, $fieldValue);
             }
@@ -27,10 +27,15 @@ class SimpleFields implements DataProcessorInterface
 
     /**
      * @param string $line
+     * @param WhoisAnswer $answer
      * @return list<?string, ?string>
      */
-    protected function parseLine(string $line): array
+    protected function parseLine(string $line, WhoisAnswer $answer): array
     {
+        if ($answer->server === 'whois.jprs.jp') {
+            $line = preg_replace('/^(?:[a-z]\. )?\[(.+?)]/', '$1:', $line);
+        }
+
         if (!preg_match('/^\s*([a-z0-9 -]+)[\s.:-]*[.:-]\s*(.+)\s*$/i', $line, $match)) {
             return [ null, null ];
         }

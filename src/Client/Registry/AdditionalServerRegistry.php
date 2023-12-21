@@ -152,6 +152,15 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                     return $text;
                 },
             ),
+
+            "whois.jprs.jp" => new ServerInfo(
+                "whois://whois.jprs.jp",
+                "UTF-8",
+                [
+                    RequestInterface::QUERY_TYPE_DOMAIN => "%s/e",
+                ],
+            ),
+
             default => null,
         };
     }

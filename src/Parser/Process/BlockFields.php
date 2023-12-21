@@ -30,7 +30,7 @@ class BlockFields extends SimpleFields
             $lines = array_filter($lines);
             foreach ($lines as $line) {
                 if (str_contains($line, ': ')) {
-                    [ $key, $value ] = $this->parseLine($line);
+                    [ $key, $value ] = $this->parseLine($line, $answer);
                     self::set($blockFields, $field . ' ' . $key, $value);
                 } else {
                     self::set($blockFields, $field, $line);
