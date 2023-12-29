@@ -28,6 +28,13 @@ class CleanComments implements DataProcessorInterface
     public static function removeNotices(string $text): string
     {
         $regexps = [
+            // multiline that contains certain phrases
+            '/(?<=\n\n|^)(.\n?)*'
+                . '.*(you agree to |sole discretion|does not guarantee|reserves the right|for lawful purposes).*'
+                . '(.\n?)*(?=\n\n|$)/i',
+            // multiline that starts and ends like a sentence
+            '/(?<=\n|^)(The|A|An|For|By|All) ((.+?\n)+(.+?\.)|.{80,})(?=\n\n|$)/',
+
             '/^\W*for more information.+/im',
             '/^.+whois inaccuracy complaint form.+$/im',
             '/^.+does not guarantee.+$/im',
@@ -36,13 +43,13 @@ class CleanComments implements DataProcessorInterface
             '/(?<=\n|^)NOTE[\s\S]+?(?=\n\n|$)/',
             '/\nTERMS OF USE[\s\S]+?\n\n/',
             '/^\s*terms of use:.+/im',
-            '/(?<=\n|^)(The|A|An|For|By|All) ((.+?\n)+(.+?\.)|.{80,})(?=\n\n|$)/', // multiline that starts and ends like a sentence
             '/^>>>.+<<<$/m',
             '/^\[ JPRS [\s\S]+?(?=\n[^\[])/'
         ];
         foreach ($regexps as $regexp) {
             $text = preg_replace($regexp, "\n", $text);
-            if ($text === null) {
+            $text = trim($text);
+            if (!$text) {
                 throw new ParserException("Failed to remove notices with regexp: $regexp");
             }
         }
