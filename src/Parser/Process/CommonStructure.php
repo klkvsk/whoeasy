@@ -159,7 +159,7 @@ class CommonStructure implements DataProcessorInterface
                                 }
                             }
                         } else {
-                            $reseller->name = $reseller;
+                            $resellerContant->name = $reseller;
                         }
 
                         $s->contacts[] = $resellerContant;
