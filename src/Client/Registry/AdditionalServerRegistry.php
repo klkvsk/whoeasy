@@ -185,6 +185,11 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                 ],
             ),
 
+            // those are subordinates of apnic, and apnic itself returns better structured result
+            "whois.nic.ad.jp" => new ServerInfo("whois://whois.apnic.net"),
+            "whois.twnic.net" => new ServerInfo("whois://whois.apnic.net"),
+            "whois.nic.or.kr" => new ServerInfo("whois://whois.apnic.net"),
+
             default => null,
         };
     }
