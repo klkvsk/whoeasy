@@ -67,8 +67,8 @@ class GeneratedServerRegistry implements ServerRegistryInterface
 
         return new ServerInfo(
             $this->servers[$name]['uri'],
-            $this->servers[$name]['charset'] ?? null,
-            $this->servers[$name]['formats'] ?? [],
+            formats: $this->servers[$name]['formats'] ?? [],
+            charset: $this->servers[$name]['charset'] ?? 'UTF-8',
         );
     }
 

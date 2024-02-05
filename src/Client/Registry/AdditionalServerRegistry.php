@@ -29,14 +29,12 @@ class AdditionalServerRegistry implements ServerRegistryInterface
         return match ($name) {
             'www.dnsbelgium.be' => new ServerInfo(
                 'https://api.dnsbelgium.be',
-                null,
                 [
                     RequestInterface::QUERY_TYPE_DOMAIN => "GET /whois/registration/%s",
                 ]
             ),
             'whois.arin.net'    => new ServerInfo(
                 'whois://whois.arin.net',
-                'UTF-8',
                 [
                     RequestInterface::QUERY_TYPE_IPV4 => 'n + %s',
                     RequestInterface::QUERY_TYPE_IPV6 => 'n + %s',
@@ -44,7 +42,6 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             ),
             'whois.denic.de'    => new ServerInfo(
                 'whois://whois.denic.de',
-                'UTF-8',
                 [
                     RequestInterface::QUERY_TYPE_DOMAIN => '-T dn %s',
                 ]
@@ -52,21 +49,18 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             "www.vnnic.vn"      => new ServerInfo(
                 // not official, but works without captcha
                 "https://whois.net.vn",
-                'UTF-8',
                 [
                     RequestInterface::QUERY_TYPE_DOMAIN => "GET /whois.php?domain=%s&act=getwhois",
                 ]
             ),
             "www.tonic.to" => new ServerInfo(
                 "https://www.tonic.to/",
-                'UTF-8',
                 [
                     RequestInterface::QUERY_TYPE_DOMAIN => "GET /whois?%s",
                 ]
             ),
             "whois.nic.ch" => new ServerInfo(
                 "https://rdap.nic.ch",
-                "UTF-8",
                 [
                     RequestInterface::QUERY_TYPE_DOMAIN => "GET /domain/%s",
                 ],
@@ -74,7 +68,6 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             ),
             "whois.dot.ph" => new ServerInfo(
                 "https://whois.dot.ph/",
-                "UTF-8",
                 [
                     RequestInterface::QUERY_TYPE_DOMAIN => "GET /?search=%s",
                 ],
@@ -88,7 +81,6 @@ class AdditionalServerRegistry implements ServerRegistryInterface
 
             "www.nic.pa" => new ServerInfo(
                 "http://www.nic.pa/",
-                "UTF-8",
                 [
                     RequestInterface::QUERY_TYPE_DOMAIN => "GET /en/whois/dominio/%s",
                 ],
@@ -116,7 +108,6 @@ class AdditionalServerRegistry implements ServerRegistryInterface
 
             "www.innoview.gr" => new ServerInfo(
                 "https://www.innoview.gr",
-                "UTF-8",
                 [
                     RequestInterface::QUERY_TYPE_DOMAIN => "POST /members/whoisdomain.php whoisdomainname=%s",
                 ],
@@ -179,7 +170,6 @@ class AdditionalServerRegistry implements ServerRegistryInterface
 
             "whois.jprs.jp" => new ServerInfo(
                 "whois://whois.jprs.jp",
-                "UTF-8",
                 [
                     RequestInterface::QUERY_TYPE_DOMAIN => "%s/e",
                 ],

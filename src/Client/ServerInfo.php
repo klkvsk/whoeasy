@@ -6,8 +6,8 @@ class ServerInfo implements ServerInfoInterface
 {
     public function __construct(
         protected string    $uri,
-        protected ?string   $charset = null,
         protected array     $formats = [],
+        protected ?string   $charset = 'UTF-8',
         protected ?\Closure $answerProcessor = null,
     )
     {
