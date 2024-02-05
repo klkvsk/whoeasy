@@ -139,6 +139,30 @@ class CommonStructure implements DataProcessorInterface
                         }
                     }
                 }
+                if ($answer->server == 'whois.nic.ac.uk') {
+                    $s->nameservers = [
+                        ...$e->lcarr('servers'),
+                    ];
+                    $s->status = 'OK';
+                    $s->expires = $e->date('renewal date');
+                    $s->changed = $e->date('entry updated');
+                    $s->registrar->name ??= $e->string('registered by');
+                    $registrant = new ContactResult();
+                    $registrant->name = $e->string('registrant contact');
+                    $registrantAddress = $e->arr('registrant address');
+                    foreach ($registrantAddress as $i => $line) {
+                        if (preg_match('/^(.+) \(phone\)/i', $line, $m)) {
+                            $registrant->phone = $m[1];
+                            unset($registrantAddress[$i]);
+                        }
+                        if (str_contains($line, '@')) {
+                            $registrant->email = $line;
+                            unset($registrantAddress[$i]);
+                        }
+                    }
+                    $registrant->address = implode(', ', $registrantAddress);
+                    $s->contacts[] = $registrant;
+                }
 
                 if ($reseller = $e->field('Registration Service Provider')) {
                     // found in aruba via tucows
