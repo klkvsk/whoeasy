@@ -76,7 +76,7 @@ abstract class CurlAbstract implements AdapterInterface
         $errorCode = curl_errno($curl);
 
         if ($errorCode || $errorMessage) {
-            throw new CurlRequestException(sprintf('%s (code %d)', $errorMessage, $errorCode));
+            throw new CurlRequestException(sprintf('%s (code %d)', $errorMessage, $errorCode), $errorCode);
         }
 
         return $answer;
