@@ -47,11 +47,12 @@ class CleanComments implements DataProcessorInterface
             '/^\[ JPRS [\s\S]+?(?=\n[^\[])/'
         ];
         foreach ($regexps as $regexp) {
-            $text = preg_replace($regexp, "\n", $text);
-            $text = trim($text);
-            if (!$text) {
-                throw new ParserException("Failed to remove notices with regexp: $regexp");
+            $filtered = preg_replace($regexp, "\n", $text);
+            $filtered = trim($filtered);
+            if (!$filtered) {
+                throw new ParserException("Failed to remove notices with regexp: $regexp\nOriginal: $text");
             }
+            $text = $filtered;
         }
         return $text;
     }
