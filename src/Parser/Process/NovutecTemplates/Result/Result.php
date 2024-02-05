@@ -197,7 +197,7 @@ class Result extends AbstractResult
                             if (is_array($networkContactValue)) {
                                 // look through the array of one type
                                 foreach ($networkContactValue as $multiContactKey => $multiContactValue) {
-                                    if (strtolower($multiContactValue) === strtolower($value)) {
+                                    if (self::isSameValue($multiContactValue, $value)) {
                                         if ($this->lastHandle !== $networkContactKey) {
                                             $this->lastId = -1;
                                         }
@@ -209,7 +209,7 @@ class Result extends AbstractResult
                                     }
                                 }
                             } else {
-                                if (strtolower($networkContactValue) === strtolower($value)) {
+                                if (self::isSameValue($networkContactValue, $value)) {
                                     if ($this->lastHandle !== $networkContactKey) {
                                         $this->lastId = -1;
                                     }
@@ -340,94 +340,6 @@ class Result extends AbstractResult
         return serialize($this->toArray());
     }
 
-    /**
-     * Convert properties to xml by using SimpleXMLElement
-     *
-     * @noinspection PhpComposerExtensionStubsInspection
-     * @noinspection PhpFullyQualifiedNameUsageInspection
-     */
-    public function toXml(): string
-    {
-        $xml = new \SimpleXMLElement(
-            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><whois></whois>');
-
-        $output = get_object_vars($this);
-
-        // lookup all object variables
-        foreach ($output as $name => $var) {
-            // if variable is an array add it to xml
-            if (is_array($var)) {
-                $child = $xml->addChild($name);
-
-                foreach ($var as $firstKey => $firstValue) {
-                    $child->addChild('item', trim(htmlspecialchars($firstValue)));
-                }
-            } elseif (is_object($var)) {
-                // if variable is an object we need to convert it to array
-                $child = $xml->addChild($name);
-
-                // if it is not a stdClass object we have the toArray() method
-                if (!$var instanceof stdClass) {
-                    $firstArray = $var->toArray();
-
-                    foreach ($firstArray as $firstKey => $firstValue) {
-                        if (!is_array($firstValue)) {
-                            $child->addChild($firstKey, trim(htmlspecialchars($firstValue)));
-                        } else {
-                            $secondChild = $child->addChild($firstKey);
-
-                            foreach ($firstValue as $secondKey => $secondString) {
-                                $secondChild->addChild('item', trim(htmlspecialchars($secondString)));
-                            }
-                        }
-                    }
-                } else {
-                    // if it is an stdClass object we need to convert it
-                    // manually
-
-                    // lookup all properties of stdClass and convert it
-                    foreach ($var as $firstKey => $firstValue) {
-                        if (!$firstValue instanceof stdClass && !is_array($firstValue) &&
-                            !is_string($firstValue)) {
-                            $secondChild = $child->addChild($firstKey);
-
-                            $firstArray = $firstValue->toArray();
-
-                            foreach ($firstArray as $secondKey => $secondValue) {
-                                $secondChild->addChild($secondKey, trim(htmlspecialchars($secondValue)));
-                            }
-                        } elseif (is_array($firstValue)) {
-                            $secondChild = $child->addChild($firstKey);
-
-                            foreach ($firstValue as $secondKey => $secondValue) {
-                                $secondArray = $secondValue->toArray();
-                                $thirdChild = $secondChild->addChild('item');
-
-                                foreach ($secondArray as $thirdKey => $thirdValue) {
-                                    if (!is_array($thirdValue)) {
-                                        $thirdChild->addChild($thirdKey, trim(htmlspecialchars($thirdValue)));
-                                    } else {
-                                        $fourthChild = $thirdChild->addChild($thirdKey);
-
-                                        foreach ($thirdValue as $fourthKey => $fourthValue) {
-                                            $fourthChild->addChild('item', trim(htmlspecialchars($fourthValue)));
-                                        }
-                                    }
-                                }
-                            }
-                        } elseif (is_string($firstValue)) {
-                            $secondChild = $child->addChild($firstKey, $firstValue);
-                        }
-                    }
-                }
-            } else {
-                $xml->addChild($name, trim($var));
-            }
-        }
-
-        return $xml->asXML();
-    }
-
     public function formatDates(string $dateformat): void
     {
         $this->changed = $this->formatDate($dateformat, $this->changed);
@@ -457,5 +369,25 @@ class Result extends AbstractResult
         }
 
         return (strlen($timestamp) ? date($dateformat, $timestamp) : $date);
+    }
+
+    private static function isSameValue(mixed $a, mixed $b): bool
+    {
+        if (is_array($a)) {
+            sort($a);
+            $a = implode(',', $a);
+        }
+        if (is_array($b)) {
+            sort($b);
+            $b = implode(',', $b);
+        }
+        if (is_string($a)) {
+            $a = strtolower($a);
+        }
+        if (is_string($b)) {
+            $a = strtolower($b);
+        }
+
+        return $a == $b;
     }
 }
