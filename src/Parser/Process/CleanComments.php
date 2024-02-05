@@ -27,11 +27,12 @@ class CleanComments implements DataProcessorInterface
 
     public static function removeNotices(string $text): string
     {
+        //(?<=\n\n|^)*(.+\n)*.*(you agree to |GPO Box 988|sole discretion|does not guarantee|reserves the right|for lawful purposes).*(\n.+)*(?=\n\n|$)
         $regexps = [
             // multiline that contains certain phrases
-            '/(?<=\n\n|^)(.\n?)*'
+            '/(?<=\n\n|^)*(.+\n)*'
                 . '.*(you agree to |sole discretion|does not guarantee|reserves the right|for lawful purposes).*'
-                . '(.\n?)*(?=\n\n|$)/i',
+                . '(\n.+)*(?=\n\n|$)/i',
             // multiline that starts and ends like a sentence
             '/(?<=\n|^)(The|A|An|For|By|All) ((.+?\n)+(.+?\.)|.{80,})(?=\n\n|$)/',
 
@@ -50,7 +51,14 @@ class CleanComments implements DataProcessorInterface
             $filtered = preg_replace($regexp, "\n", $text);
             $filtered = trim($filtered);
             if (!$filtered) {
-                throw new ParserException("Failed to remove notices with regexp: $regexp\nOriginal: $text");
+                throw new ParserException(
+                    "Failed to remove notices with regexp: $regexp"
+                    . "\nError: " . preg_last_error_msg()
+                    . "\nOriginal:"
+                    . "\n---[begin of original whois]---"
+                    . "\n$text"
+                    . "\n---[end of original whois]---"
+                );
             }
             $text = $filtered;
         }
