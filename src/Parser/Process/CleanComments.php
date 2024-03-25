@@ -27,7 +27,7 @@ class CleanComments implements DataProcessorInterface
 
     public static function removeNotices(string $text): string
     {
-        //(?<=\n\n|^)*(.+\n)*.*(you agree to |GPO Box 988|sole discretion|does not guarantee|reserves the right|for lawful purposes).*(\n.+)*(?=\n\n|$)
+        $original = $text;
         $regexps = [
             // multiline that contains certain phrases
             '/(?<=\n\n|^)*(.+\n)*'
@@ -56,7 +56,7 @@ class CleanComments implements DataProcessorInterface
                     . "\nRegexp error: " . preg_last_error_msg()
                     . "\nOriginal:"
                     . "\n---[begin of original whois]---"
-                    . "\n$text"
+                    . "\n$original"
                     . "\n---[end of original whois]---"
                 );
             }

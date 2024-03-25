@@ -98,8 +98,10 @@ class WhoisClient
 
             $rawData = $request->getServer()->processAnswer($rawData);
 
-            // unprefix comment lines, so "removeNotices" will only remove matched blocks
-            $cleanRawData = preg_replace('/^\s*[%#;\/<>]\s*(.*)/m', "\1", $rawData);
+            // unprefix commented newlines, so "removeNotices" will only detect separate blocks
+            // this is required when multiple text blocks are joined in one commented block
+            // (e.g. "% NOTICE: ...", "%" (needs to be a newline), "% TERMS OF USE: ")
+            $cleanRawData = preg_replace('@^\s*[%#;/<>]\s*$@m', "", $rawData);
 
             $cleanRawData = CleanComments::removeNotices($cleanRawData);
 
