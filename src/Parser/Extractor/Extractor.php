@@ -31,7 +31,7 @@ abstract class Extractor
                     // .co.kr - 2020. 01. 01.
                     $value = str_replace($m[0], $m[1] . '-' . $m[2] . '-' . $m[3], $value);
                     $value = new \DateTimeImmutable($value);
-                } elseif (preg_match('/(20\d{2})(0\d|11|12)([0123]\d)/', $value, $m)) {
+                } elseif (preg_match('/(20\d{2})(0\d|10|11|12)(0\d|1\d|2\d|30|31)/', $value, $m)) {
                     // improve until 2099
                     $value = $m[1] . '-' . $m[2] . '-' . $m[3];
                     $value = new \DateTimeImmutable($value);

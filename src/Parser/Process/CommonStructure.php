@@ -106,8 +106,9 @@ class CommonStructure implements DataProcessorInterface
                         // for actual "changed" extractor took the last value
                         // here we take the first one as chronologically first
                         $changedDates = $e->field('changed');
-                        if (is_array($changedDates)) {
-                            $s->created = $e::parseDate(array_shift($changedDates));
+                        $assignedDate = array_values((array)$changedDates)[0] ?? null;
+                        if ($assignedDate) {
+                            $s->created = $e::parseDate($assignedDate);
                         }
                     }
                 }
