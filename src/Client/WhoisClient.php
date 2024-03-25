@@ -98,7 +98,11 @@ class WhoisClient
 
             $rawData = $request->getServer()->processAnswer($rawData);
 
-            $cleanRawData = CleanComments::removeNotices($rawData);
+            // unprefix comment lines, so "removeNotices" will only remove matched blocks
+            $cleanRawData = preg_replace('/^\s*[%#;\/<>]\s*(.*)/m', "\1", $rawData);
+
+            $cleanRawData = CleanComments::removeNotices($cleanRawData);
+
             foreach ($this->getRateLimitPatterns() as $pattern) {
                 if (preg_match($pattern, $cleanRawData)) {
                     //var_dump($pattern);
@@ -139,14 +143,15 @@ class WhoisClient
         return [
             '/(reached|exceeded) the maximum allowable/im',
             '/(reached|exceeded) your (query|request) limit/im',
-            '/quota (exceeded|reached)/i',
+            '/(rate limit|quota) (exceeded|reached)/i',
+            '/^maximum .+? (exceeded|reached).?/mi',
             '/try again (later|after)/i',
             '/request cannot be processed/i',
             '/try your request again/i',
             '/(request|rate|query|connection) limit (exceeded|reached)/i',
             '/(exceeded|reached)( your| max)? (request|rate|query|connection|command) (rate|limit|rate limit)/i',
             '/excediste la cantidad permitida/i',
-            '/too many (requests|queries)/i',
+            '/too many (requests|queries|lookups)/i',
             '/server is busy/i',
             '/(?<!for )excessive querying/i',
         ];
@@ -155,11 +160,10 @@ class WhoisClient
     protected function getNotFoundPatterns(): array
     {
         return [
-            '/^[\W\s]*(no match|not found|no data found|nothing found|no domain)/im',
+            '/^[\W\s]*(no match|not found|no data found|nothing found|no domain|no information)/im',
             '/is available for registration/i',
             '/queried (object|domain|record) does not exist/i',
             '/domain is available/i',
-            '/too many lookups/i',
             '/domain( name)? not found/i',
             '/object not found/i',
             '/^status: (free|available)/mi',
@@ -169,8 +173,6 @@ class WhoisClient
             '/(objects?|domains?|records?|entry|entries) not found/im',
             '/no (matching )?(objects?|domains?|records?|entry|entries) found/i',
             '/(object|domain) does not exist/i',
-            '/rate limit exceeded/i',
-            '/^maximum .+? reached.?/mi',
         ];
     }
 

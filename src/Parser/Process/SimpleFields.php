@@ -36,6 +36,9 @@ class SimpleFields implements DataProcessorInterface
             $line = preg_replace('/^(?:[a-z]\. )?\[(.+?)]/', '$1:', $line);
         }
 
+        // sometimes we get date lines like "expires on 2024-..." instead of "expires: 2024-..."
+        $line = preg_replace('/\s+on\s+([0-9]{4}[-. ][0-9]{2}[-. ][0-9]{2})/i', ': \\1', $line);
+
         if (!preg_match('/^\s*([a-z0-9 -]+)[\s.:-]*[.:-]\s*(.+)\s*$/i', $line, $match)) {
             return [ null, null ];
         }

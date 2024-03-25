@@ -412,15 +412,6 @@ class CommonStructure implements DataProcessorInterface
             $s->status = implode(', ', (array)$novutec->status);
         }
 
-        if ($novutec->registrar) {
-            if (preg_match('/(redacted for privacy|query the rdds service)/i', $novutec->registrar->phone ?? '')) {
-                $novutec->registrar->phone = null;
-            }
-            if (preg_match('/(redacted for privacy|query the rdds service)/i', $novutec->registrar->email ?? '')) {
-                $novutec->registrar->email = null;
-            }
-        }
-
         $s->refer ??= $novutec->whoisserver;
 
         $fixText = function ($t) {
@@ -434,6 +425,13 @@ class CommonStructure implements DataProcessorInterface
         $s->registrar->name ??= $fixText($novutec->registrar->name ?? null);
         $s->registrar->phone ??= $fixText($novutec->registrar->phone ?? null);
         $s->registrar->email ??= strtolower($fixText($novutec->registrar->email ?? null) ?? '') ?: null;
+
+        if (preg_match('/(redacted for privacy|query the rdds service)/i', $s->registrar->phone ?? '')) {
+            $s->registrar->phone = null;
+        }
+        if (preg_match('/(redacted for privacy|query the rdds service)/i', $s->registrar->email ?? '')) {
+            $s->registrar->email = null;
+        }
 
         foreach ($novutec->contacts as $contactType => $contacts) {
             $c = null;

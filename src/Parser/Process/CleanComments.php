@@ -53,7 +53,7 @@ class CleanComments implements DataProcessorInterface
             if (!$filtered) {
                 throw new ParserException(
                     "Failed to remove notices with regexp: $regexp"
-                    . "\nError: " . preg_last_error_msg()
+                    . "\nRegexp error: " . preg_last_error_msg()
                     . "\nOriginal:"
                     . "\n---[begin of original whois]---"
                     . "\n$text"

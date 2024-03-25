@@ -13,6 +13,10 @@ abstract class Extractor
         $value = preg_replace('/[$;#(].+$/', '', $value);
         $value = preg_replace('/^before /i', '', $value);
         $value = preg_replace('@^(\d{1,2})/(\d{1,2})/(\d{4})@', '$3-$2-$1', $value);
+        if (preg_match_all('/[0-9]/', $value) < 4) {
+            // less than 4 digits are present, it's not a date for sure
+            return null;
+        }
         if (empty($value)) {
             return null;
         }
