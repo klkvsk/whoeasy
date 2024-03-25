@@ -199,7 +199,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                 $whois .= "\n";
                 $whois .= "$role name: " . ($entity['vcardArray'][1][1][3] ?? '') . "\n";
                 $whois .= "$role address: " . implode(', ', array_filter($entity['vcardArray'][1][2][3] ?? [])) . "\n";
-                $whois .= "$role URL: " . $entity['url'] . "\n";
+                $whois .= "$role URL: " . ($entity['url'] ?? '') . "\n";
             }
         }
 
