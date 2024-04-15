@@ -149,6 +149,7 @@ class CommonStructure implements DataProcessorInterface
                     $s->changed = $e->date('entry updated');
                     $s->registrar->name ??= $e->string('registered by');
                     $registrant = new ContactResult();
+                    $registrant->type = 'registrant';
                     $registrant->name = $e->string('registrant contact');
                     $registrantAddress = $e->arr('registrant address');
                     foreach ($registrantAddress as $i => $line) {
