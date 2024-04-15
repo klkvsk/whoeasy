@@ -28,18 +28,6 @@ class CommonStructure implements DataProcessorInterface
                 $s = new DomainResult();
                 $this->domain($e, $s, $answer->server);
                 $this->mergeNovutek($s, $answer->novutecResult);
-                if ($s->nameservers) {
-                    $s->nameservers = array_map(
-                    // some include resolved ips
-                        fn($ns) => preg_replace('/\s+[0-9a-f.:\s]+$/i', '', $ns),
-                        $s->nameservers
-                    );
-                    $s->nameservers = array_map(
-                    // some include statuses, comments, other additional info
-                        fn($ns) => preg_replace('/\s+[[(#;|].+$/i', '', $ns),
-                        $s->nameservers
-                    );
-                }
 
                 if (!$s->status) {
                     if (preg_match('/(domain not found|^no.+found|nxdomain|^no match|no entries found)/i', $answer->rawData)) {
@@ -223,6 +211,20 @@ class CommonStructure implements DataProcessorInterface
                             }
                         }
                     }
+                }
+
+                // clean nameservers
+                if ($s->nameservers) {
+                    $s->nameservers = array_map(
+                    // some include resolved ips
+                        fn($ns) => preg_replace('/\s+[0-9a-f.:\s]+$/i', '', $ns),
+                        $s->nameservers
+                    );
+                    $s->nameservers = array_map(
+                    // some include statuses, comments, other additional info
+                        fn($ns) => preg_replace('/\s+[[(#;|].+$/i', '', $ns),
+                        $s->nameservers
+                    );
                 }
 
                 break;
