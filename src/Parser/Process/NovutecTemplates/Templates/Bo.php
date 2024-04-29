@@ -43,11 +43,11 @@ class Bo extends Regex
      *
      * @var array
      */
-    protected array $blocks = [ 1 => '/titular:(?>[\x20\t]*)(.*?)(?=contacto administrativo)/is',
-                                2 => '/contacto administrativo:(?>[\x20\t]*)(.*?)(?=contacto techino)/is',
-                                3 => '/contacto techino:(?>[\x20\t]*)(.*?)(?=contacto financiero)/is',
-                                4 => '/contacto financiero:(?>[\x20\t]*)(.*?)(?=Fecha de registro)/is',
-                                5 => '/Fecha de registro:(?>[\x20\t]*)(.*?)$/is' ];
+    protected array $blocks = [ 1 => '/titular(?>[\x20\t]*)(.*?)(?=contacto administrativo)/is',
+                                2 => '/contacto administrativo(?>[\x20\t]*)(.*?)(?=contacto tecnico)/is',
+                                3 => '/contacto tecnico(?>[\x20\t]*)(.*?)(?=contacto financiero)/is',
+                                4 => '/contacto financiero(?>[\x20\t]*)(.*?)(?=Fecha de)/is',
+                                5 => '/Fecha de(?>[\x20\t]*)(.*?)$/is' ];
 
     /**
      * Items for each block
@@ -55,36 +55,49 @@ class Bo extends Regex
      * @var array
      */
     protected array $blockItems = [
-        1 => [ '/Organizacion:(?>[\x20\t]*)(.+)$/im' => 'contacts:owner:organization',
-               '/Nombre:(?>[\x20\t]*)(.+)$/im'       => 'contacts:owner:name',
-               '/Direccion:(?>[\x20\t]*)(.+)$/im'    => 'contacts:owner:address',
-               '/Ciudad:(?>[\x20\t]*)(.+)$/im'       => 'contacts:owner:city',
-               '/Pais:(?>[\x20\t]*)(.+)$/im'         => 'contacts:owner:country',
-               '/Telefono:(?>[\x20\t]*)(.+)$/im'     => 'contacts:owner:phone',
-               '/Email:(?>[\x20\t]*)(.+)$/im'        => 'contacts:owner:email' ],
-        2 => [ '/Organizacion:(?>[\x20\t]*)(.+)$/im' => 'contacts:admin:organization',
-               '/Nombre:(?>[\x20\t]*)(.+)$/im'       => 'contacts:admin:name',
-               '/Direccion:(?>[\x20\t]*)(.+)$/im'    => 'contacts:admin:address',
-               '/Ciudad:(?>[\x20\t]*)(.+)$/im'       => 'contacts:admin:city',
-               '/Pais:(?>[\x20\t]*)(.+)$/im'         => 'contacts:admin:country',
-               '/Telefono:(?>[\x20\t]*)(.+)$/im'     => 'contacts:admin:phone',
-               '/Email:(?>[\x20\t]*)(.+)$/im'        => 'contacts:admin:email' ],
-        3 => [ '/Organizacion:(?>[\x20\t]*)(.+)$/im' => 'contacts:tech:organization',
-               '/Nombre:(?>[\x20\t]*)(.+)$/im'       => 'contacts:tech:name',
-               '/Direccion:(?>[\x20\t]*)(.+)$/im'    => 'contacts:tech:address',
-               '/Ciudad:(?>[\x20\t]*)(.+)$/im'       => 'contacts:tech:city',
-               '/Pais:(?>[\x20\t]*)(.+)$/im'         => 'contacts:tech:country',
-               '/Telefono:(?>[\x20\t]*)(.+)$/im'     => 'contacts:tech:phone',
-               '/Email:(?>[\x20\t]*)(.+)$/im'        => 'contacts:tech:email' ],
-        4 => [ '/Organizacion:(?>[\x20\t]*)(.+)$/im' => 'contacts:billing:organization',
-               '/Nombre:(?>[\x20\t]*)(.+)$/im'       => 'contacts:billing:name',
-               '/Direccion:(?>[\x20\t]*)(.+)$/im'    => 'contacts:billing:address',
-               '/Ciudad:(?>[\x20\t]*)(.+)$/im'       => 'contacts:billing:city',
-               '/Pais:(?>[\x20\t]*)(.+)$/im'         => 'contacts:billing:country',
-               '/Telefono:(?>[\x20\t]*)(.+)$/im'     => 'contacts:billing:phone',
-               '/Email:(?>[\x20\t]*)(.+)$/im'        => 'contacts:billing:email' ],
-        5 => [ '/Fecha de registro:(?>[\x20\t]*)(.+)$/im'    => 'created',
-               '/Fecha de vencimiento:(?>[\x20\t]*)(.+)$/im' => 'expires' ] ];
+        1 => [
+            '/Organizacion:(?>[\x20\t]*)(.+)$/im'               => 'contacts:owner:organization',
+            '/Nombre[^:]+:(?>[\x20\t]*)(.+)$/im'                => 'contacts:owner:name',
+            '/Direcc[ií]on:(?>[\x20\t]*)(.+)$/im'               => 'contacts:owner:address',
+            '/Ciudad:(?>[\x20\t]*)(.+)$/im'                     => 'contacts:owner:city',
+            '/Pa[ií]s:(?>[\x20\t]*)(.+)$/im'                    => 'contacts:owner:country',
+            '/Tel[eé]fono:(?>[\x20\t]*)(.+)$/im'                => 'contacts:owner:phone',
+            '/(Email|Correo electrónico):(?>[\x20\t]*)(.+)$/im' => 'contacts:owner:email'
+        ],
+        2 => [
+            '/Organizacion:(?>[\x20\t]*)(.+)$/im'               => 'contacts:admin:organization',
+            '/Nombre[^:]+:(?>[\x20\t]*)(.+)$/im'                => 'contacts:admin:name',
+            '/Direcc[ií]on:(?>[\x20\t]*)(.+)$/im'               => 'contacts:admin:address',
+            '/Ciudad:(?>[\x20\t]*)(.+)$/im'                     => 'contacts:admin:city',
+            '/Pa[ií]s:(?>[\x20\t]*)(.+)$/im'                    => 'contacts:admin:country',
+            '/Tel[eé]fono:(?>[\x20\t]*)(.+)$/im'                => 'contacts:admin:phone',
+            '/(Email|Correo electrónico):(?>[\x20\t]*)(.+)$/im' => 'contacts:admin:email'
+        ],
+        3 => [
+            '/Organizacion:(?>[\x20\t]*)(.+)$/im'               => 'contacts:tech:organization',
+            '/Nombre[^:]+:(?>[\x20\t]*)(.+)$/im'                => 'contacts:tech:name',
+            '/Direcc[ií]on:(?>[\x20\t]*)(.+)$/im'               => 'contacts:tech:address',
+            '/Ciudad:(?>[\x20\t]*)(.+)$/im'                     => 'contacts:tech:city',
+            '/Pa[ií]s:(?>[\x20\t]*)(.+)$/im'                    => 'contacts:tech:country',
+            '/Tel[eé]fono:(?>[\x20\t]*)(.+)$/im'                => 'contacts:tech:phone',
+            '/(Email|Correo electrónico):(?>[\x20\t]*)(.+)$/im' => 'contacts:tech:email'
+        ],
+        4 => [
+            '/Organizacion:(?>[\x20\t]*)(.+)$/im'               => 'contacts:billing:organization',
+            '/Nombre[^:]+:(?>[\x20\t]*)(.+)$/im'                => 'contacts:billing:name',
+            '/Direcc[ií]on:(?>[\x20\t]*)(.+)$/im'               => 'contacts:billing:address',
+            '/Ciudad:(?>[\x20\t]*)(.+)$/im'                     => 'contacts:billing:city',
+            '/Pa[ií]s:(?>[\x20\t]*)(.+)$/im'                    => 'contacts:billing:country',
+            '/Tel[eé]fono:(?>[\x20\t]*)(.+)$/im'                => 'contacts:billing:phone',
+            '/(Email|Correo electrónico):(?>[\x20\t]*)(.+)$/im' => 'contacts:billing:email'
+        ],
+        5 => [
+            '/Fecha de registro:(?>[\x20\t]*)(.+)$/im'    => 'created',
+            '/Fecha de activación:(?>[\x20\t]*)(.+)$/im'  => 'created',
+            '/Fecha de vencimiento:(?>[\x20\t]*)(.+)$/im' => 'expires',
+            '/Fecha de corte:(?>[\x20\t]*)(.+)$/im'       => 'expires',
+        ]
+    ];
 
     /**
      * RegEx to check availability of the domain name

@@ -78,7 +78,7 @@ class Result extends AbstractResult
      *
      * @var string
      */
-    protected $created;
+    public $created;
 
     /**
      * Last changed date of domain or IP address

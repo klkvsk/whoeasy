@@ -154,6 +154,20 @@ class CommonStructure implements DataProcessorInterface
                     $s->contacts[] = $registrant;
                 }
 
+                if ($answer->server === 'whois.nic.bo') {
+                    $s->status ??= 'OK';
+                }
+
+                if ($answer->server === 'whois.eu.org') {
+                    $s->status ??= 'OK';
+                    $euOrgPerson = $e->group('person');
+                    $s->registrar->name ??= implode(', ', array_filter([
+                        $euOrgPerson->field('person'),
+                        $euOrgPerson->field('nic-hdl')
+                    ]));
+                    $s->registrar->email ??= $e->group('e-mail')->field('e-mail');
+                }
+
                 if ($reseller = $e->field('Registration Service Provider')) {
                     // found in aruba via tucows
                     if (!empty($reseller)) {
@@ -263,13 +277,13 @@ class CommonStructure implements DataProcessorInterface
             'changed', 'last-update', 'update*date', 'updated*at',
             'last*updated', 'last*modified', 'last*update', 'modified',
             'last*update*date', 'last*update*on', 'last*edited*',
-            'record*last*update*on'
+            'record*last*update*on', 'entry*updated'
         );
-        $s->expires = $e->date('*expir*', 'paid-till', 'free-date', 'validity');
+        $s->expires = $e->date('*expir*', 'paid-till', 'free-date', 'validity', 'renewal*date');
 
 
         $s->nameservers = $e->lcarr(
-            'name*server*', 'nserver', 'ns', 'dns', 'domain*name*server', 'dns*hostnames',
+            'name*server*', 'nserver', 'ns', 'dns', 'servers', 'domain*name*server', 'dns*hostnames',
             'domain*servers'
         );
 
@@ -414,6 +428,16 @@ class CommonStructure implements DataProcessorInterface
             $status = (array)$novutec->status;
             sort($status);
             $s->status = implode(', ', (array)$novutec->status);
+        }
+
+        if (!$s->created && $novutec->created) {
+            $s->created = Extractor::parseDate($novutec->created);
+        }
+        if (!$s->changed && $novutec->changed) {
+            $s->changed = Extractor::parseDate($novutec->changed);
+        }
+        if (!$s->expires && $novutec->expires) {
+            $s->expires = Extractor::parseDate($novutec->expires);
         }
 
         $s->refer ??= $novutec->whoisserver;

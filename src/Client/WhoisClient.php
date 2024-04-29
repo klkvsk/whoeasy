@@ -149,6 +149,7 @@ class WhoisClient
             '/^maximum .+? (exceeded|reached).?/mi',
             '/try again (later|after)/i',
             '/request cannot be processed/i',
+            '/^(error: )?access denied/i',
             '/try your request again/i',
             '/(request|rate|query|connection) limit (exceeded|reached)/i',
             '/(exceeded|reached)( your| max)? (request|rate|query|connection|command) (rate|limit|rate limit)/i',
@@ -167,14 +168,14 @@ class WhoisClient
             '/queried (object|domain|record) does not exist/i',
             '/domain is available/i',
             '/domain( name)? not found/i',
-            '/object not found/i',
+            '/^unknown domain/i',
             '/^status: (free|available)/mi',
             '/no matching objects found/i',
             '/lookup not available for this domain/i',
             '/domain( you requested)? is not known/i',
-            '/(objects?|domains?|records?|entry|entries) not found/im',
-            '/no (matching )?(objects?|domains?|records?|entry|entries) found/i',
-            '/(object|domain) does not exist/i',
+            '/(objects?|domains?|records?|entry|entries|keys?) not found/im',
+            '/no (matching )?(objects?|domains?|records?|entry|entries|keys?) found/i',
+            '/(object|domain|key) does not exist/i',
         ];
     }
 
