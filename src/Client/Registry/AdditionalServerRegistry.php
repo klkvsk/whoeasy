@@ -168,6 +168,71 @@ class AdditionalServerRegistry implements ServerRegistryInterface
                 },
             ),
 
+            "www.nic.tj" => new ServerInfo(
+                'http://www.nic.tj',
+                formats: [
+                    RequestInterface::QUERY_TYPE_DOMAIN => fn ($q) => "GET /cgi/whois2?domain=" . preg_replace('/\.tj$/', '', $q),
+                ],
+                answerProcessor: function ($data) {
+                    if (!extension_loaded('dom')) {
+                        throw new MissingRequirementsException('DOM extension must be enabled to parse web response');
+                    }
+                    if (str_contains($data, 'no records found')) {
+                        return 'Domain not found';
+                    }
+                    $dom = new \DOMDocument();
+                    @$dom->loadHTML($data);
+                    $xpath = new \DOMXPath($dom);
+                    /** @noinspection PhpComposerExtensionStubsInspection */
+                    /** @var \DOMNodeList|\DOMNode[] $tableRows */
+                    $tableRows = $xpath->query('//tr');
+                    $result = [];
+                    $section = '';
+                    $last = null;
+                    foreach ($tableRows as $tableRow) {
+                        foreach ($tableRow->childNodes as $child) {
+                            if ($child->nodeType === XML_TEXT_NODE) {
+                                $tableRow->removeChild($child);
+                            }
+                        }
+                        $type = $tableRow->firstChild->attributes->getNamedItem('class');
+                        $fieldName = trim($tableRow->firstChild->textContent);
+                        $fieldValue = trim($tableRow->childNodes->item(1)->textContent);
+                        if ($type->textContent === 'section') {
+                            $section = $fieldName;
+                            $result[] = '';
+                            continue;
+                        }
+                        if ($type->textContent === 'subfield') {
+                            array_push($last, $fieldValue);
+                            continue;
+                        }
+
+
+                        $key = $section ? "$section $fieldName" : $fieldName;
+                        $result[$key] ??= [];
+                        if ($fieldValue && $fieldValue !== html_entity_decode('&nbsp;')) {
+                            $result[$key][] = $fieldValue;
+                        }
+                        $last = &$result[$key];
+                    }
+
+                    $text = "Status: OK\n";
+                    foreach ($result as $key => $value) {
+                        if (is_numeric($key) && !$value) {
+                            $text .= "\n";
+                            continue;
+                        }
+                        $key = preg_replace('/submitted by/', 'registrant', $key);
+                        $key = preg_replace('/dns-servers for domain.+/', 'Nameservers', $key);
+                        $key = preg_replace('/:$/', '', $key);
+                        $key = preg_replace('/registration data /', '', $key);
+                        $text .= "$key: " . implode(', ', $value) . "\n";
+                    }
+                    return $text;
+                },
+            ),
+
             "whois.jprs.jp" => new ServerInfo(
                 "whois://whois.jprs.jp",
                 [

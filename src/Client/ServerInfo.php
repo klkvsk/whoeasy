@@ -30,10 +30,14 @@ class ServerInfo implements ServerInfoInterface
 
     public function formatQuery(string $query, string $queryType): string
     {
-        return sprintf($this->getQueryFormat($queryType), $query);
+        $format = $this->getQueryFormat($queryType);
+        if (is_string($format)) {
+            $format = fn($query) => sprintf($format, $query);
+        }
+        return $format($query);
     }
 
-    public function getQueryFormat(string $queryType): string
+    public function getQueryFormat(string $queryType): string|callable
     {
         return $this->formats[$queryType] ?? '%s';
     }
