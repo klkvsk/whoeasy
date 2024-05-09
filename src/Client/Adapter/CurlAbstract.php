@@ -69,14 +69,28 @@ abstract class CurlAbstract implements AdapterInterface
 
     abstract protected function setupCurl($curl, RequestInterface $request): void;
 
+    /** @noinspection PhpComposerExtensionStubsInspection */
     protected function execCurl($curl): string
     {
+        $verboseLogStream = fopen('php://temp', 'w+');
+
+        curl_setopt_array($curl, [
+            CURLOPT_VERBOSE => true,
+            CURLOPT_STDERR  => $verboseLogStream,
+        ]);
+
         $answer = curl_exec($curl);
         $errorMessage = curl_error($curl);
         $errorCode = curl_errno($curl);
 
         if ($errorCode || $errorMessage) {
-            throw new CurlRequestException(sprintf('%s (code %d)', $errorMessage, $errorCode), $errorCode);
+            rewind($verboseLogStream);
+            $verboseLog = stream_get_contents($verboseLogStream);
+            throw new CurlRequestException(
+                sprintf('%s (code %d)', $errorMessage, $errorCode),
+                $errorCode,
+                verboseLog: $verboseLog
+            );
         }
 
         return $answer;

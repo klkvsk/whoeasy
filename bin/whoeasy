@@ -74,6 +74,12 @@ return new class($argv) {
                     $e->getRequest()->getQueryType(),
                 );
                 $value = $e->getMessage();
+
+                if ($this->verbose && $e instanceof \Klkvsk\Whoeasy\Client\Exception\CurlRequestException && $e->getVerboseLog()) {
+                    foreach (explode("\n", trim($e->getVerboseLog())) as $verboseLogLine) {
+                        echo '# (curl)   ' . rtrim($verboseLogLine) . "\n";
+                    }
+                }
             }
 
             if ($this->verbose) {
