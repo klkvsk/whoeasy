@@ -16,7 +16,7 @@ class Request implements RequestInterface
     public function __construct(
         protected ServerInfoInterface $server,
         protected string              $query,
-        string                        $queryType = null,
+        ?string                       $queryType = null,
         protected float               $timeout = self::DEFAULT_TIMEOUT,
     )
     {

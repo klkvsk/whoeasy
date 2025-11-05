@@ -81,7 +81,7 @@ class Socket implements AdapterInterface
         return new Response($answer);
     }
 
-    protected function createSocket(ServerInfoInterface $server, int $timeout, ProxyInterface $proxy = null)
+    protected function createSocket(ServerInfoInterface $server, int $timeout, ?ProxyInterface $proxy = null)
     {
         $url = parse_url($server->getUri());
         $host = $url['host'];

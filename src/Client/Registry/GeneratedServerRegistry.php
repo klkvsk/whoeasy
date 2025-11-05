@@ -16,7 +16,7 @@ class GeneratedServerRegistry implements ServerRegistryInterface
 
     protected ServerRegistryInterface $recursiveRegistry;
 
-    public function __construct(ServerRegistryInterface $rootRegistry = null)
+    public function __construct(?ServerRegistryInterface $rootRegistry = null)
     {
         // in case with CombinedServerRegistry we need to start lookup from the beginning
         $this->recursiveRegistry = $rootRegistry ?: $this;
@@ -31,7 +31,7 @@ class GeneratedServerRegistry implements ServerRegistryInterface
         }
     }
 
-    public function findByQuery(string $query, string $queryType = null): ?ServerInfoInterface
+    public function findByQuery(string $query, ?string $queryType = null): ?ServerInfoInterface
     {
         $queryType ??= Request::guessQueryType($query);
 

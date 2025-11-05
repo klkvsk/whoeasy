@@ -263,7 +263,7 @@ class CommonStructure implements DataProcessorInterface
         $answer->result = $s;
     }
 
-    protected function domain(Extractor $e, DomainResult $s, string $whoisServer = null)
+    protected function domain(Extractor $e, DomainResult $s, ?string $whoisServer = null): void
     {
         $s->name = $e->lcstring('domain*name', 'domain', 'name');
         $s->status = implode(', ', $e->arr('status', 'state', 'domain*status', 'registration*status', '*status'));
@@ -411,7 +411,7 @@ class CommonStructure implements DataProcessorInterface
         return $contact;
     }
 
-    public function mergeNovutek(DomainResult $s, NovutecResult $novutec)
+    public function mergeNovutek(DomainResult $s, NovutecResult $novutec): void
     {
         $s->name ??= $novutec->name ? strtolower($novutec->name) : null;
         if (empty($s->nameservers) && !empty($novutec->nameserver)) {
@@ -496,7 +496,7 @@ class CommonStructure implements DataProcessorInterface
         }
     }
 
-    protected function ip(Extractor $e, IpResult|AsnResult $s)
+    protected function ip(Extractor $e, IpResult|AsnResult $s): void
     {
         if ($s instanceof IpResult) {
             $s->name = $e->string('netname', 'inetnum', 'netrange');
@@ -540,7 +540,7 @@ class CommonStructure implements DataProcessorInterface
         $s->contacts = array_values($s->contacts);
     }
 
-    protected function asn(GroupsExtractor $e, AsnResult $s)
+    protected function asn(GroupsExtractor $e, AsnResult $s): void
     {
         $this->ip($e, $s);
         $s->name = $e->string('as*name', 'aut*num');

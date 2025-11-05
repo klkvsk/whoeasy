@@ -22,7 +22,7 @@ class CombinedServerRegistry implements ServerRegistryInterface
         return $this;
     }
 
-    public function findByQuery(string $query, string $queryType = null): ?ServerInfoInterface
+    public function findByQuery(string $query, ?string $queryType = null): ?ServerInfoInterface
     {
         foreach ($this->registries as $registry) {
             $server = $registry->findByQuery($query, $queryType);

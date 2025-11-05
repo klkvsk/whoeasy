@@ -40,9 +40,9 @@ class WhoisClient
 
     public function createRequest(
         string $query,
-        string $queryType = null,
-        ServerInfoInterface|string $server = null,
-        ProxyInterface|string $proxy = null
+        ?string $queryType = null,
+        ServerInfoInterface|string|null $server = null,
+        ProxyInterface|string|null $proxy = null
     ): RequestInterface
     {
         $queryType ??= Request::guessQueryType($query);

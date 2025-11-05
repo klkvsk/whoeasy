@@ -8,5 +8,5 @@ interface ServerRegistryInterface
 {
     public function findServer(string $name): ?ServerInfoInterface;
 
-    public function findByQuery(string $query, string $queryType = null): ?ServerInfoInterface;
+    public function findByQuery(string $query, ?string $queryType = null): ?ServerInfoInterface;
 }

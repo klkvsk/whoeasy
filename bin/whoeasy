@@ -43,7 +43,7 @@ return new class($argv) {
             $proxyAddress = $args['proxy'];
             try {
                 $proxy = $proxyAddress ? Proxy::fromUri($proxyAddress) : null;
-            } catch (InvalidArgumentException $e) {
+            } catch (InvalidArgumentException) {
                 throw new InvalidArgumentException('Invalid proxy uri: ' . $proxyAddress);
             }
             $format = $args['format'] ?? $args[1] ?? 'result';
@@ -97,7 +97,7 @@ return new class($argv) {
             }
 
             if (!is_string($output)) {
-                $output = json_encode($output, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+                $output = json_encode($output, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
             }
 
             if ($this->verbose && $value instanceof NovutecResult) {
@@ -115,14 +115,11 @@ return new class($argv) {
             if ($this->verbose) {
                 echo $e->getTraceAsString() . PHP_EOL;
             }
-            if ($e instanceof InvalidArgumentException) {
-                $this->printUsage();
-            }
             exit(1);
         }
     }
 
-    public function printUsage()
+    public function printUsage(): void
     {
         echo "\nUsage:\n";
         echo "  whoeasy [options] <domain>\n";
@@ -142,13 +139,13 @@ return new class($argv) {
         echo "  g, groups   key-value pairs split in blocks\n";
     }
 
-    public function getFlag(string $short, string $long = null): bool
+    public function getFlag(string $short, ?string $long = null): bool
     {
         $opt = getopt($short, (array)$long);
         return isset($opt[$short]) || isset($opt[$long]);
     }
 
-    public function getOption(string $short, string $long = null): ?string
+    public function getOption(string $short, ?string $long = null): ?string
     {
         $opt = getopt($short . ':', $long ? [ $long . ':' ] : []);
         return $opt[$short] ?? $opt[$long] ?? null;

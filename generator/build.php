@@ -370,7 +370,7 @@ new class {
         return $out;
     }
 
-    protected function dumpList(array $list, string $indent, string $eol, bool $multiline = null, int $maxWidth = 80): string
+    protected function dumpList(array $list, string $indent, string $eol, ?bool $multiline = null, int $maxWidth = 80): string
     {
         $widthTest = '';
         if (is_null($multiline)) {

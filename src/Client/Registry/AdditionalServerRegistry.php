@@ -11,7 +11,7 @@ use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
 
 class AdditionalServerRegistry implements ServerRegistryInterface
 {
-    public function findByQuery(string $query, string $queryType = null): ?ServerInfoInterface
+    public function findByQuery(string $query, ?string $queryType = null): ?ServerInfoInterface
     {
         $queryType ??= Request::guessQueryType($query);
 
@@ -26,6 +26,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
 
     public function findServer(string $name): ?ServerInfoInterface
     {
+        /** @noinspection HttpUrlsUsage */
         return match ($name) {
             'www.dnsbelgium.be' => new ServerInfo(
                 'https://api.dnsbelgium.be',
