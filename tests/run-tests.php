@@ -99,6 +99,9 @@ use Klkvsk\Whoeasy\Result\Nameserver;
 use Klkvsk\Whoeasy\Result\Registrar;
 use Klkvsk\Whoeasy\Result\ResultMerger;
 use Klkvsk\Whoeasy\Result\StructuredResult;
+use Klkvsk\Whoeasy\Registry\ServerRegistry;
+use Klkvsk\Whoeasy\Registry\ServerInfo;
+use Klkvsk\Whoeasy\Exception\UnsupportedQueryException;
 
 function loadFixture(string $filename): array {
     $path = __DIR__ . '/Fixtures/rdap/' . $filename;
@@ -326,6 +329,87 @@ $tests['ResultMerger::nullDomainFallsThrough'] = function() {
 
     $merged = $merger->merge($rdap, $whois);
     assertSame('only-whois.com', $merged->domain->name);
+};
+
+// --- ServerRegistry Tests ---
+
+$tests['ServerRegistry::resolveDomainCom'] = function() {
+    $registry = new ServerRegistry();
+    $info = $registry->resolve('example.com');
+
+    assertSame(QueryType::Domain, $info->queryType);
+    assertSame('whois.verisign-grs.com', $info->whoisServer);
+    assertNotNull($info->rdapUrl);
+    assertStringContainsString('verisign', $info->rdapUrl);
+};
+
+$tests['ServerRegistry::resolveDomainOrg'] = function() {
+    $registry = new ServerRegistry();
+    $info = $registry->resolve('example.org');
+
+    assertSame(QueryType::Domain, $info->queryType);
+    assertSame('whois.pir.org', $info->whoisServer);
+    assertNotNull($info->rdapUrl);
+};
+
+$tests['ServerRegistry::resolveCcTld'] = function() {
+    $registry = new ServerRegistry();
+    $info = $registry->resolve('example.de');
+
+    assertSame(QueryType::Domain, $info->queryType);
+    assertSame('whois.denic.de', $info->whoisServer);
+};
+
+$tests['ServerRegistry::resolveIpv4'] = function() {
+    $registry = new ServerRegistry();
+    $info = $registry->resolve('8.8.8.8');
+
+    assertSame(QueryType::Ipv4, $info->queryType);
+    assertNotNull($info->whoisServer);
+};
+
+$tests['ServerRegistry::resolveIpv6'] = function() {
+    $registry = new ServerRegistry();
+    $info = $registry->resolve('2001:4860:4860::8888');
+
+    assertSame(QueryType::Ipv6, $info->queryType);
+    assertNotNull($info->whoisServer);
+};
+
+$tests['ServerRegistry::resolveAsn'] = function() {
+    $registry = new ServerRegistry();
+    $info = $registry->resolve('AS15169');
+
+    assertSame(QueryType::Asn, $info->queryType);
+    assertNotNull($info->whoisServer);
+};
+
+$tests['ServerRegistry::detectQueryType'] = function() {
+    assertSame(QueryType::Domain, ServerRegistry::detectQueryType('example.com'));
+    assertSame(QueryType::Ipv4, ServerRegistry::detectQueryType('192.168.1.1'));
+    assertSame(QueryType::Ipv6, ServerRegistry::detectQueryType('2001:db8::1'));
+    assertSame(QueryType::Asn, ServerRegistry::detectQueryType('AS12345'));
+};
+
+$tests['ServerRegistry::unsupportedQueryThrows'] = function() {
+    $registry = new ServerRegistry();
+    $thrown = false;
+    try {
+        $registry->resolve('!!!invalid!!!');
+    } catch (UnsupportedQueryException) {
+        $thrown = true;
+    }
+    assertSame(true, $thrown, 'Expected UnsupportedQueryException');
+};
+
+$tests['ServerRegistry::lookupTld'] = function() {
+    $registry = new ServerRegistry();
+    $result = $registry->lookupTld('com');
+    assertNotNull($result);
+    assertSame('whois.verisign-grs.com', $result[0]);
+
+    $missing = $registry->lookupTld('zzzzzznonexistent');
+    assertNull($missing);
 };
 
 // ========================
