@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Klkvsk\Whoeasy;
 
 function ip6prefix2long(string $ip): int|false

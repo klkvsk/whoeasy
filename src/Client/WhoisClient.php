@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Klkvsk\Whoeasy\Client;
 
 use Klkvsk\Whoeasy\Client\Adapter\AdapterInterface;
@@ -11,7 +13,6 @@ use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Client\Proxy\Proxy;
 use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
 use Klkvsk\Whoeasy\Client\Registry\ServerRegistryInterface;
-use Klkvsk\Whoeasy\Parser\Process\CleanComments;
 
 class WhoisClient
 {
@@ -103,7 +104,7 @@ class WhoisClient
             // (e.g. "% NOTICE: ...", "%" (needs to be a newline), "% TERMS OF USE: ")
             $cleanRawData = preg_replace('@^\s*[%#;/<>]\s*$@m', "", $rawData);
 
-            $cleanRawData = CleanComments::removeNotices($cleanRawData);
+            $cleanRawData = $this->removeNotices($cleanRawData);
 
             foreach ($this->getRateLimitPatterns() as $pattern) {
                 if (preg_match($pattern, $cleanRawData)) {
@@ -158,6 +159,33 @@ class WhoisClient
             '/server is busy/i',
             '/(?<!for )excessive querying/i',
         ];
+    }
+
+    protected function removeNotices(string $text): string
+    {
+        $regexps = [
+            '/(?<=\n\n|^)*(.+\n)*.*(you agree to |sole discretion|does not guarantee|reserves the right|for lawful purposes).*(\n.+)*(?=\n\n|$)/i',
+            '/(?<=\n|^)(The|A|An|For|By|All) ((.+?\n)+(.+?\.)|.{80,})(?=\n\n|$)/',
+            '/^\W*for more information.+/im',
+            '/^.+whois inaccuracy complaint form.+$/im',
+            '/^.+does not guarantee.+$/im',
+            '/^.+reserves the right to .+$/im',
+            '/\nNOTICE[\s\S]+?(?=\n\n)/',
+            '/(?<=\n|^)NOTE[\s\S]+?(?=\n\n|$)/',
+            '/\nTERMS OF USE[\s\S]+?\n\n/',
+            '/^\s*terms of use:.+/im',
+            '/^>>>.+<<<$/m',
+            '/^\[ JPRS [\s\S]+?(?=\n[^\[])/',
+        ];
+        foreach ($regexps as $regexp) {
+            $filtered = preg_replace($regexp, "\n", $text);
+            $filtered = trim($filtered ?? '');
+            if (!$filtered) {
+                return $text;
+            }
+            $text = $filtered;
+        }
+        return $text;
     }
 
     protected function getNotFoundPatterns(): array

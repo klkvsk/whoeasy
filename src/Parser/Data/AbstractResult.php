@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Klkvsk\Whoeasy\Parser\Data;
 
 class AbstractResult extends \stdClass implements \JsonSerializable

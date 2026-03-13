@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Klkvsk\Whoeasy\Client;
 
 use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
