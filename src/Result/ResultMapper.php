@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Result;
 
+use Klkvsk\Whoeasy\Client\Rdap\RdapParser;
+use Klkvsk\Whoeasy\Client\Rdap\RdapResponse;
 use Klkvsk\Whoeasy\Client\RequestInterface;
 use Klkvsk\Whoeasy\Enum\ContactType;
 use Klkvsk\Whoeasy\Enum\QueryType;
@@ -25,6 +27,36 @@ class ResultMapper
             domain: $result instanceof DomainResult ? $this->mapDomain($result) : null,
             ip: $result instanceof IpResult ? $this->mapIp($result) : null,
             asn: $result instanceof AsnResult ? $this->mapAsn($result) : null,
+        );
+    }
+
+    /**
+     * Map an RDAP response to a StructuredResult.
+     */
+    public function mapRdapResponse(RdapResponse $response, string $queryType): StructuredResult
+    {
+        $parser = new RdapParser();
+        $result = $parser->parse($response);
+
+        $qt = self::mapQueryType($queryType);
+
+        return new StructuredResult(
+            queryType: $qt,
+            domain: $result instanceof DomainResult ? $this->mapDomain($result) : null,
+            ip: $result instanceof IpResult ? $this->mapIp($result) : null,
+            asn: $result instanceof AsnResult ? $this->mapAsn($result) : null,
+        );
+    }
+
+    /**
+     * Create a RawResponse from an RDAP response.
+     */
+    public function mapRdapRawResponse(RdapResponse $response): RawResponse
+    {
+        return new RawResponse(
+            server: $response->server,
+            text: $response->rawBody,
+            json: $response->json,
         );
     }
 

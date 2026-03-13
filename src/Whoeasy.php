@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy;
 
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
+use Klkvsk\Whoeasy\Client\Rdap\RdapClient;
+use Klkvsk\Whoeasy\Client\Rdap\RdapResponse;
+use Klkvsk\Whoeasy\Client\RequestInterface;
 use Klkvsk\Whoeasy\Client\WhoisClient;
 use Klkvsk\Whoeasy\Enum\QueryMode;
 use Klkvsk\Whoeasy\Exception\UnsupportedQueryException;
@@ -41,9 +44,7 @@ class Whoeasy
             QueryMode::WhoisOnly => $this->queryWhoisOnly($input, $options),
             QueryMode::PreferWhois => $this->queryPreferWhois($input, $options),
             QueryMode::PreferRdap => $this->queryPreferRdap($input, $options),
-            QueryMode::RdapOnly => throw new UnsupportedQueryException(
-                'RDAP-only mode is not yet implemented. Use WhoisOnly or PreferWhois mode.'
-            ),
+            QueryMode::RdapOnly => $this->queryRdapOnly($input, $options),
             QueryMode::Both => throw new UnsupportedQueryException(
                 'Both mode is not yet implemented. Use WhoisOnly or PreferWhois mode.'
             ),
@@ -72,20 +73,44 @@ class Whoeasy
     }
 
     /**
-     * Query using WHOIS first; RDAP fallback is not yet available.
+     * Query using WHOIS first; fall back to RDAP on failure.
      */
     protected function queryPreferWhois(string $input, QueryOptions $options): QueryResult
     {
-        return $this->queryWhoisOnly($input, $options);
+        try {
+            return $this->queryWhoisOnly($input, $options);
+        } catch (ClientException) {
+            return $this->queryRdapOnly($input, $options);
+        }
     }
 
     /**
-     * Query using RDAP first; falls back to WHOIS since RDAP is not fully implemented.
+     * Query using RDAP first; fall back to WHOIS on failure.
      */
     protected function queryPreferRdap(string $input, QueryOptions $options): QueryResult
     {
-        // RDAP not yet implemented - fall back to WHOIS
-        return $this->queryWhoisOnly($input, $options);
+        try {
+            return $this->queryRdapOnly($input, $options);
+        } catch (ClientException) {
+            return $this->queryWhoisOnly($input, $options);
+        }
+    }
+
+    /**
+     * Query using RDAP protocol only.
+     */
+    protected function queryRdapOnly(string $input, QueryOptions $options): QueryResult
+    {
+        $rdapResponse = $this->executeRdapQuery($input, $options);
+        $queryType = RdapClient::guessQueryType($input);
+        $rawResponse = $this->resultMapper->mapRdapRawResponse($rdapResponse);
+        $structured = $this->resultMapper->mapRdapResponse($rdapResponse, $queryType);
+
+        return new QueryResult(
+            query: $input,
+            result: $structured,
+            rdap: new HopResponses(auth: $rawResponse),
+        );
     }
 
     /**
@@ -115,6 +140,31 @@ class Whoeasy
         $this->whois->createParser()->parse($answer);
 
         return $answer;
+    }
+
+    /**
+     * Execute an RDAP query and return the response.
+     *
+     * @throws ClientException
+     */
+    protected function executeRdapQuery(string $input, QueryOptions $options): RdapResponse
+    {
+        $client = new RdapClient(
+            timeout: $this->resolveTimeout($options, 'rdap'),
+            proxyUri: $this->resolveProxy($options),
+        );
+
+        $queryType = RdapClient::guessQueryType($input);
+
+        return match ($queryType) {
+            RequestInterface::QUERY_TYPE_DOMAIN => $client->queryDomain($input),
+            RequestInterface::QUERY_TYPE_IPV4,
+            RequestInterface::QUERY_TYPE_IPV6 => $client->queryIp($input),
+            RequestInterface::QUERY_TYPE_ASN => $client->queryAsn(
+                (int) preg_replace('/^AS/i', '', $input)
+            ),
+            default => $client->queryDomain($input),
+        };
     }
 
     /**

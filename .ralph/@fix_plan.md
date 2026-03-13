@@ -22,13 +22,13 @@
 
 ## Epic 4: RDAP Protocol
 
-- [ ] 4.1 RDAP Client (HTTP/HTTPS) - partial: HTTP adapter works but no dedicated RDAP client
-- [ ] 4.2 RDAP Parser (RFC 9083) - only basic rdapToWhois conversion exists
+- [x] 4.1 RDAP Client (HTTP/HTTPS) - RdapClient, RdapBootstrap (IANA RFC 7484), RdapResponse
+- [x] 4.2 RDAP Parser (RFC 9083) - RdapParser: domain, ip network, autnum with jCard/vCard entity parsing
 
 ## Epic 5: Query Orchestration & Merging
 
 - [x] 5.1 Single-Protocol Query Modes (WhoisOnly + result mapping from parser data to Result VOs)
-- [ ] 5.2 Prefer Modes & Fallback
+- [x] 5.2 Prefer Modes & Fallback - PreferWhois/PreferRdap now try primary then fallback; RdapOnly implemented
 - [ ] 5.3 Both Mode & Result Merging
 
 ## Epic 6: Comprehensive Test Fixtures
