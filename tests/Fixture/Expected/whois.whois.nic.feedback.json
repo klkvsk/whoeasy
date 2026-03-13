@@ -1,0 +1,35 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.feedback",
+        "registrar": "Tucows Registry Services",
+        "registrarInfo": {
+            "name": "Tucows Registry Services",
+            "url": "https://tucowsregistry.com",
+            "abuseEmail": "ry-services@tucows.com",
+            "abusePhone": "+1.8003716992"
+        },
+        "createdDate": "2024-03-25 21:10:55",
+        "updatedDate": "2024-04-02 17:29:17",
+        "expiresDate": "2034-03-25 21:10:55",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns03.trs-dns.com"
+            },
+            {
+                "hostname": "ns03.trs-dns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "ry-services@tucows.com",
+                "phone": "+1.8003716992"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

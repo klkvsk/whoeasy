@@ -1,0 +1,47 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.barcelona",
+        "registrar": ".barcelona Internal Registrar",
+        "registrarInfo": {
+            "name": ".barcelona Internal Registrar",
+            "url": "http://www.bcn.cat",
+            "abuseEmail": "newgtlds@domini.cat",
+            "abusePhone": "+34.671639461"
+        },
+        "createdDate": "2015-04-20 14:09:34",
+        "updatedDate": "2025-06-11 09:56:31",
+        "expiresDate": "2026-04-20 14:09:34",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "anycast1.irondns.net"
+            },
+            {
+                "hostname": "anycast2.irondns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "organization": "Ajuntament de Barcelona",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "address": "ES"
+            },
+            {
+                "type": "tech",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name."
+            },
+            {
+                "type": "abuse",
+                "email": "newgtlds@domini.cat",
+                "phone": "+34.671639461"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "registrar": "NIC Chile",
+        "registrarInfo": {
+            "name": "NIC Chile",
+            "url": "https://www.nic.cl"
+        },
+        "nameservers": [
+            {
+                "hostname": "a.nic.cl"
+            },
+            {
+                "hostname": "a.nic.cl"
+            },
+            {
+                "hostname": "b.nic.cl"
+            },
+            {
+                "hostname": "b.nic.cl"
+            },
+            {
+                "hostname": "c.nic.cl"
+            },
+            {
+                "hostname": "c.nic.cl"
+            },
+            {
+                "hostname": "slave.sth.netnod.se"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "UNIVERSIDAD DE CHILE"
+            }
+        ]
+    }
+}

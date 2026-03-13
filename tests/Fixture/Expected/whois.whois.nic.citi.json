@@ -1,0 +1,39 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.citi",
+        "registrar": "Citigroup Inc.",
+        "registrarInfo": {
+            "name": "Citigroup Inc."
+        },
+        "createdDate": "2013-08-09 23:29:23",
+        "updatedDate": "2025-10-13 17:40:51",
+        "expiresDate": "2026-08-08 23:59:59",
+        "status": [
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.dns.nic.citi"
+            },
+            {
+                "hostname": "ns2.dns.nic.citi"
+            },
+            {
+                "hostname": "ns3.dns.nic.citi"
+            },
+            {
+                "hostname": "ns4.dns.nic.citi"
+            },
+            {
+                "hostname": "ns5.dns.nic.citi"
+            },
+            {
+                "hostname": "ns6.dns.nic.citi"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

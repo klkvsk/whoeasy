@@ -1,0 +1,44 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.emerck",
+        "registrar": "Registry Operator acts as Registrar (9999)",
+        "registrarInfo": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2015-02-02 15:03:02",
+        "updatedDate": "2026-02-02 15:03:05",
+        "expiresDate": "2027-02-02 15:03:02",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "autoRenewPeriod https://icann.org/epp#autoRenewPeriod"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a0.nic.emerck"
+            },
+            {
+                "hostname": "b0.nic.emerck"
+            },
+            {
+                "hostname": "c0.nic.emerck"
+            },
+            {
+                "hostname": "a2.nic.emerck"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

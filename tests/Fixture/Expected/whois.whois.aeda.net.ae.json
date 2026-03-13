@@ -1,0 +1,34 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.ae",
+        "registrar": "Etisalat",
+        "registrarInfo": {
+            "name": "Etisalat"
+        },
+        "status": [
+            "clientDeleteProhibited",
+            "clientUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.etisalatdomains.ae"
+            },
+            {
+                "hostname": "ns4.etisalatdomains.ae"
+            },
+            {
+                "hostname": "ns2.etisalatdomains.ae"
+            },
+            {
+                "hostname": "ns3.etisalatdomains.ae"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "tech",
+                "name": "Emirates Telecommunications Corporation - Etisalat"
+            }
+        ]
+    }
+}

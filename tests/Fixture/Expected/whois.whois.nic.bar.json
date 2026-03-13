@@ -1,0 +1,37 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.bar",
+        "registrar": "Punto 2012 S.A.P.I. de C.V.",
+        "registrarInfo": {
+            "name": "Punto 2012 S.A.P.I. de C.V.",
+            "url": "http://punto2012.com/",
+            "abuseEmail": "privacy@punto2012.com",
+            "abusePhone": "+52.5585895544"
+        },
+        "createdDate": "2024-02-06 19:43:34",
+        "updatedDate": "2024-03-01 00:49:11",
+        "expiresDate": "2034-02-06 19:43:34",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns03.trs-dns.com"
+            },
+            {
+                "hostname": "ns03.trs-dns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "privacy@punto2012.com",
+                "phone": "+52.5585895544"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.airbus",
+        "registrar": "Registry Operator acts as Registrar (9999)",
+        "registrarInfo": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2023-09-29 18:39:13",
+        "updatedDate": "2025-08-21 15:15:59",
+        "expiresDate": "2026-09-29 18:39:13",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "v0n0.nic.airbus"
+            },
+            {
+                "hostname": "v0n1.nic.airbus"
+            },
+            {
+                "hostname": "v0n2.nic.airbus"
+            },
+            {
+                "hostname": "v0n3.nic.airbus"
+            },
+            {
+                "hostname": "v2n0.nic.airbus"
+            },
+            {
+                "hostname": "v2n1.nic.airbus"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

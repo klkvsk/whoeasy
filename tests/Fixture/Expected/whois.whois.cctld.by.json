@@ -1,0 +1,20 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.by",
+        "registrar": "Reliable Software, Ltd",
+        "registrarInfo": {
+            "name": "Reliable Software, Ltd"
+        },
+        "createdDate": "2011-07-08 20:51:16",
+        "expiresDate": "2026-08-26 20:51:16",
+        "nameservers": [
+            {
+                "hostname": "ns1.open.by"
+            },
+            {
+                "hostname": "ns2.open.by"
+            }
+        ]
+    }
+}

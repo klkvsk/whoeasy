@@ -1,0 +1,39 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.farmers",
+        "registrar": "Farmers Insurance Exchange",
+        "registrarInfo": {
+            "name": "Farmers Insurance Exchange"
+        },
+        "createdDate": "2013-09-16 20:15:37",
+        "updatedDate": "2025-10-31 00:00:00",
+        "expiresDate": "2026-09-15 23:59:59",
+        "status": [
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.dns.nic.farmers"
+            },
+            {
+                "hostname": "ns2.dns.nic.farmers"
+            },
+            {
+                "hostname": "ns3.dns.nic.farmers"
+            },
+            {
+                "hostname": "ns4.dns.nic.farmers"
+            },
+            {
+                "hostname": "ns5.dns.nic.farmers"
+            },
+            {
+                "hostname": "ns6.dns.nic.farmers"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

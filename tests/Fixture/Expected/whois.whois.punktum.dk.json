@@ -1,0 +1,35 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.dk",
+        "createdDate": "1996-05-07 20:51:16",
+        "expiresDate": "2027-06-30 20:51:16",
+        "status": [
+            "Active"
+        ],
+        "nameservers": [
+            {
+                "hostname": "nic.dk"
+            },
+            {
+                "hostname": "b.nic.dk"
+            },
+            {
+                "hostname": "c.nic.dk"
+            },
+            {
+                "hostname": "h.nic.dk"
+            },
+            {
+                "hostname": "l.nic.dk"
+            },
+            {
+                "hostname": "s.nic.dk"
+            },
+            {
+                "hostname": "t.nic.dk"
+            }
+        ],
+        "dnssec": "Signed delegation"
+    }
+}

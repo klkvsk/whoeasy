@@ -1,0 +1,35 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.cd",
+        "registrar": "SCPT",
+        "registrarInfo": {
+            "name": "SCPT"
+        },
+        "createdDate": "2021-01-15 00:00:00",
+        "updatedDate": "2025-12-16 13:51:11",
+        "expiresDate": "2050-12-31 00:00:00",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.uniteddns.net"
+            },
+            {
+                "hostname": "ns2.uniteddns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "Office Congolais des Postes et Telecommunications - OCPT",
+                "organization": "Office Congolais des Postes et Telecommunications - OCPT",
+                "email": "supportATnic.cd",
+                "phone": "+243.818068889",
+                "address": "CG"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

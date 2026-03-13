@@ -1,0 +1,23 @@
+{
+    "queryType": "ipv4",
+    "ip": {
+        "range": "8.8.8.0 - 8.8.8.255",
+        "networkName": "GOGL",
+        "country": "CA",
+        "createdDate": "2023-12-28 18:59:53",
+        "updatedDate": "2023-12-28 18:59:53",
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "Google LLC",
+                "address": "1600 Amphitheatre Parkway, Mountain View, CA, 94043, US"
+            },
+            {
+                "type": "abuse",
+                "name": "Google LLC Abuse",
+                "email": "network-abuse@google.com",
+                "phone": "tel:+1-650-253-0000"
+            }
+        ]
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.cologne",
+        "registrar": "dotKoeln GmbH",
+        "registrarInfo": {
+            "name": "dotKoeln GmbH",
+            "url": "http://nic.cologne",
+            "abuseEmail": "servicedesk@nic.koeln",
+            "abusePhone": "+43.198116"
+        },
+        "createdDate": "2014-02-13 18:21:08",
+        "updatedDate": "2025-08-07 13:51:31",
+        "expiresDate": "2099-12-31 23:59:59",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.ryce-rsp.com"
+            },
+            {
+                "hostname": "ns1.dns.business"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED",
+                "organization": "dotKoeln GmbH",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.",
+                "phone": "REDACTED",
+                "address": "AT"
+            },
+            {
+                "type": "admin",
+                "name": "REDACTED",
+                "organization": "REDACTED",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.",
+                "phone": "REDACTED"
+            },
+            {
+                "type": "tech",
+                "name": "REDACTED",
+                "organization": "REDACTED",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.",
+                "phone": "REDACTED"
+            },
+            {
+                "type": "abuse",
+                "email": "servicedesk@nic.koeln",
+                "phone": "+43.198116"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

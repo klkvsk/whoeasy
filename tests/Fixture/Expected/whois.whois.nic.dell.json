@@ -1,0 +1,39 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.dell",
+        "registrar": "Dell Inc.",
+        "registrarInfo": {
+            "name": "Dell Inc."
+        },
+        "createdDate": "2013-09-16 20:09:24",
+        "updatedDate": "2025-10-31 00:00:00",
+        "expiresDate": "2026-09-15 23:59:59",
+        "status": [
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.dns.nic.dell"
+            },
+            {
+                "hostname": "ns2.dns.nic.dell"
+            },
+            {
+                "hostname": "ns3.dns.nic.dell"
+            },
+            {
+                "hostname": "ns4.dns.nic.dell"
+            },
+            {
+                "hostname": "ns5.dns.nic.dell"
+            },
+            {
+                "hostname": "ns6.dns.nic.dell"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

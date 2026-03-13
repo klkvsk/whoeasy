@@ -1,0 +1,39 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.americanexpress",
+        "registrar": "American Express Travel Related Services, Inc.",
+        "registrarInfo": {
+            "name": "American Express Travel Related Services, Inc."
+        },
+        "createdDate": "2013-09-16 19:43:57",
+        "updatedDate": "2025-10-31 00:00:01",
+        "expiresDate": "2026-09-15 23:59:59",
+        "status": [
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.dns.nic.americanexpress"
+            },
+            {
+                "hostname": "ns2.dns.nic.americanexpress"
+            },
+            {
+                "hostname": "ns3.dns.nic.americanexpress"
+            },
+            {
+                "hostname": "ns4.dns.nic.americanexpress"
+            },
+            {
+                "hostname": "ns5.dns.nic.americanexpress"
+            },
+            {
+                "hostname": "ns6.dns.nic.americanexpress"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

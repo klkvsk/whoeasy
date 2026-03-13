@@ -1,0 +1,44 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "NIC.AUTOS",
+        "registrar": "XYZ.com, LLC",
+        "registrarInfo": {
+            "name": "XYZ.com, LLC",
+            "url": "https://gen.xyz/",
+            "abuseEmail": "xyz_abuse@gen.xyz",
+            "abusePhone": "+1.8009998422"
+        },
+        "createdDate": "2016-03-11 17:59:08",
+        "updatedDate": "2026-03-05 00:06:50",
+        "expiresDate": "2027-03-11 23:59:59",
+        "status": [
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "c.nic.autos"
+            },
+            {
+                "hostname": "d.nic.autos"
+            },
+            {
+                "hostname": "a.nic.autos"
+            },
+            {
+                "hostname": "b.nic.autos"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "xyz_abuse@gen.xyz",
+                "phone": "+1.8009998422"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

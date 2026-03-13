@@ -1,0 +1,69 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.aero",
+        "registrar": "Registry Operator acts as Registrar (9999)",
+        "registrarInfo": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2002-03-08 13:26:29",
+        "updatedDate": "2026-03-08 13:27:00",
+        "expiresDate": "2027-03-08 13:26:29",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "autoRenewPeriod https://icann.org/epp#autoRenewPeriod"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a0.nic.aero"
+            },
+            {
+                "hostname": "b0.nic.aero"
+            },
+            {
+                "hostname": "c0.nic.aero"
+            },
+            {
+                "hostname": "a2.nic.aero"
+            },
+            {
+                "hostname": "b2.nic.aero"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED",
+                "organization": "SITA SC",
+                "email": "REDACTED",
+                "phone": "REDACTED",
+                "address": "CH"
+            },
+            {
+                "type": "admin",
+                "name": "REDACTED",
+                "organization": "REDACTED",
+                "email": "REDACTED",
+                "phone": "REDACTED"
+            },
+            {
+                "type": "tech",
+                "name": "REDACTED",
+                "organization": "REDACTED",
+                "email": "REDACTED",
+                "phone": "REDACTED"
+            },
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

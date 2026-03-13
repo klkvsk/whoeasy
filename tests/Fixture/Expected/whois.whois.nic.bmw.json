@@ -1,0 +1,48 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "NIC.BMW",
+        "registrar": "Bayerische Motoren Werke AG",
+        "registrarInfo": {
+            "name": "Bayerische Motoren Werke AG",
+            "url": "http://www.bmwgroup.com",
+            "abuseEmail": "domains@bmw.de",
+            "abusePhone": "+49.8938230465"
+        },
+        "createdDate": "2014-02-05 10:28:08",
+        "updatedDate": "2026-01-30 00:07:14",
+        "expiresDate": "2027-02-05 23:59:59",
+        "status": [
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "anycast1.dnsres.net"
+            },
+            {
+                "hostname": "anycast2.dnsres.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "organization": "Bayerische Motoren Werke AG",
+                "email": "https://whois.nic.bmw/contact/nic.bmw/registrant",
+                "address": "DE"
+            },
+            {
+                "type": "tech",
+                "email": "https://whois.nic.bmw/contact/nic.bmw/tech"
+            },
+            {
+                "type": "abuse",
+                "email": "domains@bmw.de",
+                "phone": "+49.8938230465"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

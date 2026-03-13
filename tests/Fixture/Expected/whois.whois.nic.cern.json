@@ -1,0 +1,43 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.cern",
+        "registrar": "Registry Operator acts as Registrar (9999)",
+        "registrarInfo": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2014-10-01 14:56:30",
+        "updatedDate": "2025-11-15 14:57:01",
+        "expiresDate": "2026-10-01 14:56:30",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a0.nic.cern"
+            },
+            {
+                "hostname": "a2.nic.cern"
+            },
+            {
+                "hostname": "b0.nic.cern"
+            },
+            {
+                "hostname": "c0.nic.cern"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

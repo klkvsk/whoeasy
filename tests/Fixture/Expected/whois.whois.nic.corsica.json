@@ -1,0 +1,55 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.corsica",
+        "registrar": "Registry Operations",
+        "registrarInfo": {
+            "name": "Registry Operations"
+        },
+        "createdDate": "2015-01-16 08:58:23",
+        "updatedDate": "2026-03-02 09:03:17",
+        "expiresDate": "2027-01-16 08:58:23",
+        "status": [
+            "active https://icann.org/epp#active"
+        ],
+        "nameservers": [
+            {
+                "hostname": "g.ext.nic.fr"
+            },
+            {
+                "hostname": "ns1.nic.fr"
+            },
+            {
+                "hostname": "ns2.nic.fr"
+            },
+            {
+                "hostname": "ns3.nic.fr"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED_FOR_PRIVACY",
+                "organization": "Afnic Backend Registry Operator",
+                "email": "REDACTED_FOR_PRIVACY",
+                "phone": "REDACTED_FOR_PRIVACY",
+                "address": "REDACTED_FOR_PRIVACY"
+            },
+            {
+                "type": "admin",
+                "name": "REDACTED_FOR_PRIVACY",
+                "organization": "Afnic Backend Registry Operator",
+                "email": "REDACTED_FOR_PRIVACY",
+                "phone": "REDACTED_FOR_PRIVACY"
+            },
+            {
+                "type": "tech",
+                "name": "REDACTED_FOR_PRIVACY",
+                "organization": "Afnic Backend Registry Operator",
+                "email": "REDACTED_FOR_PRIVACY",
+                "phone": "REDACTED_FOR_PRIVACY"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

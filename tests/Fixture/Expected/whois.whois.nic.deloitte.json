@@ -1,0 +1,59 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "NIC.DELOITTE",
+        "registrar": "Deloitte Touche",
+        "registrarInfo": {
+            "name": "Deloitte Touche",
+            "url": "https://www.nic.deloitte/",
+            "abuseEmail": "dttdomainadmin@deloitte.com",
+            "abusePhone": "+1.3124861191"
+        },
+        "createdDate": "2015-09-03 10:32:54",
+        "updatedDate": "2025-08-28 00:14:14",
+        "expiresDate": "2026-09-03 23:59:59",
+        "status": [
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.deloitte"
+            },
+            {
+                "hostname": "b.nic.deloitte"
+            },
+            {
+                "hostname": "c.nic.deloitte"
+            },
+            {
+                "hostname": "d.nic.deloitte"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "DTT Domain Administrator",
+                "organization": "Deloitte Touche Tohmatsu",
+                "email": "dttdomainadmin@deloitte.com",
+                "phone": "+1.2124924566",
+                "address": "US"
+            },
+            {
+                "type": "tech",
+                "name": "DTT Domain Administrator",
+                "organization": "Deloitte Touche Tohmatsu",
+                "email": "dttdomainadmin@deloitte.com",
+                "phone": "+1.2124924566"
+            },
+            {
+                "type": "abuse",
+                "email": "dttdomainadmin@deloitte.com",
+                "phone": "+1.3124861191"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.amica",
+        "registrar": "Amica Mutual Insurance Company (Registry)",
+        "registrarInfo": {
+            "name": "Amica Mutual Insurance Company (Registry)"
+        },
+        "createdDate": "2013-09-16 19:44:20",
+        "updatedDate": "2025-10-31 00:00:01",
+        "expiresDate": "2026-09-15 23:59:59",
+        "status": [
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.dns.nic.amica"
+            },
+            {
+                "hostname": "ns2.dns.nic.amica"
+            },
+            {
+                "hostname": "ns3.dns.nic.amica"
+            },
+            {
+                "hostname": "ns4.dns.nic.amica"
+            },
+            {
+                "hostname": "ns5.dns.nic.amica"
+            },
+            {
+                "hostname": "ns6.dns.nic.amica"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

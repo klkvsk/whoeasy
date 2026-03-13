@@ -1,0 +1,43 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.bms",
+        "registrar": "Registry Operator acts as Registrar (9999)",
+        "registrarInfo": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2015-07-14 21:13:24",
+        "updatedDate": "2025-08-28 21:13:24",
+        "expiresDate": "2026-07-14 21:13:24",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a0.nic.bms"
+            },
+            {
+                "hostname": "a2.nic.bms"
+            },
+            {
+                "hostname": "b0.nic.bms"
+            },
+            {
+                "hostname": "c0.nic.bms"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

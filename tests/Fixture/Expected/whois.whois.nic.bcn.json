@@ -1,0 +1,46 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.bcn",
+        "registrar": ".bcn Internal Registrar",
+        "registrarInfo": {
+            "name": ".bcn Internal Registrar",
+            "url": "http://www.bcn.cat",
+            "abuseEmail": "newgtlds@domini.cat",
+            "abusePhone": "+34.671639461"
+        },
+        "createdDate": "2015-04-20 14:32:09",
+        "updatedDate": "2025-05-27 08:46:35",
+        "expiresDate": "2027-04-20 14:32:09",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "anycast1.irondns.net"
+            },
+            {
+                "hostname": "anycast2.irondns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "address": "ES"
+            },
+            {
+                "type": "tech",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name."
+            },
+            {
+                "type": "abuse",
+                "email": "newgtlds@domini.cat",
+                "phone": "+34.671639461"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

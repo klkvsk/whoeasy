@@ -1,0 +1,49 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.arab",
+        "registrar": "LAS Registry Operator",
+        "registrarInfo": {
+            "name": "LAS Registry Operator"
+        },
+        "createdDate": "2017-01-02 06:39:02",
+        "updatedDate": "2023-01-08 06:21:47",
+        "expiresDate": "2027-01-02 06:39:02",
+        "status": [
+            "ok http://www.icann.org/epp#OK"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.nic.arab"
+            },
+            {
+                "hostname": "ns2.nic.arab"
+            },
+            {
+                "hostname": "ns3.nic.arab"
+            },
+            {
+                "hostname": "ns4.nic.arab"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "Telecommunication Regulatory Authority",
+                "email": "gtldsupport@aeda.ae",
+                "address": "ae"
+            },
+            {
+                "type": "admin",
+                "name": ".ae Domain Administration",
+                "email": "gtldsupport@aeda.ae"
+            },
+            {
+                "type": "tech",
+                "name": ".ae Domain Administration",
+                "email": "gtldsupport@aeda.ae"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

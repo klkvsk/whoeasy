@@ -1,0 +1,33 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.cuisinella",
+        "registrar": "cuisinella",
+        "registrarInfo": {
+            "name": "cuisinella"
+        },
+        "createdDate": "2014-06-20 00:39:36",
+        "updatedDate": "2025-10-13 17:24:43",
+        "expiresDate": "2026-06-20 00:39:36",
+        "status": [
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.cuisinella"
+            },
+            {
+                "hostname": "b.nic.cuisinella"
+            },
+            {
+                "hostname": "c.nic.cuisinella"
+            },
+            {
+                "hostname": "d.nic.cuisinella"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

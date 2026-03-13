@@ -1,0 +1,49 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.bauhaus",
+        "registrar": "Bauhaus internal Registrar",
+        "registrarInfo": {
+            "name": "Bauhaus internal Registrar",
+            "url": "http://www.bauhaus.info",
+            "abuseEmail": "domains@bahag.com",
+            "abusePhone": "+49.6213905306"
+        },
+        "createdDate": "2014-06-25 13:41:24",
+        "updatedDate": "2023-07-28 12:40:24",
+        "expiresDate": "2027-06-25 13:41:24",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "anycast1.irondns.net"
+            },
+            {
+                "hostname": "anycast2.irondns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "address": "DE"
+            },
+            {
+                "type": "admin",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name."
+            },
+            {
+                "type": "tech",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name."
+            },
+            {
+                "type": "abuse",
+                "email": "domains@bahag.com",
+                "phone": "+49.6213905306"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

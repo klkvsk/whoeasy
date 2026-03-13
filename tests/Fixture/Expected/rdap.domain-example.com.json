@@ -1,0 +1,33 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "EXAMPLE.COM",
+        "registrar": "RESERVED-Internet Assigned Numbers Authority",
+        "registrarInfo": {
+            "name": "RESERVED-Internet Assigned Numbers Authority"
+        },
+        "createdDate": "1995-08-14 04:00:00",
+        "updatedDate": "2024-08-14 07:01:38",
+        "expiresDate": "2025-08-13 04:00:00",
+        "status": [
+            "client delete prohibited",
+            "client transfer prohibited",
+            "client update prohibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.iana-servers.net"
+            },
+            {
+                "hostname": "b.iana-servers.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED FOR PRIVACY",
+                "email": "https://www.icann.org/"
+            }
+        ]
+    }
+}

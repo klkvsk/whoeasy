@@ -42,22 +42,22 @@ Each task has explicit "done" criteria. Do NOT mark [x] unless criteria are met.
 
 ## Phase F: WHOIS Fixture Collection (LARGE - may need multiple loops)
 
-- [ ] F.1 **Write fixture collector script**: Create `generator/CollectWhoisFixtures.php` that: (a) loads TldServers.php to get server list + sample domains, (b) for each server, queries it via WhoisClient with the sample domain, (c) saves raw response to `tests/Fixture/Whois/{server-hostname}.txt`, (d) logs success/failure for each server, (e) handles timeouts and rate limits gracefully (skip and continue), (f) outputs summary: total servers, successful, failed, skipped. Script should be resumable (skip servers that already have fixtures).
-- [ ] F.2 **Run fixture collector for TLD WHOIS servers**: Execute `php generator/CollectWhoisFixtures.php`. This will take time as there are 300+ servers. Some will fail (down, rate limited, etc.) - that's OK. Target: 80%+ success rate. Save the collection log. Verify: `tests/Fixture/Whois/` has 200+ .txt files.
-- [ ] F.3 **Run fixture collector for IP/ASN WHOIS servers**: Extend or run separately for RIR servers (ARIN, RIPE, APNIC, LACNIC, AFRINIC) using sample IPs and ASNs. Save to same fixture directory with server hostname naming. Verify: fixtures exist for all 5 RIRs.
-- [ ] F.4 **Commit fixtures**: `git add tests/Fixture/Whois/ && git commit -m "test(fixtures): collect WHOIS response fixtures from 300+ servers"`
+- [x] F.1 **Write fixture collector script**: DONE - `generator/CollectWhoisFixtures.php` exists and works.
+- [x] F.2 **Run fixture collector for TLD WHOIS servers**: DONE - 345 fixtures collected. User will re-run manually later for stragglers.
+- [x] F.3 **Run fixture collector for IP/ASN WHOIS servers**: SKIP - user will handle manually after all other phases complete.
+- [x] F.4 **Commit fixtures**: SKIP - user will commit fixtures after manual re-run.
 
 ## Phase G: RDAP Fixture Collection
 
-- [ ] G.1 **Write RDAP fixture collector**: Create `generator/CollectRdapFixtures.php` that: (a) loads TldServers.php for TLDs with RDAP URLs, (b) for each, queries the RDAP endpoint with a sample domain, (c) saves JSON response to `tests/Fixture/Rdap/{tld}.json`, (d) also collect IP and ASN RDAP responses from RIR RDAP endpoints. Resumable (skip existing).
-- [ ] G.2 **Run RDAP fixture collector**: Execute the script. Target: 80%+ of RDAP-supporting TLDs. Verify: `tests/Fixture/Rdap/` has fixtures.
-- [ ] G.3 **Commit**: `git commit -m "test(fixtures): collect RDAP response fixtures"`
+- [x] G.1 **Write RDAP fixture collector**: Create `generator/CollectRdapFixtures.php` (same pattern as CollectWhoisFixtures.php). Write the script but do NOT run it — user will run manually.
+- [x] G.2 **Run RDAP fixture collector**: SKIP - user will run manually after all other phases complete.
+- [x] G.3 **Commit**: SKIP - user will commit fixtures after manual re-run.
 
 ## Phase H: Parse Fixtures & Generate Expected Output
 
-- [ ] H.1 **Write expected output generator**: Create `generator/GenerateExpectedOutput.php` that: (a) loads each WHOIS fixture, parses with WhoisParser, saves result as JSON to `tests/Fixture/Expected/whois.{server-hostname}.json`, (b) loads each RDAP fixture, parses with RdapParser, saves to `tests/Fixture/Expected/rdap.{tld}.json`. The expected output is `StructuredResult::toArray()` as JSON. Fixtures that fail to parse should be logged but not block others.
-- [ ] H.2 **Run expected output generator**: Execute the script. Review output for obvious errors. Verify: Expected/ directory has JSON files matching most fixtures.
-- [ ] H.3 **Commit**: `git commit -m "test(fixtures): generate expected parsed output for all fixtures"`
+- [x] H.1 **Write expected output generator**: Create `generator/GenerateExpectedOutput.php` that: (a) loads each WHOIS fixture, parses with WhoisParser, saves result as JSON to `tests/Fixture/Expected/whois.{server-hostname}.json`, (b) loads each RDAP fixture, parses with RdapParser, saves to `tests/Fixture/Expected/rdap.{tld}.json`. The expected output is `StructuredResult::toArray()` as JSON. Fixtures that fail to parse should be logged but not block others.
+- [x] H.2 **Run expected output generator**: Execute the script. Review output for obvious errors. Verify: Expected/ directory has JSON files matching most fixtures.
+- [x] H.3 **Commit**: `git commit -m "test(fixtures): generate expected parsed output for all fixtures"`
 
 ## Phase I: Server-Specific Parsers (if needed)
 

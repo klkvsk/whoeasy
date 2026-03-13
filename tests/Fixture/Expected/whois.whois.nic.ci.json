@@ -1,0 +1,28 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.ci",
+        "registrar": "ARTCI Reserved",
+        "registrarInfo": {
+            "name": "ARTCI Reserved"
+        },
+        "createdDate": "2016-06-17 04:00:00",
+        "updatedDate": "2022-06-14 16:15:41",
+        "expiresDate": "2027-06-17 00:00:00",
+        "status": [
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.desec.io"
+            },
+            {
+                "hostname": "ns2.desec.org"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

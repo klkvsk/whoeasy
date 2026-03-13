@@ -1,0 +1,40 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.bharti",
+        "registrar": "Bharti Airtel Limited",
+        "registrarInfo": {
+            "name": "Bharti Airtel Limited"
+        },
+        "createdDate": "2025-09-18 04:55:29",
+        "updatedDate": "2025-12-09 00:54:54",
+        "expiresDate": "2035-09-18 04:55:29",
+        "status": [
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "x.nic.bharti"
+            },
+            {
+                "hostname": "y.nic.bharti"
+            },
+            {
+                "hostname": "z.nic.bharti"
+            },
+            {
+                "hostname": "a.nic.bharti"
+            },
+            {
+                "hostname": "b.nic.bharti"
+            },
+            {
+                "hostname": "c.nic.bharti"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

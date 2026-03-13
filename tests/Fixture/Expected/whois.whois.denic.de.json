@@ -1,0 +1,24 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "google.de",
+        "updatedDate": "2018-03-12 21:44:25",
+        "status": [
+            "connect"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.google.com"
+            },
+            {
+                "hostname": "ns2.google.com"
+            },
+            {
+                "hostname": "ns3.google.com"
+            },
+            {
+                "hostname": "ns4.google.com"
+            }
+        ]
+    }
+}

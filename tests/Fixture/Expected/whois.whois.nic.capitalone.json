@@ -1,0 +1,32 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.capitalone",
+        "registrar": "Capital One Financial Corporation",
+        "registrarInfo": {
+            "name": "Capital One Financial Corporation",
+            "url": "nic.capitalone"
+        },
+        "createdDate": "2025-04-22 05:30:26",
+        "updatedDate": "2025-10-13 18:49:50",
+        "expiresDate": "2026-04-22 05:30:26",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.capitalone"
+            },
+            {
+                "hostname": "b.nic.capitalone"
+            },
+            {
+                "hostname": "c.nic.capitalone"
+            },
+            {
+                "hostname": "d.nic.capitalone"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

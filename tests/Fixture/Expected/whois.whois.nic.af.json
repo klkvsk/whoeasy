@@ -1,0 +1,34 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.af",
+        "registrar": "AF Ministry of Communications and IT",
+        "registrarInfo": {
+            "name": "AF Ministry of Communications and IT"
+        },
+        "createdDate": "2006-01-02 11:00:00",
+        "updatedDate": "2026-02-14 13:03:51",
+        "expiresDate": "2033-03-14 00:00:00",
+        "status": [
+            "active https://icann.org/epp#active"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.desec.io"
+            },
+            {
+                "hostname": "ns2.desec.org"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "NIC",
+                "email": "registry@nic.af",
+                "phone": "+93.202102684",
+                "address": "AF"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

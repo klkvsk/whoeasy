@@ -1,0 +1,52 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.bj",
+        "registrar": "NIC Reserved",
+        "registrarInfo": {
+            "name": "NIC Reserved"
+        },
+        "createdDate": "2015-02-03 10:30:46",
+        "updatedDate": "2026-01-20 14:45:51",
+        "expiresDate": "2030-07-19 23:00:00",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "dns1.jenysas.bj"
+            },
+            {
+                "hostname": "pch.nic.bj"
+            },
+            {
+                "hostname": "ns2.nic.bj"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "NIC Benin ccTLD",
+                "organization": "Network Information Centre",
+                "email": "contact@nic.bj",
+                "phone": "+229.62000061",
+                "address": "BJ"
+            },
+            {
+                "type": "admin",
+                "name": "Redacted | Registry Policy",
+                "organization": "Network Information Centre",
+                "email": "Redacted | Registry Policy",
+                "phone": "Redacted | Registry Policy"
+            },
+            {
+                "type": "tech",
+                "name": "NIC Benin ccTLD",
+                "organization": "Network Information Centre",
+                "email": "contact@nic.bj",
+                "phone": "+229.62000061"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}
