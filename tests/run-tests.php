@@ -104,6 +104,7 @@ use Klkvsk\Whoeasy\Registry\ServerInfo;
 use Klkvsk\Whoeasy\Exception\UnsupportedQueryException;
 use Klkvsk\Whoeasy\Client\WhoisClient;
 use Klkvsk\Whoeasy\Client\WhoisResponse;
+use Klkvsk\Whoeasy\Parser\Whois\WhoisParser;
 
 function loadFixture(string $filename): array {
     $path = __DIR__ . '/Fixtures/rdap/' . $filename;
@@ -463,6 +464,75 @@ $tests['WhoisResponse::getRespondingServer'] = function() {
         referralServer: 'whois.iana.org',
     );
     assertSame('whois.iana.org', $r2->getRespondingServer());
+};
+
+// --- WhoisParser Tests ---
+
+function loadWhoisFixture(string $filename): string {
+    return file_get_contents(__DIR__ . '/Fixture/Whois/' . $filename);
+}
+
+$tests['WhoisParser::parseGtldDomain'] = function() {
+    $parser = new WhoisParser();
+    $raw = loadWhoisFixture('whois.markmonitor.com.txt');
+    $result = $parser->parse($raw, 'whois.markmonitor.com', QueryType::Domain);
+
+    assertNotNull($result->domain);
+    assertSame('google.com', $result->domain->name);
+    assertSame('MarkMonitor, Inc.', $result->domain->registrar);
+    assertNotNull($result->domain->createdDate);
+    assertStringContainsString('1997', $result->domain->createdDate);
+    assertNotNull($result->domain->expiresDate);
+    assertStringContainsString('2028', $result->domain->expiresDate);
+    assertNotEmpty($result->domain->status);
+    assertCount(4, $result->domain->nameservers);
+    assertSame('unsigned', $result->domain->dnssec);
+};
+
+$tests['WhoisParser::parseDeDomain'] = function() {
+    $parser = new WhoisParser();
+    $raw = loadWhoisFixture('whois.denic.de.txt');
+    $result = $parser->parse($raw, 'whois.denic.de', QueryType::Domain);
+
+    assertNotNull($result->domain);
+    assertSame('google.de', $result->domain->name);
+    assertNotNull($result->domain->updatedDate);
+    assertCount(4, $result->domain->nameservers);
+    assertContains('connect', $result->domain->status);
+};
+
+$tests['WhoisParser::parseUkDomain'] = function() {
+    $parser = new WhoisParser();
+    $raw = loadWhoisFixture('whois.nic.uk.txt');
+    $result = $parser->parse($raw, 'whois.nic.uk', QueryType::Domain);
+
+    assertNotNull($result->domain);
+    assertSame('google.co.uk', $result->domain->name);
+    assertNotNull($result->domain->registrar);
+    assertStringContainsString('Markmonitor', $result->domain->registrar);
+    assertNotNull($result->domain->createdDate);
+    assertNotNull($result->domain->expiresDate);
+    assertCount(4, $result->domain->nameservers);
+};
+
+$tests['WhoisParser::parseRipeIp'] = function() {
+    $parser = new WhoisParser();
+    $raw = loadWhoisFixture('whois.ripe.net-ip.txt');
+    $result = $parser->parse($raw, 'whois.ripe.net', QueryType::Ipv4);
+
+    assertNotNull($result->ip);
+    assertSame('193.0.0.0 - 193.0.7.255', $result->ip->range);
+    assertSame('RIPE-NCC', $result->ip->networkName);
+    assertSame('NL', $result->ip->country);
+};
+
+$tests['WhoisParser::parseArinIp'] = function() {
+    $parser = new WhoisParser();
+    $raw = loadWhoisFixture('whois.arin.net-ip.txt');
+    $result = $parser->parse($raw, 'whois.arin.net', QueryType::Ipv4);
+
+    assertNotNull($result->ip);
+    assertNotNull($result->ip->networkName);
 };
 
 // ========================
