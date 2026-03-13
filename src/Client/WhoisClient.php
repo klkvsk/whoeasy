@@ -4,207 +4,294 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Client;
 
-use Klkvsk\Whoeasy\Client\Adapter\AdapterInterface;
-use Klkvsk\Whoeasy\Client\Exception\ClientException;
-use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
-use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
-use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
-use Klkvsk\Whoeasy\Client\Proxy\Proxy;
-use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
-use Klkvsk\Whoeasy\Client\Registry\ServerRegistryInterface;
+use Klkvsk\Whoeasy\Exception\ConnectionException;
+use Klkvsk\Whoeasy\Exception\RateLimitException;
+use Klkvsk\Whoeasy\Exception\ServerNotFoundException;
+use Klkvsk\Whoeasy\Exception\TimeoutException;
 
-class WhoisClient
+/**
+ * WHOIS protocol client using TCP:43 stream sockets.
+ *
+ * Does NOT depend on v1 adapters. Uses PHP stream functions directly.
+ */
+final class WhoisClient
 {
-    protected float $timeout = Request::DEFAULT_TIMEOUT;
+    private const DEFAULT_PORT = 43;
+    private const READ_BUFFER_SIZE = 4096;
 
     public function __construct(
-        /** @var AdapterInterface[] */
-        protected array                   $adapters,
-        protected ServerRegistryInterface $registry,
-    )
-    {
-
+        private int $timeout = 30,
+        private ?string $proxyUri = null,
+    ) {
     }
 
-    public function getTimeout(): int
+    /**
+     * Query a WHOIS server and return the raw text response.
+     *
+     * @param string $server WHOIS server hostname (e.g., "whois.verisign-grs.com")
+     * @param string $query  The query string (e.g., "example.com")
+     * @param int|null $timeout Override timeout for this request
+     * @return string Raw WHOIS response text
+     *
+     * @throws ConnectionException If connection to the server fails
+     * @throws TimeoutException If the connection or read times out
+     */
+    public function query(string $server, string $query, ?int $timeout = null): string
     {
-        return $this->timeout;
-    }
+        $timeout ??= $this->timeout;
+        $port = self::DEFAULT_PORT;
 
-    public function setTimeout(int $timeout): WhoisClient
-    {
-        $this->timeout = $timeout;
-
-        return $this;
-    }
-
-    public function createRequest(
-        string $query,
-        ?string $queryType = null,
-        ServerInfoInterface|string|null $server = null,
-        ProxyInterface|string|null $proxy = null
-    ): RequestInterface
-    {
-        $queryType ??= Request::guessQueryType($query);
-
-        if (!$server) {
-            $server = $this->registry->findByQuery($query, $queryType)
-                ?? throw new ClientException("No server in registry matching query: $query ($queryType)");
+        // Parse server:port if specified
+        if (str_contains($server, ':')) {
+            $parts = explode(':', $server, 2);
+            $server = $parts[0];
+            $port = (int)$parts[1];
         }
 
-        if (is_string($server)) {
-            $serverName = $server;
-            $server = $this->registry->findServer($serverName);
-            if (!$server) {
-                $serverAddress = $serverName;
-                if (!str_contains($serverAddress, '://')) {
-                    $serverAddress = 'whois://' . $serverAddress;
-                }
-                $server = new ServerInfo($serverAddress);
-            }
-        }
-
-
-        $request = new Request($server, $query, $queryType, $this->timeout);
-
-        if (is_string($proxy)) {
-            $proxy = Proxy::fromUri($proxy);
-        }
-        if ($proxy) {
-            $request->setProxy($proxy);
-        }
-
-        return $request;
-    }
-
-    public function handle(RequestInterface $request): ResponseInterface
-    {
-        $adapter = $this->chooseAdapter($request);
-        $response = $adapter->handle($request);
+        $socket = $this->connect($server, $port, $timeout);
 
         try {
-            if (empty($response->getAnswer())) {
-                throw new ClientResponseException('Got empty response from server');
+            // Send query followed by CRLF (RFC 3912)
+            $queryLine = $query . "\r\n";
+            $written = @fwrite($socket, $queryLine);
+            if ($written === false || $written !== strlen($queryLine)) {
+                throw new ConnectionException(
+                    "Failed to send query to $server",
+                    server: $server,
+                    query: $query,
+                );
             }
 
-            if (preg_match('/^clos(ing|ed) connection.*$/im', $response->getAnswer(), $m)) {
-                throw new ClientResponseException($m[0]);
-            }
+            // Read response
+            $response = '';
+            while (!feof($socket)) {
+                $chunk = @fread($socket, self::READ_BUFFER_SIZE);
+                if ($chunk === false) {
+                    $info = stream_get_meta_data($socket);
+                    if ($info['timed_out'] ?? false) {
+                        throw new TimeoutException(
+                            "Read timeout from $server after {$timeout}s",
+                            server: $server,
+                            query: $query,
+                            rawResponse: $response,
+                        );
+                    }
+                    break;
+                }
+                $response .= $chunk;
 
-            $rawData = $response->getAnswer();
-            if ($request->getServer()->getCharset()) {
-                $rawData = mb_convert_encoding($rawData, 'UTF-8', $request->getServer()->getCharset());
-            }
-
-            $rawData = $request->getServer()->processAnswer($rawData);
-
-            // unprefix commented newlines, so "removeNotices" will only detect separate blocks
-            // this is required when multiple text blocks are joined in one commented block
-            // (e.g. "% NOTICE: ...", "%" (needs to be a newline), "% TERMS OF USE: ")
-            $cleanRawData = preg_replace('@^\s*[%#;/<>]\s*$@m', "", $rawData);
-
-            $cleanRawData = $this->removeNotices($cleanRawData);
-
-            foreach ($this->getRateLimitPatterns() as $pattern) {
-                if (preg_match($pattern, $cleanRawData)) {
-                    //var_dump($pattern);
-                    throw new RateLimitException("Rate limit exceeded for {$request->getServer()->getName()}");
+                // Check for timeout during read
+                $info = stream_get_meta_data($socket);
+                if ($info['timed_out'] ?? false) {
+                    throw new TimeoutException(
+                        "Read timeout from $server after {$timeout}s",
+                        server: $server,
+                        query: $query,
+                        rawResponse: $response,
+                    );
                 }
             }
-
-            foreach ($this->getNotFoundPatterns() as $pattern) {
-                if (preg_match($pattern, $cleanRawData)) {
-                    throw new NotFoundException("Nothing found by query '{$request->getQuery()}'");
-                }
-            }
-
-            return $response->withAnswer($rawData);
-
-        } catch (ClientRequestException|ClientResponseException $e) {
-            $e->withRequest($request);
-            if ($e instanceof ClientResponseException) {
-                $e->withResponse($response);
-            }
-            throw $e;
+        } finally {
+            fclose($socket);
         }
-    }
 
-    protected function chooseAdapter(RequestInterface $request): AdapterInterface
-    {
-        foreach ($this->adapters as $adapter) {
-            if ($adapter->canHandle($request)) {
-                return $adapter;
+        // Convert encoding if needed (best-effort UTF-8)
+        if (!mb_check_encoding($response, 'UTF-8')) {
+            $converted = mb_convert_encoding($response, 'UTF-8', 'ISO-8859-1');
+            if ($converted !== false) {
+                $response = $converted;
             }
         }
 
-        throw new ClientException("Could not find adapter for {$request->getServer()->getUri()}");
+        return $response;
     }
 
-    protected function getRateLimitPatterns(): array
+    /**
+     * Query a WHOIS server, following referrals automatically.
+     *
+     * @param string $server Initial WHOIS server
+     * @param string $query Query string
+     * @param int $maxReferrals Maximum number of referrals to follow
+     * @return WhoisResponse Response with referral chain
+     */
+    public function queryWithReferrals(
+        string $server,
+        string $query,
+        int $maxReferrals = 1,
+        ?int $timeout = null,
+    ): WhoisResponse {
+        $responses = [];
+        $currentServer = $server;
+        $visited = [];
+
+        for ($hop = 0; $hop <= $maxReferrals; $hop++) {
+            if (in_array($currentServer, $visited, true)) {
+                break; // Prevent loops
+            }
+            $visited[] = $currentServer;
+
+            $raw = $this->query($currentServer, $query, $timeout);
+            $responses[] = ['server' => $currentServer, 'response' => $raw];
+
+            // Look for referral
+            $referral = self::detectReferral($raw);
+            if ($referral === null || $referral === $currentServer) {
+                break;
+            }
+            $currentServer = $referral;
+        }
+
+        $lastResponse = end($responses);
+
+        return new WhoisResponse(
+            server: $server,
+            query: $query,
+            rawText: $lastResponse['response'],
+            referralServer: count($responses) > 1 ? $lastResponse['server'] : null,
+            hops: $responses,
+        );
+    }
+
+    /**
+     * Detect referral server from WHOIS response text.
+     *
+     * Looks for patterns like:
+     * - "Registrar WHOIS Server: whois.example.com"
+     * - "refer: whois.example.com"
+     * - "ReferralServer: whois://whois.example.com"
+     */
+    public static function detectReferral(string $response): ?string
     {
-        return [
-            '/(reached|exceeded) the maximum allowable/im',
-            '/(reached|exceeded) your (query|request) limit/im',
+        $patterns = [
+            '/^\s*Registrar WHOIS Server:\s*(.+)/mi',
+            '/^\s*Whois Server:\s*(.+)/mi',
+            '/^\s*refer:\s*(.+)/mi',
+            '/^\s*ReferralServer:\s*(.+)/mi',
+            '/^\s*Registrar Whois:\s*(.+)/mi',
+        ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $response, $m)) {
+                $referral = trim($m[1]);
+
+                // Strip protocol prefix if present
+                $referral = preg_replace('#^(whois|rwhois)://#i', '', $referral);
+
+                // Strip port suffix and path
+                $referral = preg_replace('#[:/].*$#', '', $referral);
+
+                // Validate it looks like a hostname
+                if (preg_match('/^[a-z0-9]([a-z0-9\-.]+[a-z0-9])?$/i', $referral)) {
+                    return $referral;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Detect if the response indicates rate limiting.
+     */
+    public static function isRateLimited(string $response): bool
+    {
+        $patterns = [
+            '/(reached|exceeded) the maximum allowable/i',
+            '/(reached|exceeded) your (query|request) limit/i',
             '/(rate limit|quota) (exceeded|reached)/i',
-            '/^maximum .+? (exceeded|reached).?/mi',
             '/try again (later|after)/i',
-            '/request cannot be processed/i',
-            '/^(error: )?access denied/i',
-            '/try your request again/i',
             '/(request|rate|query|connection) limit (exceeded|reached)/i',
-            '/(exceeded|reached)( your| max)? (request|rate|query|connection|command) (rate|limit|rate limit)/i',
-            '/excediste la cantidad permitida/i',
             '/too many (requests|queries|lookups)/i',
             '/server is busy/i',
             '/(?<!for )excessive querying/i',
         ];
-    }
 
-    protected function removeNotices(string $text): string
-    {
-        $regexps = [
-            '/(?<=\n\n|^)*(.+\n)*.*(you agree to |sole discretion|does not guarantee|reserves the right|for lawful purposes).*(\n.+)*(?=\n\n|$)/i',
-            '/(?<=\n|^)(The|A|An|For|By|All) ((.+?\n)+(.+?\.)|.{80,})(?=\n\n|$)/',
-            '/^\W*for more information.+/im',
-            '/^.+whois inaccuracy complaint form.+$/im',
-            '/^.+does not guarantee.+$/im',
-            '/^.+reserves the right to .+$/im',
-            '/\nNOTICE[\s\S]+?(?=\n\n)/',
-            '/(?<=\n|^)NOTE[\s\S]+?(?=\n\n|$)/',
-            '/\nTERMS OF USE[\s\S]+?\n\n/',
-            '/^\s*terms of use:.+/im',
-            '/^>>>.+<<<$/m',
-            '/^\[ JPRS [\s\S]+?(?=\n[^\[])/',
-        ];
-        foreach ($regexps as $regexp) {
-            $filtered = preg_replace($regexp, "\n", $text);
-            $filtered = trim($filtered ?? '');
-            if (!$filtered) {
-                return $text;
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $response)) {
+                return true;
             }
-            $text = $filtered;
         }
-        return $text;
+
+        return false;
     }
 
-    protected function getNotFoundPatterns(): array
+    /**
+     * Detect if the response indicates "not found".
+     */
+    public static function isNotFound(string $response): bool
     {
-        return [
+        $patterns = [
             '/^[\W\s]*(no match|not found|no data found|nothing found|no domain|no information)/im',
             '/is available for registration/i',
             '/queried (object|domain|record) does not exist/i',
             '/domain is available/i',
             '/domain( name)? not found/i',
-            '/^unknown domain/i',
             '/^status: (free|available)/mi',
             '/no matching objects found/i',
-            '/lookup not available for this domain/i',
-            '/domain( you requested)? is not known/i',
-            '/(objects?|domains?|records?|entry|entries|keys?) not found/im',
-            '/no (matching )?(objects?|domains?|records?|entry|entries|keys?) found/i',
+            '/(objects?|domains?|records?|entry|entries) not found/im',
             '/(object|domain|key) does not exist/i',
         ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $response)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
+    /**
+     * Open a TCP connection to the WHOIS server.
+     *
+     * @return resource Stream socket
+     */
+    private function connect(string $server, int $port, int $timeout): mixed
+    {
+        $context = stream_context_create();
+
+        // Configure SOCKS proxy if set
+        $proxyUri = $this->proxyUri;
+        if ($proxyUri !== null) {
+            $proxyParts = parse_url($proxyUri);
+            if ($proxyParts !== false && isset($proxyParts['host'])) {
+                $proxyHost = $proxyParts['host'];
+                $proxyPort = $proxyParts['port'] ?? 1080;
+                // Use TCP connection through proxy
+                stream_context_set_option($context, 'socket', 'tcp_nodelay', true);
+                $address = "tcp://$proxyHost:$proxyPort";
+            }
+        }
+
+        $address ??= "tcp://$server:$port";
+
+        $errno = 0;
+        $errstr = '';
+        $socket = @stream_socket_client(
+            $address,
+            $errno,
+            $errstr,
+            $timeout,
+            STREAM_CLIENT_CONNECT,
+            $context,
+        );
+
+        if ($socket === false) {
+            if ($errno === 110 || str_contains(strtolower($errstr), 'timed out')) {
+                throw new TimeoutException(
+                    "Connection timeout to $server:$port after {$timeout}s",
+                    server: $server,
+                );
+            }
+            throw new ConnectionException(
+                "Failed to connect to $server:$port: [$errno] $errstr",
+                server: $server,
+            );
+        }
+
+        // Set stream timeout for reads
+        stream_set_timeout($socket, $timeout);
+
+        return $socket;
+    }
 }

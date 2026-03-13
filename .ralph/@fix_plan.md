@@ -24,8 +24,8 @@ Each task has explicit "done" criteria. Do NOT mark [x] unless criteria are met.
 
 ## Phase C: WHOIS Client (New)
 
-- [ ] C.1 **Write new WhoisClient**: Create or rewrite `src/Client/WhoisClient.php` that connects to WHOIS servers via TCP:43 using PHP stream sockets. Must support: configurable timeout (default 30s), optional SOCKS proxy via stream context, referral detection (parse response for "Registrar WHOIS Server:" or similar patterns), returns raw text response. Does NOT depend on v1 adapters. Write unit tests with mocked sockets. Verify: tests pass.
-- [ ] C.2 **Commit**: `git commit -m "feat(client): new WhoisClient with TCP:43, proxy, referral detection"`
+- [x] C.1 **Write new WhoisClient**: Create or rewrite `src/Client/WhoisClient.php` that connects to WHOIS servers via TCP:43 using PHP stream sockets. Must support: configurable timeout (default 30s), optional SOCKS proxy via stream context, referral detection (parse response for "Registrar WHOIS Server:" or similar patterns), returns raw text response. Does NOT depend on v1 adapters. Write unit tests with mocked sockets. Verify: tests pass.
+- [x] C.2 **Commit**: `git commit -m "feat(client): new WhoisClient with TCP:43, proxy, referral detection"`
 
 ## Phase D: Universal WHOIS Parser
 

@@ -102,6 +102,8 @@ use Klkvsk\Whoeasy\Result\StructuredResult;
 use Klkvsk\Whoeasy\Registry\ServerRegistry;
 use Klkvsk\Whoeasy\Registry\ServerInfo;
 use Klkvsk\Whoeasy\Exception\UnsupportedQueryException;
+use Klkvsk\Whoeasy\Client\WhoisClient;
+use Klkvsk\Whoeasy\Client\WhoisResponse;
 
 function loadFixture(string $filename): array {
     $path = __DIR__ . '/Fixtures/rdap/' . $filename;
@@ -410,6 +412,57 @@ $tests['ServerRegistry::lookupTld'] = function() {
 
     $missing = $registry->lookupTld('zzzzzznonexistent');
     assertNull($missing);
+};
+
+// --- WhoisClient Tests ---
+
+$tests['WhoisClient::detectReferralVerisign'] = function() {
+    $response = <<<EOT
+   Domain Name: EXAMPLE.COM
+   Registrar: RESERVED-Internet Assigned Numbers Authority
+   Registrar WHOIS Server: whois.iana.org
+   Updated Date: 2024-08-14T07:01:38Z
+EOT;
+    assertSame('whois.iana.org', WhoisClient::detectReferral($response));
+};
+
+$tests['WhoisClient::detectReferralWithProtocol'] = function() {
+    $response = "ReferralServer: whois://whois.markmonitor.com\n";
+    assertSame('whois.markmonitor.com', WhoisClient::detectReferral($response));
+};
+
+$tests['WhoisClient::detectReferralRefer'] = function() {
+    $response = "refer:        whois.verisign-grs.com\n";
+    assertSame('whois.verisign-grs.com', WhoisClient::detectReferral($response));
+};
+
+$tests['WhoisClient::detectReferralNone'] = function() {
+    $response = "Domain Name: example.com\nRegistrar: Test\n";
+    assertNull(WhoisClient::detectReferral($response));
+};
+
+$tests['WhoisClient::isRateLimited'] = function() {
+    assertSame(true, WhoisClient::isRateLimited('You have exceeded your query limit'));
+    assertSame(true, WhoisClient::isRateLimited('Too many requests'));
+    assertSame(false, WhoisClient::isRateLimited('Domain Name: example.com'));
+};
+
+$tests['WhoisClient::isNotFound'] = function() {
+    assertSame(true, WhoisClient::isNotFound('No match for "NOTEXIST.COM"'));
+    assertSame(true, WhoisClient::isNotFound('Domain is available'));
+    assertSame(true, WhoisClient::isNotFound('Status: free'));
+    assertSame(false, WhoisClient::isNotFound('Domain Name: example.com'));
+};
+
+$tests['WhoisResponse::getRespondingServer'] = function() {
+    $r1 = new WhoisResponse(server: 'whois.verisign-grs.com', query: 'example.com', rawText: 'test');
+    assertSame('whois.verisign-grs.com', $r1->getRespondingServer());
+
+    $r2 = new WhoisResponse(
+        server: 'whois.verisign-grs.com', query: 'example.com', rawText: 'test',
+        referralServer: 'whois.iana.org',
+    );
+    assertSame('whois.iana.org', $r2->getRespondingServer());
 };
 
 // ========================
