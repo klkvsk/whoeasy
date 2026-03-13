@@ -29,7 +29,7 @@
 
 - [x] 5.1 Single-Protocol Query Modes (WhoisOnly + result mapping from parser data to Result VOs)
 - [x] 5.2 Prefer Modes & Fallback - PreferWhois/PreferRdap now try primary then fallback; RdapOnly implemented
-- [ ] 5.3 Both Mode & Result Merging
+- [x] 5.3 Both Mode & Result Merging - ResultMerger with RDAP-primary strategy; queryBoth runs both protocols with graceful degradation
 
 ## Epic 6: Comprehensive Test Fixtures
 

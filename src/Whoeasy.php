@@ -16,12 +16,14 @@ use Klkvsk\Whoeasy\Parser\WhoisParser;
 use Klkvsk\Whoeasy\Result\HopResponses;
 use Klkvsk\Whoeasy\Result\QueryResult;
 use Klkvsk\Whoeasy\Result\ResultMapper;
+use Klkvsk\Whoeasy\Result\ResultMerger;
 
 class Whoeasy
 {
     protected Config $config;
     protected Whois $whois;
     protected ResultMapper $resultMapper;
+    protected ResultMerger $resultMerger;
 
     public static function create(?Config $config = null): static
     {
@@ -33,6 +35,7 @@ class Whoeasy
         $this->config = $config ?? new Config();
         $this->whois = new Whois();
         $this->resultMapper = new ResultMapper();
+        $this->resultMerger = new ResultMerger();
     }
 
     public function query(string $input, ?QueryOptions $options = null): QueryResult
@@ -45,9 +48,7 @@ class Whoeasy
             QueryMode::PreferWhois => $this->queryPreferWhois($input, $options),
             QueryMode::PreferRdap => $this->queryPreferRdap($input, $options),
             QueryMode::RdapOnly => $this->queryRdapOnly($input, $options),
-            QueryMode::Both => throw new UnsupportedQueryException(
-                'Both mode is not yet implemented. Use WhoisOnly or PreferWhois mode.'
-            ),
+            QueryMode::Both => $this->queryBoth($input, $options),
         };
     }
 
@@ -110,6 +111,56 @@ class Whoeasy
             query: $input,
             result: $structured,
             rdap: new HopResponses(auth: $rawResponse),
+        );
+    }
+
+    /**
+     * Query using both WHOIS and RDAP, then merge results.
+     * Both protocols are attempted; if one fails, the other's result is used alone.
+     */
+    protected function queryBoth(string $input, QueryOptions $options): QueryResult
+    {
+        $whoisResult = null;
+        $whoisRaw = null;
+        $rdapResult = null;
+        $rdapRaw = null;
+
+        // Try WHOIS
+        try {
+            $answer = $this->executeWhoisQuery($input, $options);
+            $whoisRaw = new HopResponses(auth: $this->resultMapper->mapRawResponse($answer));
+            $whoisResult = $this->resultMapper->mapWhoisAnswer($answer);
+        } catch (ClientException) {
+            // WHOIS failed, continue with RDAP only
+        }
+
+        // Try RDAP
+        try {
+            $queryType = RdapClient::guessQueryType($input);
+            $rdapResponse = $this->executeRdapQuery($input, $options);
+            $rdapRaw = new HopResponses(auth: $this->resultMapper->mapRdapRawResponse($rdapResponse));
+            $rdapResult = $this->resultMapper->mapRdapResponse($rdapResponse, $queryType);
+        } catch (ClientException) {
+            // RDAP failed, continue with WHOIS only
+        }
+
+        // At least one must succeed
+        if ($whoisResult === null && $rdapResult === null) {
+            throw new ClientException('Both WHOIS and RDAP queries failed for: ' . $input);
+        }
+
+        // Merge results if both available, otherwise use whichever succeeded
+        if ($rdapResult !== null && $whoisResult !== null) {
+            $merged = $this->resultMerger->merge($rdapResult, $whoisResult);
+        } else {
+            $merged = $rdapResult ?? $whoisResult;
+        }
+
+        return new QueryResult(
+            query: $input,
+            result: $merged,
+            rdap: $rdapRaw,
+            whois: $whoisRaw,
         );
     }
 
