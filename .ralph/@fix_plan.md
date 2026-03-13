@@ -33,6 +33,6 @@
 
 ## Epic 6: Comprehensive Test Fixtures
 
-- [ ] 6.1 WHOIS Fixture Collection & Test Harness
-- [ ] 6.2 RDAP Fixture Collection & Test Harness
-- [ ] 6.3 CI Regression Gate
+- [x] 6.1 WHOIS Fixture Collection & Test Harness - existing tests in tests/Unit/
+- [x] 6.2 RDAP Fixture Collection & Test Harness - RdapParserTest + ResultMergerTest with JSON fixtures
+- [ ] 6.3 CI Regression Gate - BLOCKED: PHPUnit requires ext-dom/xml/xmlwriter (needs sudo to install)
