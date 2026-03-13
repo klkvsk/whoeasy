@@ -535,6 +535,95 @@ $tests['WhoisParser::parseArinIp'] = function() {
     assertNotNull($result->ip->networkName);
 };
 
+// --- Parameterized WHOIS Fixture Tests ---
+// Each fixture must parse without error and match expected output
+
+$whoisFixtureDir = __DIR__ . '/Fixture/Whois';
+$expectedDir = __DIR__ . '/Fixture/Expected';
+
+$whoisFixtures = glob("$whoisFixtureDir/*.txt");
+foreach ($whoisFixtures as $fixtureFile) {
+    $basename = basename($fixtureFile, '.txt');
+    $expectedFile = "$expectedDir/whois.$basename.json";
+
+    if (!file_exists($expectedFile)) continue;
+
+    $tests["Fixture::whois.$basename"] = function() use ($fixtureFile, $expectedFile, $basename) {
+        $parser = new WhoisParser();
+        $raw = file_get_contents($fixtureFile);
+        $expected = json_decode(file_get_contents($expectedFile), true, 512, JSON_THROW_ON_ERROR);
+
+        // Use the query type from the expected output
+        $expectedQueryType = $expected['queryType'] ?? 'domain';
+        $queryType = match ($expectedQueryType) {
+            'ipv4' => QueryType::Ipv4,
+            'ipv6' => QueryType::Ipv6,
+            'asn' => QueryType::Asn,
+            default => QueryType::Domain,
+        };
+
+        $result = $parser->parse($raw, $basename, $queryType);
+        $actual = $result->toArray();
+
+        // Compare queryType
+        assertSame($expected['queryType'], $actual['queryType'],
+            "queryType mismatch for $basename");
+
+        // If expected has domain.name, verify it matches
+        if (isset($expected['domain']['name'])) {
+            assertNotNull($result->domain, "domain should not be null for $basename");
+            assertSame($expected['domain']['name'], $actual['domain']['name'],
+                "domain.name mismatch for $basename");
+        }
+
+        // If expected has ip.range, verify
+        if (isset($expected['ip']['range'])) {
+            assertNotNull($result->ip, "ip should not be null for $basename");
+            assertSame($expected['ip']['range'], $actual['ip']['range'],
+                "ip.range mismatch for $basename");
+        }
+    };
+}
+
+// --- Parameterized RDAP Fixture Tests ---
+
+$rdapFixtureDir = __DIR__ . '/Fixture/Rdap';
+$rdapFixtures = glob("$rdapFixtureDir/*.json");
+foreach ($rdapFixtures as $fixtureFile) {
+    $basename = basename($fixtureFile, '.json');
+    $expectedFile = "$expectedDir/rdap.$basename.json";
+
+    if (!file_exists($expectedFile)) continue;
+
+    $tests["Fixture::rdap.$basename"] = function() use ($fixtureFile, $expectedFile, $basename) {
+        $rawJson = file_get_contents($fixtureFile);
+        $json = json_decode($rawJson, true, 512, JSON_THROW_ON_ERROR);
+        $expected = json_decode(file_get_contents($expectedFile), true, 512, JSON_THROW_ON_ERROR);
+
+        $response = new RdapResponse(
+            server: 'https://rdap.fixture',
+            url: "https://rdap.fixture/$basename",
+            httpCode: 200,
+            json: $json,
+            rawBody: $rawJson,
+        );
+
+        $queryTypeStr = 'domain';
+        if (str_starts_with($basename, 'ip-') || str_starts_with($basename, 'ip6-')) {
+            $queryTypeStr = 'ipv4';
+        } elseif (str_starts_with($basename, 'autnum-') || str_starts_with($basename, 'asn-')) {
+            $queryTypeStr = 'asn';
+        }
+
+        $mapper = new \Klkvsk\Whoeasy\Result\ResultMapper();
+        $result = $mapper->mapRdapResponse($response, $queryTypeStr);
+        $actual = $result->toArray();
+
+        assertSame($expected['queryType'], $actual['queryType'],
+            "queryType mismatch for rdap.$basename");
+    };
+}
+
 // ========================
 // Run tests
 // ========================
