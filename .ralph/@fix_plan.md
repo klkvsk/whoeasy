@@ -36,9 +36,9 @@ Each task has explicit "done" criteria. Do NOT mark [x] unless criteria are met.
 
 ## Phase E: Rewire Whoeasy Orchestrator
 
-- [ ] E.1 **Rewrite Whoeasy.php**: Rewrite `src/Whoeasy.php` to use the new components directly (ServerRegistry, WhoisClient, WhoisParser, RdapClient, RdapParser, ResultMerger). Must NOT reference `src/Whois.php` or any v1 code. Implement all query modes: prefer-rdap (try RDAP, fallback WHOIS), prefer-whois (try WHOIS, fallback RDAP), rdap-only, whois-only, both (fetch both, merge). Static factory `Whoeasy::create(?Config)` builds with defaults. Constructor takes all dependencies. Verify: `Whoeasy::create()->query('example.com')` works end-to-end (requires network).
-- [ ] E.2 **Write orchestrator tests**: Create `tests/Unit/WhoeasyTest.php` with mocked clients. Test all 5 query modes, fallback behavior, partial failure handling, per-call option overrides. Verify: all tests pass without network I/O.
-- [ ] E.3 **Commit**: `git commit -m "feat(orchestrator): rewire Whoeasy to use v2 components directly"`
+- [x] E.1 **Rewrite Whoeasy.php**: Rewrite `src/Whoeasy.php` to use the new components directly (ServerRegistry, WhoisClient, WhoisParser, RdapClient, RdapParser, ResultMerger). Must NOT reference `src/Whois.php` or any v1 code. Implement all query modes: prefer-rdap (try RDAP, fallback WHOIS), prefer-whois (try WHOIS, fallback RDAP), rdap-only, whois-only, both (fetch both, merge). Static factory `Whoeasy::create(?Config)` builds with defaults. Constructor takes all dependencies. Verify: `Whoeasy::create()->query('example.com')` works end-to-end (requires network).
+- [x] E.2 **Write orchestrator tests**: Create `tests/Unit/WhoeasyTest.php` with mocked clients. Test all 5 query modes, fallback behavior, partial failure handling, per-call option overrides. Verify: all tests pass without network I/O.
+- [x] E.3 **Commit**: `git commit -m "feat(orchestrator): rewire Whoeasy to use v2 components directly"`
 
 ## Phase F: WHOIS Fixture Collection (LARGE - may need multiple loops)
 

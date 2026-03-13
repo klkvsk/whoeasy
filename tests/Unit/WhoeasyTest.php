@@ -40,15 +40,6 @@ class WhoeasyTest extends TestCase
         $this->assertSame(30, $whoeasy->getConfig()->rdapTimeout);
     }
 
-    public function testWhoisOnlyThrowsLogicException(): void
-    {
-        $whoeasy = Whoeasy::create();
-        $options = new QueryOptions(mode: QueryMode::WhoisOnly);
-
-        $this->expectException(\LogicException::class);
-        $whoeasy->query('example.com', $options);
-    }
-
     public function testQueryOptionsDefaults(): void
     {
         $options = new QueryOptions();
