@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Result;
 
-use Klkvsk\Whoeasy\Enum\ContactType;
+use Klkvsk\Whoeasy\Parser\Data\ContactType;
 
 readonly class Contact
 {

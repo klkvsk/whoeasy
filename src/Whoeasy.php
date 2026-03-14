@@ -7,11 +7,11 @@ namespace Klkvsk\Whoeasy;
 use Klkvsk\Whoeasy\Client\Rdap\RdapClient;
 use Klkvsk\Whoeasy\Client\Rdap\RdapParser;
 use Klkvsk\Whoeasy\Client\Rdap\RdapResponse;
-use Klkvsk\Whoeasy\Client\WhoisClient;
-use Klkvsk\Whoeasy\Client\WhoisResponse;
+use Klkvsk\Whoeasy\Client\Whois\WhoisClient;
+use Klkvsk\Whoeasy\Client\Whois\WhoisResponse;
 use Klkvsk\Whoeasy\Enum\QueryMode;
 use Klkvsk\Whoeasy\Enum\QueryType;
-use Klkvsk\Whoeasy\Exception\WhoeasyException;
+use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParser;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParserInterface;
 use Klkvsk\Whoeasy\Registry\ServerRegistry;
@@ -85,10 +85,7 @@ class Whoeasy
         $serverInfo = $this->registry->resolve($input);
 
         if (!$serverInfo->hasWhois()) {
-            throw new WhoeasyException(
-                "No WHOIS server available for: $input",
-                query: $input,
-            );
+            throw new ClientException("No WHOIS server available for: $input");
         }
 
         $timeout = $options->timeout ?? $this->config->whoisTimeout;
@@ -120,7 +117,7 @@ class Whoeasy
     {
         try {
             return $this->queryWhoisOnly($input, $options);
-        } catch (WhoeasyException | \Throwable) {
+        } catch (\Throwable) {
             return $this->queryRdapOnly($input, $options);
         }
     }
@@ -139,10 +136,7 @@ class Whoeasy
         $serverInfo = $this->registry->resolve($input);
 
         if (!$serverInfo->hasRdap()) {
-            throw new WhoeasyException(
-                "No RDAP server available for: $input",
-                query: $input,
-            );
+            throw new ClientException("No RDAP server available for: $input");
         }
 
         $rdapClient = new RdapClient(
@@ -203,10 +197,7 @@ class Whoeasy
         }
 
         if ($whoisResult === null && $rdapResult === null) {
-            throw new WhoeasyException(
-                "Both WHOIS and RDAP queries failed for: $input",
-                query: $input,
-            );
+            throw new ClientException("Both WHOIS and RDAP queries failed for: $input");
         }
 
         if ($rdapResult !== null && $whoisResult !== null) {

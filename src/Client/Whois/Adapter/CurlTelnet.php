@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client\Adapter;
+namespace Klkvsk\Whoeasy\Client\Whois\Adapter;
 
-use Klkvsk\Whoeasy\Client\RequestInterface;
+use Klkvsk\Whoeasy\Client\Whois\RequestInterface;
 
 class CurlTelnet extends CurlAbstract implements AdapterInterface
 {

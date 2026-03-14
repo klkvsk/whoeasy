@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy\Parser\Whois;
 
 use Klkvsk\Whoeasy\Enum\QueryType;
-use Klkvsk\Whoeasy\Exception\ParseException;
+use Klkvsk\Whoeasy\Parser\Exception\ParserException;
 use Klkvsk\Whoeasy\Result\StructuredResult;
 
 /**
@@ -20,7 +20,7 @@ interface WhoisParserInterface
      * @param string $serverHostname The WHOIS server that returned this response
      * @param QueryType $queryType The type of query that produced this response
      * @return StructuredResult Parsed structured result (may be partial)
-     * @throws ParseException If the response is completely unparseable
+     * @throws ParserException If the response is completely unparseable
      */
     public function parse(string $rawResponse, string $serverHostname, QueryType $queryType): StructuredResult;
 }

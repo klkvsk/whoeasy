@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client\Proxy;
+namespace Klkvsk\Whoeasy\Client\Whois\Proxy;
 
 interface SocketProxyInterface extends ProxyInterface
 {

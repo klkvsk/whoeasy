@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client\Proxy;
+namespace Klkvsk\Whoeasy\Client\Whois\Proxy;
 
 use Klkvsk\Whoeasy\Client\Exception\ProxyConnectException;
 use Klkvsk\Whoeasy\Exception\InvalidArgumentException;

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client\Adapter;
+namespace Klkvsk\Whoeasy\Client\Whois\Adapter;
 
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
 use Klkvsk\Whoeasy\Client\Exception\CurlRequestException;
-use Klkvsk\Whoeasy\Client\Proxy\Provider\ProxyProviderInterface;
-use Klkvsk\Whoeasy\Client\RequestInterface;
-use Klkvsk\Whoeasy\Client\Response;
-use Klkvsk\Whoeasy\Client\ResponseInterface;
+use Klkvsk\Whoeasy\Client\Whois\Proxy\Provider\ProxyProviderInterface;
+use Klkvsk\Whoeasy\Client\Whois\RequestInterface;
+use Klkvsk\Whoeasy\Client\Whois\Response;
+use Klkvsk\Whoeasy\Client\Whois\ResponseInterface;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
 
 abstract class CurlAbstract implements AdapterInterface

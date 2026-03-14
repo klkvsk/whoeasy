@@ -2,18 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client;
+namespace Klkvsk\Whoeasy\Client\Whois;
 
-use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
+use Klkvsk\Whoeasy\Client\Whois\Proxy\ProxyInterface;
 
 interface RequestInterface
 {
-    public const QUERY_TYPE_DOMAIN = 'domain';
-    public const QUERY_TYPE_NIC_HANDLE = 'handle';
-    public const QUERY_TYPE_IPV4 = 'ipv4';
-    public const QUERY_TYPE_IPV6 = 'ipv6';
-    public const QUERY_TYPE_ASN = 'asn';
-
     public function getServer(): ServerInfoInterface;
 
     public function getQuery(): string;

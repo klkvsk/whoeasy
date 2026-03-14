@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Client\Exception;
 
-use Klkvsk\Whoeasy\Exception\WhoisException;
+use Klkvsk\Whoeasy\Exception\WhoeasyException;
 
-class ProxyConnectException extends ClientConnectException implements WhoisException
+class ProxyConnectException extends ClientConnectException implements WhoeasyException
 {
 
 }

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client\Proxy\Provider;
+namespace Klkvsk\Whoeasy\Client\Whois\Proxy\Provider;
 
-use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
-use Klkvsk\Whoeasy\Client\ServerInfoInterface;
+use Klkvsk\Whoeasy\Client\Whois\Proxy\ProxyInterface;
+use Klkvsk\Whoeasy\Client\Whois\ServerInfoInterface;
 
 interface ProxyProviderInterface
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client;
+namespace Klkvsk\Whoeasy\Client\Whois;
 
 interface ResponseInterface
 {

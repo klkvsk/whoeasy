@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client;
+namespace Klkvsk\Whoeasy\Client\Whois;
 
-use Klkvsk\Whoeasy\Client\Proxy\ProxyInterface;
+use Klkvsk\Whoeasy\Client\Whois\Proxy\ProxyInterface;
+use Klkvsk\Whoeasy\Enum\QueryType;
 use function Klkvsk\Whoeasy\asn2long;
 
 class Request implements RequestInterface
@@ -23,10 +24,10 @@ class Request implements RequestInterface
     )
     {
         $this->queryType = $queryType ?: static::guessQueryType($this->query);
-        if ($this->queryType === self::QUERY_TYPE_DOMAIN) {
+        if ($this->queryType === QueryType::Domain->value) {
             $this->query = rtrim($this->query, '.');
         }
-        if ($this->queryType === self::QUERY_TYPE_ASN) {
+        if ($this->queryType === QueryType::Asn->value) {
             $this->query = 'AS' . asn2long($this->query);
         }
         $this->queryString = $this->server->formatQuery($this->query, $this->queryType);
@@ -34,20 +35,7 @@ class Request implements RequestInterface
 
     public static function guessQueryType(string $query): string
     {
-        if (preg_match('/-[a-z]$/i', $query)) {
-            return self::QUERY_TYPE_NIC_HANDLE;
-        }
-        if (preg_match('/^asn?[0-9]+$/i', $query)) {
-            return self::QUERY_TYPE_ASN;
-        }
-        if (filter_var($query, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-            return self::QUERY_TYPE_IPV4;
-        }
-        if (filter_var($query, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            return self::QUERY_TYPE_IPV6;
-        }
-
-        return self::QUERY_TYPE_DOMAIN;
+        return QueryType::guess($query)->value;
     }
 
     public function getServer(): ServerInfoInterface

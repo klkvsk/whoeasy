@@ -8,7 +8,6 @@ use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
 use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
 use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
-use Klkvsk\Whoeasy\Client\RequestInterface;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
 
 /**
@@ -148,21 +147,29 @@ class RdapClient
             }
 
             if ($httpCode === 404) {
-                throw new NotFoundException("RDAP: nothing found at $url");
+                throw (new NotFoundException("RDAP: nothing found at $url"))
+                    ->withRawBody($body ?: '')
+                    ->withHttpCode($httpCode);
             }
 
             if ($httpCode === 429) {
-                throw new RateLimitException("RDAP rate limit exceeded for $server");
+                throw (new RateLimitException("RDAP rate limit exceeded for $server"))
+                    ->withRawBody($body ?: '')
+                    ->withHttpCode($httpCode);
             }
 
             if ($httpCode < 200 || $httpCode >= 300) {
-                throw new ClientResponseException("RDAP server returned HTTP $httpCode for $url");
+                throw (new ClientResponseException("RDAP server returned HTTP $httpCode for $url"))
+                    ->withRawBody($body ?: '')
+                    ->withHttpCode($httpCode);
             }
 
             $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
             if (!is_array($json)) {
-                throw new ClientResponseException("RDAP: invalid JSON response from $url");
+                throw (new ClientResponseException("RDAP: invalid JSON response from $url"))
+                    ->withRawBody($body ?: '')
+                    ->withHttpCode($httpCode);
             }
 
             return new RdapResponse(
@@ -179,20 +186,4 @@ class RdapClient
         }
     }
 
-    /**
-     * Determine query type from input string (reuses WHOIS logic).
-     */
-    public static function guessQueryType(string $input): string
-    {
-        if (preg_match('/^asn?[0-9]+$/i', $input)) {
-            return RequestInterface::QUERY_TYPE_ASN;
-        }
-        if (filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-            return RequestInterface::QUERY_TYPE_IPV4;
-        }
-        if (filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            return RequestInterface::QUERY_TYPE_IPV6;
-        }
-        return RequestInterface::QUERY_TYPE_DOMAIN;
-    }
 }

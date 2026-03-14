@@ -8,8 +8,7 @@ readonly class DomainInfo
 {
     public function __construct(
         public ?string $name = null,
-        public ?string $registrar = null,
-        public ?Registrar $registrarInfo = null,
+        public ?Registrar $registrar = null,
         public ?string $createdDate = null,
         public ?string $updatedDate = null,
         public ?string $expiresDate = null,
@@ -31,11 +30,7 @@ readonly class DomainInfo
         }
 
         if ($this->registrar !== null) {
-            $data['registrar'] = $this->registrar;
-        }
-
-        if ($this->registrarInfo !== null) {
-            $data['registrarInfo'] = $this->registrarInfo->toArray();
+            $data['registrar'] = $this->registrar->toArray();
         }
 
         if ($this->createdDate !== null) {

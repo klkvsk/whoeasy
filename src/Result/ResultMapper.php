@@ -6,11 +6,10 @@ namespace Klkvsk\Whoeasy\Result;
 
 use Klkvsk\Whoeasy\Client\Rdap\RdapParser;
 use Klkvsk\Whoeasy\Client\Rdap\RdapResponse;
-use Klkvsk\Whoeasy\Client\RequestInterface;
-use Klkvsk\Whoeasy\Enum\ContactType;
 use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Parser\Data\AsnResult;
 use Klkvsk\Whoeasy\Parser\Data\ContactResult;
+use Klkvsk\Whoeasy\Parser\Data\ContactType;
 use Klkvsk\Whoeasy\Parser\Data\DomainResult;
 use Klkvsk\Whoeasy\Parser\Data\IpResult;
 use Klkvsk\Whoeasy\Parser\Data\WhoisAnswer;
@@ -70,21 +69,14 @@ class ResultMapper
 
     private static function mapQueryType(string $queryType): QueryType
     {
-        return match ($queryType) {
-            RequestInterface::QUERY_TYPE_DOMAIN => QueryType::Domain,
-            RequestInterface::QUERY_TYPE_IPV4 => QueryType::Ipv4,
-            RequestInterface::QUERY_TYPE_IPV6 => QueryType::Ipv6,
-            RequestInterface::QUERY_TYPE_ASN => QueryType::Asn,
-            default => QueryType::Domain,
-        };
+        return QueryType::tryFrom($queryType) ?? QueryType::Domain;
     }
 
     private function mapDomain(DomainResult $d): DomainInfo
     {
         return new DomainInfo(
             name: $d->name,
-            registrar: $d->registrar?->name,
-            registrarInfo: $d->registrar !== null ? $this->mapRegistrar($d->registrar) : null,
+            registrar: $d->registrar !== null ? $this->mapRegistrar($d->registrar) : null,
             createdDate: $d->created?->format('Y-m-d H:i:s'),
             updatedDate: $d->changed?->format('Y-m-d H:i:s'),
             expiresDate: $d->expires?->format('Y-m-d H:i:s'),

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Result;
 
-use Klkvsk\Whoeasy\Enum\ContactType;
-
 /**
  * Merges two StructuredResult objects from WHOIS and RDAP into one.
  *
@@ -40,8 +38,7 @@ class ResultMerger
 
         return new DomainInfo(
             name: $rdap->name ?? $whois->name,
-            registrar: $rdap->registrar ?? $whois->registrar,
-            registrarInfo: $this->mergeRegistrar($rdap->registrarInfo, $whois->registrarInfo),
+            registrar: $this->mergeRegistrar($rdap->registrar, $whois->registrar),
             createdDate: $rdap->createdDate ?? $whois->createdDate,
             updatedDate: $rdap->updatedDate ?? $whois->updatedDate,
             expiresDate: $rdap->expiresDate ?? $whois->expiresDate,

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Client\Registry;
 
-use Klkvsk\Whoeasy\Client\ServerInfoInterface;
+use Klkvsk\Whoeasy\Client\Whois\ServerInfoInterface;
 
 interface ServerRegistryInterface
 {

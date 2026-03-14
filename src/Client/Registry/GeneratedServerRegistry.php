@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Client\Registry;
 
-use Klkvsk\Whoeasy\Client\Request;
-use Klkvsk\Whoeasy\Client\RequestInterface;
-use Klkvsk\Whoeasy\Client\ServerInfo;
-use Klkvsk\Whoeasy\Client\ServerInfoInterface;
+use Klkvsk\Whoeasy\Client\Whois\ServerInfo;
+use Klkvsk\Whoeasy\Client\Whois\ServerInfoInterface;
+use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
 use function Klkvsk\Whoeasy\asn2long;
 use function Klkvsk\Whoeasy\ip6prefix2long;
@@ -35,13 +34,13 @@ class GeneratedServerRegistry implements ServerRegistryInterface
 
     public function findByQuery(string $query, ?string $queryType = null): ?ServerInfoInterface
     {
-        $queryType ??= Request::guessQueryType($query);
+        $queryType ??= QueryType::guess($query)->value;
 
         return match ($queryType) {
-            RequestInterface::QUERY_TYPE_DOMAIN => $this->findByDomain($query),
-            RequestInterface::QUERY_TYPE_IPV4   => $this->findByIpv4($query),
-            RequestInterface::QUERY_TYPE_IPV6   => $this->findByIpv6($query),
-            RequestInterface::QUERY_TYPE_ASN    => $this->findByAsn($query),
+            QueryType::Domain->value => $this->findByDomain($query),
+            QueryType::Ipv4->value   => $this->findByIpv4($query),
+            QueryType::Ipv6->value   => $this->findByIpv6($query),
+            QueryType::Asn->value    => $this->findByAsn($query),
             default                             => throw new InvalidArgumentException($queryType)
         };
     }

@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Client\Exception;
 
+use Klkvsk\Whoeasy\Exception\RetryableException;
+use Klkvsk\Whoeasy\Exception\WhoeasyException;
 
-
-use Klkvsk\Whoeasy\Exception\WhoisException;
-
-class RateLimitException extends ClientResponseException implements WhoisException
+class RateLimitException extends ClientResponseException implements WhoeasyException, RetryableException
 {
-
 }

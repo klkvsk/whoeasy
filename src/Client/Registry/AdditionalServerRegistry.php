@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy\Client\Registry;
 
 use Klkvsk\Whoeasy\Client\Exception\NotScrapeableException;
-use Klkvsk\Whoeasy\Client\Request;
-use Klkvsk\Whoeasy\Client\RequestInterface;
-use Klkvsk\Whoeasy\Client\ServerInfo;
-use Klkvsk\Whoeasy\Client\ServerInfoInterface;
+use Klkvsk\Whoeasy\Client\Whois\ServerInfo;
+use Klkvsk\Whoeasy\Client\Whois\ServerInfoInterface;
+use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
 
 class AdditionalServerRegistry implements ServerRegistryInterface
 {
     public function findByQuery(string $query, ?string $queryType = null): ?ServerInfoInterface
     {
-        $queryType ??= Request::guessQueryType($query);
+        $queryType ??= QueryType::guess($query)->value;
 
         return match (true) {
-            $queryType == RequestInterface::QUERY_TYPE_DOMAIN && str_ends_with($query, '.vn')
+            $queryType == QueryType::Domain->value && str_ends_with($query, '.vn')
             => $this->findServer('www.vnnic.vn'),
 
             default
@@ -33,46 +32,46 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             'www.dnsbelgium.be' => new ServerInfo(
                 'https://api.dnsbelgium.be',
                 [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "GET /whois/registration/%s",
+                    QueryType::Domain->value => "GET /whois/registration/%s",
                 ]
             ),
             'whois.arin.net'    => new ServerInfo(
                 'whois://whois.arin.net',
                 [
-                    RequestInterface::QUERY_TYPE_IPV4 => 'n + %s',
-                    RequestInterface::QUERY_TYPE_IPV6 => 'n + %s',
+                    QueryType::Ipv4->value => 'n + %s',
+                    QueryType::Ipv6->value => 'n + %s',
                 ]
             ),
             'whois.denic.de'    => new ServerInfo(
                 'whois://whois.denic.de',
                 [
-                    RequestInterface::QUERY_TYPE_DOMAIN => '-T dn %s',
+                    QueryType::Domain->value => '-T dn %s',
                 ]
             ),
             "www.vnnic.vn"      => new ServerInfo(
                 // not official, but works without captcha
                 "https://whois.net.vn",
                 [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "GET /whois.php?domain=%s&act=getwhois",
+                    QueryType::Domain->value => "GET /whois.php?domain=%s&act=getwhois",
                 ]
             ),
             "www.tonic.to" => new ServerInfo(
                 "https://www.tonic.to/",
                 [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "GET /whois?%s",
+                    QueryType::Domain->value => "GET /whois?%s",
                 ]
             ),
             "whois.nic.ch" => new ServerInfo(
                 "https://rdap.nic.ch",
                 [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "GET /domain/%s",
+                    QueryType::Domain->value => "GET /domain/%s",
                 ],
                 answerProcessor: static::rdapToWhois(...),
             ),
             "whois.dot.ph" => new ServerInfo(
                 "https://whois.dot.ph/",
                 [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "GET /?search=%s",
+                    QueryType::Domain->value => "GET /?search=%s",
                 ],
                 answerProcessor: function ($data) {
                     if (str_contains($data, 'Domain is available.')) {
@@ -85,7 +84,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             "www.nic.pa" => new ServerInfo(
                 "http://www.nic.pa/",
                 [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "GET /en/whois/dominio/%s",
+                    QueryType::Domain->value => "GET /en/whois/dominio/%s",
                 ],
                 answerProcessor: function ($data) {
                     if (str_contains($data, 'The domain doesn\'t exist')) {
@@ -112,7 +111,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             "www.innoview.gr" => new ServerInfo(
                 "https://www.innoview.gr",
                 [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "POST /members/whoisdomain.php whoisdomainname=%s",
+                    QueryType::Domain->value => "POST /members/whoisdomain.php whoisdomainname=%s",
                 ],
                 answerProcessor: function ($data) {
                     if (str_contains($data, 'does not appear to be registered yet')) {
@@ -131,7 +130,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             "nic.com.uy" => new ServerInfo(
                 'https://nic.com.uy',
                 formats: [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "NONE only-web",
+                    QueryType::Domain->value => "NONE only-web",
                 ],
                 answerProcessor: function ($data) {
                     throw new NotScrapeableException("use https://nic.com.uy/v2/consulta-whois");
@@ -141,7 +140,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             "www.dominios.es" => new ServerInfo(
                 'https://nic.es',
                 formats: [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "NONE only-web",
+                    QueryType::Domain->value => "NONE only-web",
                 ],
                 answerProcessor: function ($data) {
                     throw new NotScrapeableException("use https://nic.es/sgnd/dominio/publicDetalleDominio.action");
@@ -151,7 +150,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             "www.nic.tt" => new ServerInfo(
                 'https://www.nic.tt',
                 formats: [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "POST /cgi-bin/search.pl name=%s",
+                    QueryType::Domain->value => "POST /cgi-bin/search.pl name=%s",
                 ],
                 answerProcessor: function ($data) {
                     if (!extension_loaded('dom')) {
@@ -185,7 +184,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             "www.nic.tj" => new ServerInfo(
                 'http://www.nic.tj',
                 formats: [
-                    RequestInterface::QUERY_TYPE_DOMAIN => fn ($q) => "GET /cgi/whois2?domain=" . preg_replace('/\.tj$/', '', $q),
+                    QueryType::Domain->value => fn ($q) => "GET /cgi/whois2?domain=" . preg_replace('/\.tj$/', '', $q),
                 ],
                 answerProcessor: function ($data) {
                     if (!extension_loaded('dom')) {
@@ -250,7 +249,7 @@ class AdditionalServerRegistry implements ServerRegistryInterface
             "whois.jprs.jp" => new ServerInfo(
                 "whois://whois.jprs.jp",
                 [
-                    RequestInterface::QUERY_TYPE_DOMAIN => "%s/e",
+                    QueryType::Domain->value => "%s/e",
                 ],
             ),
 

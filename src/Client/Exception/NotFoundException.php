@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy\Client\Exception;
 
 
-use Klkvsk\Whoeasy\Exception\WhoisException;
+use Klkvsk\Whoeasy\Exception\WhoeasyException;
 
-class NotFoundException extends ClientResponseException implements WhoisException
+class NotFoundException extends ClientResponseException implements WhoeasyException
 {
 
 }

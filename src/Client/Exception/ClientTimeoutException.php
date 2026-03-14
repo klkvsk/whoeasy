@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Client\Exception;
 
-use Klkvsk\Whoeasy\Exception\WhoisException;
+use Klkvsk\Whoeasy\Exception\WhoeasyException;
 
-class ClientTimeoutException extends ClientRequestException implements WhoisException
+class ClientTimeoutException extends ClientNetworkException implements WhoeasyException
 {
 }

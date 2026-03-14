@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Parser\Whois;
 
-use Klkvsk\Whoeasy\Enum\ContactType;
 use Klkvsk\Whoeasy\Enum\QueryType;
+use Klkvsk\Whoeasy\Parser\Data\ContactType;
 use Klkvsk\Whoeasy\Result\AsnInfo;
 use Klkvsk\Whoeasy\Result\Contact;
 use Klkvsk\Whoeasy\Result\DomainInfo;
@@ -246,8 +246,7 @@ final class WhoisParser implements WhoisParserInterface
             queryType: QueryType::Domain,
             domain: new DomainInfo(
                 name: $domainName,
-                registrar: $registrarName,
-                registrarInfo: $registrar,
+                registrar: $registrar,
                 createdDate: $createdDate,
                 updatedDate: $updatedDate,
                 expiresDate: $expiresDate,

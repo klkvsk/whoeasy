@@ -2,12 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client;
+namespace Klkvsk\Whoeasy\Client\Whois;
 
-use Klkvsk\Whoeasy\Exception\ConnectionException;
-use Klkvsk\Whoeasy\Exception\RateLimitException;
-use Klkvsk\Whoeasy\Exception\ServerNotFoundException;
-use Klkvsk\Whoeasy\Exception\TimeoutException;
+use Klkvsk\Whoeasy\Client\Exception\ClientConnectException;
+use Klkvsk\Whoeasy\Client\Exception\ClientTimeoutException;
 
 /**
  * WHOIS protocol client using TCP:43 stream sockets.
@@ -33,8 +31,8 @@ final class WhoisClient
      * @param int|null $timeout Override timeout for this request
      * @return string Raw WHOIS response text
      *
-     * @throws ConnectionException If connection to the server fails
-     * @throws TimeoutException If the connection or read times out
+     * @throws ClientConnectException If connection to the server fails
+     * @throws ClientTimeoutException If the connection or read times out
      */
     public function query(string $server, string $query, ?int $timeout = null): string
     {
@@ -55,11 +53,9 @@ final class WhoisClient
             $queryLine = $query . "\r\n";
             $written = @fwrite($socket, $queryLine);
             if ($written === false || $written !== strlen($queryLine)) {
-                throw new ConnectionException(
-                    "Failed to send query to $server",
-                    server: $server,
-                    query: $query,
-                );
+                throw (new ClientConnectException("Failed to send query to $server"))
+                    ->withServer($server)
+                    ->withQuery($query);
             }
 
             // Read response
@@ -69,12 +65,10 @@ final class WhoisClient
                 if ($chunk === false) {
                     $info = stream_get_meta_data($socket);
                     if ($info['timed_out'] ?? false) {
-                        throw new TimeoutException(
-                            "Read timeout from $server after {$timeout}s",
-                            server: $server,
-                            query: $query,
-                            rawResponse: $response,
-                        );
+                        throw (new ClientTimeoutException("Read timeout from $server after {$timeout}s"))
+                            ->withServer($server)
+                            ->withQuery($query)
+                            ->withRawBody($response);
                     }
                     break;
                 }
@@ -83,12 +77,10 @@ final class WhoisClient
                 // Check for timeout during read
                 $info = stream_get_meta_data($socket);
                 if ($info['timed_out'] ?? false) {
-                    throw new TimeoutException(
-                        "Read timeout from $server after {$timeout}s",
-                        server: $server,
-                        query: $query,
-                        rawResponse: $response,
-                    );
+                    throw (new ClientTimeoutException("Read timeout from $server after {$timeout}s"))
+                        ->withServer($server)
+                        ->withQuery($query)
+                        ->withRawBody($response);
                 }
             }
         } finally {
@@ -278,15 +270,11 @@ final class WhoisClient
 
         if ($socket === false) {
             if ($errno === 110 || str_contains(strtolower($errstr), 'timed out')) {
-                throw new TimeoutException(
-                    "Connection timeout to $server:$port after {$timeout}s",
-                    server: $server,
-                );
+                throw (new ClientTimeoutException("Connection timeout to $server:$port after {$timeout}s"))
+                    ->withServer($server);
             }
-            throw new ConnectionException(
-                "Failed to connect to $server:$port: [$errno] $errstr",
-                server: $server,
-            );
+            throw (new ClientConnectException("Failed to connect to $server:$port: [$errno] $errstr"))
+                ->withServer($server);
         }
 
         // Set stream timeout for reads

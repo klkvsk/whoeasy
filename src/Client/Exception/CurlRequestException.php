@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Client\Exception;
 
-use Klkvsk\Whoeasy\Exception\WhoisException;
+use Klkvsk\Whoeasy\Exception\WhoeasyException;
 
-class CurlRequestException extends ClientRequestException implements WhoisException
+class CurlRequestException extends ClientRequestException implements WhoeasyException
 {
     public function __construct(
         string            $message = "",
