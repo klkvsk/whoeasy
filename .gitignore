@@ -2,3 +2,10 @@
 composer.lock
 vendor
 .idea
+tmp
+.ralph
+_bmad-output/
+_bmad
+.claude
+./composer
+./composer.phar

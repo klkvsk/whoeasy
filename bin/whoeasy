@@ -2,7 +2,7 @@
 <?php
 require $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
 
-use Klkvsk\Whoeasy\Client\Proxy\Proxy;
+use Klkvsk\Whoeasy\Client\Whois\Proxy\Proxy;
 use Klkvsk\Whoeasy\Parser\Data\WhoisAnswer;
 use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result as NovutecResult;
 use Klkvsk\Whoeasy\Whois;
