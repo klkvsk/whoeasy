@@ -1,0 +1,42 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.extraspace",
+        "registrar": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2016-07-28 21:37:57",
+        "updatedDate": "2025-09-11 21:38:26",
+        "expiresDate": "2026-07-28 21:37:57",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a0.nic.extraspace"
+            },
+            {
+                "hostname": "b0.nic.extraspace"
+            },
+            {
+                "hostname": "c0.nic.extraspace"
+            },
+            {
+                "hostname": "a2.nic.extraspace"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

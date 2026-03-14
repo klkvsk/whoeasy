@@ -1,0 +1,76 @@
+Domain Name: nic.amsterdam
+Registry Domain ID: DNM_100037-SIDN
+Registrar WHOIS Server: whois.nic.amsterdam
+Registrar URL: sidn.nl
+Updated Date: 2025-11-28T00:15:00Z
+Creation Date: 2014-11-28T16:19:59Z
+Registry Expiry Date: 2026-11-28T16:19:59Z
+Registrar: Stichting Internet Domeinregistratie Nederland (Operationeel)
+Registrar IANA ID: 9999
+Registrar Abuse Contact Email: support@sidn.nl
+Registrar Abuse Contact Phone: +31.0263525555
+Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+Registry Registrant ID: REDACTED FOR PRIVACY
+Registrant Name: REDACTED FOR PRIVACY
+Registrant Organization:
+Registrant Street: REDACTED FOR PRIVACY
+Registrant City: REDACTED FOR PRIVACY
+Registrant State/Province:
+Registrant Postal Code: REDACTED FOR PRIVACY
+Registrant Country: NL
+Registrant Phone: REDACTED FOR PRIVACY
+Registrant Phone Ext:
+Registrant Fax:
+Registrant Fax Ext:
+Registrant Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant of the queried domain name
+Registry Admin ID: REDACTED FOR PRIVACY
+Admin Name: REDACTED FOR PRIVACY
+Admin Organization: REDACTED FOR PRIVACY
+Admin Street: REDACTED FOR PRIVACY
+Admin City: REDACTED FOR PRIVACY
+Admin State/Province:
+Admin Postal Code: REDACTED FOR PRIVACY
+Admin Country: REDACTED FOR PRIVACY
+Admin Phone: REDACTED FOR PRIVACY
+Admin Phone Ext:
+Admin Fax:
+Admin Fax Ext:
+Admin Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant of the queried domain name
+Registry Tech ID: REDACTED FOR PRIVACY
+Tech Name: REDACTED FOR PRIVACY
+Tech Organization:
+Tech Street: REDACTED FOR PRIVACY
+Tech City: REDACTED FOR PRIVACY
+Tech State/Province:
+Tech Postal Code: REDACTED FOR PRIVACY
+Tech Country: REDACTED FOR PRIVACY
+Tech Phone: REDACTED FOR PRIVACY
+Tech Phone Ext:
+Tech Fax:
+Tech Fax Ext:
+Tech Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant of the queried domain name
+Name Server: ns3.sidn.nl
+Name Server: ns4.sidn.nl
+Name Server: ns5.sidn.nl
+DNSSEC: signedDelegation
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-13T19:55:50Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp.
+
+Record maintained by: SIDN BV
+
+Terms of use: No part of this publication may be reproduced,
+published, stored in a retrieval system, or transmitted, in any form
+or by any means, electronic, mechanical, recording, or otherwise,
+without prior permission of the City of Amsterdam. These restrictions
+apply equally to registrars, except in that reproductions and
+publications are permitted insofar as they are reasonable, necessary
+and solely in the context of the registration activities referred to
+in the Registrar Agreement. Any use of this material for advertising,
+targeting commercial offers or similar activities is explicitly
+forbidden and liable to result in legal action. Anyone who is aware or
+suspects that such activities are taking place is asked to inform the
+City of Amsterdam.

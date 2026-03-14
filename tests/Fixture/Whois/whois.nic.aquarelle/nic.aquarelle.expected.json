@@ -1,0 +1,53 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "NIC.AQUARELLE",
+        "registrar": {
+            "name": "Managed by Safebrands",
+            "url": "http://www,safebrands.com",
+            "abuseEmail": "clientele@safebrands.com",
+            "abusePhone": "+33.488662222"
+        },
+        "createdDate": "2014-08-19 13:24:51",
+        "updatedDate": "2025-08-13 00:06:19",
+        "expiresDate": "2026-08-19 23:59:59",
+        "status": [
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "c.nic.aquarelle"
+            },
+            {
+                "hostname": "d.nic.aquarelle"
+            },
+            {
+                "hostname": "b.nic.aquarelle"
+            },
+            {
+                "hostname": "a.nic.aquarelle"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "organization": "Managed by Safebrands",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "address": "FR"
+            },
+            {
+                "type": "tech",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name."
+            },
+            {
+                "type": "abuse",
+                "email": "clientele@safebrands.com",
+                "phone": "+33.488662222"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

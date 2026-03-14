@@ -1,0 +1,38 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.baseball",
+        "registrar": {
+            "name": "MLB Advanced Media DH, LLC"
+        },
+        "createdDate": "2013-08-09 23:22:37",
+        "updatedDate": "2025-10-22 13:39:36",
+        "expiresDate": "2026-08-08 23:59:59",
+        "status": [
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.dns.nic.baseball"
+            },
+            {
+                "hostname": "ns2.dns.nic.baseball"
+            },
+            {
+                "hostname": "ns3.dns.nic.baseball"
+            },
+            {
+                "hostname": "ns4.dns.nic.baseball"
+            },
+            {
+                "hostname": "ns5.dns.nic.baseball"
+            },
+            {
+                "hostname": "ns6.dns.nic.baseball"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

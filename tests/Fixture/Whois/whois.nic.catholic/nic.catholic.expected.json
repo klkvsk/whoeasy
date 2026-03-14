@@ -1,0 +1,49 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.catholic",
+        "registrar": {
+            "name": "Pontificium Consilium de Comunicationibus Socialibus (PCCS) (Pontifical Council for Social Communication)",
+            "url": "Not Applicable"
+        },
+        "createdDate": "2015-02-17 01:11:29",
+        "updatedDate": "2025-10-13 17:21:07",
+        "expiresDate": "2026-02-17 01:11:29",
+        "status": [
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "autoRenewPeriod https://icann.org/epp#autoRenewPeriod"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.catholic"
+            },
+            {
+                "hostname": "b.nic.catholic"
+            },
+            {
+                "hostname": "c.nic.catholic"
+            },
+            {
+                "hostname": "d.nic.catholic"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "DotCatholic Office",
+                "organization": "Secretariat for Communications",
+                "email": "info.catholictld@spc.va",
+                "address": "va"
+            },
+            {
+                "type": "tech",
+                "name": "DotCatholic Office",
+                "organization": "Secretariat for Communications",
+                "email": "info.catholictld@spc.va"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

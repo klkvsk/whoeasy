@@ -1,0 +1,70 @@
+Domain Name: nic.citic
+Registry Domain ID: D20140501G10001G_08729530-citic
+Registrar WHOIS Server: whois.gtld.knet.cn
+Registrar URL: http://www.zdns.cn/
+Updated Date: 2025-09-10T10:51:17Z
+Creation Date: 2014-05-01T08:38:26Z
+Registry Expiry Date: 2034-05-01T08:38:26Z
+Registrar: zdns
+Registrar IANA ID: 1723
+Registrar Abuse Contact Email: tech-support@zdns.cn
+Registrar Abuse Contact Phone: +86.01058813521
+Domain Status: ok https://icann.org/epp#OK
+Registry Registrant ID: C20250910C_01986127-citic
+Registrant Name: JiXiaoHui
+Registrant Organization: China Citic Group Co., Ltd.
+Registrant Street:  CITIC Building, Building 1, No. 10, Guanghua Road, Chaoyang District, Beijing
+Registrant City: BeiJing
+Registrant State/Province: BeiJing
+Registrant Postal Code: 100020
+Registrant Country: CN
+Registrant Phone: +86.01059661088
+Registrant Phone Ext: 
+Registrant Fax: +86.01059661088
+Registrant Fax Ext: 
+Registrant Email: jixh@citic.com
+Registry Admin ID: C20140312C_00001284-citic
+Admin Name: 中国中信集团有限公司
+Admin Organization: Operation and Maintenance Engineer
+Admin Street:  Rm.1006 Capital Mansion, 6 Xinyuannanlu, Chaoyang District
+Admin City: Beijing
+Admin State/Province: Beijing
+Admin Postal Code: 100004
+Admin Country: CN
+Admin Phone: +86.01059661035
+Admin Phone Ext: 
+Admin Fax: +86.01059660035
+Admin Fax Ext: 
+Admin Email: yangqf@citic.com
+Registry Tech ID: C20140312C_00001282-citic
+Tech Name: Ji XiaoHui
+Tech Organization: Network & Equipment Division
+Tech Street:  intstreet1new
+Tech Street:  Rm.1006 Capital Mansion, 6 Xinyuannanlu, Chaoyang District 
+Tech City: Beijing
+Tech State/Province: Beijing
+Tech Postal Code: 100004
+Tech Country: CN
+Tech Phone: +86.01059661016
+Tech Phone Ext: 
+Tech Fax: +86.01059660035
+Tech Fax Ext: 
+Tech Email: jixh@citic.com
+Name Server: ins1.zdnscloud.com
+Name Server: cns1.zdnscloud.net
+Name Server: vns1.zdnscloud.biz
+Name Server: dns1.zdnscloud.info
+DNSSEC: unsigned
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-13T20:05:18Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+NOTICE: The expiration date displayed in this record is the date the
+registrar's sponsorship of the domain name registration in the registry is
+currently set to expire. This date does not necessarily reflect the expiration
+date of the domain name registrant's agreement with the sponsoring
+registrar.  Users may consult the sponsoring registrar's Whois database to
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: You have no right to access our WHOIS database via high capacity and automated processing programs, unless for the need of rational and necessary domain name registrations and updates. The WHOIS database provided by CITIC TLD Registry assists you to obtain information about domain name registration records, and is only for your reference. CITIC TLD Registry does not guarantee the accuracy, sufficiency and integrity of the data, and is not liable for of errors, omissions, defects, delay or interruption of the data. CITIC TLD will not responsible for any compensation caused by using the data. Once a query is submitted, it means you agree that you use the data only for legitimate purposes and that under no circumstances will you use this Data to: (1) spreading unsolicited emails, calls and faxes for marketing; or (2) allowing high capacity and automated processing programs to run in any computer systems of CITIC TLD Registry. Any compilation, repackaging, spreading and other use of the data shall have the prior written consent from CITIC TLD Registry. Copy, modify, reformat, rebuild, reconstitute, transfer, redistribute or use of the WHOIS data and information in all circumstancesare strictly prohibited. All data and information are provided in "original form", and are only used to offer reference information, not for trade purposes or giving specific suggestions. You agree not to use highly automated electronic processing programs to access the WHOIS database, unless you have to register certain domain name or modify current registration in a reasonable manner. CITIC TLD Registry reserves the right to restrict your access to the WHOIS database to ensure the stability of operations. In violations of above terms, CITIC TLD Registry may restrict or terminate your access to the WHOIS database. CITIC TLD Registry reserves the right to modify above terms at any time (without prior notice). Registration data only contains ".citic" and ".中信(xn--fiq64b)" domain names and registrars.

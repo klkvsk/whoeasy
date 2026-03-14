@@ -1,0 +1,25 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.cz",
+        "registrar": {
+            "name": "REG-CZNIC"
+        },
+        "createdDate": "1997-10-30 01:00:00",
+        "updatedDate": "2020-11-17 14:25:52",
+        "status": [
+            "Sponsoring registrar change forbidden"
+        ],
+        "nameservers": [
+            {
+                "hostname": "d.ns.nic.cz"
+            },
+            {
+                "hostname": "a.ns.nic.cz"
+            },
+            {
+                "hostname": "b.ns.nic.cz"
+            }
+        ]
+    }
+}

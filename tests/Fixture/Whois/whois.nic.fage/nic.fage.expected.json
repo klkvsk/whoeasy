@@ -1,0 +1,42 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.fage",
+        "registrar": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2015-11-12 16:27:27",
+        "updatedDate": "2025-12-27 16:28:15",
+        "expiresDate": "2026-11-12 16:27:27",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a0.nic.fage"
+            },
+            {
+                "hostname": "a2.nic.fage"
+            },
+            {
+                "hostname": "b0.nic.fage"
+            },
+            {
+                "hostname": "c0.nic.fage"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

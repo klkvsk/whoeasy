@@ -1,0 +1,79 @@
+Domain Name: nic.dubai
+Registry Domain ID: D3899EB0C026848158E7FF310CDC6D399-ARI
+Registrar WHOIS Server:
+Registrar URL:
+Updated Date: 2025-04-16T04:58:19Z
+Creation Date: 2015-03-02T04:58:19Z
+Registry Expiry Date: 2026-03-02T04:58:19Z
+Registrar: DubaieGov Registry Operator
+Registrar IANA ID: 9999
+Registrar Abuse Contact Email:
+Registrar Abuse Contact Phone:
+Domain Status: ok http://www.icann.org/epp#OK
+Domain Status: autoRenewPeriod http://www.icann.org/epp#autoRenewPeriod
+Registry Registrant ID: C1D26B692B2124E7EBC43AEBBC067FADF-NSR
+Registrant Name: Telecommunication Regulatory Authority
+Registrant Organization:
+Registrant Street:
+Registrant Street:
+Registrant Street:
+Registrant City: Dubai
+Registrant State/Province:
+Registrant Postal Code:
+Registrant Country: ae
+Registrant Phone:
+Registrant Phone Ext:
+Registrant Fax:
+Registrant Fax Ext:
+Registrant Email: gtldsupport@aeda.ae
+Registry Admin ID: CAC4670B4697442CDBFF5C52038744ED5-NSR
+Admin Name: .ae Domain Administration
+Admin Organization:
+Admin Street:
+Admin Street:
+Admin Street:
+Admin City: Dubai
+Admin State/Province:
+Admin Postal Code:
+Admin Country: ae
+Admin Phone:
+Admin Phone Ext:
+Admin Fax:
+Admin Fax Ext:
+Admin Email: gtldsupport@aeda.ae
+Registry Tech ID: CAC4670B4697442CDBFF5C52038744ED5-NSR
+Tech Name: .ae Domain Administration
+Tech Organization:
+Tech Street:
+Tech Street:
+Tech Street:
+Tech City: Dubai
+Tech State/Province:
+Tech Postal Code:
+Tech Country: ae
+Tech Phone:
+Tech Phone Ext:
+Tech Fax:
+Tech Fax Ext:
+Tech Email: gtldsupport@aeda.ae
+Name Server: ns2.nic.dubai
+Name Server: ns1.nic.dubai
+Name Server: ns3.nic.dubai
+Name Server: ns4.nic.dubai
+DNSSEC: signedDelegation
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-13T20:11:12Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+Department of Dubai Smart Government (we, us, or our), provides the WHOIS Service (the Service) so that a user (you, your) may look
+up certain information in relation to domain names that we hold in our database. Your use of the Service is subject to our policies.
+The information provided by the Service, is for informational purposes only, is .as is. and we make no guarantee of its accuracy.
+You agree that by your use of the Service you will not use the information provided by us in a way which is: (i) inconsistent with
+any applicable laws; (ii) inconsistent with any policy issued by us; (iii) to generate, distribute, or facilitate unsolicited mass
+email, promotions, advertisings or other solicitations; or (iv) to enable high volume, automated, electronic processes.
+You acknowledge that: (i) a response from the Service indicating no match was found, does not guarantee that it is able to be
+registered; (ii) we may restrict, suspend or terminate your access to the Service at any time; and (iii) the copying, compilation,
+repackaging, dissemination or other use of the information provided by the Service is not permitted, without our express written
+consent.
+We may discontinue or amend any part or the whole of these Terms of Service from time to time at our absolute discretion.

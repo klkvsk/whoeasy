@@ -1,0 +1,64 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.eco",
+        "registrar": {
+            "name": "Big Room Inc. (Non-billable)",
+            "url": "bigroom.eco",
+            "abuseEmail": "abuse@bigroom.eco",
+            "abusePhone": "+1.6046826673"
+        },
+        "createdDate": "2016-12-02 16:02:25",
+        "updatedDate": "2025-02-20 20:18:29",
+        "expiresDate": "3000-01-01 00:00:00",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.ns.nic.eco"
+            },
+            {
+                "hostname": "b.ns.nic.eco"
+            },
+            {
+                "hostname": "c.ns.nic.eco"
+            },
+            {
+                "hostname": "d.ns.nic.eco"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "Big Room Inc.",
+                "email": "Please ask the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Other contacts of the queried domain name",
+                "phone": "REDACTED FOR PRIVACY",
+                "address": "CA"
+            },
+            {
+                "type": "admin",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "REDACTED FOR PRIVACY",
+                "email": "Please ask the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Other contacts of the queried domain name",
+                "phone": "REDACTED FOR PRIVACY"
+            },
+            {
+                "type": "tech",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "REDACTED FOR PRIVACY",
+                "email": "Please ask the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Other contacts of the queried domain name",
+                "phone": "REDACTED FOR PRIVACY"
+            },
+            {
+                "type": "abuse",
+                "email": "abuse@bigroom.eco",
+                "phone": "+1.6046826673"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

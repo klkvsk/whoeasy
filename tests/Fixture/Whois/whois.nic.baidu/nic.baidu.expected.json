@@ -1,0 +1,62 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.baidu",
+        "registrar": {
+            "name": "knet",
+            "url": "http://www.knet.cn",
+            "abuseEmail": "tech-supprot@zdns.cn",
+            "abusePhone": "+86.01058813521"
+        },
+        "createdDate": "2017-11-09 02:38:05",
+        "updatedDate": "2018-06-11 09:58:45",
+        "expiresDate": "2027-11-09 02:38:05",
+        "status": [
+            "ok https://icann.org/epp#OK"
+        ],
+        "nameservers": [
+            {
+                "hostname": "vns1.zdnscloud.biz"
+            },
+            {
+                "hostname": "ins1.zdnscloud.com"
+            },
+            {
+                "hostname": "dns1.zdnscloud.info"
+            },
+            {
+                "hostname": "cns1.zdnscloud.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "徐楠楠",
+                "organization": "百度在线网络技术（北京）有限公司",
+                "email": "domainmaster@baidu.com",
+                "phone": "+86.01058005202",
+                "address": "CN"
+            },
+            {
+                "type": "admin",
+                "name": "徐楠楠",
+                "organization": "百度在线网络技术（北京）有限公司",
+                "email": "domainmaster@baidu.com",
+                "phone": "+86.01058005202"
+            },
+            {
+                "type": "tech",
+                "name": "徐楠楠",
+                "organization": "百度在线网络技术（北京）有限公司",
+                "email": "domainmaster@baidu.com",
+                "phone": "+86.01058005202"
+            },
+            {
+                "type": "abuse",
+                "email": "tech-supprot@zdns.cn",
+                "phone": "+86.01058813521"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

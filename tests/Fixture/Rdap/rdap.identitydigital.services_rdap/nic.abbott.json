@@ -1,0 +1,259 @@
+{
+    "rdapConformance": [
+        "rdap_level_0",
+        "icann_rdap_response_profile_1",
+        "icann_rdap_technical_implementation_guide_1"
+    ],
+    "notices": [
+        {
+            "title": "Terms of Service",
+            "description": [
+                "Access to RDAP information is provided to assist persons in determining the contents of a domain name registration record in the registry database. The data in this record is provided by Identity Digital or, if the record pertains to a TLD not operated by Identity Digital, then the corresponding primary Registry Operator for informational purposes only, and neither Identity Digital nor the Registry Operator guarantee its accuracy. This service is intended only for query-based access. You agree that you will use this data only for lawful purposes and that, under no circumstances will you use this data to (a) allow, enable, or otherwise support the transmission by e-mail, telephone, or facsimile of mass unsolicited, commercial advertising or solicitations to entities other than the data recipient's own existing customers; or (b) enable high volume, automated, electronic processes that send queries or data to the systems of Identity Digital, a Registrar, or Registry Operator except as reasonably necessary to register domain names or modify existing registrations. When using the RDAP service, please consider the following: the RDAP service is not a replacement for standard EPP commands to the SRS service. RDAP is not considered authoritative for registered domain objects. The RDAP service may be scheduled for downtime during production or OT&E maintenance periods. Queries to the RDAP services are throttled. If too many queries are received from a single IP address within a specified time, the service will begin to reject further queries for a period of time to prevent disruption of RDAP service access. Abuse of the RDAP system through data mining is mitigated by detecting and limiting bulk query access from single sources. Where applicable, the presence of a [Non-Public Data] tag indicates that such data is not made publicly available due to applicable data privacy laws or requirements. Should you wish to contact the registrant, please refer to the RDAP records available through the registrar URL listed above. Access to non-public data may be provided, upon request, where it can be reasonably confirmed that the requester holds a specific legitimate interest and a proper legal basis for accessing the withheld data. Access to the data provided by Identity Digital can be requested by submitting a request via the form found at https://www.identity.digital/about/policies/whois-layered-access/ Identity Digital Inc. and, if applicable, the primary Registry Operators reserve the right to modify these terms at any time. By submitting this query, you agree to abide by this policy."
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.identitydigital.services/rdap/domain/nic.abbott",
+                    "rel": "terms-of-service",
+                    "href": "https://www.identity.digital/policies/rdds-access-policy",
+                    "type": "text/html"
+                }
+            ]
+        },
+        {
+            "title": "Status Codes",
+            "description": [
+                "For more information on domain status codes, please visit https://icann.org/epp"
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.identitydigital.services/rdap/domain/nic.abbott",
+                    "rel": "glossary",
+                    "href": "https://icann.org/epp",
+                    "type": "application/rdap+json"
+                }
+            ]
+        },
+        {
+            "title": "RDDS Inaccuracy Complaint Form",
+            "description": [
+                "URL of the ICANN RDDS Inaccuracy Complaint Form: https://icann.org/wicf"
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.identitydigital.services/rdap/domain/nic.abbott",
+                    "rel": "help",
+                    "href": "https://icann.org/wicf",
+                    "type": "application/rdap+json"
+                }
+            ]
+        }
+    ],
+    "ldhName": "nic.abbott",
+    "unicodeName": "nic.abbott",
+    "nameservers": [
+        {
+            "ldhName": "a0.nic.abbott",
+            "unicodeName": "a0.nic.abbott",
+            "ipAddresses": {
+                "v4": [
+                    "65.22.156.41"
+                ],
+                "v6": [
+                    "2a01:8840:9a::41"
+                ]
+            },
+            "objectClassName": "nameserver",
+            "handle": "2d3a25b39f2d451980013a4f11c96d4e-DONUTS",
+            "status": [
+                "associated"
+            ]
+        },
+        {
+            "ldhName": "a2.nic.abbott",
+            "unicodeName": "a2.nic.abbott",
+            "ipAddresses": {
+                "v4": [
+                    "65.22.159.41"
+                ],
+                "v6": [
+                    "2a01:8840:9d::41"
+                ]
+            },
+            "objectClassName": "nameserver",
+            "handle": "5d51f93cbbec441b8a61733f90112fbd-DONUTS",
+            "status": [
+                "associated"
+            ]
+        },
+        {
+            "ldhName": "b0.nic.abbott",
+            "unicodeName": "b0.nic.abbott",
+            "ipAddresses": {
+                "v4": [
+                    "65.22.157.41"
+                ],
+                "v6": [
+                    "2a01:8840:9b::41"
+                ]
+            },
+            "objectClassName": "nameserver",
+            "handle": "cdb819a1cc1849d4ac523d38fc8765da-DONUTS",
+            "status": [
+                "associated"
+            ]
+        },
+        {
+            "ldhName": "c0.nic.abbott",
+            "unicodeName": "c0.nic.abbott",
+            "ipAddresses": {
+                "v4": [
+                    "65.22.158.41"
+                ],
+                "v6": [
+                    "2a01:8840:9c::41"
+                ]
+            },
+            "objectClassName": "nameserver",
+            "handle": "462c99b5d998433e8d45a70682d843cc-DONUTS",
+            "status": [
+                "associated"
+            ]
+        }
+    ],
+    "secureDNS": {
+        "delegationSigned": true,
+        "maxSigLife": 1,
+        "dsData": [
+            {
+                "keyTag": 59844,
+                "algorithm": 8,
+                "digest": "BFC031EA3FFA98A71AA80E51E45312373CD7924C713193F9F34BB042B8E9E0E2",
+                "digestType": 2
+            }
+        ]
+    },
+    "objectClassName": "domain",
+    "handle": "7db1f169c3ed4d32b6ad4da1e0d9139c-DONUTS",
+    "status": [
+        "server delete prohibited",
+        "server transfer prohibited",
+        "server update prohibited"
+    ],
+    "events": [
+        {
+            "eventAction": "expiration",
+            "eventDate": "2026-07-02T19:18:06.378Z"
+        },
+        {
+            "eventAction": "registration",
+            "eventDate": "2015-07-02T19:18:06.378Z"
+        },
+        {
+            "eventAction": "last changed",
+            "eventDate": "2026-01-16T10:43:56.69Z"
+        },
+        {
+            "eventAction": "last update of RDAP database",
+            "eventDate": "2026-03-13T21:42:44.508Z"
+        }
+    ],
+    "entities": [
+        {
+            "vcardArray": [
+                "vcard",
+                [
+                    [
+                        "version",
+                        [],
+                        "text",
+                        "4.0"
+                    ],
+                    [
+                        "fn",
+                        [],
+                        "text",
+                        "Registry Operator acts as Registrar (9999)"
+                    ]
+                ]
+            ],
+            "roles": [
+                "registrar"
+            ],
+            "publicIds": [
+                {
+                    "type": "IANA Registrar ID",
+                    "identifier": "9999"
+                }
+            ],
+            "objectClassName": "entity",
+            "handle": "9999",
+            "entities": [
+                {
+                    "vcardArray": [
+                        "vcard",
+                        [
+                            [
+                                "version",
+                                [],
+                                "text",
+                                "4.0"
+                            ],
+                            [
+                                "fn",
+                                [],
+                                "text",
+                                ""
+                            ],
+                            [
+                                "tel",
+                                {
+                                    "type": "voice"
+                                },
+                                "uri",
+                                "tel:+1.6664447777"
+                            ],
+                            [
+                                "email",
+                                [],
+                                "text",
+                                "abuse@identity.digital"
+                            ]
+                        ]
+                    ],
+                    "roles": [
+                        "abuse"
+                    ],
+                    "objectClassName": "entity"
+                }
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.identitydigital.services/rdap/entity/9999",
+                    "rel": "self",
+                    "href": "https://rdap.identitydigital.services/rdap/entity/9999",
+                    "type": "application/rdap+json"
+                },
+                {
+                    "value": "https://rdap.identitydigital.services/rdap/",
+                    "rel": "about",
+                    "href": "https://rdap.identitydigital.services/rdap",
+                    "type": "application/rdap+json"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "value": "https://rdap.identitydigital.services/rdap/domain/nic.abbott",
+            "rel": "related",
+            "href": "https://rdap.identitydigital.services/rdap/domain/nic.abbott",
+            "type": "application/rdap+json"
+        },
+        {
+            "value": "https://rdap.identitydigital.services/rdap/domain/nic.abbott",
+            "rel": "self",
+            "href": "https://rdap.identitydigital.services/rdap/domain/nic.abbott",
+            "type": "application/rdap+json"
+        }
+    ]
+}

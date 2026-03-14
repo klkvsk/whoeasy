@@ -1,0 +1,38 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.caravan",
+        "registrar": {
+            "name": "Caravan International, Inc."
+        },
+        "createdDate": "2013-09-16 20:02:01",
+        "updatedDate": "2025-10-31 00:00:02",
+        "expiresDate": "2026-09-15 23:59:59",
+        "status": [
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.dns.nic.caravan"
+            },
+            {
+                "hostname": "ns2.dns.nic.caravan"
+            },
+            {
+                "hostname": "ns3.dns.nic.caravan"
+            },
+            {
+                "hostname": "ns4.dns.nic.caravan"
+            },
+            {
+                "hostname": "ns5.dns.nic.caravan"
+            },
+            {
+                "hostname": "ns6.dns.nic.caravan"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

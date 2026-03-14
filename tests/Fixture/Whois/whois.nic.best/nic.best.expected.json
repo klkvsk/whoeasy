@@ -1,0 +1,53 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "NIC.BEST",
+        "registrar": {
+            "name": "THE BEST SAS",
+            "url": "https://www.domains.best",
+            "abuseEmail": "contact@the.best",
+            "abusePhone": "+33.610828641"
+        },
+        "createdDate": "2013-09-16 19:56:06",
+        "updatedDate": "2026-02-05 16:05:55",
+        "expiresDate": "2026-09-15 23:59:59",
+        "status": [
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.best"
+            },
+            {
+                "hostname": "b.nic.best"
+            },
+            {
+                "hostname": "c.nic.best"
+            },
+            {
+                "hostname": "d.nic.best"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "organization": "THE BEST SAS",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "address": "FR"
+            },
+            {
+                "type": "tech",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name."
+            },
+            {
+                "type": "abuse",
+                "email": "contact@the.best",
+                "phone": "+33.610828641"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

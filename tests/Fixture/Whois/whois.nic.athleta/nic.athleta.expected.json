@@ -1,0 +1,38 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.athleta",
+        "registrar": {
+            "name": "The Gap, Inc."
+        },
+        "createdDate": "2013-09-16 19:49:56",
+        "updatedDate": "2025-10-31 00:00:02",
+        "expiresDate": "2026-09-15 23:59:59",
+        "status": [
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.dns.nic.athleta"
+            },
+            {
+                "hostname": "ns2.dns.nic.athleta"
+            },
+            {
+                "hostname": "ns3.dns.nic.athleta"
+            },
+            {
+                "hostname": "ns4.dns.nic.athleta"
+            },
+            {
+                "hostname": "ns5.dns.nic.athleta"
+            },
+            {
+                "hostname": "ns6.dns.nic.athleta"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

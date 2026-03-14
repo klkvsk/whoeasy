@@ -1,0 +1,39 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.anquan",
+        "registrar": {
+            "name": "Reserved for non-billable transactions where Registry Operator acts as Registrar",
+            "url": "http://whois.teleinfo.cn",
+            "abuseEmail": "abuse@teleinfo.cn",
+            "abusePhone": "+86.4000305000"
+        },
+        "createdDate": "2015-12-01 16:00:00",
+        "updatedDate": "2015-09-18 02:27:57",
+        "expiresDate": "2026-08-31 16:00:00",
+        "status": [
+            "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns.nic.anquan"
+            },
+            {
+                "hostname": "ns2.nic.anquan"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "address": "CN"
+            },
+            {
+                "type": "abuse",
+                "email": "abuse@teleinfo.cn",
+                "phone": "+86.4000305000"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

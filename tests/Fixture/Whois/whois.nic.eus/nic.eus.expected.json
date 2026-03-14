@@ -1,0 +1,49 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.eus",
+        "registrar": {
+            "name": "Registry self-allocated",
+            "url": "http://nic.eus/",
+            "abuseEmail": "fake-email1@unicart.bg",
+            "abusePhone": "+34.665770945"
+        },
+        "createdDate": "2014-02-07 12:39:03",
+        "updatedDate": "2025-03-24 12:56:12",
+        "expiresDate": "2026-02-07 12:39:03",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "pendingRenew https://icann.org/epp#pendingRenew",
+            "autoRenewPeriod https://icann.org/epp#autoRenewPeriod"
+        ],
+        "nameservers": [
+            {
+                "hostname": "anycast1.irondns.net"
+            },
+            {
+                "hostname": "anycast2.irondns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "address": "ES"
+            },
+            {
+                "type": "admin",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name."
+            },
+            {
+                "type": "tech",
+                "email": "Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name."
+            },
+            {
+                "type": "abuse",
+                "email": "fake-email1@unicart.bg",
+                "phone": "+34.665770945"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

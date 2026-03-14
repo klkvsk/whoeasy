@@ -1,0 +1,39 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.au",
+        "registrar": {
+            "name": "Domain Directors Pty Ltd trading as Instra",
+            "url": "https://www.instra.com/en/about-us/contact-us",
+            "abuseEmail": "abuse@key-systems.net",
+            "abusePhone": "+49.68949396850"
+        },
+        "updatedDate": "2025-11-26 11:45:57",
+        "status": [
+            "serverRenewProhibited https://identitydigital.au/whois-status-codes#serverRenewProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.instradns.com"
+            },
+            {
+                "hostname": "ns2.instradns.com"
+            },
+            {
+                "hostname": "ns3.instradns.com"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "tech",
+                "name": "Domain Administrator"
+            },
+            {
+                "type": "abuse",
+                "email": "abuse@key-systems.net",
+                "phone": "+49.68949396850"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "NIC.FANS",
+        "registrar": {
+            "name": "ZDNS INTERNATIONAL LIMITED",
+            "url": "http://nic.fans",
+            "abuseEmail": "abuse-team@zdns.cn",
+            "abusePhone": "+86.1058812426"
+        },
+        "createdDate": "2013-09-11 11:57:57",
+        "updatedDate": "2026-02-05 15:05:29",
+        "expiresDate": "2026-09-11 23:59:59",
+        "status": [
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.fans"
+            },
+            {
+                "hostname": "b.nic.fans"
+            },
+            {
+                "hostname": "c.nic.fans"
+            },
+            {
+                "hostname": "d.nic.fans"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "abuse-team@zdns.cn",
+                "phone": "+86.1058812426"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.fashion",
+        "registrar": {
+            "name": "MMX",
+            "url": "http://registry.godaddy",
+            "abuseEmail": "reg-support@godaddy.registry",
+            "abusePhone": "+61.398663710"
+        },
+        "createdDate": "2021-09-07 04:15:49",
+        "updatedDate": "2025-10-22 04:15:49",
+        "expiresDate": "2026-09-07 04:15:49",
+        "status": [
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "d.nic.fashion"
+            },
+            {
+                "hostname": "a.nic.fashion"
+            },
+            {
+                "hostname": "b.nic.fashion"
+            },
+            {
+                "hostname": "c.nic.fashion"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "Godaddy Registry",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "phone": "REDACTED FOR PRIVACY",
+                "address": "au"
+            },
+            {
+                "type": "tech",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "REDACTED FOR PRIVACY",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "phone": "REDACTED FOR PRIVACY"
+            },
+            {
+                "type": "abuse",
+                "email": "reg-support@godaddy.registry",
+                "phone": "+61.398663710"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

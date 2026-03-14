@@ -1,0 +1,43 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.boehringer",
+        "registrar": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2016-02-24 22:27:43",
+        "updatedDate": "2026-02-24 22:28:41",
+        "expiresDate": "2027-02-24 22:27:43",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "autoRenewPeriod https://icann.org/epp#autoRenewPeriod"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a0.nic.boehringer"
+            },
+            {
+                "hostname": "a2.nic.boehringer"
+            },
+            {
+                "hostname": "b0.nic.boehringer"
+            },
+            {
+                "hostname": "c0.nic.boehringer"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.durban",
+        "registrar": {
+            "name": "DNServices",
+            "url": "http://dns.business",
+            "abuseEmail": "abuse@registry.net.za",
+            "abusePhone": "+27.113140077"
+        },
+        "createdDate": "2014-06-09 08:16:57",
+        "updatedDate": "2025-12-01 06:11:12",
+        "expiresDate": "2998-12-31 22:00:00",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.dnservices.co.za"
+            },
+            {
+                "hostname": "nsp.netnod.se"
+            },
+            {
+                "hostname": "ns1.nic.durban"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "email": "Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.",
+                "address": "ZA"
+            },
+            {
+                "type": "admin",
+                "email": "Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information."
+            },
+            {
+                "type": "tech",
+                "email": "Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information."
+            },
+            {
+                "type": "abuse",
+                "email": "abuse@registry.net.za",
+                "phone": "+27.113140077"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

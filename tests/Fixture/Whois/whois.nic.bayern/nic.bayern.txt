@@ -1,0 +1,111 @@
+Domain Name: nic.bayern
+Registry Domain ID: Dezzd11-BAYERN
+Registrar WHOIS Server: whois.nic.bayern
+Registrar URL: http://www.nic.bayern
+Updated Date: 2026-01-09T14:16:01.912Z
+Creation Date: 2021-11-25T13:30:03.399Z
+Registry Expiry Date: 2026-11-25T13:30:03.399Z
+Registrar Registration Expiration Date: 
+Registrar: Bayern Connect GmbH
+Registrar IANA ID: 9999
+Registrar Abuse Contact Email: abuse@registry.godaddy
+Registrar Abuse Contact Phone: +34.343434343
+Reseller: 
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Registry Registrant ID: REDACTED FOR PRIVACY
+Registrant Name: REDACTED FOR PRIVACY
+Registrant Organization: dotBayern
+Registrant Street: REDACTED FOR PRIVACY
+Registrant City: REDACTED FOR PRIVACY
+Registrant State/Province: Bavaria
+Registrant Postal Code: REDACTED FOR PRIVACY
+Registrant Country: DE
+Registrant Phone: REDACTED FOR PRIVACY
+Registrant Phone Ext: 
+Registrant Fax: 
+Registrant Fax Ext: 
+Registrant Email: Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Admin ID: 
+Admin Name: 
+Admin Organization: 
+Admin Street: REDACTED FOR PRIVACY
+Admin City: 
+Admin State/Province: 
+Admin Postal Code: 
+Admin Country: 
+Admin Phone: 
+Admin Phone Ext: 
+Admin Fax: 
+Admin Fax Ext: 
+Admin Email: 
+Registry Tech ID: REDACTED FOR PRIVACY
+Tech Name: REDACTED FOR PRIVACY
+Tech Organization: REDACTED FOR PRIVACY
+Tech Street: REDACTED FOR PRIVACY
+Tech City: REDACTED FOR PRIVACY
+Tech State/Province: Bavaria
+Tech Postal Code: REDACTED FOR PRIVACY
+Tech Country: DE
+Tech Phone: REDACTED FOR PRIVACY
+Tech Phone Ext: 
+Tech Fax: 
+Tech Fax Ext: 
+Tech Email: Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Name Server: ns22.irondns.net
+Name Server: anycast1.irondns.net
+DNSSEC: signedDelegation
+IDN Tag:
+Registrant Ext. Name: REDACTED FOR PRIVACY
+Registrant Ext. Organization: dotBayern
+Registrant Ext. Street: REDACTED FOR PRIVACY
+Registrant Ext. City: REDACTED FOR PRIVACY
+Registrant Ext. State/Province: Bavaria
+Registrant Ext. Postal Code: REDACTED FOR PRIVACY
+Registrant Ext. Country: DE
+Tech Ext. Name: REDACTED FOR PRIVACY
+Tech Ext. Organization: REDACTED FOR PRIVACY
+Tech Ext. Street: REDACTED FOR PRIVACY
+Tech Ext. City: REDACTED FOR PRIVACY
+Tech Ext. State/Province: Bavaria
+Tech Ext. Postal Code: REDACTED FOR PRIVACY
+Tech Ext. Country: DE
+URL of the ICANN Whois Inaccuracy Complaint Form: https://icann.org/wicf
+>>> Last update of Whois database: 2026-03-13T19:59:31.27Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+Terms and Conditions of Use
+
+The data in this record is provided by Bayern Connect GmbH
+("the Registry") for informational purposes only. The Registry
+does not guarantee its accuracy and cannot, under any circumstances,
+be held liable in case the stored information would prove to be
+wrong, incomplete or not accurate in any sense.
+
+NOTICE: Access to the domain name's information is restricted in
+order to protect the privacy of Registrants. If you believe you have
+a legitimate interest in having access to part or all of the data not
+published in the above output, please contact the Registrar of record
+at the address shown in the output above OR the Registry at the
+following address:
+
+http://nic.bayern
+
+The compilation, repackaging, dissemination or other use of the data
+in this Whois database is expressly prohibited without the
+prior written consent of the Registry.
+
+The Registry maintains the right to restrict your access to the Whois
+database in its sole discretion to ensure operational stability. The
+Registry may restrict or terminate your access to the Whois database
+for failure to abide by these terms of use. The Registry reserves the
+right to modify these terms at any time.
+
+By maintaining the connection you assure that you have a legitimate
+interest in the data and that you will only use it for the stated
+purposes. You are aware the Registry maintains the right to initiate
+legal proceedings against you in the event of any breach of this
+assurance and to bar you from using its Whois service.
+
+End of Whois record.

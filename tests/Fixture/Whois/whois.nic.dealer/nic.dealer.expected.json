@@ -1,0 +1,53 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "NIC.DEALER",
+        "registrar": {
+            "name": "Intercap Registry Inc.",
+            "url": "https://intercap.inc/",
+            "abuseEmail": "abuse@my.box",
+            "abusePhone": "+44.123456789"
+        },
+        "createdDate": "2020-01-08 19:36:18",
+        "updatedDate": "2025-01-30 15:05:59",
+        "expiresDate": "2030-01-08 23:59:59",
+        "status": [
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.dealer"
+            },
+            {
+                "hostname": "b.nic.dealer"
+            },
+            {
+                "hostname": "c.nic.dealer"
+            },
+            {
+                "hostname": "d.nic.dealer"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "organization": "Uniregistry, Corp",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "address": "KY"
+            },
+            {
+                "type": "tech",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name."
+            },
+            {
+                "type": "abuse",
+                "email": "abuse@my.box",
+                "phone": "+44.123456789"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

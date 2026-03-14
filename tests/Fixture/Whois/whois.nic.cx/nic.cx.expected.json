@@ -1,0 +1,40 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.cx",
+        "registrar": {
+            "name": "Christmas Island Domain Administration Ltd.",
+            "url": "http://www.nic.cx",
+            "abuseEmail": "info@cxda.org.cx",
+            "abusePhone": "+61 (0)8 6102 7988"
+        },
+        "createdDate": "2001-07-28 14:00:00",
+        "updatedDate": "2025-03-03 08:59:30",
+        "expiresDate": "2030-03-15 00:00:00",
+        "status": [
+            "active https://icann.org/epp#active",
+            "clientRenewProhibited https://icann.org/epp#clientRenewProhibited",
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.cx"
+            },
+            {
+                "hostname": "b.nic.cx"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "info@cxda.org.cx",
+                "phone": "+61 (0)8 6102 7988"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

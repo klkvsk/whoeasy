@@ -1,0 +1,49 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.accenture",
+        "registrar": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2015-03-18 20:02:26",
+        "updatedDate": "2025-08-19 09:05:44",
+        "expiresDate": "2026-03-18 20:02:26",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "v0n1.nic.accenture"
+            },
+            {
+                "hostname": "v2n0.nic.accenture"
+            },
+            {
+                "hostname": "v0n0.nic.accenture"
+            },
+            {
+                "hostname": "v0n3.nic.accenture"
+            },
+            {
+                "hostname": "v2n1.nic.accenture"
+            },
+            {
+                "hostname": "v0n2.nic.accenture"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

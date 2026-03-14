@@ -1,0 +1,59 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.dm",
+        "registrar": {
+            "name": "DotDM Corporation",
+            "url": "www.nic.dm",
+            "abuseEmail": "admin@dotdm.dm",
+            "abusePhone": "+1.7674481531"
+        },
+        "createdDate": "2001-03-29 11:57:11",
+        "updatedDate": "2025-11-11 15:23:33",
+        "expiresDate": "2031-10-07 23:59:59",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns.blacknightsolutions.com"
+            },
+            {
+                "hostname": "ns2.blacknightsolutions.com"
+            },
+            {
+                "hostname": "ns2.nic.dm"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "REDACTED FOR PRIVACY",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "phone": "REDACTED FOR PRIVACY",
+                "address": "DM"
+            },
+            {
+                "type": "admin",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "REDACTED FOR PRIVACY",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "phone": "REDACTED FOR PRIVACY"
+            },
+            {
+                "type": "tech",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "REDACTED FOR PRIVACY",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "phone": "REDACTED FOR PRIVACY"
+            },
+            {
+                "type": "abuse",
+                "email": "admin@dotdm.dm",
+                "phone": "+1.7674481531"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "google.com",
+        "registrar": {
+            "name": "MarkMonitor, Inc.",
+            "url": "http://www.markmonitor.com",
+            "abuseEmail": "abusecomplaints@markmonitor.com",
+            "abusePhone": "+1.2086851750"
+        },
+        "createdDate": "1997-09-15 07:00:00",
+        "updatedDate": "2024-08-02 02:17:33",
+        "expiresDate": "2028-09-13 07:00:00",
+        "status": [
+            "clientUpdateProhibited",
+            "clientTransferProhibited",
+            "clientDeleteProhibited",
+            "serverUpdateProhibited",
+            "serverTransferProhibited",
+            "serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns2.google.com"
+            },
+            {
+                "hostname": "ns3.google.com"
+            },
+            {
+                "hostname": "ns1.google.com"
+            },
+            {
+                "hostname": "ns4.google.com"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "organization": "Google LLC",
+                "email": "Select Request Email Form at https://domains.markmonitor.com/whois/google.com",
+                "address": "US"
+            },
+            {
+                "type": "tech",
+                "email": "Select Request Email Form at https://domains.markmonitor.com/whois/google.com"
+            },
+            {
+                "type": "abuse",
+                "email": "abusecomplaints@markmonitor.com",
+                "phone": "+1.2086851750"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

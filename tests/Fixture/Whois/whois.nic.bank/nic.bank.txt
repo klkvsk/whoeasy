@@ -1,0 +1,106 @@
+Domain Name: nic.bank
+Registry Domain ID: D7E073A0D19924FEC95EE49818C7D23D7-NSR
+Registrar WHOIS Server:
+Registrar URL:
+Updated Date: 2025-10-31T22:36:50Z
+Creation Date: 2019-09-16T22:36:49Z
+Registry Expiry Date: 2026-09-16T22:36:49Z
+Registrar: fTLD Registry Services, LLC
+Registrar IANA ID: 9999
+Registrar Abuse Contact Email: abuse@fTLD.com
+Registrar Abuse Contact Phone:
+Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Domain Status: serverRenewProhibited https://icann.org/epp#serverRenewProhibited
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
+Registry Registrant ID: C4E99B48CA9034AAE9D71C3B5535EAEDB-GDREG
+Registrant Name: Domain Administrator
+Registrant Organization: fTLD Registry Services LLC
+Registrant Street: 1300 Eye Street, NW
+Registrant Street: Suite 1100 West
+Registrant Street:
+Registrant City: Washington
+Registrant State/Province: DC
+Registrant Postal Code: 20005
+Registrant Country: US
+Registrant Phone: +1.2022361154
+Registrant Phone Ext:
+Registrant Fax:
+Registrant Fax Ext:
+Registrant Email: fTLD@fTLD.com
+Registry Admin ID:
+Admin Name:
+Admin Organization:
+Admin Street:
+Admin Street:
+Admin Street:
+Admin City:
+Admin State/Province:
+Admin Postal Code:
+Admin Country:
+Admin Phone:
+Admin Phone Ext:
+Admin Fax:
+Admin Fax Ext:
+Admin Email:
+Registry Tech ID: C4E99B48CA9034AAE9D71C3B5535EAEDB-GDREG
+Tech Name: Domain Administrator
+Tech Organization: fTLD Registry Services LLC
+Tech Street: 1300 Eye Street, NW
+Tech Street: Suite 1100 West
+Tech Street:
+Tech City: Washington
+Tech State/Province: DC
+Tech Postal Code: 20005
+Tech Country: US
+Tech Phone: +1.2022361154
+Tech Phone Ext:
+Tech Fax:
+Tech Fax Ext:
+Tech Email: fTLD@fTLD.com
+Name Server: d.nic.bank
+Name Server: e.nic.bank
+Name Server: f.nic.bank
+Name Server: w.nic.bank
+Name Server: x.nic.bank
+Name Server: y.nic.bank
+DNSSEC: signedDelegation
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-13T19:58:11Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+fTLD Registry Services, LLC (Registry Operator) is required to collect and 
+provide domain name registration information (Whois Data) for a variety 
+of purposes. Registry Operator through its Registry Service Provider enables 
+access to Whois Data through a standard text-based network protocol on 
+port 43 and as a standard web-based interface at whois.nic.bank/whois.nic.insurance. 
+Both interfaces are publicly available at no cost to the user and are 
+reachable worldwide. This service is available to any Internet user and its 
+use does not require prior authorization or permission.
+
+Registry Operator provides the public Whois Data for information purposes 
+only, and does not guarantee its accuracy. 
+
+By accessing Whois Data made available by Registry Operator, you agree 
+that you will use the Whois Data only for lawful purposes.  Under no 
+circumstance shall the data or the systems of Registry Operator and/or 
+Registry Service Provider be used to: allow, enable, or otherwise support the 
+transmission of mass unsolicited, commercial advertising or solicitations via, 
+email, telephone or facsimile; or enable high volume, automated, electronic 
+processes that send queries or data to the systems of Registry Operator, 
+Registry Service Provider, or Registrar except as reasonably necessary to 
+register domain names or modify existing registrations. The compilation, 
+repackaging, disseminations or other use of the Whois Data is expressly 
+prohibited without the prior consent of Registry Operator. Registry Operator 
+reserves the right to restrict third party access to Whois Data through these 
+public resources in its sole discretion to ensure operational stability. Registry 
+Operator may restrict or block access to Whois Data for failure to abide by 
+the Terms of Use.
+
+Notice:  The expiration data displayed in this record is the date the 
+Registrars sponsorship of the domain name registration in is currently set to 
+expire. This date does not necessarily reflect the expiration date of the 
+domain name Registrants Registration Agreement with the sponsoring 
+Registrar. Users may consult the sponsoring Registrars Whois Data to view 
+the Registrars reported date of expiration for a specific domain name.

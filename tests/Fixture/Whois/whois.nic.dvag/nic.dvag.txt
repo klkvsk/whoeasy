@@ -1,0 +1,62 @@
+Domain Name: NIC.DVAG
+Registry Domain ID: D97116954-CNIC
+Registrar WHOIS Server: whois.nic.allfinanz
+Registrar URL: http://www.nic.allfinanz
+Updated Date: 2025-06-17T00:06:57.0Z
+Creation Date: 2014-06-23T08:21:18.0Z
+Registry Expiry Date: 2026-06-23T23:59:59.0Z
+Registrar: Deutsche Vermögensberatung AG
+Registrar IANA ID: 9999
+Domain Status: serverRenewProhibited https://icann.org/epp#serverRenewProhibited
+Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Registrant Name: Deutsche  Vermögensberatung AG
+Registrant Organization: Deutsche Vermögensberatung AG
+Registrant Street: Münchener Strasse 1
+Registrant City: Frankfurt am Main
+Registrant State/Province: Hessen
+Registrant Postal Code: 60329
+Registrant Country: DE
+Registrant Phone: +49.6923840
+Registrant Fax:
+Registrant Email: domains@dvag.com
+Tech Name: Deutsche  Vermögensberatung AG
+Tech Organization: Deutsche Vermögensberatung AG
+Tech Street: Münchener Strasse 1
+Tech City: Frankfurt am Main
+Tech State/Province: Hessen
+Tech Postal Code: 60329
+Tech Country: DE
+Tech Phone: +49.6923840
+Tech Fax:
+Tech Email: domains@dvag.com
+Name Server: ANYCAST1.DNSRES.NET
+Name Server: ANYCAST2.DNSRES.NET
+DNSSEC: unsigned
+Registrar Abuse Contact Email: bettinger@bettinger.de
+Registrar Abuse Contact Phone: +49.8954886700
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-13T20:11:19.0Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+This data is provided by Deutsche Vermögensberatung AG Registry for information purposes only in
+accordance with the Deutsche Vermögensberatung AG Registry TLD Privacy Policy. It is intended to
+ assist persons to obtain information about or related to domain name
+registration records. Deutsche Vermögensberatung AG Registry does not guarantee its accuracy.
+By submitting this query, you agree to abide as follows:
+
+You agree to use this data only for lawful purposes and that under no
+ circumstances will you permit this data to
+1) allow, enable, or otherwise support the transmission of mass
+    unsolicited, commercial advertising or solicitations via e-mail,
+    telephone or fax (spam); nor
+2) enable high volume, automated, electronic processes to the systems
+    of Deutsche Vermögensberatung AG Registry or Registrars, except as reasonably required to
+    register new domain names or modify existing registrations; nor
+3) will you generate a database of registered domain names and
+    registrant data.
+
+These terms may be changed without prior notice.
+By submitting this query, you agree to abide by this policy.

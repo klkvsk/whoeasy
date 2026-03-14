@@ -1,0 +1,38 @@
+Domain Name: nic.cx
+Registry Domain ID: 42132-CoCCA
+Registrar URL: http://www.nic.cx
+Updated Date: 2025-03-03T08:59:30Z
+Creation Date: 2001-07-28T14:00:00Z
+Registry Expiry Date: 2030-03-15T00:00:00Z
+Registrar Registration Expiration Date: 2030-03-15T00:00:00Z
+Registrar: Christmas Island Domain Administration Ltd.
+Registrar Street Address: PO Box 496
+Registrar City: Drum Site
+Registrar State: WA
+Registrar Postal Code: 6798
+Registrar Country: CX
+Registrar Phone: +61 (0)8 6102 7988
+Registrar Email: info@cxda.org.cx
+Registrar Abuse Contact Email: info@cxda.org.cx
+Registrar Abuse Contact Phone: +61 (0)8 6102 7988
+Domain Status: active https://icann.org/epp#active
+Domain Status: clientRenewProhibited https://icann.org/epp#clientRenewProhibited
+Domain Status: serverRenewProhibited https://icann.org/epp#serverRenewProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+Registry Registrant ID: 2011688-CoCCA
+Registry Admin ID: 2011688-CoCCA
+Name Server: a.nic.cx
+Name Server: b.nic.cx
+DNSSEC: signedDelegation
+>>> Last update of WHOIS database: 2026-03-12T15:51:52.473Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+TERMS OF USE: You are not authorized to access or query our Whois database through the use of electronic processes that are high-volume and automated. Whois database is provided by Christmas Island Domain Administration Limited ("cxDA").
+
+cxDA makes every effort to maintain the completeness and accuracy of the Whois data, but cannot guarantee that the results are error-free. Therefore, any data provided through the Whois service are on an "as is" basis without any warranties. BY USING THE WHOIS SERVICE AND THE DATA CONTAINED HEREIN OR IN ANY REPORT GENERATED WITH RESPECT THERETO, IT IS ACCEPTED THAT CIIA IS NOT LIABLE FOR ANY DAMAGES OF ANY KIND ARISING OUT OF, OR IN CONNECTION WITH, THE REPORT OR THE INFORMATION PROVIDED BY THE WHOIS SERVICE, NOR OMISSIONS OR MISSING INFORMATION. THE RESULTS OF ANY WHOIS REPORT OR INFORMATION PROVIDED BY THE WHOIS SERVICE CANNOT BE RELIED UPON IN CONTEMPLATION OF LEGAL PROCEEDINGS WITHOUT FURTHER VERIFICATION, NOR DO SUCH RESULTS CONSTITUTE A LEGAL OPINION. Acceptance of the results of the Whois constitutes acceptance of these terms, conditions and limitations. Whois data may be requested only for lawful purposes, in particular, to protect legal rights and obligations. Illegitimate uses of Whois data include, but are not limited to, unsolicited email, data mining, direct marketing or any other improper purpose. Any request made for Whois data will be documented by cxDA but will not be used for any commercial purpose whatsoever. NOTE: FAILURE TO LOCATE A RECORD IN THE WHOIS DATABASE IS NOT INDICATIVE OF THE AVAILABILITY OF A DOMAIN NAME.
+
+© 2021 cxDA All rights reserved.

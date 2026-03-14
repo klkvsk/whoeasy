@@ -1,0 +1,35 @@
+Domain Name: nic.durban
+Registry Domain ID: hv05u_DOMAIN-DURBAN
+Registrar WHOIS Server: http://www.dns.net.za/whois
+Registrar URL: http://dns.business
+Updated Date: 2025-12-01T06:11:12Z
+Creation Date: 2014-06-09T08:16:57Z
+Registry Expiry Date: 2998-12-31T22:00:00Z
+Registrar Registration Expiration Date: 2998-12-31T22:00:00Z
+Registrar: DNServices
+Registrar IANA ID: 9999
+Registrar Abuse Contact Email: abuse@registry.net.za
+Registrar Abuse Contact Phone: +27.113140077
+Reseller: 
+Domain Status: ok https://icann.org/epp#ok
+Registrant Organization: 
+Registrant Country: ZA
+Registrant Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Admin Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Tech Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Billing Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Name Server: ns1.dnservices.co.za
+Name Server: nsp.netnod.se
+Name Server: ns1.nic.durban
+DNSSEC: unsigned
+
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-13T20:11:17Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+# ZACR Policies and Procedures: https://zacities.africa/policies/
+# The use of this Whois facility is subject to the following terms and
+# conditions: https://zacities.africa/whois-terms-and-conditions/
+# Copyright ZACR (NPC) 1995-2026
+

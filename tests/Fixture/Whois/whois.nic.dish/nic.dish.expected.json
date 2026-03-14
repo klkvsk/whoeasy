@@ -1,0 +1,42 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.dish",
+        "registrar": {
+            "name": "Dish DBS Corporation,",
+            "url": "http://mobile-registry.com/",
+            "abuseEmail": "support@mobile-registry.com",
+            "abusePhone": "+1.3037231000"
+        },
+        "createdDate": "2025-04-09 21:14:29",
+        "updatedDate": "2025-07-17 17:51:59",
+        "expiresDate": "2035-04-09 21:14:29",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns03.trs-dns.com"
+            },
+            {
+                "hostname": "ns03.trs-dns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "Dish DBS Corporation,",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "phone": "REDACTED FOR PRIVACY",
+                "address": "US"
+            },
+            {
+                "type": "abuse",
+                "email": "support@mobile-registry.com",
+                "phone": "+1.3037231000"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

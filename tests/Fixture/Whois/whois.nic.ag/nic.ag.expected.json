@@ -1,0 +1,50 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.ag",
+        "registrar": {
+            "name": "NicAg Registrar"
+        },
+        "createdDate": "1998-05-02 04:00:00",
+        "updatedDate": "2025-06-16 04:00:31",
+        "expiresDate": "2026-05-02 04:00:00",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns01.nic.ag"
+            },
+            {
+                "hostname": "ns02.nic.ag"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED",
+                "organization": "Nic AG LLC",
+                "email": "REDACTED",
+                "phone": "REDACTED",
+                "address": "US"
+            },
+            {
+                "type": "admin",
+                "name": "REDACTED",
+                "organization": "REDACTED",
+                "email": "REDACTED",
+                "phone": "REDACTED"
+            },
+            {
+                "type": "tech",
+                "name": "REDACTED",
+                "organization": "REDACTED",
+                "email": "REDACTED",
+                "phone": "REDACTED"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

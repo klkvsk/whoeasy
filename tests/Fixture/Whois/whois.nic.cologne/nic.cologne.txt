@@ -1,0 +1,93 @@
+Domain Name: nic.cologne
+Registry Domain ID: fd3_DOMAIN-COLOGNE
+Registrar WHOIS Server: 
+Registrar URL: http://nic.cologne
+Updated Date: 2025-08-07T13:51:31Z
+Creation Date: 2014-02-13T18:21:08Z
+Registry Expiry Date: 2099-12-31T23:59:59Z
+Registrar Registration Expiration Date: 2099-12-31T23:59:59Z
+Registrar: dotKoeln GmbH
+Registrar Abuse Contact Email: servicedesk@nic.koeln
+Registrar Abuse Contact Phone: +43.198116
+Reseller: 
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+Registry Registrant ID: REDACTED
+Registrant Name: REDACTED
+Registrant Organization: dotKoeln GmbH
+Registrant Street: REDACTED
+Registrant City: REDACTED
+Registrant State/Province: REDACTED
+Registrant Postal Code: REDACTED
+Registrant Country: AT
+Registrant Phone: REDACTED
+Registrant Phone Ext: REDACTED
+Registrant Fax: REDACTED
+Registrant Fax Ext: REDACTED
+Registrant Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Registry Admin ID: REDACTED
+Admin Name: REDACTED
+Admin Organization: REDACTED
+Admin Street: REDACTED
+Admin City: REDACTED
+Admin State/Province: REDACTED
+Admin Postal Code: REDACTED
+Admin Country: REDACTED
+Admin Phone: REDACTED
+Admin Phone Ext: REDACTED
+Admin Fax: REDACTED
+Admin Fax Ext: REDACTED
+Admin Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Registry Tech ID: REDACTED
+Tech Name: REDACTED
+Tech Organization: REDACTED
+Tech Street: REDACTED
+Tech City: REDACTED
+Tech State/Province: REDACTED
+Tech Postal Code: REDACTED
+Tech Country: REDACTED
+Tech Phone: REDACTED
+Tech Phone Ext: REDACTED
+Tech Fax: REDACTED
+Tech Fax Ext: REDACTED
+Tech Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Registry Billing ID: REDACTED
+Billing Name: REDACTED
+Billing Organization: REDACTED
+Billing Street: REDACTED
+Billing City: REDACTED
+Billing State/Province: REDACTED
+Billing Postal Code: REDACTED
+Billing Country: REDACTED
+Billing Phone: REDACTED
+Billing Phone Ext: REDACTED
+Billing Fax: REDACTED
+Billing Fax Ext: REDACTED
+Billing Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Name Server: ns1.ryce-rsp.com
+Name Server: ns1.dns.business
+DNSSEC: unsigned
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-13T20:09:06Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+
+% The RyCE-whois database is protected through
+% the Austrian Copyright-Law. The query of individual
+% domains is allowed to the internet community
+% free of charge until further notice. All rights,
+% in particular the right of duplication, circulation
+% or usage, belong exclusively to punkt.wien GmbH,
+% unless you have an explicit written agreement
+% with RyCE GmbH.
+%
+%
+%
+% Die RyCE-Whois-Datenbank ist eine urheberrechtlich
+% geschÃ¼tzte Datenbank. Die Abfrage einzelner Domains
+% wird der Internet-Community bis auf weiteres
+% kostenlos ermÃ¶glicht. Das alleinige Recht auf
+% VervielfÃ¤ltigung, Verbreitung, Ãœbermittlung oder
+% Ã¶ffentliche Wiedergabe der Datenbank oder Teile
+% derselben liegt bei RyCE GmbH.
+

@@ -1,0 +1,13 @@
+Domain Name: nic.as
+Registry Domain ID: 274983-as
+Creation Date: 1999-07-12T00:00:00Z
+Registrar: gdns
+Registrar Abuse Contact Email: hostmaster@gdns.com
+Registrar Abuse Contact Phone: +1 212 334 3660
+Name Server: ns-723.awsdns-26.net
+Name Server: ns-1592.awsdns-07.co.uk
+Name Server: ns-1189.awsdns-20.org
+Name Server: ns-235.awsdns-29.com
+>>> Last update of WHOIS database: 2026-03-13T19:57:00.719Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp

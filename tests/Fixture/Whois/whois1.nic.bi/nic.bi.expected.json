@@ -1,0 +1,41 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.bi",
+        "registrar": {
+            "name": "CNI-ADMIN"
+        },
+        "createdDate": "2011-07-21 18:19:26",
+        "updatedDate": "2021-01-28 09:24:01",
+        "expiresDate": "2030-12-30 22:00:00",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns1.nic.bi"
+            },
+            {
+                "hostname": "ns.nic.bi"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "NIC ADMIN",
+                "organization": "NIC",
+                "email": "registry@nic.bi",
+                "phone": "0724445740",
+                "address": "BI"
+            },
+            {
+                "type": "admin",
+                "name": "NIC ADMIN",
+                "organization": "NIC",
+                "email": "registry@nic.bi",
+                "phone": "+257.22219230"
+            }
+        ],
+        "dnssec": "unsigned"
+    }
+}

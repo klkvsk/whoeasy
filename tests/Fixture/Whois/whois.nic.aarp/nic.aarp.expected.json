@@ -1,0 +1,43 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.aarp",
+        "registrar": {
+            "name": "American Association of Retired Persons",
+            "url": "http://nic.aarp",
+            "abuseEmail": "techsupport@registry.godaddy",
+            "abusePhone": "+1.8886872277"
+        },
+        "createdDate": "2024-04-02 06:15:13",
+        "updatedDate": "2025-10-13 17:40:51",
+        "expiresDate": "2034-04-02 06:15:13",
+        "status": [
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "serverRenewProhibited https://icann.org/epp#serverRenewProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.aarp"
+            },
+            {
+                "hostname": "b.nic.aarp"
+            },
+            {
+                "hostname": "c.nic.aarp"
+            },
+            {
+                "hostname": "d.nic.aarp"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "techsupport@registry.godaddy",
+                "phone": "+1.8886872277"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

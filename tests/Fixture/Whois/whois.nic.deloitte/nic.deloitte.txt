@@ -1,0 +1,51 @@
+Domain Name: NIC.DELOITTE
+Registry Domain ID: D61016909-CNIC
+Registrar WHOIS Server: whois.nic.deloitte
+Registrar URL: https://www.nic.deloitte/
+Updated Date: 2025-08-28T00:14:14.0Z
+Creation Date: 2015-09-03T10:32:54.0Z
+Registry Expiry Date: 2026-09-03T23:59:59.0Z
+Registrar: Deloitte Touche
+Registrar IANA ID: 9999
+Domain Status: serverRenewProhibited https://icann.org/epp#serverRenewProhibited
+Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Registrant Name: DTT Domain Administrator
+Registrant Organization: Deloitte Touche Tohmatsu
+Registrant Street: 30 Rockefeller Plaza
+Registrant City: New York
+Registrant State/Province: New York
+Registrant Postal Code: 10112-0015
+Registrant Country: US
+Registrant Phone: +1.2124924566
+Registrant Fax: +1.2124924252
+Registrant Email: dttdomainadmin@deloitte.com
+Tech Name: DTT Domain Administrator
+Tech Organization: Deloitte Touche Tohmatsu
+Tech Street: 30 Rockefeller Plaza
+Tech City: New York
+Tech State/Province: New York
+Tech Postal Code: 10112-0015
+Tech Country: US
+Tech Phone: +1.2124924566
+Tech Fax: +1.2124924252
+Tech Email: dttdomainadmin@deloitte.com
+Name Server: A.NIC.DELOITTE
+Name Server: B.NIC.DELOITTE
+Name Server: C.NIC.DELOITTE
+Name Server: D.NIC.DELOITTE
+DNSSEC: signedDelegation
+Registrar Abuse Contact Email: dttdomainadmin@deloitte.com
+Registrar Abuse Contact Phone: +1.3124861191
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-13T20:10:25.0Z <<<
+
+WHOIS LEGAL STATEMENT AND TERMS & CONDITIONS
+ Copyright 2018. For information, contact Deloitte Touche Tohmatsu Limited.
+
+ Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited ("DTTL"), 
+ its global network of member firms, and their related entities. DTTL 
+ (also referred to as "Deloitte Global") and each of its member firms are legally 
+ separate and independent entities. DTTL does not provide services to clients. 
+ Please see www.deloitte.com/about to learn more.

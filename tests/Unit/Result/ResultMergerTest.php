@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Tests\Unit\Result;
 
-use Klkvsk\Whoeasy\Enum\ContactType;
 use Klkvsk\Whoeasy\Enum\QueryType;
+use Klkvsk\Whoeasy\Parser\Data\ContactType;
 use Klkvsk\Whoeasy\Result\AsnInfo;
 use Klkvsk\Whoeasy\Result\Contact;
 use Klkvsk\Whoeasy\Result\DomainInfo;
@@ -29,17 +29,17 @@ class ResultMergerTest extends TestCase
     {
         $rdap = new StructuredResult(
             queryType: QueryType::Domain,
-            domain: new DomainInfo(name: 'example.com', registrar: 'RDAP Registrar', createdDate: '2020-01-01'),
+            domain: new DomainInfo(name: 'example.com', registrar: new Registrar(name: 'RDAP Registrar'), createdDate: '2020-01-01'),
         );
         $whois = new StructuredResult(
             queryType: QueryType::Domain,
-            domain: new DomainInfo(name: 'EXAMPLE.COM', registrar: 'WHOIS Registrar', createdDate: '2020-01-02'),
+            domain: new DomainInfo(name: 'EXAMPLE.COM', registrar: new Registrar(name: 'WHOIS Registrar'), createdDate: '2020-01-02'),
         );
 
         $merged = $this->merger->merge($rdap, $whois);
 
         $this->assertSame('example.com', $merged->domain->name);
-        $this->assertSame('RDAP Registrar', $merged->domain->registrar);
+        $this->assertSame('RDAP Registrar', $merged->domain->registrar->name);
         $this->assertSame('2020-01-01', $merged->domain->createdDate);
     }
 
@@ -162,11 +162,11 @@ class ResultMergerTest extends TestCase
     {
         $rdap = new StructuredResult(
             queryType: QueryType::Domain,
-            domain: new DomainInfo(registrarInfo: new Registrar(name: 'RDAP Inc')),
+            domain: new DomainInfo(registrar: new Registrar(name: 'RDAP Inc')),
         );
         $whois = new StructuredResult(
             queryType: QueryType::Domain,
-            domain: new DomainInfo(registrarInfo: new Registrar(
+            domain: new DomainInfo(registrar: new Registrar(
                 name: 'WHOIS Inc',
                 url: 'https://registrar.test',
                 abuseEmail: 'abuse@registrar.test',
@@ -175,9 +175,9 @@ class ResultMergerTest extends TestCase
 
         $merged = $this->merger->merge($rdap, $whois);
 
-        $this->assertSame('RDAP Inc', $merged->domain->registrarInfo->name);
-        $this->assertSame('https://registrar.test', $merged->domain->registrarInfo->url);
-        $this->assertSame('abuse@registrar.test', $merged->domain->registrarInfo->abuseEmail);
+        $this->assertSame('RDAP Inc', $merged->domain->registrar->name);
+        $this->assertSame('https://registrar.test', $merged->domain->registrar->url);
+        $this->assertSame('abuse@registrar.test', $merged->domain->registrar->abuseEmail);
     }
 
     public function testMergeIpInfo(): void

@@ -1,0 +1,65 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.agakhan",
+        "registrar": {
+            "name": "Registry Operator acts as Registrar (9999)",
+            "url": "https://identity.digital",
+            "abuseEmail": "abuse@identity.digital",
+            "abusePhone": "+1.6664447777"
+        },
+        "createdDate": "2017-02-23 22:08:04",
+        "updatedDate": "2026-02-23 22:08:09",
+        "expiresDate": "2027-02-23 22:08:04",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "autoRenewPeriod https://icann.org/epp#autoRenewPeriod"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a0.nic.agakhan"
+            },
+            {
+                "hostname": "b0.nic.agakhan"
+            },
+            {
+                "hostname": "c0.nic.agakhan"
+            },
+            {
+                "hostname": "a2.nic.agakhan"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED",
+                "organization": "Fondation Aga Khan (Aga Khan Foundation)",
+                "email": "REDACTED",
+                "phone": "REDACTED",
+                "address": "CH"
+            },
+            {
+                "type": "admin",
+                "name": "REDACTED",
+                "organization": "REDACTED",
+                "email": "REDACTED",
+                "phone": "REDACTED"
+            },
+            {
+                "type": "tech",
+                "name": "REDACTED",
+                "organization": "REDACTED",
+                "email": "REDACTED",
+                "phone": "REDACTED"
+            },
+            {
+                "type": "abuse",
+                "email": "abuse@identity.digital",
+                "phone": "+1.6664447777"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

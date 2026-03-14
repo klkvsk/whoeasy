@@ -1,0 +1,106 @@
+Domain Name: nic.eus
+Registry Domain ID: D1-EUS
+Registrar WHOIS Server: whois.nic.eus
+Registrar URL: http://nic.eus/
+Updated Date: 2025-03-24T12:56:12.22Z
+Creation Date: 2014-02-07T12:39:03.948Z
+Registry Expiry Date: 2026-02-07T12:39:03.948Z
+Registrar Registration Expiration Date: 
+Registrar: Registry self-allocated
+Registrar IANA ID: 9999
+Registrar Abuse Contact Email: fake-email1@unicart.bg
+Registrar Abuse Contact Phone: +34.665770945
+Reseller: 
+Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+Domain Status: pendingRenew https://icann.org/epp#pendingRenew
+Domain Status: autoRenewPeriod https://icann.org/epp#autoRenewPeriod
+Registry Registrant ID: 
+Registrant Name: 
+Registrant Organization: 
+Registrant Street: 
+Registrant City: 
+Registrant State/Province: Gipuzkoa
+Registrant Postal Code: 
+Registrant Country: ES
+Registrant Phone: 
+Registrant Phone Ext: 
+Registrant Fax: 
+Registrant Fax Ext: 
+Registrant Email: Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Admin ID: 
+Admin Name: 
+Admin Organization: 
+Admin Street: 
+Admin City: 
+Admin State/Province: 
+Admin Postal Code: 
+Admin Country: 
+Admin Phone: 
+Admin Phone Ext: 
+Admin Fax: 
+Admin Fax Ext: 
+Admin Email: Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Tech ID: 
+Tech Name: 
+Tech Organization: 
+Tech Street: 
+Tech City: 
+Tech State/Province: 
+Tech Postal Code: 
+Tech Country: 
+Tech Phone: 
+Tech Phone Ext: 
+Tech Fax: 
+Tech Fax Ext: 
+Tech Email: Please query the Whois service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Name Server: anycast1.irondns.net
+Name Server: anycast2.irondns.net
+DNSSEC: signedDelegation
+Canonical Name: nic.eus
+IDN Tag: Latn
+Registrant Ext. Name: 
+Registrant Ext. Organization: 
+Registrant Ext. Street: 
+Registrant Ext. City: 
+Registrant Ext. State/Province: Gipuzkoa
+Registrant Ext. Postal Code: 
+Registrant Ext. Country: ES
+URL of the ICANN Whois Inaccuracy Complaint Form: https://icann.org/wicf
+>>> Last update of Whois database: 2026-03-13T20:11:25.272Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+Terms and Conditions of Use
+
+The data in this record is provided by PuntuEUS Fundazioa
+("the Registry") for informational purposes only. The Registry
+does not guarantee its accuracy and cannot, under any circumstances,
+be held liable in case the stored information would prove to be
+wrong, incomplete or not accurate in any sense.
+
+NOTICE: Access to the domain name's information is restricted in
+order to protect the privacy of Registrants. If you believe you have
+a legitimate interest in having access to part or all of the data not
+published in the above output, please contact the Registrar of record
+at the address shown in the output above OR the Registry at the
+following address:
+
+https://www.domeinuak.eus/en/data-protection/
+
+The compilation, repackaging, dissemination or other use of the data
+in this Whois database is expressly prohibited without the
+prior written consent of the Registry.
+
+The Registry maintains the right to restrict your access to the Whois
+database in its sole discretion to ensure operational stability. The
+Registry may restrict or terminate your access to the Whois database
+for failure to abide by these terms of use. The Registry reserves the
+right to modify these terms at any time.
+
+By maintaining the connection you assure that you have a legitimate
+interest in the data and that you will only use it for the stated
+purposes. You are aware the Registry maintains the right to initiate
+legal proceedings against you in the event of any breach of this
+assurance and to bar you from using its Whois service.
+
+End of Whois record.

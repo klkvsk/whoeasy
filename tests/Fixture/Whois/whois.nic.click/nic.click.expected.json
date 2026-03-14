@@ -1,0 +1,34 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.click",
+        "registrar": {
+            "name": "Tucows Registry Services",
+            "url": "https://tucowsregistry.com",
+            "abuseEmail": "dhernandez@tucows.com"
+        },
+        "createdDate": "2013-09-16 14:21:26",
+        "updatedDate": "2025-11-04 20:10:19",
+        "expiresDate": "2026-09-16 14:21:26",
+        "status": [
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns03.trs-dns.com"
+            },
+            {
+                "hostname": "ns03.trs-dns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "dhernandez@tucows.com"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

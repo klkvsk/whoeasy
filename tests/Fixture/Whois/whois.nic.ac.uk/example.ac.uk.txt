@@ -1,0 +1,34 @@
+
+Domain:
+	example.ac.uk
+
+Registered For:
+	Trust and Identity
+
+Domain Owner:
+	Jisc Services Limited
+
+Registered By:
+	Jisc Services Limited
+
+Servers:
+	ns1-32.azure-dns.com	
+	ns2-32.azure-dns.net	
+	ns3-32.azure-dns.org	
+	ns4-32.azure-dns.info	
+
+Registrant Contact:
+	Trust & Identity Services Team
+
+Registrant Address:
+	Jisc
+	United Kingdom
+	+441235822815 (Phone)
+	trustandidentity@jisc.ac.uk
+
+Renewal date:
+	Sunday 14th Jun 2026
+
+Entry created:
+	Friday 14th June 2024
+

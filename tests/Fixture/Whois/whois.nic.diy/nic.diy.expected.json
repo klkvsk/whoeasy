@@ -1,0 +1,32 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.diy",
+        "registrar": {
+            "name": "Tucows Registry Services",
+            "url": "https://tucowsregistry.com",
+            "abuseEmail": "dhernandez@tucows.com"
+        },
+        "createdDate": "2023-11-10 22:57:58",
+        "updatedDate": "2023-11-14 21:16:35",
+        "expiresDate": "2033-11-10 22:57:58",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "ns03.trs-dns.com"
+            },
+            {
+                "hostname": "ns03.trs-dns.net"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "abuse",
+                "email": "dhernandez@tucows.com"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

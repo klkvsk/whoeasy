@@ -1,0 +1,33 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.afl",
+        "registrar": {
+            "name": "Australian Football League"
+        },
+        "createdDate": "2015-02-17 01:03:27",
+        "updatedDate": "2025-10-13 16:48:54",
+        "expiresDate": "2026-02-17 01:03:27",
+        "status": [
+            "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+            "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+            "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+            "autoRenewPeriod https://icann.org/epp#autoRenewPeriod"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.afl"
+            },
+            {
+                "hostname": "b.nic.afl"
+            },
+            {
+                "hostname": "c.nic.afl"
+            },
+            {
+                "hostname": "d.nic.afl"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}

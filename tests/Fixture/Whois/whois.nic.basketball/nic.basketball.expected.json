@@ -1,0 +1,46 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.basketball",
+        "registrar": {
+            "name": "Roar.Basketball LLC"
+        },
+        "createdDate": "2020-10-13 04:47:10",
+        "updatedDate": "2025-11-27 04:47:11",
+        "expiresDate": "2026-10-13 04:47:10",
+        "status": [
+            "ok https://icann.org/epp#ok"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a.nic.basketball"
+            },
+            {
+                "hostname": "d.nic.basketball"
+            },
+            {
+                "hostname": "c.nic.basketball"
+            },
+            {
+                "hostname": "b.nic.basketball"
+            }
+        ],
+        "contacts": [
+            {
+                "type": "registrant",
+                "name": "REDACTED FOR PRIVACY",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "phone": "REDACTED FOR PRIVACY",
+                "address": "ch"
+            },
+            {
+                "type": "tech",
+                "name": "REDACTED FOR PRIVACY",
+                "organization": "REDACTED FOR PRIVACY",
+                "email": "Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.",
+                "phone": "REDACTED FOR PRIVACY"
+            }
+        ],
+        "dnssec": "signedDelegation"
+    }
+}
