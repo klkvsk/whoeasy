@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy\Tests\Unit\Result;
 
 use Klkvsk\Whoeasy\Enum\QueryType;
-use Klkvsk\Whoeasy\Parser\Data\ContactType;
+use Klkvsk\Whoeasy\Result\ContactType;
 use Klkvsk\Whoeasy\Result\AsnInfo;
 use Klkvsk\Whoeasy\Result\Contact;
 use Klkvsk\Whoeasy\Result\DomainInfo;
-use Klkvsk\Whoeasy\Result\HopResponses;
 use Klkvsk\Whoeasy\Result\IpInfo;
 use Klkvsk\Whoeasy\Result\Nameserver;
 use Klkvsk\Whoeasy\Result\QueryResult;
@@ -51,16 +50,16 @@ class QueryResultTest extends TestCase
                     ],
                 ),
             ),
-            whois: new HopResponses(
-                nonAuth: new RawResponse(
+            whoisHops: [
+                new RawResponse(
                     server: 'whois.verisign-grs.com',
                     text: 'Domain Name: EXAMPLE.COM',
                 ),
-                auth: new RawResponse(
+                new RawResponse(
                     server: 'whois.example-registrar.com',
                     text: 'Domain Name: example.com',
                 ),
-            ),
+            ],
         );
 
         $array = $result->toArray();

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy\Tests\Unit;
 
 use Klkvsk\Whoeasy\Config;
-use Klkvsk\Whoeasy\Enum\AuthLevel;
 use Klkvsk\Whoeasy\Enum\QueryMode;
 use Klkvsk\Whoeasy\QueryOptions;
 use Klkvsk\Whoeasy\Whoeasy;
@@ -45,7 +44,6 @@ class WhoeasyTest extends TestCase
         $options = new QueryOptions();
 
         $this->assertNull($options->mode);
-        $this->assertSame(AuthLevel::Auth, $options->authLevel);
         $this->assertNull($options->proxyUri);
         $this->assertNull($options->timeout);
     }

@@ -6,11 +6,15 @@ namespace Klkvsk\Whoeasy\Result;
 
 readonly class QueryResult
 {
+    /**
+     * @param RawResponse[] $whoisHops
+     * @param RawResponse[] $rdapHops
+     */
     public function __construct(
         public string $query,
         public StructuredResult $result,
-        public ?HopResponses $rdap = null,
-        public ?HopResponses $whois = null,
+        public array $whoisHops = [],
+        public array $rdapHops = [],
     ) {}
 
     public function toArray(): array
@@ -20,12 +24,18 @@ readonly class QueryResult
             'result' => $this->result->toArray(),
         ];
 
-        if ($this->rdap !== null) {
-            $data['rdap'] = $this->rdap->toArray();
+        if ($this->whoisHops !== []) {
+            $data['whoisHops'] = array_map(
+                fn(RawResponse $r) => $r->toArray(),
+                $this->whoisHops,
+            );
         }
 
-        if ($this->whois !== null) {
-            $data['whois'] = $this->whois->toArray();
+        if ($this->rdapHops !== []) {
+            $data['rdapHops'] = array_map(
+                fn(RawResponse $r) => $r->toArray(),
+                $this->rdapHops,
+            );
         }
 
         return $data;
