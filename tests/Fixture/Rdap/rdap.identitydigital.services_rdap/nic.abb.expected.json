@@ -1,0 +1,32 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.abb",
+        "registrar": {
+            "name": "Registry Operator acts as Registrar (9999)"
+        },
+        "createdDate": "2015-03-02 23:28:51",
+        "updatedDate": "2026-03-02 23:29:16",
+        "expiresDate": "2027-03-02 23:28:51",
+        "status": [
+            "server delete prohibited",
+            "server transfer prohibited",
+            "server update prohibited",
+            "auto renew period"
+        ],
+        "nameservers": [
+            {
+                "hostname": "b0.nic.abb"
+            },
+            {
+                "hostname": "c0.nic.abb"
+            },
+            {
+                "hostname": "a2.nic.abb"
+            },
+            {
+                "hostname": "a0.nic.abb"
+            }
+        ]
+    }
+}

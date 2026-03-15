@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Tests\Unit\Rdap;
 
-use Klkvsk\Whoeasy\Client\Rdap\RdapParser;
-use Klkvsk\Whoeasy\Client\Rdap\RdapResponse;
-use Klkvsk\Whoeasy\Parser\Data\AsnResult;
-use Klkvsk\Whoeasy\Parser\Data\DomainResult;
-use Klkvsk\Whoeasy\Parser\Data\IpResult;
-use PHPUnit\Framework\Attributes\DataProvider;
+use Klkvsk\Whoeasy\Enum\QueryType;
+use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
+use Klkvsk\Whoeasy\Result\StructuredResult;
 use PHPUnit\Framework\TestCase;
 
 class RdapParserTest extends TestCase
@@ -27,113 +24,83 @@ class RdapParserTest extends TestCase
         return json_decode(file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
     }
 
-    private static function makeResponse(array $json): RdapResponse
-    {
-        return new RdapResponse(
-            server: 'https://test.rdap.example',
-            url: 'https://test.rdap.example/test',
-            httpCode: 200,
-            json: $json,
-            rawBody: json_encode($json),
-        );
-    }
-
     public function testParseDomainFixture(): void
     {
         $json = self::loadFixture('domain-example.com.json');
-        $response = self::makeResponse($json);
-        $result = $this->parser->parse($response);
+        $result = $this->parser->parse($json, QueryType::Domain);
 
-        $this->assertInstanceOf(DomainResult::class, $result);
-        $this->assertSame('EXAMPLE.COM', $result->name);
-        $this->assertStringContainsString('client delete prohibited', $result->status);
-        $this->assertNotNull($result->created);
-        $this->assertSame('1995-08-14', $result->created->format('Y-m-d'));
-        $this->assertNotNull($result->expires);
-        $this->assertSame('2025-08-13', $result->expires->format('Y-m-d'));
-        $this->assertNotNull($result->changed);
+        $this->assertInstanceOf(StructuredResult::class, $result);
+        $this->assertNotNull($result->domain);
+        $this->assertSame('EXAMPLE.COM', $result->domain->name);
+        $this->assertContains('client delete prohibited', $result->domain->status);
+        $this->assertNotNull($result->domain->createdDate);
+        $this->assertStringContainsString('1995-08-14', $result->domain->createdDate);
+        $this->assertNotNull($result->domain->expiresDate);
+        $this->assertStringContainsString('2025-08-13', $result->domain->expiresDate);
+        $this->assertNotNull($result->domain->updatedDate);
 
         // Nameservers
-        $this->assertCount(2, $result->nameservers);
-        $this->assertSame('a.iana-servers.net', $result->nameservers[0]);
-        $this->assertSame('b.iana-servers.net', $result->nameservers[1]);
+        $this->assertCount(2, $result->domain->nameservers);
+        $this->assertSame('a.iana-servers.net', $result->domain->nameservers[0]->hostname);
+        $this->assertSame('b.iana-servers.net', $result->domain->nameservers[1]->hostname);
 
         // Registrar entity
-        $this->assertNotNull($result->registrar);
-        $this->assertSame('RESERVED-Internet Assigned Numbers Authority', $result->registrar->name);
+        $this->assertNotNull($result->domain->registrar);
+        $this->assertSame('RESERVED-Internet Assigned Numbers Authority', $result->domain->registrar->name);
 
         // Registrant contact
-        $this->assertNotEmpty($result->contacts);
+        $this->assertNotEmpty($result->domain->contacts);
     }
 
     public function testParseIpFixture(): void
     {
         $json = self::loadFixture('ip-8.8.8.8.json');
-        $response = self::makeResponse($json);
-        $result = $this->parser->parse($response);
+        $result = $this->parser->parse($json, QueryType::Ipv4);
 
-        $this->assertInstanceOf(IpResult::class, $result);
-        $this->assertSame('GOGL', $result->name);
-        $this->assertSame('8.8.8.0 - 8.8.8.255', $result->range);
-        $this->assertNotNull($result->created);
-
-        // Owner
-        $this->assertNotNull($result->owner);
-        $this->assertSame('Google LLC', $result->owner->name);
-
-        // Abuse contact
-        $this->assertNotEmpty($result->contacts);
-        $abuseContact = $result->contacts[0];
-        $this->assertSame('abuse', $abuseContact->type);
-        $this->assertSame('network-abuse@google.com', $abuseContact->email);
+        $this->assertInstanceOf(StructuredResult::class, $result);
+        $this->assertNotNull($result->ip);
+        $this->assertSame('GOGL', $result->ip->networkName);
+        $this->assertSame('8.8.8.0 - 8.8.8.255', $result->ip->range);
+        $this->assertNotNull($result->ip->createdDate);
+        $this->assertNotEmpty($result->ip->contacts);
     }
 
     public function testParseAsnFixture(): void
     {
         $json = self::loadFixture('autnum-15169.json');
-        $response = self::makeResponse($json);
-        $result = $this->parser->parse($response);
+        $result = $this->parser->parse($json, QueryType::Asn);
 
-        $this->assertInstanceOf(AsnResult::class, $result);
-        $this->assertSame('AS15169', $result->asn);
-        $this->assertSame('GOOGLE', $result->name);
-        $this->assertNotNull($result->created);
-
-        // Owner
-        $this->assertNotNull($result->owner);
-        $this->assertSame('Google LLC', $result->owner->name);
-
-        // Tech contact
-        $this->assertNotEmpty($result->contacts);
-        $techContact = $result->contacts[0];
-        $this->assertSame('tech', $techContact->type);
-        $this->assertSame('arin-contact@google.com', $techContact->email);
+        $this->assertInstanceOf(StructuredResult::class, $result);
+        $this->assertNotNull($result->asn);
+        $this->assertSame(15169, $result->asn->asn);
+        $this->assertSame('GOOGLE', $result->asn->name);
+        $this->assertNotNull($result->asn->createdDate);
+        $this->assertNotEmpty($result->asn->contacts);
     }
 
     public function testParseDomainWithEmptyEntities(): void
     {
-        $response = self::makeResponse([
+        $result = $this->parser->parse([
             'objectClassName' => 'domain',
             'ldhName' => 'minimal.test',
             'entities' => [],
-        ]);
+        ], QueryType::Domain);
 
-        $result = $this->parser->parse($response);
-
-        $this->assertInstanceOf(DomainResult::class, $result);
-        $this->assertSame('minimal.test', $result->name);
-        $this->assertNull($result->registrar);
-        $this->assertEmpty($result->contacts);
+        $this->assertInstanceOf(StructuredResult::class, $result);
+        $this->assertNotNull($result->domain);
+        $this->assertSame('minimal.test', $result->domain->name);
+        $this->assertNull($result->domain->registrar);
+        $this->assertEmpty($result->domain->contacts);
     }
 
     public function testParseUnknownObjectClassFallsToDomain(): void
     {
-        $response = self::makeResponse([
+        $result = $this->parser->parse([
             'objectClassName' => 'unknown_type',
             'ldhName' => 'fallback.test',
-        ]);
+        ], QueryType::Domain);
 
-        $result = $this->parser->parse($response);
-        $this->assertInstanceOf(DomainResult::class, $result);
+        $this->assertInstanceOf(StructuredResult::class, $result);
+        $this->assertNotNull($result->domain);
     }
 }

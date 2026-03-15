@@ -3,7 +3,7 @@
     "ip": {
         "range": "8.8.8.0 - 8.8.8.255",
         "networkName": "GOGL",
-        "country": "CA",
+        "country": "US",
         "createdDate": "2023-12-28 18:59:53",
         "updatedDate": "2023-12-28 18:59:53",
         "contacts": [

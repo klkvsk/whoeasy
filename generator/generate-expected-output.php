@@ -18,11 +18,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Klkvsk\Whoeasy\Client\Rdap\RdapParser;
+use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
 use Klkvsk\Whoeasy\Client\Rdap\RdapResponse;
 use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParser;
-use Klkvsk\Whoeasy\Result\ResultMapper;
 
 $whoisFixtureDir = __DIR__ . '/../tests/Fixture/Whois';
 $rdapFixtureDir = __DIR__ . '/../tests/Fixture/Rdap';
@@ -31,7 +30,6 @@ $force = in_array('-f', $argv) || in_array('--force', $argv);
 
 $whoisParser = new WhoisParser();
 $rdapParser = new RdapParser();
-$resultMapper = new ResultMapper();
 
 echo "=== Expected Output Generator ===\n";
 if ($force) echo "Mode: FORCE regenerate\n";
@@ -148,11 +146,14 @@ foreach ($rdapServerDirs as $serverDir) {
         }
 
         // Determine query type from filename
-        $queryTypeStr = 'domain';
-        if (str_starts_with($basename, 'ip-') || str_starts_with($basename, 'ip6-')) {
-            $queryTypeStr = 'ipv4';
+        if (str_starts_with($basename, 'ip6-')) {
+            $queryType = QueryType::Ipv6;
+        } elseif (str_starts_with($basename, 'ip-')) {
+            $queryType = QueryType::Ipv4;
         } elseif (str_starts_with($basename, 'autnum-') || str_starts_with($basename, 'asn-')) {
-            $queryTypeStr = 'asn';
+            $queryType = QueryType::Asn;
+        } else {
+            $queryType = QueryType::Domain;
         }
 
         try {
@@ -166,7 +167,7 @@ foreach ($rdapServerDirs as $serverDir) {
                 rawBody: $rawJson,
             );
 
-            $result = $resultMapper->mapRdapResponse($response, $queryTypeStr);
+            $result = $rdapParser->parse($response->json, $queryType);
             $array = $result->toArray();
 
             if (count($array) <= 1) {

@@ -1,0 +1,31 @@
+{
+    "queryType": "domain",
+    "domain": {
+        "name": "nic.abbott",
+        "registrar": {
+            "name": "Registry Operator acts as Registrar (9999)"
+        },
+        "createdDate": "2015-07-02 19:18:06",
+        "updatedDate": "2026-01-16 10:43:56",
+        "expiresDate": "2026-07-02 19:18:06",
+        "status": [
+            "server delete prohibited",
+            "server transfer prohibited",
+            "server update prohibited"
+        ],
+        "nameservers": [
+            {
+                "hostname": "a0.nic.abbott"
+            },
+            {
+                "hostname": "a2.nic.abbott"
+            },
+            {
+                "hostname": "b0.nic.abbott"
+            },
+            {
+                "hostname": "c0.nic.abbott"
+            }
+        ]
+    }
+}

@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy;
 
 use Klkvsk\Whoeasy\Client\Rdap\RdapClient;
-use Klkvsk\Whoeasy\Client\Rdap\RdapParser;
-use Klkvsk\Whoeasy\Client\Rdap\RdapResponse;
+use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
+
+use Klkvsk\Whoeasy\Client\Whois\HttpWhoisClient;
 use Klkvsk\Whoeasy\Client\Whois\WhoisClient;
 use Klkvsk\Whoeasy\Client\Whois\WhoisResponse;
 use Klkvsk\Whoeasy\Enum\QueryMode;
@@ -15,11 +16,9 @@ use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParser;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParserInterface;
 use Klkvsk\Whoeasy\Registry\ServerRegistry;
-use Klkvsk\Whoeasy\Result\HopResponses;
 use Klkvsk\Whoeasy\Result\QueryResult;
 use Klkvsk\Whoeasy\Result\RawResponse;
 use Klkvsk\Whoeasy\Result\ResultMerger;
-use Klkvsk\Whoeasy\Result\StructuredResult;
 
 /**
  * Unified WHOIS + RDAP query API (v2).
@@ -83,17 +82,32 @@ class Whoeasy
     protected function queryWhoisOnly(string $input, QueryOptions $options): QueryResult
     {
         $serverInfo = $this->registry->resolve($input);
+        $timeout = $options->timeout ?? $this->config->whoisTimeout;
 
-        if (!$serverInfo->hasWhois()) {
+        if ($serverInfo->hasHttpWhois()) {
+            // HTTP-based WHOIS endpoint
+            $httpClient = new HttpWhoisClient(
+                timeout: $timeout,
+                proxyUri: $options->proxyUri ?? $this->config->proxyUri,
+            );
+            $response = $httpClient->query(
+                httpUrl: $serverInfo->httpUrl,
+                query: $input,
+                httpQueryFormat: $serverInfo->httpQueryFormat,
+                scraperName: $serverInfo->httpScraper,
+                timeout: $timeout,
+            );
+        } elseif ($serverInfo->hasWhois()) {
+            // Standard TCP:43 WHOIS
+            $response = $this->whoisClient->queryWithReferrals(
+                $serverInfo->whoisServer,
+                $input,
+                timeout: $timeout,
+                queryFormat: $serverInfo->queryFormat,
+            );
+        } else {
             throw new ClientException("No WHOIS server available for: $input");
         }
-
-        $timeout = $options->timeout ?? $this->config->whoisTimeout;
-        $response = $this->whoisClient->queryWithReferrals(
-            $serverInfo->whoisServer,
-            $input,
-            timeout: $timeout,
-        );
 
         $structured = $this->whoisParser->parse(
             $response->rawText,
@@ -104,12 +118,12 @@ class Whoeasy
         return new QueryResult(
             query: $input,
             result: $structured,
-            whois: new HopResponses(
-                auth: new RawResponse(
+            whoisHops: [
+                new RawResponse(
                     server: $response->getRespondingServer(),
                     text: $response->rawText,
                 ),
-            ),
+            ],
         );
     }
 
@@ -144,45 +158,35 @@ class Whoeasy
             proxyUri: $options->proxyUri ?? $this->config->proxyUri,
         );
 
-        $rdapResponse = $this->executeRdapQuery($rdapClient, $input, $serverInfo->queryType);
+        $rdapResponse = $rdapClient->query($serverInfo->rdapUrl, $input, $serverInfo->queryType);
         $parser = new RdapParser();
-        $intermediateResult = $parser->parse($rdapResponse);
-
-        // Map intermediate result to StructuredResult
-        $mapper = new \Klkvsk\Whoeasy\Result\ResultMapper();
-        $queryTypeStr = match ($serverInfo->queryType) {
-            QueryType::Domain => 'domain',
-            QueryType::Ipv4 => 'ipv4',
-            QueryType::Ipv6 => 'ipv6',
-            QueryType::Asn => 'asn',
-        };
-        $structured = $mapper->mapRdapResponse($rdapResponse, $queryTypeStr);
+        $structured = $parser->parse($rdapResponse->json, $serverInfo->queryType);
 
         return new QueryResult(
             query: $input,
             result: $structured,
-            rdap: new HopResponses(
-                auth: new RawResponse(
+            rdapHops: [
+                new RawResponse(
                     server: $rdapResponse->server,
                     text: $rdapResponse->rawBody,
                     json: $rdapResponse->json,
                 ),
-            ),
+            ],
         );
     }
 
     protected function queryBoth(string $input, QueryOptions $options): QueryResult
     {
         $whoisResult = null;
-        $whoisRaw = null;
+        $whoisHops = [];
         $rdapResult = null;
-        $rdapRaw = null;
+        $rdapHops = [];
 
         // Try WHOIS
         try {
             $whoisQr = $this->queryWhoisOnly($input, $options);
             $whoisResult = $whoisQr->result;
-            $whoisRaw = $whoisQr->whois;
+            $whoisHops = $whoisQr->whoisHops;
         } catch (\Throwable) {
             // WHOIS failed, continue
         }
@@ -191,7 +195,7 @@ class Whoeasy
         try {
             $rdapQr = $this->queryRdapOnly($input, $options);
             $rdapResult = $rdapQr->result;
-            $rdapRaw = $rdapQr->rdap;
+            $rdapHops = $rdapQr->rdapHops;
         } catch (\Throwable) {
             // RDAP failed, continue
         }
@@ -209,19 +213,9 @@ class Whoeasy
         return new QueryResult(
             query: $input,
             result: $merged,
-            rdap: $rdapRaw,
-            whois: $whoisRaw,
+            rdapHops: $rdapHops,
+            whoisHops: $whoisHops,
         );
     }
 
-    private function executeRdapQuery(RdapClient $client, string $input, QueryType $queryType): RdapResponse
-    {
-        return match ($queryType) {
-            QueryType::Domain => $client->queryDomain($input),
-            QueryType::Ipv4, QueryType::Ipv6 => $client->queryIp($input),
-            QueryType::Asn => $client->queryAsn(
-                (int)preg_replace('/^AS/i', '', $input)
-            ),
-        };
-    }
 }
