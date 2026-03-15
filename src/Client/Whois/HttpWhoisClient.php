@@ -1,0 +1,155 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Klkvsk\Whoeasy\Client\Whois;
+
+use Klkvsk\Whoeasy\Client\Exception\ClientConnectException;
+use Klkvsk\Whoeasy\Client\Exception\ClientTimeoutException;
+use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
+use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
+
+/**
+ * HTTP-based WHOIS client using ext-curl.
+ *
+ * Handles WHOIS servers that expose data via HTTP endpoints
+ * rather than the standard TCP:43 protocol.
+ */
+final class HttpWhoisClient
+{
+    public function __construct(
+        private int $timeout = 30,
+        private ?string $proxyUri = null,
+    ) {
+        if (!extension_loaded('curl')) {
+            throw new MissingRequirementsException('ext-curl is required for HTTP WHOIS queries');
+        }
+    }
+
+    /**
+     * Query an HTTP-based WHOIS endpoint.
+     *
+     * @param string $httpUrl Base URL (e.g., "https://api.dnsbelgium.be")
+     * @param string $query The domain/IP to look up
+     * @param string $httpQueryFormat Format string like "GET /path/%s" or "POST /path field=%s"
+     * @param string|null $scraperName Scraper name to process the response, or null for raw text
+     * @param int|null $timeout Override timeout for this request
+     * @return WhoisResponse
+     */
+    public function query(
+        string $httpUrl,
+        string $query,
+        string $httpQueryFormat,
+        ?string $scraperName = null,
+        ?int $timeout = null,
+    ): WhoisResponse {
+        $timeout ??= $this->timeout;
+
+        // Parse the query format: "GET /path/%s" or "POST /path body=%s"
+        [$method, $rest] = $this->parseQueryFormat($httpQueryFormat, $query);
+
+        if ($method === 'POST') {
+            // For POST: "POST /path body=%s" -> path and body are separated by space
+            $parts = explode(' ', $rest, 2);
+            $path = $parts[0];
+            $body = $parts[1] ?? '';
+            $url = rtrim($httpUrl, '/') . $path;
+        } else {
+            // For GET: path includes query string
+            $url = rtrim($httpUrl, '/') . $rest;
+            $body = null;
+        }
+
+        $responseBody = $this->executeRequest($url, $method, $body, $timeout);
+
+        // Apply scraper if specified
+        if ($scraperName !== null) {
+            $responseBody = HttpScraper::process($scraperName, $responseBody);
+        }
+
+        return new WhoisResponse(
+            server: parse_url($httpUrl, PHP_URL_HOST) ?: $httpUrl,
+            query: $query,
+            rawText: $responseBody,
+        );
+    }
+
+    /**
+     * Parse HTTP query format string into method and path/body.
+     *
+     * @return array{0: string, 1: string} [method, rest]
+     */
+    private function parseQueryFormat(string $format, string $query): array
+    {
+        // Check if format already has the query baked in (e.g., .tj special case)
+        if (!str_contains($format, '%s')) {
+            // Format is pre-built, extract method and path
+            if (preg_match('/^(GET|POST)\s+(.+)$/i', $format, $m)) {
+                return [strtoupper($m[1]), $m[2]];
+            }
+            throw new ClientRequestException("Invalid HTTP query format: $format");
+        }
+
+        // Standard format: "GET /path/%s" or "POST /path field=%s"
+        if (preg_match('/^(GET|POST)\s+(.+)$/i', $format, $m)) {
+            $method = strtoupper($m[1]);
+            $pathTemplate = $m[2];
+            $resolved = sprintf($pathTemplate, urlencode($query));
+            return [$method, $resolved];
+        }
+
+        throw new ClientRequestException("Invalid HTTP query format: $format");
+    }
+
+    /**
+     * Execute the HTTP request using curl.
+     */
+    private function executeRequest(string $url, string $method, ?string $body, int $timeout): string
+    {
+        $ch = curl_init();
+
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => $timeout,
+            CURLOPT_CONNECTTIMEOUT => $timeout,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_MAXREDIRS => 5,
+            CURLOPT_USERAGENT => 'Whoeasy/2.0 (https://github.com/klkvsk/whoeasy)',
+            CURLOPT_SSL_VERIFYPEER => true,
+        ]);
+
+        if ($method === 'POST') {
+            curl_setopt($ch, CURLOPT_POST, true);
+            if ($body !== null) {
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                    'Content-Type: application/x-www-form-urlencoded',
+                ]);
+            }
+        }
+
+        if ($this->proxyUri !== null) {
+            curl_setopt($ch, CURLOPT_PROXY, $this->proxyUri);
+        }
+
+        $response = curl_exec($ch);
+        $errno = curl_errno($ch);
+        $error = curl_error($ch);
+        curl_close($ch);
+
+        if ($response === false) {
+            if ($errno === CURLE_OPERATION_TIMEDOUT || $errno === CURLE_OPERATION_TIMEOUTED) {
+                throw (new ClientTimeoutException("HTTP request timed out after {$timeout}s: $url"))
+                    ->withServer(parse_url($url, PHP_URL_HOST) ?: $url);
+            }
+            if ($errno === CURLE_COULDNT_CONNECT || $errno === CURLE_COULDNT_RESOLVE_HOST) {
+                throw (new ClientConnectException("HTTP connection failed: $error"))
+                    ->withServer(parse_url($url, PHP_URL_HOST) ?: $url);
+            }
+            throw new ClientRequestException("HTTP request failed: [$errno] $error");
+        }
+
+        return $response;
+    }
+}

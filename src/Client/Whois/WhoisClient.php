@@ -18,7 +18,7 @@ final class WhoisClient
     private const READ_BUFFER_SIZE = 4096;
 
     public function __construct(
-        private int $timeout = 30,
+        private int $timeout = 15,
         private ?string $proxyUri = null,
     ) {
     }
@@ -34,7 +34,7 @@ final class WhoisClient
      * @throws ClientConnectException If connection to the server fails
      * @throws ClientTimeoutException If the connection or read times out
      */
-    public function query(string $server, string $query, ?int $timeout = null): string
+    public function query(string $server, string $query, ?int $timeout = null, ?string $queryFormat = null): string
     {
         $timeout ??= $this->timeout;
         $port = self::DEFAULT_PORT;
@@ -50,7 +50,7 @@ final class WhoisClient
 
         try {
             // Send query followed by CRLF (RFC 3912)
-            $queryLine = $query . "\r\n";
+            $queryLine = ($queryFormat !== null ? sprintf($queryFormat, $query) : $query) . "\r\n";
             $written = @fwrite($socket, $queryLine);
             if ($written === false || $written !== strlen($queryLine)) {
                 throw (new ClientConnectException("Failed to send query to $server"))
@@ -111,6 +111,7 @@ final class WhoisClient
         string $query,
         int $maxReferrals = 1,
         ?int $timeout = null,
+        ?string $queryFormat = null,
     ): WhoisResponse {
         $responses = [];
         $currentServer = $server;
@@ -122,7 +123,7 @@ final class WhoisClient
             }
             $visited[] = $currentServer;
 
-            $raw = $this->query($currentServer, $query, $timeout);
+            $raw = $this->query($currentServer, $query, $timeout, $hop === 0 ? $queryFormat : null);
             $responses[] = ['server' => $currentServer, 'response' => $raw];
 
             // Look for referral

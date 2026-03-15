@@ -17,7 +17,7 @@ final class Ipv4Ranges
     [755236864, 4294705152, 'whois.lacnic.net', 'https://rdap.lacnic.net/rdap/'],
     [755499008, 4294443008, 'whois.ripe.net', 'https://rdap.db.ripe.net/'],
     [759234560, 4294963200, 'whois.apnic.net', 'https://rdap.apnic.net/'],
-    [759169024, 4294901760, 'whois.apnic.net', 'https://rdap.apnic.net/'],
+    [759169024, 4294901760, 'whois.annpnic.net', 'https://rdap.apnic.net/'],
     [759238656, 4294963200, 'whois.apnic.net', 'https://rdap.apnic.net/'],
     [759242752, 4294959104, 'whois.apnic.net', 'https://rdap.apnic.net/'],
     [759250944, 4294950912, 'whois.ripe.net', 'https://rdap.db.ripe.net/'],

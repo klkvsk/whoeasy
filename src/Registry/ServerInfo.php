@@ -16,6 +16,11 @@ readonly class ServerInfo
         public ?string $whoisServer,
         public ?string $rdapUrl,
         public string $query,
+        public ?string $queryFormat = null,
+        public ?string $charset = null,
+        public ?string $httpUrl = null,
+        public ?string $httpQueryFormat = null,
+        public ?string $httpScraper = null,
     ) {
     }
 
@@ -27,5 +32,10 @@ readonly class ServerInfo
     public function hasRdap(): bool
     {
         return $this->rdapUrl !== null;
+    }
+
+    public function hasHttpWhois(): bool
+    {
+        return $this->httpUrl !== null;
     }
 }
