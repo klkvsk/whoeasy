@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy\Parser\Whois;
 
 use Klkvsk\Whoeasy\Enum\QueryType;
-use Klkvsk\Whoeasy\Parser\Data\ContactType;
+use Klkvsk\Whoeasy\Result\ContactType;
 use Klkvsk\Whoeasy\Result\AsnInfo;
 use Klkvsk\Whoeasy\Result\Contact;
 use Klkvsk\Whoeasy\Result\DomainInfo;

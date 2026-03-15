@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Parser\Data;
+namespace Klkvsk\Whoeasy\Result;
 
 enum ContactType: string
 {

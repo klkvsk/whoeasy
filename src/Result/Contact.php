@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Result;
 
-use Klkvsk\Whoeasy\Parser\Data\ContactType;
-
 readonly class Contact
 {
     public function __construct(

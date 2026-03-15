@@ -5,9 +5,9 @@
         "registrar": {
             "name": "Markmonitor Inc."
         },
-        "createdDate": "1999-02-14 20:51:16",
-        "updatedDate": "2026-01-13 20:51:16",
-        "expiresDate": "2027-02-14 20:51:16",
+        "createdDate": "1999-02-14 13:53:29",
+        "updatedDate": "2026-01-13 13:53:29",
+        "expiresDate": "2027-02-14 13:53:29",
         "nameservers": [
             {
                 "hostname": "ns1.google.com"
