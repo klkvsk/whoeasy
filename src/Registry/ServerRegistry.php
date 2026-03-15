@@ -18,6 +18,63 @@ use Klkvsk\Whoeasy\Registry\Data\TldServers;
  */
 final class ServerRegistry
 {
+    /** @var array<string, array<string, string>> Server -> QueryType->value -> format */
+    private const QUERY_FORMATS = [
+        'whois.arin.net' => [
+            'ipv4' => 'n + %s',
+            'ipv6' => 'n + %s',
+        ],
+        'whois.denic.de' => [
+            'domain' => '-T dn %s',
+        ],
+        'whois.jprs.jp' => [
+            'domain' => '%s/e',
+        ],
+    ];
+
+    /** @var array<string, string> Original server -> replacement server */
+    private const SERVER_REMAPS = [
+        'whois.nic.ad.jp' => 'whois.apnic.net',
+        'whois.twnic.net' => 'whois.apnic.net',
+        'whois.nic.or.kr' => 'whois.apnic.net',
+        // Remap to web version without captcha
+        'grweb.ics.forth.gr' => 'www.innoview.gr',
+        // Remap to web version, as port 43 times out
+        'whois.tonic.to' => 'www.tonic.to',
+    ];
+
+    /**
+     * HTTP-based WHOIS servers.
+     * Maps whois server hostname -> [httpUrl, httpQueryFormat, scraperName|null]
+     * @var array<string, array{0: string, 1: string, 2: ?string}>
+     */
+    private const HTTP_SERVERS = [
+        'www.dnsbelgium.be' => ['https://api.dnsbelgium.be', 'GET /whois/registration/%s', null],
+        'www.vnnic.vn' => ['https://whois.net.vn', 'GET /whois.php?domain=%s&act=getwhois', null],
+        'www.tonic.to' => ['https://www.tonic.to', 'GET /whois?%s', null],
+        'whois.nic.ch' => ['https://rdap.nic.ch', 'GET /domain/%s', 'ch'],
+        'whois.dot.ph' => ['https://whois.dot.ph', 'GET /?search=%s', 'ph'],
+        'www.nic.pa' => ['http://www.nic.pa', 'GET /en/whois/dominio/%s', 'pa'],
+        'www.innoview.gr' => ['https://www.innoview.gr', 'POST /members/whoisdomain.php whoisdomainname=%s', 'gr'],
+        'www.nic.tt' => ['https://www.nic.tt', 'POST /cgi-bin/search.pl name=%s', 'tt'],
+        'www.nic.tj' => ['http://www.nic.tj', 'GET /cgi/whois2?domain=%s', 'tj'],
+        'nic.com.uy' => ['https://nic.com.uy', 'NONE only-web', 'not-scrapeable'],
+        'www.dominios.es' => ['https://nic.es', 'NONE only-web', 'not-scrapeable'],
+        // Remapped server names from TLD registry
+        'whois.nic.org.uy' => ['https://nic.com.uy', 'NONE only-web', 'not-scrapeable'],
+        'whois.nic.es' => ['https://nic.es', 'NONE only-web', 'not-scrapeable'],
+    ];
+
+    /**
+     * TLD-based overrides for servers not in the generated TLD data,
+     * or where the TLD data has no whois server at all.
+     * Maps TLD -> [whoisServer, httpUrl, httpQueryFormat, scraperName|null]
+     * @var array<string, array{0: string, 1: string, 2: string, 3: ?string}>
+     */
+    private const TLD_HTTP_OVERRIDES = [
+        '.vn' => ['www.vnnic.vn', 'https://whois.net.vn', 'GET /whois.php?domain=%s&act=getwhois', null],
+    ];
+
     /** @var array<string, array{0: ?string, 1: ?string}> */
     private array $tldServers;
 
@@ -57,54 +114,16 @@ final class ServerRegistry
      */
     public function resolve(string $query): ServerInfo
     {
-        $queryType = self::detectQueryType($query);
+        $queryType = QueryType::guess($query);
 
-        return match ($queryType) {
+        $info = match ($queryType) {
             QueryType::Domain => $this->resolveDomain($query),
             QueryType::Ipv4 => $this->resolveIpv4($query),
             QueryType::Ipv6 => $this->resolveIpv6($query),
             QueryType::Asn => $this->resolveAsn($query),
         };
-    }
 
-    /**
-     * Detect the query type from the input string.
-     */
-    public static function detectQueryType(string $query): QueryType
-    {
-        $query = trim($query);
-
-        // ASN: AS followed by digits
-        if (preg_match('/^AS\d+$/i', $query)) {
-            return QueryType::Asn;
-        }
-
-        // IPv4: dotted decimal
-        if (filter_var($query, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-            return QueryType::Ipv4;
-        }
-
-        // IPv6: colon-separated hex
-        if (filter_var($query, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            return QueryType::Ipv6;
-        }
-
-        // IPv4 CIDR notation
-        if (preg_match('/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,2}$/', $query)) {
-            return QueryType::Ipv4;
-        }
-
-        // Domain: anything with a dot and valid characters
-        if (preg_match('/^[a-z0-9]([a-z0-9\-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9\-]*[a-z0-9])?)+$/i', $query)) {
-            return QueryType::Domain;
-        }
-
-        // Internationalized domain (starts with xn-- or contains non-ASCII)
-        if (preg_match('/\.(xn--[a-z0-9]+|[^\x00-\x7f]+)$/i', $query)) {
-            return QueryType::Domain;
-        }
-
-        throw new InvalidArgumentException("Cannot determine query type for: $query");
+        return $this->applyCustomizations($info);
     }
 
     /**
@@ -131,6 +150,53 @@ final class ServerRegistry
         return $this->tldServers;
     }
 
+    private function applyCustomizations(ServerInfo $info): ServerInfo
+    {
+        $server = $info->whoisServer;
+
+        // Apply server remaps
+        if ($server !== null && isset(self::SERVER_REMAPS[$server])) {
+            $server = self::SERVER_REMAPS[$server];
+        }
+
+        // Look up query format for this server + query type combination
+        $queryFormat = null;
+        if ($server !== null && isset(self::QUERY_FORMATS[$server][$info->queryType->value])) {
+            $queryFormat = self::QUERY_FORMATS[$server][$info->queryType->value];
+        }
+
+        // Look up HTTP server configuration
+        $httpUrl = null;
+        $httpQueryFormat = null;
+        $httpScraper = null;
+        if ($server !== null && isset(self::HTTP_SERVERS[$server])) {
+            [$httpUrl, $httpQueryFormat, $httpScraper] = self::HTTP_SERVERS[$server];
+        }
+
+        // Handle .tj special case: strip TLD from query in the format
+        if ($server === 'www.nic.tj' && $info->queryType === QueryType::Domain) {
+            $domainWithoutTld = preg_replace('/\.tj$/', '', $info->query);
+            $httpQueryFormat = 'GET /cgi/whois2?domain=' . urlencode($domainWithoutTld);
+        }
+
+        // Return new instance only if something changed
+        if ($server !== $info->whoisServer || $queryFormat !== null || $httpUrl !== null) {
+            return new ServerInfo(
+                queryType: $info->queryType,
+                whoisServer: $server,
+                rdapUrl: $info->rdapUrl,
+                query: $info->query,
+                queryFormat: $queryFormat,
+                charset: $info->charset,
+                httpUrl: $httpUrl,
+                httpQueryFormat: $httpQueryFormat,
+                httpScraper: $httpScraper,
+            );
+        }
+
+        return $info;
+    }
+
     private function resolveDomain(string $query): ServerInfo
     {
         $query = strtolower(trim($query, '.'));
@@ -139,6 +205,21 @@ final class ServerRegistry
         // Try progressively shorter suffixes: .co.uk -> .uk
         for ($i = 0; $i < count($parts); $i++) {
             $suffix = '.' . implode('.', array_slice($parts, $i));
+
+            // Check TLD HTTP overrides first (for TLDs with no server in generated data)
+            if (isset(self::TLD_HTTP_OVERRIDES[$suffix])) {
+                [$whois, $httpUrl, $httpQueryFormat, $httpScraper] = self::TLD_HTTP_OVERRIDES[$suffix];
+                return new ServerInfo(
+                    queryType: QueryType::Domain,
+                    whoisServer: $whois,
+                    rdapUrl: null,
+                    query: $query,
+                    httpUrl: $httpUrl,
+                    httpQueryFormat: $httpQueryFormat,
+                    httpScraper: $httpScraper,
+                );
+            }
+
             if (isset($this->tldServers[$suffix])) {
                 [$whois, $rdap] = $this->tldServers[$suffix];
                 return new ServerInfo(
@@ -204,7 +285,7 @@ final class ServerRegistry
 
     private function resolveAsn(string $query): ServerInfo
     {
-        $asnNumber = (int)preg_replace('/^AS/i', '', $query);
+        $asnNumber = (int)preg_replace('/^(ASN?|autnum-?)/i', '', $query);
         if ($asnNumber <= 0) {
             throw new InvalidArgumentException("Invalid ASN: $query");
         }

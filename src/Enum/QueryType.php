@@ -17,10 +17,9 @@ enum QueryType: string
      */
     public static function guess(string $query): self
     {
-        if (preg_match('/-[a-z]$/i', $query)) {
-            return self::NicHandle;
-        }
-        if (preg_match('/^asn?[0-9]+$/i', $query)) {
+        $query = trim($query);
+
+        if (preg_match('/^(ASN?|autnum-?)\d+$/i', $query)) {
             return self::Asn;
         }
         if (filter_var($query, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
@@ -28,6 +27,14 @@ enum QueryType: string
         }
         if (filter_var($query, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
             return self::Ipv6;
+        }
+        // IPv4 CIDR notation
+        if (preg_match('/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,2}$/', $query)) {
+            return self::Ipv4;
+        }
+        // NIC handles
+        if (preg_match('/-[a-z]$/i', $query)) {
+            return self::NicHandle;
         }
         return self::Domain;
     }

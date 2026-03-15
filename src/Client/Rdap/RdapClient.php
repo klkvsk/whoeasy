@@ -8,98 +8,51 @@ use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
 use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
 use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
+use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
 
 /**
  * RDAP client that queries RDAP servers over HTTP/HTTPS per RFC 7480/9083.
+ *
+ * The caller provides the base URL (from ServerRegistry); this client
+ * builds the RDAP path and executes the HTTP request.
  */
 class RdapClient
 {
-    private RdapBootstrap $bootstrap;
-
     public function __construct(
         private int $timeout = 15,
         private ?string $proxyUri = null,
-        ?RdapBootstrap $bootstrap = null,
     ) {
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('Curl extension is required for RDAP');
         }
-        $this->bootstrap = $bootstrap ?? new RdapBootstrap();
-    }
-
-    public function setTimeout(int $timeout): static
-    {
-        $this->timeout = $timeout;
-        return $this;
-    }
-
-    public function setProxy(?string $proxyUri): static
-    {
-        $this->proxyUri = $proxyUri;
-        return $this;
     }
 
     /**
-     * Query RDAP for a domain name.
+     * Query an RDAP server.
      *
-     * @return RdapResponse The parsed RDAP response
-     * @throws ClientException
+     * @param string $rdapBaseUrl RDAP base URL (e.g., "https://rdap.verisign.com/com/v1/")
+     * @param string $query The query input (domain name, IP address, or ASN like "AS15169")
+     * @param QueryType|null $queryType Type of query; if null, guessed from $query
      */
-    public function queryDomain(string $domain): RdapResponse
+    public function query(string $rdapBaseUrl, string $query, ?QueryType $queryType = null): RdapResponse
     {
-        $domain = rtrim(strtolower($domain), '.');
-        $baseUrl = $this->bootstrap->findServer($domain, 'domain');
+        $queryType ??= QueryType::guess($query);
 
-        if ($baseUrl === null) {
-            throw new ClientException("No RDAP server found for domain: $domain");
-        }
+        $path = match ($queryType) {
+            QueryType::Domain => '/domain/' . rawurlencode(rtrim(strtolower($query), '.')),
+            QueryType::Ipv4, QueryType::Ipv6 => '/ip/' . rawurlencode($query),
+            QueryType::Asn => '/autnum/' . (int) preg_replace('/^(ASN?|autnum-?)/i', '', $query),
+            QueryType::NicHandle => '/entity/' . rawurlencode($query),
+        };
 
-        $url = rtrim($baseUrl, '/') . '/domain/' . rawurlencode($domain);
-        return $this->execute($url, $baseUrl);
-    }
+        $url = rtrim($rdapBaseUrl, '/') . $path;
 
-    /**
-     * Query RDAP for an IP address (v4 or v6).
-     *
-     * @return RdapResponse The parsed RDAP response
-     * @throws ClientException
-     */
-    public function queryIp(string $ip): RdapResponse
-    {
-        $baseUrl = $this->bootstrap->findServer($ip, 'ip');
-
-        if ($baseUrl === null) {
-            throw new ClientException("No RDAP server found for IP: $ip");
-        }
-
-        $url = rtrim($baseUrl, '/') . '/ip/' . rawurlencode($ip);
-        return $this->execute($url, $baseUrl);
-    }
-
-    /**
-     * Query RDAP for an Autonomous System Number.
-     *
-     * @return RdapResponse The parsed RDAP response
-     * @throws ClientException
-     */
-    public function queryAsn(int $asn): RdapResponse
-    {
-        $baseUrl = $this->bootstrap->findServer((string) $asn, 'autnum');
-
-        if ($baseUrl === null) {
-            throw new ClientException("No RDAP server found for ASN: $asn");
-        }
-
-        $url = rtrim($baseUrl, '/') . '/autnum/' . $asn;
-        return $this->execute($url, $baseUrl);
+        return $this->execute($url, $rdapBaseUrl);
     }
 
     /**
      * Query a specific RDAP URL directly.
-     *
-     * @return RdapResponse The parsed RDAP response
-     * @throws ClientException
      */
     public function queryUrl(string $url): RdapResponse
     {
@@ -185,5 +138,4 @@ class RdapClient
             curl_close($curl);
         }
     }
-
 }
