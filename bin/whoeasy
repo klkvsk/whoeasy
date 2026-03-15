@@ -2,10 +2,10 @@
 <?php
 require $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
 
-use Klkvsk\Whoeasy\Client\Whois\Proxy\Proxy;
-use Klkvsk\Whoeasy\Parser\Data\WhoisAnswer;
-use Klkvsk\Whoeasy\Parser\Process\NovutecTemplates\Result\Result as NovutecResult;
-use Klkvsk\Whoeasy\Whois;
+use Klkvsk\Whoeasy\Whoeasy;
+use Klkvsk\Whoeasy\Config;
+use Klkvsk\Whoeasy\QueryOptions;
+use Klkvsk\Whoeasy\Enum\QueryMode;
 
 set_error_handler(
     fn($severity, $msg, $file = null, $line = null) => new ErrorException($msg, 0, $severity, $file, $line),
@@ -25,6 +25,7 @@ return new class($argv) {
         's' => 'server',
         'f' => 'format',
         'p' => 'proxy',
+        'm' => 'mode',
     ];
 
     public function __construct(
@@ -40,121 +41,131 @@ return new class($argv) {
         $this->verbose = $args['verbose'];
         try {
             $server = $args['server'];
-            $proxyAddress = $args['proxy'];
-            try {
-                $proxy = $proxyAddress ? Proxy::fromUri($proxyAddress) : null;
-            } catch (InvalidArgumentException) {
-                throw new InvalidArgumentException('Invalid proxy uri: ' . $proxyAddress);
+            if ($server) {
+                fwrite(STDERR, "Warning: manual server override not yet supported, ignoring -s/--server\n");
             }
-            $format = $args['format'] ?? $args[1] ?? 'result';
+
+            $proxyAddress = $args['proxy'];
+
+            $modeStr = $args['mode'] ?? null;
+            $mode = null;
+            if ($modeStr !== null) {
+                $mode = QueryMode::tryFrom($modeStr);
+                if ($mode === null) {
+                    throw new InvalidArgumentException(
+                        'Unknown mode: ' . $modeStr
+                        . '. Valid modes: ' . implode(', ', array_map(fn($m) => $m->value, QueryMode::cases()))
+                    );
+                }
+            }
+
+            $format = $args['format'] ?? 'result';
             $target = $args[0] ?? null;
             if (!$target) {
-                throw new InvalidArgumentException('Target domain is not specified');
+                throw new InvalidArgumentException('Target query is not specified');
             }
 
-            try {
-                $result = Whois::getParsed($target, $server, $proxy);
+            $config = new Config(
+                defaultMode: $mode ?? QueryMode::PreferRdap,
+                proxyUri: $proxyAddress,
+            );
+            $whoeasy = Whoeasy::create($config);
+            $options = new QueryOptions(
+                mode: $mode,
+                proxyUri: $proxyAddress,
+            );
 
-                $value = match ($format) {
-                    'w', 'raw'           => $result->rawData,
-                    'r', 'result'        => $result->result,
-                    't', 'text'          => $result->text,
-                    'g', 'groups'        => $result->groups,
-                    'f', 'fields'        => $result->fields,
-                    'n', 'novutecResult' => $result->novutecResult,
-                    default              => throw new InvalidArgumentException('Unknown format: ' . $format)
-                };
-            } catch (\Klkvsk\Whoeasy\Client\Exception\ClientRequestException $e) {
-                $result = new WhoisAnswer(
-                    $e instanceof \Klkvsk\Whoeasy\Client\Exception\ClientResponseException ?
-                        $e->getResponse()->getAnswer()
-                        : '',
-                    $e->getRequest()->getServer()->getName(),
-                    $e->getRequest()->getQuery(),
-                    $e->getRequest()->getQueryType(),
-                );
-                $value = $e->getMessage();
-
-                if ($this->verbose && $e instanceof \Klkvsk\Whoeasy\Client\Exception\CurlRequestException && $e->getVerboseLog()) {
-                    foreach (explode("\n", trim($e->getVerboseLog())) as $verboseLogLine) {
-                        echo '# (curl)   ' . rtrim($verboseLogLine) . "\n";
-                    }
-                }
-            }
+            $result = $whoeasy->query($target, $options);
 
             if ($this->verbose) {
-                echo '## server: ' . $result->server . "\n";
-                if ($proxy) {
-                    echo '## proxy:  ' . $proxy->getUri() . "\n";
+                $actualMode = $mode ?? $config->defaultMode;
+                fwrite(STDERR, '## mode:   ' . $actualMode->value . "\n");
+                fwrite(STDERR, '## query:  ' . $result->query . "\n");
+                if ($result->whoisHops) {
+                    fwrite(STDERR, '## whois:  ' . $result->whoisHops[0]->server . "\n");
                 }
-                echo '## query:  ' . $result->query . "\n";
+                if ($result->rdapHops) {
+                    fwrite(STDERR, '## rdap:   ' . $result->rdapHops[0]->server . "\n");
+                }
+                if ($proxyAddress) {
+                    fwrite(STDERR, '## proxy:  ' . $proxyAddress . "\n");
+                }
             }
 
-            if (is_object($value) && method_exists($value, 'toArray')) {
-                $output = $value->toArray();
-            } else {
-                $output = $value;
-            }
-
-            if (!is_string($output)) {
-                $output = json_encode($output, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
-            }
-
-            if ($this->verbose && $value instanceof NovutecResult) {
-                echo '## template = ' . $value->template . "\n";
-            }
+            $output = match ($format) {
+                'r', 'result' => json_encode(
+                    $result->result->toArray(),
+                    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR
+                ),
+                'w', 'raw' => $this->getRawText($result),
+                'j', 'json' => $this->getRdapJson($result),
+                default => throw new InvalidArgumentException('Unknown format: ' . $format),
+            };
 
             echo $output . PHP_EOL;
 
         } catch (\InvalidArgumentException $e) {
-            echo $e->getMessage() . PHP_EOL;
+            fwrite(STDERR, $e->getMessage() . PHP_EOL);
             $this->printUsage();
             exit(2);
         } catch (\Throwable $e) {
-            echo $e::class . ': ' . $e->getMessage() . PHP_EOL;
+            fwrite(STDERR, $e::class . ': ' . $e->getMessage() . PHP_EOL);
             if ($this->verbose) {
-                echo $e->getTraceAsString() . PHP_EOL;
+                fwrite(STDERR, $e->getTraceAsString() . PHP_EOL);
             }
             exit(1);
         }
     }
 
+    private function getRawText(\Klkvsk\Whoeasy\Result\QueryResult $result): string
+    {
+        if ($result->whoisHops) {
+            return $result->whoisHops[0]->text;
+        }
+        if ($result->rdapHops) {
+            return $result->rdapHops[0]->text;
+        }
+        return '(no raw response available)';
+    }
+
+    private function getRdapJson(\Klkvsk\Whoeasy\Result\QueryResult $result): string
+    {
+        if ($result->rdapHops && $result->rdapHops[0]->json !== null) {
+            return json_encode(
+                $result->rdapHops[0]->json,
+                JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR
+            );
+        }
+        if ($result->whoisHops) {
+            return '(no RDAP JSON available, only WHOIS raw text)';
+        }
+        return '(no RDAP JSON available)';
+    }
+
     public function printUsage(): void
     {
         echo "\nUsage:\n";
-        echo "  whoeasy [options] <domain>\n";
+        echo "  whoeasy [options] <domain|ip|asn>\n";
         echo "\n";
         echo "Options:\n";
-        echo "  -s, --server <server>    use specified whois server\n";
-        echo "  -p, --proxy <uri>        proxy address\n";
-        echo "  -f, --format <format>    output format\n";
+        echo "  -s, --server <server>    use specified whois server (not yet supported)\n";
+        echo "  -p, --proxy <uri>        proxy address (SOCKS5/HTTP)\n";
+        echo "  -f, --format <format>    output format (default: result)\n";
+        echo "  -m, --mode <mode>        query mode (default: prefer-rdap)\n";
         echo "  -v, --verbose            show debug output and traces\n";
         echo "  -h, --help               show this message\n";
         echo "\n";
         echo "Formats:\n";
-        echo "  w, raw      raw response\n";
-        echo "  t, text     clean text response (comments removed)\n";
-        echo "  r, result   structured result object [default]\n";
-        echo "  f, fields   parsed key-value pairs\n";
-        echo "  g, groups   key-value pairs split in blocks\n";
-    }
-
-    public function getFlag(string $short, ?string $long = null): bool
-    {
-        $opt = getopt($short, (array)$long);
-        return isset($opt[$short]) || isset($opt[$long]);
-    }
-
-    public function getOption(string $short, ?string $long = null): ?string
-    {
-        $opt = getopt($short . ':', $long ? [ $long . ':' ] : []);
-        return $opt[$short] ?? $opt[$long] ?? null;
-    }
-
-    public function getTarget(): ?string
-    {
-        getopt('', [], $arg);
-        return $this->argv[$arg] ?? null;
+        echo "  r, result   structured result as JSON [default]\n";
+        echo "  w, raw      raw WHOIS/RDAP response text\n";
+        echo "  j, json     raw RDAP JSON response\n";
+        echo "\n";
+        echo "Modes:\n";
+        echo "  prefer-rdap    try RDAP first, fall back to WHOIS [default]\n";
+        echo "  prefer-whois   try WHOIS first, fall back to RDAP\n";
+        echo "  rdap-only      RDAP only\n";
+        echo "  whois-only     WHOIS only\n";
+        echo "  both           query both and merge results\n";
     }
 
     public function parseArgs(): array
@@ -189,6 +200,3 @@ return new class($argv) {
     }
 
 };
-
-
-
