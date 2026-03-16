@@ -4,13 +4,35 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy;
 
-use Klkvsk\Whoeasy\Enum\QueryMode;
-
 readonly class QueryOptions
 {
+    public const DEFAULT_MODE = QueryMode::PreferRdap;
+    public const DEFAULT_TIMEOUT = 15;
+    public const DEFAULT_RECURSIVE = true;
+    public const DEFAULT_MAX_REFERRALS = 3;
+
     public function __construct(
-        public ?QueryMode $mode = null,
+        public QueryMode $mode = self::DEFAULT_MODE,
         public ?string $proxyUri = null,
-        public ?int $timeout = null,
+        public int $whoisTimeout = self::DEFAULT_TIMEOUT,
+        public int $rdapTimeout = self::DEFAULT_TIMEOUT,
+        public bool $recursive = self::DEFAULT_RECURSIVE,
+        public int $maxReferrals = self::DEFAULT_MAX_REFERRALS,
     ) {}
+
+    /**
+     * Merge this options with per-query overrides. Override fields take priority,
+     * falling back to this instance's values, then hardcoded defaults.
+     */
+    public function merge(?self $overrides): self
+    {
+        return new self(
+            mode: $overrides?->mode ?? $this->mode ?? QueryMode::PreferRdap,
+            proxyUri: $overrides?->proxyUri ?? $this->proxyUri,
+            whoisTimeout: $overrides?->whoisTimeout ?? $this->whoisTimeout ?? self::DEFAULT_TIMEOUT,
+            rdapTimeout: $overrides?->rdapTimeout ?? $this->rdapTimeout ?? self::DEFAULT_TIMEOUT,
+            recursive: $overrides?->recursive ?? $this->recursive ?? true,
+            maxReferrals: $overrides?->maxReferrals ?? $this->maxReferrals ?? self::DEFAULT_MAX_REFERRALS,
+        );
+    }
 }
