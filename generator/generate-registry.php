@@ -31,7 +31,6 @@ use function Klkvsk\Whoeasy\ip6prefix2long;
 
 $generator = new class {
 
-    private string $generatorDir;
     private string $dataDir;
     private string $outputDir;
 
@@ -65,7 +64,6 @@ $generator = new class {
 
     public function __construct()
     {
-        $this->generatorDir = __DIR__;
         $this->dataDir = __DIR__ . '/data';
         $this->outputDir = dirname(__DIR__) . '/src/Registry/Data';
     }
@@ -87,22 +85,25 @@ $generator = new class {
         $this->mergeRdapUrls();
         $this->mergeWhoisserverWorld();
 
-        // 4. Cross-reference and warn
+        // 4. Apply exclusions (disabled TLDs, disabled WHOIS)
+        $this->applyExclusions();
+
+        // 5. Cross-reference and warn
         $this->crossReference();
 
-        // 5. Parse IP/ASN ranges
+        // 6. Parse IP/ASN ranges
         $this->parseIpv4Ranges();
         $this->parseIpv6Ranges();
         $this->parseAsnRanges();
 
-        // 6. Generate output files
+        // 7. Generate output files
         $this->generateTldServers();
         $this->generateSampleDomains();
         $this->generateIpv4Ranges();
         $this->generateIpv6Ranges();
         $this->generateAsnRanges();
 
-        // 7. Summary
+        // 8. Summary
         $withSample = count(array_filter($this->tldServers, fn($s) => $s['sample_domain'] !== null));
         $withRdap = count(array_filter($this->tldServers, fn($s) => $s['rdap_url'] !== null));
         $withWhois = count(array_filter($this->tldServers, fn($s) => $s['whois_server'] !== null));
@@ -377,6 +378,39 @@ $generator = new class {
 
         echo "Merged whoisserver-world: $samplesAdded samples, $whoisUpdated WHOIS servers, "
             . "$rdapUpdated RDAP URLs, $newTlds new TLDs\n";
+    }
+
+    // ========== Exclusions ==========
+
+    private function applyExclusions(): void
+    {
+        echo "\nApplying exclusions...\n";
+
+        // Remove revoked/retired TLDs
+        $disabledTlds = require $this->dataDir . '/disabled-tlds.php';
+        $removedCount = 0;
+        foreach ($disabledTlds as $tld) {
+            if (isset($this->tldServers[$tld])) {
+                unset($this->tldServers[$tld]);
+                $removedCount++;
+            }
+        }
+        echo "  Removed $removedCount disabled TLDs\n";
+
+        // Null out WHOIS for RDAP providers that no longer support port 43
+        $disabledWhoisRdap = require $this->dataDir . '/disabled-whois-rdap.php';
+        $disabledCount = 0;
+        foreach ($this->tldServers as $tld => &$info) {
+            if ($info['whois_server'] !== null
+                && $info['rdap_url'] !== null
+                && in_array($info['rdap_url'], $disabledWhoisRdap, true)
+            ) {
+                $info['whois_server'] = null;
+                $disabledCount++;
+            }
+        }
+        unset($info);
+        echo "  Disabled WHOIS for $disabledCount TLDs (RDAP-only providers)\n";
     }
 
     // ========== Cross-reference ==========

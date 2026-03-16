@@ -6,6 +6,6 @@ namespace Klkvsk\Whoeasy\Client\Exception;
 
 use Klkvsk\Whoeasy\Exception\WhoeasyException;
 
-class ClientNetworkException extends ClientRequestException implements WhoeasyException, RetryableException
+class NotSupportedException extends ClientRequestException implements WhoeasyException
 {
 }

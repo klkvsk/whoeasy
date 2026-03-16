@@ -99,50 +99,50 @@ final class WhoisClient
     }
 
     /**
-     * Query a WHOIS server, following referrals automatically.
-     *
-     * @param string $server Initial WHOIS server
-     * @param string $query Query string
-     * @param int $maxReferrals Maximum number of referrals to follow
-     * @return WhoisResponse Response with referral chain
+     * Strip legal boilerplate, comment lines, and informational banners from raw WHOIS text.
+     * Returns only the data-bearing portion of the response.
      */
-    public function queryWithReferrals(
-        string $server,
-        string $query,
-        int $maxReferrals = 1,
-        ?int $timeout = null,
-        ?string $queryFormat = null,
-    ): WhoisResponse {
-        $responses = [];
-        $currentServer = $server;
-        $visited = [];
+    public static function stripBoilerplate(string $response): string
+    {
+        // Normalize line endings
+        $response = str_replace("\r\n", "\n", $response);
+        $response = str_replace("\r", "\n", $response);
 
-        for ($hop = 0; $hop <= $maxReferrals; $hop++) {
-            if (in_array($currentServer, $visited, true)) {
-                break; // Prevent loops
-            }
-            $visited[] = $currentServer;
-
-            $raw = $this->query($currentServer, $query, $timeout, $hop === 0 ? $queryFormat : null);
-            $responses[] = ['server' => $currentServer, 'response' => $raw];
-
-            // Look for referral
-            $referral = self::detectReferral($raw);
-            if ($referral === null || $referral === $currentServer) {
-                break;
-            }
-            $currentServer = $referral;
+        // Truncate at >>> marker (VeriSign/Identity Digital/Afilias boundary)
+        if (preg_match('/^>>>.*<<<\s*$/m', $response, $m, \PREG_OFFSET_CAPTURE)) {
+            $response = substr($response, 0, $m[0][1]);
         }
 
-        $lastResponse = end($responses);
+        // Strip trailing legal blocks that appear without >>> marker
+        $boilerplateStarts = [
+            '/^NOTICE:\s/m',
+            '/^Terms of Use:\s/m',
+            '/^URL of the ICANN\b/m',
+            '/^For more information on Whois status codes/m',
+            '/^TERMS OF USE:\s/m',
+        ];
+        foreach ($boilerplateStarts as $pattern) {
+            if (preg_match($pattern, $response, $m, \PREG_OFFSET_CAPTURE)) {
+                $response = substr($response, 0, $m[0][1]);
+            }
+        }
 
-        return new WhoisResponse(
-            server: $server,
-            query: $query,
-            rawText: $lastResponse['response'],
-            referralServer: count($responses) > 1 ? $lastResponse['server'] : null,
-            hops: $responses,
-        );
+        // Remove comment-prefixed lines (%, #, ;)
+        $lines = explode("\n", $response);
+        $cleaned = [];
+        foreach ($lines as $line) {
+            $trimmed = ltrim($line);
+            if ($trimmed === '') {
+                $cleaned[] = $line;
+                continue;
+            }
+            if ($trimmed[0] === '%' || $trimmed[0] === '#' || $trimmed[0] === ';') {
+                continue;
+            }
+            $cleaned[] = $line;
+        }
+
+        return implode("\n", $cleaned);
     }
 
     /**
@@ -197,6 +197,26 @@ final class WhoisClient
             '/too many (requests|queries|lookups)/i',
             '/server is busy/i',
             '/(?<!for )excessive querying/i',
+        ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $response)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Detect if the response indicates the TLD/protocol is not supported by this server.
+     */
+    public static function isNotSupported(string $response): bool
+    {
+        $patterns = [
+            '/^TLD is not supported\b/im',
+            '/^This TLD has no whois server/im',
+            '/^No whois service is available/im',
         ];
 
         foreach ($patterns as $pattern) {
