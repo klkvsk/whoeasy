@@ -1,0 +1,29 @@
+{
+    "name": "top.ge",
+    "registrar": {
+        "name": "cloud9"
+    },
+    "createdDate": "2006-01-23 00:00:00",
+    "expiresDate": "2027-01-24 00:00:00",
+    "status": [
+        "Ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.inet.ge"
+        },
+        {
+            "hostname": "ns.top.ge"
+        },
+        {
+            "hostname": "ns1.top.ge"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Temur Khaindrava",
+            "email": "admin@top.ge"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "name": "direktno.hr",
+    "registrar": {
+        "name": "Plus Hosting Grupa d.o.o."
+    },
+    "createdDate": "2016-05-29 22:00:00",
+    "updatedDate": "2026-03-16 16:17:13",
+    "expiresDate": "2026-05-29 22:00:00",
+    "nameservers": [
+        {
+            "hostname": "dolly.ns.cloudflare.com"
+        },
+        {
+            "hostname": "elmo.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "PROPULS d.o.o.",
+            "email": "vladimir.milinovic@gmail.com",
+            "address": "Ulica Grada Vukovara 269 f, Zagreb, 10000, HR"
+        }
+    ]
+}

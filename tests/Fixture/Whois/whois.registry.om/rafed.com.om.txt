@@ -1,0 +1,21 @@
+Domain Name: rafed.com.om
+Registry Domain ID: D3D37EC5EA21B3BF5BA44783E6C0B3B3D-OMREG
+Registrar WHOIS Server:
+Registrar URL: www.omandatapark.com
+Registrar: Oman Data Park LLC (ODP)
+Registrar IANA ID: 700000005
+Registrar Abuse Contact Email:
+Registrant Name: Ghalib  Alabri
+Registrant Organization: Rafed Communication Tech LLC
+Registrant Email: ghalib@rafed.com.om
+Admin Organization: Rafed Communication Tech LLC
+Name Server: ns3.supercp.com
+Name Server: ns4.supercp.com
+Name Server: ns1.supercp.com
+Name Server: ns2.supercp.com
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-16T16:19:58Z <<<
+
+https://tra.gov.om
+
+

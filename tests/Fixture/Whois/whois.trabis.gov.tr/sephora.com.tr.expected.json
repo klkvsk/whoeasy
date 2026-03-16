@@ -1,0 +1,28 @@
+{
+    "name": "sephora.com.tr",
+    "createdDate": "2004-11-09 00:00:00",
+    "expiresDate": "2026-11-08 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "a1-1.akam.net"
+        },
+        {
+            "hostname": "a18-66.akam.net"
+        },
+        {
+            "hostname": "a20-67.akam.net"
+        },
+        {
+            "hostname": "a26-64.akam.net"
+        },
+        {
+            "hostname": "a7-65.akam.net"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "SEPHORA ."
+        }
+    ]
+}

@@ -1,0 +1,77 @@
+Whois Server Version 1.0
+Domain Name (PUNYCODE): xn--80aah5bo.xn--j1amh
+Domain name (UTF8): гарна.укр
+
+Registry Domain ID: D00121726-ukr
+
+Updated Date: 09-Feb-2026 18:02:29 UTC
+Creation Date: 07-May-2023 10:39:57 UTC
+Expiration Date: 07-May-2026 10:39:57 UTC
+
+Registry Status: ok
+
+Registrar: ТОВ "Хостінг Україна"
+Registrar URL: http://www.ukraine.com.ua
+Registrar ID: uaukraine
+Registrar Abuse Contact Email: domain@abuse.team
+Registrar Abuse Contact Phone: +380443927433
+
+Registry Registrant ID: icn-849469-okclm
+Registrant Name (Organization): hidden
+Registrant Street: hidden
+Registrant City: hidden
+Registrant Postal Code: hidden
+Registrant Country: hidden
+Registrant Phone: hidden
+Registrant Phone Ext: hidden
+Registrant Fax: hidden
+Registrant Fax Ext: hidden
+Registrant Email: aae0c1a4edf41fb18c@privacyprotected.net
+
+Registry Admin ID: icn-849469-okclm
+Admin Name: hidden
+Admin Organization: hidden
+Admin Street: hidden
+Admin City: hidden
+Admin Postal Code: hidden
+Admin Country: hidden
+Admin Phone: hidden
+Admin Phone Ext: hidden
+Admin Fax: hidden
+Admin Fax Ext: hidden
+Admin Email: aae0c1a4edf41fb18c@privacyprotected.net
+
+Registry Tech ID: icn-849469-okclm
+Tech Name: hidden
+Tech Organization: hidden
+Tech Street: hidden
+Tech City: hidden
+Tech Postal Code: hidden
+Tech Country: hidden
+Tech Phone: hidden
+Tech Phone Ext: hidden
+Tech Fax: hidden
+Tech Fax Ext: hidden
+Tech Email: aae0c1a4edf41fb18c@privacyprotected.net
+
+Registry Billing ID: icn-849469-okclm
+Billing Name: hidden
+Billing Organization: hidden
+Billing Street: hidden
+Billing City: hidden
+Billing Postal Code: hidden
+Billing Country: hidden
+Billing Phone: hidden
+Billing Phone Ext: hidden
+Billing Fax: hidden
+Billing Fax Ext: hidden
+Billing Email: aae0c1a4edf41fb18c@privacyprotected.net
+
+Domain servers in listed order:
+ns1.promdns.net
+ns2.promdns.net
+ns3.promdns.net
+
+
+URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
+>>> Last update of WHOIS database: 16-Mar-2026 16:22:06 UTC <<<

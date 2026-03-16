@@ -1,0 +1,28 @@
+{
+    "name": "clean.gg",
+    "createdDate": "2018-04-01 04:14:07",
+    "registrar": {
+        "name": "NameCheap, Inc",
+        "url": "https://www.namecheap.com"
+    },
+    "nameservers": [
+        {
+            "hostname": "ns-1309.awsdns-35.org"
+        },
+        {
+            "hostname": "ns-146.awsdns-18.com"
+        },
+        {
+            "hostname": "ns-1787.awsdns-31.co.uk"
+        },
+        {
+            "hostname": "ns-887.awsdns-46.net"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Clean.io Inc."
+        }
+    ]
+}

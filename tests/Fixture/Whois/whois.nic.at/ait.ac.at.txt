@@ -1,0 +1,62 @@
+% Copyright (c)2026 by NIC.AT (1)                                       
+%
+% Restricted rights.
+%
+% Except  for  agreed Internet  operational  purposes, no  part  of this
+% information  may  be reproduced,  stored  in  a  retrieval  system, or
+% transmitted, in  any  form  or by  any means,  electronic, mechanical,
+% recording, or otherwise, without prior  permission of NIC.AT on behalf
+% of itself and/or the copyright  holders.  Any use of this  material to
+% target advertising  or similar activities is explicitly  forbidden and
+% can be prosecuted.
+%
+% It is furthermore strictly forbidden to use the Whois-Database in such
+% a  way  that  jeopardizes or  could jeopardize  the  stability  of the
+% technical  systems of  NIC.AT  under any circumstances. In particular,
+% this includes  any misuse  of the  Whois-Database and  any  use of the
+% Whois-Database which disturbs its operation.
+%
+% Should the  user violate  these points,  NIC.AT reserves  the right to
+% deactivate  the  Whois-Database   entirely  or  partly  for  the user.
+% Moreover,  the  user  shall be  held liable  for  any  and all  damage
+% arising from a violation of these points.
+
+domain:         ait.ac.at
+registrar:      
+registrant:     AAIO6168489-NICAT
+admin-c:        <data not disclosed>
+tech-c:         HDAG13418478-NICAT
+nserver:        acns1.drei.com
+nserver:        acns2.drei.at
+nserver:        dns1.ait.ac.at
+remarks:        62.218.164.160
+nserver:        dns2.ait.ac.at
+remarks:        62.218.164.161
+changed:        20250307 14:32:33
+source:         AT-DOM
+
+personname:     
+organization:   AIT Austrian Institute of Technology GmbH
+street address: Giefinggasse 4
+postal code:    1210
+city:           Wien
+country:        Austria
+phone:          +43505502128
+fax-no:         +43505503860
+e-mail:         hostmaster@ait.ac.at
+nic-hdl:        AAIO6168489-NICAT
+changed:        20180608 09:31:46
+source:         AT-DOM
+
+personname:     Hostmaster Hutchison Drei Austria GmbH
+organization:   Hutchison Drei Austria GmbH
+street address: Bruennerstr. 52
+postal code:    1210
+city:           Wien
+country:        Austria
+phone:          +43660303030
+e-mail:         at.hostmaster@drei.com
+nic-hdl:        HDAG13418478-NICAT
+changed:        20250307 14:30:36
+source:         AT-DOM
+

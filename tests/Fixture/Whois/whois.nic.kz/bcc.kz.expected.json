@@ -1,0 +1,34 @@
+{
+    "name": "bcc.kz",
+    "createdDate": "2005-09-15 04:49:39",
+    "updatedDate": "2023-03-13 05:54:12",
+    "status": [
+        "clientTransferProhibited",
+        "clientRenewProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.centercredit.kz",
+            "ipv4": "91.198.63.4"
+        },
+        {
+            "hostname": "ns3.centercredit.kz",
+            "ipv4": "91.198.63.8"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "\"Bank CenterCredit\" AO",
+            "organization": "\"Bank CenterCredit\" AO",
+            "address": "98 Panfilova Str.\nAlmaty\nKazakhstan\n050000\nkz"
+        },
+        {
+            "type": "admin",
+            "name": "\"Bank CenterCredit\" AO",
+            "email": "root@centercredit.kz",
+            "phone": "+7.7272598598",
+            "fax": "+7.7272599339"
+        }
+    ]
+}

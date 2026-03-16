@@ -1,0 +1,40 @@
+{
+    "name": "gatech.edu",
+    "createdDate": "1986-05-08 00:00:00",
+    "updatedDate": "2025-09-26 00:00:00",
+    "expiresDate": "2026-07-31 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "dns3.gatech.edu"
+        },
+        {
+            "hostname": "dns2.gatech.edu"
+        },
+        {
+            "hostname": "dns1.gatech.edu"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Georgia Institute of Technology",
+            "address": "258 4TH St, Atlanta, GA 30332, USA"
+        },
+        {
+            "type": "admin",
+            "name": "Robin Greene",
+            "organization": "Georgia Institute of Technology",
+            "phone": "+1.4048946176",
+            "email": "hostmaster@gatech.edu",
+            "address": "258 Fourth Street NW, Atlanta, GA 30332-0700, USA"
+        },
+        {
+            "type": "tech",
+            "name": "Scott Friedrich",
+            "organization": "Georgia Institute of Technology",
+            "phone": "+1.4048946720",
+            "email": "hostmaster@gatech.edu",
+            "address": "258 Fourth Street NW, Atlanta, GA 30332-0700, USA"
+        }
+    ]
+}

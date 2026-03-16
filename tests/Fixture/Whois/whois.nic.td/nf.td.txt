@@ -1,0 +1,28 @@
+Domain Name: nf.td
+Registry Domain ID: 4414-nictd
+Updated Date: 2021-12-15T14:01:10Z
+Creation Date: 2021-10-30T08:37:26Z
+Registry Expiry Date: 2027-10-30T08:37:26Z
+Registrar Registration Expiration Date: 2027-10-30T08:37:26Z
+Registrar: NETIM
+Registrar Street Address: 451 394 720 RCS Lille de Métropole (France)
+
+264 Avenue Arthur Notebart
+59160 Lille
+Registrar Email: tld@netim.com
+Domain Status: active https://icann.org/epp#active
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Name Server: ns3.netim.net
+Name Server: ns2.netim.net
+Name Server: ns1.netim.net
+DNSSEC: unsigned
+>>> Last update of WHOIS database: 2026-03-16T16:21:36.731Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+TERMS OF USE: You are not authorized to access or query our WHOIS database through the use of electronic processes that are high-volume and automated.  This WHOIS database is provided by as a service to the internet community.
+
+The data is for information purposes only. We do not guarantee its accuracy. By submitting a WHOIS query, you agree to abide by the following terms of use: You agree that you may use this Data only for lawful purposes and that under no circumstances will you use this Data to: (1) allow, enable, or otherwise support the transmission of mass unsolicited, commercial advertising or solicitations via e-mail, telephone, or facsimile; or (2) enable high volume, automated, electronic processes.
+
+The compilation, repackaging, dissemination or other use of this Data is expressly prohibited.
+

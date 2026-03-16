@@ -1,0 +1,27 @@
+{
+    "name": "grandsprojets.pf",
+    "createdDate": "2020-02-27 00:00:00",
+    "expiresDate": "2027-02-25 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns1.vini.pf"
+        },
+        {
+            "hostname": "ns2.vini.pf"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "La Direction g\u00e9n\u00e9rale",
+            "organization": "ETABLISSEMENT GRANDS PROJETS DE POLYNESIE",
+            "address": "9030, 98715 PAPEETE - CMP, Polyn\u00e9sie Fran\u00e7aise"
+        },
+        {
+            "type": "tech",
+            "name": "La Direction g\u00e9n\u00e9rale",
+            "organization": "ETABLISSEMENT GRANDS PROJETS DE POLYNESIE",
+            "address": "9030, 98715 PAPEETE - CMP, Polyn\u00e9sie Fran\u00e7aise"
+        }
+    ]
+}

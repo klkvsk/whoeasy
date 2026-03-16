@@ -1,0 +1,29 @@
+{
+    "name": "aurora.sm",
+    "createdDate": "2020-12-23 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns1.hurrah.it"
+        },
+        {
+            "hostname": "ns2.hurrah.it"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Banco Aurora Spa",
+            "email": "brando@auroranumismatica.it",
+            "phone": "+39.3478992677",
+            "address": "Via Tre Settembre, 119, 47891 Dogana, SM"
+        },
+        {
+            "type": "tech",
+            "name": "Gilberto Di Maccio",
+            "organization": "Ehinet Srl",
+            "email": "domini@ehiweb.it",
+            "phone": "+39.0510546249",
+            "address": "Via Ugo De Carolis, 74, 00136 Roma, IT"
+        }
+    ]
+}

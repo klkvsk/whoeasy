@@ -1,0 +1,27 @@
+{
+    "name": "nccontrol.com.cn",
+    "registrar": {
+        "name": "北京新网数码信息技术有限公司"
+    },
+    "createdDate": "2020-12-09 04:03:26",
+    "expiresDate": "2026-12-09 04:03:26",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.judns.com"
+        },
+        {
+            "hostname": "ns2.judns.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "上海凤昶网络科技有限公司",
+            "email": "3289666@qq.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

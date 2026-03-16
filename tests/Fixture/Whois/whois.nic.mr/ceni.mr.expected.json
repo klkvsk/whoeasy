@@ -1,0 +1,21 @@
+{
+    "name": "ceni.mr",
+    "registrar": {
+        "name": "NIC-Mauritanie"
+    },
+    "createdDate": "2022-04-09 20:34:38",
+    "updatedDate": "2025-04-29 10:44:14",
+    "expiresDate": "2026-04-09 00:00:00",
+    "status": [
+        "active"
+    ],
+    "nameservers": [
+        {
+            "hostname": "isla.ns.cloudflare.com"
+        },
+        {
+            "hostname": "max.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

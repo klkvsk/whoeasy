@@ -1,0 +1,30 @@
+{
+    "name": "yandex.st",
+    "registrar": {
+        "name": "Safenames Ltd"
+    },
+    "createdDate": "2009-09-14 13:34:55",
+    "updatedDate": "2025-08-15 09:24:00",
+    "expiresDate": "2026-09-14 21:59:59",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.yandex.net"
+        },
+        {
+            "hostname": "ns2.yandex.net"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Snigirev A.M. (intersearch)",
+            "organization": "INTERSEARCH SOLUTIONS LLC",
+            "email": "intersearch@safenames.net",
+            "phone": "+7.4957397000",
+            "address": "Skolkovo Innovation Center, Bolshoy Boulevard, 40, Moscow, Moscow, 121205, RU"
+        }
+    ]
+}

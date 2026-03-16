@@ -1,0 +1,49 @@
+
+**********************************************************
+*            The UG ccTLD Registry Database              *
+**********************************************************
+
+Domain name:                    umcs.go.ug
+Status:                         ACTIVE
+Expires On:                     2026-11-29
+Registered On:                  2018-11-29
+Renewed On:                     2025-09-03
+Nameserver:                     ns1.gou.go.ug
+Nameserver:                     ns2.gou.go.ug
+
+
+
+Registrant Contact Information:  
+Registrant Name:                Tonny Bbosa
+Registrant Organization:        NITA-U
+Registrant Country:             Uganda
+Registrant State / Province:    
+Registrant City:                Kampala
+Registrant Address:             Kampala
+Registrant Postal Code:         256
+Registrant Phone:               256774477523
+Registrant Email:               tonny.bbosa@nita.go.ug
+
+Administrative Contact Information:  
+Admin Name:                     Tonny Bbosa
+Admin Organization:             NITA-U
+Admin Country:                  Uganda
+Admin State / Province:         
+Admin City:                     Kampala
+Admin Address:                  Kampala
+Admin Postal Code:              256
+Admin Phone:                    256774477523
+Admin Email:                    tonny.bbosa@nita.go.ug
+
+Technical Contact Information:  
+Tech Name:                      Tonny Bbosa
+Tech Organization:              NITA-U
+Tech Country:                   Uganda
+Tech State / Province:          
+Tech City:                      Kampala
+Tech Address:                   Kampala
+Tech Postal Code:               256
+Tech Phone:                     256774477523
+Tech Email:                     tonny.bbosa@nita.go.ug
+
+Information Last Updated:       2025-09-03 10:48:08

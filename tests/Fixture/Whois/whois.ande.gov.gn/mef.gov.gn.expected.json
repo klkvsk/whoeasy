@@ -1,0 +1,24 @@
+{
+    "name": "mef.gov.gn",
+    "registrar": {
+        "name": "registrar-ande",
+        "ianaId": "001",
+        "abuseEmail": "ousmane.doukoure@ande.gov.gn",
+        "abusePhone": "+224629684930"
+    },
+    "createdDate": "2023-08-02 14:29:11",
+    "updatedDate": "2025-12-11 19:52:59",
+    "expiresDate": "2026-12-31 00:00:00",
+    "status": [
+        "active"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns2.siteground.net"
+        },
+        {
+            "hostname": "ns1.siteground.net"
+        }
+    ],
+    "dnssec": "unsigned"
+}

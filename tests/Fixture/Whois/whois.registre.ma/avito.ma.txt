@@ -1,0 +1,23 @@
+Domain Name: avito.ma
+Updated Date: 2021-07-09T06:53:47Z
+Creation Date: 2011-09-21T00:00:00Z
+Registry Expiry Date: 2026-09-21T00:00:00Z
+Registrar Registration Expiration Date: 2026-09-21T00:00:00Z
+Registrar: GENIOUS COMMUNICATIONS
+Registrar Street Address: Assif B N 290 Marrakech
+Registrar Email: contact@genious.net
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Registrant Name: Avito Sarl
+Admin Name: Zakaria Ghassouli
+Admin Email: zak@avito.ma
+Admin Phone: +212.664042063
+Tech Name: AB Name ISP
+Tech Email: reg@nameisp.com
+Tech Phone: +46.31301120
+Name Server: fiona.ns.cloudflare.com
+Name Server: jobs.ns.cloudflare.com
+>>> Last update of WHOIS database: 2026-03-16T16:18:41.318Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+Le service Whois permet la vérification de la disponibilité d’un nom de domaine « .ma » et l’identification de son titulaire. La base de données Whois est maintenue à jour par les prestataires, à chaque fois qu’une modification sur les données enregistrées leur est communiquée par le titulaire. Tout usage abusif du service WHOIS et des données d’identification qu’il publie engage la responsabilité des personnes concernées. 

@@ -1,0 +1,49 @@
+Domain:
+     bikers.je
+
+Domain Status:
+     Active
+     
+
+Registrant:
+     Bikers Jersey
+
+Registrar:
+     Webreality (http://www.webreality.co.uk)
+
+Relevant dates:
+     Registered on 08th August 2011 at 13:13:23.413
+     Registry fee due on 08th August each year
+
+Registration status:
+     Registered until cancelled
+
+Name servers:
+     ns-1156.awsdns-16.org
+     ns-2025.awsdns-61.co.uk
+     ns-328.awsdns-41.com
+     ns-607.awsdns-11.net
+     
+
+WHOIS lookup made on Mon, 16 Mar 2026 at 16:17:48 GMT
+
+This WHOIS information is provided for free by CIDR, operator of
+the backend registry for domain names ending in GG and JE.
+
+Copyright (c) and database right Island Networks (Jersey) 1996 - 2026.
+
+You may not access this WHOIS server or use any data from it except
+as permitted by our Terms and Conditions which are published
+at http://www.channelisles.net/legal/whoisterms
+
+They include restrictions and prohibitions on
+
+- using or re-using the data for advertising;
+- using or re-using the service for commercial purposes without a licence;
+- repackaging, recompilation, redistribution or reuse;
+- obscuring, removing or hiding any or all of this notice;
+- exceeding query rate or volume limits.
+
+The data is provided on an 'as-is' basis and may lag behind the
+register. Access may be withdrawn or restricted at any time. 
+

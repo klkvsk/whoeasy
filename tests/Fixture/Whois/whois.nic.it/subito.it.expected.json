@@ -1,0 +1,53 @@
+{
+    "name": "subito.it",
+    "registrar": {
+        "name": "Register S.p.a.",
+        "url": "https://www.register.it"
+    },
+    "createdDate": "1999-07-30 00:00:00",
+    "updatedDate": "2026-03-07 00:48:15",
+    "expiresDate": "2027-02-19 00:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "a3-64.akam.net"
+        },
+        {
+            "hostname": "a12-65.akam.net"
+        },
+        {
+            "hostname": "a16-66.akam.net"
+        },
+        {
+            "hostname": "a7-65.akam.net"
+        },
+        {
+            "hostname": "a18-67.akam.net"
+        },
+        {
+            "hostname": "a1-156.akam.net"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Subito.it Srl",
+            "address": "via Benigno Crespi, 19\nMilano\n20159\nMI\nIT"
+        },
+        {
+            "type": "admin",
+            "name": "Melany Libraro",
+            "organization": "Subito.it Srl",
+            "address": "via Benigno Crespi, 19\nMilano\n20159\nMI\nIT"
+        },
+        {
+            "type": "tech",
+            "name": "Technical Support",
+            "organization": "Register SpA",
+            "address": "Viale Giulio Cesare, 29\nBergamo\n24124\nBG\nIT"
+        }
+    ],
+    "dnssec": "signedDelegation"
+}

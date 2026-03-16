@@ -1,0 +1,15 @@
+Domain name: goodsbuy.by
+Registrar: Reliable Software, Ltd
+Person: HIDDEN!
+Email: HIDDEN! Details are available at https://whois.cctld.by
+Name Server: ns1.freenss.com
+Name Server: ns2.freenss.com
+Name Server: ns3.freenss.com
+Name Server: ns4.freenss.com
+Update Date: 2025-09-25
+Creation Date: 2019-11-22
+Expiration Date: 2026-11-22
+
+-------------------------------------------
+Service provided by Belarusian Cloud Technologies LLC
+

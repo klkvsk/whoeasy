@@ -1,0 +1,13 @@
+{
+    "name": "ricci.edu.mo",
+    "createdDate": "2001-11-13 08:00:00",
+    "expiresDate": "2027-01-02 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "lloyd.ns.cloudflare.com"
+        },
+        {
+            "hostname": "wanda.ns.cloudflare.com"
+        }
+    ]
+}

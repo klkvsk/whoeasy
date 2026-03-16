@@ -1,0 +1,26 @@
+Domain Name: forextrading.co.bw
+Registry Domain ID: 68656-bwnic
+Registrar WHOIS Server: https://whois.nic.net.bw/whois.jsp
+Updated Date: 2026-01-12T09:24:59Z
+Creation Date: 2022-02-03T11:12:41Z
+Registry Expiry Date: 2028-02-03T11:12:41Z
+Registrar Registration Expiration Date: 2028-02-03T11:12:41Z
+Registrar: BW Domains
+Registrar Street Address: PO Box 75 AAH
+Masa Square, CBD
+Gaborone
+Botswana
+Registrar Email: info@bwdomains.co.bw
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Name Server: johnathan.ns.cloudflare.com
+Name Server: joan.ns.cloudflare.com
+DNSSEC: unsigned
+>>> Last update of WHOIS database: 2026-03-16T16:07:39.559Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+TERMS OF USE: You are NOT authorized to access or query the Botswana ccTLD WHOIS database through the use of electronic processes that are high-volume and automated.  This WHOIS database is provided by as a service to the internet community.
+
+The data is for information purposes only. We do not guarantee its accuracy. By submitting a WHOIS query, you agree to abide by the following terms of use: You agree that you may use this Data only for lawful purposes and that under no circumstances will you use this WHOIS data to: (1) allow, enable, or otherwise support the transmission of mass unsolicited, commercial advertising or solicitations via e-mail, telephone, or facsimile; or (2) compilation, repackaging, dissemination or other use of this Data is expressly prohibited.
+

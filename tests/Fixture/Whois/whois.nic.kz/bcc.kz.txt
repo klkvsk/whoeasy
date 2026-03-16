@@ -1,0 +1,37 @@
+Whois Server for the KZ top level domain name.
+This server is maintained by KazNIC Organization, a ccTLD manager for Kazakhstan Republic.
+
+Domain Name............: bcc.kz
+
+Organization Using Domain Name
+Name...................: "Bank CenterCredit" AO
+Organization Name......: "Bank CenterCredit" AO
+Street Address.........: 98 Panfilova Str.
+City...................: Almaty
+State..................: Kazakhstan
+Postal Code............: 050000
+Country................: kz
+
+Administrative Contact/Agent
+NIC Handle.............: HOST-170610-01
+Name...................: "Bank CenterCredit" AO
+Phone Number...........: +7.7272598598 
+Fax Number.............: +7.7272599339 
+Email Address..........: root@centercredit.kz
+
+Nameserver in listed order
+
+Primary server.........: ns1.centercredit.kz
+Primary ip address.....: 91.198.63.4
+
+Secondary server.......: ns3.centercredit.kz
+Secondary ip address...: 91.198.63.8
+
+
+Domain created: 2005-09-15 04:49:39 (GMT+0:00)
+Last modified : 2023-03-13 05:54:12 (GMT+0:00)
+Domain status : clientTransferProhibited - 
+                clientRenewProhibited - 
+                
+Registar created: KAZNIC
+Current Registar: ICPS

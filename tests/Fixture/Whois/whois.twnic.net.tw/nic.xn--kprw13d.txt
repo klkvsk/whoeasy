@@ -1,0 +1,23 @@
+Domain Name: nic.台灣
+   Domain Status: ok
+   Registrant:
+      財團法人台灣網路資訊中心
+      Taiwan Network Information Center
+      tech@twnic.net.tw
+      TW
+      (Redacted for privacy)
+
+   Administrative Contact:
+      (Redacted for privacy)
+
+   Technical Contact:
+      (Redacted for privacy)
+
+   Record expires on 2035-07-14 16:00:00 (UTC+8)
+   Record created on 2025-07-14 16:00:00 (UTC+8)
+
+
+Registration Service Provider: TWNIC
+Registration Service URL: http://rs.twnic.tw/
+Registrar Abuse Contact Email: abuse@twnic.tw
+  (reserved word)

@@ -1,0 +1,30 @@
+{
+    "name": "mywheels.my",
+    "registrar": {
+        "name": "Shinjiru Technology Sdn Bhd",
+        "ianaId": "60999008",
+        "url": "http://shinjiru.com.my",
+        "abuseEmail": "abuse@ilovewww.com"
+    },
+    "createdDate": "2021-06-22 16:00:00",
+    "updatedDate": "2025-06-21 08:41:01",
+    "expiresDate": "2026-06-22 16:00:00",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "mark.ns.cloudflare.com"
+        },
+        {
+            "hostname": "may.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "The China Press Berhad"
+        }
+    ]
+}

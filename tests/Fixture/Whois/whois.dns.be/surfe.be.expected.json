@@ -1,0 +1,25 @@
+{
+    "name": "surfe.be",
+    "registrar": {
+        "name": "Registrar.eu",
+        "url": "https://www.openprovider.com/"
+    },
+    "createdDate": "2015-01-12 00:00:00",
+    "status": [
+        "NOT AVAILABLE"
+    ],
+    "nameservers": [
+        {
+            "hostname": "gns24.cloudns.net"
+        },
+        {
+            "hostname": "gns21.cloudns.net"
+        },
+        {
+            "hostname": "gns23.cloudns.net"
+        },
+        {
+            "hostname": "gns22.cloudns.net"
+        }
+    ]
+}

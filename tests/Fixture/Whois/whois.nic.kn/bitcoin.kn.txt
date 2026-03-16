@@ -1,0 +1,24 @@
+Domain Name: bitcoin.kn
+Registry Domain ID: 1724-knNIC
+Updated Date: 2025-09-09T13:29:32Z
+Creation Date: 2014-03-07T05:00:00Z
+Registry Expiry Date: 2027-09-05T00:00:00Z
+Registrar Registration Expiration Date: 2027-09-05T00:00:00Z
+Registrar: KN NIC Registrar
+Registrar Street Address: Adviser of National ICT Center
+National ICT Center
+No. 3 C.A. Paul Southwell Industrial Site
+Saint Kitts And Nevis
+Registrar Email: hostmaster@nic.kn
+Domain Status: active https://icann.org/epp#active
+Name Server: sam.ns.cloudflare.com
+Name Server: kay.ns.cloudflare.com
+DNSSEC: unsigned
+>>> Last update of WHOIS database: 2026-03-16T16:17:54.672Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+TERMS OF USE: You are not authorized to access or query our WHOIS database through the use of electronic processes that are high-volume and automated.  THis WHOIS database is provided by as a service to the internet community.
+
+The data is for information purposes only. We do not guarantee its accuracy. By submitting a WHOIS query, you agree to abide by the following terms of use: You agree that you may use this Data only for lawful purposes and that under no circumstances will you use this Data to: (1) allow, enable, or otherwise support the transmission of mass unsolicited, commercial advertising or solicitations via e-mail, telephone, or facsimile; or (2) enable high volume, automated, electronic processes. The compilation, repackaging, dissemination or other use of .kn WHOIS data is expressly prohibited.
+

@@ -1,4 +1,33 @@
 {
-    "queryType": "domain",
-    "domain": []
+    "name": "example.ac.uk",
+    "registrar": {
+        "name": "Jisc Services Limited"
+    },
+    "createdDate": "2024-06-14 00:00:00",
+    "updatedDate": "2026-03-14 00:00:00",
+    "expiresDate": "2028-06-14 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns1-32.azure-dns.com"
+        },
+        {
+            "hostname": "ns2-32.azure-dns.net"
+        },
+        {
+            "hostname": "ns3-32.azure-dns.org"
+        },
+        {
+            "hostname": "ns4-32.azure-dns.info"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Trust & Identity Services Team",
+            "organization": "Jisc",
+            "email": "trustandidentity@jisc.ac.uk",
+            "phone": "+441235822815",
+            "address": "United Kingdom"
+        }
+    ]
 }

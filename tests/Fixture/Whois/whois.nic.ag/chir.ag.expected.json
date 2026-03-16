@@ -1,0 +1,31 @@
+{
+    "name": "chir.ag",
+    "registrar": {
+        "name": "NicAg Registrar",
+        "ianaId": "800117"
+    },
+    "createdDate": "2003-03-26 18:26:50",
+    "updatedDate": "2025-11-24 20:11:57",
+    "expiresDate": "2027-03-26 18:26:50",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.digitalocean.com"
+        },
+        {
+            "hostname": "ns2.digitalocean.com"
+        },
+        {
+            "hostname": "ns3.digitalocean.com"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Owner"
+        }
+    ]
+}

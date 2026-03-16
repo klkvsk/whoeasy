@@ -1,0 +1,22 @@
+Domain: apat.pt
+Domain Status: Registered
+Creation Date: 28/04/1997 00:00:00
+Expiration Date: 02/07/2026 23:59:00
+Owner Name: APAT - Associação dos Transitarios de Portugal
+Owner Address: Av. Duque de Avila, Nº 9 - 7º Andar
+Owner Locality: Lisboa
+Owner ZipCode: 1000-138
+Owner Locality ZipCode: Lisboa
+Owner Country Code: PT
+Owner Email: apatlis@apat.pt,acarmo@apat.pt,ravieira@apat.pt
+Admin Name: CLML Servicos Lda
+Admin Address: Estrada Nacional 3  9C
+Admin Locality: Constância
+Admin ZipCode: 2250-028
+Admin Locality ZipCode: CONSTÂNCIA
+Admin Country Code: PT
+Admin Email: hostmaster@clml.pt
+Name Server: ns01.dns-host-servers.com | IPv4:  and IPv6: 
+Name Server: ns02.dns-host-servers.com | IPv4:  and IPv6: 
+Name Server: ns03.dns-host-servers.com | IPv4:  and IPv6: 
+Name Server: ns04.dns-host-servers.com | IPv4:  and IPv6: 

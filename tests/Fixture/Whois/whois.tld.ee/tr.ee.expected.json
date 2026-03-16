@@ -1,0 +1,34 @@
+{
+    "name": "tr.ee",
+    "registrar": {
+        "name": "Zone Media O\u00dc",
+        "url": "http://www.zone.ee"
+    },
+    "createdDate": "2010-07-04 04:59:06",
+    "updatedDate": "2025-11-11 23:15:10",
+    "expiresDate": "2030-12-09 00:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns-1110.awsdns-10.org"
+        },
+        {
+            "hostname": "ns-1797.awsdns-32.co.uk"
+        },
+        {
+            "hostname": "ns-640.awsdns-16.net"
+        },
+        {
+            "hostname": "ns-92.awsdns-11.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Linktree Pty Ltd",
+            "address": "AU"
+        }
+    ]
+}

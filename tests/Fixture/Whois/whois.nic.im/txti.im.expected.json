@@ -1,0 +1,18 @@
+{
+    "name": "txti.im",
+    "expiresDate": "2027-02-12 00:59:52",
+    "nameservers": [
+        {
+            "hostname": "ns-1709.awsdns-21.co.uk"
+        },
+        {
+            "hostname": "ns-37.awsdns-04.com"
+        },
+        {
+            "hostname": "ns-1160.awsdns-17.org"
+        },
+        {
+            "hostname": "ns-559.awsdns-05.net"
+        }
+    ]
+}

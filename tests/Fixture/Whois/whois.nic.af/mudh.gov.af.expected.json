@@ -1,0 +1,30 @@
+{
+    "name": "mudh.gov.af",
+    "registrar": {
+        "name": "AFGNIC Registrar"
+    },
+    "createdDate": "2023-01-04 11:35:26",
+    "updatedDate": "2024-12-29 07:00:55",
+    "expiresDate": "2029-01-04 11:35:26",
+    "status": [
+        "active"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns2.andc.gov.af"
+        },
+        {
+            "hostname": "ns1.andc.gov.af"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Abdul Rasheed Sirat",
+            "email": "Rasheed.mudl@gmail.com",
+            "phone": "+93.731686901",
+            "address": "3rd macroryan,matba street in front of shahdarak street, kabul, kabul, 1001, AF"
+        }
+    ]
+}

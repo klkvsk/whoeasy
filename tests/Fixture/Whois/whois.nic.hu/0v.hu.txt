@@ -1,0 +1,10 @@
+% Whois server 4.0 serving the hu ccTLD
+
+
+domain:         0v.hu
+record created: 2013-12-17
+Tovabbi adatokert ld.:
+https://www.domain.hu/domain-kereses/
+For further data see:
+https://www.domain.hu/domain-search/
+

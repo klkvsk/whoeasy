@@ -1,0 +1,23 @@
+{
+    "name": "yts.lt",
+    "createdDate": "2019-10-21 00:00:00",
+    "expiresDate": "2026-10-22 00:00:00",
+    "registrar": {
+        "name": "Gandi Sas",
+        "url": "http://www.gandi.net/"
+    },
+    "nameservers": [
+        {
+            "hostname": "eric.ns.cloudflare.com"
+        },
+        {
+            "hostname": "erin.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Harun Sahin Ltd"
+        }
+    ]
+}

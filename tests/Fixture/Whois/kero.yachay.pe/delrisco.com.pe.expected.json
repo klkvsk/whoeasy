@@ -1,0 +1,28 @@
+{
+    "name": "delrisco.com.pe",
+    "registrar": {
+        "name": "NIC.PE"
+    },
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.dns-parking.com"
+        },
+        {
+            "hostname": "ns2.dns-parking.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Julio Del Risco Lizarzaburu"
+        },
+        {
+            "type": "admin",
+            "name": "Julio Del Risco Lizarzaburu",
+            "email": "gerencia@del-risco.com"
+        }
+    ]
+}

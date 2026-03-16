@@ -1,0 +1,25 @@
+{
+    "name": "gogoanime.so",
+    "registrar": {
+        "name": "NameCheap",
+        "ianaId": "1068",
+        "abuseEmail": "abuse@namecheap.com",
+        "abusePhone": "+1.6613102107"
+    },
+    "createdDate": "2020-08-28 03:46:35",
+    "updatedDate": "2025-07-30 01:52:58",
+    "expiresDate": "2026-08-28 03:46:35",
+    "status": [
+        "active",
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns2.fp261.parklogic.com"
+        },
+        {
+            "hostname": "ns1.fp261.parklogic.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

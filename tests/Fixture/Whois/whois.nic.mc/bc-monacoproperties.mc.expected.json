@@ -1,0 +1,24 @@
+{
+    "name": "bc-monacoproperties.mc",
+    "registrar": {
+        "name": "Monte-Carlo Multimedia"
+    },
+    "createdDate": "2021-07-22 11:10:13",
+    "updatedDate": "2025-07-22 00:10:03",
+    "expiresDate": "2026-07-22 00:00:00",
+    "status": [
+        "ACTIVE"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.montecarlomultimedia.com"
+        },
+        {
+            "hostname": "ns2.montecarlomultimedia.com"
+        },
+        {
+            "hostname": "ns3.montecarlomultimedia.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

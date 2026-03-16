@@ -1,0 +1,31 @@
+{
+    "name": "gbs.cd",
+    "registrar": {
+        "name": "SCPT"
+    },
+    "createdDate": "2021-01-15 00:00:00",
+    "updatedDate": "2025-11-20 12:11:30",
+    "expiresDate": "2030-06-29 00:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "nsa1.ldn.as43256.net"
+        },
+        {
+            "hostname": "nsa2.fih.as43256.net"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Office Congolais des Postes et Telecommunications - OCPT",
+            "organization": "Office Congolais des Postes et Telecommunications - OCPT",
+            "email": "supportATnic.cd",
+            "phone": "+243.818068889",
+            "address": "Commune de la Gombe, Kinshasa, CG"
+        }
+    ]
+}

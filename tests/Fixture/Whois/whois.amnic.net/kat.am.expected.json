@@ -1,0 +1,41 @@
+{
+    "name": "kat.am",
+    "registrar": {
+        "name": "globalr (GLOBALR LLC)"
+    },
+    "createdDate": "2025-09-20 00:00:00",
+    "updatedDate": "2025-09-20 00:00:00",
+    "expiresDate": "2026-09-20 00:00:00",
+    "status": [
+        "active"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.ag614.parklogic.com"
+        },
+        {
+            "hostname": "ns2.ag614.parklogic.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Andrii Goldun",
+            "address": "Kniazhiy Zaton 2/30, ap.10, Kyiv, 02095, UA"
+        },
+        {
+            "type": "admin",
+            "name": "Andrii Goldun",
+            "email": "gdoms198@gmail.com",
+            "phone": "+380677466753",
+            "address": "Kniazhiy Zaton 2/30, ap.10, Kyiv, 02095, UA"
+        },
+        {
+            "type": "tech",
+            "name": "Andrii Goldun",
+            "email": "gdoms198@gmail.com",
+            "phone": "+380677466753",
+            "address": "Kniazhiy Zaton 2/30, ap.10, Kyiv, 02095, UA"
+        }
+    ]
+}

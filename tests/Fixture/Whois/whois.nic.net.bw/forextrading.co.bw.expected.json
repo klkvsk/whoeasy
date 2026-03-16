@@ -1,0 +1,23 @@
+{
+    "name": "forextrading.co.bw",
+    "registrar": {
+        "name": "BW Domains",
+        "abuseEmail": "info@bwdomains.co.bw"
+    },
+    "createdDate": "2022-02-03 11:12:41",
+    "updatedDate": "2026-01-12 09:24:59",
+    "expiresDate": "2028-02-03 11:12:41",
+    "status": [
+        "clientTransferProhibited",
+        "clientDeleteProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "johnathan.ns.cloudflare.com"
+        },
+        {
+            "hostname": "joan.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

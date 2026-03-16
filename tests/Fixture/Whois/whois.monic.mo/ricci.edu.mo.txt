@@ -1,0 +1,13 @@
+% Domain Information over Whois protocol
+%
+% Monic Whois Server Version 1.0
+
+Domain Name: ricci.edu.mo
+Record created on 2001-11-13 08:00:00
+Record expires on 2027-01-02
+
+Domain name servers:
+ -----------------------------------------------------
+lloyd.ns.cloudflare.com
+wanda.ns.cloudflare.com
+

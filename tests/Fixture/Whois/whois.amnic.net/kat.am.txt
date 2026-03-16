@@ -1,0 +1,39 @@
+%
+%AM TLD whois server #2
+% Please see 'whois -h whois.amnic.net help' for usage.
+%
+
+   Domain name: kat.am
+   Registrar:   globalr (GLOBALR LLC)
+   Status:      active
+
+   Registrant:
+      Andrii Goldun
+      Kniazhiy Zaton 2/30, ap.10
+      Kyiv,  02095
+      UA
+
+   Administrative contact:
+      Andrii Goldun
+      Kniazhiy Zaton 2/30, ap.10
+      Kyiv, 02095
+      UA
+      gdoms198@gmail.com
+      +380677466753
+
+   Technical contact:
+      Andrii Goldun
+      Kniazhiy Zaton 2/30, ap.10
+      Kyiv, 02095
+      UA
+      gdoms198@gmail.com
+      +380677466753
+
+   DNS servers:
+      ns1.ag614.parklogic.com
+      ns2.ag614.parklogic.com
+
+   Registered:    2025-09-20
+   Last modified: 2025-09-20
+   Expires:       2026-09-20
+

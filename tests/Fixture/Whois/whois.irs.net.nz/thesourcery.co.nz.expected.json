@@ -1,0 +1,21 @@
+{
+    "name": "thesourcery.co.nz",
+    "updatedDate": "2026-02-24 23:36:31",
+    "createdDate": "2013-08-19 12:57:02",
+    "status": [
+        "ok"
+    ],
+    "registrar": {
+        "name": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+        "url": "https://www.crazydomains.com.au/"
+    },
+    "nameservers": [
+        {
+            "hostname": "ns1.crazydomains.com"
+        },
+        {
+            "hostname": "ns2.crazydomains.com"
+        }
+    ],
+    "dnssec": false
+}

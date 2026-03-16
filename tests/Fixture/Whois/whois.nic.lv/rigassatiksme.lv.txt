@@ -1,0 +1,40 @@
+[Domain]
+Domain: rigassatiksme.lv
+Status: active
+
+[Holder]
+Type: Legal person
+Country: LV
+Name: Rigas pasvaldibas sabiedriba ar ierobezotu atbildibu "Rigas satiksme"
+Address: Kleistu iela 28, Riga, LV-1067, Latvija
+RegNr: 40003619950
+Visit: https://www.nic.lv/whois/contact/rigassatiksme.lv to contact.
+
+[Tech]
+Type: Natural person
+Visit: https://www.nic.lv/whois/contact/rigassatiksme.lv to contact.
+
+[Nservers]
+Nserver: ns1-36.azure-dns.com
+Nserver: ns2-36.azure-dns.net
+Nserver: ns3-36.azure-dns.org
+Nserver: ns4-36.azure-dns.info
+
+[Whois]
+Updated: 2026-03-16T12:12:32.982913+00:00
+
+[Disclaimer]
+% The WHOIS service is provided solely for informational purposes.
+%
+% It is permitted to use the WHOIS service only for technical or administrative
+% needs associated with the operation of the Internet or in order to contact
+% the domain name holder over legal problems.
+%
+% Requestor will not use information obtained using WHOIS:
+% * To allow, enable or in any other way to support sending of unsolicited mails (spam)
+% * for any kind of advertising
+% * to disrupt Internet stability and security
+%
+% It is not permitted to obtain (including copying) or re-use in any form or
+% by any means all or quantitatively or qualitatively significant part
+% of the WHOIS without NIC's express permission.

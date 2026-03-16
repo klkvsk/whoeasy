@@ -1,0 +1,29 @@
+This is the PF top level domain whois server.
+Informations about 'grandsprojets.pf' :
+
+Status : active
+Created (JJ/MM/AAAA) : 27/02/2020
+Last renewed (JJ/MM/AAAA) : 25/02/2026
+Expire (JJ/MM/AAAA) : 25/02/2027
+Name server 1 : ns1.vini.pf
+Name server 2 : ns2.vini.pf
+Registrant Compagnie Name : ETABLISSEMENT GRANDS PROJETS DE POLYNESIE
+Registrant Name : La Direction générale 
+Registrant Address : 9030
+Registrant Postal Code : 98715
+Registrant City : PAPEETE - CMP
+Registrant Region / Island : TAHITI
+Registrant Country : Polynésie Française
+Tech 1 Compagnie Name : ETABLISSEMENT GRANDS PROJETS DE POLYNESIE
+Tech 1 Name : La Direction générale 
+Tech 1 Address : 9030
+Tech 1 Postal Code : 98715
+Tech 1 City : PAPEETE - CMP
+Tech 1 Region / Island : TAHITI
+Tech 1 Country : Polynésie Française
+Registrar Compagnie Name : ONATI SAS
+Registrar Address : BP 440
+Registrar Address : Immeuble Ainapare au Pont de l'Est
+Registrar Postal Code : 98713
+Registrar City : PAPEETE
+Registrar Country : Polynésie Française

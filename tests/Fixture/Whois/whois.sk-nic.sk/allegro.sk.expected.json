@@ -1,0 +1,52 @@
+{
+    "name": "allegro.sk",
+    "registrar": {
+        "name": "Corporation Service Company (DBS) GmbH"
+    },
+    "createdDate": "2004-07-07 00:00:00",
+    "updatedDate": "2025-07-02 00:00:00",
+    "expiresDate": "2026-07-14 00:00:00",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "dns4.allegro.pl"
+        },
+        {
+            "hostname": "dns2.allegro.pl"
+        },
+        {
+            "hostname": "dns3.allegro.pl"
+        },
+        {
+            "hostname": "dns1.allegro.pl"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Allegro sp. z o.o.",
+            "organization": "Allegro sp. z o.o.",
+            "phone": "+48.616622777",
+            "email": "domains@allegrogroup.com",
+            "address": "ul. Wierzbiecice 1B, Poznan, 61-569, PL"
+        },
+        {
+            "type": "admin",
+            "name": "Allegro sp. z o.o.",
+            "organization": "Allegro sp. z o.o.",
+            "phone": "+48.616622777",
+            "email": "domains@allegrogroup.com",
+            "address": "ul. Wierzbiecice 1B, Poznan, 61-569, PL"
+        },
+        {
+            "type": "tech",
+            "name": "Allegro sp. z o.o.",
+            "organization": "Allegro sp. z o.o.",
+            "phone": "+48.616622777",
+            "email": "domains@allegrogroup.com",
+            "address": "ul. Wierzbiecice 1B, Poznan, 61-569, PL"
+        }
+    ]
+}

@@ -1,0 +1,62 @@
+Domain:                       allegro.sk
+Created:                      2004-07-07
+Valid Until:                  2026-07-14
+Updated:                      2025-07-02
+Domain Status:                clientTransferProhibited
+Nameserver:                   dns4.allegro.pl
+Nameserver:                   dns2.allegro.pl
+Nameserver:                   dns3.allegro.pl
+Nameserver:                   dns1.allegro.pl
+
+Domain registrant:            2827667e6dda1995
+Name:                         Allegro sp. z o.o.
+Organization:                 Allegro sp. z o.o.
+Organization ID:              0000635012
+Phone:                        +48.616622777
+Email:                        domains@allegrogroup.com
+Street:                       ul. Wierzbiecice 1B
+City:                         Poznan
+Postal Code:                  61-569
+Country Code:                 PL
+Authorised Registrar:         CSCG-0001
+Created:                      2023-06-06
+Updated:                      2023-06-06
+
+Registrar:                    CSCG-0001
+Name:                         Corporation Service Company (DBS) GmbH
+Organization:                 Corporation Service Company (DBS) GmbH
+Organization ID:              HRB 31379
+Phone:                        +49.06122707720
+Email:                        TLDSupport@cscglobal.com
+Street:                       Schwanthalerstr. 73, c/o SCUR24 Holding GmbH
+City:                         Munich
+Postal Code:                  80336
+Country Code:                 DE
+Created:                      2019-07-25
+Updated:                      2026-03-10
+
+Administrative Contact:       7917937e6dc6d723
+Name:                         Allegro sp. z o.o.
+Organization:                 Allegro sp. z o.o.
+Organization ID:              0000635012
+Phone:                        +48.616622777
+Email:                        domains@allegrogroup.com
+Street:                       ul. Wierzbiecice 1B
+City:                         Poznan
+Postal Code:                  61-569
+Country Code:                 PL
+Created:                      2023-06-06
+Updated:                      2023-06-06
+
+Technical Contact:            4595289e6dd13748
+Name:                         Allegro sp. z o.o.
+Organization:                 Allegro sp. z o.o.
+Organization ID:              0000635012
+Phone:                        +48.616622777
+Email:                        domains@allegrogroup.com
+Street:                       ul. Wierzbiecice 1B
+City:                         Poznan
+Postal Code:                  61-569
+Country Code:                 PL
+Created:                      2023-06-06
+Updated:                      2023-06-06

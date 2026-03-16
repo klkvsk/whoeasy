@@ -1,0 +1,32 @@
+# Copyright (c) 1997- The Swedish Internet Foundation.
+# All rights reserved.
+# The information obtained through searches, or otherwise, is protected
+# by the Swedish Copyright Act (1960:729) and international conventions.
+# It is also subject to database protection according to the Swedish
+# Copyright Act.
+# Any use of this material to target advertising or
+# similar activities is forbidden and will be prosecuted.
+# If any of the information below is transferred to a third
+# party, it must be done in its entirety. This server must
+# not be used as a backend for a search engine.
+# Result of search for registered domain names under
+# the .se top level domain.
+# This whois printout is printed with UTF-8 encoding.
+#
+state:            active
+domain:           research-int.se
+holder:           ASCIO0732-866124
+created:          2003-01-22
+modified:         2026-01-17
+expires:          2027-01-22
+transferred:      2018-01-18
+nserver:          ns2.zaccodns.se
+nserver:          ns1.zaccodns.com
+nserver:          dns4.zaccodigitaltrustlabs.se
+nserver:          dns3.zaccodigitaltrustlabs.se
+nserver:          dns2.zaccodigitaltrustlabs.net
+nserver:          dns1.zaccodigitaltrustlabs.com
+dnssec:           unsigned delegation
+registry-lock:    unlocked
+status:           ok
+registrar:        Ascio Inc.

@@ -1,0 +1,34 @@
+{
+    "name": "rafed.com.om",
+    "registrar": {
+        "name": "Oman Data Park LLC (ODP)",
+        "ianaId": "700000005",
+        "url": "www.omandatapark.com"
+    },
+    "nameservers": [
+        {
+            "hostname": "ns3.supercp.com"
+        },
+        {
+            "hostname": "ns4.supercp.com"
+        },
+        {
+            "hostname": "ns1.supercp.com"
+        },
+        {
+            "hostname": "ns2.supercp.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Ghalib  Alabri",
+            "organization": "Rafed Communication Tech LLC",
+            "email": "ghalib@rafed.com.om"
+        },
+        {
+            "type": "admin",
+            "organization": "Rafed Communication Tech LLC"
+        }
+    ]
+}

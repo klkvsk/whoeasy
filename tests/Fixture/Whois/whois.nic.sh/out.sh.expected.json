@@ -1,0 +1,25 @@
+{
+    "name": "out.sh",
+    "registrar": {
+        "name": "1API GmbH",
+        "ianaId": "1387",
+        "url": "http://www.1api.net",
+        "abuseEmail": "abuse@1api.net",
+        "abusePhone": "+49.68949396850"
+    },
+    "createdDate": "2014-01-08 00:32:56",
+    "updatedDate": "2026-01-12 04:35:30",
+    "expiresDate": "2027-01-08 00:32:56",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "tegan.ns.cloudflare.com"
+        },
+        {
+            "hostname": "anirban.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

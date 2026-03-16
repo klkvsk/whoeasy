@@ -1,0 +1,24 @@
+{
+    "name": "dss.dm",
+    "registrar": {
+        "name": "DotDM Corporation- REGISTRAR",
+        "ianaId": "900000",
+        "abuseEmail": "admin@dotdm.dm",
+        "abusePhone": "+767.4481531"
+    },
+    "createdDate": "2007-03-25 23:00:00",
+    "updatedDate": "2026-02-09 15:15:28",
+    "expiresDate": "2029-03-26 23:59:59",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "bjorn.ns.cloudflare.com"
+        },
+        {
+            "hostname": "kim.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "signedDelegation"
+}

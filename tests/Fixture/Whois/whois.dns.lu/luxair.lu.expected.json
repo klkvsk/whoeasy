@@ -1,0 +1,21 @@
+{
+    "name": "luxair.lu",
+    "registrar": {
+        "name": "Gandi SAS",
+        "url": "http://www.gandi.net/"
+    },
+    "nameservers": [
+        {
+            "hostname": "ns1-06.azure-dns.com"
+        },
+        {
+            "hostname": "ns2-06.azure-dns.net"
+        },
+        {
+            "hostname": "ns3-06.azure-dns.org"
+        },
+        {
+            "hostname": "ns4-06.azure-dns.info"
+        }
+    ]
+}

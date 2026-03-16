@@ -1,0 +1,12 @@
+{
+    "name": "xn----7sbkofbbj4akz.xn--90ae",
+    "nameservers": [
+        {
+            "hostname": "mimi.ns.cloudflare.com"
+        },
+        {
+            "hostname": "jonah.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": false
+}

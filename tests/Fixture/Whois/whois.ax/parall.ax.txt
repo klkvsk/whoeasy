@@ -1,0 +1,35 @@
+
+
+domain...............: parall.ax
+status...............: Registered
+created..............: 20.02.2013
+expires..............: 20.02.2027
+available............: 21.03.2027
+modified.............: 15.01.2026
+RegistryLock.........: no
+
+Nameservers
+
+nserver..............: ns-2028.awsdns-61.co.uk
+nserver..............: ns-183.awsdns-22.com
+nserver..............: ns-776.awsdns-33.net
+nserver..............: ns-1139.awsdns-14.org
+
+Holder
+
+name.................: Snapshot Media
+register number......: 101340584
+address..............: The Old Brewery
+address..............: LS2 7ES
+address..............: Leeds
+country..............: GB
+phone................: +44.1133226477
+holder email.........: james@parall.ax
+
+Registrar
+
+registrar............: Key-Systems GmbH
+www..................: http://www.key-systems.net
+
+Copyright (c) Ålands Landskapsregering
+

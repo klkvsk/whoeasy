@@ -1,0 +1,38 @@
+Domain Name: example.org.za
+Registry Domain ID: 6m5jo0_DOMAIN-ORG.ZA
+Registrar WHOIS Server: 
+Registrar URL: https://xneelo.co.za/
+Updated Date: 2025-04-06T09:15:12Z
+Creation Date: 2010-02-23T05:38:03Z
+Registry Expiry Date: 2026-04-06T09:01:47Z
+Registrar Registration Expiration Date: 2026-04-06T09:01:47Z
+Registrar: xneelo (Pty) Ltd
+Registrar Abuse Contact Email: support@xneelo.com
+Registrar Abuse Contact Phone: None
+Reseller: 
+Domain Status: ok https://icann.org/epp#ok
+Registrant Organization: Private
+Registrant Country: ZA
+Registrant Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Admin Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Tech Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Billing Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Name Server: ns2.host-h.net
+Name Server: ns1.dns-h.com
+Name Server: ns1.host-h.net
+DNSSEC: unsigned
+
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-16T16:20:01Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+# --
+
+# For more information on Whois status codes, please visit https://icann.org/epp
+
+# ZARC Complaint/s Procedure and Form: https://zarc.web.za/wp-content/uploads/2025/08/ZA-SLD_Takedown_Policy.docx.pdf
+# The use of this Whois facility is subject to the following terms and
+# conditions. https://zarc.web.za/whois-terms-and-conditions
+# Copyright (c) ZARC 1995-2026
+

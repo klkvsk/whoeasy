@@ -1,0 +1,49 @@
+{
+    "name": "google.com.hk",
+    "createdDate": "2001-07-14 00:00:00",
+    "expiresDate": "2026-11-20 00:00:00",
+    "dnssec": false,
+    "registrar": {
+        "name": "MARKMONITOR INC."
+    },
+    "nameservers": [
+        {
+            "hostname": "ns1.google.com"
+        },
+        {
+            "hostname": "ns2.google.com"
+        },
+        {
+            "hostname": "ns3.google.com"
+        },
+        {
+            "hostname": "ns4.google.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "HONG KONG INTERNET HOLDING LIMITED",
+            "email": "domainreg@webdomain.com.hk",
+            "address": "RM 2203E NAN FUNG CENTRE, Hong Kong"
+        },
+        {
+            "type": "admin",
+            "name": "DOMAIN ADMINISTRATOR",
+            "organization": "GOOGLE LLC",
+            "phone": "+1-6502530000",
+            "fax": "+1-6502530001",
+            "email": "dns-admin@google.com",
+            "address": "1600 AMPHITHEATRE PARKWAY  MOUNTAIN VIEW 94043 CA, United States"
+        },
+        {
+            "type": "tech",
+            "name": "DOMAIN ADMINISTRATOR",
+            "organization": "GOOGLE LLC",
+            "phone": "+1-6502530000",
+            "fax": "+1-6502530001",
+            "email": "dns-admin@google.com",
+            "address": "1600 AMPHITHEATRE PARKWAY  MOUNTAIN VIEW 94043 CA, United States"
+        }
+    ]
+}

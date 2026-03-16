@@ -1,0 +1,28 @@
+{
+    "name": "smartis.bi",
+    "registrar": {
+        "name": "Key-Systems"
+    },
+    "createdDate": "2016-09-23 08:05:19",
+    "updatedDate": "2025-11-26 00:08:30",
+    "expiresDate": "2026-09-23 08:05:19",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "dns2.yandex.net"
+        },
+        {
+            "hostname": "dns1.yandex.net"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "OOO Smartis",
+            "address": "Odesskaya, 2, K/ E/PS/6/24, Moscow, 117638, RU"
+        }
+    ]
+}

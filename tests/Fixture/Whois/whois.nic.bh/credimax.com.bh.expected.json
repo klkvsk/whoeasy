@@ -1,0 +1,24 @@
+{
+    "name": "credimax.com.bh",
+    "registrar": {
+        "name": "Batelco",
+        "url": "http://www.batelco.com",
+        "abuseEmail": "digital@btc.com.bh",
+        "abusePhone": "+973.17885168"
+    },
+    "createdDate": "2018-10-18 14:55:22",
+    "updatedDate": "2026-02-13 14:01:02",
+    "expiresDate": "2026-10-18 23:59:59",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "jason.ns.cloudflare.com"
+        },
+        {
+            "hostname": "margaret.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

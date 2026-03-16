@@ -1,0 +1,30 @@
+% Hello, this is the DOMREG whois service.
+%
+% By submitting a query you agree not to use the information made
+% available to:
+% - allow, enable or otherwise support the transmission of unsolicited,
+%   commercial advertising or other solicitations whether via email or
+%   otherwise;
+% - target advertising in any possible way;
+% - to cause nuisance in any possible way to the registrants by sending
+%   (whether by automated, electronic processes capable of enabling
+%   high volumes or other possible means) messages to them.
+%
+% Version 0.4
+%
+% For more information please visit https://whois.lt
+%
+Domain:			yts.lt
+Status:			registered
+Registered:		2019-10-21
+Expires:		2026-10-22
+%
+Registrar:		Gandi Sas
+Registrar website:	http://www.gandi.net/
+Registrar email:	support-en@support.gandi.net
+%
+Contact organization:	Harun Sahin Ltd
+Contact email:		6d33268f3c6ba3d769c3e43aa08cbb36-15673267@contact.gandi.net
+%
+Nameserver:		eric.ns.cloudflare.com	
+Nameserver:		erin.ns.cloudflare.com	

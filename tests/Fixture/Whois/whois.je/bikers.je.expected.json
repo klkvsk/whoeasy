@@ -1,0 +1,28 @@
+{
+    "name": "bikers.je",
+    "createdDate": "2011-08-08 13:13:23",
+    "registrar": {
+        "name": "Webreality",
+        "url": "http://www.webreality.co.uk"
+    },
+    "nameservers": [
+        {
+            "hostname": "ns-1156.awsdns-16.org"
+        },
+        {
+            "hostname": "ns-2025.awsdns-61.co.uk"
+        },
+        {
+            "hostname": "ns-328.awsdns-41.com"
+        },
+        {
+            "hostname": "ns-607.awsdns-11.net"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Bikers Jersey"
+        }
+    ]
+}

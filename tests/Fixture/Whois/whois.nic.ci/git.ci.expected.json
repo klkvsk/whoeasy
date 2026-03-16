@@ -1,0 +1,21 @@
+{
+    "name": "git.ci",
+    "registrar": {
+        "name": "Netim"
+    },
+    "createdDate": "2018-05-15 03:12:41",
+    "updatedDate": "2023-09-26 12:51:15",
+    "expiresDate": "2029-05-15 03:12:41",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "edna.ns.cloudflare.com"
+        },
+        {
+            "hostname": "seth.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

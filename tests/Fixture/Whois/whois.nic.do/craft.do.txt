@@ -1,0 +1,61 @@
+Domain Name: craft.do
+Registrar URL: 
+Updated Date: 2023-06-01T11:39:42.22Z
+Creation Date: 2019-10-26T13:14:18.277Z
+Registry Expiry Date: 2032-10-26T13:14:18.378Z
+Registrar Registration Expiration Date: 2032-10-26T13:14:18.378Z
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Registry Registrant ID: Redacted | EU Data Subject
+Registrant Name: Redacted | EU Data Subject
+Registrant Organization: Luki Labs Limited
+Registrant Street: Redacted | EU Data Subject
+Registrant City: Redacted | EU Data Subject
+Registrant Postal Code: Redacted | EU Data Subject
+Registrant Country: Redacted | EU Data Subject
+Registrant Phone: Redacted | EU Data Subject
+Registrant Email: Redacted | EU Data Subject
+Registry Admin ID: Redacted | EU Data Subject
+Admin Name: Redacted | EU Data Subject
+Admin Organization: Luki Labs Limited
+Admin Street: Redacted | EU Data Subject
+Admin City: Redacted | EU Data Subject
+Admin Postal Code: Redacted | EU Data Subject
+Admin Country: GB
+Admin Phone: Redacted | EU Data Subject
+Admin Email: Redacted | EU Data Subject
+Registry Tech ID: Redacted | EU Data Subject
+Tech Name: Redacted | EU Data Subject
+Tech Organization: Luki Labs Limited
+Tech Street: Redacted | EU Data Subject
+Tech City: Redacted | EU Data Subject
+Tech Postal Code: Redacted | EU Data Subject
+Tech Country: Redacted | EU Data Subject
+Tech Phone: Redacted | EU Data Subject
+Tech Email: Redacted | EU Data Subject
+Registry Billing ID: Redacted | EU Data Subject
+Billing Name: Redacted | EU Data Subject
+Billing Organization: Luki Labs Limited
+Billing Street: Redacted | EU Data Subject
+Billing City: Redacted | EU Data Subject
+Billing Postal Code: Redacted | EU Data Subject
+Billing Country: Redacted | EU Data Subject
+Billing Phone: Redacted | EU Data Subject
+Billing Email: Redacted | EU Data Subject
+Registrar: Registrar NIC .DO (midominio.do)
+Registrar Country: DO
+Registrar Phone: 8095350111
+Registrar Fax: 8092860012
+Registrar Customer Service Contact: info@nic.do
+Registrar Customer Service Email: info@nic.do
+Name Server: ns-1798.awsdns-32.co.uk
+Name Server: ns-765.awsdns-31.net
+Name Server: ns-1416.awsdns-49.org
+Name Server: ns-170.awsdns-21.com
+DNSSEC: unsigned
+>>> Last update of WHOIS database: 2026-03-16T16:03:47.328Z <<<
+
+For more information on EPP status codes, please visit https://icann.org/epp
+
+TERMS OF USE: You are not authorized to access or query our WHOIS database through the use of electronic processes that are high-volume and automated.  This WHOIS database is provided by as a service to the internet community.
+
+The data is for information purposes only. We do not guarantee its accuracy. By submitting a WHOIS query, you agree to abide by the following terms of use: You agree that you may use this Data only for lawful purposes and that under no circumstances will you use this Data to: (1) allow, enable, or otherwise support the transmission of mass unsolicited, commercial advertising or solicitations via e-mail, telephone, or facsimile; or (2) enable high volume, automated, electronic processes that apply to NIC.DO. The compilation, repackaging, dissemination or other use of this Data is expressly prohibited.

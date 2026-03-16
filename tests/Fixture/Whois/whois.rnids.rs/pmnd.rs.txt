@@ -1,0 +1,40 @@
+
+% The data in the Whois database are provided by RNIDS
+% for information purposes only and to assist persons in obtaining
+% information about or related to a domain name registration record. 
+% Data in the database are created by registrants and we do not guarantee 
+% their accuracy. We reserve the right to remove access 
+% for entities abusing the data, without notice.
+% All timestamps are given in Serbian local time. 
+%
+Domain name: pmnd.rs
+Domain status: Active https://www.rnids.rs/en/domain-name-status-codes#Active
+Registration date: 07.09.2020 10:06:53
+Modification date: 04.02.2026 23:24:21
+Expiration date: 07.09.2026 10:06:53
+Confirmed: 13.10.2020 18:05:06
+Registrar: Gransy d.o.o.
+
+
+Registrant: Individual
+
+Administrative contact: 101domain GRS Limited
+Address: 4th Floor, International House, 3 Harbourmaster Place, IFSC, Dublin, Ireland
+Postal Code: D01 K8F1
+ID Number: 00000000
+Tax ID: 
+
+Technical contact: 101domain GRS Limited
+Address: 4th Floor, International House, 3 Harbourmaster Place, IFSC, Dublin, Ireland
+Postal Code: D01 K8F1
+ID Number: 00000000
+Tax ID: 
+
+
+DNS: ns1.vercel-dns.com - 
+DNS: ns2.vercel-dns.com - 
+
+
+DNSSEC signed: no
+
+Whois Timestamp: 16.03.2026 17:20:26

@@ -1,0 +1,64 @@
+
+Domain ID:1127340_PPUA-DRS
+Domain Name:EXAMPLE.PP.UA
+Created On:21-Apr-2024 02:59:24 UTC
+Last Updated On:24-Apr-2025 02:56:12 UTC
+Expiration Date:21-Apr-2026 02:59:24 UTC
+Sponsoring Registrar:NIC.UA LLC (nic-mnt-cunic)
+Status:serverDeleteProhibited
+Registrant ID:NICUA1885146G0BY-CUNIC
+Registrant Name:Alfonso Montero López
+Registrant Organization:
+Registrant Street1:221b Baker Street
+Registrant Street2:
+Registrant Street3:
+Registrant City:Barcelona
+Registrant State/Province:
+Registrant Postal Code:08042
+Registrant Country:ES
+Registrant Phone:+34.666039091
+Registrant Fax:
+Registrant Email:amontero@tinet.org
+Admin ID:NICUA1885146G0BY-CUNIC
+Admin Name:<not disclosed>
+Admin Organization:<not disclosed>
+Admin Street1:<not disclosed>
+Admin Street2:<not disclosed>
+Admin Street3:<not disclosed>
+Admin City:<not disclosed>
+Admin State/Province:<not disclosed>
+Admin Postal Code:<not disclosed>
+Admin Country:<not disclosed>
+Admin Phone:<not disclosed>
+Admin Fax:<not disclosed>
+Admin Email:<not disclosed>
+Billing ID:NICUA1885146G0BY-CUNIC
+Billing Name:<not disclosed>
+Billing Organization:<not disclosed>
+Billing Street1:<not disclosed>
+Billing Street2:<not disclosed>
+Billing Street3:<not disclosed>
+Billing City:<not disclosed>
+Billing State/Province:<not disclosed>
+Billing Postal Code:<not disclosed>
+Billing Country:<not disclosed>
+Billing Phone:<not disclosed>
+Billing Fax:<not disclosed>
+Billing Email:<not disclosed>
+Tech ID:NICUA1885146G0BY-CUNIC
+Tech Name:<not disclosed>
+Tech Organization:<not disclosed>
+Tech Street1:<not disclosed>
+Tech Street2:<not disclosed>
+Tech Street3:<not disclosed>
+Tech City:<not disclosed>
+Tech State/Province:<not disclosed>
+Tech Postal Code:<not disclosed>
+Tech Country:<not disclosed>
+Tech Phone:<not disclosed>
+Tech Fax:<not disclosed>
+Tech Email:<not disclosed>
+Name Server:MARTY.NS.CLOUDFLARE.COM
+Name Server:DORA.NS.CLOUDFLARE.COM
+
+

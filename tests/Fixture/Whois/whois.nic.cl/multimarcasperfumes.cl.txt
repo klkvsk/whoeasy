@@ -1,0 +1,15 @@
+Registrant name: comercial multisa spa
+Registrant organisation: 
+Registrar name: NIC Chile
+Registrar URL: https://www.nic.cl
+Creation date: 2018-06-25 13:01:20 CLST
+Expiration date: 2033-06-25 13:01:20 CLST
+Name server: ollie.ns.cloudflare.com
+Name server: ram.ns.cloudflare.com
+
+%%
+%% For communication with domain contacts please use website.
+%% See https://www.nic.cl/registry/Whois.do?d=multimarcasperfumes.cl
+%%
+%% Registry Abuse Contact Email: abuse@nic.cl
+%%

@@ -1,0 +1,31 @@
+{
+    "name": "sprocket.bz",
+    "updatedDate": "2024-01-01 02:41:27",
+    "createdDate": "2012-06-01 06:03:37",
+    "expiresDate": "2027-06-01 06:03:37",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "registrar": {
+        "name": "GMO Internet Group, Inc. d/b/a Onamae.com",
+        "ianaId": "49",
+        "url": "http://www.onamae.com",
+        "abuseEmail": "abuse@internet.gmo",
+        "abusePhone": "+81.337709199"
+    },
+    "nameservers": [
+        {
+            "hostname": "ns-1688.awsdns-19.co.uk"
+        },
+        {
+            "hostname": "ns-792.awsdns-35.net"
+        },
+        {
+            "hostname": "ns-1121.awsdns-12.org"
+        },
+        {
+            "hostname": "ns-423.awsdns-52.com"
+        }
+    ],
+    "dnssec": false
+}

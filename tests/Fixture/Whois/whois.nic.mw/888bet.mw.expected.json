@@ -1,0 +1,43 @@
+{
+    "name": "888bet.mw",
+    "registrar": {
+        "name": "SAFENAMES-REG"
+    },
+    "createdDate": "2021-12-23 17:41:54",
+    "updatedDate": "2023-07-05 18:52:08",
+    "expiresDate": "2027-12-23 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "chris.ns.cloudflare.com"
+        },
+        {
+            "hostname": "vida.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Hostmaster",
+            "organization": "Your Whois Privacy Ltd",
+            "email": "domains@yourwhoisprivacy.com",
+            "phone": "+44.1908200022",
+            "address": "Safenames House, Sunrise Parkway, Milton Keynes, MK14 6LS, GB"
+        },
+        {
+            "type": "admin",
+            "name": "International Domain Administrator",
+            "organization": "Safenames Ltd",
+            "email": "hostmaster@safenames.net",
+            "phone": "+44.1908200022",
+            "address": "Safenames House, Sunrise Parkway, Linford Wood, Milton Keynes, MK14 6LS, GB"
+        },
+        {
+            "type": "tech",
+            "name": "International Domain Tech",
+            "organization": "Safenames Ltd",
+            "email": "hostmaster@safenames.net",
+            "phone": "+44.1908200022",
+            "address": "Safenames House, Sunrise Parkway, Linford Wood, Milton Keynes, MK14 6LS, GB"
+        }
+    ]
+}

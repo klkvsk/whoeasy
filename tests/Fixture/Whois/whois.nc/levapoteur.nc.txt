@@ -1,0 +1,11 @@
+OPT Whois v3.0.0
+
+Domain                   : levapoteur.nc
+Created on               : 2020-09-05T06:18:53.000Z
+Expires on               : 2030-09-05
+Last updated on          : 2025-07-16T14:38:06.000Z
+
+Domain server 1          : ns1.c76233.sgvps.net
+Domain server 2          : ns2.c76233.sgvps.net
+
+Registrar                : NONE

@@ -1,0 +1,21 @@
+Domain Name: lnk.tc
+WHOIS Server: whois.nic.tc
+Creation Date: 2010-09-27T04:00:00.0Z
+Registry Expiry Date: 2026-09-28T04:00:00.0Z
+Sponsoring Registrar: 1API
+Domain Status: ok
+Registrant Organization: Catalyst International
+Name Server: ns-1239.awsdns-26.org
+Name Server: ns-1623.awsdns-10.co.uk
+Name Server: ns-384.awsdns-48.com
+Name Server: ns-806.awsdns-36.net
+DNSSEC: unsigned
+Additional Section
+Sponsoring Registrar URL: 
+Sponsoring Registrar Address: Kaiserstrasse 172-174  66386 St. Ingbert
+Sponsoring Registrar Country: DE
+Sponsoring Registrar Customer Service Email:
+&gt;&gt;&gt; Last update of WHOIS database: 2026-03-16T16:19:46.661Z &lt;&lt;&lt;
+
+The data in the WHOIS database of TC Registry is provided by NICTC Registry LTD for information purposes, and to assist persons in obtaining information about or related to domain name registration records. By submitting a WHOIS query, you agree that you will use this data only for lawful purposes and that, under no circumstances, you will use this data to enable high volume, automated, electronic processes that apply to NICTC Registry or its systems. NIC TC Registry LTD reserves the right to modify these terms.
+By submitting this query, you agree to abide by this policy.

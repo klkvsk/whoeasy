@@ -1,6 +1,3 @@
 {
-    "queryType": "domain",
-    "domain": {
-        "name": "example.co.za"
-    }
+    "name": "example.co.za"
 }

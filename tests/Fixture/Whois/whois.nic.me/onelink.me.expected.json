@@ -1,0 +1,37 @@
+{
+    "name": "onelink.me",
+    "registrar": {
+        "name": "GoDaddy.com, LLC",
+        "ianaId": "146",
+        "url": "http://www.godaddy.com/domains/search.aspx?ci=8990",
+        "abuseEmail": "abuse@godaddy.com",
+        "abusePhone": "+1.4806242505"
+    },
+    "createdDate": "2014-11-26 19:49:22",
+    "updatedDate": "2026-03-16 15:57:02",
+    "expiresDate": "2031-11-26 19:49:22",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns-2026.awsdns-61.co.uk"
+        },
+        {
+            "hostname": "ns-1241.awsdns-27.org"
+        },
+        {
+            "hostname": "ns-778.awsdns-33.net"
+        },
+        {
+            "hostname": "ns-49.awsdns-06.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Domains By Proxy, LLC"
+        }
+    ],
+    "dnssec": "unsigned"
+}

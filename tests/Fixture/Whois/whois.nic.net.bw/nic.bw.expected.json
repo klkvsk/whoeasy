@@ -1,9 +1,0 @@
-{
-    "queryType": "domain",
-    "domain": {
-        "name": "nic.bw",
-        "status": [
-            "Prohibited String - Domain Cannot Be Registered"
-        ]
-    }
-}

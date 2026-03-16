@@ -1,0 +1,32 @@
+{
+    "name": "lnk.tc",
+    "registrar": {
+        "name": "1API"
+    },
+    "createdDate": "2010-09-27 04:00:00",
+    "expiresDate": "2026-09-28 04:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns-1239.awsdns-26.org"
+        },
+        {
+            "hostname": "ns-1623.awsdns-10.co.uk"
+        },
+        {
+            "hostname": "ns-384.awsdns-48.com"
+        },
+        {
+            "hostname": "ns-806.awsdns-36.net"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Catalyst International"
+        }
+    ]
+}

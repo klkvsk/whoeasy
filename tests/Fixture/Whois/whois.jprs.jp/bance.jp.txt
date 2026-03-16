@@ -1,0 +1,34 @@
+[ JPRS database provides information on network administration. Its use is    ]
+[ restricted to network administration purposes. For further information,     ]
+[ use 'whois -h whois.jprs.jp help'. To suppress Japanese output, add'/e'     ]
+[ at the end of command, e.g. 'whois -h whois.jprs.jp xxx/e'.                 ]
+Domain Information: [ドメイン情報]
+[Domain Name]                   BANCE.JP
+
+[登録者名]                      （登録者からの申請により非表示）
+                                詳細は→https://jprs.jp/about/dom-rule/whois-concealment/
+[Registrant]                    (Not displayed by registrant's request)
+                                For details -> https://jprs.jp/about/dom-rule/whois-concealment/ (only in Japanese)
+
+[Name Server]                   03.dnsv.jp
+[Name Server]                   02.dnsv.jp
+[Name Server]                   01.dnsv.jp
+[Name Server]                   04.dnsv.jp
+[Signing Key]                   
+
+[登録年月日]                    2024/02/29
+[有効期限]                      2027/02/28
+[状態]                          Active
+[最終更新]                      2026/03/01 01:05:03 (JST)
+
+Contact Information: [公開連絡窓口]
+[名前]                          Whois情報公開代行サービス by お名前.com
+[Name]                          Whois Privacy Protection Service by onamae.com
+[Email]                         proxy@whoisprotectservice.com
+[Web Page]                       
+[郵便番号]                       
+[住所]                           
+[Postal Address]                 
+[電話番号]                      +81.354562560
+[FAX番号]                       
+

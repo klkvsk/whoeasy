@@ -1,0 +1,16 @@
+{
+    "name": "pokerstars.bg",
+    "status": [
+        "busy",
+        "active"
+    ],
+    "nameservers": [
+        {
+            "hostname": "christian.ns.cloudflare.com"
+        },
+        {
+            "hostname": "kimora.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "inactive"
+}

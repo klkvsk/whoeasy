@@ -1,0 +1,57 @@
+{
+    "name": "jumia.com.gh",
+    "registrar": {
+        "name": "Ghana Dot Com",
+        "ianaId": "1499",
+        "url": "http://ghana.com"
+    },
+    "createdDate": "2014-04-11 00:00:00",
+    "updatedDate": "2026-03-05 10:12:55",
+    "expiresDate": "2027-04-11 00:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns-1584.awsdns-06.co.uk"
+        },
+        {
+            "hostname": "ns-621.awsdns-13.net"
+        },
+        {
+            "hostname": "ns-1392.awsdns-46.org"
+        },
+        {
+            "hostname": "ns-158.awsdns-19.com"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Domain Administrator",
+            "organization": "Jumia Services GmbH",
+            "email": "domains@jumia.com",
+            "phone": "+49.15127054215",
+            "fax": "+49.30300131899",
+            "address": "Skalitzer Strasse 104, Berlin, Berlin, 10997, DE"
+        },
+        {
+            "type": "admin",
+            "name": "Domain Administrator",
+            "organization": "Jade E-Services Ghana Ltd",
+            "email": "domains@jumia.com",
+            "phone": "+233.302740642",
+            "address": "c/o Trustee Services Ltd, Accra, Greater Accra, P.O. Box GP 1632 Adabraka, GH"
+        },
+        {
+            "type": "tech",
+            "name": "Domain Administrator",
+            "organization": "Jumia Services GmbH",
+            "email": "domains@jumia.com",
+            "phone": "+49.15127054215",
+            "fax": "+49.30300131899",
+            "address": "Skalitzer Strasse 104, Berlin, Berlin, 10997, DE"
+        }
+    ]
+}

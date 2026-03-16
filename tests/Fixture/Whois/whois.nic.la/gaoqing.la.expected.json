@@ -1,0 +1,23 @@
+{
+    "name": "gaoqing.la",
+    "registrar": {
+        "name": "GoDaddy.com, Inc.",
+        "abuseEmail": "abuse@centralnic.com",
+        "abusePhone": "+1.4805058800"
+    },
+    "createdDate": "2013-11-06 11:40:40",
+    "updatedDate": "2025-11-22 04:32:26",
+    "expiresDate": "2026-11-06 23:59:59",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "anna.ns.cloudflare.com"
+        },
+        {
+            "hostname": "sam.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

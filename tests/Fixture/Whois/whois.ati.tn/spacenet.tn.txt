@@ -1,0 +1,62 @@
+NIC Whois server for cTLDs : .tn , .تونس
+All rights reserved
+Copyright "Tunisian Internet Agency - https://whois.ati.tn
+Supported ccTLDs : .tn , .تونس
+Sectorial domains : .com.tn,.ens.tn,.fin.tn,.gov.tn,.ind.tn,.intl.tn,.nat.tn,.net.tn,.org.tn,.info.tn,.perso.tn,.tourism.tn,.mincom.tn
+
+Domain name.........: spacenet.tn
+Details:
+Creation date.......: 04-03-2021 12:29:59 GMT+1
+Domain status.......: Active
+Registrar...........: OVH
+
+Owner Contact
+Name................: FAKHFAKH
+First name..........: SLIM
+Address.............: 25 RUE MUSTAPHA HJAIEJ ARIANA SUPERIEUR
+2080
+ARIANA
+address2............: 
+City................: 
+stateProvince.......: 
+Zip code............: 
+Country.............: 
+Phone...............: 70732508
+Fax.................: 
+Email...............: marketing.cig@topnet.tn
+
+Administrativ contact
+Name................: FAKHFAKH
+First name..........: SLIM
+Address.............: 25 RUE MUSTAPHA HJAIEJ ARIANA SUPERIEUR
+2080
+ARIANA
+address2............: 
+City................: 
+stateProvince.......: 
+Zip code............: 
+Country.............: 
+Phone...............: 70732508
+Fax.................: 
+Email...............: marketing.cig@topnet.tn
+
+Technical contact
+Name................: FAKHFAKH
+First name..........: SLIM
+Address.............: 25 RUE MUSTAPHA HJAIEJ ARIANA SUPERIEUR
+2080
+ARIANA
+address2............: 
+City................: 
+stateProvince.......: 
+Zip code............: 
+Country.............: 
+Phone...............: 70732508
+Fax.................: 
+Email...............: marketing.cig@topnet.tn
+dnssec..............: unsigned
+
+DNS servers
+Name................: cody.ns.cloudflare.com.
+Name................: raphaela.ns.cloudflare.com.
+

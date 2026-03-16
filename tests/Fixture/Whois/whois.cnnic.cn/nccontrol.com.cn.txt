@@ -1,0 +1,11 @@
+Domain Name: nccontrol.com.cn
+ROID: 20201209s10011s92537681-cn
+Domain Status: ok
+Registrant: 上海凤昶网络科技有限公司
+Registrant Contact Email: 3289666@qq.com
+Sponsoring Registrar: 北京新网数码信息技术有限公司
+Name Server: ns1.judns.com
+Name Server: ns2.judns.com
+Registration Time: 2020-12-09 04:03:26
+Expiration Time: 2026-12-09 04:03:26
+DNSSEC: unsigned

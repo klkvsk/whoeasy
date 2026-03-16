@@ -1,0 +1,59 @@
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.9.0
+% Timestamp: Mon Mar 16 17:06:42 2026
+
+domain:       av.gov.mk
+registrant:   MARNET-R01510
+admin-c:      MARNET-C18371
+nsset:        MARNET-NS14732
+registrar:    MARNET-REG
+status:       Domain expired
+registered:   15.02.2019 15:19:43
+changed:      18.02.2019 17:13:12
+expire:       15.02.2026
+
+contact:      MARNET-R01510
+org:          Агенција за вработување на Република Северна Македонија
+name:         Агенција за вработување
+address:      ул. Васил Ѓоргов, бр. 43, Скопје
+address:      Скопје
+address:      1000
+address:      MK
+address:      MK
+phone:        +389.3111850
+e-mail:       info@av.gov.mk
+registrar:    MARNET-REG
+created:      01.01.2013 02:57:06
+changed:      22.02.2023 19:51:16
+
+contact:      MARNET-C18371
+name:         Силвана Трајковска
+address:      -
+address:      -
+address:      -
+address:      MK
+phone:        +389.23111850
+e-mail:       silvana.trajkovska@avrm.gov.mk
+registrar:    MARNET-REG
+created:      15.02.2019 15:06:37
+
+nsset:        MARNET-NS14732
+nserver:      ns1.av.gov.mk (146.255.67.2)
+nserver:      dns2.telesmart.mk 
+tech-c:       MARNET-C18373
+registrar:    MARNET-REG
+created:      18.02.2019 17:13:03
+
+contact:      MARNET-C18373
+name:         Ристе Тасев
+address:      -
+address:      -
+address:      -
+address:      MK
+phone:        +389.23111850
+e-mail:       riste.tasev@avrm.gov.mk
+registrar:    MARNET-REG
+created:      15.02.2019 15:18:48
+
+

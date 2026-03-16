@@ -1,0 +1,41 @@
+{
+    "name": "craft.do",
+    "registrar": {
+        "name": "Registrar NIC .DO (midominio.do)"
+    },
+    "createdDate": "2019-10-26 13:14:18",
+    "updatedDate": "2023-06-01 11:39:42",
+    "expiresDate": "2032-10-26 13:14:18",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns-1798.awsdns-32.co.uk"
+        },
+        {
+            "hostname": "ns-765.awsdns-31.net"
+        },
+        {
+            "hostname": "ns-1416.awsdns-49.org"
+        },
+        {
+            "hostname": "ns-170.awsdns-21.com"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Luki Labs Limited"
+        },
+        {
+            "type": "admin",
+            "organization": "Luki Labs Limited"
+        },
+        {
+            "type": "tech",
+            "organization": "Luki Labs Limited"
+        }
+    ]
+}

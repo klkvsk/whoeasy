@@ -1,0 +1,33 @@
+{
+    "name": "research-int.se",
+    "createdDate": "2003-01-22 00:00:00",
+    "updatedDate": "2026-01-17 00:00:00",
+    "expiresDate": "2027-01-22 00:00:00",
+    "status": [
+        "ok"
+    ],
+    "registrar": {
+        "name": "Ascio Inc."
+    },
+    "nameservers": [
+        {
+            "hostname": "ns2.zaccodns.se"
+        },
+        {
+            "hostname": "ns1.zaccodns.com"
+        },
+        {
+            "hostname": "dns4.zaccodigitaltrustlabs.se"
+        },
+        {
+            "hostname": "dns3.zaccodigitaltrustlabs.se"
+        },
+        {
+            "hostname": "dns2.zaccodigitaltrustlabs.net"
+        },
+        {
+            "hostname": "dns1.zaccodigitaltrustlabs.com"
+        }
+    ],
+    "dnssec": false
+}

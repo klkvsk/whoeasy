@@ -1,0 +1,14 @@
+{
+    "name": "levapoteur.nc",
+    "createdDate": "2020-09-05 06:18:53",
+    "updatedDate": "2025-07-16 14:38:06",
+    "expiresDate": "2030-09-05 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns1.c76233.sgvps.net"
+        },
+        {
+            "hostname": "ns2.c76233.sgvps.net"
+        }
+    ]
+}

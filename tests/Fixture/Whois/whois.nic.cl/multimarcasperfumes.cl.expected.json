@@ -1,0 +1,23 @@
+{
+    "name": "multimarcasperfumes.cl",
+    "registrar": {
+        "name": "NIC Chile",
+        "url": "https://www.nic.cl"
+    },
+    "createdDate": "2018-06-25 13:01:20",
+    "expiresDate": "2033-06-25 13:01:20",
+    "nameservers": [
+        {
+            "hostname": "ollie.ns.cloudflare.com"
+        },
+        {
+            "hostname": "ram.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "comercial multisa spa"
+        }
+    ]
+}

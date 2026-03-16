@@ -1,0 +1,44 @@
+{
+    "name": "titti.co.il",
+    "createdDate": "2020-11-13 00:00:00",
+    "expiresDate": "2026-11-13 00:00:00",
+    "status": [
+        "Transfer Allowed"
+    ],
+    "registrar": {
+        "name": "Communigal Communication Ltd",
+        "url": "http://www.galcomm.co.il/"
+    },
+    "nameservers": [
+        {
+            "hostname": "bonnie.ns.cloudflare.com"
+        },
+        {
+            "hostname": "konnor.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": false,
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "mahor yuhav",
+            "phone": "+972 5 28255306",
+            "email": "yuhavmahor@gmail.com",
+            "address": "sirkin 25 a, kfar saba, 44421, Israel"
+        },
+        {
+            "type": "admin",
+            "name": "mahor yuhav",
+            "phone": "+972 5 28255306",
+            "email": "yuhavmahor@gmail.com",
+            "address": "sirkin 25 a, kfar saba, 44421, Israel"
+        },
+        {
+            "type": "tech",
+            "name": "mahor yuhav",
+            "phone": "+972 5 28255306",
+            "email": "yuhavmahor@gmail.com",
+            "address": "sirkin 25 a, kfar saba, 44421, Israel"
+        }
+    ]
+}

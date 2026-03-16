@@ -1,0 +1,38 @@
+{
+    "name": "avito.ma",
+    "registrar": {
+        "name": "GENIOUS COMMUNICATIONS"
+    },
+    "createdDate": "2011-09-21 00:00:00",
+    "updatedDate": "2021-07-09 06:53:47",
+    "expiresDate": "2026-09-21 00:00:00",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "fiona.ns.cloudflare.com"
+        },
+        {
+            "hostname": "jobs.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Avito Sarl"
+        },
+        {
+            "type": "admin",
+            "name": "Zakaria Ghassouli",
+            "email": "zak@avito.ma",
+            "phone": "+212.664042063"
+        },
+        {
+            "type": "tech",
+            "name": "AB Name ISP",
+            "email": "reg@nameisp.com",
+            "phone": "+46.31301120"
+        }
+    ]
+}

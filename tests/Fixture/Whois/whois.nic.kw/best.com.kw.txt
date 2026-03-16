@@ -1,0 +1,91 @@
+Domain Name: best.com.kw
+Registry Domain ID: 7154-CITRA
+Registrar WHOIS Server: whois.nic.kw
+Registrar URL: https://kwdomains.fasttelco.net/
+Updated Date: 2025-06-25T14:55:20.865Z
+Creation Date: 2012-07-22T00:00:00.000Z
+Registry Expiry Date: 2026-07-22T00:00:00.000Z
+Registrar: FAST Telecommunication Co., W.L.L.
+Registrar IANA ID: 40002
+Registrar Abuse Contact Email: serviceprovisioning@fasttelco.net
+Registrar Abuse Contact Phone: +965.22256666
+Domain Status: ok https://icann.org/epp#ok
+Registry Registrant ID: REDACTED FOR PRIVACY
+Registrant Name: REDACTED FOR PRIVACY
+Registrant Organization: Best United Electronics Co. - W.L.L.
+Registrant Street: REDACTED FOR PRIVACY
+Registrant City: REDACTED FOR PRIVACY
+Registrant State/Province: 
+Registrant Postal Code: REDACTED FOR PRIVACY
+Registrant Country: KW
+Registrant Phone: REDACTED FOR PRIVACY
+Registrant Fax: REDACTED FOR PRIVACY
+Registrant Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Admin ID: REDACTED FOR PRIVACY
+Admin Name: REDACTED FOR PRIVACY
+Admin Organization: REDACTED FOR PRIVACY
+Admin Street: REDACTED FOR PRIVACY
+Admin City: REDACTED FOR PRIVACY
+Admin State/Province: REDACTED FOR PRIVACY
+Admin Postal Code: REDACTED FOR PRIVACY
+Admin Country: REDACTED FOR PRIVACY
+Admin Phone: REDACTED FOR PRIVACY
+Admin Fax: REDACTED FOR PRIVACY
+Admin Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Tech ID: REDACTED FOR PRIVACY
+Tech Name: REDACTED FOR PRIVACY
+Tech Organization: REDACTED FOR PRIVACY
+Tech Street: REDACTED FOR PRIVACY
+Tech City: REDACTED FOR PRIVACY
+Tech State/Province: REDACTED FOR PRIVACY
+Tech Postal Code: REDACTED FOR PRIVACY
+Tech Country: REDACTED FOR PRIVACY
+Tech Phone: REDACTED FOR PRIVACY
+Tech Fax: REDACTED FOR PRIVACY
+Tech Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Billing ID: REDACTED FOR PRIVACY
+Billing Name: REDACTED FOR PRIVACY
+Billing Organization: REDACTED FOR PRIVACY
+Billing Street: REDACTED FOR PRIVACY
+Billing City: REDACTED FOR PRIVACY
+Billing State/Province: REDACTED FOR PRIVACY
+Billing Postal Code: REDACTED FOR PRIVACY
+Billing Country: REDACTED FOR PRIVACY
+Billing Phone: REDACTED FOR PRIVACY
+Billing Fax: REDACTED FOR PRIVACY
+Billing Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Name Server: maria.ns.cloudflare.com
+Name Server: chris.ns.cloudflare.com
+DNSSEC: unsigned
+URL of the ICANN RDDS Inaccuracy Complaint Form: https://icann.org/wicf
+
+>>> Last update of WHOIS database: 2026-03-16T16:17:59.930Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+You are not authorized to access or query our Whois database through the
+use of electronic processes that are high-volume and automated.
+Whois database is provided by CITRA.
+
+CITRA makes every effort to maintain the completeness and accuracy of the
+Whois data, but cannot guarantee that the results are error-free.
+Therefore, any data provided through the Whois service are on an as-is
+basis without any warranties.
+
+BY USING THE WHOIS SERVICE AND THE DATA CONTAINED HEREIN OR IN ANY REPORT
+GENERATED WITH RESPECT THERETO, IT IS ACCEPTED THAT CITRA IS NOT LIABLE
+FOR ANY DAMAGES OF ANY KIND ARISING OUT OF, OR IN CONNECTION WITH, THE REPORT
+OR THE INFORMATION PROVIDED BY THE WHOIS SERVICE, NOR OMISSIONS OR MISSING
+INFORMATION. THE RESULTS OF ANY WHOIS REPORT OR INFORMATION PROVIDED BY
+THE WHOIS SERVICE CANNOT BE RELIED UPON IN CONTEMPLATION OF LEGAL
+PROCEEDINGS WITHOUT FURTHER VERIFICATION, NOR DO SUCH RESULTS CONSTITUTE
+A LEGAL OPINION.
+Acceptance of the results of the Whois constitutes acceptance of these
+terms, conditions and limitations. Whois data may be requested only for
+lawful purposes, in particular, to protect legal rights and obligations.
+Illegitimate uses of Whois data include, but are not limited to,
+unsolicited email, data mining, direct marketing or any other improper
+purpose. Any request made for Whois data will be documented by CITRA but
+will not be used for any commercial purpose whatsoever.
+NOTE: FAILURE TO LOCATE A RECORD IN THE WHOIS DATABASE IS NOT INDICATIVE
+OF THE AVAILABILITY OF A DOMAIN NAME.

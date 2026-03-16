@@ -1,0 +1,40 @@
+{
+    "name": "av.gov.mk",
+    "createdDate": "2019-02-15 15:19:43",
+    "updatedDate": "2019-02-18 17:13:12",
+    "expiresDate": "2026-02-15 00:00:00",
+    "status": [
+        "Domain expired"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.av.gov.mk",
+            "ipv4": "146.255.67.2"
+        },
+        {
+            "hostname": "dns2.telesmart.mk"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Agencija za vrabotuvanje na Republika Severna Makedonija",
+            "name": "Agencija za vrabotuvanje",
+            "phone": "+389.3111850",
+            "email": "info@av.gov.mk",
+            "address": "ul. Vasil Gjorgov, br. 43, Skopje, Skopje, 1000, MK"
+        },
+        {
+            "type": "admin",
+            "name": "Silvana Trajkovska",
+            "phone": "+389.23111850",
+            "email": "silvana.trajkovska@avrm.gov.mk"
+        },
+        {
+            "type": "tech",
+            "name": "Riste Tasev",
+            "phone": "+389.23111850",
+            "email": "riste.tasev@avrm.gov.mk"
+        }
+    ]
+}

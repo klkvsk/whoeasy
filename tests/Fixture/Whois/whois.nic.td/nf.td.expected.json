@@ -1,0 +1,26 @@
+{
+    "name": "nf.td",
+    "registrar": {
+        "name": "NETIM",
+        "abuseEmail": "tld@netim.com"
+    },
+    "createdDate": "2021-10-30 08:37:26",
+    "updatedDate": "2021-12-15 14:01:10",
+    "expiresDate": "2027-10-30 08:37:26",
+    "status": [
+        "active",
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns3.netim.net"
+        },
+        {
+            "hostname": "ns2.netim.net"
+        },
+        {
+            "hostname": "ns1.netim.net"
+        }
+    ],
+    "dnssec": "unsigned"
+}

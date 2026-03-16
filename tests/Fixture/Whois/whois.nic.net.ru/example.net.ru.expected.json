@@ -1,0 +1,21 @@
+{
+    "name": "example.net.ru",
+    "registrar": {
+        "name": "RU-CENTER-3LVL"
+    },
+    "createdDate": "2024-02-09 21:37:11",
+    "expiresDate": "2027-02-09 21:37:11",
+    "status": [
+        "REGISTERED",
+        "DELEGATED",
+        "VERIFIED"
+    ],
+    "nameservers": [
+        {
+            "hostname": "mtx.adriver.ru"
+        },
+        {
+            "hostname": "ox.adriver.ru"
+        }
+    ]
+}

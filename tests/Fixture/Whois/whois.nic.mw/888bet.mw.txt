@@ -1,0 +1,59 @@
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.9.0
+% Timestamp: Mon Mar 16 18:19:24 2026
+
+domain:       888bet.mw
+registrant:   R39610MWC3C08E
+admin-c:      A39610MWE48E1C
+admin-c:      T39610MWC06C9E
+nsset:        5A811BD1CE
+registrar:    SAFENAMES-REG
+registered:   23.12.2021 17:41:54
+changed:      05.07.2023 18:52:08
+expire:       23.12.2027
+
+contact:      R39610MWC3C08E
+org:          Your Whois Privacy Ltd
+name:         Hostmaster
+address:      Safenames House, Sunrise Parkway
+address:      Milton Keynes
+address:      MK14 6LS
+address:      GB
+phone:        +44.1908200022
+e-mail:       domains@yourwhoisprivacy.com
+registrar:    SAFENAMES-REG
+created:      23.12.2021 17:40:03
+
+contact:      A39610MWE48E1C
+org:          Safenames Ltd
+name:         International Domain Administrator
+address:      Safenames House, Sunrise Parkway, Linford Wood
+address:      Milton Keynes
+address:      MK14 6LS
+address:      GB
+phone:        +44.1908200022
+e-mail:       hostmaster@safenames.net
+registrar:    SAFENAMES-REG
+created:      23.12.2021 17:41:52
+
+contact:      T39610MWC06C9E
+org:          Safenames Ltd
+name:         International Domain Tech
+address:      Safenames House, Sunrise Parkway, Linford Wood
+address:      Milton Keynes
+address:      MK14 6LS
+address:      GB
+phone:        +44.1908200022
+e-mail:       hostmaster@safenames.net
+registrar:    SAFENAMES-REG
+created:      23.12.2021 17:41:53
+
+nsset:        5A811BD1CE
+nserver:      chris.ns.cloudflare.com 
+nserver:      vida.ns.cloudflare.com 
+tech-c:       T39610MWC06C9E
+registrar:    SAFENAMES-REG
+created:      05.07.2023 18:52:07
+
+

@@ -1,0 +1,20 @@
+{
+    "name": "censo.aw",
+    "registrar": {
+        "name": "SETAR N.V."
+    },
+    "createdDate": "2014-02-25 00:00:00",
+    "updatedDate": "2022-12-13 00:00:00",
+    "status": [
+        "active"
+    ],
+    "nameservers": [
+        {
+            "hostname": "fonzie.ns.cloudflare.com"
+        },
+        {
+            "hostname": "pola.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "no"
+}

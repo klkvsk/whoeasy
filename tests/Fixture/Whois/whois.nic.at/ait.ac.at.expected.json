@@ -1,0 +1,38 @@
+{
+    "name": "ait.ac.at",
+    "updatedDate": "2025-03-07 14:32:33",
+    "nameservers": [
+        {
+            "hostname": "acns1.drei.com"
+        },
+        {
+            "hostname": "acns2.drei.at"
+        },
+        {
+            "hostname": "dns1.ait.ac.at",
+            "ipv4": "62.218.164.160"
+        },
+        {
+            "hostname": "dns2.ait.ac.at",
+            "ipv4": "62.218.164.161"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "AIT Austrian Institute of Technology GmbH",
+            "email": "hostmaster@ait.ac.at",
+            "phone": "+43505502128",
+            "fax": "+43505503860",
+            "address": "Giefinggasse 4, 1210, Wien, Austria"
+        },
+        {
+            "type": "tech",
+            "name": "Hostmaster Hutchison Drei Austria GmbH",
+            "organization": "Hutchison Drei Austria GmbH",
+            "email": "at.hostmaster@drei.com",
+            "phone": "+43660303030",
+            "address": "Bruennerstr. 52, 1210, Wien, Austria"
+        }
+    ]
+}

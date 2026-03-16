@@ -1,0 +1,15 @@
+% © NIC.MD
+% Whois Server  v2.8.0
+% Website       https://nic.md/en/whois/
+% Terms of use  https://nic.md/img/legal/Rules_registration_subdomain_md.pdf
+% Last  update  2026-03-16T18:15:50+02:00
+
+Domain  name:   obsidian.md
+Domain state:   OK
+
+Registered on:  2020-03-13
+Expires on:     2028-03-13
+
+NameServer:     lloyd.ns.cloudflare.com
+NameServer:     olga.ns.cloudflare.com
+

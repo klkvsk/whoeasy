@@ -1,0 +1,22 @@
+{
+    "name": "technoland.com.mm",
+    "registrar": {
+        "name": "Myanmar Technology Gateway",
+        "url": "http://www.mtg.com.mm/"
+    },
+    "createdDate": "2018-09-30 00:00:00",
+    "updatedDate": "2019-10-02 05:13:29",
+    "expiresDate": "2026-09-30 23:59:59",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "leah.ns.cloudflare.com"
+        },
+        {
+            "hostname": "tom.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

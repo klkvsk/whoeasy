@@ -1,0 +1,23 @@
+{
+    "name": "presidencedufaso.bf",
+    "registrar": {
+        "name": "ECODEV INTERNATIONAL",
+        "abuseEmail": "bf@ecodev.dev",
+        "abusePhone": "+226.56343412"
+    },
+    "createdDate": "2021-01-01 00:00:00",
+    "updatedDate": "2024-10-18 09:36:55",
+    "expiresDate": "2026-11-14 11:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns31.infomaniak.com"
+        },
+        {
+            "hostname": "ns32.infomaniak.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

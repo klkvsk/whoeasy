@@ -1,0 +1,23 @@
+{
+    "name": "goodsbuy.by",
+    "registrar": {
+        "name": "Reliable Software, Ltd"
+    },
+    "createdDate": "2019-11-22 00:00:00",
+    "updatedDate": "2025-09-25 00:00:00",
+    "expiresDate": "2026-11-22 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns1.freenss.com"
+        },
+        {
+            "hostname": "ns2.freenss.com"
+        },
+        {
+            "hostname": "ns3.freenss.com"
+        },
+        {
+            "hostname": "ns4.freenss.com"
+        }
+    ]
+}

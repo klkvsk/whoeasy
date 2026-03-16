@@ -1,0 +1,27 @@
+Domain Name: ceni.mr
+Registry Domain ID: 31112NIC_mr
+Updated Date: 2025-04-29T10:44:14Z
+Creation Date: 2022-04-09T20:34:38Z
+Registry Expiry Date: 2026-04-09T00:00:00Z
+Registrar Registration Expiration Date: 2026-04-09T00:00:00Z
+Registrar: NIC-Mauritanie
+Registrar Street Address: Avenue du Roi Faissal Ben Abdel Aziz
+Nouakchott
+Mauritanie
+Registrar Email: ahdsalem@nic.mr
+Domain Status: active https://icann.org/epp#active
+Name Server: isla.ns.cloudflare.com
+Name Server: max.ns.cloudflare.com
+DNSSEC: unsigned
+>>> Last update of WHOIS database: 2026-03-13T09:05:47.624Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+TUTILISATION: Vous n'êtes pas autorisé à accéder ou interroger notre base de données WHOIS à l'aide de processus électroniques à volume élevé et automatisés. Cette base de données WHOIS est fournie par notre service à la communauté Internet.
+
+Les données sont à titre d'information seulement. Nous ne garantissons pas son exactitude.
+En soumettant une requête WHOIS, vous acceptez de respecter les conditions d'utilisation suivantes: 
+Vous convenez que vous ne pouvez utiliser ces données qu'à des fins licites et que vous n'utiliserez en aucun cas ces données pour: 
+(1)	autoriser, activer ou autrement soutenir la transmission de publicités ou de sollicitations massives non sollicitées par courrier électronique, par téléphone ou par télécopie; 
+ou (2) permettre des processus électroniques automatisés à haut volume. La compilation, le reconditionnement, la diffusion ou toute autre utilisation de ces données est expressément interdite.
+

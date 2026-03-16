@@ -1,0 +1,25 @@
+{
+    "name": "mixdrop.gl",
+    "registrar": {
+        "name": "Key Systems GmbH",
+        "ianaId": "269",
+        "url": "http://www.key-systems.net/",
+        "abuseEmail": "registry@key-systems.net",
+        "abusePhone": "+49.68949396850"
+    },
+    "createdDate": "2024-02-26 14:10:52",
+    "updatedDate": "2026-03-09 10:00:20",
+    "expiresDate": "2027-02-26 23:59:59",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "5296.ns2.abovedomains.com"
+        },
+        {
+            "hostname": "5296.ns1.abovedomains.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

@@ -1,0 +1,13 @@
+# WHOIS .PK Domains (PKNIC)
+
+    Domain: outfitters.com.pk
+    Status: Domain is Registered
+    
+
+    Creation Date: 2004-03-09
+    Expiry Date: 2028-03-09
+    Name Server: ns-1289.awsdns-33.org
+    Name Server: ns-1890.awsdns-44.co.uk
+    Name Server: ns-941.awsdns-53.net
+    Name Server: ns-213.awsdns-26.com
+

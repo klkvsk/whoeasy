@@ -1,0 +1,27 @@
+{
+    "name": "rigassatiksme.lv",
+    "status": [
+        "active"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1-36.azure-dns.com"
+        },
+        {
+            "hostname": "ns2-36.azure-dns.net"
+        },
+        {
+            "hostname": "ns3-36.azure-dns.org"
+        },
+        {
+            "hostname": "ns4-36.azure-dns.info"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Rigas pasvaldibas sabiedriba ar ierobezotu atbildibu \"Rigas satiksme\"",
+            "address": "Kleistu iela 28, Riga, LV-1067, Latvija"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "name": "ton.tg",
+    "registrar": {
+        "name": "NETMASTER SARL"
+    },
+    "createdDate": "2026-02-21 00:00:00",
+    "expiresDate": "2027-03-23 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns1.afternic.com"
+        },
+        {
+            "hostname": "ns2.afternic.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Domain || Table",
+            "email": "hi@TableDomain.com",
+            "address": "SEA"
+        },
+        {
+            "type": "admin",
+            "name": "Domain || Table",
+            "email": "hi@TableDomain.com",
+            "address": "SEA"
+        },
+        {
+            "type": "tech",
+            "name": "Domain || Table",
+            "email": "hi@TableDomain.com",
+            "address": "SEA"
+        }
+    ]
+}

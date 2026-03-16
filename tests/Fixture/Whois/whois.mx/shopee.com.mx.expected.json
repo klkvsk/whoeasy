@@ -1,0 +1,41 @@
+{
+    "name": "shopee.com.mx",
+    "registrar": {
+        "name": "GoDaddy.com",
+        "url": "http://www.godaddy.com"
+    },
+    "createdDate": "2015-09-11 00:00:00",
+    "updatedDate": "2025-05-15 00:00:00",
+    "expiresDate": "2026-09-11 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns-1229.awsdns-25.org"
+        },
+        {
+            "hostname": "ns-1991.awsdns-56.co.uk"
+        },
+        {
+            "hostname": "ns-385.awsdns-48.com"
+        },
+        {
+            "hostname": "ns-930.awsdns-52.net"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Registration Private",
+            "address": "Tempe, Arizona, United States"
+        },
+        {
+            "type": "admin",
+            "name": "Registration Private",
+            "address": "Tempe, Arizona, United States"
+        },
+        {
+            "type": "tech",
+            "name": "Registration Private",
+            "address": "Tempe, Arizona, United States"
+        }
+    ]
+}

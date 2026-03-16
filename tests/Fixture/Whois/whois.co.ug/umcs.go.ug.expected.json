@@ -1,0 +1,43 @@
+{
+    "name": "umcs.go.ug",
+    "createdDate": "2018-11-29 00:00:00",
+    "updatedDate": "2025-09-03 10:48:08",
+    "expiresDate": "2026-11-29 00:00:00",
+    "status": [
+        "ACTIVE"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.gou.go.ug"
+        },
+        {
+            "hostname": "ns2.gou.go.ug"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Tonny Bbosa",
+            "organization": "NITA-U",
+            "email": "tonny.bbosa@nita.go.ug",
+            "phone": "256774477523",
+            "address": "Kampala, Kampala, Uganda"
+        },
+        {
+            "type": "admin",
+            "name": "Tonny Bbosa",
+            "organization": "NITA-U",
+            "email": "tonny.bbosa@nita.go.ug",
+            "phone": "256774477523",
+            "address": "Kampala, Kampala, Uganda"
+        },
+        {
+            "type": "tech",
+            "name": "Tonny Bbosa",
+            "organization": "NITA-U",
+            "email": "tonny.bbosa@nita.go.ug",
+            "phone": "256774477523",
+            "address": "Kampala, Kampala, Uganda"
+        }
+    ]
+}

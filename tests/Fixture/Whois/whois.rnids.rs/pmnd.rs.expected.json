@@ -1,0 +1,33 @@
+{
+    "name": "pmnd.rs",
+    "registrar": {
+        "name": "Gransy d.o.o."
+    },
+    "createdDate": "2020-09-07 10:06:53",
+    "updatedDate": "2026-02-04 23:24:21",
+    "expiresDate": "2026-09-07 10:06:53",
+    "status": [
+        "Active"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.vercel-dns.com"
+        },
+        {
+            "hostname": "ns2.vercel-dns.com"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "admin",
+            "name": "101domain GRS Limited",
+            "address": "4th Floor, International House, 3 Harbourmaster Place, IFSC, Dublin, Ireland, D01 K8F1"
+        },
+        {
+            "type": "tech",
+            "name": "101domain GRS Limited",
+            "address": "4th Floor, International House, 3 Harbourmaster Place, IFSC, Dublin, Ireland, D01 K8F1"
+        }
+    ]
+}

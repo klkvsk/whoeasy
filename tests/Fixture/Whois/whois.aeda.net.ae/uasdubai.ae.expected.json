@@ -1,0 +1,35 @@
+{
+    "name": "uasdubai.ae",
+    "registrar": {
+        "name": "Etisalat"
+    },
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.etisalatdomains.ae"
+        },
+        {
+            "hostname": "ns4.etisalatdomains.ae"
+        },
+        {
+            "hostname": "ns2.etisalatdomains.ae"
+        },
+        {
+            "hostname": "ns3.etisalatdomains.ae"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Raffik Basha",
+            "organization": "Universal American School in Dubai"
+        },
+        {
+            "type": "tech",
+            "name": "Raffik Basha",
+            "organization": "Universal American School in Dubai"
+        }
+    ]
+}

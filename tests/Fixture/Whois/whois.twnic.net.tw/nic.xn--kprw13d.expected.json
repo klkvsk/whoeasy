@@ -1,0 +1,22 @@
+{
+    "name": "nic.\u53f0\u7063",
+    "registrar": {
+        "name": "TWNIC",
+        "url": "http://rs.twnic.tw/",
+        "abuseEmail": "abuse@twnic.tw"
+    },
+    "createdDate": "2025-07-14 16:00:00",
+    "expiresDate": "2035-07-14 16:00:00",
+    "status": [
+        "ok"
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Taiwan Network Information Center",
+            "organization": "\u8ca1\u5718\u6cd5\u4eba\u53f0\u7063\u7db2\u8def\u8cc7\u8a0a\u4e2d\u5fc3",
+            "email": "tech@twnic.net.tw",
+            "address": "TW"
+        }
+    ]
+}

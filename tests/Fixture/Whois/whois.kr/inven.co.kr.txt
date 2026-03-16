@@ -1,0 +1,57 @@
+query : inven.co.kr
+
+
+# KOREAN(UTF8)
+
+도메인이름                  : inven.co.kr
+등록인                      : (주)인벤커뮤니케이션즈
+등록인 주소                 : 경기도 성남시 분당구 성남대로331번길 8 17층
+등록인 우편번호             : 13558
+책임자                      : (주)인벤
+책임자 전자우편             : domain@inven.co.kr
+책임자 전화번호             : +82.263937700
+등록일                      : 2004. 10. 07.
+최근 정보 변경일            : 2019. 10. 16.
+사용 종료일                 : 2028. 10. 07.
+정보공개여부                : Y
+등록대행자                  : (주)가비아(http://www.gabia.co.kr)
+DNSSEC                      : 미서명
+
+1차 네임서버 정보
+   호스트이름               : ns.inven.co.kr
+   IP 주소                  : 117.52.90.19
+
+2차 네임서버 정보
+   호스트이름               : ns1.inven.co.kr
+   IP 주소                  : 117.52.90.20
+
+네임서버 이름이 .kr이 아닌 경우는 IP주소가 보이지 않습니다.
+
+
+# ENGLISH
+
+Domain Name                 : inven.co.kr
+Registrant                  : INVEN Communications
+Registrant Address          : 17F, 8, Seongnam-daero 331beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do, 
+Registrant Zip Code         : 13558
+Administrative Contact(AC)  : INVEN
+AC E-Mail                   : domain@inven.co.kr
+AC Phone Number             : +82.263937700
+Registered Date             : 2004. 10. 07.
+Last Updated Date           : 2019. 10. 16.
+Expiration Date             : 2028. 10. 07.
+Publishes                   : Y
+Authorized Agency           : Gabia, Inc.(http://www.gabia.co.kr)
+DNSSEC                      : unsigned
+
+Primary Name Server
+   Host Name                : ns.inven.co.kr
+   IP Address               : 117.52.90.19
+
+Secondary Name Server
+   Host Name                : ns1.inven.co.kr
+   IP Address               : 117.52.90.20
+
+
+- KISA/KRNIC WHOIS Service -
+

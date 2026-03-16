@@ -1,0 +1,34 @@
+{
+    "name": "idealmedia.io",
+    "registrar": {
+        "name": "GoDaddy.com, LLC",
+        "ianaId": "146",
+        "url": "http://www.godaddy.com/domains/search.aspx?ci=8990",
+        "abuseEmail": "abuse@godaddy.com",
+        "abusePhone": "+1.4806242505"
+    },
+    "createdDate": "2018-08-02 15:32:02",
+    "updatedDate": "2025-12-21 15:12:39",
+    "expiresDate": "2027-08-02 15:32:02",
+    "status": [
+        "clientDeleteProhibited",
+        "clientRenewProhibited",
+        "clientTransferProhibited",
+        "clientUpdateProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "fiona.ns.cloudflare.com"
+        },
+        {
+            "hostname": "gordon.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Domains By Proxy, LLC"
+        }
+    ],
+    "dnssec": "unsigned"
+}

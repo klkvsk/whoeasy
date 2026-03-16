@@ -1,0 +1,17 @@
+Domain Name:                     uasdubai.ae
+Registrar ID:                    Etisalat
+Registrar Name:                  Etisalat
+Status:                          ok
+
+Registrant Contact ID:           CX544819T
+Registrant Contact Name:         Raffik Basha
+Registrant Contact Organisation: Universal American School in Dubai
+
+Tech Contact ID:                 CX544821T
+Tech Contact Name:               Raffik Basha
+Tech Contact Organisation:       Universal American School in Dubai
+
+Name Server:                     ns1.etisalatdomains.ae
+Name Server:                     ns4.etisalatdomains.ae
+Name Server:                     ns2.etisalatdomains.ae
+Name Server:                     ns3.etisalatdomains.ae

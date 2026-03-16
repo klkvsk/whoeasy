@@ -1,0 +1,20 @@
+{
+    "name": "imonet.ro",
+    "registrar": {
+        "name": "Internet Resources Management SRL",
+        "url": "ip.ro"
+    },
+    "createdDate": "2003-02-26 00:00:00",
+    "status": [
+        "OK"
+    ],
+    "nameservers": [
+        {
+            "hostname": "arch.ns.cloudflare.com"
+        },
+        {
+            "hostname": "athena.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "Inactive"
+}

@@ -1,0 +1,42 @@
+{
+    "name": "spacenet.tn",
+    "registrar": {
+        "name": "OVH"
+    },
+    "createdDate": "2021-03-04 11:29:59",
+    "status": [
+        "Active"
+    ],
+    "nameservers": [
+        {
+            "hostname": "cody.ns.cloudflare.com"
+        },
+        {
+            "hostname": "raphaela.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "SLIM FAKHFAKH",
+            "email": "marketing.cig@topnet.tn",
+            "phone": "70732508",
+            "address": "25 RUE MUSTAPHA HJAIEJ ARIANA SUPERIEUR, 2080, ARIANA"
+        },
+        {
+            "type": "admin",
+            "name": "SLIM FAKHFAKH",
+            "email": "marketing.cig@topnet.tn",
+            "phone": "70732508",
+            "address": "25 RUE MUSTAPHA HJAIEJ ARIANA SUPERIEUR, 2080, ARIANA"
+        },
+        {
+            "type": "tech",
+            "name": "SLIM FAKHFAKH",
+            "email": "marketing.cig@topnet.tn",
+            "phone": "70732508",
+            "address": "25 RUE MUSTAPHA HJAIEJ ARIANA SUPERIEUR, 2080, ARIANA"
+        }
+    ],
+    "dnssec": "unsigned"
+}

@@ -1,0 +1,26 @@
+{
+    "name": "xn--80aah5bo.xn--j1amh",
+    "updatedDate": "2026-02-09 18:02:29",
+    "createdDate": "2023-05-07 10:39:57",
+    "expiresDate": "2026-05-07 10:39:57",
+    "status": [
+        "ok"
+    ],
+    "registrar": {
+        "name": "TOV \"Khostinh Ukraina\"",
+        "url": "http://www.ukraine.com.ua",
+        "abuseEmail": "domain@abuse.team",
+        "abusePhone": "+380443927433"
+    },
+    "nameservers": [
+        {
+            "hostname": "ns1.promdns.net"
+        },
+        {
+            "hostname": "ns2.promdns.net"
+        },
+        {
+            "hostname": "ns3.promdns.net"
+        }
+    ]
+}

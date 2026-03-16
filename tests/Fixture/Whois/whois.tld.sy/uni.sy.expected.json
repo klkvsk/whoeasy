@@ -1,0 +1,32 @@
+{
+    "name": "uni.sy",
+    "createdDate": "2024-07-01 09:18:15",
+    "expiresDate": "2036-06-30 21:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "dorthy.ns.cloudflare.com"
+        },
+        {
+            "hostname": "henrik.ns.cloudflare.com"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Example Inc.",
+            "email": "aladdin@oqawa.com"
+        },
+        {
+            "type": "admin",
+            "email": "aladdin@oqawa.com"
+        },
+        {
+            "type": "tech",
+            "email": "aladdin@oqawa.com"
+        }
+    ]
+}

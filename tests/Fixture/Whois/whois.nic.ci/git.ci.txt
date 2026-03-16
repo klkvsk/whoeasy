@@ -1,0 +1,28 @@
+Domain Name: git.ci
+Registry Domain ID: 94356-CoCCA
+Updated Date: 2023-09-26T12:51:15Z
+Creation Date: 2018-05-15T03:12:41Z
+Registry Expiry Date: 2029-05-15T03:12:41Z
+Registrar Registration Expiration Date: 2029-05-15T03:12:41Z
+Registrar: Netim
+Registrar Street Address: 264 av arthur notebart
+59160 Lille
+FRANCE
+Registrar City: FRANCE
+Registrar State: FRANCE
+Registrar Postal Code: 0033
+Registrar Email: tld@netim.com
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Registry Registrant ID: 94354-CoCCA
+Registry Billing ID: 94355-CoCCA
+Name Server: edna.ns.cloudflare.com
+Name Server: seth.ns.cloudflare.com
+DNSSEC: unsigned
+>>> Last update of WHOIS database: 2026-03-16T16:07:50.174Z <<<
+
+For more information on domain status codes, please visit https://icann.org/epp
+
+TERMS OF USE: You are not authorized to access or query our WHOIS database through the use of electronic processes that are high-volume and automated.  THis WHOIS database is provided by as a service to the internet community.
+
+The data is for information purposes only. We do not guarantee its accuracy. By submitting a WHOIS query, you agree to abide by the following terms of use: You agree that you may use this Data only for lawful purposes and that under no circumstances will you use this Data to: (1) allow, enable, or otherwise support the transmission of mass unsolicited, commercial advertising or solicitations via e-mail, telephone, or facsimile; or (2) enable high volume, automated, electronic processes. The compilation, repackaging, dissemination or other use of this Data is expressly prohibited.
+

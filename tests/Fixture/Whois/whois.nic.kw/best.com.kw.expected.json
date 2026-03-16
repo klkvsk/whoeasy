@@ -1,0 +1,31 @@
+{
+    "name": "best.com.kw",
+    "registrar": {
+        "name": "FAST Telecommunication Co., W.L.L.",
+        "ianaId": "40002",
+        "url": "https://kwdomains.fasttelco.net/",
+        "abuseEmail": "serviceprovisioning@fasttelco.net",
+        "abusePhone": "+965.22256666"
+    },
+    "createdDate": "2012-07-22 00:00:00",
+    "updatedDate": "2025-06-25 14:55:20",
+    "expiresDate": "2026-07-22 00:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "maria.ns.cloudflare.com"
+        },
+        {
+            "hostname": "chris.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Best United Electronics Co. - W.L.L."
+        }
+    ],
+    "dnssec": "unsigned"
+}

@@ -1,0 +1,16 @@
+DOMAIN NAME: pokerstars.bg (pokerstars.bg)
+registration status: busy, active
+
+NAME SERVER INFORMATION:
+christian.ns.cloudflare.com 
+kimora.ns.cloudflare.com 
+
+DNSSEC: inactive
+
+According to REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND
+OF THE COUNCIL (GDPR) personal data is not published.
+
+If you would like to contact the persons responsible for the domain
+name, please, use the online WHOIS contact form from the "Info / Whois" menu
+at www.register.bg.
+
