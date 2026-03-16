@@ -9,3 +9,5 @@ _bmad
 .claude
 ./composer
 ./composer.phar
+./.phpunit.cache
+./generator/*.log

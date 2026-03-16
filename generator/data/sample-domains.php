@@ -5,7 +5,6 @@
 return [
     '.aaa' => 'aaa.aaa',
     '.aarp' => 'help.aarp',
-    '.abarth' => 'nic.abarth',
     '.abb' => 'go.abb',
     '.abbott' => 'neurosphere.abbott',
     '.abbvie' => 'privacy.abbvie',

@@ -34,7 +34,7 @@ final class HttpWhoisClient
      * @param string $httpQueryFormat Format string like "GET /path/%s" or "POST /path field=%s"
      * @param string|null $scraperName Scraper name to process the response, or null for raw text
      * @param int|null $timeout Override timeout for this request
-     * @return WhoisResponse
+     * @return string Raw WHOIS text (scraped if scraper is configured)
      */
     public function query(
         string $httpUrl,
@@ -42,7 +42,7 @@ final class HttpWhoisClient
         string $httpQueryFormat,
         ?string $scraperName = null,
         ?int $timeout = null,
-    ): WhoisResponse {
+    ): string {
         $timeout ??= $this->timeout;
 
         // Parse the query format: "GET /path/%s" or "POST /path body=%s"
@@ -67,11 +67,7 @@ final class HttpWhoisClient
             $responseBody = HttpScraper::process($scraperName, $responseBody);
         }
 
-        return new WhoisResponse(
-            server: parse_url($httpUrl, PHP_URL_HOST) ?: $httpUrl,
-            query: $query,
-            rawText: $responseBody,
-        );
+        return $responseBody;
     }
 
     /**

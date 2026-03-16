@@ -14,8 +14,7 @@ use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
 /**
  * RDAP client that queries RDAP servers over HTTP/HTTPS per RFC 7480/9083.
  *
- * The caller provides the base URL (from ServerRegistry); this client
- * builds the RDAP path and executes the HTTP request.
+ * Returns raw JSON arrays. The caller is responsible for parsing.
  */
 class RdapClient
 {
@@ -34,8 +33,9 @@ class RdapClient
      * @param string $rdapBaseUrl RDAP base URL (e.g., "https://rdap.verisign.com/com/v1/")
      * @param string $query The query input (domain name, IP address, or ASN like "AS15169")
      * @param QueryType|null $queryType Type of query; if null, guessed from $query
+     * @return array Decoded JSON response
      */
-    public function query(string $rdapBaseUrl, string $query, ?QueryType $queryType = null): RdapResponse
+    public function query(string $rdapBaseUrl, string $query, ?QueryType $queryType = null): array
     {
         $queryType ??= QueryType::guess($query);
 
@@ -48,25 +48,25 @@ class RdapClient
 
         $url = rtrim($rdapBaseUrl, '/') . $path;
 
-        return $this->execute($url, $rdapBaseUrl);
+        return $this->execute($url);
     }
 
     /**
-     * Query a specific RDAP URL directly.
+     * Query a specific RDAP URL directly (for referral following).
+     *
+     * @return array Decoded JSON response
      */
-    public function queryUrl(string $url): RdapResponse
+    public function queryUrl(string $url): array
     {
-        $parsed = parse_url($url);
-        $server = ($parsed['scheme'] ?? 'https') . '://' . ($parsed['host'] ?? 'unknown');
-        return $this->execute($url, $server);
+        return $this->execute($url);
     }
 
     /**
-     * Execute an RDAP HTTP request and return structured response.
+     * Execute an RDAP HTTP request and return decoded JSON.
      *
      * @throws ClientException
      */
-    private function execute(string $url, string $server): RdapResponse
+    private function execute(string $url): array
     {
         $curl = curl_init();
         if (!$curl) {
@@ -106,7 +106,7 @@ class RdapClient
             }
 
             if ($httpCode === 429) {
-                throw (new RateLimitException("RDAP rate limit exceeded for $server"))
+                throw (new RateLimitException("RDAP rate limit exceeded"))
                     ->withRawBody($body ?: '')
                     ->withHttpCode($httpCode);
             }
@@ -125,13 +125,7 @@ class RdapClient
                     ->withHttpCode($httpCode);
             }
 
-            return new RdapResponse(
-                server: $server,
-                url: $url,
-                httpCode: $httpCode,
-                json: $json,
-                rawBody: $body,
-            );
+            return $json;
         } catch (\JsonException $e) {
             throw new ClientResponseException("RDAP: failed to parse JSON from $url: " . $e->getMessage());
         } finally {
