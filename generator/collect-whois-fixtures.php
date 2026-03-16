@@ -8,10 +8,11 @@
  * Also queries a random non-existent domain → nxdomain.txt
  * Rate-limited responses → ratelimit.txt, other errors → error.txt
  *
+ * By default, only collects WHOIS-only TLDs (no RDAP). Use --all to include all TLDs.
  * Resumable: skips servers where sample domain fixture already exists.
  * Use -f to force re-fetch all.
  *
- * Usage: php generator/collect-whois-fixtures.php [--limit=N] [--delay=MS] [-f]
+ * Usage: php generator/collect-whois-fixtures.php [--limit=N] [--delay=MS] [--proxy=URI] [--tld=TLD] [--all] [-f]
  */
 
 declare(strict_types=1);
@@ -28,8 +29,11 @@ if (!is_dir($fixtureDir)) {
 
 // Parse CLI args
 $limit = null;
-$delay = 1500; // ms between queries
+$delay = 500; // ms between queries
 $force = false;
+$proxyUri = null;
+$filterTld = null;
+$all = false;
 foreach ($argv as $arg) {
     if (str_starts_with($arg, '--limit=')) {
         $limit = (int)substr($arg, 8);
@@ -37,13 +41,30 @@ foreach ($argv as $arg) {
     if (str_starts_with($arg, '--delay=')) {
         $delay = (int)substr($arg, 8);
     }
+    if (str_starts_with($arg, '--proxy=')) {
+        $proxyUri = substr($arg, 8);
+    }
+    if (str_starts_with($arg, '--tld=')) {
+        $filterTld = '.' . ltrim(substr($arg, 6), '.');
+    }
+    if ($arg === '--all') {
+        $all = true;
+    }
     if ($arg === '-f' || $arg === '--force') {
         $force = true;
     }
 }
 
-$client = new WhoisClient(timeout: 10);
+$client = new WhoisClient(timeout: 10, proxyUri: $proxyUri);
 $tlds = TldServers::data();
+
+if ($filterTld !== null) {
+    if (!isset($tlds[$filterTld])) {
+        fwrite(STDERR, "TLD not found in registry: $filterTld\n");
+        exit(1);
+    }
+    $tlds = [$filterTld => $tlds[$filterTld]];
+}
 $sampleDomains = require __DIR__ . '/data/sample-domains.php';
 
 // Build unique server → sample domain mapping
@@ -51,6 +72,9 @@ $serverSamples = [];
 foreach ($tlds as $tld => $info) {
     $whoisServer = $info[0];
     if ($whoisServer === null) continue;
+    // By default, only collect WHOIS-only TLDs (no RDAP fallback)
+    $rdapUrl = $info[1] ?? null;
+    if (!$all && $filterTld === null && $rdapUrl !== null) continue;
     if (isset($serverSamples[$whoisServer])) continue;
 
     $cleanTld = ltrim($tld, '.');
@@ -71,6 +95,8 @@ foreach ($tlds as $tld => $info) {
         'sample' => $sample,
     ];
 }
+
+var_dump($serverSamples['whois.iana.org']) ; die();
 
 /**
  * Generate a random non-existent domain for a given TLD.
@@ -112,14 +138,17 @@ function fixtureExists(string $fixtureDir, string $server, string $filename): bo
 }
 
 echo "=== WHOIS Fixture Collector ===\n";
+echo "Scope: " . ($filterTld ? "TLD $filterTld" : ($all ? "all TLDs" : "WHOIS-only TLDs (use --all for all)")) . "\n";
 echo "Servers to query: " . count($serverSamples) . "\n";
 if ($limit) echo "Limit: $limit\n";
 if ($force) echo "Mode: FORCE re-fetch\n";
+if ($proxyUri) echo "Proxy: $proxyUri\n";
 echo "Delay: {$delay}ms\n";
 echo "Fixture dir: $fixtureDir\n\n";
 
-$stats = ['total' => 0, 'success' => 0, 'skipped' => 0, 'failed' => 0, 'rate_limited' => 0, 'timeout' => 0];
+$stats = ['total' => 0, 'success' => 0, 'skipped' => 0, 'failed' => 0, 'rate_limited' => 0, 'not_supported' => 0];
 $failures = [];
+$notSupportedServers = [];
 
 foreach ($serverSamples as $server => $info) {
     if ($limit !== null && $stats['total'] >= $limit) break;
@@ -133,12 +162,16 @@ foreach ($serverSamples as $server => $info) {
     // Skip if sample domain fixture already exists (unless -f)
     if (!$force && fixtureExists($fixtureDir, $server, $sampleFilename)) {
         $stats['skipped']++;
+        echo sprintf("[%d/%d] %s (%s) ... SKIPPED\n",
+            $stats['total'], count($serverSamples), $server, $sample);
         continue;
     }
 
     // --- Query 1: sample domain ---
     echo sprintf("[%d/%d] %s (%s) ... ",
         $stats['total'], count($serverSamples), $server, $sample);
+
+    $rateLimited = false;
 
     try {
         $response = $client->query($server, $sample, timeout: 10);
@@ -148,32 +181,27 @@ foreach ($serverSamples as $server => $info) {
             $stats['failed']++;
             $failures[] = "$server: empty response for $sample";
             saveFixture($fixtureDir, $server, 'error.txt', $response);
-        } elseif (WhoisClient::isRateLimited($response)) {
+        } elseif (WhoisClient::isRateLimited(WhoisClient::stripBoilerplate($response))) {
             echo "RATE LIMITED";
             $stats['rate_limited']++;
+            $rateLimited = true;
             $failures[] = "$server: rate limited";
             saveFixture($fixtureDir, $server, 'ratelimit.txt', $response);
+        } elseif (WhoisClient::isNotSupported(WhoisClient::stripBoilerplate($response))) {
+            echo "NOT SUPPORTED";
+            echo "\n---\n" . $response . "\n---\n";
+            $stats['not_supported']++;
+            $notSupportedServers[] = $server;
         } else {
             saveFixture($fixtureDir, $server, $sampleFilename, $response);
             $size = strlen($response);
             echo "OK ({$size} bytes)";
             $stats['success']++;
         }
-    } catch (\Klkvsk\Whoeasy\Exception\TimeoutException $e) {
-        echo "TIMEOUT";
-        $stats['timeout']++;
-        $failures[] = "$server: timeout for $sample";
-        saveFixture($fixtureDir, $server, 'error.txt', "TIMEOUT: " . $e->getMessage());
-    } catch (\Klkvsk\Whoeasy\Exception\ConnectionException $e) {
-        echo "CONNECT FAILED";
-        $stats['failed']++;
-        $failures[] = "$server: " . $e->getMessage();
-        saveFixture($fixtureDir, $server, 'error.txt', "CONNECTION: " . $e->getMessage());
     } catch (\Throwable $e) {
         echo "ERROR: " . $e->getMessage();
         $stats['failed']++;
         $failures[] = "$server: " . $e->getMessage();
-        saveFixture($fixtureDir, $server, 'error.txt', "ERROR: " . $e->getMessage());
     }
 
     echo "\n";
@@ -181,7 +209,10 @@ foreach ($serverSamples as $server => $info) {
     if ($delay > 0) usleep($delay * 1000);
 
     // --- Query 2: non-existent domain (nxdomain) ---
-    if (!$force && fixtureExists($fixtureDir, $server, 'nxdomain.txt')) {
+    // Skip if rate-limited or not supported
+    if ($rateLimited || in_array($server, $notSupportedServers, true)) {
+        // skip nxdomain
+    } elseif (!$force && fixtureExists($fixtureDir, $server, 'nxdomain.txt')) {
         // Already have nxdomain fixture, skip
     } else {
         echo sprintf("       ↳ nxdomain (%s) ... ", $nxdomain);
@@ -189,8 +220,9 @@ foreach ($serverSamples as $server => $info) {
         try {
             $nxResponse = $client->query($server, $nxdomain, timeout: 10);
 
-            if (WhoisClient::isRateLimited($nxResponse)) {
+            if (WhoisClient::isRateLimited(WhoisClient::stripBoilerplate($nxResponse))) {
                 echo "RATE LIMITED\n";
+                $stats['rate_limited']++;
                 saveFixture($fixtureDir, $server, 'ratelimit.txt', $nxResponse);
             } else {
                 saveFixture($fixtureDir, $server, 'nxdomain.txt', $nxResponse);
@@ -206,15 +238,22 @@ foreach ($serverSamples as $server => $info) {
 }
 
 echo "\n=== Summary ===\n";
-echo "Total:        {$stats['total']}\n";
-echo "Success:      {$stats['success']}\n";
-echo "Skipped:      {$stats['skipped']} (already had fixtures)\n";
-echo "Failed:       {$stats['failed']}\n";
-echo "Rate Limited: {$stats['rate_limited']}\n";
-echo "Timeout:      {$stats['timeout']}\n";
+echo "Total:         {$stats['total']}\n";
+echo "Success:       {$stats['success']}\n";
+echo "Skipped:       {$stats['skipped']} (already had fixtures)\n";
+echo "Not Supported: {$stats['not_supported']}\n";
+echo "Failed:        {$stats['failed']}\n";
+echo "Rate Limited:  {$stats['rate_limited']}\n";
 
 $existingDirs = count(glob("$fixtureDir/*/", GLOB_ONLYDIR));
 echo "\nServer directories on disk: $existingDirs\n";
+
+if ($notSupportedServers) {
+    echo "\n=== Not Supported Servers (review for WHOIS disable) ===\n";
+    foreach ($notSupportedServers as $ns) {
+        echo "  - $ns\n";
+    }
+}
 
 if ($failures) {
     $logFile = __DIR__ . '/whois-collection.log';

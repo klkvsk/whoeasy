@@ -14,7 +14,7 @@
  * Resumable: skips servers where sample domain fixture exists.
  * Use -f to force re-fetch all.
  *
- * Usage: php generator/collect-rdap-fixtures.php [--limit=N] [--delay=MS] [-f]
+ * Usage: php generator/collect-rdap-fixtures.php [--limit=N] [--delay=MS] [--proxy=URI] [--tld=TLD] [-f]
  */
 
 declare(strict_types=1);
@@ -37,6 +37,8 @@ if (!is_dir($fixtureDir)) {
 $limit = null;
 $delay = 500; // ms between queries
 $force = false;
+$proxyUri = null;
+$filterTld = null;
 foreach ($argv as $arg) {
     if (str_starts_with($arg, '--limit=')) {
         $limit = (int)substr($arg, 8);
@@ -44,13 +46,27 @@ foreach ($argv as $arg) {
     if (str_starts_with($arg, '--delay=')) {
         $delay = (int)substr($arg, 8);
     }
+    if (str_starts_with($arg, '--proxy=')) {
+        $proxyUri = substr($arg, 8);
+    }
+    if (str_starts_with($arg, '--tld=')) {
+        $filterTld = '.' . ltrim(substr($arg, 6), '.');
+    }
     if ($arg === '-f' || $arg === '--force') {
         $force = true;
     }
 }
 
-$client = new RdapClient(timeout: 15);
+$client = new RdapClient(timeout: 15, proxyUri: $proxyUri);
 $tlds = TldServers::data();
+
+if ($filterTld !== null) {
+    if (!isset($tlds[$filterTld])) {
+        fwrite(STDERR, "TLD not found in registry: $filterTld\n");
+        exit(1);
+    }
+    $tlds = [$filterTld => $tlds[$filterTld]];
+}
 $sampleDomains = require __DIR__ . '/data/sample-domains.php';
 
 /**
@@ -184,7 +200,9 @@ foreach ($tlds as $tld => $info) {
 echo "=== RDAP Fixture Collector ===\n";
 echo "Unique RDAP servers: " . count($rdapTargets) . "\n";
 if ($limit) echo "Limit: $limit\n";
+if ($filterTld) echo "TLD filter: $filterTld\n";
 if ($force) echo "Mode: FORCE re-fetch\n";
+if ($proxyUri) echo "Proxy: $proxyUri\n";
 echo "Delay: {$delay}ms\n";
 echo "Fixture dir: $fixtureDir\n\n";
 
@@ -202,6 +220,8 @@ foreach ($rdapTargets as $rdapUrl => $info) {
     // Skip if sample fixture already exists (unless -f)
     if (!$force && rdapFixtureExists($fixtureDir, $rdapUrl, $sampleFilename)) {
         $stats['skipped']++;
+        echo sprintf("[%d/%d] %s (%s) ... SKIPPED\n",
+            $stats['total'], count($rdapTargets), rdapDirName($rdapUrl), $sample);
         continue;
     }
 
@@ -221,7 +241,10 @@ foreach ($rdapTargets as $rdapUrl => $info) {
     if ($delay > 0) usleep($delay * 1000);
 
     // --- Query 2: non-existent domain (nxdomain) ---
-    if (!$force && rdapFixtureExists($fixtureDir, $rdapUrl, 'nxdomain.json')) {
+    // Skip if rate-limited — nxdomain query would almost certainly be rate-limited too
+    if ($result === 'rate_limited') {
+        // skip nxdomain
+    } elseif (!$force && rdapFixtureExists($fixtureDir, $rdapUrl, 'nxdomain.json')) {
         // Already have nxdomain, skip
     } elseif ($result !== 'not_found') {
         // If query 1 got 404, it was already saved as nxdomain.json — skip
