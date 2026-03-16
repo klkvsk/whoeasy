@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Result;
+namespace Klkvsk\Whoeasy\Result\Info;
 
-readonly class IpInfo
+use Klkvsk\Whoeasy\Result\Info\Field\Contact;
+
+readonly class AsnInfo extends AbstractInfo
 {
     public function __construct(
-        public ?string $range = null,
-        public ?string $networkName = null,
+        public ?int $asn = null,
+        public ?string $name = null,
         public ?string $description = null,
         public ?string $country = null,
         public ?string $createdDate = null,
@@ -23,12 +25,12 @@ readonly class IpInfo
     {
         $data = [];
 
-        if ($this->range !== null) {
-            $data['range'] = $this->range;
+        if ($this->asn !== null) {
+            $data['asn'] = $this->asn;
         }
 
-        if ($this->networkName !== null) {
-            $data['networkName'] = $this->networkName;
+        if ($this->name !== null) {
+            $data['name'] = $this->name;
         }
 
         if ($this->description !== null) {

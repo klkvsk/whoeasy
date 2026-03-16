@@ -6,7 +6,10 @@ namespace Klkvsk\Whoeasy\Tests\Unit\Rdap;
 
 use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
-use Klkvsk\Whoeasy\Result\StructuredResult;
+use Klkvsk\Whoeasy\Result\Info\AsnInfo;
+use Klkvsk\Whoeasy\Result\Info\DomainInfo;
+use Klkvsk\Whoeasy\Result\Info\IpInfo;
+use Klkvsk\Whoeasy\Result\ParserResult;
 use PHPUnit\Framework\TestCase;
 
 class RdapParserTest extends TestCase
@@ -29,27 +32,28 @@ class RdapParserTest extends TestCase
         $json = self::loadFixture('domain-example.com.json');
         $result = $this->parser->parse($json, QueryType::Domain);
 
-        $this->assertInstanceOf(StructuredResult::class, $result);
-        $this->assertNotNull($result->domain);
-        $this->assertSame('EXAMPLE.COM', $result->domain->name);
-        $this->assertContains('client delete prohibited', $result->domain->status);
-        $this->assertNotNull($result->domain->createdDate);
-        $this->assertStringContainsString('1995-08-14', $result->domain->createdDate);
-        $this->assertNotNull($result->domain->expiresDate);
-        $this->assertStringContainsString('2025-08-13', $result->domain->expiresDate);
-        $this->assertNotNull($result->domain->updatedDate);
+        $this->assertInstanceOf(ParserResult::class, $result);
+        $domain = $result->info;
+        $this->assertInstanceOf(DomainInfo::class, $domain);
+        $this->assertSame('EXAMPLE.COM', $domain->name);
+        $this->assertContains('client delete prohibited', $domain->status);
+        $this->assertNotNull($domain->createdDate);
+        $this->assertStringContainsString('1995-08-14', $domain->createdDate);
+        $this->assertNotNull($domain->expiresDate);
+        $this->assertStringContainsString('2025-08-13', $domain->expiresDate);
+        $this->assertNotNull($domain->updatedDate);
 
         // Nameservers
-        $this->assertCount(2, $result->domain->nameservers);
-        $this->assertSame('a.iana-servers.net', $result->domain->nameservers[0]->hostname);
-        $this->assertSame('b.iana-servers.net', $result->domain->nameservers[1]->hostname);
+        $this->assertCount(2, $domain->nameservers);
+        $this->assertSame('a.iana-servers.net', $domain->nameservers[0]->hostname);
+        $this->assertSame('b.iana-servers.net', $domain->nameservers[1]->hostname);
 
         // Registrar entity
-        $this->assertNotNull($result->domain->registrar);
-        $this->assertSame('RESERVED-Internet Assigned Numbers Authority', $result->domain->registrar->name);
+        $this->assertNotNull($domain->registrar);
+        $this->assertSame('RESERVED-Internet Assigned Numbers Authority', $domain->registrar->name);
 
         // Registrant contact
-        $this->assertNotEmpty($result->domain->contacts);
+        $this->assertNotEmpty($domain->contacts);
     }
 
     public function testParseIpFixture(): void
@@ -57,12 +61,13 @@ class RdapParserTest extends TestCase
         $json = self::loadFixture('ip-8.8.8.8.json');
         $result = $this->parser->parse($json, QueryType::Ipv4);
 
-        $this->assertInstanceOf(StructuredResult::class, $result);
-        $this->assertNotNull($result->ip);
-        $this->assertSame('GOGL', $result->ip->networkName);
-        $this->assertSame('8.8.8.0 - 8.8.8.255', $result->ip->range);
-        $this->assertNotNull($result->ip->createdDate);
-        $this->assertNotEmpty($result->ip->contacts);
+        $this->assertInstanceOf(ParserResult::class, $result);
+        $ip = $result->info;
+        $this->assertInstanceOf(IpInfo::class, $ip);
+        $this->assertSame('GOGL', $ip->networkName);
+        $this->assertSame('8.8.8.0 - 8.8.8.255', $ip->range);
+        $this->assertNotNull($ip->createdDate);
+        $this->assertNotEmpty($ip->contacts);
     }
 
     public function testParseAsnFixture(): void
@@ -70,12 +75,13 @@ class RdapParserTest extends TestCase
         $json = self::loadFixture('autnum-15169.json');
         $result = $this->parser->parse($json, QueryType::Asn);
 
-        $this->assertInstanceOf(StructuredResult::class, $result);
-        $this->assertNotNull($result->asn);
-        $this->assertSame(15169, $result->asn->asn);
-        $this->assertSame('GOOGLE', $result->asn->name);
-        $this->assertNotNull($result->asn->createdDate);
-        $this->assertNotEmpty($result->asn->contacts);
+        $this->assertInstanceOf(ParserResult::class, $result);
+        $asn = $result->info;
+        $this->assertInstanceOf(AsnInfo::class, $asn);
+        $this->assertSame(15169, $asn->asn);
+        $this->assertSame('GOOGLE', $asn->name);
+        $this->assertNotNull($asn->createdDate);
+        $this->assertNotEmpty($asn->contacts);
     }
 
     public function testParseDomainWithEmptyEntities(): void
@@ -86,11 +92,12 @@ class RdapParserTest extends TestCase
             'entities' => [],
         ], QueryType::Domain);
 
-        $this->assertInstanceOf(StructuredResult::class, $result);
-        $this->assertNotNull($result->domain);
-        $this->assertSame('minimal.test', $result->domain->name);
-        $this->assertNull($result->domain->registrar);
-        $this->assertEmpty($result->domain->contacts);
+        $this->assertInstanceOf(ParserResult::class, $result);
+        $domain = $result->info;
+        $this->assertInstanceOf(DomainInfo::class, $domain);
+        $this->assertSame('minimal.test', $domain->name);
+        $this->assertNull($domain->registrar);
+        $this->assertEmpty($domain->contacts);
     }
 
     public function testParseUnknownObjectClassFallsToDomain(): void
@@ -100,7 +107,7 @@ class RdapParserTest extends TestCase
             'ldhName' => 'fallback.test',
         ], QueryType::Domain);
 
-        $this->assertInstanceOf(StructuredResult::class, $result);
-        $this->assertNotNull($result->domain);
+        $this->assertInstanceOf(ParserResult::class, $result);
+        $this->assertInstanceOf(DomainInfo::class, $result->info);
     }
 }

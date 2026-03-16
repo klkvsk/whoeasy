@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy\Parser\Rdap;
 
 use Klkvsk\Whoeasy\Enum\QueryType;
-use Klkvsk\Whoeasy\Result\ContactType;
-use Klkvsk\Whoeasy\Result\AsnInfo;
-use Klkvsk\Whoeasy\Result\Contact;
-use Klkvsk\Whoeasy\Result\DomainInfo;
-use Klkvsk\Whoeasy\Result\IpInfo;
-use Klkvsk\Whoeasy\Result\Nameserver;
-use Klkvsk\Whoeasy\Result\Registrar;
-use Klkvsk\Whoeasy\Result\StructuredResult;
+use Klkvsk\Whoeasy\Result\Info\AsnInfo;
+use Klkvsk\Whoeasy\Result\Info\DomainInfo;
+use Klkvsk\Whoeasy\Result\Info\Field\Contact;
+use Klkvsk\Whoeasy\Result\Info\Field\ContactType;
+use Klkvsk\Whoeasy\Result\Info\Field\Nameserver;
+use Klkvsk\Whoeasy\Result\Info\Field\Registrar;
+use Klkvsk\Whoeasy\Result\Info\IpInfo;
+use Klkvsk\Whoeasy\Result\ParserResult;
 
 /**
- * Parses RDAP JSON responses (RFC 9083) into StructuredResult directly.
+ * Parses RDAP JSON responses (RFC 9083) into ParserResult.
  */
 class RdapParser
 {
     /**
-     * Parse an RDAP JSON array into a StructuredResult.
+     * Parse an RDAP JSON array into a ParserResult.
      */
-    public function parse(array $json, QueryType $queryType): StructuredResult
+    public function parse(array $json, QueryType $queryType): ParserResult
     {
         $objectClass = $json['objectClassName'] ?? null;
 
@@ -34,7 +34,7 @@ class RdapParser
         };
     }
 
-    private function parseDomain(array $data, QueryType $queryType): StructuredResult
+    private function parseDomain(array $data, QueryType $queryType): ParserResult
     {
         $name = $data['ldhName'] ?? $data['unicodeName'] ?? null;
 
@@ -72,13 +72,13 @@ class RdapParser
             contacts: $contacts,
         );
 
-        return new StructuredResult(
-            queryType: $queryType,
-            domain: $domain,
+        return new ParserResult(
+            info: $domain,
+            referralServer: $this->extractReferralUrl($data),
         );
     }
 
-    private function parseIpNetwork(array $data, QueryType $queryType): StructuredResult
+    private function parseIpNetwork(array $data, QueryType $queryType): ParserResult
     {
         $networkName = $data['name'] ?? null;
 
@@ -135,13 +135,13 @@ class RdapParser
             contacts: $contacts,
         );
 
-        return new StructuredResult(
-            queryType: $queryType,
-            ip: $ip,
+        return new ParserResult(
+            info: $ip,
+            referralServer: $this->extractReferralUrl($data),
         );
     }
 
-    private function parseAutnum(array $data, QueryType $queryType): StructuredResult
+    private function parseAutnum(array $data, QueryType $queryType): ParserResult
     {
         $startAutnum = $data['startAutnum'] ?? null;
         $asnNumber = $startAutnum !== null ? (int)$startAutnum : null;
@@ -171,9 +171,9 @@ class RdapParser
             contacts: $contacts,
         );
 
-        return new StructuredResult(
-            queryType: $queryType,
-            asn: $asn,
+        return new ParserResult(
+            info: $asn,
+            referralServer: $this->extractReferralUrl($data),
         );
     }
 
@@ -358,6 +358,22 @@ class RdapParser
             'abuse' => ContactType::Abuse,
             default => ContactType::Registrant,
         };
+    }
+
+    /**
+     * Extract referral URL from RFC 9083 links array (rel=related, type=rdap+json).
+     */
+    private function extractReferralUrl(array $data): ?string
+    {
+        foreach ($data['links'] ?? [] as $link) {
+            if (($link['rel'] ?? null) === 'related'
+                && isset($link['href'])
+                && str_contains($link['type'] ?? '', 'rdap+json')
+            ) {
+                return $link['href'];
+            }
+        }
+        return null;
     }
 
     /**

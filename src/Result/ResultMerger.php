@@ -4,132 +4,140 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Result;
 
+use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
+use Klkvsk\Whoeasy\Result\Info\AsnInfo;
+use Klkvsk\Whoeasy\Result\Info\DomainInfo;
+use Klkvsk\Whoeasy\Result\Info\Field\Contact;
+use Klkvsk\Whoeasy\Result\Info\Field\Nameserver;
+use Klkvsk\Whoeasy\Result\Info\Field\Registrar;
+use Klkvsk\Whoeasy\Result\Info\IpInfo;
+
 /**
- * Merges two StructuredResult objects from WHOIS and RDAP into one.
+ * Merges AbstractInfo objects of the same type.
  *
- * Strategy: RDAP is the primary source (more structured/standardized),
- * WHOIS fills in gaps. For arrays (contacts, nameservers, status),
+ * Strategy: primary source takes priority for scalar fields,
+ * secondary fills in gaps. For arrays (contacts, nameservers, status),
  * we deduplicate and combine.
  */
 class ResultMerger
 {
     /**
-     * Merge two structured results. RDAP takes priority for scalar fields,
-     * arrays are combined with deduplication.
+     * Merge N info objects via left-fold. Later results fill gaps in earlier ones.
+     * Returns null if no results provided.
      */
-    public function merge(StructuredResult $rdap, StructuredResult $whois): StructuredResult
+    public function mergeAll(AbstractInfo ...$results): ?AbstractInfo
     {
-        return new StructuredResult(
-            queryType: $rdap->queryType,
-            domain: $this->mergeDomain($rdap->domain, $whois->domain),
-            ip: $this->mergeIp($rdap->ip, $whois->ip),
-            asn: $this->mergeAsn($rdap->asn, $whois->asn),
-        );
-    }
-
-    private function mergeDomain(?DomainInfo $rdap, ?DomainInfo $whois): ?DomainInfo
-    {
-        if ($rdap === null) {
-            return $whois;
-        }
-        if ($whois === null) {
-            return $rdap;
+        $filtered = array_values(array_filter($results));
+        if ($filtered === []) {
+            return null;
         }
 
-        return new DomainInfo(
-            name: $rdap->name ?? $whois->name,
-            registrar: $this->mergeRegistrar($rdap->registrar, $whois->registrar),
-            createdDate: $rdap->createdDate ?? $whois->createdDate,
-            updatedDate: $rdap->updatedDate ?? $whois->updatedDate,
-            expiresDate: $rdap->expiresDate ?? $whois->expiresDate,
-            status: $this->mergeStringArrays($rdap->status, $whois->status),
-            nameservers: $this->mergeNameservers($rdap->nameservers, $whois->nameservers),
-            contacts: $this->mergeContacts($rdap->contacts, $whois->contacts),
-            dnssec: $rdap->dnssec ?? $whois->dnssec,
-        );
-    }
-
-    private function mergeIp(?IpInfo $rdap, ?IpInfo $whois): ?IpInfo
-    {
-        if ($rdap === null) {
-            return $whois;
-        }
-        if ($whois === null) {
-            return $rdap;
-        }
-
-        return new IpInfo(
-            range: $rdap->range ?? $whois->range,
-            networkName: $rdap->networkName ?? $whois->networkName,
-            description: $rdap->description ?? $whois->description,
-            country: $rdap->country ?? $whois->country,
-            createdDate: $rdap->createdDate ?? $whois->createdDate,
-            updatedDate: $rdap->updatedDate ?? $whois->updatedDate,
-            status: $this->mergeStringArrays($rdap->status, $whois->status),
-            contacts: $this->mergeContacts($rdap->contacts, $whois->contacts),
-        );
-    }
-
-    private function mergeAsn(?AsnInfo $rdap, ?AsnInfo $whois): ?AsnInfo
-    {
-        if ($rdap === null) {
-            return $whois;
-        }
-        if ($whois === null) {
-            return $rdap;
-        }
-
-        return new AsnInfo(
-            asn: $rdap->asn ?? $whois->asn,
-            name: $rdap->name ?? $whois->name,
-            description: $rdap->description ?? $whois->description,
-            country: $rdap->country ?? $whois->country,
-            createdDate: $rdap->createdDate ?? $whois->createdDate,
-            updatedDate: $rdap->updatedDate ?? $whois->updatedDate,
-            status: $this->mergeStringArrays($rdap->status, $whois->status),
-            contacts: $this->mergeContacts($rdap->contacts, $whois->contacts),
-        );
-    }
-
-    private function mergeRegistrar(?Registrar $rdap, ?Registrar $whois): ?Registrar
-    {
-        if ($rdap === null) {
-            return $whois;
-        }
-        if ($whois === null) {
-            return $rdap;
-        }
-
-        return new Registrar(
-            name: $rdap->name ?? $whois->name,
-            ianaId: $rdap->ianaId ?? $whois->ianaId,
-            url: $rdap->url ?? $whois->url,
-            abuseEmail: $rdap->abuseEmail ?? $whois->abuseEmail,
-            abusePhone: $rdap->abusePhone ?? $whois->abusePhone,
+        return array_reduce(
+            array_slice($filtered, 1),
+            fn(AbstractInfo $carry, AbstractInfo $item) => $this->merge($carry, $item),
+            $filtered[0],
         );
     }
 
     /**
-     * Merge contacts: RDAP contacts take priority per type, WHOIS fills gaps.
-     *
-     * @param Contact[] $rdap
-     * @param Contact[] $whois
+     * Merge two info objects of the same type. Primary takes priority for scalar fields,
+     * arrays are combined with deduplication.
+     */
+    public function merge(AbstractInfo $primary, AbstractInfo $secondary): AbstractInfo
+    {
+        if ($primary instanceof DomainInfo && $secondary instanceof DomainInfo) {
+            return $this->mergeDomain($primary, $secondary);
+        }
+
+        if ($primary instanceof IpInfo && $secondary instanceof IpInfo) {
+            return $this->mergeIp($primary, $secondary);
+        }
+
+        if ($primary instanceof AsnInfo && $secondary instanceof AsnInfo) {
+            return $this->mergeAsn($primary, $secondary);
+        }
+
+        // Different types or unknown — primary wins
+        return $primary;
+    }
+
+    private function mergeDomain(DomainInfo $primary, DomainInfo $secondary): DomainInfo
+    {
+        return new DomainInfo(
+            name: $primary->name ?? $secondary->name,
+            registrar: $this->mergeRegistrar($primary->registrar, $secondary->registrar),
+            createdDate: $primary->createdDate ?? $secondary->createdDate,
+            updatedDate: $primary->updatedDate ?? $secondary->updatedDate,
+            expiresDate: $primary->expiresDate ?? $secondary->expiresDate,
+            status: $this->mergeStringArrays($primary->status, $secondary->status),
+            nameservers: $this->mergeNameservers($primary->nameservers, $secondary->nameservers),
+            contacts: $this->mergeContacts($primary->contacts, $secondary->contacts),
+            dnssec: $primary->dnssec ?? $secondary->dnssec,
+        );
+    }
+
+    private function mergeIp(IpInfo $primary, IpInfo $secondary): IpInfo
+    {
+        return new IpInfo(
+            range: $primary->range ?? $secondary->range,
+            networkName: $primary->networkName ?? $secondary->networkName,
+            description: $primary->description ?? $secondary->description,
+            country: $primary->country ?? $secondary->country,
+            createdDate: $primary->createdDate ?? $secondary->createdDate,
+            updatedDate: $primary->updatedDate ?? $secondary->updatedDate,
+            status: $this->mergeStringArrays($primary->status, $secondary->status),
+            contacts: $this->mergeContacts($primary->contacts, $secondary->contacts),
+        );
+    }
+
+    private function mergeAsn(AsnInfo $primary, AsnInfo $secondary): AsnInfo
+    {
+        return new AsnInfo(
+            asn: $primary->asn ?? $secondary->asn,
+            name: $primary->name ?? $secondary->name,
+            description: $primary->description ?? $secondary->description,
+            country: $primary->country ?? $secondary->country,
+            createdDate: $primary->createdDate ?? $secondary->createdDate,
+            updatedDate: $primary->updatedDate ?? $secondary->updatedDate,
+            status: $this->mergeStringArrays($primary->status, $secondary->status),
+            contacts: $this->mergeContacts($primary->contacts, $secondary->contacts),
+        );
+    }
+
+    private function mergeRegistrar(?Registrar $primary, ?Registrar $secondary): ?Registrar
+    {
+        if ($primary === null) {
+            return $secondary;
+        }
+        if ($secondary === null) {
+            return $primary;
+        }
+
+        return new Registrar(
+            name: $primary->name ?? $secondary->name,
+            ianaId: $primary->ianaId ?? $secondary->ianaId,
+            url: $primary->url ?? $secondary->url,
+            abuseEmail: $primary->abuseEmail ?? $secondary->abuseEmail,
+            abusePhone: $primary->abusePhone ?? $secondary->abusePhone,
+        );
+    }
+
+    /**
+     * @param Contact[] $primary
+     * @param Contact[] $secondary
      * @return Contact[]
      */
-    private function mergeContacts(array $rdap, array $whois): array
+    private function mergeContacts(array $primary, array $secondary): array
     {
-        // Index RDAP contacts by type
         $byType = [];
-        foreach ($rdap as $contact) {
+        foreach ($primary as $contact) {
             $byType[$contact->type->value] = $contact;
         }
 
-        // Add WHOIS contacts only for types not already present from RDAP
-        foreach ($whois as $contact) {
+        foreach ($secondary as $contact) {
             if (!isset($byType[$contact->type->value])) {
                 $byType[$contact->type->value] = $contact;
             } else {
-                // Merge: fill in nulls from WHOIS into RDAP contact
                 $existing = $byType[$contact->type->value];
                 $byType[$contact->type->value] = new Contact(
                     type: $existing->type,
@@ -147,25 +155,22 @@ class ResultMerger
     }
 
     /**
-     * Merge nameserver arrays with deduplication by hostname.
-     *
-     * @param Nameserver[] $rdap
-     * @param Nameserver[] $whois
+     * @param Nameserver[] $primary
+     * @param Nameserver[] $secondary
      * @return Nameserver[]
      */
-    private function mergeNameservers(array $rdap, array $whois): array
+    private function mergeNameservers(array $primary, array $secondary): array
     {
         $byHost = [];
-        foreach ($rdap as $ns) {
+        foreach ($primary as $ns) {
             $byHost[strtolower($ns->hostname)] = $ns;
         }
 
-        foreach ($whois as $ns) {
+        foreach ($secondary as $ns) {
             $key = strtolower($ns->hostname);
             if (!isset($byHost[$key])) {
                 $byHost[$key] = $ns;
             } else {
-                // Merge IP info from WHOIS if RDAP didn't have it
                 $existing = $byHost[$key];
                 if ($existing->ipv4 === null && $ns->ipv4 !== null
                     || $existing->ipv6 === null && $ns->ipv6 !== null

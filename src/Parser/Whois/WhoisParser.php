@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Parser\Whois;
 
+use Klkvsk\Whoeasy\Client\Whois\WhoisClient;
 use Klkvsk\Whoeasy\Enum\QueryType;
-use Klkvsk\Whoeasy\Result\ContactType;
-use Klkvsk\Whoeasy\Result\AsnInfo;
-use Klkvsk\Whoeasy\Result\Contact;
-use Klkvsk\Whoeasy\Result\DomainInfo;
-use Klkvsk\Whoeasy\Result\IpInfo;
-use Klkvsk\Whoeasy\Result\Nameserver;
-use Klkvsk\Whoeasy\Result\Registrar;
-use Klkvsk\Whoeasy\Result\StructuredResult;
+use Klkvsk\Whoeasy\Result\Info\AsnInfo;
+use Klkvsk\Whoeasy\Result\Info\DomainInfo;
+use Klkvsk\Whoeasy\Result\Info\Field\Contact;
+use Klkvsk\Whoeasy\Result\Info\Field\ContactType;
+use Klkvsk\Whoeasy\Result\Info\Field\Nameserver;
+use Klkvsk\Whoeasy\Result\Info\Field\Registrar;
+use Klkvsk\Whoeasy\Result\Info\IpInfo;
+use Klkvsk\Whoeasy\Result\ParserResult;
 
 /**
  * Universal WHOIS text parser that handles key:value formats across servers.
@@ -22,7 +23,7 @@ use Klkvsk\Whoeasy\Result\StructuredResult;
  */
 final class WhoisParser implements WhoisParserInterface
 {
-    public function parse(string $rawResponse, string $serverHostname, QueryType $queryType): StructuredResult
+    public function parse(string $rawResponse, string $serverHostname, QueryType $queryType): ParserResult
     {
         // Strip comment lines and legal notices
         $text = $this->cleanResponse($rawResponse);
@@ -42,26 +43,7 @@ final class WhoisParser implements WhoisParserInterface
      */
     private function cleanResponse(string $text): string
     {
-        // Normalize line endings
-        $text = str_replace("\r\n", "\n", $text);
-        $text = str_replace("\r", "\n", $text);
-
-        // Remove lines that are purely comments (%, #, ;)
-        $lines = explode("\n", $text);
-        $cleaned = [];
-        foreach ($lines as $line) {
-            $trimmed = ltrim($line);
-            if (str_starts_with($trimmed, '%') || str_starts_with($trimmed, '#') || str_starts_with($trimmed, ';')) {
-                continue;
-            }
-            // Skip >>> markers
-            if (str_starts_with($trimmed, '>>>')) {
-                continue;
-            }
-            $cleaned[] = $line;
-        }
-
-        return implode("\n", $cleaned);
+        return WhoisClient::stripBoilerplate($text);
     }
 
     /**
@@ -195,7 +177,7 @@ final class WhoisParser implements WhoisParserInterface
         };
     }
 
-    private function parseDomain(array $fields, string $text): StructuredResult
+    private function parseDomain(array $fields, string $text): ParserResult
     {
         $domainName = $this->firstValue($fields, 'domain_name');
 
@@ -219,8 +201,8 @@ final class WhoisParser implements WhoisParserInterface
         // Extract status codes
         $statuses = [];
         foreach ($fields['status'] ?? [] as $status) {
-            // Strip EPP URL suffix: "clientTransferProhibited (https://...)"
-            $status = preg_replace('/\s*\(https?:\/\/[^)]+\)/', '', $status);
+            // Strip EPP URL suffix: everything from http(s):// to end of value
+            $status = preg_replace('/\s*\(?https?:\/\/.*$/', '', $status);
             $statuses[] = trim($status);
         }
 
@@ -242,9 +224,8 @@ final class WhoisParser implements WhoisParserInterface
         // DNSSEC
         $dnssec = $this->firstValue($fields, 'dnssec');
 
-        return new StructuredResult(
-            queryType: QueryType::Domain,
-            domain: new DomainInfo(
+        return new ParserResult(
+            info: new DomainInfo(
                 name: $domainName,
                 registrar: $registrar,
                 createdDate: $createdDate,
@@ -255,10 +236,11 @@ final class WhoisParser implements WhoisParserInterface
                 contacts: $contacts,
                 dnssec: $dnssec,
             ),
+            referralServer: $this->firstValue($fields, 'whois_server'),
         );
     }
 
-    private function parseIp(array $fields, string $text): StructuredResult
+    private function parseIp(array $fields, string $text): ParserResult
     {
         $range = $this->firstValue($fields, 'ip_range');
         $netName = $this->firstValue($fields, 'net_name');
@@ -271,9 +253,8 @@ final class WhoisParser implements WhoisParserInterface
 
         $contacts = $this->extractIpContacts($fields, $text);
 
-        return new StructuredResult(
-            queryType: QueryType::Ipv4,
-            ip: new IpInfo(
+        return new ParserResult(
+            info: new IpInfo(
                 range: $range,
                 networkName: $netName,
                 description: $description,
@@ -282,10 +263,11 @@ final class WhoisParser implements WhoisParserInterface
                 updatedDate: $updatedDate,
                 contacts: $contacts,
             ),
+            referralServer: $this->firstValue($fields, 'whois_server'),
         );
     }
 
-    private function parseAsn(array $fields, string $text): StructuredResult
+    private function parseAsn(array $fields, string $text): ParserResult
     {
         $asnStr = $this->firstValue($fields, 'asn');
         $asn = null;
@@ -297,14 +279,14 @@ final class WhoisParser implements WhoisParserInterface
         $description = $this->firstValue($fields, 'description');
         $country = $this->firstValue($fields, 'country');
 
-        return new StructuredResult(
-            queryType: QueryType::Asn,
-            asn: new AsnInfo(
+        return new ParserResult(
+            info: new AsnInfo(
                 asn: $asn,
                 name: $name,
                 description: $description,
                 country: $country,
             ),
+            referralServer: $this->firstValue($fields, 'whois_server'),
         );
     }
 
@@ -325,21 +307,21 @@ final class WhoisParser implements WhoisParserInterface
         ];
 
         foreach ($typeMap as $prefix => $type) {
-            $name = $this->firstValue($fields, "{$prefix}_name");
-            $org = $this->firstValue($fields, "{$prefix}_organization");
-            $email = $this->firstValue($fields, "{$prefix}_email");
-            $phone = $this->firstValue($fields, "{$prefix}_phone");
+            $name = $this->filterRedacted($this->firstValue($fields, "{$prefix}_name"));
+            $org = $this->filterRedacted($this->firstValue($fields, "{$prefix}_organization"));
+            $email = $this->filterRedacted($this->firstValue($fields, "{$prefix}_email"));
+            $phone = $this->filterRedacted($this->firstValue($fields, "{$prefix}_phone"));
 
             // For registrant, also check Registrant Country as address
             $address = null;
             if ($prefix === 'registrant') {
-                $country = $this->firstValue($fields, 'registrant_country');
+                $country = $this->filterRedacted($this->firstValue($fields, 'registrant_country'));
                 if ($country !== null) {
                     $address = $country;
                 }
             }
 
-            if ($name !== null || $org !== null || $email !== null || $phone !== null) {
+            if ($name !== null || $org !== null || $email !== null || $phone !== null || $address !== null) {
                 $contacts[] = new Contact(
                     type: $type,
                     name: $name,
@@ -430,5 +412,36 @@ final class WhoisParser implements WhoisParserInterface
     private function firstValue(array $fields, string $key): ?string
     {
         return $fields[$key][0] ?? null;
+    }
+
+    /**
+     * Return null if value is a WHOIS redaction placeholder.
+     */
+    private function filterRedacted(?string $value): ?string
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        $normalized = strtolower(trim($value));
+        if (in_array($normalized, [
+            'redacted',
+            'redacted for privacy',
+            'data protected',
+            'not disclosed',
+            'not available',
+            'n/a',
+            'gdpr masked',
+            'statutory masking enabled',
+        ], true)) {
+            return null;
+        }
+
+        // Pattern: "REDACTED FOR PRIVACY" or "REDACTED | ..."
+        if (preg_match('/^redacted\b/i', $value)) {
+            return null;
+        }
+
+        return $value;
     }
 }

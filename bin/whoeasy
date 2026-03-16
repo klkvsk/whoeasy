@@ -2,14 +2,13 @@
 <?php
 require $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
 
+use Klkvsk\Whoeasy\QueryMode;
 use Klkvsk\Whoeasy\Whoeasy;
-use Klkvsk\Whoeasy\Config;
 use Klkvsk\Whoeasy\QueryOptions;
-use Klkvsk\Whoeasy\Enum\QueryMode;
 
 set_error_handler(
-    fn($severity, $msg, $file = null, $line = null) => new ErrorException($msg, 0, $severity, $file, $line),
-    E_ALL
+        fn($severity, $msg, $file = null, $line = null) => new ErrorException($msg, 0, $severity, $file, $line),
+        E_ALL,
 );
 error_reporting(E_ALL);
 
@@ -18,18 +17,18 @@ return new class($argv) {
     protected bool $verbose;
 
     const FLAGS = [
-        'v' => 'verbose',
-        'h' => 'help',
+            'v' => 'verbose',
+            'h' => 'help',
     ];
     const OPTIONS = [
-        's' => 'server',
-        'f' => 'format',
-        'p' => 'proxy',
-        'm' => 'mode',
+            's' => 'server',
+            'f' => 'format',
+            'p' => 'proxy',
+            'm' => 'mode',
     ];
 
     public function __construct(
-        protected array $argv
+            protected array $argv,
     )
     {
         $args = $this->parseArgs();
@@ -48,13 +47,13 @@ return new class($argv) {
             $proxyAddress = $args['proxy'];
 
             $modeStr = $args['mode'] ?? null;
-            $mode = null;
+            $mode = QueryOptions::DEFAULT_MODE;
             if ($modeStr !== null) {
                 $mode = QueryMode::tryFrom($modeStr);
                 if ($mode === null) {
                     throw new InvalidArgumentException(
-                        'Unknown mode: ' . $modeStr
-                        . '. Valid modes: ' . implode(', ', array_map(fn($m) => $m->value, QueryMode::cases()))
+                            'Unknown mode: ' . $modeStr
+                            . '. Valid modes: ' . implode(', ', array_map(fn($m) => $m->value, QueryMode::cases())),
                     );
                 }
             }
@@ -65,27 +64,28 @@ return new class($argv) {
                 throw new InvalidArgumentException('Target query is not specified');
             }
 
-            $config = new Config(
-                defaultMode: $mode ?? QueryMode::PreferRdap,
-                proxyUri: $proxyAddress,
-            );
-            $whoeasy = Whoeasy::create($config);
-            $options = new QueryOptions(
-                mode: $mode,
-                proxyUri: $proxyAddress,
-            );
+            $whoeasy = Whoeasy::create();
 
-            $result = $whoeasy->query($target, $options);
+            $result = $whoeasy->query(
+                $target,
+                new QueryOptions(
+                    mode: $mode,
+                    proxyUri: $proxyAddress,
+                ),
+            );
 
             if ($this->verbose) {
-                $actualMode = $mode ?? $config->defaultMode;
+                $actualMode = $mode ?? QueryMode::PreferRdap;
                 fwrite(STDERR, '## mode:   ' . $actualMode->value . "\n");
-                fwrite(STDERR, '## query:  ' . $result->query . "\n");
-                if ($result->whoisHops) {
-                    fwrite(STDERR, '## whois:  ' . $result->whoisHops[0]->server . "\n");
+                if ($result->whois !== null) {
+                    foreach ($result->whois->hops as $i => $hop) {
+                        fwrite(STDERR, "## whois[{$i}]: {$hop->server} -> {$hop->query}\n");
+                    }
                 }
-                if ($result->rdapHops) {
-                    fwrite(STDERR, '## rdap:   ' . $result->rdapHops[0]->server . "\n");
+                if ($result->rdap !== null) {
+                    foreach ($result->rdap->hops as $i => $hop) {
+                        fwrite(STDERR, "## rdap[{$i}]: {$hop->server} -> {$hop->query}\n");
+                    }
                 }
                 if ($proxyAddress) {
                     fwrite(STDERR, '## proxy:  ' . $proxyAddress . "\n");
@@ -94,12 +94,12 @@ return new class($argv) {
 
             $output = match ($format) {
                 'r', 'result' => json_encode(
-                    $result->result->toArray(),
-                    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR
+                        $result->info->toArray(),
+                        JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR,
                 ),
-                'w', 'raw' => $this->getRawText($result),
-                'j', 'json' => $this->getRdapJson($result),
-                default => throw new InvalidArgumentException('Unknown format: ' . $format),
+                'w', 'raw'    => $this->getRawText($result),
+                'j', 'json'   => $this->getRdapJson($result),
+                default       => throw new InvalidArgumentException('Unknown format: ' . $format),
             };
 
             echo $output . PHP_EOL;
@@ -119,24 +119,29 @@ return new class($argv) {
 
     private function getRawText(\Klkvsk\Whoeasy\Result\QueryResult $result): string
     {
-        if ($result->whoisHops) {
-            return $result->whoisHops[0]->text;
+        if ($result->whois !== null) {
+            // Return all hops' raw text, separated by markers
+            $texts = [];
+            foreach ($result->whois->hops as $hop) {
+                $texts[] = "--- {$hop->server} ---\n{$hop->rawText}";
+            }
+            return implode("\n\n", $texts);
         }
-        if ($result->rdapHops) {
-            return $result->rdapHops[0]->text;
+        if ($result->rdap !== null && ($result->rdap->hops[0] ?? null) !== null) {
+            return $result->rdap->hops[0]->rawBody;
         }
         return '(no raw response available)';
     }
 
     private function getRdapJson(\Klkvsk\Whoeasy\Result\QueryResult $result): string
     {
-        if ($result->rdapHops && $result->rdapHops[0]->json !== null) {
+        if ($result->rdap !== null && ($result->rdap->hops[0] ?? null)?->json !== null) {
             return json_encode(
-                $result->rdapHops[0]->json,
-                JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR
+                    $result->rdap->hops[0]->json,
+                    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR,
             );
         }
-        if ($result->whoisHops) {
+        if ($result->whois !== null) {
             return '(no RDAP JSON available, only WHOIS raw text)';
         }
         return '(no RDAP JSON available)';

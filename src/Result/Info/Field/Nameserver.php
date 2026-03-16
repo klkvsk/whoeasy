@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Result;
+namespace Klkvsk\Whoeasy\Result\Info\Field;
 
 readonly class Nameserver
 {
