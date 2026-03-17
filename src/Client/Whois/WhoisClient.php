@@ -6,21 +6,27 @@ namespace Klkvsk\Whoeasy\Client\Whois;
 
 use Klkvsk\Whoeasy\Client\Exception\ClientConnectException;
 use Klkvsk\Whoeasy\Client\Exception\ClientTimeoutException;
+use Klkvsk\Whoeasy\Client\Exception\CurlRequestException;
+use Klkvsk\Whoeasy\Client\Exception\ProxyConnectException;
+use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
 
 /**
- * WHOIS protocol client using TCP:43 stream sockets.
+ * WHOIS protocol client using curl in telnet mode.
  *
- * Does NOT depend on v1 adapters. Uses PHP stream functions directly.
+ * Curl telnet allows plain-text TCP communication to port 43,
+ * with native support for HTTP/SOCKS proxies via CURLOPT_PROXY.
  */
 final class WhoisClient
 {
     private const DEFAULT_PORT = 43;
-    private const READ_BUFFER_SIZE = 4096;
 
     public function __construct(
         private int $timeout = 15,
         private ?string $proxyUri = null,
     ) {
+        if (!extension_loaded('curl')) {
+            throw new MissingRequirementsException('ext-curl is required for ' . self::class);
+        }
     }
 
     /**
@@ -33,6 +39,7 @@ final class WhoisClient
      *
      * @throws ClientConnectException If connection to the server fails
      * @throws ClientTimeoutException If the connection or read times out
+     * @throws CurlRequestException On curl-level errors
      */
     public function query(string $server, string $query, ?int $timeout = null, ?string $queryFormat = null): string
     {
@@ -46,45 +53,75 @@ final class WhoisClient
             $port = (int)$parts[1];
         }
 
-        $socket = $this->connect($server, $port, $timeout);
+        // Prepare query input as a stream (curl reads from CURLOPT_INFILE for telnet)
+        $queryLine = ($queryFormat !== null ? sprintf($queryFormat, $query) : $query) . "\r\n";
+        $input = fopen('php://temp', 'r+');
+        fwrite($input, $queryLine);
+        rewind($input);
+
+        // Verbose log for diagnostics
+        $verboseLog = fopen('php://temp', 'w+');
+
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_PROTOCOLS      => CURLPROTO_TELNET,
+            CURLOPT_URL            => "telnet://$server:$port",
+            CURLOPT_INFILE         => $input,
+            CURLOPT_TIMEOUT        => $timeout,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_VERBOSE        => true,
+            CURLOPT_STDERR         => $verboseLog,
+        ]);
+
+        if ($this->proxyUri !== null) {
+            curl_setopt($curl, CURLOPT_PROXY, $this->proxyUri);
+        }
 
         try {
-            // Send query followed by CRLF (RFC 3912)
-            $queryLine = ($queryFormat !== null ? sprintf($queryFormat, $query) : $query) . "\r\n";
-            $written = @fwrite($socket, $queryLine);
-            if ($written === false || $written !== strlen($queryLine)) {
-                throw (new ClientConnectException("Failed to send query to $server"))
+            $response = curl_exec($curl);
+            $errno = curl_errno($curl);
+            $error = curl_error($curl);
+
+            if ($errno !== 0) {
+                rewind($verboseLog);
+                $log = stream_get_contents($verboseLog);
+
+                // Map curl error codes to typed exceptions
+                if (in_array($errno, [CURLE_OPERATION_TIMEDOUT, CURLE_OPERATION_TIMEOUTED ?? 28], true)) {
+                    throw (new ClientTimeoutException("Timeout from $server:$port after {$timeout}s ($error)"))
+                        ->withServer($server)
+                        ->withQuery($query);
+                }
+
+                if (in_array($errno, [CURLE_COULDNT_CONNECT, CURLE_COULDNT_RESOLVE_HOST], true)) {
+                    throw (new ClientConnectException("Failed to connect to $server:$port: $error"))
+                        ->withServer($server)
+                        ->withQuery($query);
+                }
+
+                // Proxy-related errors
+                if (in_array($errno, [5, 7, 97], true) && $this->proxyUri !== null) {
+                    throw (new ProxyConnectException("Proxy connection failed for $server:$port: $error"))
+                        ->withServer($server)
+                        ->withQuery($query);
+                }
+
+                throw (new CurlRequestException(
+                    sprintf('%s (code %d)', $error, $errno),
+                    $errno,
+                    verboseLog: $log,
+                ))
                     ->withServer($server)
                     ->withQuery($query);
             }
 
-            // Read response
-            $response = '';
-            while (!feof($socket)) {
-                $chunk = @fread($socket, self::READ_BUFFER_SIZE);
-                if ($chunk === false) {
-                    $info = stream_get_meta_data($socket);
-                    if ($info['timed_out'] ?? false) {
-                        throw (new ClientTimeoutException("Read timeout from $server after {$timeout}s"))
-                            ->withServer($server)
-                            ->withQuery($query)
-                            ->withRawBody($response);
-                    }
-                    break;
-                }
-                $response .= $chunk;
-
-                // Check for timeout during read
-                $info = stream_get_meta_data($socket);
-                if ($info['timed_out'] ?? false) {
-                    throw (new ClientTimeoutException("Read timeout from $server after {$timeout}s"))
-                        ->withServer($server)
-                        ->withQuery($query)
-                        ->withRawBody($response);
-                }
+            if ($response === false) {
+                $response = '';
             }
         } finally {
-            fclose($socket);
+            curl_close($curl);
+            fclose($input);
+            fclose($verboseLog);
         }
 
         // Convert encoding if needed (best-effort UTF-8)
@@ -254,53 +291,4 @@ final class WhoisClient
         return false;
     }
 
-    /**
-     * Open a TCP connection to the WHOIS server.
-     *
-     * @return resource Stream socket
-     */
-    private function connect(string $server, int $port, int $timeout): mixed
-    {
-        $context = stream_context_create();
-
-        // Configure SOCKS proxy if set
-        $proxyUri = $this->proxyUri;
-        if ($proxyUri !== null) {
-            $proxyParts = parse_url($proxyUri);
-            if ($proxyParts !== false && isset($proxyParts['host'])) {
-                $proxyHost = $proxyParts['host'];
-                $proxyPort = $proxyParts['port'] ?? 1080;
-                // Use TCP connection through proxy
-                stream_context_set_option($context, 'socket', 'tcp_nodelay', true);
-                $address = "tcp://$proxyHost:$proxyPort";
-            }
-        }
-
-        $address ??= "tcp://$server:$port";
-
-        $errno = 0;
-        $errstr = '';
-        $socket = @stream_socket_client(
-            $address,
-            $errno,
-            $errstr,
-            $timeout,
-            STREAM_CLIENT_CONNECT,
-            $context,
-        );
-
-        if ($socket === false) {
-            if ($errno === 110 || str_contains(strtolower($errstr), 'timed out')) {
-                throw (new ClientTimeoutException("Connection timeout to $server:$port after {$timeout}s"))
-                    ->withServer($server);
-            }
-            throw (new ClientConnectException("Failed to connect to $server:$port: [$errno] $errstr"))
-                ->withServer($server);
-        }
-
-        // Set stream timeout for reads
-        stream_set_timeout($socket, $timeout);
-
-        return $socket;
-    }
 }
