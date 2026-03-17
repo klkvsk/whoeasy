@@ -1,0 +1,27 @@
+1a.	Domain Name : bizportal.gov.za
+1b.	Select One : New Domain Name
+2a.	Department Name : Companies and Intellectual Properties commission
+2b.	Postal Address : 77 mentjies Street,theDTI Campus,Pretoria
+2c.	Postal Code : 0001
+3a.	Admin Contact Name : Bopape, Solly
+3b.	Title\Position : Security Architect
+3c.	Department : theDTI, CIPC
+3d.	Email : sbopape@cipc.co.za
+3e.	Postal Address : P O BOX 429,Sunnyside,Pretoria
+3f.	Postal Code : 0001
+4a.	Tech Contact Name : Administrator, DNS
+4b.	Title\Position : Technical Role Account
+4c.	Department : Internet Solutions
+4d.	Email : support@is.co.za
+4e.	Postal Address : Private Bag X163,Bryanston,Gauteng
+4f.	Postal Code : 2021
+5a.	Primary NS : ns1.is.co.za
+5b.	Primary NS IP : 196.4.160.7
+5c.	1st Secondary NS : jupiter.is.co.za
+5d.	1st Secondary NS IP : 196.4.160.3
+6a.	Place : Pretoria
+6b.	Date : 2019/09/11
+6c.	Name of Applicant : Bopape, Solly
+
+ 
+**End**

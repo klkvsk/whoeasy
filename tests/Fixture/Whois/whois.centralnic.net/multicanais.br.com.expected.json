@@ -1,0 +1,25 @@
+{
+    "name": "multicanais.br.com",
+    "registrar": {
+        "name": "Namecheap",
+        "ianaId": "1068",
+        "url": "https://namecheap.com",
+        "abuseEmail": "abuse@namecheap.com",
+        "abusePhone": "+1.9854014545"
+    },
+    "createdDate": "2024-10-28 01:18:36",
+    "updatedDate": "2026-01-01 16:04:57",
+    "expiresDate": "2026-10-28 23:59:59",
+    "status": [
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "dns1.registrar-servers.com"
+        },
+        {
+            "hostname": "dns2.registrar-servers.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

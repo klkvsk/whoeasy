@@ -1,0 +1,29 @@
+{
+    "name": "goroh.pp.ua",
+    "registrar": {
+        "name": "NIC.UA LLC (nic-mnt-cunic)"
+    },
+    "createdDate": "2018-11-30 14:50:34",
+    "updatedDate": "2025-10-31 21:45:04",
+    "expiresDate": "2026-11-30 14:50:34",
+    "status": [
+        "serverDeleteProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "pablo.ns.cloudflare.com"
+        },
+        {
+            "hostname": "nina.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Ковенько Олексій Анатолійович",
+            "email": "kovolexiy@gmail.com",
+            "phone": "+380.952755772",
+            "address": "вул. Зодчих 64, кв 3\nм. Київ\n03170\nUA"
+        }
+    ]
+}

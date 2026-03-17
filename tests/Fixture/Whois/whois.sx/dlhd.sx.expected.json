@@ -1,0 +1,31 @@
+{
+    "name": "dlhd.sx",
+    "registrar": {
+        "name": "Ascio Technologies Inc. - DK Branch",
+        "ianaId": "106",
+        "url": "www.ascio.com",
+        "abuseEmail": "nicrelations@ascio.com",
+        "abusePhone": "+49.2283296859"
+    },
+    "createdDate": "2023-08-21 15:17:50",
+    "updatedDate": "2026-02-20 22:34:51",
+    "expiresDate": "2026-08-21 15:17:50",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.afraid.org"
+        },
+        {
+            "hostname": "ns2.afraid.org"
+        },
+        {
+            "hostname": "ns3.afraid.org"
+        },
+        {
+            "hostname": "ns4.afraid.org"
+        }
+    ],
+    "dnssec": "unsigned"
+}

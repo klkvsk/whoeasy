@@ -1,0 +1,84 @@
+<pre>
+Domain Name: nic.za
+Domain ID: dom_3X--1
+WHOIS Server: za-whois31.dns.net.za
+
+Updated Date: 2019-07-16T10:14:49Z
+Creation Date: 2017-06-15T07:33:10Z
+Registry Expiry Date: 2999-12-30T22:00:00Z
+Sponsoring Registrar: .ZADNA
+Domain Status: ok https://icann.org/epp#ok
+
+Registrant ID: C000157
+Registrant Name: .ZADNA
+Registrant Organization: .ZA Domain Name Authority
+Registrant Street: 44 Grand Central Blvd Sanofi House Halfway house
+Registrant City: Midrand
+Registrant State/Province: Gauteng
+Registrant Postal Code: 1685
+Registrant Country: ZA
+Registrant Phone: +27.100203910
+Registrant Phone Ext: 
+Registrant Fax: +27.100203919
+Registrant Fax Ext: 
+Registrant Email: dnsadmin@zadna.org.za
+
+Admin ID: C000157
+Admin Name: .ZADNA
+Admin Organization: .ZA Domain Name Authority
+Admin Street: 44 Grand Central Blvd Sanofi House Halfway house
+Admin City: Midrand
+Admin State/Province: Gauteng
+Admin Postal Code: 1685
+Admin Country: ZA
+Admin Phone: +27.100203910
+Admin Phone Ext: 
+Admin Fax: +27.100203919
+Admin Fax Ext: 
+Admin Email: dnsadmin@zadna.org.za
+
+Billing ID: C000157
+Billing Name: .ZADNA
+Billing Organization: .ZA Domain Name Authority
+Billing Street: 44 Grand Central Blvd Sanofi House Halfway house
+Billing City: Midrand
+Billing State/Province: Gauteng
+Billing Postal Code: 1685
+Billing Country: ZA
+Billing Phone: +27.100203910
+Billing Phone Ext: 
+Billing Fax: +27.100203919
+Billing Fax Ext: 
+Billing Email: dnsadmin@zadna.org.za
+
+Tech ID: C000157
+Tech Name: .ZADNA
+Tech Organization: .ZA Domain Name Authority
+Tech Street: 44 Grand Central Blvd Sanofi House Halfway house
+Tech City: Midrand
+Tech State/Province: Gauteng
+Tech Postal Code: 1685
+Tech Country: ZA
+Tech Phone: +27.100203910
+Tech Phone Ext: 
+Tech Fax: +27.100203919
+Tech Fax Ext: 
+Tech Email: dnsadmin@zadna.org.za
+
+
+Name Server: ns1.lexsynergy.net
+Name Server: ns2.lexsynergy.us
+Name Server: ns3.lexsynergy.info
+DNSSEC: signedDelegation
+>>> Last update of WHOIS database: 2026-03-17T00:08:41Z <<<
+
+#    WHOIS lookup made at 2026-03-17T00:08:41Z
+# --
+# For more information on Whois status codes, please visit https://icann.org/epp
+#
+# The use of this Whois facility is subject to the following terms and
+# conditions. https://registry.net.za/whois_terms
+# Copyright (c) ZACR 1995-2026
+
+</pre>
+

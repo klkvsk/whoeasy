@@ -1,0 +1,31 @@
+{
+    "name": "travelstart.co.za",
+    "registrar": {
+        "name": "CSC Corporate Domains Inc",
+        "ianaId": "299",
+        "url": "https://www.cscglobal.com/cscglobal/home/",
+        "abuseEmail": "tldsupport@cscglobal.com",
+        "abusePhone": "+44.077510055"
+    },
+    "createdDate": "2004-02-11 14:28:49",
+    "updatedDate": "2026-02-07 06:10:39",
+    "expiresDate": "2027-02-11 14:28:49",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "dave.ns.cloudflare.com"
+        },
+        {
+            "hostname": "elle.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "address": "SE"
+        }
+    ],
+    "dnssec": "unsigned"
+}

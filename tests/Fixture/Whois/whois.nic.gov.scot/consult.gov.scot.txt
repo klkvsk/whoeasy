@@ -1,0 +1,43 @@
+
+Domain:
+	consult.gov.scot
+
+Registered For:
+	Scottish Government engagement practices
+
+Domain Owner:
+	The Scottish Government
+
+Registered By:
+	Com Laude
+
+Servers:
+	ns0.demysdns.net	
+	ns1.demysdns.net	
+	ns6.demysdns.co.uk	
+	ns4.demysdns.co.uk	
+	ns2.demysdns.net	
+	ns5.demysdns.co.uk	
+	ns3.demysdns.net	
+
+Registrant Contact:
+	William Paul
+
+Registrant Address:
+	St Andrew's House
+	Regent Street
+	Edinburgh
+	EH11 3DG
+	United Kingdom
+	+44 131 244 2676 (Phone)
+	william.paul@gov.scot
+
+Renewal date:
+	Tuesday 1st Feb 2028
+
+Entry updated:
+	Thursday 11th December 2025
+
+Entry created:
+	Monday 1st February 2016
+

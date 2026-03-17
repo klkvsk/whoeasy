@@ -88,6 +88,9 @@ $generator = new class {
         // 4. Apply exclusions (disabled TLDs, disabled WHOIS)
         $this->applyExclusions();
 
+        // 4b. Apply WHOIS server overrides (highest priority)
+        $this->applyWhoisOverrides();
+
         // 5. Cross-reference and warn
         $this->crossReference();
 
@@ -413,6 +416,26 @@ $generator = new class {
         echo "  Disabled WHOIS for $disabledCount TLDs (RDAP-only providers)\n";
     }
 
+    private function applyWhoisOverrides(): void
+    {
+        $overrides = require $this->dataDir . '/tld-whois-overrides.php';
+        $count = 0;
+        foreach ($overrides as $tld => $server) {
+            if (isset($this->tldServers[$tld])) {
+                $this->tldServers[$tld]['whois_server'] = $server;
+                $count++;
+            } else {
+                $this->tldServers[$tld] = [
+                    'whois_server' => $server,
+                    'rdap_url' => null,
+                    'sample_domain' => null,
+                ];
+                $count++;
+            }
+        }
+        echo "  Applied $count WHOIS server overrides\n";
+    }
+
     // ========== Cross-reference ==========
 
     private function crossReference(): void
@@ -644,7 +667,7 @@ PHP;
 
     private function generateSampleDomains(): void
     {
-        $file = $this->dataDir . '/sample-domains.php';
+        $file = $this->dataDir . '/sample-domains-generated.php';
         ksort($this->tldServers);
 
         $entries = [];

@@ -1,0 +1,23 @@
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.apnic.net
+
+domain:       d.0.1.0.0.2.ip6.arpa
+
+organisation: APNIC
+
+nserver:      apnic.authdns.ripe.net.
+nserver:      ns1.apnic.net.
+nserver:      ns2.apnic.net.
+nserver:      ns3.lacnic.net.
+nserver:      rirns.arin.net.
+ds-rdata:     1112 13 2 67B2C70EE08607849FA533EF72FD12DFDF0EAD11166A1446ACEC31BE5E45AF79
+
+whois:        whois.apnic.net
+
+changed:      2002-05-02
+changed:      2025-06-19
+source:       IANA
+

@@ -1,0 +1,36 @@
+
+% Rights restricted by copyright and data protection act.
+% See http://www.nic.priv.at/ for details.
+
+domain:      schinagl.priv.at
+descr:       Dipl.-Ing. Hermann Schinagl
+descr:       Hub 156
+descr:       A-8046 Stattegg
+descr:       Austria
+admin-c:     HS4-PRIVAT
+tech-c:      TL309-PRIVAT
+zone-c:      TL309-PRIVAT
+nserver:     ns1.easyname.eu
+nserver:     ns2.easyname.eu
+remarks:     77.244.243.4
+remarks:     77.244.244.138
+notify:      Hermann.Schinagl@gmx.net
+mnt-by:      PRIVAT-MNT
+changed:     lendl@nic.priv.at 20041128
+changed:     stefan@nic.priv.at 20170323
+source:      PRIVAT
+
+person:      Hermann Schinagl
+address:     Hub 156
+address:     A-8046 Stattegg
+address:     Austria
+phone:       +43 316 698 053
+fax-no:      +43 316 695 031
+e-mail:      Hermann.Schinagl@gmx.net
+nic-hdl:     HS4-PRIVAT
+notify:      Hermann.Schinagl@gmx.net
+mnt-by:      PRIVAT-MNT
+changed:     lendl@nic.priv.at 20041128
+source:      PRIVAT
+
+

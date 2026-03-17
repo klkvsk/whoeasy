@@ -1,0 +1,27 @@
+{
+    "name": "d.0.1.0.0.2.ip6.arpa",
+    "nameservers": [
+        {
+            "hostname": "apnic.authdns.ripe.net"
+        },
+        {
+            "hostname": "ns1.apnic.net"
+        },
+        {
+            "hostname": "ns2.apnic.net"
+        },
+        {
+            "hostname": "ns3.lacnic.net"
+        },
+        {
+            "hostname": "rirns.arin.net"
+        }
+    ],
+    "dnssec": "signedDelegation",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "APNIC"
+        }
+    ]
+}

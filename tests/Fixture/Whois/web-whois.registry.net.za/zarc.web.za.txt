@@ -1,0 +1,39 @@
+Domain Name: zarc.web.za
+Registry Domain ID: 3b2uck_DOMAIN-WEB.ZA
+Registrar WHOIS Server: 
+Registrar URL:  
+Updated Date: 2025-08-14T08:50:39Z
+Creation Date: 2022-07-19T15:53:29Z
+Registry Expiry Date: 2099-12-31T00:00:00Z
+Registrar Registration Expiration Date: 2099-12-31T00:00:00Z
+Registrar: System Registrar
+Registrar Abuse Contact Email: info@dnservices.co.za
+Registrar Abuse Contact Phone: +27.113140077
+Reseller: 
+Domain Status: ok https://icann.org/epp#ok
+Registrant Organization: DNS Africa Ltd
+Registrant Country: MU
+Registrant Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Admin Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Tech Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Billing Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Name Server: ns2.host-h.net
+Name Server: ns1.dns-h.com
+Name Server: ns1.host-h.net
+Name Server: ns2.dns-h.com
+DNSSEC: unsigned
+
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-17T00:26:46Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+# --
+
+# For more information on Whois status codes, please visit https://icann.org/epp
+
+# ZARC Complaint/s Procedure and Form: https://zarc.web.za/wp-content/uploads/2025/08/ZA-SLD_Takedown_Policy.docx.pdf
+# The use of this Whois facility is subject to the following terms and
+# conditions. https://zarc.web.za/whois-terms-and-conditions
+# Copyright (c) ZARC 1995-2026
+

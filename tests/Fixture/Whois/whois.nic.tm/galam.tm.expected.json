@@ -1,0 +1,22 @@
+{
+    "name": "galam.tm",
+    "expiresDate": "2033-05-24 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns2.timeweb.ru"
+        },
+        {
+            "hostname": "ns3.timeweb.org"
+        },
+        {
+            "hostname": "ns1.timeweb.ru"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Haydarguly Hudayberenov",
+            "address": "9mkr.Aytakova st..h9\nAshhabad\nTM"
+        }
+    ]
+}

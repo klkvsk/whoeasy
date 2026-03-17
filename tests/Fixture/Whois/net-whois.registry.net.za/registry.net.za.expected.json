@@ -1,0 +1,33 @@
+{
+    "name": "registry.net.za",
+    "registrar": {
+        "name": "ZA Central Registry",
+        "abuseEmail": "support@co.za",
+        "abusePhone": "+27.113140077"
+    },
+    "createdDate": "2010-01-01 07:30:00",
+    "updatedDate": "2025-01-31 12:24:55",
+    "expiresDate": "2099-12-31 00:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.dns.net.za"
+        },
+        {
+            "hostname": "ns1.dnservices.co.za"
+        },
+        {
+            "hostname": "ns2us.dns.business"
+        }
+    ],
+    "dnssec": "signedDelegation",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "ZA Central Registry",
+            "address": "ZA"
+        }
+    ]
+}

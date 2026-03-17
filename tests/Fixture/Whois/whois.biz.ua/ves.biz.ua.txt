@@ -1,0 +1,64 @@
+
+Domain ID:158952_BIZUA-DRS
+Domain Name:VES.BIZ.UA
+Created On:17-Dec-2009 13:32:25 UTC
+Last Updated On:19-Aug-2025 15:31:23 UTC
+Expiration Date:17-Dec-2027 13:32:25 UTC
+Sponsoring Registrar:ТОВ "СІТІХОСТ" (cityhost2-mnt-cunic)
+Status:ok
+Registrant ID:NICUA25602919JBE-CUNIC
+Registrant Name:<not disclosed>
+Registrant Organization:<not disclosed>
+Registrant Street1:<not disclosed>
+Registrant Street2:<not disclosed>
+Registrant Street3:<not disclosed>
+Registrant City:<not disclosed>
+Registrant State/Province:<not disclosed>
+Registrant Postal Code:<not disclosed>
+Registrant Country:<not disclosed>
+Registrant Phone:<not disclosed>
+Registrant Fax:<not disclosed>
+Registrant Email:<not disclosed>
+Admin ID:NICUA25602919JBE-CUNIC
+Admin Name:<not disclosed>
+Admin Organization:<not disclosed>
+Admin Street1:<not disclosed>
+Admin Street2:<not disclosed>
+Admin Street3:<not disclosed>
+Admin City:<not disclosed>
+Admin State/Province:<not disclosed>
+Admin Postal Code:<not disclosed>
+Admin Country:<not disclosed>
+Admin Phone:<not disclosed>
+Admin Fax:<not disclosed>
+Admin Email:<not disclosed>
+Billing ID:NICUA25602919JBE-CUNIC
+Billing Name:<not disclosed>
+Billing Organization:<not disclosed>
+Billing Street1:<not disclosed>
+Billing Street2:<not disclosed>
+Billing Street3:<not disclosed>
+Billing City:<not disclosed>
+Billing State/Province:<not disclosed>
+Billing Postal Code:<not disclosed>
+Billing Country:<not disclosed>
+Billing Phone:<not disclosed>
+Billing Fax:<not disclosed>
+Billing Email:<not disclosed>
+Tech ID:NICUA25602919JBE-CUNIC
+Tech Name:<not disclosed>
+Tech Organization:<not disclosed>
+Tech Street1:<not disclosed>
+Tech Street2:<not disclosed>
+Tech Street3:<not disclosed>
+Tech City:<not disclosed>
+Tech State/Province:<not disclosed>
+Tech Postal Code:<not disclosed>
+Tech Country:<not disclosed>
+Tech Phone:<not disclosed>
+Tech Fax:<not disclosed>
+Tech Email:<not disclosed>
+Name Server:BRENNA.NS.CLOUDFLARE.COM
+Name Server:JERRY.NS.CLOUDFLARE.COM
+
+

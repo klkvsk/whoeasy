@@ -1,0 +1,15 @@
+
+Domain : galam.tm
+Status : Live
+Expiry : 2033-05-24
+
+NS 1   : ns2.timeweb.ru
+NS 2   : ns3.timeweb.org
+NS 3   : ns1.timeweb.ru
+
+Owner Name    : Haydarguly Hudayberenov
+Owner Addr    : 9mkr.Aytakova st..h9
+Owner Addr    : Ashhabad
+Owner Addr    : TM
+
+

@@ -1,0 +1,53 @@
+{
+    "name": "nic.za",
+    "registrar": {
+        "name": ".ZADNA"
+    },
+    "createdDate": "2017-06-15 07:33:10",
+    "updatedDate": "2019-07-16 10:14:49",
+    "expiresDate": "2999-12-30 22:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.lexsynergy.net"
+        },
+        {
+            "hostname": "ns2.lexsynergy.us"
+        },
+        {
+            "hostname": "ns3.lexsynergy.info"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": ".ZADNA",
+            "organization": ".ZA Domain Name Authority",
+            "email": "dnsadmin@zadna.org.za",
+            "phone": "+27.100203910",
+            "fax": "+27.100203919",
+            "address": "44 Grand Central Blvd Sanofi House Halfway house\nMidrand\nGauteng\n1685\nZA"
+        },
+        {
+            "type": "admin",
+            "name": ".ZADNA",
+            "organization": ".ZA Domain Name Authority",
+            "email": "dnsadmin@zadna.org.za",
+            "phone": "+27.100203910",
+            "fax": "+27.100203919",
+            "address": "44 Grand Central Blvd Sanofi House Halfway house\nMidrand\nGauteng\n1685\nZA"
+        },
+        {
+            "type": "tech",
+            "name": ".ZADNA",
+            "organization": ".ZA Domain Name Authority",
+            "email": "dnsadmin@zadna.org.za",
+            "phone": "+27.100203910",
+            "fax": "+27.100203919",
+            "address": "44 Grand Central Blvd Sanofi House Halfway house\nMidrand\nGauteng\n1685\nZA"
+        }
+    ],
+    "dnssec": "signedDelegation"
+}

@@ -1,0 +1,19 @@
+{
+    "name": "em.co.ua",
+    "createdDate": "2023-09-25 12:47:52",
+    "updatedDate": "2025-08-26 15:47:54",
+    "expiresDate": "2026-09-25 12:47:52",
+    "status": [
+        "clientUpdateProhibited",
+        "clientDeleteProhibited",
+        "clientTransferProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.wphost.me"
+        },
+        {
+            "hostname": "ns2.wphost.me"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+%  By submitting a query to TAEPING's Whois Service
+% you agree to abide by the following terms of use:
+% https://nic.net.ru/whoispol.html
+
+domain:        APTEM.NET.RU
+nserver:       dns1.yandex.net.
+nserver:       dns2.yandex.net.
+state:         REGISTERED, DELEGATED, UNVERIFIED
+person:        Private Person
+registrar:     RU-CENTER-3LVL
+admin-contact: https://www.nic.ru/whois/
+created:       2005-06-21T19:00:00Z
+paid-till:     2026-06-21T21:00:00Z
+free-date:     2026-07-23
+source:        MSK-IX
+
+Last updated on 2026-03-17T00:25:06Z
+

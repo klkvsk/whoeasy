@@ -1,0 +1,43 @@
+{
+    "name": "xn--nsc1b9b0ac6f.xn--2scrj9c",
+    "registrar": {
+        "name": "National Internet Exchange of India",
+        "ianaId": "800113",
+        "url": "www.nixi.in",
+        "abuseEmail": "registry@nixi.in",
+        "abusePhone": "+91.1148202000"
+    },
+    "createdDate": "2021-12-08 08:16:12",
+    "updatedDate": "2026-01-22 08:18:24",
+    "expiresDate": "2026-12-08 08:16:12",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.nixi.in"
+        },
+        {
+            "hostname": "ns-cloud-e1.googledomains.com"
+        },
+        {
+            "hostname": "ns-cloud-e4.googledomains.com"
+        },
+        {
+            "hostname": "ns2.nixi.in"
+        },
+        {
+            "hostname": "ns-cloud-e3.googledomains.com"
+        },
+        {
+            "hostname": "ns-cloud-e2.googledomains.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "address": "Delhi, IN"
+        }
+    ],
+    "dnssec": "signedDelegation"
+}

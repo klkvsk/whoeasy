@@ -1,0 +1,33 @@
+{
+    "name": "196.in-addr.arpa",
+    "nameservers": [
+        {
+            "hostname": "afrinic.authdns.ripe.net"
+        },
+        {
+            "hostname": "ns1.afrinic.net"
+        },
+        {
+            "hostname": "ns2.afrinic.net"
+        },
+        {
+            "hostname": "ns3.afrinic.net"
+        },
+        {
+            "hostname": "ns3.lacnic.net"
+        },
+        {
+            "hostname": "ns4.apnic.net"
+        },
+        {
+            "hostname": "rirns.arin.net"
+        }
+    ],
+    "dnssec": "signedDelegation",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Administered by AFRINIC"
+        }
+    ]
+}

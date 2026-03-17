@@ -1,0 +1,39 @@
+Domain Name: zadna.org.za
+Registry Domain ID: 6m5xa8_DOMAIN-ORG.ZA
+Registrar WHOIS Server: whois.lexsynergy.com
+Registrar URL: https://www.lexsynergy.com
+Updated Date: 2025-06-25T14:51:04Z
+Creation Date: 2004-05-03T11:02:59Z
+Registry Expiry Date: 2026-03-18T08:20:05Z
+Registrar Registration Expiration Date: 2026-03-18T08:20:05Z
+Registrar: Lexsynergy Limited
+Registrar IANA ID: 1466
+Registrar Abuse Contact Email: abuse@lexsynergy.com
+Registrar Abuse Contact Phone: +44.2031370459
+Reseller: 
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Registrant Organization: ZA Domain Name Authority
+Registrant Country: ZA
+Registrant Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Admin Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Tech Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Billing Email: Please contact the RDDS service of the listed Registrar for Registrant, Admin, or Tech contact information.
+Name Server: ns1.lexsynergy.net
+Name Server: ns2.lexsynergy.us
+Name Server: ns3.lexsynergy.info
+DNSSEC: signedDelegation
+
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2026-03-17T00:25:09Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+# --
+
+# For more information on Whois status codes, please visit https://icann.org/epp
+
+# ZARC Complaint/s Procedure and Form: https://zarc.web.za/wp-content/uploads/2025/08/ZA-SLD_Takedown_Policy.docx.pdf
+# The use of this Whois facility is subject to the following terms and
+# conditions. https://zarc.web.za/whois-terms-and-conditions
+# Copyright (c) ZARC 1995-2026
+

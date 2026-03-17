@@ -1,0 +1,33 @@
+{
+    "name": "bizportal.gov.za",
+    "createdDate": "2019-09-11 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns1.is.co.za",
+            "ipv4": "196.4.160.7"
+        },
+        {
+            "hostname": "jupiter.is.co.za",
+            "ipv4": "196.4.160.3"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Companies and Intellectual Properties commission",
+            "address": "77 mentjies Street,theDTI Campus,Pretoria"
+        },
+        {
+            "type": "admin",
+            "name": "Bopape, Solly",
+            "email": "sbopape@cipc.co.za",
+            "address": "P O BOX 429,Sunnyside,Pretoria"
+        },
+        {
+            "type": "tech",
+            "name": "Administrator, DNS",
+            "email": "support@is.co.za",
+            "address": "Private Bag X163,Bryanston,Gauteng"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+
+Domain:
+	gwynedd.llyw.cymru
+
+Registered For:
+	Gwynedd County Council
+
+Domain Owner:
+	Gwynedd County Council
+
+Registered By:
+	Jisc Services Limited
+
+Servers:
+	ns0.gwynedd.gov.uk	
+	ns1.gwynedd.gov.uk	
+	dns0.wnl.net	
+	dns1.wnl.net	
+
+Registrant Contact:
+	IT Network Team
+
+Registrant Address:
+	Council Offices, Shirehall Street
+	Caernarfon
+	Gwynedd
+	LL55 1SH
+	United Kingdom
+	+44 1286 679114 (Phone)
+	gwyn@gwynedd.llyw.cymru
+
+Renewal date:
+	Sunday 28th Nov 2027
+
+Entry updated:
+	Thursday 28th August 2025
+
+Entry created:
+	Tuesday 28th November 2017
+

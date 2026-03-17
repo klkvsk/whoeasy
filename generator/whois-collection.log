@@ -265,3 +265,86 @@ whois.nic.fast: timeout
 whois.nic.fedex: rate limited
 whois.nic.ferrari: rate limited
 
+2026-03-16 15:10:29
+whois.nic.ac: rate limited
+
+2026-03-16 15:30:59
+whois.nic.ac: rate limited
+
+2026-03-16 15:33:56
+whois.nic.ac: rate limited
+
+2026-03-16 16:23:35
+whois.free.net: Connection timeout to whois.free.net:43 after 10s
+whois.ac.za: Failed to connect to whois.ac.za:43: [101] Network is unreachable
+whois.bnnic.bn: empty response for ubuy.com.bn
+whois.nic.bo: Failed to connect to whois.nic.bo:43: [111] Connection refused
+whois.dot.cf: Failed to connect to whois.dot.cf:43: [111] Connection refused
+whois.co.pl: Connection timeout to whois.co.pl:43 after 10s
+whois.flexireg.net: Connection timeout to whois.flexireg.net:43 after 10s
+whois.nic.dz: Failed to connect to whois.nic.dz:43: [0] php_network_getaddresses: getaddrinfo for whois.nic.dz failed: Name or service not known
+whois.edu.cn: Connection timeout to whois.edu.cn:43 after 10s
+whois.informika.ru: Connection timeout to whois.informika.ru:43 after 10s
+whois.eu.org: Failed to connect to whois.eu.org:43: [101] Network is unreachable
+whois.gov.uk: Failed to connect to whois.gov.uk:43: [0] php_network_getaddresses: getaddrinfo for whois.gov.uk failed: No address associated with hostname
+whois.nic.gp: Connection timeout to whois.nic.gp:43 after 10s
+whois.registry.hm: Failed to connect to whois.registry.hm:43: [111] Connection refused
+whois.cmc.iq: Failed to connect to whois.cmc.iq:43: [0] php_network_getaddresses: getaddrinfo for whois.cmc.iq failed: No address associated with hostname
+whois.nic.ir: Failed to connect to whois.nic.ir:43: [0] php_network_getaddresses: getaddrinfo for whois.nic.ir failed: Temporary failure in name resolution
+whois.nic.lk: Connection timeout to whois.nic.lk:43 after 10s
+whois.nic.mp: Failed to connect to whois.nic.mp:43: [0] php_network_getaddresses: getaddrinfo for whois.nic.mp failed: Name or service not known
+whois.nic.org.mt: Read timeout from whois.nic.org.mt after 10s
+whois.pnina.ps: Failed to connect to whois.pnina.ps:43: [111] Connection refused
+whois.tcinet.ru: Failed to connect to whois.tcinet.ru:43: [101] Network is unreachable
+whois.nic.net.sb: Connection timeout to whois.nic.net.sb:43 after 10s
+whois.sx: Failed to connect to whois.sx:43: [0] php_network_getaddresses: getaddrinfo for whois.sx failed: Name or service not known
+whois.dot.tk: Connection timeout to whois.dot.tk:43 after 10s
+whois.nic.tm: empty response for saral.com.tm
+whois.uk.co: Failed to connect to whois.uk.co:43: [0] php_network_getaddresses: getaddrinfo for whois.uk.co failed: Name or service not known
+whois.nic.org.uy: Connection timeout to whois.nic.org.uy:43 after 10s
+whois.mn: Connection timeout to whois.mn:43 after 10s
+whois.itdc.ge: Connection timeout to whois.itdc.ge:43 after 10s
+whois.dotmasr.eg: Failed to connect to whois.dotmasr.eg:43: [111] Connection refused
+whois.za.net: Failed to connect to whois.za.net:43: [111] Connection refused
+whois.za.org: Failed to connect to whois.za.org:43: [0] php_network_getaddresses: getaddrinfo for whois.za.org failed: No address associated with hostname
+
+2026-03-17 00:27:34
+whois.free.net: Timeout from whois.free.net:43 after 10s (Connection timed out after 10001 milliseconds)
+whois.ac.za: Failed to connect to whois.ac.za:43: Failed to connect to whois.ac.za port 43 after 765 ms: Couldn't connect to server
+whois.bnnic.bn: empty response for ubuy.com.bn
+whois.nic.bo: Failed to connect to whois.nic.bo:43: Failed to connect to whois.nic.bo port 43 after 437 ms: Couldn't connect to server
+whois.dot.cf: Failed to connect to whois.dot.cf:43: Failed to connect to whois.dot.cf port 43 after 456 ms: Couldn't connect to server
+whois.co.pl: Timeout from whois.co.pl:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.flexireg.net: Timeout from whois.flexireg.net:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.nic.dz: Failed to connect to whois.nic.dz:43: Could not resolve host: whois.nic.dz
+whois.edu.cn: Timeout from whois.edu.cn:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.informika.ru: Timeout from whois.informika.ru:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.eu.org: Failed to connect to whois.eu.org:43: Failed to connect to whois.eu.org port 43 after 349 ms: Couldn't connect to server
+whois.nic.gov: Timeout from whois.nic.gov:43 after 10s (Time-out)
+whois.gov.uk: Failed to connect to whois.gov.uk:43: Could not resolve host: whois.gov.uk
+whois.nic.gp: Timeout from whois.nic.gp:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.registry.hm: Failed to connect to whois.registry.hm:43: Failed to connect to whois.registry.hm port 43 after 374 ms: Couldn't connect to server
+whois.cmc.iq: Failed to connect to whois.cmc.iq:43: Could not resolve host: whois.cmc.iq
+whois.nic.ir: Failed to connect to whois.nic.ir:43: Could not resolve host: whois.nic.ir
+whois.nic.lk: Timeout from whois.nic.lk:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.nic.mp: Failed to connect to whois.nic.mp:43: Could not resolve host: whois.nic.mp
+whois.nic.org.mt: Timeout from whois.nic.org.mt:43 after 10s (Time-out)
+whois.pnina.ps: Failed to connect to whois.pnina.ps:43: Failed to connect to whois.pnina.ps port 43 after 228 ms: Couldn't connect to server
+whois.tcinet.ru: Timeout from whois.tcinet.ru:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.nic.net.sb: Timeout from whois.nic.net.sb:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.dot.tk: Timeout from whois.dot.tk:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.nic.tm: empty response for saral.com.tm
+whois.uk.co: Failed to connect to whois.uk.co:43: Could not resolve host: whois.uk.co
+whois.nic.org.uy: Timeout from whois.nic.org.uy:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.mn: Timeout from whois.mn:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.itdc.ge: Timeout from whois.itdc.ge:43 after 10s (Connection timed out after 10000 milliseconds)
+whois.dotmasr.eg: Failed to connect to whois.dotmasr.eg:43: Failed to connect to whois.dotmasr.eg port 43 after 672 ms: Couldn't connect to server
+whois.za.net: Failed to connect to whois.za.net:43: Failed to connect to whois.za.net port 43 after 346 ms: Couldn't connect to server
+whois.za.org: Failed to connect to whois.za.org:43: Could not resolve host: whois.za.org
+
+2026-03-17 00:52:02
+whois.nic.tm: empty response for saral.com.tm
+
+2026-03-17 00:52:32
+whois.nic.tm: empty response for saral.com.tm
+

@@ -1,0 +1,64 @@
+
+Domain ID:872273_PPUA-DRS
+Domain Name:GOROH.PP.UA
+Created On:30-Nov-2018 14:50:34 UTC
+Last Updated On:31-Oct-2025 21:45:04 UTC
+Expiration Date:30-Nov-2026 14:50:34 UTC
+Sponsoring Registrar:NIC.UA LLC (nic-mnt-cunic)
+Status:serverDeleteProhibited
+Registrant ID:NICUA2320205P2VI-CUNIC
+Registrant Name:Ковенько Олексій Анатолійович
+Registrant Organization:
+Registrant Street1:вул. Зодчих 64, кв 3
+Registrant Street2:
+Registrant Street3:
+Registrant City:м. Київ
+Registrant State/Province:
+Registrant Postal Code:03170
+Registrant Country:UA
+Registrant Phone:+380.952755772
+Registrant Fax:
+Registrant Email:kovolexiy@gmail.com
+Admin ID:NICUA2320205P2VI-CUNIC
+Admin Name:<not disclosed>
+Admin Organization:<not disclosed>
+Admin Street1:<not disclosed>
+Admin Street2:<not disclosed>
+Admin Street3:<not disclosed>
+Admin City:<not disclosed>
+Admin State/Province:<not disclosed>
+Admin Postal Code:<not disclosed>
+Admin Country:<not disclosed>
+Admin Phone:<not disclosed>
+Admin Fax:<not disclosed>
+Admin Email:<not disclosed>
+Billing ID:NICUA2320205P2VI-CUNIC
+Billing Name:<not disclosed>
+Billing Organization:<not disclosed>
+Billing Street1:<not disclosed>
+Billing Street2:<not disclosed>
+Billing Street3:<not disclosed>
+Billing City:<not disclosed>
+Billing State/Province:<not disclosed>
+Billing Postal Code:<not disclosed>
+Billing Country:<not disclosed>
+Billing Phone:<not disclosed>
+Billing Fax:<not disclosed>
+Billing Email:<not disclosed>
+Tech ID:NICUA2320205P2VI-CUNIC
+Tech Name:<not disclosed>
+Tech Organization:<not disclosed>
+Tech Street1:<not disclosed>
+Tech Street2:<not disclosed>
+Tech Street3:<not disclosed>
+Tech City:<not disclosed>
+Tech State/Province:<not disclosed>
+Tech Postal Code:<not disclosed>
+Tech Country:<not disclosed>
+Tech Phone:<not disclosed>
+Tech Fax:<not disclosed>
+Tech Email:<not disclosed>
+Name Server:PABLO.NS.CLOUDFLARE.COM
+Name Server:NINA.NS.CLOUDFLARE.COM
+
+

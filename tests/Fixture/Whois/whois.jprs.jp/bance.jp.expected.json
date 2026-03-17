@@ -3,6 +3,9 @@
     "createdDate": "2024-02-29 00:00:00",
     "expiresDate": "2027-02-28 00:00:00",
     "updatedDate": "2026-03-01 01:05:03",
+    "status": [
+        "Active"
+    ],
     "nameservers": [
         {
             "hostname": "03.dnsv.jp"
@@ -15,6 +18,12 @@
         },
         {
             "hostname": "04.dnsv.jp"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "email": "proxy@whoisprotectservice.com"
         }
     ]
 }

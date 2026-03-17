@@ -1,0 +1,54 @@
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+domain:       IN-ADDR.ARPA
+
+organisation: Internet Architecture Board (IAB)
+address:      c/o IETF Administration LLC
+address:      1000 N. West St.
+address:      Suite 1200
+address:      Wilmington Delaware 19801
+address:      United States
+
+contact:      administrative
+name:         Internet Architecture Board (IAB)
+organisation: Internet Architecture Board (IAB)
+address:      c/o IETF Administration LLC
+address:      1000 N. West St.
+address:      Suite 1200
+address:      Wilmington Delaware 19801
+address:      United States
+phone:        +1 510 492 4080
+fax-no:       +1 510 492 4001
+e-mail:       iab@iab.org
+
+contact:      technical
+name:         Internet Assigned Numbers Authority (IANA)
+organisation: Internet Corporation for Assigned Names and Numbers (ICANN)
+address:      12025 Waterfront Drive
+address:      Suite 300
+address:      Los Angeles California 90094
+address:      US
+phone:        +1 310 301 5800
+fax-no:       +1 310 823 8649
+e-mail:       tld-contact@iana.org
+
+nserver:      A.IN-ADDR-SERVERS.ARPA 199.180.182.53 2620:37:e000::53
+nserver:      B.IN-ADDR-SERVERS.ARPA 199.253.183.183 2001:500:87:0:0:0:0:87
+nserver:      C.IN-ADDR-SERVERS.ARPA 196.216.169.10 2001:43f8:110::10
+nserver:      D.IN-ADDR-SERVERS.ARPA 200.10.60.53 2001:13c7:7010::53
+nserver:      E.IN-ADDR-SERVERS.ARPA 2001:dd8:6::101 203.119.86.101
+nserver:      F.IN-ADDR-SERVERS.ARPA 193.0.9.1 2a13:27c0:30::1
+ds-rdata:     53696 8 2 13E5501C56B20394DA921B51412D48B7089C5EB6957A7C58553C4D4D424F04DF
+ds-rdata:     47054 8 2 5CAFCCEC201D1933B4C9F6A9C8F51E51F3B39979058AC21B8DF1B1F281CBC6F2
+ds-rdata:     63982 8 2 AAF4FB5D213EF25AE44679032EBE3514C487D7ABD99D7F5FEC3383D030733C73
+ds-rdata:     54956 8 2 E0E2BF5CFBD66572CA05EC18267D91509BA6A9405AF05C3FD4141DFA45200C08
+
+remarks:      This domain is administered as part of the .ARPA zone
+remarks:      management, described at https://iana.org/domains/arpa
+
+created:      1994-09-27
+changed:      2025-07-10
+source:       IANA
+

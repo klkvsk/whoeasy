@@ -1,0 +1,48 @@
+
+Domain:
+	ed.ac.uk
+
+Registered For:
+	The University of Edinburgh
+
+Domain Owner:
+	University of Edinburgh
+
+Registered By:
+	Jisc Services Limited
+
+Servers:
+	cancer.ucs.ed.ac.uk	129.215.166.13
+	cancer.ucs.ed.ac.uk	129.215.200.7
+	lewis.ucs.ed.ac.uk	129.215.146.5
+	lewis.ucs.ed.ac.uk	129.215.70.239
+	xlab-0.ed.ac.uk	129.215.168.33
+	cancer.ucs.ed.ac.uk	2001:630:3c1:400a::21
+	cancer.ucs.ed.ac.uk	2001:630:3c1:400a::23
+	lewis.ucs.ed.ac.uk	2001:630:3c1:400a::22
+	lewis.ucs.ed.ac.uk	2001:630:3c1:400a::24
+
+Registrant Contact:
+	University of Edinburgh Hostmaster
+
+Registrant Address:
+	IT Infrastructure Div.
+	Communications Infrastructure Services
+	Argyle House, 3 Lady Lawson Street
+	Edinburgh
+	City of Edinburgh
+	EH3 9DR
+	United Kingdom
+	+44 131 650 4933 (Phone)
+	+44 131 650 6552 (FAX)
+	hostmaster@ed.ac.uk
+
+Renewal date:
+	Thursday 23rd Mar 2028
+
+Entry updated:
+	Tuesday 23rd December 2025
+
+Entry created:
+	Tuesday 14th October 2003
+

@@ -1,0 +1,33 @@
+{
+    "name": "gwynedd.llyw.cymru",
+    "registrar": {
+        "name": "Jisc Services Limited"
+    },
+    "createdDate": "2017-11-28 00:00:00",
+    "updatedDate": "2025-08-28 00:00:00",
+    "expiresDate": "2027-11-28 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns0.gwynedd.gov.uk"
+        },
+        {
+            "hostname": "ns1.gwynedd.gov.uk"
+        },
+        {
+            "hostname": "dns0.wnl.net"
+        },
+        {
+            "hostname": "dns1.wnl.net"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "IT Network Team",
+            "organization": "Gwynedd County Council",
+            "email": "gwyn@gwynedd.llyw.cymru",
+            "phone": "+44 1286 679114",
+            "address": "Council Offices, Shirehall Street\nCaernarfon\nGwynedd\nLL55 1SH\nUnited Kingdom"
+        }
+    ]
+}

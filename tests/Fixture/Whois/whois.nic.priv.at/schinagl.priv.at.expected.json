@@ -1,0 +1,22 @@
+{
+    "name": "schinagl.priv.at",
+    "updatedDate": "2017-03-23 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns1.easyname.eu"
+        },
+        {
+            "hostname": "ns2.easyname.eu"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Hermann Schinagl",
+            "email": "Hermann.Schinagl@gmx.net",
+            "phone": "+43 316 698 053",
+            "fax": "+43 316 695 031",
+            "address": "Hub 156\nA-8046 Stattegg\nAustria"
+        }
+    ]
+}

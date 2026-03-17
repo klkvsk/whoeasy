@@ -1,0 +1,26 @@
+{
+    "name": "eryri.gov.wales",
+    "registrar": {
+        "name": "Net-Work"
+    },
+    "createdDate": "2024-11-27 00:00:00",
+    "expiresDate": "2026-11-27 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns1.uk.net-work.net"
+        },
+        {
+            "hostname": "ns1.us.net-work.net"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Awdurdod y Parc Cenedlaethol",
+            "organization": "Eryri National Park Authority",
+            "email": "parc@eryri.llyw.cymru",
+            "phone": "+441766 770274",
+            "address": "Swyddfa'r Parc Cenedlaethol, Gwynedd, LL48 6LF, United Kingdom"
+        }
+    ]
+}

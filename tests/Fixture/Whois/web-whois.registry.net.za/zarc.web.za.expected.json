@@ -1,0 +1,36 @@
+{
+    "name": "zarc.web.za",
+    "registrar": {
+        "name": "System Registrar",
+        "abuseEmail": "info@dnservices.co.za",
+        "abusePhone": "+27.113140077"
+    },
+    "createdDate": "2022-07-19 15:53:29",
+    "updatedDate": "2025-08-14 08:50:39",
+    "expiresDate": "2099-12-31 00:00:00",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns2.host-h.net"
+        },
+        {
+            "hostname": "ns1.dns-h.com"
+        },
+        {
+            "hostname": "ns1.host-h.net"
+        },
+        {
+            "hostname": "ns2.dns-h.com"
+        }
+    ],
+    "dnssec": "unsigned",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "DNS Africa Ltd",
+            "address": "MU"
+        }
+    ]
+}

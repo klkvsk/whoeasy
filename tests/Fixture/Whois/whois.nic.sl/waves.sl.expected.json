@@ -1,0 +1,42 @@
+{
+    "name": "waves.sl",
+    "registrar": {
+        "name": "nicsl"
+    },
+    "createdDate": "2021-11-08 16:02:14",
+    "expiresDate": "2025-11-08 05:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns3.inmotionhosting.com"
+        },
+        {
+            "hostname": "ns4.inmotionhosting.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Sheku Koroma",
+            "organization": "Idt Labs",
+            "email": "skoroma@idtlabs.xyz",
+            "phone": "+232.77772772",
+            "address": "6 Woodland Estate\nCongo Cross\nFreetown\nWestern Area\n00232\nSL"
+        },
+        {
+            "type": "admin",
+            "name": "Sheku Koroma",
+            "organization": "Idt Labs",
+            "email": "skoroma@idtlabs.xyz",
+            "phone": "+232.77772772",
+            "address": "6 Woodland Estate\nCongo Cross\nFreetown\nWestern Area\n00232\nSL"
+        },
+        {
+            "type": "tech",
+            "name": "Sheku Koroma",
+            "organization": "Idt Labs",
+            "email": "skoroma@idtlabs.xyz",
+            "phone": "+232.77772772",
+            "address": "6 Woodland Estate\nCongo Cross\nFreetown\nWestern Area\n00232\nSL"
+        }
+    ]
+}

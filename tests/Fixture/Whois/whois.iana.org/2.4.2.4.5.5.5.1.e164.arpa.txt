@@ -1,0 +1,45 @@
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+domain:       E164.ARPA
+
+organisation: Internet Architecture Board (IAB)
+address:      c/o IETF Administration LLC
+address:      1000 N. West St.
+address:      Suite 1200
+address:      Wilmington DE 19801
+address:      United States
+
+contact:      administrative
+name:         Internet Architecture Board (IAB)
+organisation: Internet Architecture Board (IAB)
+address:      c/o IETF Administration LLC
+address:      1000 N. West St.
+address:      Suite 1200
+address:      Wilmington DE 19801
+address:      United States
+phone:        +1 510 492 4080
+fax-no:       +1 510 492 4001
+e-mail:       iab@iab.org
+
+contact:      technical
+name:         RIPE NCC DNS Services
+organisation: RIPE Network Coordination Centre (NCC)
+address:      Stationsplein 11
+address:      Amsterdam  1012 AB
+address:      The Netherlands
+phone:        +31 20 535 4444
+e-mail:       dns@ripe.net
+
+nserver:      NS3.AFRINIC.NET
+nserver:      NS3.LACNIC.NET
+nserver:      NS4.APNIC.NET
+nserver:      PRI.AUTHDNS.RIPE.NET
+nserver:      RIRNS.ARIN.NET
+ds-rdata:     38525 13 2 20E0FA2851402B42B046407524932FF7B6A0691368B0E1C6CAA0774816F37FB7
+
+created:      2000-09-14
+changed:      2025-04-01
+source:       IANA
+

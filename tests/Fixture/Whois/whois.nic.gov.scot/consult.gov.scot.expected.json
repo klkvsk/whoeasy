@@ -1,0 +1,42 @@
+{
+    "name": "consult.gov.scot",
+    "registrar": {
+        "name": "Com Laude"
+    },
+    "createdDate": "2016-02-01 00:00:00",
+    "updatedDate": "2025-12-11 00:00:00",
+    "expiresDate": "2028-02-01 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns0.demysdns.net"
+        },
+        {
+            "hostname": "ns1.demysdns.net"
+        },
+        {
+            "hostname": "ns6.demysdns.co.uk"
+        },
+        {
+            "hostname": "ns4.demysdns.co.uk"
+        },
+        {
+            "hostname": "ns2.demysdns.net"
+        },
+        {
+            "hostname": "ns5.demysdns.co.uk"
+        },
+        {
+            "hostname": "ns3.demysdns.net"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "William Paul",
+            "organization": "The Scottish Government",
+            "email": "william.paul@gov.scot",
+            "phone": "+44 131 244 2676",
+            "address": "St Andrew's House, Regent Street, Edinburgh, EH11 3DG, United Kingdom"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "name": "ed.ac.uk",
+    "registrar": {
+        "name": "Jisc Services Limited"
+    },
+    "createdDate": "2003-10-14 00:00:00",
+    "updatedDate": "2025-12-23 00:00:00",
+    "expiresDate": "2028-03-23 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "cancer.ucs.ed.ac.uk",
+            "ipv4": "129.215.166.13",
+            "ipv6": "2001:630:3c1:400a::21"
+        },
+        {
+            "hostname": "lewis.ucs.ed.ac.uk",
+            "ipv4": "129.215.146.5",
+            "ipv6": "2001:630:3c1:400a::22"
+        },
+        {
+            "hostname": "xlab-0.ed.ac.uk",
+            "ipv4": "129.215.168.33"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "University of Edinburgh Hostmaster",
+            "organization": "University of Edinburgh",
+            "email": "hostmaster@ed.ac.uk",
+            "phone": "+44 131 650 4933",
+            "fax": "+44 131 650 6552",
+            "address": "IT Infrastructure Div.\nCommunications Infrastructure Services\nArgyle House, 3 Lady Lawson Street\nEdinburgh\nCity of Edinburgh\nEH3 9DR\nUnited Kingdom"
+        }
+    ]
+}

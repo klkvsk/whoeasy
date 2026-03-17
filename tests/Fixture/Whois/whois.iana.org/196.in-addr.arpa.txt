@@ -1,0 +1,24 @@
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+domain:       196.in-addr.arpa
+
+organisation: Administered by AFRINIC
+
+nserver:      afrinic.authdns.ripe.net.
+nserver:      ns1.afrinic.net.
+nserver:      ns2.afrinic.net.
+nserver:      ns3.afrinic.net.
+nserver:      ns3.lacnic.net.
+nserver:      ns4.apnic.net.
+nserver:      rirns.arin.net.
+ds-rdata:     38167 8 2 f7d7feb0d8237c7c1cd961a1382796fd6515de8b141900a9a441383dcbcf6898
+ds-rdata:     9466 8 2 7d6aecf844d0d55a8687a8ae6e7c35d318de2d9365d1f080229621198d3327a8
+
+whois:        whois.afrinic.net
+
+changed:      1993-05
+changed:      2025-12-10
+source:       IANA
+

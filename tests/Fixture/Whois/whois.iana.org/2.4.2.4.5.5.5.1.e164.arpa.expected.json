@@ -1,0 +1,46 @@
+{
+    "name": "e164.arpa",
+    "createdDate": "2000-09-14 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns3.afrinic.net"
+        },
+        {
+            "hostname": "ns3.lacnic.net"
+        },
+        {
+            "hostname": "ns4.apnic.net"
+        },
+        {
+            "hostname": "pri.authdns.ripe.net"
+        },
+        {
+            "hostname": "rirns.arin.net"
+        }
+    ],
+    "dnssec": "signedDelegation",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Internet Architecture Board (IAB)",
+            "address": "c/o IETF Administration LLC, 1000 N. West St., Suite 1200, Wilmington DE 19801, United States"
+        },
+        {
+            "type": "admin",
+            "name": "Internet Architecture Board (IAB)",
+            "organization": "Internet Architecture Board (IAB)",
+            "email": "iab@iab.org",
+            "phone": "+1 510 492 4080",
+            "fax": "+1 510 492 4001",
+            "address": "c/o IETF Administration LLC, 1000 N. West St., Suite 1200, Wilmington DE 19801, United States"
+        },
+        {
+            "type": "tech",
+            "name": "RIPE NCC DNS Services",
+            "organization": "RIPE Network Coordination Centre (NCC)",
+            "email": "dns@ripe.net",
+            "phone": "+31 20 535 4444",
+            "address": "Stationsplein 11, Amsterdam  1012 AB, The Netherlands"
+        }
+    ]
+}

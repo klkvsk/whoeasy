@@ -1,0 +1,17 @@
+{
+    "name": "ves.biz.ua",
+    "createdDate": "2009-12-17 13:32:25",
+    "updatedDate": "2025-08-19 15:31:23",
+    "expiresDate": "2027-12-17 13:32:25",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "brenna.ns.cloudflare.com"
+        },
+        {
+            "hostname": "jerry.ns.cloudflare.com"
+        }
+    ]
+}

@@ -29,7 +29,7 @@ if (!is_dir($fixtureDir)) {
 
 // Parse CLI args
 $limit = null;
-$delay = 500; // ms between queries
+$delay = 100; // ms between queries
 $force = false;
 $proxyUri = null;
 $filterTld = null;
@@ -55,7 +55,7 @@ foreach ($argv as $arg) {
     }
 }
 
-$client = new WhoisClient(timeout: 10, proxyUri: $proxyUri);
+$client = new WhoisClient(timeout: 3, proxyUri: $proxyUri);
 $tlds = TldServers::data();
 
 if ($filterTld !== null) {
@@ -95,8 +95,6 @@ foreach ($tlds as $tld => $info) {
         'sample' => $sample,
     ];
 }
-
-var_dump($serverSamples['whois.iana.org']) ; die();
 
 /**
  * Generate a random non-existent domain for a given TLD.
@@ -180,7 +178,6 @@ foreach ($serverSamples as $server => $info) {
             echo "EMPTY";
             $stats['failed']++;
             $failures[] = "$server: empty response for $sample";
-            saveFixture($fixtureDir, $server, 'error.txt', $response);
         } elseif (WhoisClient::isRateLimited(WhoisClient::stripBoilerplate($response))) {
             echo "RATE LIMITED";
             $stats['rate_limited']++;

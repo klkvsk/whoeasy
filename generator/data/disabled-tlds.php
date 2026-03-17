@@ -7,5 +7,6 @@
  */
 
 return [
-    '.abarth',
+    '.abarth', // revoked
+    '.fed.us', // whois.nic.gov does not work for this TLD
 ];

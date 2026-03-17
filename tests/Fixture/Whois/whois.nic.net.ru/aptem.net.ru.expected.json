@@ -1,0 +1,21 @@
+{
+    "name": "aptem.net.ru",
+    "registrar": {
+        "name": "RU-CENTER-3LVL"
+    },
+    "createdDate": "2005-06-21 19:00:00",
+    "expiresDate": "2026-06-21 21:00:00",
+    "status": [
+        "REGISTERED",
+        "DELEGATED",
+        "UNVERIFIED"
+    ],
+    "nameservers": [
+        {
+            "hostname": "dns1.yandex.net"
+        },
+        {
+            "hostname": "dns2.yandex.net"
+        }
+    ]
+}

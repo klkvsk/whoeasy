@@ -1,0 +1,62 @@
+{
+    "name": "in-addr.arpa",
+    "createdDate": "1994-09-27 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "a.in-addr-servers.arpa",
+            "ipv4": "199.180.182.53",
+            "ipv6": "2620:37:e000::53"
+        },
+        {
+            "hostname": "b.in-addr-servers.arpa",
+            "ipv4": "199.253.183.183",
+            "ipv6": "2001:500:87::87"
+        },
+        {
+            "hostname": "c.in-addr-servers.arpa",
+            "ipv4": "196.216.169.10",
+            "ipv6": "2001:43f8:110::10"
+        },
+        {
+            "hostname": "d.in-addr-servers.arpa",
+            "ipv4": "200.10.60.53",
+            "ipv6": "2001:13c7:7010::53"
+        },
+        {
+            "hostname": "e.in-addr-servers.arpa",
+            "ipv4": "203.119.86.101",
+            "ipv6": "2001:dd8:6::101"
+        },
+        {
+            "hostname": "f.in-addr-servers.arpa",
+            "ipv4": "193.0.9.1",
+            "ipv6": "2a13:27c0:30::1"
+        }
+    ],
+    "dnssec": "signedDelegation",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Internet Architecture Board (IAB)",
+            "address": "c/o IETF Administration LLC, 1000 N. West St., Suite 1200, Wilmington Delaware 19801, United States"
+        },
+        {
+            "type": "admin",
+            "name": "Internet Architecture Board (IAB)",
+            "organization": "Internet Architecture Board (IAB)",
+            "email": "iab@iab.org",
+            "phone": "+1 510 492 4080",
+            "fax": "+1 510 492 4001",
+            "address": "c/o IETF Administration LLC, 1000 N. West St., Suite 1200, Wilmington Delaware 19801, United States"
+        },
+        {
+            "type": "tech",
+            "name": "Internet Assigned Numbers Authority (IANA)",
+            "organization": "Internet Corporation for Assigned Names and Numbers (ICANN)",
+            "email": "tld-contact@iana.org",
+            "phone": "+1 310 301 5800",
+            "fax": "+1 310 823 8649",
+            "address": "12025 Waterfront Drive, Suite 300, Los Angeles California 90094, US"
+        }
+    ]
+}
