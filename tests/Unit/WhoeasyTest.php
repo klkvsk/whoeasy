@@ -14,12 +14,14 @@ class WhoeasyTest extends TestCase
     public function testCreateWithDefaults(): void
     {
         $whoeasy = Whoeasy::create();
-        $defaults = $whoeasy->getDefaultOptions();
+        $options = $whoeasy->getDefaultOptions();
 
-        $this->assertNull($defaults->mode);
-        $this->assertNull($defaults->proxyUri);
-        $this->assertNull($defaults->whoisTimeout);
-        $this->assertNull($defaults->rdapTimeout);
+        $this->assertEquals(QueryOptions::DEFAULT_MODE, $options->mode);
+        $this->assertNull($options->proxyUri);
+        $this->assertEquals(QueryOptions::DEFAULT_TIMEOUT, $options->whoisTimeout);
+        $this->assertEquals(QueryOptions::DEFAULT_TIMEOUT, $options->rdapTimeout);
+        $this->assertEquals(QueryOptions::DEFAULT_MAX_REFERRALS, $options->maxReferrals);
+        $this->assertEquals(QueryOptions::DEFAULT_RECURSIVE, $options->recursive);
     }
 
     public function testCreateWithCustomOptions(): void

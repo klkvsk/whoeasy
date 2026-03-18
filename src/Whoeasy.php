@@ -124,41 +124,15 @@ class Whoeasy
     {
         $whois = $this->executeWhois($input, $options);
 
-        if ($whois->info === null) {
-            throw new ClientException("WHOIS query failed for: $input");
-        }
-
         return new QueryResult(
             info: $whois->info,
             whois: $whois,
         );
     }
 
-    protected function queryPreferWhois(string $input, QueryOptions $options): QueryResult
-    {
-        try {
-            return $this->queryWhoisOnly($input, $options);
-        } catch (\Throwable) {
-            return $this->queryRdapOnly($input, $options);
-        }
-    }
-
-    protected function queryPreferRdap(string $input, QueryOptions $options): QueryResult
-    {
-        try {
-            return $this->queryRdapOnly($input, $options);
-        } catch (\Throwable) {
-            return $this->queryWhoisOnly($input, $options);
-        }
-    }
-
     protected function queryRdapOnly(string $input, QueryOptions $options): QueryResult
     {
         $rdap = $this->executeRdap($input, $options);
-
-        if ($rdap->info === null) {
-            throw new ClientException("RDAP query failed for: $input");
-        }
 
         return new QueryResult(
             info: $rdap->info,
@@ -166,27 +140,62 @@ class Whoeasy
         );
     }
 
+    protected function queryPreferWhois(string $input, QueryOptions $options): QueryResult
+    {
+        $whois = $this->executeWhois($input, $options);
+
+        // If WHOIS succeeded or result is NotFound, don't try RDAP
+        if ($whois->info !== null || $this->hasNotFoundError($whois)) {
+            return new QueryResult(info: $whois->info, whois: $whois);
+        }
+
+        // WHOIS failed with non-NotFound error — try RDAP as fallback
+        $rdap = $this->executeRdap($input, $options);
+
+        return new QueryResult(
+            info: $rdap->info ?? $whois->info,
+            whois: $whois,
+            rdap: $rdap,
+        );
+    }
+
+    protected function queryPreferRdap(string $input, QueryOptions $options): QueryResult
+    {
+        $rdap = $this->executeRdap($input, $options);
+
+        // If RDAP succeeded or result is NotFound, don't try WHOIS
+        if ($rdap->info !== null || $this->hasNotFoundError($rdap)) {
+            return new QueryResult(info: $rdap->info, rdap: $rdap);
+        }
+
+        // RDAP failed with non-NotFound error — try WHOIS as fallback
+        $whois = $this->executeWhois($input, $options);
+
+        return new QueryResult(
+            info: $whois->info ?? $rdap->info,
+            whois: $whois,
+            rdap: $rdap,
+        );
+    }
+
     protected function queryBoth(string $input, QueryOptions $options): QueryResult
     {
-        $whois = null;
-        $rdap = null;
+        $whois = $this->executeWhois($input, $options);
 
-        try {
-            $whois = $this->executeWhois($input, $options);
-        } catch (\Throwable) {
+        // If WHOIS says NotFound, don't bother with RDAP
+        if ($this->hasNotFoundError($whois)) {
+            return new QueryResult(info: $whois->info, whois: $whois);
         }
 
-        try {
-            $rdap = $this->executeRdap($input, $options);
-        } catch (\Throwable) {
+        $rdap = $this->executeRdap($input, $options);
+
+        // If RDAP says NotFound, return WHOIS result only
+        if ($this->hasNotFoundError($rdap)) {
+            return new QueryResult(info: $whois->info, whois: $whois, rdap: $rdap);
         }
 
-        $whoisInfo = $whois?->info;
-        $rdapInfo = $rdap?->info;
-
-        if ($whoisInfo === null && $rdapInfo === null) {
-            throw new ClientException("Both WHOIS and RDAP queries failed for: $input");
-        }
+        $whoisInfo = $whois->info;
+        $rdapInfo = $rdap->info;
 
         if ($rdapInfo !== null && $whoisInfo !== null) {
             $merged = $this->resultMerger->merge($rdapInfo, $whoisInfo);
@@ -202,6 +211,19 @@ class Whoeasy
     }
 
     /**
+     * Check if a protocol result has a NotFoundException in any hop.
+     */
+    private function hasNotFoundError(ProtocolResult $result): bool
+    {
+        foreach ($result->hops as $hop) {
+            if ($hop->error instanceof NotFoundException) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Execute WHOIS query chain (with optional referral following).
      */
     private function executeWhois(string $input, QueryOptions $options): ProtocolResult
@@ -214,7 +236,14 @@ class Whoeasy
         }
 
         if (!$serverInfo->hasWhois()) {
-            throw new ClientException("No WHOIS server available for: $input");
+            $hop = new WhoisHop(
+                server: '(none)',
+                query: $input,
+                rawText: '',
+                info: null,
+                error: new ClientException("No WHOIS server available for: $input"),
+            );
+            return new ProtocolResult(info: null, hops: [$hop]);
         }
 
         $hops = [];
@@ -332,7 +361,16 @@ class Whoeasy
         $serverInfo = $this->registry->resolve($input);
 
         if (!$serverInfo->hasRdap()) {
-            throw new ClientException("No RDAP server available for: $input");
+            $hop = new RdapHop(
+                server: '(none)',
+                query: $input,
+                url: '',
+                json: null,
+                rawBody: '',
+                info: null,
+                error: new ClientException("No RDAP server available for: $input"),
+            );
+            return new ProtocolResult(info: null, hops: [$hop]);
         }
 
         $rdapClient = new RdapClient(
@@ -341,9 +379,8 @@ class Whoeasy
         );
 
         $hops = [];
-        $currentUrl = $serverInfo->rdapUrl;
+        $currentUrl = $rdapClient->createUrl($serverInfo->rdapUrl, $input, $serverInfo->queryType);
         $visited = [];
-        $isFirstHop = true;
 
         for ($hopIndex = 0; $hopIndex <= $options->maxReferrals; $hopIndex++) {
             if (in_array($currentUrl, $visited, true)) {
@@ -359,16 +396,11 @@ class Whoeasy
             $url = $currentUrl;
 
             try {
-                if ($isFirstHop) {
-                    $json = $rdapClient->query($currentUrl, $input, $serverInfo->queryType);
-                    $isFirstHop = false;
-                } else {
-                    $json = $rdapClient->queryUrl($currentUrl);
-                }
+                $json = $rdapClient->queryUrl($currentUrl);
                 $rawBody = json_encode($json, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?: '';
 
                 try {
-                    $info = $this->rdapParser->parse($json, $serverInfo->queryType);
+                    $info = $this->rdapParser->parse($json);
                 } catch (\Throwable $parseError) {
                     $error = $parseError;
                 }
