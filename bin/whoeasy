@@ -19,12 +19,17 @@ return new class($argv) {
     const FLAGS = [
             'v' => 'verbose',
             'h' => 'help',
+            'F' => 'full',
+            'r' => 'recursive',
     ];
     const OPTIONS = [
             's' => 'server',
-            'f' => 'format',
             'p' => 'proxy',
             'm' => 'mode',
+    ];
+    // Long flags that negate a flag (--no-recursive sets recursive=false)
+    const NEGATED_FLAGS = [
+            'no-recursive' => 'recursive',
     ];
 
     public function __construct(
@@ -58,7 +63,6 @@ return new class($argv) {
                 }
             }
 
-            $format = $args['format'] ?? 'result';
             $target = $args[0] ?? null;
             if (!$target) {
                 throw new InvalidArgumentException('Target query is not specified');
@@ -66,12 +70,15 @@ return new class($argv) {
 
             $whoeasy = Whoeasy::create();
 
+            $recursive = $args['recursive'] ?? QueryOptions::DEFAULT_RECURSIVE;
+
             $result = $whoeasy->query(
-                $target,
-                new QueryOptions(
-                    mode: $mode,
-                    proxyUri: $proxyAddress,
-                ),
+                    $target,
+                    new QueryOptions(
+                            mode: $mode,
+                            proxyUri: $proxyAddress,
+                            recursive: $recursive,
+                    ),
             );
 
             if ($this->verbose) {
@@ -84,7 +91,7 @@ return new class($argv) {
                 }
                 if ($result->rdap !== null) {
                     foreach ($result->rdap->hops as $i => $hop) {
-                        fwrite(STDERR, "## rdap[{$i}]: {$hop->server} -> {$hop->query}\n");
+                        fwrite(STDERR, "## rdap[{$i}]: {$hop->url}\n");
                     }
                 }
                 if ($proxyAddress) {
@@ -92,17 +99,40 @@ return new class($argv) {
                 }
             }
 
-            $output = match ($format) {
-                'r', 'result' => json_encode(
-                        $result->info->toArray(),
-                        JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR,
-                ),
-                'w', 'raw'    => $this->getRawText($result),
-                'j', 'json'   => $this->getRdapJson($result),
-                default       => throw new InvalidArgumentException('Unknown format: ' . $format),
-            };
+            $outputData = $args['full']
+                    ? $result->toArray()
+                    : ($result->info?->toArray());
 
-            echo $output . PHP_EOL;
+            if (!$outputData) {
+                if ($result->isNotFound()) {
+                    echo "Not found" . PHP_EOL;
+                } else if ($result->hasRetryableErrors()) {
+                    echo "Retryable error" . PHP_EOL;
+                } else {
+                    echo "Error" . PHP_EOL;
+                }
+            } else {
+                echo json_encode(
+                                $outputData,
+                                JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR,
+                        ) . PHP_EOL;
+            }
+
+            // Print hop errors to stderr
+            if ($result->whois !== null) {
+                foreach ($result->whois->hops as $i => $hop) {
+                    if ($hop->error !== null) {
+                        fwrite(STDERR, "# Error in WHOIS hop #{$i}: {$hop->error->getMessage()}\n");
+                    }
+                }
+            }
+            if ($result->rdap !== null) {
+                foreach ($result->rdap->hops as $i => $hop) {
+                    if ($hop->error !== null) {
+                        fwrite(STDERR, "# Error in RDAP hop #{$i}: {$hop->error->getMessage()}\n");
+                    }
+                }
+            }
 
         } catch (\InvalidArgumentException $e) {
             fwrite(STDERR, $e->getMessage() . PHP_EOL);
@@ -117,36 +147,6 @@ return new class($argv) {
         }
     }
 
-    private function getRawText(\Klkvsk\Whoeasy\Result\QueryResult $result): string
-    {
-        if ($result->whois !== null) {
-            // Return all hops' raw text, separated by markers
-            $texts = [];
-            foreach ($result->whois->hops as $hop) {
-                $texts[] = "--- {$hop->server} ---\n{$hop->rawText}";
-            }
-            return implode("\n\n", $texts);
-        }
-        if ($result->rdap !== null && ($result->rdap->hops[0] ?? null) !== null) {
-            return $result->rdap->hops[0]->rawBody;
-        }
-        return '(no raw response available)';
-    }
-
-    private function getRdapJson(\Klkvsk\Whoeasy\Result\QueryResult $result): string
-    {
-        if ($result->rdap !== null && ($result->rdap->hops[0] ?? null)?->json !== null) {
-            return json_encode(
-                    $result->rdap->hops[0]->json,
-                    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR,
-            );
-        }
-        if ($result->whois !== null) {
-            return '(no RDAP JSON available, only WHOIS raw text)';
-        }
-        return '(no RDAP JSON available)';
-    }
-
     public function printUsage(): void
     {
         echo "\nUsage:\n";
@@ -155,15 +155,12 @@ return new class($argv) {
         echo "Options:\n";
         echo "  -s, --server <server>    use specified whois server (not yet supported)\n";
         echo "  -p, --proxy <uri>        proxy address (SOCKS5/HTTP)\n";
-        echo "  -f, --format <format>    output format (default: result)\n";
         echo "  -m, --mode <mode>        query mode (default: prefer-rdap)\n";
+        echo "  -r, --recursive          follow referrals [default]\n";
+        echo "      --no-recursive       do not follow referrals\n";
+        echo "  -F, --full               output full result with hops (default: info only)\n";
         echo "  -v, --verbose            show debug output and traces\n";
         echo "  -h, --help               show this message\n";
-        echo "\n";
-        echo "Formats:\n";
-        echo "  r, result   structured result as JSON [default]\n";
-        echo "  w, raw      raw WHOIS/RDAP response text\n";
-        echo "  j, json     raw RDAP JSON response\n";
         echo "\n";
         echo "Modes:\n";
         echo "  prefer-rdap    try RDAP first, fall back to WHOIS [default]\n";
@@ -175,32 +172,85 @@ return new class($argv) {
 
     public function parseArgs(): array
     {
-        $shorts = '';
-        $longs = [];
-        foreach (self::FLAGS as $short => $long) {
-            $shorts .= $short;
-            $longs[] = $long;
-        }
-        foreach (self::OPTIONS as $short => $long) {
-            $shorts .= $short . ":";
-            $longs[] = $long . ":";
-        }
-        $opt = getopt($shorts, $longs);
         $result = [];
-        $args = $this->argv;
-        array_shift($args);
+
+        // Initialize defaults
         foreach (self::FLAGS as $short => $long) {
-            $result[$long] = isset($opt[$short]) || isset($opt[$long]);
-            $args = array_filter($args, fn($arg) => $arg !== "-$short" && $arg !== "--$long");
+            $result[$long] = false;
         }
+        // recursive is special: null = use default, true = -r, false = --no-recursive
+        $result['recursive'] = null;
         foreach (self::OPTIONS as $short => $long) {
-            $value = $opt[$short] ?? $opt[$long] ?? null;
-            $result[$long] = $value;
-            $args = array_filter($args, fn($arg) => $arg !== "-$short" && $arg !== "--$long" && $arg !== $value);
+            $result[$long] = null;
         }
-        foreach ($args as $arg) {
-            $result[] = $arg;
+
+        $args = $this->argv;
+        array_shift($args); // remove script name
+
+        $positional = [];
+        $i = 0;
+        while ($i < count($args)) {
+            $arg = $args[$i];
+
+            // Long option
+            if (str_starts_with($arg, '--')) {
+                $name = substr($arg, 2);
+                // Check flags
+                $flagKey = array_search($name, self::FLAGS, true);
+                if ($flagKey !== false) {
+                    $result[$name] = true;
+                    $i++;
+                    continue;
+                }
+                // Check negated flags (--no-recursive etc.)
+                if (isset(self::NEGATED_FLAGS[$name])) {
+                    $result[self::NEGATED_FLAGS[$name]] = false;
+                    $i++;
+                    continue;
+                }
+                // Check options (with value)
+                $optKey = array_search($name, self::OPTIONS, true);
+                if ($optKey !== false) {
+                    $result[$name] = $args[++$i] ?? null;
+                    $i++;
+                    continue;
+                }
+                throw new InvalidArgumentException("Unknown option: $arg");
+            }
+
+            // Short option(s)
+            if (str_starts_with($arg, '-') && strlen($arg) > 1) {
+                $chars = substr($arg, 1);
+                for ($j = 0; $j < strlen($chars); $j++) {
+                    $ch = $chars[$j];
+                    if (isset(self::FLAGS[$ch])) {
+                        $result[self::FLAGS[$ch]] = true;
+                    } elseif (isset(self::OPTIONS[$ch])) {
+                        // Value is rest of this arg or next arg
+                        $rest = substr($chars, $j + 1);
+                        if ($rest !== '') {
+                            $result[self::OPTIONS[$ch]] = $rest;
+                        } else {
+                            $result[self::OPTIONS[$ch]] = $args[++$i] ?? null;
+                        }
+                        break; // consumed rest of short opts
+                    } else {
+                        throw new InvalidArgumentException("Unknown option: -$ch");
+                    }
+                }
+                $i++;
+                continue;
+            }
+
+            // Positional
+            $positional[] = $arg;
+            $i++;
         }
+
+        foreach ($positional as $idx => $val) {
+            $result[$idx] = $val;
+        }
+
         return $result;
     }
 
