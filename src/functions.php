@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy;
 
+use Klkvsk\Whoeasy\Result\QueryResult;
+
 function ip6prefix2long(string $ip): int|false
 {
     if (!preg_match('/^([a-f0-9]{4}):([a-f0-9]{4})/i', $ip, $m)) {

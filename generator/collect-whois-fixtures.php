@@ -20,6 +20,7 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 use Klkvsk\Whoeasy\Client\Whois\WhoisClient;
+use Klkvsk\Whoeasy\Parser\Whois\WhoisParser;
 use Klkvsk\Whoeasy\Registry\Data\TldServers;
 
 $fixtureDir = __DIR__ . '/../tests/Fixture/Whois';
@@ -178,13 +179,13 @@ foreach ($serverSamples as $server => $info) {
             echo "EMPTY";
             $stats['failed']++;
             $failures[] = "$server: empty response for $sample";
-        } elseif (WhoisClient::isRateLimited(WhoisClient::stripBoilerplate($response))) {
+        } elseif (WhoisParser::isRateLimited($response)) {
             echo "RATE LIMITED";
             $stats['rate_limited']++;
             $rateLimited = true;
             $failures[] = "$server: rate limited";
             saveFixture($fixtureDir, $server, 'ratelimit.txt', $response);
-        } elseif (WhoisClient::isNotSupported(WhoisClient::stripBoilerplate($response))) {
+        } elseif (WhoisParser::isNotSupported($response)) {
             echo "NOT SUPPORTED";
             echo "\n---\n" . $response . "\n---\n";
             $stats['not_supported']++;
@@ -217,7 +218,7 @@ foreach ($serverSamples as $server => $info) {
         try {
             $nxResponse = $client->query($server, $nxdomain, timeout: 10);
 
-            if (WhoisClient::isRateLimited(WhoisClient::stripBoilerplate($nxResponse))) {
+            if (WhoisParser::isRateLimited($nxResponse)) {
                 echo "RATE LIMITED\n";
                 $stats['rate_limited']++;
                 saveFixture($fixtureDir, $server, 'ratelimit.txt', $nxResponse);

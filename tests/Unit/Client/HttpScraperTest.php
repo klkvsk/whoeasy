@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Tests\Unit\Client;
 
-use Klkvsk\Whoeasy\Client\Exception\NotScrapeableException;
 use Klkvsk\Whoeasy\Client\Whois\HttpScraper;
+use Klkvsk\Whoeasy\Exception\NotScrapeableException;
 use PHPUnit\Framework\TestCase;
 
 class HttpScraperTest extends TestCase

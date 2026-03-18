@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy\Parser\Rdap;
 
 use Klkvsk\Whoeasy\Enum\QueryType;
+use Klkvsk\Whoeasy\Exception\NotFoundException;
+use Klkvsk\Whoeasy\Exception\RateLimitException;
+use Klkvsk\Whoeasy\Parser\Exception\ParserException;
 use Klkvsk\Whoeasy\Result\Info\AsnInfo;
 use Klkvsk\Whoeasy\Result\Info\DomainInfo;
 use Klkvsk\Whoeasy\Result\Info\Field\Contact;
@@ -12,18 +15,29 @@ use Klkvsk\Whoeasy\Result\Info\Field\ContactType;
 use Klkvsk\Whoeasy\Result\Info\Field\Nameserver;
 use Klkvsk\Whoeasy\Result\Info\Field\Registrar;
 use Klkvsk\Whoeasy\Result\Info\IpInfo;
-use Klkvsk\Whoeasy\Result\ParserResult;
+use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
 
 /**
- * Parses RDAP JSON responses (RFC 9083) into ParserResult.
+ * Parses RDAP JSON responses (RFC 9083) into structured info.
  */
 class RdapParser
 {
     /**
-     * Parse an RDAP JSON array into a ParserResult.
+     * Parse an RDAP JSON array into structured info.
      */
-    public function parse(array $json, QueryType $queryType): ParserResult
+    public function parse(array $json, QueryType $queryType): AbstractInfo
     {
+        $errorCode = $json['errorCode'] ?? null;
+        if (intval($errorCode) === 404) {
+            throw new NotFoundException("RDAP: nothing found");
+        }
+        if (intval($errorCode) === 429) {
+            throw new RateLimitException("RDAP: rate limit exceeded");
+        }
+        if ($errorCode) {
+            throw new ParserException("RDAP: unknown error: $errorCode");
+        }
+
         $objectClass = $json['objectClassName'] ?? null;
 
         return match ($objectClass) {
@@ -34,7 +48,7 @@ class RdapParser
         };
     }
 
-    private function parseDomain(array $data, QueryType $queryType): ParserResult
+    private function parseDomain(array $data, QueryType $queryType): DomainInfo
     {
         $name = $data['ldhName'] ?? $data['unicodeName'] ?? null;
 
@@ -61,7 +75,7 @@ class RdapParser
         $registrar = null;
         $this->parseEntities($data['entities'] ?? [], $contacts, $registrar);
 
-        $domain = new DomainInfo(
+        return new DomainInfo(
             name: $name,
             registrar: $registrar,
             createdDate: $created?->format('Y-m-d H:i:s'),
@@ -71,14 +85,9 @@ class RdapParser
             nameservers: $nameservers,
             contacts: $contacts,
         );
-
-        return new ParserResult(
-            info: $domain,
-            referralServer: $this->extractReferralUrl($data),
-        );
     }
 
-    private function parseIpNetwork(array $data, QueryType $queryType): ParserResult
+    private function parseIpNetwork(array $data, QueryType $queryType): IpInfo
     {
         $networkName = $data['name'] ?? null;
 
@@ -126,7 +135,7 @@ class RdapParser
         }
         array_push($contacts, ...$otherContacts);
 
-        $ip = new IpInfo(
+        return new IpInfo(
             range: $range,
             networkName: $networkName,
             country: $country,
@@ -134,14 +143,9 @@ class RdapParser
             updatedDate: $changed?->format('Y-m-d H:i:s'),
             contacts: $contacts,
         );
-
-        return new ParserResult(
-            info: $ip,
-            referralServer: $this->extractReferralUrl($data),
-        );
     }
 
-    private function parseAutnum(array $data, QueryType $queryType): ParserResult
+    private function parseAutnum(array $data, QueryType $queryType): AsnInfo
     {
         $startAutnum = $data['startAutnum'] ?? null;
         $asnNumber = $startAutnum !== null ? (int)$startAutnum : null;
@@ -163,17 +167,12 @@ class RdapParser
         }
         array_push($contacts, ...$otherContacts);
 
-        $asn = new AsnInfo(
+        return new AsnInfo(
             asn: $asnNumber,
             name: $name,
             createdDate: $created?->format('Y-m-d H:i:s'),
             updatedDate: $changed?->format('Y-m-d H:i:s'),
             contacts: $contacts,
-        );
-
-        return new ParserResult(
-            info: $asn,
-            referralServer: $this->extractReferralUrl($data),
         );
     }
 
@@ -363,7 +362,7 @@ class RdapParser
     /**
      * Extract referral URL from RFC 9083 links array (rel=related, type=rdap+json).
      */
-    private function extractReferralUrl(array $data): ?string
+    public static function extractReferralUrl(array $data): ?string
     {
         foreach ($data['links'] ?? [] as $link) {
             if (($link['rel'] ?? null) === 'related'

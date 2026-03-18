@@ -23,9 +23,9 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
-use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Client\Rdap\RdapClient;
+use Klkvsk\Whoeasy\Exception\NotFoundException;
+use Klkvsk\Whoeasy\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Registry\Data\TldServers;
 
 $fixtureDir = __DIR__ . '/../tests/Fixture/Rdap';

@@ -1,0 +1,71 @@
+This is JWhoisServer serving ccTLD tld;mq;gf;gp
+Java Whois Server 0.4.1.3    (c) 2006 - 2015 Klaus Zerwes zero-sys.net
+#########################################################################
+# All data copyright of the organization unit running this server!
+# By querying this server, you agree that you :
+#	-may use this data only for lawful purposes;
+#	-will not re-use data for any kind of support
+#	  for the transmission of unsolicited advertising
+#	  via e-mail, telephone, or facsimile;
+#	-will not reproduce and/or store any part of the data
+#	  without prior permission of the copyright holders;
+#	-are aware of and agree to the fact that all access to the
+#	  server is under constant monitoring and will be logged
+#	  for the purpose of prosecution in case of missuse!
+#########################################################################
+
+domain:     stereo.gf
+mntnr:      MNTNR107
+changed:    2025-08-11 00:00:00.0
+nameserver: ns-76.awsdns-09.com
+nameserver: ns-723.awsdns-26.net
+
+[holder]
+mntnr:      MNTNR107
+type:       ORGANISATION
+name:       Vladimir Kornilovski
+address:    5th Floor, 1 Dover Place
+Ashford Commercial Quarter
+pcode:      0
+country:    GB
+phone:      +44.2080769318
+fax:        
+email:      domains@eyelinkmedia.com
+changed:    2026-03-18 04:50:04.0
+
+[admin_c]
+mntnr:      MNTNR107
+type:       ORGANISATION
+name:       Domain Administrator
+address:    4th Floor, 3 Harbourmaster Place, IFSC
+pcode:      D01 K8F1 
+country:    IE
+phone:      +1.7604448674
+fax:        
+email:      domreg@101domain.com
+changed:    2026-03-18 04:50:04.0
+
+[tech_c]
+mntnr:      MNTNR107
+type:       ORGANISATION
+name:       Domain Administrator
+address:    4th Floor, 3 Harbourmaster Place, IFSC
+pcode:      D01 K8F1 
+country:    IE
+phone:      +1.7604448674
+fax:        
+email:      domreg@101domain.com
+changed:    2026-03-18 04:50:04.0
+
+[zone_c]
+mntnr:      MNTNR107
+type:       ORGANISATION
+name:       Domain Administrator
+address:    3220 Executive Ridge Drive Suite 101
+pcode:      92081
+country:    US
+phone:      +1.7604448674
+fax:        +1.7605794996
+email:      domreg@101domain.com
+changed:    2026-03-18 04:50:04.0
+

@@ -20,5 +20,5 @@
 %
 % All rights reserved.
 %
-% WHOIS xq7a2b0824c891zj.lu
-% No such domain
+% WHOIS xq0fd1bd9f6adazj.lu
+%% Maximum query rate reached

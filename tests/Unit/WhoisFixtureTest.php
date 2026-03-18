@@ -57,8 +57,8 @@ class WhoisFixtureTest extends TestCase
         };
 
         $parser = new WhoisParser();
-        $result = $parser->parse($raw, $serverHostname, $queryType);
-        $actual = $result->info->toArray();
+        $info = $parser->parse($raw, $serverHostname, $queryType);
+        $actual = $info->toArray();
 
         // Remove queryType from expected — it's metadata, not part of toArray()
         $compare = $expected;

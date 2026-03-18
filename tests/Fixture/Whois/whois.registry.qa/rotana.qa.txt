@@ -1,0 +1,8 @@
+Domain Name:                     rotana.qa
+Last Modified:                   29-Sep-2025 15:01:46 UTC
+Registrar Name:                  ROUTEDGE
+Status:                          ok
+
+Name Server:                     ns5.nonweiler.com
+Name Server:                     ns6.nonweiler.com
+Name Server:                     ns10.nonweiler.com

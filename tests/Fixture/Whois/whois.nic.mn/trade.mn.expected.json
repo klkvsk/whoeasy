@@ -1,0 +1,57 @@
+{
+    "name": "trade.mn",
+    "registrar": {
+        "name": "Datacom Co., Ltd.",
+        "ianaId": "800036",
+        "url": "https://datacom.mn/",
+        "abuseEmail": "abuse@datacom.mn",
+        "abusePhone": "+976.70000505"
+    },
+    "createdDate": "2013-12-03 02:03:22",
+    "updatedDate": "2025-12-06 10:01:30",
+    "expiresDate": "2026-12-03 02:03:22",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "admi516687.earth.orderbox-dns.com"
+        },
+        {
+            "hostname": "admi516687.mars.orderbox-dns.com"
+        },
+        {
+            "hostname": "admi516687.mercury.orderbox-dns.com"
+        },
+        {
+            "hostname": "admi516687.venus.orderbox-dns.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Munkh-Erdene Burenjargal",
+            "organization": "Digital Exchange Mongolia LLC",
+            "email": "admin@trade.mn",
+            "phone": "+976.99020576",
+            "address": "Khan-Uul district,1th khoroo 5-3, Ulnaanbaatar, MN, 11000, MN"
+        },
+        {
+            "type": "admin",
+            "name": "Munkh-Erdene Burenjargal",
+            "organization": "Digital Exchange Mongolia LLC",
+            "email": "admin@trade.mn",
+            "phone": "+976.99020576",
+            "address": "Khan-Uul district,1th khoroo 5-3, Ulnaanbaatar, MN, 11000, MN"
+        },
+        {
+            "type": "tech",
+            "name": "Munkh-Erdene Burenjargal",
+            "organization": "Digital Exchange Mongolia LLC",
+            "email": "admin@trade.mn",
+            "phone": "+976.99020576",
+            "address": "Khan-Uul district,1th khoroo 5-3, Ulnaanbaatar, MN, 11000, MN"
+        }
+    ],
+    "dnssec": "unsigned"
+}

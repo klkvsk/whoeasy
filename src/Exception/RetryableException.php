@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Client\Exception;
+namespace Klkvsk\Whoeasy\Exception;
 
 interface RetryableException
 {

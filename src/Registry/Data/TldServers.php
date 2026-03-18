@@ -422,7 +422,6 @@ final class TldServers
     '.er' => [null, null],
     '.ericsson' => [null, 'https://rdap.identitydigital.services/rdap/'],
     '.erni' => ['whois.nic.erni', 'https://rdap.nic.erni/'],
-    '.es' => ['whois.nic.es', null],
     '.esq' => [null, 'https://www.registry.google/rdap/'],
     '.estate' => [null, 'https://rdap.identitydigital.services/rdap/'],
     '.et' => [null, null],

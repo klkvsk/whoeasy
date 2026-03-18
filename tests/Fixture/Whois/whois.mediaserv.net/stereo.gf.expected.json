@@ -1,0 +1,35 @@
+{
+    "name": "stereo.gf",
+    "updatedDate": "2025-08-11 00:00:00",
+    "nameservers": [
+        {
+            "hostname": "ns-723.awsdns-26.net"
+        },
+        {
+            "hostname": "ns-76.awsdns-09.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Vladimir Kornilovski",
+            "email": "domains@eyelinkmedia.com",
+            "phone": "+44.2080769318",
+            "address": "5th Floor, 1 Dover Place, Ashford Commercial Quarter, 0, GB"
+        },
+        {
+            "type": "admin",
+            "name": "Domain Administrator",
+            "email": "domreg@101domain.com",
+            "phone": "+1.7604448674",
+            "address": "4th Floor, 3 Harbourmaster Place, IFSC, D01 K8F1, IE"
+        },
+        {
+            "type": "tech",
+            "name": "Domain Administrator",
+            "email": "domreg@101domain.com",
+            "phone": "+1.7604448674",
+            "address": "4th Floor, 3 Harbourmaster Place, IFSC, D01 K8F1, IE"
+        }
+    ]
+}

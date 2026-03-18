@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Parser\Whois;
 
-use Klkvsk\Whoeasy\Client\Whois\WhoisClient;
 use Klkvsk\Whoeasy\Enum\QueryType;
+use Klkvsk\Whoeasy\Exception\NotFoundException;
+use Klkvsk\Whoeasy\Exception\NotSupportedException;
+use Klkvsk\Whoeasy\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Result\Info\AsnInfo;
 use Klkvsk\Whoeasy\Result\Info\DomainInfo;
 use Klkvsk\Whoeasy\Result\Info\Field\Contact;
@@ -13,12 +15,214 @@ use Klkvsk\Whoeasy\Result\Info\Field\ContactType;
 use Klkvsk\Whoeasy\Result\Info\Field\Nameserver;
 use Klkvsk\Whoeasy\Result\Info\Field\Registrar;
 use Klkvsk\Whoeasy\Result\Info\IpInfo;
-use Klkvsk\Whoeasy\Result\ParserResult;
+use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
 
-final class WhoisParser implements WhoisParserInterface
+class WhoisParser implements WhoisParserInterface
 {
-    public function parse(string $rawResponse, string $serverHostname, QueryType $queryType): ParserResult
+    /**
+     * Strip legal boilerplate, comment lines, and informational banners from raw WHOIS text.
+     * Returns only the data-bearing portion of the response.
+     */
+    public static function stripBoilerplate(string $response): string
     {
+        // Normalize line endings
+        $response = str_replace("\r\n", "\n", $response);
+        $response = str_replace("\r", "\n", $response);
+
+        // Remove >>> marker lines (VeriSign/Identity Digital/Afilias boundary)
+        // Don't truncate everything after it, as some servers (e.g., .st) include
+        // detailed data in a second section after the marker
+        $response = preg_replace('/^>>>.*<<<\s*$/m', '', $response);
+
+        // Strip trailing legal blocks that appear without >>> marker
+        $boilerplateStarts = [
+            '/^NOTICE:\s/m',
+            '/^Terms of Use:\s/m',
+            '/^URL of the ICANN\b/m',
+            '/^For more information on Whois status codes/m',
+            '/^TERMS OF USE:\s/m',
+        ];
+        foreach ($boilerplateStarts as $pattern) {
+            if (preg_match($pattern, $response, $m, \PREG_OFFSET_CAPTURE)) {
+                $response = substr($response, 0, $m[0][1]);
+            }
+        }
+
+        // Remove comment-prefixed lines (%, #, ;)
+        $lines = explode("\n", $response);
+        $cleaned = [];
+        foreach ($lines as $line) {
+            $trimmed = ltrim($line);
+            if ($trimmed === '') {
+                $cleaned[] = $line;
+                continue;
+            }
+            if ($trimmed[0] === '%' || $trimmed[0] === ';') {
+                continue;
+            }
+            // Strip #-prefixed comment lines, but preserve Korean WHOIS section headers
+            if ($trimmed[0] === '#' && !preg_match('/^#\s*(ENGLISH|KOREAN)/i', $trimmed)) {
+                continue;
+            }
+            $cleaned[] = $line;
+        }
+
+        return implode("\n", $cleaned);
+    }
+
+    /**
+     * Detect if the response indicates rate limiting.
+     * Takes the original (non-stripped) raw WHOIS response.
+     */
+    public static function isRateLimited(string $response): bool
+    {
+        $response = static::stripBoilerplate($response);
+
+        $patterns = [
+            '/(reached|exceeded) the maximum allowable/i',
+            '/(reached|exceeded) your (query|request) limit/i',
+            '/(rate limit|quota) (exceeded|reached)/i',
+            '/try again (later|after)/i',
+            '/(request|rate|query|connection) limit (exceeded|reached)/i',
+            '/too many (requests|queries|lookups)/i',
+            '/server is busy/i',
+            '/(?<!for )excessive querying/i',
+        ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $response)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Detect if the response indicates the TLD/protocol is not supported by this server.
+     * Takes the original (non-stripped) raw WHOIS response.
+     */
+    public static function isNotSupported(string $response): bool
+    {
+        $response = static::stripBoilerplate($response);
+
+        $patterns = [
+            '/^TLD is not supported\b/im',
+            '/^This TLD has no whois server/im',
+            '/^No whois service is available/im',
+        ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $response)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Detect if the response indicates "not found".
+     * Takes the original (non-stripped) raw WHOIS response.
+     */
+    public static function isNotFound(string $response): bool
+    {
+        $patterns = [
+            '/^[\W\s]*(no match|not found|no data found|nothing found|no domain|no information)/im',
+            '/is available for registration/i',
+            '/queried (object|domain|record) does not exist/i',
+            '/domain is available/i',
+            '/domain( name)? not found/i',
+            '/^status: (free|available)/mi',
+            '/no matching objects found/i',
+            '/(objects?|domains?|records?|entry|entries) (was )?not found/im',
+            '/(object|domain|key) does not exist/i',
+            '/no (object|entries|records) found/i',
+            '/no such (domain|entry|record)/i',
+            '/is available for purchase$/im',
+            '/^No record found for /im',
+            '/domain (has not been|is not) registered/i',
+            '/ is not available for registration/i',
+            '/domain "[a-z-.0-9]+" not found/i',
+            '/domain (name )?you requested (is not known|was not found)/i',
+            '/^>>> Domain name violates registry policy/m', // whois.dmdomains.dm
+            '/^(Registration |Domain )?Status:\s+AVAILABLE/im', // whois.nic.be
+            '/ - No Match/m', // whois.dns.pt
+            '/query returned 0 objects/m', // whois.iana.org
+            '/registration status: invalid/m', // whois.imena.bg
+            '/No data was found/', // whois.isoc.org.il
+            '/Object_Not_Found/', // whois.mx
+            '/[a-z-.0-9]+.[a-z]+ (is free|(was ?)not found)/i', // whois.nic.aw
+            '/Nincs talalat \/ No match/i', // whois.nic.hu
+            '/Domain Cannot Be Registered/i', // whois.nic.net.bw - when 2nd level
+            '/<pre>\nAvailable/i', // whois.nic.za
+            '/status: not registered/i', // whois.pknic.net.pk
+            '/^Domain unknown$/mi', // whois.registry.pf
+            '/Reserved by QDR/mi', // whois.registry.qa
+            '/^No found$/i', // whois.twnic.net.tw
+        ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $response)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Extract referral server hostname from raw WHOIS response text.
+     *
+     * Looks for patterns like:
+     * - "Registrar WHOIS Server: whois.example.com"
+     * - "refer: whois.example.com"
+     * - "ReferralServer: whois://whois.example.com"
+     */
+    public static function extractReferralServer(string $response): ?string
+    {
+        $patterns = [
+            '/^\s*Registrar WHOIS Server:\s*(.+)/mi',
+            '/^\s*Whois Server:\s*(.+)/mi',
+            '/^\s*refer:\s*(.+)/mi',
+            '/^\s*ReferralServer:\s*(.+)/mi',
+            '/^\s*Registrar Whois:\s*(.+)/mi',
+        ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $response, $m)) {
+                $referral = trim($m[1]);
+
+                // Strip protocol prefix if present
+                $referral = preg_replace('#^(whois|rwhois)://#i', '', $referral);
+
+                // Strip port suffix and path
+                $referral = preg_replace('#[:/].*$#', '', $referral);
+
+                // Validate it looks like a hostname
+                if (preg_match('/^[a-z0-9]([a-z0-9\-.]+[a-z0-9])?$/i', $referral)) {
+                    return $referral;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public function parse(string $rawResponse, string $serverHostname, QueryType $queryType): AbstractInfo
+    {
+        // Detect rate limiting / not found / not supported
+        if (static::isRateLimited($rawResponse)) {
+            throw new RateLimitException("WHOIS rate limit on $serverHostname");
+        }
+        if (static::isNotSupported($rawResponse)) {
+            throw new NotSupportedException("WHOIS: not supported on $serverHostname");
+        }
+        if (static::isNotFound($rawResponse)) {
+            throw new NotFoundException("WHOIS: not found on $serverHostname");
+        }
+
+
         // Extract data from comments/boilerplate before stripping
         $preStrip = $this->extractFromBoilerplate($rawResponse, $serverHostname);
 
@@ -42,7 +246,7 @@ final class WhoisParser implements WhoisParserInterface
 
     private function cleanResponse(string $text): string
     {
-        $text = WhoisClient::stripBoilerplate($text);
+        $text = static::stripBoilerplate($text);
         // Normalize line endings
         $text = str_replace("\r\n", "\n", $text);
         $text = str_replace("\r", "\n", $text);
@@ -263,8 +467,11 @@ final class WhoisParser implements WhoisParserInterface
         // --- Estonian .ee format ---
         $this->parseEstonianFormat($text, $fields);
 
-        // --- Togo .tg format (JWhoisServer) ---
+        // --- Togo .tg format (JWhoisServer dot-padded) ---
         $this->parseTgFormat($text, $fields);
+
+        // --- JWhoisServer bracket-section format (.gf/.gp/.mq) ---
+        $this->parseJWhoisBracketFormat($text, $fields);
 
         // --- Slovak .sk format ---
         $this->parseSkFormat($text, $fields);
@@ -1999,7 +2206,8 @@ final class WhoisParser implements WhoisParserInterface
     private function parseTgFormat(string $text, array &$fields): void
     {
         // JWhoisServer .tg format: "Key:...........Value" with contact blocks separated by "---"
-        if (!preg_match('/JWhoisServer|ccTLD tg/i', $text)) {
+        // Must have dot-padded fields to distinguish from bracket-section JWhoisServer (.gf/.gp/.mq)
+        if (!preg_match('/JWhoisServer|ccTLD tg/i', $text) || !preg_match('/^[A-Za-z].*?:\.{2,}/m', $text)) {
             return;
         }
 
@@ -2079,6 +2287,96 @@ final class WhoisParser implements WhoisParserInterface
             if ($name !== '') $fields["{$prefix}_name"][] = $name;
             if ($email !== '') $fields["{$prefix}_email"][] = $email;
             if ($phone !== '') $fields["{$prefix}_phone"][] = $phone;
+            if ($address !== '') $fields["{$prefix}_address"][] = $address;
+        }
+    }
+
+    private function parseJWhoisBracketFormat(string $text, array &$fields): void
+    {
+        // JWhoisServer bracket-section format: [holder], [admin_c], [tech_c], [zone_c]
+        // Used by .gf, .gp, .mq (ccTLD tld;mq;gf;gp)
+        if (!preg_match('/JWhoisServer/i', $text) || !preg_match('/^\[holder\]/m', $text)) {
+            return;
+        }
+
+        // Split into sections by [bracket_header]
+        $sections = preg_split('/^\[(\w+)\]\s*$/m', $text, -1, PREG_SPLIT_DELIM_CAPTURE);
+
+        // First section is the domain header (before any bracket)
+        // Already parsed by extractFields(), but ensure domain name is set
+        $headerBlock = $sections[0] ?? '';
+        foreach (explode("\n", $headerBlock) as $line) {
+            if (preg_match('/^domain:\s+(.+)/i', trim($line), $m)) {
+                $fields['domain_name'] = [strtolower(trim($m[1]))];
+            }
+            if (preg_match('/^nameserver:\s+(.+)/i', trim($line), $m)) {
+                $ns = strtolower(trim($m[1]));
+                if (!in_array($ns, $fields['name_server'] ?? [], true)) {
+                    $fields['name_server'][] = $ns;
+                }
+            }
+        }
+
+        // Process bracket sections in pairs: [1]=section_name, [2]=section_body, ...
+        for ($i = 1; $i + 1 < count($sections); $i += 2) {
+            $sectionName = strtolower($sections[$i]);
+            $sectionBody = $sections[$i + 1];
+
+            $prefix = match ($sectionName) {
+                'holder' => 'registrant',
+                'admin_c' => 'admin',
+                'tech_c' => 'tech',
+                default => null,
+            };
+            if ($prefix === null) {
+                continue;
+            }
+
+            // Parse key: value lines within section
+            $sectionFields = [];
+            $addressLines = [];
+            $inAddress = false;
+            foreach (explode("\n", $sectionBody) as $line) {
+                $trimmed = trim($line);
+                if ($trimmed === '') {
+                    $inAddress = false;
+                    continue;
+                }
+                if (preg_match('/^([a-z][a-z0-9_]*?):\s*(.*)/i', $trimmed, $m)) {
+                    $key = strtolower($m[1]);
+                    $val = trim($m[2]);
+                    $sectionFields[$key] = $val;
+                    $inAddress = ($key === 'address');
+                    if ($inAddress && $val !== '') {
+                        $addressLines = [$val];
+                    }
+                } elseif ($inAddress) {
+                    // Continuation line for address
+                    $addressLines[] = $trimmed;
+                }
+            }
+
+            $name = $sectionFields['name'] ?? '';
+            $email = $sectionFields['email'] ?? '';
+            $phone = $sectionFields['phone'] ?? '';
+            $fax = $sectionFields['fax'] ?? '';
+            $pcode = trim($sectionFields['pcode'] ?? '');
+            $country = $sectionFields['country'] ?? '';
+
+            // Build address from address lines + pcode + country
+            $addrParts = $addressLines;
+            if ($pcode !== '') {
+                $addrParts[] = $pcode;
+            }
+            if ($country !== '') {
+                $addrParts[] = $country;
+            }
+            $address = implode(', ', $addrParts);
+
+            if ($name !== '') $fields["{$prefix}_name"][] = $name;
+            if ($email !== '') $fields["{$prefix}_email"][] = $email;
+            if ($phone !== '') $fields["{$prefix}_phone"][] = $phone;
+            if ($fax !== '') $fields["{$prefix}_fax"][] = $fax;
             if ($address !== '') $fields["{$prefix}_address"][] = $address;
         }
     }
@@ -2454,7 +2752,7 @@ final class WhoisParser implements WhoisParserInterface
         };
     }
 
-    private function parseDomain(array $fields, string $text, string $serverHostname): ParserResult
+    private function parseDomain(array $fields, string $text, string $serverHostname): DomainInfo
     {
         $domainName = $this->firstValue($fields, 'domain_name');
         if ($domainName !== null) {
@@ -2676,19 +2974,16 @@ final class WhoisParser implements WhoisParserInterface
         });
         $nameservers = array_values(array_unique($nameservers, SORT_REGULAR));
 
-        return new ParserResult(
-            info: new DomainInfo(
-                name: $domainName,
-                registrar: $registrar,
-                createdDate: $createdDate,
-                updatedDate: $updatedDate,
-                expiresDate: $expiresDate,
-                status: $statuses,
-                nameservers: $nameservers,
-                contacts: $contacts,
-                dnssec: $dnssec,
-            ),
-            referralServer: $this->firstValue($fields, 'whois_server'),
+        return new DomainInfo(
+            name: $domainName,
+            registrar: $registrar,
+            createdDate: $createdDate,
+            updatedDate: $updatedDate,
+            expiresDate: $expiresDate,
+            status: $statuses,
+            nameservers: $nameservers,
+            contacts: $contacts,
+            dnssec: $dnssec,
         );
     }
 
@@ -2731,7 +3026,7 @@ final class WhoisParser implements WhoisParserInterface
         return $value;
     }
 
-    private function parseIp(array $fields, string $text): ParserResult
+    private function parseIp(array $fields, string $text): IpInfo
     {
         $range = $this->firstValue($fields, 'ip_range');
         $netName = $this->firstValue($fields, 'net_name');
@@ -2744,21 +3039,18 @@ final class WhoisParser implements WhoisParserInterface
 
         $contacts = $this->extractIpContacts($fields, $text);
 
-        return new ParserResult(
-            info: new IpInfo(
-                range: $range,
-                networkName: $netName,
-                description: $description,
-                country: $country,
-                createdDate: $createdDate,
-                updatedDate: $updatedDate,
-                contacts: $contacts,
-            ),
-            referralServer: $this->firstValue($fields, 'whois_server'),
+        return new IpInfo(
+            range: $range,
+            networkName: $netName,
+            description: $description,
+            country: $country,
+            createdDate: $createdDate,
+            updatedDate: $updatedDate,
+            contacts: $contacts,
         );
     }
 
-    private function parseAsn(array $fields, string $text): ParserResult
+    private function parseAsn(array $fields, string $text): AsnInfo
     {
         $asnStr = $this->firstValue($fields, 'asn');
         $asn = null;
@@ -2770,14 +3062,11 @@ final class WhoisParser implements WhoisParserInterface
         $description = $this->firstValue($fields, 'description');
         $country = $this->firstValue($fields, 'country');
 
-        return new ParserResult(
-            info: new AsnInfo(
-                asn: $asn,
-                name: $name,
-                description: $description,
-                country: $country,
-            ),
-            referralServer: $this->firstValue($fields, 'whois_server'),
+        return new AsnInfo(
+            asn: $asn,
+            name: $name,
+            description: $description,
+            country: $country,
         );
     }
 

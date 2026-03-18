@@ -6,10 +6,10 @@ namespace Klkvsk\Whoeasy\Client\Rdap;
 
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
-use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
+use Klkvsk\Whoeasy\Exception\NotFoundException;
+use Klkvsk\Whoeasy\Exception\RateLimitException;
 
 /**
  * RDAP client that queries RDAP servers over HTTP/HTTPS per RFC 7480/9083.
@@ -99,19 +99,7 @@ class RdapClient
                 throw new ClientException("RDAP request failed: $error (code $errno)");
             }
 
-            if ($httpCode === 404) {
-                throw (new NotFoundException("RDAP: nothing found at $url"))
-                    ->withRawBody($body ?: '')
-                    ->withHttpCode($httpCode);
-            }
-
-            if ($httpCode === 429) {
-                throw (new RateLimitException("RDAP rate limit exceeded"))
-                    ->withRawBody($body ?: '')
-                    ->withHttpCode($httpCode);
-            }
-
-            if ($httpCode < 200 || $httpCode >= 300) {
+            if ($httpCode < 200 || $httpCode >= 500) {
                 throw (new ClientResponseException("RDAP server returned HTTP $httpCode for $url"))
                     ->withRawBody($body ?: '')
                     ->withHttpCode($httpCode);

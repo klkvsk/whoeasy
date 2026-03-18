@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Client\Whois;
 
-use Klkvsk\Whoeasy\Client\Exception\NotScrapeableException;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
+use Klkvsk\Whoeasy\Exception\NotScrapeableException;
 
 /**
  * Answer processors for HTTP-based WHOIS scrapers.

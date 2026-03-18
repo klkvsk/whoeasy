@@ -1,1 +1,3 @@
-WHOIS lookup for XQFD170ADEECAEZJ.GQ can temporarily not be answered. Please try again.
+The domain you requested is not known in Freenoms database.
+
+This TLD has no whois server.

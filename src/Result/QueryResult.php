@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Result;
 
-use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Client\Exception\RetryableException;
+use Klkvsk\Whoeasy\Exception\NotFoundException;
+use Klkvsk\Whoeasy\Exception\RetryableException;
 use Klkvsk\Whoeasy\Result\Hop\RdapHop;
 use Klkvsk\Whoeasy\Result\Hop\WhoisHop;
 use Klkvsk\Whoeasy\Result\Info\AbstractInfo;

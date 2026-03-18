@@ -1,0 +1,21 @@
+{
+    "name": "rotana.qa",
+    "registrar": {
+        "name": "ROUTEDGE"
+    },
+    "updatedDate": "2025-09-29 15:01:46",
+    "status": [
+        "ok"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns10.nonweiler.com"
+        },
+        {
+            "hostname": "ns5.nonweiler.com"
+        },
+        {
+            "hostname": "ns6.nonweiler.com"
+        }
+    ]
+}

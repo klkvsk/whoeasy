@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace Klkvsk\Whoeasy;
 
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
-use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
-use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Client\Exception\NotSupportedException;
-use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Client\Rdap\RdapClient;
 use Klkvsk\Whoeasy\Client\Whois\HttpWhoisClient;
 use Klkvsk\Whoeasy\Client\Whois\WhoisClient;
+use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
+use Klkvsk\Whoeasy\Exception\NotFoundException;
+use Klkvsk\Whoeasy\Exception\NotSupportedException;
+use Klkvsk\Whoeasy\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParser;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParserInterface;
 use Klkvsk\Whoeasy\Registry\ServerInfo;
 use Klkvsk\Whoeasy\Registry\ServerRegistry;
-use Klkvsk\Whoeasy\Result\Info\AsnInfo;
-use Klkvsk\Whoeasy\Result\Info\DomainInfo;
-use Klkvsk\Whoeasy\Result\Info\IpInfo;
 use Klkvsk\Whoeasy\Result\Hop\RdapHop;
 use Klkvsk\Whoeasy\Result\Hop\WhoisHop;
 use Klkvsk\Whoeasy\Result\Hop\WhoisHttpHop;
+use Klkvsk\Whoeasy\Result\Info\AsnInfo;
+use Klkvsk\Whoeasy\Result\Info\DomainInfo;
+use Klkvsk\Whoeasy\Result\Info\IpInfo;
 use Klkvsk\Whoeasy\Result\ProtocolResult;
 use Klkvsk\Whoeasy\Result\QueryResult;
 use Klkvsk\Whoeasy\Result\ResultMerger;
@@ -229,33 +229,14 @@ class Whoeasy
 
             $rawText = null;
             $info = null;
-            $referralServer = null;
             $error = null;
 
             try {
                 $queryFormat = $hopIndex === 0 ? $serverInfo->queryFormat : null;
                 $rawText = $this->whoisClient->query($currentServer, $input, $options->whoisTimeout, $queryFormat);
 
-                // Strip boilerplate before detection (legal text causes false positives)
-                $strippedText = WhoisClient::stripBoilerplate($rawText);
-
-                // Detect rate limiting / not found / not supported
-                if (WhoisClient::isRateLimited($strippedText)) {
-                    $error = new RateLimitException("WHOIS rate limit on $currentServer");
-                } elseif (WhoisClient::isNotSupported($strippedText)) {
-                    $error = (new NotSupportedException("WHOIS not supported on $currentServer"))
-                        ->withServer($currentServer)
-                        ->withQuery($input)
-                        ->withRawBody($rawText);
-                } elseif (WhoisClient::isNotFound($strippedText)) {
-                    $error = new NotFoundException("WHOIS: not found on $currentServer");
-                }
-
-                // Parse even if rate-limited/not-found (might still have partial data)
                 try {
-                    $parserResult = $this->whoisParser->parse($rawText, $currentServer, $serverInfo->queryType);
-                    $info = $parserResult->info;
-                    $referralServer = $parserResult->referralServer;
+                    $info = $this->whoisParser->parse($rawText, $currentServer, $serverInfo->queryType);
                 } catch (\Throwable $parseError) {
                     $error ??= $parseError;
                 }
@@ -275,11 +256,8 @@ class Whoeasy
                 break;
             }
 
-            // Determine referral: parsed field first, regex fallback
-            $referral = $referralServer;
-            if ($referral === null && $rawText !== null) {
-                $referral = WhoisClient::detectReferral($rawText);
-            }
+            // Determine referral from raw response
+            $referral = $rawText !== null ? WhoisParser::extractReferralServer($rawText) : null;
 
             if ($referral === null || in_array($referral, $visited, true)) {
                 break;
@@ -324,8 +302,7 @@ class Whoeasy
             );
 
             try {
-                $parserResult = $this->whoisParser->parse($rawText, $server, $serverInfo->queryType);
-                $info = $parserResult->info;
+                $info = $this->whoisParser->parse($rawText, $server, $serverInfo->queryType);
             } catch (\Throwable $parseError) {
                 $error = $parseError;
             }
@@ -378,7 +355,6 @@ class Whoeasy
             $json = null;
             $rawBody = '';
             $info = null;
-            $referralServer = null;
             $error = null;
             $url = $currentUrl;
 
@@ -392,9 +368,7 @@ class Whoeasy
                 $rawBody = json_encode($json, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?: '';
 
                 try {
-                    $parserResult = $this->rdapParser->parse($json, $serverInfo->queryType);
-                    $info = $parserResult->info;
-                    $referralServer = $parserResult->referralServer;
+                    $info = $this->rdapParser->parse($json, $serverInfo->queryType);
                 } catch (\Throwable $parseError) {
                     $error = $parseError;
                 }
@@ -416,12 +390,13 @@ class Whoeasy
                 break;
             }
 
-            // RDAP referral: parsed referralServer is a full URL
-            if ($referralServer === null || in_array($referralServer, $visited, true)) {
+            // RDAP referral: extract from JSON links array
+            $referralUrl = $json !== null ? RdapParser::extractReferralUrl($json) : null;
+            if ($referralUrl === null || in_array($referralUrl, $visited, true)) {
                 break;
             }
 
-            $currentUrl = $referralServer;
+            $currentUrl = $referralUrl;
         }
 
         // Merge all hops' info (later hops take priority)

@@ -368,7 +368,6 @@ return [
     '.er' => 'noc.net.er',
     '.ericsson' => 'nic.ericsson',
     '.erni' => 'betterask.erni',
-    '.es' => 'pornhub.es',
     '.esq' => 'esq.esq',
     '.estate' => 'ssrmovies.estate',
     '.et' => 'psi.gov.et',

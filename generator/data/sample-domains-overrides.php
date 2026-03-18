@@ -6,6 +6,10 @@ return [
     '.bn' => 'bnnic.bn',
     '.tm' => 'galam.tm',
     '.ga' => 'cgcgabon.ga',
+    '.gf' => 'stereo.gf',
+    '.ls' => 'nul.ls',
+    '.qa' => 'rotana.qa',
+    '.mn' => 'trade.mn',
     '.eurovision' => 'nic.eurovision',
 
     // Two-level country TLDs

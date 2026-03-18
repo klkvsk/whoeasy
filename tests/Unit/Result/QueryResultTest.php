@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Tests\Unit\Result;
 
-use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
+use Klkvsk\Whoeasy\Exception\NotFoundException;
+use Klkvsk\Whoeasy\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Result\Hop\RdapHop;
 use Klkvsk\Whoeasy\Result\Hop\WhoisHop;
 use Klkvsk\Whoeasy\Result\Info\AsnInfo;

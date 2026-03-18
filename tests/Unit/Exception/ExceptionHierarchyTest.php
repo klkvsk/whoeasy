@@ -10,9 +10,9 @@ use Klkvsk\Whoeasy\Client\Exception\ClientNetworkException;
 use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
 use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
 use Klkvsk\Whoeasy\Client\Exception\ClientTimeoutException;
-use Klkvsk\Whoeasy\Client\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Client\Exception\RateLimitException;
-use Klkvsk\Whoeasy\Client\Exception\RetryableException;
+use Klkvsk\Whoeasy\Exception\NotFoundException;
+use Klkvsk\Whoeasy\Exception\RateLimitException;
+use Klkvsk\Whoeasy\Exception\RetryableException;
 use Klkvsk\Whoeasy\Exception\WhoeasyException;
 use PHPUnit\Framework\TestCase;
 

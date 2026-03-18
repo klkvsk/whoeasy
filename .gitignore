@@ -7,7 +7,7 @@ tmp
 _bmad-output/
 _bmad
 .claude
-./composer
-./composer.phar
-./.phpunit.cache
-./generator/*.log
+/composer
+/composer.phar
+/.phpunit.cache
+/generator/*.log

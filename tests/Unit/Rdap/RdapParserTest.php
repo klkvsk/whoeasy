@@ -9,7 +9,6 @@ use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
 use Klkvsk\Whoeasy\Result\Info\AsnInfo;
 use Klkvsk\Whoeasy\Result\Info\DomainInfo;
 use Klkvsk\Whoeasy\Result\Info\IpInfo;
-use Klkvsk\Whoeasy\Result\ParserResult;
 use PHPUnit\Framework\TestCase;
 
 class RdapParserTest extends TestCase
@@ -30,10 +29,8 @@ class RdapParserTest extends TestCase
     public function testParseDomainFixture(): void
     {
         $json = self::loadFixture('domain-example.com.json');
-        $result = $this->parser->parse($json, QueryType::Domain);
+        $domain = $this->parser->parse($json, QueryType::Domain);
 
-        $this->assertInstanceOf(ParserResult::class, $result);
-        $domain = $result->info;
         $this->assertInstanceOf(DomainInfo::class, $domain);
         $this->assertSame('EXAMPLE.COM', $domain->name);
         $this->assertContains('client delete prohibited', $domain->status);
@@ -59,10 +56,8 @@ class RdapParserTest extends TestCase
     public function testParseIpFixture(): void
     {
         $json = self::loadFixture('ip-8.8.8.8.json');
-        $result = $this->parser->parse($json, QueryType::Ipv4);
+        $ip = $this->parser->parse($json, QueryType::Ipv4);
 
-        $this->assertInstanceOf(ParserResult::class, $result);
-        $ip = $result->info;
         $this->assertInstanceOf(IpInfo::class, $ip);
         $this->assertSame('GOGL', $ip->networkName);
         $this->assertSame('8.8.8.0 - 8.8.8.255', $ip->range);
@@ -73,10 +68,8 @@ class RdapParserTest extends TestCase
     public function testParseAsnFixture(): void
     {
         $json = self::loadFixture('autnum-15169.json');
-        $result = $this->parser->parse($json, QueryType::Asn);
+        $asn = $this->parser->parse($json, QueryType::Asn);
 
-        $this->assertInstanceOf(ParserResult::class, $result);
-        $asn = $result->info;
         $this->assertInstanceOf(AsnInfo::class, $asn);
         $this->assertSame(15169, $asn->asn);
         $this->assertSame('GOOGLE', $asn->name);
@@ -86,14 +79,12 @@ class RdapParserTest extends TestCase
 
     public function testParseDomainWithEmptyEntities(): void
     {
-        $result = $this->parser->parse([
+        $domain = $this->parser->parse([
             'objectClassName' => 'domain',
             'ldhName' => 'minimal.test',
             'entities' => [],
         ], QueryType::Domain);
 
-        $this->assertInstanceOf(ParserResult::class, $result);
-        $domain = $result->info;
         $this->assertInstanceOf(DomainInfo::class, $domain);
         $this->assertSame('minimal.test', $domain->name);
         $this->assertNull($domain->registrar);
@@ -107,7 +98,6 @@ class RdapParserTest extends TestCase
             'ldhName' => 'fallback.test',
         ], QueryType::Domain);
 
-        $this->assertInstanceOf(ParserResult::class, $result);
-        $this->assertInstanceOf(DomainInfo::class, $result->info);
+        $this->assertInstanceOf(DomainInfo::class, $result);
     }
 }
