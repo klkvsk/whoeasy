@@ -52,27 +52,12 @@ final class ServerRegistry
         'www.dnsbelgium.be' => ['https://api.dnsbelgium.be', 'GET /whois/registration/%s', null],
         'www.vnnic.vn' => ['https://whois.net.vn', 'GET /whois.php?domain=%s&act=getwhois', null],
         'www.tonic.to' => ['https://www.tonic.to', 'GET /whois?%s', null],
-        'whois.nic.ch' => ['https://rdap.nic.ch', 'GET /domain/%s', 'ch'],
         'whois.dot.ph' => ['https://whois.dot.ph', 'GET /?search=%s', 'ph'],
         'www.nic.pa' => ['http://www.nic.pa', 'GET /en/whois/dominio/%s', 'pa'],
         'www.innoview.gr' => ['https://www.innoview.gr', 'POST /members/whoisdomain.php whoisdomainname=%s', 'gr'],
         'www.nic.tt' => ['https://www.nic.tt', 'POST /cgi-bin/search.pl name=%s', 'tt'],
         'www.nic.tj' => ['http://www.nic.tj', 'GET /cgi/whois2?domain=%s', 'tj'],
-        'nic.com.uy' => ['https://nic.com.uy', 'NONE only-web', 'not-scrapeable'],
-        'www.dominios.es' => ['https://nic.es', 'NONE only-web', 'not-scrapeable'],
-        // Remapped server names from TLD registry
-        'whois.nic.org.uy' => ['https://nic.com.uy', 'NONE only-web', 'not-scrapeable'],
-        'whois.nic.es' => ['https://nic.es', 'NONE only-web', 'not-scrapeable'],
-    ];
 
-    /**
-     * TLD-based overrides for servers not in the generated TLD data,
-     * or where the TLD data has no whois server at all.
-     * Maps TLD -> [whoisServer, httpUrl, httpQueryFormat, scraperName|null]
-     * @var array<string, array{0: string, 1: string, 2: string, 3: ?string}>
-     */
-    private const TLD_HTTP_OVERRIDES = [
-        '.vn' => ['www.vnnic.vn', 'https://whois.net.vn', 'GET /whois.php?domain=%s&act=getwhois', null],
     ];
 
     /** @var array<string, array{0: ?string, 1: ?string}> */
@@ -205,20 +190,6 @@ final class ServerRegistry
         // Try progressively shorter suffixes: .co.uk -> .uk
         for ($i = 0; $i < count($parts); $i++) {
             $suffix = '.' . implode('.', array_slice($parts, $i));
-
-            // Check TLD HTTP overrides first (for TLDs with no server in generated data)
-            if (isset(self::TLD_HTTP_OVERRIDES[$suffix])) {
-                [$whois, $httpUrl, $httpQueryFormat, $httpScraper] = self::TLD_HTTP_OVERRIDES[$suffix];
-                return new ServerInfo(
-                    queryType: QueryType::Domain,
-                    whoisServer: $whois,
-                    rdapUrl: null,
-                    query: $query,
-                    httpUrl: $httpUrl,
-                    httpQueryFormat: $httpQueryFormat,
-                    httpScraper: $httpScraper,
-                );
-            }
 
             if (isset($this->tldServers[$suffix])) {
                 [$whois, $rdap] = $this->tldServers[$suffix];

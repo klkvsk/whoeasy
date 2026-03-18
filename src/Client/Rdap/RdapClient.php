@@ -37,6 +37,19 @@ class RdapClient
      */
     public function query(string $rdapBaseUrl, string $query, ?QueryType $queryType = null): array
     {
+        return $this->queryUrl($this->createUrl($rdapBaseUrl, $query, $queryType));
+    }
+
+    /**
+     * Create RDAP URL for a query.
+     *
+     * @param string $rdapBaseUrl RDAP base URL (e.g., "https://rdap.verisign.com/com/v1/")
+     * @param string $query The query input (domain name, IP address, or ASN like "AS15169")
+     * @param QueryType|null $queryType Type of query; if null, guessed from $query
+     * @return string RDAP URL
+     */
+    public function createUrl(string $rdapBaseUrl, string $query, ?QueryType $queryType = null): string
+    {
         $queryType ??= QueryType::guess($query);
 
         $path = match ($queryType) {
@@ -46,27 +59,15 @@ class RdapClient
             QueryType::NicHandle => '/entity/' . rawurlencode($query),
         };
 
-        $url = rtrim($rdapBaseUrl, '/') . $path;
-
-        return $this->execute($url);
+        return rtrim($rdapBaseUrl, '/') . $path;
     }
 
     /**
-     * Query a specific RDAP URL directly (for referral following).
+     * Query a specific RDAP URL directly
      *
      * @return array Decoded JSON response
      */
     public function queryUrl(string $url): array
-    {
-        return $this->execute($url);
-    }
-
-    /**
-     * Execute an RDAP HTTP request and return decoded JSON.
-     *
-     * @throws ClientException
-     */
-    private function execute(string $url): array
     {
         $curl = curl_init();
         if (!$curl) {

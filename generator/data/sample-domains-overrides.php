@@ -10,6 +10,7 @@ return [
     '.ls' => 'nul.ls',
     '.qa' => 'rotana.qa',
     '.mn' => 'trade.mn',
+    '.shop' => 'jetbrains.shop',
     '.eurovision' => 'nic.eurovision',
 
     // Two-level country TLDs

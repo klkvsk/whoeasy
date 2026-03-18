@@ -25,47 +25,13 @@ final class HttpScraper
     public static function process(string $scraperName, string $data): string
     {
         return match ($scraperName) {
-            'ch' => self::rdapToWhois($data),
             'ph' => self::processPh($data),
             'pa' => self::processPa($data),
             'gr' => self::processGr($data),
             'tt' => self::processTt($data),
             'tj' => self::processTj($data),
-            'not-scrapeable' => throw new NotScrapeableException(
-                "This TLD requires manual web lookup"
-            ),
             default => throw new \InvalidArgumentException("Unknown scraper: $scraperName"),
         };
-    }
-
-    /**
-     * Convert RDAP JSON response to WHOIS-like text (used for .ch).
-     */
-    public static function rdapToWhois(string $data): string
-    {
-        $json = json_decode($data, true);
-
-        $whois = "domain: " . $json['ldhName'] . "\n";
-        $whois .= "status: " . implode(', ', $json['status']) . "\n";
-        foreach ($json['events'] as $event) {
-            $whois .= "{$event['eventAction']} date: " . $event['eventDate'] . "\n";
-        }
-
-        foreach ($json['entities'] ?? [] as $entity) {
-            foreach ($entity['roles'] as $role) {
-                $whois .= "\n";
-                $whois .= "$role name: " . ($entity['vcardArray'][1][1][3] ?? '') . "\n";
-                $whois .= "$role address: " . implode(', ', array_filter($entity['vcardArray'][1][2][3] ?? [])) . "\n";
-                $whois .= "$role URL: " . ($entity['url'] ?? '') . "\n";
-            }
-        }
-
-        $whois .= "\n";
-        foreach ($json['nameservers'] ?? [] as $nameserver) {
-            $whois .= "nameserver: " . $nameserver['ldhName'] . "\n";
-        }
-
-        return $whois;
     }
 
     /**

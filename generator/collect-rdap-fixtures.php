@@ -6,7 +6,7 @@
  * Queries RDAP servers from the TLD registry and saves raw JSON responses as fixtures.
  * Structure: tests/Fixture/Rdap/{rdap-server}/{domain}.json
  * Also queries a random non-existent domain → nxdomain.json
- * Rate-limited responses (HTTP 429) → ratelimit.json, other errors → error.json
+ * Rate-limited responses (HTTP 429) → ratelimit.json
  *
  * RDAP server directory name: host + path with / replaced by _
  *   e.g. "https://rdap.nic.xyz/v1/" → "rdap.nic.xyz_v1"
@@ -14,7 +14,12 @@
  * Resumable: skips servers where sample domain fixture exists.
  * Use -f to force re-fetch all.
  *
- * Usage: php generator/collect-rdap-fixtures.php [--limit=N] [--delay=MS] [--proxy=URI] [--tld=TLD] [-f]
+ * Usage: php generator/collect-rdap-fixtures.php [--limit=N] [--delay=MS] [--proxy=URI] [--tld=TLD] [--filter=TYPE] [-f]
+ *
+ * --filter=domain   Only collect domain fixtures (default if omitted)
+ * --filter=ipv4     Only collect IPv4 fixtures from RIR servers
+ * --filter=ipv6     Only collect IPv6 fixtures from RIR servers
+ * --filter=asn      Only collect ASN fixtures from RIR servers
  */
 
 declare(strict_types=1);
@@ -22,10 +27,7 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
-use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
 use Klkvsk\Whoeasy\Client\Rdap\RdapClient;
-use Klkvsk\Whoeasy\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Registry\Data\TldServers;
 
 $fixtureDir = __DIR__ . '/../tests/Fixture/Rdap';
@@ -39,6 +41,7 @@ $delay = 500; // ms between queries
 $force = false;
 $proxyUri = null;
 $filterTld = null;
+$filterType = null;
 foreach ($argv as $arg) {
     if (str_starts_with($arg, '--limit=')) {
         $limit = (int)substr($arg, 8);
@@ -52,22 +55,19 @@ foreach ($argv as $arg) {
     if (str_starts_with($arg, '--tld=')) {
         $filterTld = '.' . ltrim(substr($arg, 6), '.');
     }
+    if (str_starts_with($arg, '--filter=')) {
+        $filterType = substr($arg, 9);
+        if (!in_array($filterType, ['domain', 'ipv4', 'ipv6', 'asn'], true)) {
+            fwrite(STDERR, "Invalid --filter value: $filterType (must be domain|ipv4|ipv6|asn)\n");
+            exit(1);
+        }
+    }
     if ($arg === '-f' || $arg === '--force') {
         $force = true;
     }
 }
 
 $client = new RdapClient(timeout: 15, proxyUri: $proxyUri);
-$tlds = TldServers::data();
-
-if ($filterTld !== null) {
-    if (!isset($tlds[$filterTld])) {
-        fwrite(STDERR, "TLD not found in registry: $filterTld\n");
-        exit(1);
-    }
-    $tlds = [$filterTld => $tlds[$filterTld]];
-}
-$sampleDomains = require __DIR__ . '/data/sample-domains.php';
 
 /**
  * Convert RDAP base URL to a directory name.
@@ -107,21 +107,6 @@ function rdapFixtureExists(string $fixtureDir, string $rdapUrl, string $filename
 }
 
 /**
- * Pretty-print JSON body, or return a fallback error JSON.
- */
-function prettyJson(?string $body, array $fallback = []): string
-{
-    if ($body !== null && $body !== '') {
-        $json = json_decode($body, true);
-        if (is_array($json)) {
-            return json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-        }
-        return $body;
-    }
-    return json_encode($fallback, JSON_PRETTY_PRINT);
-}
-
-/**
  * Generate a random non-existent domain for a given TLD.
  */
 function generateNxdomain(string $tld): string
@@ -144,35 +129,155 @@ function queryAndSave(
 ): ?string {
     try {
         $response = $client->queryUrl($url);
-        $pretty = json_encode($response->json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        $pretty = json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        if (\Klkvsk\Whoeasy\Parser\Rdap\RdapParser::isRateLimited($response)) {
+            echo "RATE LIMITED\n";
+            saveRdapFixture($fixtureDir, $rdapUrl, 'ratelimit.json', $pretty);
+            usleep(3000000); // extra wait
+            return 'rate_limited';
+        }
+        if (\Klkvsk\Whoeasy\Parser\Rdap\RdapParser::isNotFound($response)) {
+            echo "NOT FOUND\n";
+            saveRdapFixture($fixtureDir, $rdapUrl, 'nxdomain.json', $pretty);
+            return 'not_found';
+        }
+        $pretty = json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         saveRdapFixture($fixtureDir, $rdapUrl, $filename, $pretty);
         echo "OK (" . strlen($pretty) . " bytes)\n";
         return 'success';
-    } catch (RateLimitException $e) {
-        echo "RATE LIMITED\n";
-        saveRdapFixture($fixtureDir, $rdapUrl, 'ratelimit.json', prettyJson($e->getRawBody()));
-        usleep(3000000); // extra wait
-        return 'rate_limited';
-    } catch (NotFoundException $e) {
-        echo "NOT FOUND\n";
-        saveRdapFixture($fixtureDir, $rdapUrl, 'nxdomain.json',
-            prettyJson($e->getRawBody(), ['errorCode' => 404, 'title' => 'Not Found']));
-        return 'not_found';
-    } catch (ClientResponseException $e) {
-        $code = $e->getHttpCode();
-        echo "HTTP $code\n";
-        saveRdapFixture($fixtureDir, $rdapUrl, 'error.json',
-            prettyJson($e->getRawBody(), ['errorCode' => $code]));
-        return 'failed';
-    } catch (ClientException $e) {
+    } catch (\Throwable $e) {
         echo "ERROR: " . $e->getMessage() . "\n";
-        saveRdapFixture($fixtureDir, $rdapUrl, 'error.json', json_encode([
-            'error' => $e->getMessage(),
-            'url' => $url,
-        ], JSON_PRETTY_PRINT));
         return 'failed';
     }
 }
+
+/**
+ * Build filename for an IP sample.
+ */
+function ipFilename(string $ip, string $type): string
+{
+    if ($type === 'ipv6') {
+        return 'ip6-' . str_replace(':', '_', $ip) . '.json';
+    }
+    return 'ip-' . $ip . '.json';
+}
+
+/**
+ * Build filename for an ASN sample.
+ */
+function asnFilename(int $asn): string
+{
+    return 'asn-' . $asn . '.json';
+}
+
+// ======================================================================
+// Collect IP/ASN fixtures from RIR servers
+// ======================================================================
+if ($filterType !== null && $filterType !== 'domain') {
+    $sampleIps = require __DIR__ . '/data/sample-ip.php';
+
+    $targets = [];
+    foreach ($sampleIps as $rir => $info) {
+        $rdapUrl = $info['rdap'];
+        if ($rdapUrl === null) continue;
+
+        if ($filterType === 'ipv4' && isset($info['ipv4'])) {
+            $ip = $info['ipv4'];
+            $targets[] = [
+                'rdapUrl' => $rdapUrl,
+                'url' => rtrim($rdapUrl, '/') . '/ip/' . rawurlencode($ip),
+                'filename' => ipFilename($ip, 'ipv4'),
+                'label' => "IPv4 $ip",
+            ];
+        } elseif ($filterType === 'ipv6' && isset($info['ipv6'])) {
+            $ip = $info['ipv6'];
+            $targets[] = [
+                'rdapUrl' => $rdapUrl,
+                'url' => rtrim($rdapUrl, '/') . '/ip/' . rawurlencode($ip),
+                'filename' => ipFilename($ip, 'ipv6'),
+                'label' => "IPv6 $ip",
+            ];
+        } elseif ($filterType === 'asn' && isset($info['asn'])) {
+            $asn = $info['asn'];
+            $targets[] = [
+                'rdapUrl' => $rdapUrl,
+                'url' => rtrim($rdapUrl, '/') . '/autnum/' . $asn,
+                'filename' => asnFilename($asn),
+                'label' => "ASN $asn",
+            ];
+        }
+    }
+
+    echo "=== RDAP Fixture Collector ($filterType) ===\n";
+    echo "Targets: " . count($targets) . "\n";
+    if ($force) echo "Mode: FORCE re-fetch\n";
+    if ($proxyUri) echo "Proxy: $proxyUri\n";
+    echo "Delay: {$delay}ms\n";
+    echo "Fixture dir: $fixtureDir\n\n";
+
+    $stats = ['total' => 0, 'success' => 0, 'skipped' => 0, 'failed' => 0, 'not_found' => 0, 'rate_limited' => 0];
+    $failures = [];
+
+    foreach ($targets as $target) {
+        if ($limit !== null && $stats['total'] >= $limit) break;
+
+        $stats['total']++;
+        $rdapUrl = $target['rdapUrl'];
+        $filename = $target['filename'];
+        $label = $target['label'];
+
+        if (!$force && rdapFixtureExists($fixtureDir, $rdapUrl, $filename)) {
+            $stats['skipped']++;
+            echo sprintf("[%d/%d] %s (%s) ... SKIPPED\n",
+                $stats['total'], count($targets), rdapDirName($rdapUrl), $label);
+            continue;
+        }
+
+        echo sprintf("[%d/%d] %s (%s) ... ",
+            $stats['total'], count($targets), rdapDirName($rdapUrl), $label);
+
+        $result = queryAndSave($client, $fixtureDir, $rdapUrl, $target['url'], $filename);
+
+        if ($result === 'failed' || $result === 'rate_limited') {
+            $failures[] = rdapDirName($rdapUrl) . ": $result for $label";
+        }
+        if ($result !== null) {
+            $stats[$result]++;
+        }
+
+        if ($delay > 0) usleep($delay * 1000);
+    }
+
+    echo "\n=== Summary ===\n";
+    echo "Total:        {$stats['total']}\n";
+    echo "Success:      {$stats['success']}\n";
+    echo "Skipped:      {$stats['skipped']} (already had fixtures)\n";
+    echo "Not Found:    {$stats['not_found']}\n";
+    echo "Rate Limited: {$stats['rate_limited']}\n";
+    echo "Failed:       {$stats['failed']}\n";
+
+    if ($failures) {
+        $logFile = __DIR__ . '/rdap-collection.log';
+        file_put_contents($logFile, date('Y-m-d H:i:s') . "\n" . implode("\n", $failures) . "\n\n", FILE_APPEND);
+        echo "Failures logged to: $logFile\n";
+    }
+
+    exit(0);
+}
+
+// ======================================================================
+// Collect domain fixtures from TLD servers (original behavior)
+// ======================================================================
+$tlds = TldServers::data();
+
+if ($filterTld !== null) {
+    if (!isset($tlds[$filterTld])) {
+        fwrite(STDERR, "TLD not found in registry: $filterTld\n");
+        exit(1);
+    }
+    $tlds = [$filterTld => $tlds[$filterTld]];
+}
+$sampleDomains = require __DIR__ . '/data/sample-domains.php';
 
 // Build TLD → RDAP URL mapping with sample domains
 $rdapTargets = [];
@@ -254,19 +359,15 @@ foreach ($rdapTargets as $rdapUrl => $info) {
 
         try {
             $response = $client->queryUrl($nxUrl);
-            // Some servers return 200 with error body for nxdomain
-            $pretty = json_encode($response->json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+            $pretty = json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+            if (\Klkvsk\Whoeasy\Parser\Rdap\RdapParser::isRateLimited($response)) {
+                echo "RATE LIMITED\n";
+                saveRdapFixture($fixtureDir, $rdapUrl, 'ratelimit.json', $pretty);
+                usleep(3000000);
+            }
             saveRdapFixture($fixtureDir, $rdapUrl, 'nxdomain.json', $pretty);
             echo "OK (" . strlen($pretty) . " bytes)\n";
-        } catch (NotFoundException $e) {
-            $content = prettyJson($e->getRawBody(), ['errorCode' => 404, 'title' => 'Not Found']);
-            saveRdapFixture($fixtureDir, $rdapUrl, 'nxdomain.json', $content);
-            echo "OK (" . strlen($content) . " bytes)\n";
-        } catch (RateLimitException $e) {
-            echo "RATE LIMITED\n";
-            saveRdapFixture($fixtureDir, $rdapUrl, 'ratelimit.json', prettyJson($e->getRawBody()));
-            usleep(3000000);
-        } catch (ClientException $e) {
+       } catch (ClientException $e) {
             echo "ERROR: " . $e->getMessage() . "\n";
         }
 
