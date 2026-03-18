@@ -89,7 +89,7 @@ Please report any issues via https://github.com/klkvsk/whoeasy/issues
 
 LICENSE and COPYRIGHT
 -----------------------
-Copyright (c) 2023 Misha Kulakovsky (https://github.com/klkvsk)
+Copyright (c) 2026 Mike Kulakovsky (https://github.com/klkvsk)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

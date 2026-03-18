@@ -1,11 +1,8 @@
 # Exclude from packagist dist archives
 /generator        export-ignore
 /tests            export-ignore
-/Dockerfile       export-ignore
-/dev              export-ignore
 /phpunit.xml      export-ignore
 /phpstan.neon     export-ignore
 /.github          export-ignore
 /.claude          export-ignore
-/.phpunit.cache   export-ignore
 CLAUDE.md         export-ignore

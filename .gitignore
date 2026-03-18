@@ -6,7 +6,7 @@ tmp
 .ralph
 _bmad-output/
 _bmad
-.claude
+.claude/settings.local.json
 /composer
 /composer.phar
 /.phpunit.cache
