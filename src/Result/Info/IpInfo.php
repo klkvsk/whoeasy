@@ -12,6 +12,7 @@ readonly class IpInfo extends AbstractInfo
         public ?string $range = null,
         public ?string $networkName = null,
         public ?string $description = null,
+        public ?int $asNumber = null,
         public ?string $country = null,
         public ?string $createdDate = null,
         public ?string $updatedDate = null,
@@ -35,6 +36,10 @@ readonly class IpInfo extends AbstractInfo
 
         if ($this->description !== null) {
             $data['description'] = $this->description;
+        }
+
+        if ($this->asNumber !== null) {
+            $data['asNumber'] = $this->asNumber;
         }
 
         if ($this->country !== null) {

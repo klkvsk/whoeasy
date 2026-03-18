@@ -239,8 +239,8 @@ class WhoisParser implements WhoisParserInterface
 
         return match ($queryType) {
             QueryType::Domain => $this->parseDomain($fields, $text, $serverHostname),
-            QueryType::Ipv4, QueryType::Ipv6 => $this->parseIp($fields, $text),
-            QueryType::Asn => $this->parseAsn($fields, $text),
+            QueryType::Ipv4, QueryType::Ipv6 => $this->parseIp($fields, $text, $rawResponse),
+            QueryType::Asn => $this->parseAsn($fields, $text, $rawResponse),
         };
     }
 
@@ -2676,7 +2676,7 @@ class WhoisParser implements WhoisParserInterface
             'registration_date', 'registered_on', 'domain_registered',
             'reg_created_date', 'registration_time', 'registered',
             'domain_record_activated', 'record_created',
-            'date_de_creation' => 'creation_date',
+            'date_de_creation', 'regdate' => 'creation_date',
             'updated_date', 'last_modified', 'lastmodified', 'changed',
             'last_updated', 'modification_date', 'modified', 'domain_last_updated',
             'last_updated_on', 'domain_record_last_updated',
@@ -2737,7 +2737,8 @@ class WhoisParser implements WhoisParserInterface
             // IP-specific
             'inetnum', 'netrange', 'inet6num' => 'ip_range',
             'netname', 'network_name' => 'net_name',
-            'descr', 'description', 'orgname', 'org_name', 'organization' => 'description',
+            'descr', 'description', 'org_name', 'organization' => 'description',
+            'orgname' => 'orgname',
             'country' => 'country',
             'origin', 'originas', 'origin_as' => 'origin_as',
             // ASN-specific
@@ -3026,22 +3027,87 @@ class WhoisParser implements WhoisParserInterface
         return $value;
     }
 
-    private function parseIp(array $fields, string $text): IpInfo
+    private function parseIp(array $fields, string $text, string $rawResponse): IpInfo
     {
+        // Try RPSL object parsing for RIPE/APNIC/AFRINIC/LACNIC
+        // RPSL uses lowercase hyphenated keys (inetnum, inet6num); ARIN uses CamelCase (NetRange)
+        $objects = $this->parseRpslObjects($text);
+        $primaryObj = $this->findPrimaryObject($objects, ['inetnum', 'inet6num']);
+
+        if ($primaryObj !== null) {
+            return $this->buildIpFromRpslObjects($primaryObj, $objects, $rawResponse);
+        }
+
+        // Fallback: ARIN or flat format
         $range = $this->firstValue($fields, 'ip_range');
         $netName = $this->firstValue($fields, 'net_name');
-        $description = $this->firstValue($fields, 'description');
+        $description = $this->firstValue($fields, 'orgname')
+            ?? $this->firstValue($fields, 'description');
         $country = $this->firstValue($fields, 'country');
         $createdDate = $this->parseDate($this->firstValue($fields, 'creation_date')
             ?? $this->firstValue($fields, 'created'));
         $updatedDate = $this->parseDate($this->firstValue($fields, 'updated_date')
             ?? $this->firstValue($fields, 'last_modified'));
 
-        $contacts = $this->extractIpContacts($fields, $text);
+        // Extract origin AS number — use last value (multiple routes may exist)
+        $asNumber = null;
+        $originValues = $fields['origin_as'] ?? $fields['asn'] ?? [];
+        if ($originValues !== []) {
+            $lastOrigin = end($originValues);
+            $asNumber = (int)preg_replace('/^AS/i', '', $lastOrigin);
+            if ($asNumber === 0) {
+                $asNumber = null;
+            }
+        }
+
+        $contacts = $this->extractArinContacts($fields, $text);
+        $status = $this->extractIpStatus($fields);
 
         return new IpInfo(
             range: $range,
             networkName: $netName,
+            description: $description,
+            asNumber: $asNumber,
+            country: $country,
+            createdDate: $createdDate,
+            updatedDate: $updatedDate,
+            status: $status,
+            contacts: $contacts,
+        );
+    }
+
+    private function parseAsn(array $fields, string $text, string $rawResponse): AsnInfo
+    {
+        // Try RPSL object parsing for RIPE/APNIC/AFRINIC/LACNIC
+        // RPSL uses lowercase hyphenated keys (aut-num); ARIN uses CamelCase (ASNumber)
+        $objects = $this->parseRpslObjects($text);
+        $primaryObj = $this->findPrimaryObject($objects, ['aut-num']);
+
+        if ($primaryObj !== null) {
+            return $this->buildAsnFromRpslObjects($primaryObj, $objects, $rawResponse);
+        }
+
+        // Fallback: ARIN or flat format
+        $asnStr = $this->firstValue($fields, 'asn');
+        $asn = null;
+        if ($asnStr !== null) {
+            $asn = (int)preg_replace('/^AS/i', '', $asnStr);
+        }
+
+        $name = $this->firstValue($fields, 'as_name');
+        $description = $this->firstValue($fields, 'orgname')
+            ?? $this->firstValue($fields, 'description');
+        $country = $this->firstValue($fields, 'country');
+        $createdDate = $this->parseDate($this->firstValue($fields, 'creation_date')
+            ?? $this->firstValue($fields, 'created'));
+        $updatedDate = $this->parseDate($this->firstValue($fields, 'updated_date')
+            ?? $this->firstValue($fields, 'last_modified'));
+
+        $contacts = $this->extractArinContacts($fields, $text);
+
+        return new AsnInfo(
+            asn: $asn,
+            name: $name,
             description: $description,
             country: $country,
             createdDate: $createdDate,
@@ -3050,24 +3116,484 @@ class WhoisParser implements WhoisParserInterface
         );
     }
 
-    private function parseAsn(array $fields, string $text): AsnInfo
+    /**
+     * Parse RPSL-style WHOIS response into individual objects.
+     * Objects are separated by blank lines and have "key: value" fields.
+     * @return array<int, array{type: string, fields: array<string, string[]>}>
+     */
+    private function parseRpslObjects(string $text): array
     {
-        $asnStr = $this->firstValue($fields, 'asn');
+        $objects = [];
+        $lines = explode("\n", $text);
+        $currentFields = [];
+        $currentType = null;
+
+        foreach ($lines as $line) {
+            $trimmed = trim($line);
+
+            // Blank line = end of object
+            if ($trimmed === '') {
+                if ($currentType !== null && $currentFields !== []) {
+                    $objects[] = ['type' => $currentType, 'fields' => $currentFields];
+                }
+                $currentFields = [];
+                $currentType = null;
+                continue;
+            }
+
+            // Parse "key: value" (with optional continuation lines using leading whitespace)
+            if (preg_match('/^([a-z][a-z0-9_-]*)\s*:\s*(.*)/i', $trimmed, $m)) {
+                $key = strtolower($m[1]);
+                $value = trim($m[2]);
+                if ($currentType === null) {
+                    $currentType = $key;
+                }
+                $currentFields[$key][] = $value;
+            } elseif (preg_match('/^\s+(.+)/', $line, $m) && $currentFields !== []) {
+                // Continuation line — append to last key's last value
+                $lastKey = array_key_last($currentFields);
+                if ($lastKey !== null) {
+                    $lastIdx = array_key_last($currentFields[$lastKey]);
+                    $currentFields[$lastKey][$lastIdx] .= "\n" . trim($m[1]);
+                }
+            }
+        }
+
+        if ($currentType !== null && $currentFields !== []) {
+            $objects[] = ['type' => $currentType, 'fields' => $currentFields];
+        }
+
+        return $objects;
+    }
+
+    /**
+     * Find the primary object of a given type from parsed RPSL objects.
+     */
+    private function findPrimaryObject(array $objects, array $types): ?array
+    {
+        foreach ($objects as $obj) {
+            if (in_array($obj['type'], $types, true)) {
+                return $obj;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Resolve a nic-hdl reference to a person/role/organisation object.
+     */
+    private function resolveRpslContact(string $handle, array $objects): ?array
+    {
+        $handleLower = strtolower($handle);
+        foreach ($objects as $obj) {
+            $nicHdl = strtolower($obj['fields']['nic-hdl'][0] ?? '');
+            if ($nicHdl === $handleLower) {
+                return $obj;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Resolve an org reference to an organisation object.
+     */
+    private function resolveRpslOrg(string $orgId, array $objects): ?array
+    {
+        $orgIdLower = strtolower($orgId);
+        foreach ($objects as $obj) {
+            if ($obj['type'] === 'organisation') {
+                $objOrgId = strtolower($obj['fields']['organisation'][0] ?? '');
+                if ($objOrgId === $orgIdLower) {
+                    return $obj;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Build a Contact from a RPSL person/role object.
+     */
+    private function contactFromRpslObject(array $obj, ContactType $type, bool $appendCountry = false): ?Contact
+    {
+        $f = $obj['fields'];
+
+        $name = $f['person'][0] ?? $f['role'][0] ?? null;
+        $org = $f['org-name'][0] ?? null;
+        $email = $f['e-mail'][0] ?? $f['abuse-mailbox'][0] ?? null;
+        $phone = $f['phone'][0] ?? null;
+        // Strip "tel:" prefix from phone (AFRINIC format)
+        if ($phone !== null) {
+            $phone = preg_replace('/^tel:/i', '', $phone);
+        }
+        $fax = $f['fax-no'][0] ?? null;
+        if ($fax !== null) {
+            $fax = preg_replace('/^tel:/i', '', $fax);
+        }
+
+        // Build address from address lines (may contain \n from continuation lines)
+        $rawAddressLines = $f['address'] ?? [];
+        $addressLines = [];
+        foreach ($rawAddressLines as $line) {
+            foreach (explode("\n", $line) as $subLine) {
+                $subLine = trim($subLine);
+                if ($subLine !== '') {
+                    $addressLines[] = $subLine;
+                }
+            }
+        }
+        $country = $f['country'][0] ?? null;
+        if ($country === 'ZZ') {
+            $country = null;
+        }
+        $address = null;
+        if ($addressLines !== []) {
+            $address = implode(', ', $addressLines);
+            if ($appendCountry && $country !== null && !str_contains($address, $country)) {
+                $address .= ', ' . $country;
+            }
+        }
+
+        if ($name === null && $org === null && $email === null && $phone === null && $fax === null && $address === null) {
+            return null;
+        }
+
+        return new Contact(
+            type: $type,
+            name: $name,
+            organization: $org,
+            email: $email,
+            phone: $phone,
+            fax: $fax,
+            address: $address,
+        );
+    }
+
+    /**
+     * Build IpInfo from RPSL objects (RIPE/APNIC/LACNIC/AFRINIC format).
+     */
+    private function buildIpFromRpslObjects(array $primaryObj, array $objects, string $text): IpInfo
+    {
+        $f = $primaryObj['fields'];
+
+        $range = $f['inetnum'][0] ?? $f['inet6num'][0] ?? null;
+        $netName = $f['netname'][0] ?? null;
+        $description = $f['descr'][0] ?? $f['owner'][0] ?? null;
+        $country = $f['country'][0] ?? null;
+
+        $createdDate = $this->parseDate($f['created'][0] ?? null);
+        $updatedDate = $this->parseDate($f['last-modified'][0] ?? $f['changed'][0] ?? null);
+
+        // Status
+        $status = [];
+        foreach ($f['status'] ?? [] as $s) {
+            $s = trim($s);
+            if ($s !== '') {
+                $status[] = $s;
+            }
+        }
+
+        // Origin AS from route/route6 objects
+        $asNumber = null;
+        $originValues = [];
+        // Also check aut-num field (LACNIC puts it in the inetnum object)
+        foreach ($f['aut-num'] ?? [] as $autnum) {
+            $originValues[] = $autnum;
+        }
+        foreach ($objects as $obj) {
+            if (in_array($obj['type'], ['route', 'route6'], true)) {
+                foreach ($obj['fields']['origin'] ?? [] as $origin) {
+                    $originValues[] = $origin;
+                }
+            }
+        }
+        if ($originValues !== []) {
+            $lastOrigin = end($originValues);
+            $asNumber = (int)preg_replace('/^AS/i', '', $lastOrigin);
+            if ($asNumber === 0) {
+                $asNumber = null;
+            }
+        }
+
+        // Resolve contacts
+        $contacts = $this->resolveRpslContacts($primaryObj, $objects, $text);
+
+        return new IpInfo(
+            range: $range,
+            networkName: $netName,
+            description: $description,
+            asNumber: $asNumber,
+            country: $country,
+            createdDate: $createdDate,
+            updatedDate: $updatedDate,
+            status: $status,
+            contacts: $contacts,
+        );
+    }
+
+    /**
+     * Build AsnInfo from RPSL objects (RIPE/APNIC/LACNIC/AFRINIC format).
+     */
+    private function buildAsnFromRpslObjects(array $primaryObj, array $objects, string $text): AsnInfo
+    {
+        $f = $primaryObj['fields'];
+
+        $asnStr = $f['aut-num'][0] ?? null;
         $asn = null;
         if ($asnStr !== null) {
             $asn = (int)preg_replace('/^AS/i', '', $asnStr);
         }
 
-        $name = $this->firstValue($fields, 'as_name');
-        $description = $this->firstValue($fields, 'description');
-        $country = $this->firstValue($fields, 'country');
+        $name = $f['as-name'][0] ?? null;
+        $description = $f['descr'][0] ?? null;
+        // For LACNIC, "owner" is the description
+        if ($description === null) {
+            $description = $f['owner'][0] ?? null;
+        }
+        $country = $f['country'][0] ?? null;
+
+        // If country not in primary object, get it from the linked organisation
+        if ($country === null) {
+            $orgRef = $f['org'][0] ?? null;
+            if ($orgRef !== null) {
+                $orgObj = $this->resolveRpslOrg($orgRef, $objects);
+                if ($orgObj !== null) {
+                    $country = $orgObj['fields']['country'][0] ?? null;
+                }
+            }
+        }
+
+        $createdDate = $this->parseDate($f['created'][0] ?? null);
+        $updatedDate = $this->parseDate($f['last-modified'][0] ?? $f['changed'][0] ?? null);
+
+        // Status
+        $status = [];
+        foreach ($f['status'] ?? [] as $s) {
+            $s = trim($s);
+            if ($s !== '') {
+                $status[] = $s;
+            }
+        }
+
+        // Resolve contacts
+        $contacts = $this->resolveRpslContacts($primaryObj, $objects, $text);
 
         return new AsnInfo(
             asn: $asn,
             name: $name,
             description: $description,
             country: $country,
+            createdDate: $createdDate,
+            updatedDate: $updatedDate,
+            status: $status,
+            contacts: $contacts,
         );
+    }
+
+    /**
+     * Resolve contacts from RPSL objects using admin-c, tech-c, abuse-c, org references.
+     * @return Contact[]
+     */
+    private function resolveRpslContacts(array $primaryObj, array $objects, string $text): array
+    {
+        $contacts = [];
+        $f = $primaryObj['fields'];
+
+        // Detect LACNIC format — has 'owner' or 'responsible' field
+        $isLacnic = isset($f['owner']) || isset($f['responsible']);
+
+        // Registrant from org -> organisation object
+        $orgRef = $f['org'][0] ?? null;
+        if ($orgRef !== null) {
+            $orgObj = $this->resolveRpslOrg($orgRef, $objects);
+            if ($orgObj !== null) {
+                $contact = $this->contactFromRpslObject($orgObj, ContactType::Registrant);
+                if ($contact !== null) {
+                    $contacts[] = $contact;
+                }
+            }
+        }
+
+        // LACNIC: registrant from owner/responsible/address/phone in primary object
+        if ($orgRef === null && isset($f['owner'])) {
+            $responsible = $f['responsible'][0] ?? null;
+            $address = isset($f['address']) ? implode(', ', $f['address']) : null;
+            $lacCountry = $f['country'][0] ?? null;
+            if ($address !== null && $lacCountry !== null && !str_contains($address, $lacCountry)) {
+                $address .= ', ' . $lacCountry;
+            }
+            $phone = $f['phone'][0] ?? null;
+            if ($responsible !== null || $phone !== null || $address !== null) {
+                $contacts[] = new Contact(
+                    type: ContactType::Registrant,
+                    name: $responsible,
+                    phone: $phone,
+                    address: $address,
+                );
+            }
+        }
+
+        // Admin contact
+        $adminRefs = $f['admin-c'] ?? [];
+        foreach ($adminRefs as $ref) {
+            $contactObj = $this->resolveRpslContact($ref, $objects);
+            if ($contactObj !== null) {
+                $contact = $this->contactFromRpslObject($contactObj, ContactType::Admin, $isLacnic);
+                if ($contact !== null) {
+                    $contacts[] = $contact;
+                }
+            }
+        }
+
+        // Tech contact
+        $techRefs = $f['tech-c'] ?? [];
+        foreach ($techRefs as $ref) {
+            $contactObj = $this->resolveRpslContact($ref, $objects);
+            if ($contactObj !== null) {
+                $contact = $this->contactFromRpslObject($contactObj, ContactType::Tech, $isLacnic);
+                if ($contact !== null) {
+                    $contacts[] = $contact;
+                }
+            }
+        }
+
+        // Abuse contact — from abuse-c reference, or from "Abuse contact for ... is 'email'" comment
+        $abuseRefs = $f['abuse-c'] ?? [];
+        $abuseResolved = false;
+        foreach ($abuseRefs as $ref) {
+            $contactObj = $this->resolveRpslContact($ref, $objects);
+            if ($contactObj !== null) {
+                $contact = $this->contactFromRpslObject($contactObj, ContactType::Abuse, $isLacnic);
+                if ($contact !== null) {
+                    $contacts[] = $contact;
+                    $abuseResolved = true;
+                }
+            }
+        }
+
+        // If no abuse-c was resolved, try the IRT object
+        if (!$abuseResolved) {
+            foreach ($objects as $obj) {
+                if ($obj['type'] === 'irt') {
+                    $contact = $this->contactFromRpslObject($obj, ContactType::Abuse, $isLacnic);
+                    if ($contact !== null) {
+                        $contacts[] = $contact;
+                        $abuseResolved = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Fallback: extract abuse email from boilerplate comment
+        if (!$abuseResolved && preg_match("/Abuse contact.*?is '([^']+)'/i", $text, $m)) {
+            $contacts[] = new Contact(
+                type: ContactType::Abuse,
+                email: $m[1],
+            );
+        }
+
+        // LACNIC: tech-c and abuse-c resolve to same nic-hdl objects
+        $ownerCRefs = $f['owner-c'] ?? [];
+        foreach ($ownerCRefs as $ref) {
+            // owner-c typically points to the same contact as abuse-c in LACNIC
+            // Don't duplicate if already resolved via abuse-c
+        }
+
+        return $contacts;
+    }
+
+    /**
+     * Extract contacts from ARIN format (OrgTechName, OrgAbuseName, etc.).
+     * @return Contact[]
+     */
+    private function extractArinContacts(array $fields, string $text): array
+    {
+        $contacts = [];
+
+        // Registrant from OrgName + Address/City/State/Postal/Country
+        $orgName = $this->firstValue($fields, 'orgname')
+            ?? $this->firstValue($fields, 'description');
+        $address = null;
+        $addrParts = [];
+        $addrField = $this->firstValue($fields, 'address');
+        $city = $this->firstValue($fields, 'city');
+        $state = $this->firstValue($fields, 'stateprov');
+        $postal = $this->firstValue($fields, 'postalcode');
+        $countryField = $this->firstValue($fields, 'country');
+        if ($addrField) $addrParts[] = $addrField;
+        if ($city) $addrParts[] = $city;
+        if ($state) $addrParts[] = $state;
+        if ($postal) $addrParts[] = $postal;
+        if ($countryField) $addrParts[] = $countryField;
+        if ($addrParts !== []) {
+            $address = implode(', ', $addrParts);
+        }
+
+        if ($orgName !== null || $address !== null) {
+            $contacts[] = new Contact(
+                type: ContactType::Registrant,
+                name: $orgName,
+                address: $address,
+            );
+        }
+
+        // Parse tech and abuse contacts in the order they appear in the text
+        $contactBlocks = [];
+        // Match OrgTech*, OrgAbuse*, RTech*, RAbuse*, RNOC* blocks
+        if (preg_match_all('/^(OrgTech|OrgAbuse|RTech|RAbuse|RNOC)(Handle|Name|Phone|Email|Ref):\s*(.+)$/m', $text, $matches, PREG_SET_ORDER)) {
+            foreach ($matches as $m) {
+                $prefix = $m[1];
+                $field = strtolower($m[2]);
+                $value = trim($m[3]);
+                $contactBlocks[$prefix][$field] = $value;
+            }
+        }
+
+        // Emit contacts in order of first appearance
+        $seenTypes = [];
+        foreach ($contactBlocks as $prefix => $block) {
+            $ctype = match (true) {
+                str_contains($prefix, 'Tech') || str_contains($prefix, 'NOC') => 'tech',
+                str_contains($prefix, 'Abuse') => 'abuse',
+                default => null,
+            };
+            if ($ctype === null || isset($seenTypes[$ctype])) {
+                continue;
+            }
+            $seenTypes[$ctype] = true;
+
+            $contactType = $ctype === 'tech' ? ContactType::Tech : ContactType::Abuse;
+            $name = $block['name'] ?? null;
+            $email = $block['email'] ?? null;
+            $phone = isset($block['phone']) ? trim($block['phone']) : null;
+            if ($name !== null || $email !== null || $phone !== null) {
+                $contacts[] = new Contact(
+                    type: $contactType,
+                    name: $name,
+                    email: $email,
+                    phone: $phone,
+                );
+            }
+        }
+
+        return $contacts;
+    }
+
+    /**
+     * Extract IP status from flat fields.
+     * @return string[]
+     */
+    private function extractIpStatus(array $fields): array
+    {
+        $status = [];
+        foreach ($fields['status'] ?? [] as $s) {
+            $s = trim($s);
+            if ($s !== '') {
+                $status[] = $s;
+            }
+        }
+        return $status;
     }
 
     /**
