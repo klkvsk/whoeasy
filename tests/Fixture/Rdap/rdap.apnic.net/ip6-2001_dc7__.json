@@ -1,0 +1,353 @@
+{
+    "rdapConformance": [
+        "history_version_0",
+        "nro_rdap_profile_0",
+        "cidr0",
+        "rdap_level_0"
+    ],
+    "notices": [
+        {
+            "title": "Source",
+            "description": [
+                "Objects returned came from source",
+                "APNIC"
+            ]
+        },
+        {
+            "title": "Terms and Conditions",
+            "description": [
+                "This is the APNIC WHOIS Database query service. The objects are in RDAP format."
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.apnic.net/ip/2001:dc7::",
+                    "rel": "terms-of-service",
+                    "href": "http://www.apnic.net/db/dbcopyright.html",
+                    "type": "text/html"
+                }
+            ]
+        },
+        {
+            "title": "Whois Inaccuracy Reporting",
+            "description": [
+                "If you see inaccuracies in the results, please visit: "
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.apnic.net/ip/2001:dc7::",
+                    "rel": "inaccuracy-report",
+                    "href": "https://www.apnic.net/manage-ip/using-whois/abuse-and-spamming/invalid-contact-form",
+                    "type": "text/html"
+                }
+            ]
+        }
+    ],
+    "country": "CN",
+    "events": [
+        {
+            "eventAction": "registration",
+            "eventDate": "2008-09-04T06:49:18Z"
+        },
+        {
+            "eventAction": "last changed",
+            "eventDate": "2021-06-16T01:31:35Z"
+        }
+    ],
+    "name": "CNNIC-CN-20040913",
+    "remarks": [
+        {
+            "description": [
+                "China Internet Network Information Center",
+                "4, South 4th Street, Zhongguancun, Haidian District, Beijing"
+            ],
+            "title": "description"
+        }
+    ],
+    "links": [
+        {
+            "value": "https://rdap.apnic.net/ip/2001:dc7::",
+            "rel": "self",
+            "href": "https://rdap.apnic.net/ip/2001:dc7::/32",
+            "type": "application/rdap+json"
+        }
+    ],
+    "status": [
+        "active"
+    ],
+    "type": "ALLOCATED PORTABLE",
+    "ipVersion": "v6",
+    "endAddress": "2001:dc7:ffff:ffff:ffff:ffff:ffff:ffff",
+    "startAddress": "2001:dc7::",
+    "objectClassName": "ip network",
+    "handle": "2001:dc7::/32",
+    "entities": [
+        {
+            "roles": [
+                "abuse"
+            ],
+            "events": [
+                {
+                    "eventAction": "registration",
+                    "eventDate": "2010-11-08T06:47:38Z"
+                },
+                {
+                    "eventAction": "last changed",
+                    "eventDate": "2025-11-17T23:08:37Z"
+                }
+            ],
+            "remarks": [
+                {
+                    "description": [
+                        "Please note that CNNIC is not an ISP and is not",
+                        "empowered to investigate complaints of network abuse.",
+                        "Please contact the tech-c or admin-c of the network.",
+                        "ipas@cnnic.cn is invalid"
+                    ],
+                    "title": "remarks"
+                }
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.apnic.net/ip/2001:dc7::",
+                    "rel": "self",
+                    "href": "https://rdap.apnic.net/entity/IRT-CNNIC-CN",
+                    "type": "application/rdap+json"
+                }
+            ],
+            "vcardArray": [
+                "vcard",
+                [
+                    [
+                        "version",
+                        [],
+                        "text",
+                        "4.0"
+                    ],
+                    [
+                        "fn",
+                        [],
+                        "text",
+                        "IRT-CNNIC-CN"
+                    ],
+                    [
+                        "kind",
+                        [],
+                        "text",
+                        "group"
+                    ],
+                    [
+                        "adr",
+                        {
+                            "label": "Beijing, China"
+                        },
+                        "text",
+                        [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ]
+                    ],
+                    [
+                        "email",
+                        [],
+                        "text",
+                        "ipas@cnnic.cn"
+                    ],
+                    [
+                        "email",
+                        {
+                            "pref": "1"
+                        },
+                        "text",
+                        "ipas@cnnic.cn"
+                    ]
+                ]
+            ],
+            "objectClassName": "entity",
+            "handle": "IRT-CNNIC-CN"
+        },
+        {
+            "roles": [
+                "administrative"
+            ],
+            "events": [
+                {
+                    "eventAction": "registration",
+                    "eventDate": "2008-09-04T07:29:40Z"
+                },
+                {
+                    "eventAction": "last changed",
+                    "eventDate": "2008-09-04T07:29:40Z"
+                }
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.apnic.net/ip/2001:dc7::",
+                    "rel": "self",
+                    "href": "https://rdap.apnic.net/entity/MW1-AP",
+                    "type": "application/rdap+json"
+                }
+            ],
+            "vcardArray": [
+                "vcard",
+                [
+                    [
+                        "version",
+                        [],
+                        "text",
+                        "4.0"
+                    ],
+                    [
+                        "fn",
+                        [],
+                        "text",
+                        "Mao Wei"
+                    ],
+                    [
+                        "kind",
+                        [],
+                        "text",
+                        "individual"
+                    ],
+                    [
+                        "adr",
+                        {
+                            "label": "China Internet Information Center(CNNIC)No. 4 of South street,\nZhongguancun, Beijing, P.R.China 100080"
+                        },
+                        "text",
+                        [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ]
+                    ],
+                    [
+                        "tel",
+                        {
+                            "type": "voice"
+                        },
+                        "text",
+                        "+86-10-58813000"
+                    ],
+                    [
+                        "tel",
+                        {
+                            "type": "fax"
+                        },
+                        "text",
+                        "+86-10-62559892"
+                    ],
+                    [
+                        "email",
+                        [],
+                        "text",
+                        "ipas@cnnic.net.cn"
+                    ]
+                ]
+            ],
+            "objectClassName": "entity",
+            "handle": "MW1-AP"
+        },
+        {
+            "roles": [
+                "technical"
+            ],
+            "events": [
+                {
+                    "eventAction": "registration",
+                    "eventDate": "2008-09-04T07:54:15Z"
+                },
+                {
+                    "eventAction": "last changed",
+                    "eventDate": "2013-09-12T07:40:01Z"
+                }
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.apnic.net/ip/2001:dc7::",
+                    "rel": "self",
+                    "href": "https://rdap.apnic.net/entity/IPAS1-AP",
+                    "type": "application/rdap+json"
+                }
+            ],
+            "vcardArray": [
+                "vcard",
+                [
+                    [
+                        "version",
+                        [],
+                        "text",
+                        "4.0"
+                    ],
+                    [
+                        "fn",
+                        [],
+                        "text",
+                        "CNNIC IPAS CONFEDERATION"
+                    ],
+                    [
+                        "kind",
+                        [],
+                        "text",
+                        "group"
+                    ],
+                    [
+                        "adr",
+                        {
+                            "label": "No.4, Zhongguancun No.4 South Street,\nHaidian District, Beijing"
+                        },
+                        "text",
+                        [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ]
+                    ],
+                    [
+                        "tel",
+                        {
+                            "type": "voice"
+                        },
+                        "text",
+                        "+86-010-58813000"
+                    ],
+                    [
+                        "tel",
+                        {
+                            "type": "fax"
+                        },
+                        "text",
+                        "+86-010-58813075"
+                    ],
+                    [
+                        "email",
+                        [],
+                        "text",
+                        "ipas@cnnic.cn"
+                    ]
+                ]
+            ],
+            "objectClassName": "entity",
+            "handle": "IPAS1-AP"
+        }
+    ],
+    "cidr0_cidrs": [
+        {
+            "v6prefix": "2001:dc7::",
+            "length": 32
+        }
+    ],
+    "port43": "whois.apnic.net"
+}

@@ -1,0 +1,32 @@
+{
+    "range": "1.1.1.0 - 1.1.1.255",
+    "networkName": "APNIC-LABS",
+    "country": "AU",
+    "createdDate": "2011-08-10 23:12:35",
+    "updatedDate": "2023-04-26 22:57:58",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "APNIC Research and Development",
+            "email": "helpdesk@apnic.net",
+            "phone": "+61-7-38583100"
+        },
+        {
+            "type": "abuse",
+            "name": "IRT-APNICRANDNET-AU",
+            "email": "helpdesk@apnic.net"
+        },
+        {
+            "type": "admin",
+            "name": "APNICRANDNET Infrastructure Contact",
+            "email": "research@apnic.net",
+            "phone": "+61 7 3858 3100"
+        },
+        {
+            "type": "tech",
+            "name": "APNICRANDNET Infrastructure Contact",
+            "email": "research@apnic.net",
+            "phone": "+61 7 3858 3100"
+        }
+    ]
+}

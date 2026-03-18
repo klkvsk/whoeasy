@@ -1,0 +1,30 @@
+{
+    "range": "2001:4860:: - 2001:4860:ffff:ffff:ffff:ffff:ffff:ffff",
+    "networkName": "GOOGLE-IPV6",
+    "createdDate": "2005-03-14 11:31:08",
+    "updatedDate": "2012-02-24 09:44:34",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Google LLC"
+        },
+        {
+            "type": "registrant",
+            "name": "Google LLC",
+            "email": "arin-contact@google.com",
+            "phone": "+1-650-253-0000"
+        },
+        {
+            "type": "abuse",
+            "name": "Google LLC",
+            "email": "arin-contact@google.com",
+            "phone": "+1-650-253-0000"
+        },
+        {
+            "type": "tech",
+            "name": "Google LLC",
+            "email": "arin-contact@google.com",
+            "phone": "+1-650-253-0000"
+        }
+    ]
+}

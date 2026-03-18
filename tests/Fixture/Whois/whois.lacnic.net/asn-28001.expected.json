@@ -1,0 +1,22 @@
+{
+    "asn": 28001,
+    "description": "LACNIC - Latin American and Caribbean IP address",
+    "country": "UY",
+    "createdDate": "2008-09-02 00:00:00",
+    "updatedDate": "2024-09-17 00:00:00",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Ernesto Majó",
+            "phone": "+598  26042222 [4401]",
+            "address": "Rambla República de México, 6125, Esq. 6 de Abril, 11400 - Montevideo - Montevideo, UY"
+        },
+        {
+            "type": "abuse",
+            "name": "Carlos M Martínez",
+            "email": "ipadmin@lacnic.net",
+            "phone": "+598  26042222 [4401]",
+            "address": "Rambla Rep. de México, 6125, Casa de Internet, 11400 - Montevideo - Montevideo, UY"
+        }
+    ]
+}

@@ -1,0 +1,303 @@
+{
+    "objectClassName": "domain",
+    "handle": "DO8356468-GMO",
+    "ldhName": "jetbrains.shop",
+    "status": [
+        "client transfer prohibited",
+        "client update prohibited",
+        "client delete prohibited"
+    ],
+    "events": [
+        {
+            "eventAction": "registration",
+            "eventDate": "2023-06-20T10:10:23.0Z"
+        },
+        {
+            "eventAction": "expiration",
+            "eventDate": "2026-06-20T23:59:59.0Z"
+        },
+        {
+            "eventAction": "last changed",
+            "eventDate": "2025-12-22T13:42:43.0Z"
+        },
+        {
+            "eventAction": "last update of RDAP database",
+            "eventDate": "2026-03-18T09:53:27.0Z"
+        }
+    ],
+    "nameservers": [
+        {
+            "objectClassName": "nameserver",
+            "ldhName": "ns5.markmonitor.com",
+            "links": [
+                {
+                    "value": "https://rdap.gmoregistry.net/rdap/nameserver/ns5.markmonitor.com",
+                    "rel": "self",
+                    "href": "https://rdap.gmoregistry.net/rdap/nameserver/ns5.markmonitor.com",
+                    "type": "application/rdap+json"
+                }
+            ]
+        },
+        {
+            "objectClassName": "nameserver",
+            "ldhName": "ns7.markmonitor.com",
+            "links": [
+                {
+                    "value": "https://rdap.gmoregistry.net/rdap/nameserver/ns7.markmonitor.com",
+                    "rel": "self",
+                    "href": "https://rdap.gmoregistry.net/rdap/nameserver/ns7.markmonitor.com",
+                    "type": "application/rdap+json"
+                }
+            ]
+        },
+        {
+            "objectClassName": "nameserver",
+            "ldhName": "ns1.markmonitor.com",
+            "links": [
+                {
+                    "value": "https://rdap.gmoregistry.net/rdap/nameserver/ns1.markmonitor.com",
+                    "rel": "self",
+                    "href": "https://rdap.gmoregistry.net/rdap/nameserver/ns1.markmonitor.com",
+                    "type": "application/rdap+json"
+                }
+            ]
+        },
+        {
+            "objectClassName": "nameserver",
+            "ldhName": "ns4.markmonitor.com",
+            "links": [
+                {
+                    "value": "https://rdap.gmoregistry.net/rdap/nameserver/ns4.markmonitor.com",
+                    "rel": "self",
+                    "href": "https://rdap.gmoregistry.net/rdap/nameserver/ns4.markmonitor.com",
+                    "type": "application/rdap+json"
+                }
+            ]
+        },
+        {
+            "objectClassName": "nameserver",
+            "ldhName": "ns2.markmonitor.com",
+            "links": [
+                {
+                    "value": "https://rdap.gmoregistry.net/rdap/nameserver/ns2.markmonitor.com",
+                    "rel": "self",
+                    "href": "https://rdap.gmoregistry.net/rdap/nameserver/ns2.markmonitor.com",
+                    "type": "application/rdap+json"
+                }
+            ]
+        },
+        {
+            "objectClassName": "nameserver",
+            "ldhName": "ns3.markmonitor.com",
+            "links": [
+                {
+                    "value": "https://rdap.gmoregistry.net/rdap/nameserver/ns3.markmonitor.com",
+                    "rel": "self",
+                    "href": "https://rdap.gmoregistry.net/rdap/nameserver/ns3.markmonitor.com",
+                    "type": "application/rdap+json"
+                }
+            ]
+        },
+        {
+            "objectClassName": "nameserver",
+            "ldhName": "ns6.markmonitor.com",
+            "links": [
+                {
+                    "value": "https://rdap.gmoregistry.net/rdap/nameserver/ns6.markmonitor.com",
+                    "rel": "self",
+                    "href": "https://rdap.gmoregistry.net/rdap/nameserver/ns6.markmonitor.com",
+                    "type": "application/rdap+json"
+                }
+            ]
+        }
+    ],
+    "secureDNS": {
+        "delegationSigned": false
+    },
+    "entities": [
+        {
+            "objectClassName": "entity",
+            "handle": "292",
+            "status": [
+                "active"
+            ],
+            "vcardArray": [
+                "vcard",
+                [
+                    [
+                        "version",
+                        [],
+                        "text",
+                        "4.0"
+                    ],
+                    [
+                        "fn",
+                        [],
+                        "text",
+                        "MarkMonitor Inc."
+                    ]
+                ]
+            ],
+            "roles": [
+                "registrar"
+            ],
+            "publicIds": [
+                {
+                    "type": "IANA Registrar ID",
+                    "identifier": "292"
+                }
+            ],
+            "entities": [
+                {
+                    "objectClassName": "entity",
+                    "vcardArray": [
+                        "vcard",
+                        [
+                            [
+                                "version",
+                                [],
+                                "text",
+                                "4.0"
+                            ],
+                            [
+                                "email",
+                                [],
+                                "text",
+                                "abusecomplaints@markmonitor.com"
+                            ],
+                            [
+                                "tel",
+                                {
+                                    "type": "voice"
+                                },
+                                "uri",
+                                "tel:+1.2083895740"
+                            ],
+                            [
+                                "fn",
+                                [],
+                                "text",
+                                "MarkMonitor Inc."
+                            ]
+                        ]
+                    ],
+                    "roles": [
+                        "abuse"
+                    ]
+                }
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.gmoregistry.net/rdap/entity/292",
+                    "rel": "self",
+                    "href": "https://rdap.gmoregistry.net/rdap/entity/292",
+                    "type": "application/rdap+json"
+                },
+                {
+                    "value": "https://rdap.markmonitor.com/rdap/",
+                    "rel": "about",
+                    "href": "https://rdap.markmonitor.com/rdap/",
+                    "type": "application/rdap+json"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "value": "https://rdap.markmonitor.com/rdap/",
+            "rel": "about",
+            "href": "https://rdap.markmonitor.com/rdap/",
+            "type": "application/rdap+json"
+        },
+        {
+            "value": "https://rdap.markmonitor.com/rdap/domain/jetbrains.shop",
+            "rel": "related",
+            "href": "https://rdap.markmonitor.com/rdap/domain/jetbrains.shop",
+            "type": "application/rdap+json"
+        },
+        {
+            "value": "https://rdap.gmoregistry.net/rdap/domain/jetbrains.shop",
+            "rel": "self",
+            "href": "https://rdap.gmoregistry.net/rdap/domain/jetbrains.shop",
+            "type": "application/rdap+json"
+        }
+    ],
+    "notices": [
+        {
+            "title": "Status Codes",
+            "description": [
+                "For more information on domain status codes, please visit https://icann.org/epp"
+            ],
+            "links": [
+                {
+                    "value": "https://icann.org/epp",
+                    "rel": "alternate",
+                    "href": "https://icann.org/epp",
+                    "type": "text/html"
+                }
+            ]
+        },
+        {
+            "title": "RDDS Inaccuracy Complaint Form",
+            "description": [
+                "URL of the ICANN RDDS Inaccuracy Complaint Form: https://www.icann.org/wicf"
+            ],
+            "links": [
+                {
+                    "value": "https://www.icann.org/wicf/",
+                    "rel": "alternate",
+                    "href": "https://www.icann.org/wicf/",
+                    "type": "text/html"
+                }
+            ]
+        },
+        {
+            "title": "Privacy Policy",
+            "description": [
+                "GMO Registry prioritizes data privacy, adhering to strict policies and collaborating with partners to protect customer information."
+            ],
+            "links": [
+                {
+                    "value": "https://www.gmoregistry.com/en/privacy/",
+                    "rel": "alternate",
+                    "href": "https://www.gmoregistry.com/en/privacy/",
+                    "type": "text/html"
+                }
+            ]
+        },
+        {
+            "description": [
+                "This response conforms to the RDAP Operational Profile for gTLD Registries and Registrars version 1.0"
+            ]
+        },
+        {
+            "title": "Terms of Service",
+            "description": [
+                "Please query the RDAP service of the Registrar of Record identified in this output for information on how to contact the Registrar, Registrant, Admin, or Tech contact of the queried domain name.",
+                "",
+                "This RDAP service is provided by GMO Registry and only contains information pertaining to Internet domain names we have registered for our customers.",
+                "GMO Registry does not guarantee the accuracy of this data.",
+                "",
+                "By using this service you are agreeing;",
+                "",
+                "(1) only to use the data for lawful purposes.",
+                "(2) not to use any information presented here for any purpose other than determining ownership of domain names.",
+                "..."
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.gmoregistry.net/rdap/domain/jetbrains.shop",
+                    "rel": "terms-of-service",
+                    "href": "https://rdap.gmoregistry.net/tos",
+                    "type": "text/html"
+                }
+            ]
+        }
+    ],
+    "rdapConformance": [
+        "rdap_level_0",
+        "icann_rdap_response_profile_1",
+        "icann_rdap_technical_implementation_guide_1"
+    ],
+    "lang": "en"
+}

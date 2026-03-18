@@ -1,0 +1,18 @@
+{
+    "asn": 15169,
+    "name": "GOOGLE",
+    "createdDate": "2000-03-30 00:00:00",
+    "updatedDate": "2012-02-24 09:44:34",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Google LLC"
+        },
+        {
+            "type": "tech",
+            "name": "Google LLC",
+            "email": "arin-contact@google.com",
+            "phone": "+1-650-253-0000"
+        }
+    ]
+}

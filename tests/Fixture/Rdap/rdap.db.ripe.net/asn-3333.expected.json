@@ -1,0 +1,38 @@
+{
+    "asn": 3333,
+    "name": "RIPE-NCC-AS",
+    "createdDate": "2002-08-13 12:58:13",
+    "updatedDate": "2017-12-04 14:48:54",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Reseaux IP Europeens Network Coordination Centre (RIPE NCC)",
+            "phone": "+31205354444"
+        },
+        {
+            "type": "admin",
+            "name": "Brian Riddle",
+            "phone": "+31 20 535 4444"
+        },
+        {
+            "type": "tech",
+            "name": "RIPE NCC Operations",
+            "email": "abuse@ripe.net",
+            "phone": "+31 20 535 4444"
+        },
+        {
+            "type": "registrant",
+            "name": "RIPE-NCC-END-MNT"
+        },
+        {
+            "type": "registrant",
+            "name": "RIPE-NCC-MNT"
+        },
+        {
+            "type": "abuse",
+            "name": "RIPE NCC Operations",
+            "email": "abuse@ripe.net",
+            "phone": "+31 20 535 4444"
+        }
+    ]
+}

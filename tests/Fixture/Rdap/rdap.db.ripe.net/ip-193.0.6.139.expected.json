@@ -1,0 +1,35 @@
+{
+    "range": "193.0.0.0 - 193.0.7.255",
+    "networkName": "RIPE-NCC",
+    "country": "NL",
+    "createdDate": "2003-03-17 12:15:57",
+    "updatedDate": "2017-12-04 14:42:31",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Reseaux IP Europeens Network Coordination Centre (RIPE NCC)",
+            "phone": "+31205354444"
+        },
+        {
+            "type": "admin",
+            "name": "Brian Riddle",
+            "phone": "+31 20 535 4444"
+        },
+        {
+            "type": "tech",
+            "name": "RIPE NCC Operations",
+            "email": "abuse@ripe.net",
+            "phone": "+31 20 535 4444"
+        },
+        {
+            "type": "registrant",
+            "name": "RIPE-NCC-MNT"
+        },
+        {
+            "type": "abuse",
+            "name": "RIPE NCC Operations",
+            "email": "abuse@ripe.net",
+            "phone": "+31 20 535 4444"
+        }
+    ]
+}

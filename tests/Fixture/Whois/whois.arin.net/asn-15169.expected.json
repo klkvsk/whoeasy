@@ -1,0 +1,27 @@
+{
+    "asn": 15169,
+    "name": "GOOGLE",
+    "description": "Google LLC",
+    "country": "US",
+    "createdDate": "2000-03-30 00:00:00",
+    "updatedDate": "2012-02-24 00:00:00",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Google LLC",
+            "address": "1600 Amphitheatre Parkway, Mountain View, CA, 94043, US"
+        },
+        {
+            "type": "abuse",
+            "name": "Abuse",
+            "email": "network-abuse@google.com",
+            "phone": "+1-650-253-0000"
+        },
+        {
+            "type": "tech",
+            "name": "Google LLC",
+            "email": "arin-contact@google.com",
+            "phone": "+1-650-253-0000"
+        }
+    ]
+}

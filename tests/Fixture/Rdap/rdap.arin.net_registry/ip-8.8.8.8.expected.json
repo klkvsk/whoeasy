@@ -1,0 +1,12 @@
+{
+    "range": "8.8.8.0 - 8.8.8.255",
+    "networkName": "GOGL",
+    "createdDate": "2023-12-28 17:24:33",
+    "updatedDate": "2023-12-28 17:24:56",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Google LLC"
+        }
+    ]
+}

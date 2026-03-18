@@ -1,0 +1,37 @@
+{
+    "range": "200.3.12.0 - 200.3.15.255",
+    "networkName": "200.3.12.0 - 200.3.15.255",
+    "asNumber": 28001,
+    "country": "UY",
+    "createdDate": "2008-09-02 14:19:50",
+    "updatedDate": "2008-09-02 14:19:50",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "LACNIC - Latin American and Caribbean IP address",
+            "phone": "+598  26042222#4401",
+            "address": "Esq. 6 de Abril, Rambla República de México, Montevideo, 11400, UY"
+        },
+        {
+            "type": "admin",
+            "name": "Carlos M Martínez",
+            "email": "ipadmin@lacnic.net",
+            "phone": "+598  26042222#4401",
+            "address": "Casa de Internet, Rambla Rep. de México, Montevideo, 11400, UY"
+        },
+        {
+            "type": "tech",
+            "name": "Carlos M Martínez",
+            "email": "ipadmin@lacnic.net",
+            "phone": "+598  26042222#4401",
+            "address": "Casa de Internet, Rambla Rep. de México, Montevideo, 11400, UY"
+        },
+        {
+            "type": "abuse",
+            "name": "Carlos M Martínez",
+            "email": "ipadmin@lacnic.net",
+            "phone": "+598  26042222#4401",
+            "address": "Casa de Internet, Rambla Rep. de México, Montevideo, 11400, UY"
+        }
+    ]
+}

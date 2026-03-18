@@ -71,6 +71,7 @@ Returned by `Whoeasy::ip()` or when querying an IPv4/IPv6 address.
     "range": "8.8.8.0 - 8.8.8.255",
     "networkName": "GOGL",
     "description": "Google LLC",
+    "asNumber": 15169,
     "country": "US",
     "createdDate": "2014-03-14 00:00:00",
     "updatedDate": "2014-03-14 00:00:00",
@@ -99,6 +100,7 @@ Returned by `Whoeasy::ip()` or when querying an IPv4/IPv6 address.
 | `range` | string | IP range. Format varies: `"start - end"` (RDAP) or `"prefix/length"` (WHOIS) |
 | `networkName` | string | Short network identifier (e.g. `"GOGL"`, `"CLOUDFLARENET"`) |
 | `description` | string | Organization or network description |
+| `asNumber` | int | Origin AS number (last mentioned if multiple) |
 | `country` | string | 2-letter ISO country code |
 | `createdDate` | string | Registration date, normalized to `Y-m-d H:i:s` |
 | `updatedDate` | string | Last modification date |

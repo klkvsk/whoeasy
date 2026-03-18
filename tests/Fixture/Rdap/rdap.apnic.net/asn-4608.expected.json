@@ -1,0 +1,31 @@
+{
+    "asn": 4608,
+    "name": "APNIC-SERVICES",
+    "createdDate": "2008-09-04 06:40:28",
+    "updatedDate": "2020-06-16 00:18:58",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Asia Pacific Network Information Centre",
+            "email": "noc@apnic.net",
+            "phone": "+61-7-3858-3100"
+        },
+        {
+            "type": "admin",
+            "name": "APNIC Infrastructure Contact",
+            "email": "helpdesk@apnic.net",
+            "phone": "+61 7 3858 3100"
+        },
+        {
+            "type": "tech",
+            "name": "APNIC Infrastructure Contact",
+            "email": "helpdesk@apnic.net",
+            "phone": "+61 7 3858 3100"
+        },
+        {
+            "type": "abuse",
+            "name": "IRT-APNIC-IS-AP",
+            "email": "abuse@apnic.net"
+        }
+    ]
+}

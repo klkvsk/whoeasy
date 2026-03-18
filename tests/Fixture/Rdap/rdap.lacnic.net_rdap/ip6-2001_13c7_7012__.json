@@ -1,0 +1,302 @@
+{
+    "rdapConformance": [
+        "rdap_level_0",
+        "cidr0",
+        "lacnic_level_0"
+    ],
+    "notices": [
+        {
+            "title": "Terms and Conditions",
+            "description": [
+                "This is the LACNIC RDAP service. Objects are in RDAP format."
+            ],
+            "links": [
+                {
+                    "value": "https://www.lacnic.net/registration-data-access-protocol",
+                    "rel": "terms-of-service",
+                    "href": "https://www.lacnic.net/registration-data-access-protocol",
+                    "type": "text/html"
+                }
+            ]
+        }
+    ],
+    "remarks": [
+        {
+            "description": [
+                "Network: 2001:13c7:7010::/46"
+            ],
+            "title": "remarks"
+        }
+    ],
+    "links": [
+        {
+            "value": "https://rdap.lacnic.net/rdap/ip/2001:13c7:7010::/46",
+            "rel": "self",
+            "type": "application/rdap+json",
+            "href": "https://rdap.lacnic.net/rdap/ip/2001:13c7:7010::/46"
+        },
+        {
+            "value": "https://rdap.lacnic.net/rdap/ip/2001:13c7:7010::/46",
+            "rel": "up",
+            "type": "application/rdap+json",
+            "href": "https://rdap.lacnic.net/rdap/ip/2001:1200::/23"
+        }
+    ],
+    "events": [
+        {
+            "eventAction": "registration",
+            "eventDate": "2010-02-09T16:06:32Z"
+        },
+        {
+            "eventAction": "last changed",
+            "eventDate": "2010-02-09T16:06:32Z"
+        }
+    ],
+    "objectClassName": "ip network",
+    "handle": "2001:13c7:7010::/46",
+    "parentHandle": "2001:1200::/23",
+    "startAddress": "2001:13c7:7010::",
+    "endAddress": "2001:13c7:7013:ffff:ffff:ffff:ffff:ffff",
+    "ipVersion": "v6",
+    "name": "2001:13c7:7010:: - 2001:13c7:7013:ffff:ffff:ffff:ffff:ffff",
+    "type": "ASSIGNED",
+    "status": [
+        "active"
+    ],
+    "entities": [
+        {
+            "objectClassName": "entity",
+            "handle": "UY-LACN-LACNIC",
+            "roles": [
+                "registrant"
+            ],
+            "vcardArray": [
+                "vcard",
+                [
+                    [
+                        "version",
+                        [],
+                        "text",
+                        "4.0"
+                    ],
+                    [
+                        "fn",
+                        [],
+                        "text",
+                        "LACNIC - Latin American and Caribbean IP address"
+                    ],
+                    [
+                        "kind",
+                        [],
+                        "text",
+                        "org"
+                    ],
+                    [
+                        "adr",
+                        {
+                            "label": "Esq. 6 de Abril\nRambla República de México\nMontevideo\n11400\nUY"
+                        },
+                        "text",
+                        [
+                            "",
+                            "Esq. 6 de Abril",
+                            "Rambla República de México",
+                            "Montevideo",
+                            "",
+                            "11400",
+                            "UY"
+                        ]
+                    ],
+                    [
+                        "tel",
+                        {
+                            "type": "voice"
+                        },
+                        "text",
+                        "+598  26042222#4401"
+                    ]
+                ]
+            ],
+            "events": [
+                {
+                    "eventAction": "registration",
+                    "eventDate": "2005-10-05T12:00:00Z"
+                },
+                {
+                    "eventAction": "last changed",
+                    "eventDate": "2024-10-07T18:41:30Z"
+                }
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.lacnic.net/rdap/entity/UY-LACN-LACNIC",
+                    "rel": "self",
+                    "type": "application/rdap+json",
+                    "href": "https://rdap.lacnic.net/rdap/entity/UY-LACN-LACNIC"
+                }
+            ]
+        },
+        {
+            "objectClassName": "entity",
+            "handle": "AIL",
+            "roles": [
+                "administrative",
+                "technical",
+                "abuse"
+            ],
+            "vcardArray": [
+                "vcard",
+                [
+                    [
+                        "version",
+                        [],
+                        "text",
+                        "4.0"
+                    ],
+                    [
+                        "fn",
+                        [],
+                        "text",
+                        "Carlos M Martínez"
+                    ],
+                    [
+                        "kind",
+                        [],
+                        "text",
+                        "individual"
+                    ],
+                    [
+                        "adr",
+                        {
+                            "label": "Casa de Internet\nRambla Rep. de México\nMontevideo\n11400\nUY"
+                        },
+                        "text",
+                        [
+                            "",
+                            "Casa de Internet",
+                            "Rambla Rep. de México",
+                            "Montevideo",
+                            "",
+                            "11400",
+                            "UY"
+                        ]
+                    ],
+                    [
+                        "tel",
+                        {
+                            "type": "voice"
+                        },
+                        "text",
+                        "+598  26042222#4401"
+                    ],
+                    [
+                        "email",
+                        [],
+                        "text",
+                        "ipadmin@lacnic.net"
+                    ],
+                    [
+                        "lang",
+                        [],
+                        "language-tag",
+                        "es"
+                    ]
+                ]
+            ],
+            "events": [
+                {
+                    "eventAction": "registration",
+                    "eventDate": "2008-01-25T12:00:00Z"
+                },
+                {
+                    "eventAction": "last changed",
+                    "eventDate": "2026-01-20T19:37:30Z"
+                }
+            ],
+            "links": [
+                {
+                    "value": "https://rdap.lacnic.net/rdap/entity/AIL",
+                    "rel": "self",
+                    "type": "application/rdap+json",
+                    "href": "https://rdap.lacnic.net/rdap/entity/AIL"
+                }
+            ]
+        }
+    ],
+    "lacnic_originAutnum": [
+        "AS28000",
+        "AS28001"
+    ],
+    "lacnic_legalRepresentative": "Ernesto Majó",
+    "lacnic_reverseDelegations": [
+        {
+            "startAddress": "2001:13c7:7010::",
+            "endAddress": "2001:13c7:7013:ffff:ffff:ffff:ffff:ffff",
+            "nameservers": [
+                {
+                    "objectClassName": "nameserver",
+                    "ldhName": "NS.LACNIC.NET.",
+                    "events": [
+                        {
+                            "eventAction": "delegation check",
+                            "eventDate": "2026-03-18T07:03:07Z",
+                            "status": [
+                                "20260318 AA"
+                            ]
+                        },
+                        {
+                            "eventAction": "last correct delegation check",
+                            "eventDate": "2026-03-18T07:03:07Z"
+                        }
+                    ]
+                },
+                {
+                    "objectClassName": "nameserver",
+                    "ldhName": "NS2.LACNIC.NET.",
+                    "events": [
+                        {
+                            "eventAction": "delegation check",
+                            "eventDate": "2026-03-18T07:03:07Z",
+                            "status": [
+                                "20260318 AA"
+                            ]
+                        },
+                        {
+                            "eventAction": "last correct delegation check",
+                            "eventDate": "2026-03-18T07:03:07Z"
+                        }
+                    ]
+                },
+                {
+                    "objectClassName": "nameserver",
+                    "ldhName": "NS4.LACNIC.NET.",
+                    "events": [
+                        {
+                            "eventAction": "delegation check",
+                            "eventDate": "2026-03-18T07:03:07Z",
+                            "status": [
+                                "20260318 AA"
+                            ]
+                        },
+                        {
+                            "eventAction": "last correct delegation check",
+                            "eventDate": "2026-03-18T07:03:07Z"
+                        }
+                    ]
+                }
+            ],
+            "secureDNS": {
+                "zoneSigned": false,
+                "delegationSigned": false,
+                "dsData": []
+            }
+        }
+    ],
+    "cidr0_cidrs": [
+        {
+            "v6prefix": "2001:13c7:7010::",
+            "length": 46
+        }
+    ],
+    "port43": "whois.lacnic.net"
+}

@@ -1,0 +1,40 @@
+{
+    "asn": 4608,
+    "name": "APNIC-SERVICES",
+    "description": "Asia Pacific Network Information Centre",
+    "country": "AU",
+    "updatedDate": "2020-06-16 00:18:58",
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Asia Pacific Network Information Centre",
+            "email": "noc@apnic.net",
+            "phone": "+61-7-3858-3100",
+            "fax": "+61-7-3858-3199",
+            "address": "6 Cordelia Street"
+        },
+        {
+            "type": "admin",
+            "name": "APNIC Infrastructure Contact",
+            "email": "helpdesk@apnic.net",
+            "phone": "+61 7 3858 3100",
+            "fax": "+61 7 3858 3199",
+            "address": "6 Cordelia Street, South Brisbane, QLD 4101"
+        },
+        {
+            "type": "tech",
+            "name": "APNIC Infrastructure Contact",
+            "email": "helpdesk@apnic.net",
+            "phone": "+61 7 3858 3100",
+            "fax": "+61 7 3858 3199",
+            "address": "6 Cordelia Street, South Brisbane, QLD 4101"
+        },
+        {
+            "type": "abuse",
+            "name": "ABUSE APNICISAP",
+            "email": "abuse@apnic.net",
+            "phone": "+61 7 3858 3100",
+            "address": "South Brisbane, Australia"
+        }
+    ]
+}

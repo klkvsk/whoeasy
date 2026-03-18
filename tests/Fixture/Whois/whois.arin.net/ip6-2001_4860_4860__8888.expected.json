@@ -1,0 +1,27 @@
+{
+    "range": "2001:4860:: - 2001:4860:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF",
+    "networkName": "GOOGLE-IPV6",
+    "description": "Google LLC",
+    "country": "US",
+    "createdDate": "2005-03-14 00:00:00",
+    "updatedDate": "2012-02-24 00:00:00",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Google LLC",
+            "address": "1600 Amphitheatre Parkway, Mountain View, CA, 94043, US"
+        },
+        {
+            "type": "tech",
+            "name": "Google LLC",
+            "email": "arin-contact@google.com",
+            "phone": "+1-650-253-0000"
+        },
+        {
+            "type": "abuse",
+            "name": "Abuse",
+            "email": "network-abuse@google.com",
+            "phone": "+1-650-253-0000"
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "asn": 33764,
+    "name": "AFRINIC-ZA-JNB-AS",
+    "description": "AFRINIC-JNB-ZA",
+    "country": "MU",
+    "status": [
+        "ASSIGNED"
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "African Network Information Center - (AfriNIC) Ltd",
+            "phone": "+230-466-6758",
+            "address": "11th Floor, Standard Chartered Tower, 19, Cybercity, Ebène"
+        },
+        {
+            "type": "admin",
+            "name": "CTO AFRINIC",
+            "phone": "+230-403-5100",
+            "address": "11th Floor, Standard Chartered Tower, Cybercity, Ebène, Mauritius"
+        },
+        {
+            "type": "tech",
+            "name": "Infrastructure Team",
+            "phone": "+230-403-5100",
+            "address": "AFRINIC Ltd, 11th Floor, Standard Chartered Tower, 19, Cybercity, Ebène, Mauritius"
+        },
+        {
+            "type": "abuse",
+            "email": "abuse@afrinic.net"
+        }
+    ]
+}

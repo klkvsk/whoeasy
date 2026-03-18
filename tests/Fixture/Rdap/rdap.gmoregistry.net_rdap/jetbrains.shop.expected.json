@@ -1,0 +1,41 @@
+{
+    "name": "jetbrains.shop",
+    "registrar": {
+        "name": "MarkMonitor Inc.",
+        "ianaId": "292",
+        "abuseEmail": "abusecomplaints@markmonitor.com",
+        "abusePhone": "+1.2083895740"
+    },
+    "createdDate": "2023-06-20 10:10:23",
+    "updatedDate": "2025-12-22 13:42:43",
+    "expiresDate": "2026-06-20 23:59:59",
+    "status": [
+        "client delete prohibited",
+        "client transfer prohibited",
+        "client update prohibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.markmonitor.com"
+        },
+        {
+            "hostname": "ns2.markmonitor.com"
+        },
+        {
+            "hostname": "ns3.markmonitor.com"
+        },
+        {
+            "hostname": "ns4.markmonitor.com"
+        },
+        {
+            "hostname": "ns5.markmonitor.com"
+        },
+        {
+            "hostname": "ns6.markmonitor.com"
+        },
+        {
+            "hostname": "ns7.markmonitor.com"
+        }
+    ],
+    "dnssec": false
+}

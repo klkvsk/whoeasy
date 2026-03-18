@@ -1,0 +1,27 @@
+{
+    "range": "8.8.8.0 - 8.8.8.255",
+    "networkName": "GOGL",
+    "description": "Google LLC",
+    "country": "US",
+    "createdDate": "2023-12-28 00:00:00",
+    "updatedDate": "2023-12-28 00:00:00",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Google LLC",
+            "address": "1600 Amphitheatre Parkway, Mountain View, CA, 94043, US"
+        },
+        {
+            "type": "tech",
+            "name": "Google LLC",
+            "email": "arin-contact@google.com",
+            "phone": "+1-650-253-0000"
+        },
+        {
+            "type": "abuse",
+            "name": "Abuse",
+            "email": "network-abuse@google.com",
+            "phone": "+1-650-253-0000"
+        }
+    ]
+}

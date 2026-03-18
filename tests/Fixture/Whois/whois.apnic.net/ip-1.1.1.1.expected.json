@@ -1,0 +1,42 @@
+{
+    "range": "1.1.1.0 - 1.1.1.255",
+    "networkName": "APNIC-LABS",
+    "description": "APNIC and Cloudflare DNS Resolver project",
+    "asNumber": 13335,
+    "country": "AU",
+    "updatedDate": "2023-04-26 22:57:58",
+    "status": [
+        "ASSIGNED PORTABLE"
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "APNIC Research and Development",
+            "email": "helpdesk@apnic.net",
+            "phone": "+61-7-38583100",
+            "fax": "+61-7-38583199",
+            "address": "6 Cordelia St"
+        },
+        {
+            "type": "admin",
+            "name": "APNICRANDNET Infrastructure Contact",
+            "email": "research@apnic.net",
+            "phone": "+61 7 3858 3100",
+            "address": "6 Cordelia St, South Brisbane, QLD 4101"
+        },
+        {
+            "type": "tech",
+            "name": "APNICRANDNET Infrastructure Contact",
+            "email": "research@apnic.net",
+            "phone": "+61 7 3858 3100",
+            "address": "6 Cordelia St, South Brisbane, QLD 4101"
+        },
+        {
+            "type": "abuse",
+            "name": "ABUSE APNICRANDNETAU",
+            "email": "helpdesk@apnic.net",
+            "phone": "+000000000",
+            "address": "PO Box 3646, South Brisbane, QLD 4101, Australia"
+        }
+    ]
+}

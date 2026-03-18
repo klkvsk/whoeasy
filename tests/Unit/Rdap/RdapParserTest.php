@@ -9,95 +9,96 @@ use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
 use Klkvsk\Whoeasy\Result\Info\AsnInfo;
 use Klkvsk\Whoeasy\Result\Info\DomainInfo;
 use Klkvsk\Whoeasy\Result\Info\IpInfo;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class RdapParserTest extends TestCase
 {
-    private RdapParser $parser;
+    private const FIXTURE_DIR = __DIR__ . '/../../Fixture/Rdap';
 
-    protected function setUp(): void
+    public static function fixtureProvider(): iterable
     {
-        $this->parser = new RdapParser();
+        $dir = self::FIXTURE_DIR;
+        if (!is_dir($dir)) {
+            return;
+        }
+
+        foreach (glob("$dir/*/") as $serverDir) {
+            $serverName = basename($serverDir);
+
+            foreach (glob("$serverDir/*.json") as $fixtureFile) {
+                $basename = basename($fixtureFile, '.json');
+                if (in_array($basename, ['nxdomain', 'ratelimit'], true)) {
+                    continue;
+                }
+                // Skip expected files themselves
+                if (str_ends_with($basename, '.expected')) {
+                    continue;
+                }
+
+                $expectedFile = "$serverDir/$basename.expected.json";
+                if (!file_exists($expectedFile)) {
+                    continue;
+                }
+
+                yield "$serverName/$basename" => [$fixtureFile, $expectedFile];
+            }
+        }
     }
 
-    private static function loadFixture(string $filename): array
+    private static function detectQueryType(string $basename): QueryType
     {
-        $path = __DIR__ . '/../../Fixtures/rdap/' . $filename;
-        return json_decode(file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
+        if (str_starts_with($basename, 'ip6-')) {
+            return QueryType::Ipv6;
+        }
+        if (str_starts_with($basename, 'ip-')) {
+            return QueryType::Ipv4;
+        }
+        if (str_starts_with($basename, 'asn-')) {
+            return QueryType::Asn;
+        }
+        return QueryType::Domain;
     }
 
-    public function testParseDomainFixture(): void
+    #[DataProvider('fixtureProvider')]
+    public function testFixture(string $fixtureFile, string $expectedFile): void
     {
-        $json = self::loadFixture('domain-example.com.json');
-        $domain = $this->parser->parse($json, QueryType::Domain);
+        $json = json_decode(file_get_contents($fixtureFile), true, 512, JSON_THROW_ON_ERROR);
+        $expected = json_decode(file_get_contents($expectedFile), true, 512, JSON_THROW_ON_ERROR);
 
-        $this->assertInstanceOf(DomainInfo::class, $domain);
-        $this->assertSame('EXAMPLE.COM', $domain->name);
-        $this->assertContains('client delete prohibited', $domain->status);
-        $this->assertNotNull($domain->createdDate);
-        $this->assertStringContainsString('1995-08-14', $domain->createdDate);
-        $this->assertNotNull($domain->expiresDate);
-        $this->assertStringContainsString('2025-08-13', $domain->expiresDate);
-        $this->assertNotNull($domain->updatedDate);
+        if ($expected === []) {
+            $this->markTestSkipped('Empty expected output');
+        }
 
-        // Nameservers
-        $this->assertCount(2, $domain->nameservers);
-        $this->assertSame('a.iana-servers.net', $domain->nameservers[0]->hostname);
-        $this->assertSame('b.iana-servers.net', $domain->nameservers[1]->hostname);
+        $parser = new RdapParser();
+        $info = $parser->parse($json);
+        $actual = $info->toArray();
 
-        // Registrar entity
-        $this->assertNotNull($domain->registrar);
-        $this->assertSame('RESERVED-Internet Assigned Numbers Authority', $domain->registrar->name);
+        $this->sortArrayKeys($expected);
+        $this->sortArrayKeys($actual);
 
-        // Registrant contact
-        $this->assertNotEmpty($domain->contacts);
+        $this->assertSame($expected, $actual, sprintf(
+            "Parsed output mismatch for %s/%s\nExpected: %s\nActual: %s",
+            basename(dirname($fixtureFile)),
+            basename($fixtureFile, '.json'),
+            json_encode($expected, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+            json_encode($actual, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+        ));
     }
 
-    public function testParseIpFixture(): void
+    private function sortArrayKeys(array &$array): void
     {
-        $json = self::loadFixture('ip-8.8.8.8.json');
-        $ip = $this->parser->parse($json, QueryType::Ipv4);
-
-        $this->assertInstanceOf(IpInfo::class, $ip);
-        $this->assertSame('GOGL', $ip->networkName);
-        $this->assertSame('8.8.8.0 - 8.8.8.255', $ip->range);
-        $this->assertNotNull($ip->createdDate);
-        $this->assertNotEmpty($ip->contacts);
-    }
-
-    public function testParseAsnFixture(): void
-    {
-        $json = self::loadFixture('autnum-15169.json');
-        $asn = $this->parser->parse($json, QueryType::Asn);
-
-        $this->assertInstanceOf(AsnInfo::class, $asn);
-        $this->assertSame(15169, $asn->asn);
-        $this->assertSame('GOOGLE', $asn->name);
-        $this->assertNotNull($asn->createdDate);
-        $this->assertNotEmpty($asn->contacts);
-    }
-
-    public function testParseDomainWithEmptyEntities(): void
-    {
-        $domain = $this->parser->parse([
-            'objectClassName' => 'domain',
-            'ldhName' => 'minimal.test',
-            'entities' => [],
-        ], QueryType::Domain);
-
-        $this->assertInstanceOf(DomainInfo::class, $domain);
-        $this->assertSame('minimal.test', $domain->name);
-        $this->assertNull($domain->registrar);
-        $this->assertEmpty($domain->contacts);
-    }
-
-    public function testParseUnknownObjectClassFallsToDomain(): void
-    {
-        $result = $this->parser->parse([
-            'objectClassName' => 'unknown_type',
-            'ldhName' => 'fallback.test',
-        ], QueryType::Domain);
-
-        $this->assertInstanceOf(DomainInfo::class, $result);
+        ksort($array);
+        foreach ($array as &$value) {
+            if (is_array($value) && !array_is_list($value)) {
+                $this->sortArrayKeys($value);
+            } elseif (is_array($value)) {
+                foreach ($value as &$item) {
+                    if (is_array($item) && !array_is_list($item)) {
+                        $this->sortArrayKeys($item);
+                    }
+                }
+            }
+        }
     }
 }

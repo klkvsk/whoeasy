@@ -1,0 +1,73 @@
+% This is the AfriNIC Whois server.
+% The AFRINIC whois database is subject to  the following terms of Use. See https://afrinic.net/whois/terms
+
+% Note: this output has been filtered.
+%       To receive output for a database update, use the "-B" flag.
+
+% Information related to 'AS33764'
+
+% Abuse contact for 'AS33764' is 'abuse@afrinic.net'
+
+aut-num:        AS33764
+as-name:        AFRINIC-ZA-JNB-AS
+descr:          AFRINIC-JNB-ZA
+status:         ASSIGNED
+org:            ORG-AFNC1-AFRINIC
+admin-c:        CA15-AFRINIC
+tech-c:         IT7-AFRINIC
+mnt-irt:        IRT-AFRINIC-IT
+mnt-lower:      AFRINIC-IT-MNT
+mnt-routes:     AFRINIC-IT-MNT
+mnt-by:         AFRINIC-HM-MNT
+source:         AFRINIC # Filtered
+
+organisation:   ORG-AFNC1-AFRINIC
+org-name:       African Network Information Center - (AfriNIC) Ltd
+org-type:       RIR
+country:        MU
+address:        11th Floor, Standard Chartered Tower
+address:        19, Cybercity
+address:        Ebène
+phone:          tel:+230-466-6758
+phone:          tel:+230-403-5100
+admin-c:        CA15-AFRINIC
+tech-c:         IT7-AFRINIC
+mnt-ref:        AFRINIC-HM-MNT
+mnt-ref:        AFRINIC-IT-MNT
+mnt-ref:        AFRINIC-DB-MNT
+mnt-by:         AFRINIC-HM-MNT
+remarks:        =======================================
+remarks:        For more information on AFRINIC assigned blocks,
+remarks:        querry whois.afrinic.net port 43, or the web based
+remarks:        query at http://whois.afrinic.net or www.afrinic.net
+remarks:        website: www.afrinic.net
+remarks:        Other Contacts:
+remarks:        ===============
+remarks:        hostmaster@afrinic.net  - for IP resources
+remarks:        new-member@afrinic.net  - for new members and other
+remarks:        inquiries.
+source:         AFRINIC # Filtered
+
+person:         CTO AFRINIC
+address:        11th Floor, Standard Chartered Tower
+address:        Cybercity, Ebène
+address:        Mauritius
+phone:          tel:+230-403-5100
+nic-hdl:        CA15-AFRINIC
+mnt-by:         CTO-MNT
+source:         AFRINIC # Filtered
+
+person:         Infrastructure Team
+nic-hdl:        IT7-AFRINIC
+address:        AFRINIC Ltd
+address:        11th Floor, Standard Chartered Tower
+address:        19, Cybercity
+address:        Ebène
+address:        Mauritius
+phone:          tel:+230-403-5100
+phone:          tel:+230-5943-8680
+mnt-by:         AFRINIC-IT-MNT
+source:         AFRINIC # Filtered
+
+
+

@@ -49,20 +49,14 @@ class WhoisFixtureTest extends TestCase
             $this->markTestSkipped('Empty expected output');
         }
 
-        $queryType = match ($expected['queryType'] ?? null) {
-            'ipv4' => QueryType::Ipv4,
-            'ipv6' => QueryType::Ipv6,
-            'asn' => QueryType::Asn,
-            default => QueryType::Domain,
-        };
+        $basename = basename($fixtureFile, '.txt');
+        $queryType = self::detectQueryType($basename);
 
         $parser = new WhoisParser();
         $info = $parser->parse($raw, $serverHostname, $queryType);
         $actual = $info->toArray();
 
-        // Remove queryType from expected — it's metadata, not part of toArray()
         $compare = $expected;
-        unset($compare['queryType']);
 
         // Normalize key order for comparison (expected JSON key order may vary)
         $this->sortArrayKeys($compare);
@@ -75,6 +69,20 @@ class WhoisFixtureTest extends TestCase
             json_encode($compare, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
             json_encode($actual, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         ));
+    }
+
+    private static function detectQueryType(string $basename): QueryType
+    {
+        if (str_starts_with($basename, 'ip6-')) {
+            return QueryType::Ipv6;
+        }
+        if (str_starts_with($basename, 'ip-')) {
+            return QueryType::Ipv4;
+        }
+        if (str_starts_with($basename, 'asn-')) {
+            return QueryType::Asn;
+        }
+        return QueryType::Domain;
     }
 
     private function sortArrayKeys(array &$array): void

@@ -1,0 +1,36 @@
+{
+    "range": "2001:dc7::/32",
+    "networkName": "CNNIC-CN-20040913",
+    "description": "China Internet Network Information Center",
+    "asNumber": 24409,
+    "country": "CN",
+    "updatedDate": "2021-06-16 01:31:35",
+    "status": [
+        "ALLOCATED PORTABLE"
+    ],
+    "contacts": [
+        {
+            "type": "admin",
+            "name": "Mao Wei",
+            "email": "ipas@cnnic.net.cn",
+            "phone": "+86-10-58813000",
+            "fax": "+86-10-62559892",
+            "address": "China Internet Information Center(CNNIC)No. 4 of South street,, Zhongguancun, Beijing, P.R.China 100080"
+        },
+        {
+            "type": "tech",
+            "name": "CNNIC IPAS CONFEDERATION",
+            "email": "ipas@cnnic.cn",
+            "phone": "+86-010-58813000",
+            "fax": "+86-010-58813075",
+            "address": "No.4, Zhongguancun No.4 South Street,, Haidian District, Beijing"
+        },
+        {
+            "type": "abuse",
+            "name": "ABUSE CNNICCN",
+            "email": "ipas@cnnic.cn",
+            "phone": "+000000000",
+            "address": "Beijing, China"
+        }
+    ]
+}

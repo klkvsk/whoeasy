@@ -1,0 +1,39 @@
+{
+    "range": "2001:67c:2e8:: - 2001:67c:2e8:ffff:ffff:ffff:ffff:ffff",
+    "networkName": "RIPE-NCC-NET",
+    "country": "NL",
+    "createdDate": "2010-09-17 13:18:51",
+    "updatedDate": "2017-12-04 14:38:44",
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "Reseaux IP Europeens Network Coordination Centre (RIPE NCC)",
+            "phone": "+31205354444"
+        },
+        {
+            "type": "admin",
+            "name": "Brian Riddle",
+            "phone": "+31 20 535 4444"
+        },
+        {
+            "type": "tech",
+            "name": "RIPE NCC Operations",
+            "email": "abuse@ripe.net",
+            "phone": "+31 20 535 4444"
+        },
+        {
+            "type": "registrant",
+            "name": "RIPE-NCC-END-MNT"
+        },
+        {
+            "type": "registrant",
+            "name": "RIPE-NCC-MNT"
+        },
+        {
+            "type": "abuse",
+            "name": "RIPE NCC Operations",
+            "email": "abuse@ripe.net",
+            "phone": "+31 20 535 4444"
+        }
+    ]
+}

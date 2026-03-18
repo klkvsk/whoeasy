@@ -1,0 +1,25 @@
+{
+    "name": "shop.com",
+    "registrar": {
+        "name": "Domain.com - Network Solutions, LLC",
+        "ianaId": "886",
+        "abuseEmail": "domain.operations@web.com",
+        "abusePhone": "+1.8777228662"
+    },
+    "createdDate": "1994-06-02 04:00:00",
+    "updatedDate": "2025-10-29 19:39:46",
+    "expiresDate": "2032-06-01 04:00:00",
+    "status": [
+        "client transfer prohibited"
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "name": "PERFECT PRIVACY, LLC",
+            "email": "privacy@networksolutionsprivateregistration.com",
+            "phone": "+1.5707088622",
+            "address": "5335 Gate Parkway care of Network Solutions PO Box 459, Jacksonville, FL, 32256, US"
+        }
+    ],
+    "dnssec": false
+}

@@ -1,0 +1,120 @@
+% [whois.apnic.net]
+% Whois data copyright terms    http://www.apnic.net/db/dbcopyright.html
+
+% Information related to '2001:dc7::/32'
+
+% Abuse contact for '2001:dc7::/32' is 'ipas@cnnic.cn'
+
+inet6num:       2001:dc7::/32
+netname:        CNNIC-CN-20040913
+descr:          China Internet Network Information Center
+descr:          4, South 4th Street, Zhongguancun, Haidian District, Beijing
+country:        CN
+admin-c:        MW1-AP
+tech-c:         IPAS1-AP
+abuse-c:        AC1601-AP
+status:         ALLOCATED PORTABLE
+mnt-by:         APNIC-HM
+mnt-lower:      MAINT-CNNIC-AP
+mnt-routes:     MAINT-CNNIC-AP
+mnt-irt:        IRT-CNNIC-CN
+last-modified:  2021-06-16T01:31:35Z
+source:         APNIC
+
+irt:            IRT-CNNIC-CN
+address:        Beijing, China
+e-mail:         ipas@cnnic.cn
+abuse-mailbox:  ipas@cnnic.cn
+admin-c:        IP50-AP
+tech-c:         IP50-AP
+auth:           # Filtered
+remarks:        Please note that CNNIC is not an ISP and is not
+remarks:        empowered to investigate complaints of network abuse.
+remarks:        Please contact the tech-c or admin-c of the network.
+remarks:        ipas@cnnic.cn is invalid
+mnt-by:         MAINT-CNNIC-AP
+last-modified:  2025-11-17T23:08:37Z
+source:         APNIC
+
+role:           ABUSE CNNICCN
+country:        ZZ
+address:        Beijing, China
+phone:          +000000000
+e-mail:         ipas@cnnic.cn
+admin-c:        IP50-AP
+tech-c:         IP50-AP
+nic-hdl:        AC1601-AP
+remarks:        Generated from irt object IRT-CNNIC-CN
+remarks:        ipas@cnnic.cn is invalid
+abuse-mailbox:  ipas@cnnic.cn
+mnt-by:         APNIC-ABUSE
+last-modified:  2025-09-19T17:20:32Z
+source:         APNIC
+
+role:           CNNIC IPAS CONFEDERATION
+address:        No.4, Zhongguancun No.4 South Street,
+address:        Haidian District, Beijing
+country:        CN
+phone:          +86-010-58813000
+fax-no:         +86-010-58813075
+e-mail:         ipas@cnnic.cn
+admin-c:        IP50-AP
+tech-c:         IP50-AP
+nic-hdl:        IPAS1-AP
+mnt-by:         MAINT-CNNIC-AP
+last-modified:  2013-09-12T07:40:01Z
+source:         APNIC
+
+person:         Mao Wei
+address:        China Internet Information Center(CNNIC)No. 4 of South street,
+address:        Zhongguancun, Beijing, P.R.China 100080
+country:        CN
+phone:          +86-10-58813000
+fax-no:         +86-10-62559892
+e-mail:         ipas@cnnic.net.cn
+nic-hdl:        MW1-AP
+mnt-by:         MAINT-CNNIC-AP
+last-modified:  2008-09-04T07:29:40Z
+source:         APNIC
+
+% Information related to '2001:dc7::/32AS24151'
+
+route6:         2001:dc7::/32
+descr:          China Internet Network Information Center
+country:        CN
+origin:         AS24151
+notify:         zhanghuan@cnnic.cn
+mnt-by:         MAINT-CNNIC-AP
+last-modified:  2011-10-13T10:04:02Z
+source:         APNIC
+
+% Information related to '2001:dc7::/32AS24406'
+
+route6:         2001:dc7::/32
+descr:          CNNIC-CN
+origin:         AS24406
+mnt-by:         MAINT-CNNIC-AP
+last-modified:  2018-06-29T06:46:32Z
+source:         APNIC
+
+% Information related to '2001:dc7::/32AS24408'
+
+route6:         2001:dc7::/32
+descr:          CNNIC-CN
+origin:         AS24408
+mnt-by:         MAINT-CNNIC-AP
+last-modified:  2018-06-29T06:46:43Z
+source:         APNIC
+
+% Information related to '2001:dc7::/32AS24409'
+
+route6:         2001:dc7::/32
+descr:          CNNIC-CN
+origin:         AS24409
+mnt-by:         MAINT-CNNIC-AP
+last-modified:  2018-06-29T06:46:50Z
+source:         APNIC
+
+% This query was served by the APNIC Whois Service version 1.88.34 (WHOIS-JP1)
+
+
