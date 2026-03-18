@@ -25,49 +25,70 @@ class RdapParser
     /**
      * Parse an RDAP JSON array into structured info.
      */
-    public function parse(array $json, QueryType $queryType): AbstractInfo
+    public function parse(array $json): AbstractInfo
     {
-        $errorCode = $json['errorCode'] ?? null;
-        if (intval($errorCode) === 404) {
+        if (static::isNotFound($json)) {
             throw new NotFoundException("RDAP: nothing found");
         }
-        if (intval($errorCode) === 429) {
+        if (static::isRateLimited($json)) {
             throw new RateLimitException("RDAP: rate limit exceeded");
         }
-        if ($errorCode) {
-            throw new ParserException("RDAP: unknown error: $errorCode");
+        if (isset($json['errorCode'])) {
+            throw new ParserException("RDAP: unknown error: {$json['errorCode']}");
         }
 
         $objectClass = $json['objectClassName'] ?? null;
 
         return match ($objectClass) {
-            'domain' => $this->parseDomain($json, $queryType),
-            'ip network' => $this->parseIpNetwork($json, $queryType),
-            'autnum' => $this->parseAutnum($json, $queryType),
-            default => $this->parseDomain($json, $queryType), // best-effort fallback
+            'domain' => $this->parseDomain($json),
+            'ip network' => $this->parseIpNetwork($json),
+            'autnum' => $this->parseAutnum($json),
+            default => $this->parseDomain($json), // best-effort fallback
         };
     }
 
-    private function parseDomain(array $data, QueryType $queryType): DomainInfo
+    public static function isRateLimited(array $json): bool
+    {
+        return (isset($json['errorCode']) && (int)$json['errorCode'] === 429);
+    }
+
+    public static function isNotFound(array $json): bool
+    {
+        return (isset($json['errorCode']) && (int)$json['errorCode'] === 404);
+    }
+
+    private function parseDomain(array $data): DomainInfo
     {
         $name = $data['ldhName'] ?? $data['unicodeName'] ?? null;
+        // Strip trailing dot from domain name
+        if ($name !== null) {
+            $name = rtrim($name, '.');
+        }
 
-        // Status
+        // Status (sorted for deterministic output)
         $statuses = $data['status'] ?? [];
         $status = $statuses ? array_map('trim', $statuses) : [];
+        sort($status);
 
         // Dates from events
         $created = $this->extractEventDate($data, 'registration');
         $changed = $this->extractEventDate($data, 'last changed');
         $expires = $this->extractEventDate($data, 'expiration');
 
-        // Nameservers
+        // Nameservers (sorted by hostname)
         $nameservers = [];
         foreach ($data['nameservers'] ?? [] as $ns) {
             $nsName = $ns['ldhName'] ?? $ns['unicodeName'] ?? null;
             if ($nsName !== null) {
                 $nameservers[] = new Nameserver(hostname: strtolower($nsName));
             }
+        }
+        usort($nameservers, fn(Nameserver $a, Nameserver $b) => strcmp($a->hostname, $b->hostname));
+
+        // DNSSEC
+        $dnssec = null;
+        if (isset($data['secureDNS']['delegationSigned'])) {
+            $dnssec = $data['secureDNS']['delegationSigned'] ? 'signedDelegation' : false;
         }
 
         // Entities (contacts + registrar)
@@ -84,10 +105,11 @@ class RdapParser
             status: $status,
             nameservers: $nameservers,
             contacts: $contacts,
+            dnssec: $dnssec,
         );
     }
 
-    private function parseIpNetwork(array $data, QueryType $queryType): IpInfo
+    private function parseIpNetwork(array $data): IpInfo
     {
         $networkName = $data['name'] ?? null;
 
@@ -135,9 +157,14 @@ class RdapParser
         }
         array_push($contacts, ...$otherContacts);
 
+        // Extract origin AS number from non-standard RIR fields (last value if multiple)
+        $asNumber = static::extractOriginAsn($data);
+
         return new IpInfo(
             range: $range,
             networkName: $networkName,
+            description: null,
+            asNumber: $asNumber,
             country: $country,
             createdDate: $created?->format('Y-m-d H:i:s'),
             updatedDate: $changed?->format('Y-m-d H:i:s'),
@@ -145,7 +172,7 @@ class RdapParser
         );
     }
 
-    private function parseAutnum(array $data, QueryType $queryType): AsnInfo
+    private function parseAutnum(array $data): AsnInfo
     {
         $startAutnum = $data['startAutnum'] ?? null;
         $asnNumber = $startAutnum !== null ? (int)$startAutnum : null;
@@ -188,20 +215,49 @@ class RdapParser
             $roles = $entity['roles'] ?? [];
             $parsed = $this->parseEntityFields($entity);
 
-            if ($parsed === null) {
-                continue;
-            }
-
-            [$name, $email, $phone, $address] = $parsed;
-
             foreach ($roles as $role) {
                 if ($role === 'registrar') {
+                    $name = $parsed ? $parsed[0] : null;
+
+                    // Extract IANA registrar ID from publicIds
+                    $ianaId = null;
+                    foreach ($entity['publicIds'] ?? [] as $pid) {
+                        if (($pid['type'] ?? '') === 'IANA Registrar ID') {
+                            $ianaId = $pid['identifier'] ?? null;
+                        }
+                    }
+
+                    // Extract abuse email/phone from nested abuse entity
+                    $abuseEmail = null;
+                    $abusePhone = null;
+                    foreach ($entity['entities'] ?? [] as $subEntity) {
+                        $subRoles = $subEntity['roles'] ?? [];
+                        if (in_array('abuse', $subRoles, true)) {
+                            $abuseParsed = $this->parseEntityFields($subEntity);
+                            if ($abuseParsed !== null) {
+                                $abuseEmail = $abuseParsed[1];
+                                $abusePhone = $abuseParsed[2];
+                            }
+                        }
+                    }
+
+                    // Fall back to registrar entity's own email/phone if no nested abuse
+                    if ($parsed !== null) {
+                        $abuseEmail ??= $parsed[1];
+                        $abusePhone ??= $parsed[2];
+                    }
+
                     $registrar = new Registrar(
                         name: $name,
-                        abuseEmail: $email,
-                        abusePhone: $phone,
+                        ianaId: $ianaId,
+                        abuseEmail: $abuseEmail,
+                        abusePhone: $abusePhone,
                     );
                 } else {
+                    if ($parsed === null) {
+                        continue;
+                    }
+                    [$name, $email, $phone, $address] = $parsed;
                     $contacts[] = new Contact(
                         type: $this->mapContactType($role),
                         name: $name,
@@ -274,7 +330,7 @@ class RdapParser
 
                 switch (strtolower($propName)) {
                     case 'fn':
-                        $name = is_string($value) ? $value : null;
+                        $name = is_string($value) && trim($value) !== '' ? $value : null;
                         break;
 
                     case 'org':
@@ -291,7 +347,9 @@ class RdapParser
 
                     case 'tel':
                         $telValue = is_string($value) ? $value : null;
+                        // Strip "tel:" URI prefix
                         if ($telValue !== null) {
+                            $telValue = preg_replace('/^tel:/i', '', $telValue);
                             $phone ??= $telValue;
                         }
                         break;
@@ -305,6 +363,12 @@ class RdapParser
                                 ),
                                 fn($v) => $v !== null && $v !== '',
                             );
+                            // Append country code from params if not already in address parts
+                            $params = $prop[1] ?? [];
+                            $cc = $params['cc'] ?? null;
+                            if ($cc !== null && $cc !== '') {
+                                $parts[] = $cc;
+                            }
                             $address = implode(', ', $parts) ?: null;
                         }
                         break;
@@ -312,12 +376,7 @@ class RdapParser
             }
         }
 
-        // Fallback: use handle as name if no name was found
-        if ($name === null && isset($entity['handle'])) {
-            $name = $entity['handle'];
-        }
-
-        // Check if empty (all fields null)
+        // Check if empty (all fields null — don't use handle as fallback name)
         if ($name === null && $email === null && $phone === null && $address === null) {
             return null;
         }
@@ -372,6 +431,33 @@ class RdapParser
                 return $link['href'];
             }
         }
+        return null;
+    }
+
+    /**
+     * Extract origin AS number from non-standard RIR extension fields.
+     * ARIN: arin_originas0_originautnums (array of ints)
+     * LACNIC: lacnic_originAutnum (array of "AS28001" strings)
+     * Uses last value if multiple.
+     */
+    public static function extractOriginAsn(array $data): ?int
+    {
+        // ARIN: arin_originas0_originautnums => [15169]
+        $arinOrigins = $data['arin_originas0_originautnums'] ?? [];
+        if (is_array($arinOrigins) && $arinOrigins !== []) {
+            $last = end($arinOrigins);
+            $asn = (int)preg_replace('/^AS/i', '', (string)$last);
+            if ($asn > 0) return $asn;
+        }
+
+        // LACNIC: lacnic_originAutnum => ["AS28001"]
+        $lacnicOrigins = $data['lacnic_originAutnum'] ?? [];
+        if (is_array($lacnicOrigins) && $lacnicOrigins !== []) {
+            $last = end($lacnicOrigins);
+            $asn = (int)preg_replace('/^AS/i', '', (string)$last);
+            if ($asn > 0) return $asn;
+        }
+
         return null;
     }
 
