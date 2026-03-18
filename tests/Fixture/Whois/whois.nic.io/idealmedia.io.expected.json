@@ -27,7 +27,8 @@
     "contacts": [
         {
             "type": "registrant",
-            "organization": "Domains By Proxy, LLC"
+            "organization": "Domains By Proxy, LLC",
+            "address": "Arizona, US"
         }
     ],
     "dnssec": "unsigned"

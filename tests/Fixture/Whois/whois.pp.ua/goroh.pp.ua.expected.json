@@ -11,10 +11,10 @@
     ],
     "nameservers": [
         {
-            "hostname": "pablo.ns.cloudflare.com"
+            "hostname": "nina.ns.cloudflare.com"
         },
         {
-            "hostname": "nina.ns.cloudflare.com"
+            "hostname": "pablo.ns.cloudflare.com"
         }
     ],
     "contacts": [
@@ -23,7 +23,7 @@
             "name": "Ковенько Олексій Анатолійович",
             "email": "kovolexiy@gmail.com",
             "phone": "+380.952755772",
-            "address": "вул. Зодчих 64, кв 3\nм. Київ\n03170\nUA"
+            "address": "вул. Зодчих 64, кв 3, м. Київ, 03170, UA"
         }
     ]
 }

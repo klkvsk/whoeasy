@@ -8,33 +8,35 @@
     ],
     "nameservers": [
         {
-            "hostname": "ns1.av.gov.mk",
-            "ipv4": "146.255.67.2"
+            "hostname": "dns2.telesmart.mk"
         },
         {
-            "hostname": "dns2.telesmart.mk"
+            "hostname": "ns1.av.gov.mk",
+            "ipv4": "146.255.67.2"
         }
     ],
     "contacts": [
         {
-            "type": "registrant",
-            "organization": "Agencija za vrabotuvanje na Republika Severna Makedonija",
-            "name": "Agencija za vrabotuvanje",
-            "phone": "+389.3111850",
+            "address": "ул. Васил Ѓоргов, бр. 43, Скопје, Скопје, 1000, MK, MK",
             "email": "info@av.gov.mk",
-            "address": "ul. Vasil Gjorgov, br. 43, Skopje, Skopje, 1000, MK"
+            "name": "Агенција за вработување",
+            "organization": "Агенција за вработување на Република Северна Македонија",
+            "phone": "+389.3111850",
+            "type": "registrant"
         },
         {
-            "type": "admin",
-            "name": "Silvana Trajkovska",
+            "address": "MK",
+            "email": "silvana.trajkovska@avrm.gov.mk",
+            "name": "Силвана Трајковска",
             "phone": "+389.23111850",
-            "email": "silvana.trajkovska@avrm.gov.mk"
+            "type": "admin"
         },
         {
-            "type": "tech",
-            "name": "Riste Tasev",
+            "address": "MK",
+            "email": "riste.tasev@avrm.gov.mk",
+            "name": "Ристе Тасев",
             "phone": "+389.23111850",
-            "email": "riste.tasev@avrm.gov.mk"
+            "type": "tech"
         }
     ]
 }

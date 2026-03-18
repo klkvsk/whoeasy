@@ -13,13 +13,13 @@
     ],
     "nameservers": [
         {
-            "hostname": "ns3.netim.net"
+            "hostname": "ns1.netim.net"
         },
         {
             "hostname": "ns2.netim.net"
         },
         {
-            "hostname": "ns1.netim.net"
+            "hostname": "ns3.netim.net"
         }
     ],
     "dnssec": "unsigned"

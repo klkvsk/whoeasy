@@ -13,9 +13,6 @@
     ],
     "nameservers": [
         {
-            "hostname": "ns2.host-h.net"
-        },
-        {
             "hostname": "ns1.dns-h.com"
         },
         {
@@ -23,6 +20,9 @@
         },
         {
             "hostname": "ns2.dns-h.com"
+        },
+        {
+            "hostname": "ns2.host-h.net"
         }
     ],
     "dnssec": "unsigned",

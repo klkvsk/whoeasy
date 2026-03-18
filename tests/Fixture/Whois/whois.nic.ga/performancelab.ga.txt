@@ -1,8 +1,0 @@
-
-%% NOT FOUND
-
->>> Last update of WHOIS database: 2026-03-16T16:09:49.605698Z <<<
-
-%% This is the ANINF Whois server.
-%%
-%% complete date format: YYYY-MM-DDThh:mm:ssZ

@@ -25,7 +25,8 @@
     "contacts": [
         {
             "type": "registrant",
-            "organization": "Owner"
+            "organization": "Owner",
+            "address": "Florida, US"
         }
     ]
 }

@@ -12,13 +12,13 @@
     ],
     "nameservers": [
         {
-            "hostname": "ns3.snoticias.co.mz"
+            "hostname": "ns1.snoticias.co.mz"
         },
         {
             "hostname": "ns2.snoticias.co.mz"
         },
         {
-            "hostname": "ns1.snoticias.co.mz"
+            "hostname": "ns3.snoticias.co.mz"
         }
     ],
     "dnssec": "unsigned"

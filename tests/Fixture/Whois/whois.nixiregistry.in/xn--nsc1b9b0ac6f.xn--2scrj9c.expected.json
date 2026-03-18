@@ -15,22 +15,22 @@
     ],
     "nameservers": [
         {
-            "hostname": "ns1.nixi.in"
-        },
-        {
             "hostname": "ns-cloud-e1.googledomains.com"
         },
         {
-            "hostname": "ns-cloud-e4.googledomains.com"
-        },
-        {
-            "hostname": "ns2.nixi.in"
+            "hostname": "ns-cloud-e2.googledomains.com"
         },
         {
             "hostname": "ns-cloud-e3.googledomains.com"
         },
         {
-            "hostname": "ns-cloud-e2.googledomains.com"
+            "hostname": "ns-cloud-e4.googledomains.com"
+        },
+        {
+            "hostname": "ns1.nixi.in"
+        },
+        {
+            "hostname": "ns2.nixi.in"
         }
     ],
     "contacts": [

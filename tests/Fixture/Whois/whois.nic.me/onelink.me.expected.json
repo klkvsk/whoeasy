@@ -15,22 +15,23 @@
     ],
     "nameservers": [
         {
-            "hostname": "ns-2026.awsdns-61.co.uk"
-        },
-        {
             "hostname": "ns-1241.awsdns-27.org"
         },
         {
-            "hostname": "ns-778.awsdns-33.net"
+            "hostname": "ns-2026.awsdns-61.co.uk"
         },
         {
             "hostname": "ns-49.awsdns-06.com"
+        },
+        {
+            "hostname": "ns-778.awsdns-33.net"
         }
     ],
     "contacts": [
         {
             "type": "registrant",
-            "organization": "Domains By Proxy, LLC"
+            "organization": "Domains By Proxy, LLC",
+            "address": "Arizona, US"
         }
     ],
     "dnssec": "unsigned"

@@ -3,7 +3,8 @@
     "registrar": {
         "name": "united-domains GmbH",
         "ianaId": "1408",
-        "url": "https://www.united-domains.de"
+        "url": "https://www.united-domains.de",
+        "abuseEmail": "registryrelations@ionos.com"
     },
     "createdDate": "2018-10-08 10:55:05",
     "updatedDate": "2026-01-18 16:43:17",
@@ -14,10 +15,10 @@
     ],
     "nameservers": [
         {
-            "hostname": "ns.udag.net"
+            "hostname": "ns.udag.de"
         },
         {
-            "hostname": "ns.udag.de"
+            "hostname": "ns.udag.net"
         },
         {
             "hostname": "ns.udag.org"

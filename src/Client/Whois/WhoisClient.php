@@ -145,10 +145,10 @@ final class WhoisClient
         $response = str_replace("\r\n", "\n", $response);
         $response = str_replace("\r", "\n", $response);
 
-        // Truncate at >>> marker (VeriSign/Identity Digital/Afilias boundary)
-        if (preg_match('/^>>>.*<<<\s*$/m', $response, $m, \PREG_OFFSET_CAPTURE)) {
-            $response = substr($response, 0, $m[0][1]);
-        }
+        // Remove >>> marker lines (VeriSign/Identity Digital/Afilias boundary)
+        // Don't truncate everything after it, as some servers (e.g., .st) include
+        // detailed data in a second section after the marker
+        $response = preg_replace('/^>>>.*<<<\s*$/m', '', $response);
 
         // Strip trailing legal blocks that appear without >>> marker
         $boilerplateStarts = [
@@ -173,7 +173,11 @@ final class WhoisClient
                 $cleaned[] = $line;
                 continue;
             }
-            if ($trimmed[0] === '%' || $trimmed[0] === '#' || $trimmed[0] === ';') {
+            if ($trimmed[0] === '%' || $trimmed[0] === ';') {
+                continue;
+            }
+            // Strip #-prefixed comment lines, but preserve Korean WHOIS section headers
+            if ($trimmed[0] === '#' && !preg_match('/^#\s*(ENGLISH|KOREAN)/i', $trimmed)) {
                 continue;
             }
             $cleaned[] = $line;

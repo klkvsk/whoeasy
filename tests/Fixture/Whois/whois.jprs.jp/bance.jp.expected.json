@@ -8,13 +8,13 @@
     ],
     "nameservers": [
         {
-            "hostname": "03.dnsv.jp"
+            "hostname": "01.dnsv.jp"
         },
         {
             "hostname": "02.dnsv.jp"
         },
         {
-            "hostname": "01.dnsv.jp"
+            "hostname": "03.dnsv.jp"
         },
         {
             "hostname": "04.dnsv.jp"

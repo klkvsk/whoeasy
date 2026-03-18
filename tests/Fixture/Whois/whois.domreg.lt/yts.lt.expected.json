@@ -4,8 +4,12 @@
     "expiresDate": "2026-10-22 00:00:00",
     "registrar": {
         "name": "Gandi Sas",
-        "url": "http://www.gandi.net/"
+        "url": "http://www.gandi.net/",
+        "abuseEmail": "support-en@support.gandi.net"
     },
+    "status": [
+        "registered"
+    ],
     "nameservers": [
         {
             "hostname": "eric.ns.cloudflare.com"

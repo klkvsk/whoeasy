@@ -27,5 +27,11 @@
             "hostname": "ns4.afraid.org"
         }
     ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "address": "ON, CA"
+        }
+    ],
     "dnssec": "unsigned"
 }

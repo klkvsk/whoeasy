@@ -1,7 +1,16 @@
 {
     "name": "sephora.com.tr",
+    "registrar": {
+        "name": "ATAK DOMAİN BİLGİ TEKNOLOJİLERİ ANONİM ŞİRKETİ",
+        "abusePhone": "90-262-3259222-"
+    },
     "createdDate": "2004-11-09 00:00:00",
     "expiresDate": "2026-11-08 00:00:00",
+    "status": [
+        "Active",
+        "Frozen: -",
+        "Transfer: The domain is LOCKED to transfer."
+    ],
     "nameservers": [
         {
             "hostname": "a1-1.akam.net"

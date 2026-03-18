@@ -1,7 +1,8 @@
 {
     "name": "bc-monacoproperties.mc",
     "registrar": {
-        "name": "Monte-Carlo Multimedia"
+        "name": "Monte-Carlo Multimedia",
+        "abuseEmail": "info@montecarlomultimedia.com"
     },
     "createdDate": "2021-07-22 11:10:13",
     "updatedDate": "2025-07-22 00:10:03",

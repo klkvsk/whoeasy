@@ -9,4 +9,6 @@
 return [
     '.abarth', // revoked
     '.fed.us', // whois.nic.gov does not work for this TLD
+    '.es', // TODO: try to parse from web https://nic.es/sgnd/dominio/publicBuscarDominios.action?tDominio.nombreDominio=pornhub&flag=activado
+
 ];

@@ -14,19 +14,19 @@
             "hostname": "ns1.demysdns.net"
         },
         {
-            "hostname": "ns6.demysdns.co.uk"
+            "hostname": "ns2.demysdns.net"
+        },
+        {
+            "hostname": "ns3.demysdns.net"
         },
         {
             "hostname": "ns4.demysdns.co.uk"
         },
         {
-            "hostname": "ns2.demysdns.net"
-        },
-        {
             "hostname": "ns5.demysdns.co.uk"
         },
         {
-            "hostname": "ns3.demysdns.net"
+            "hostname": "ns6.demysdns.co.uk"
         }
     ],
     "contacts": [

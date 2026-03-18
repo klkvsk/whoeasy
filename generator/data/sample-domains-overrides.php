@@ -5,6 +5,7 @@ return [
     '.bv' => 'nic.bv',
     '.bn' => 'bnnic.bn',
     '.tm' => 'galam.tm',
+    '.ga' => 'cgcgabon.ga',
     '.eurovision' => 'nic.eurovision',
 
     // Two-level country TLDs

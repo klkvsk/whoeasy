@@ -18,5 +18,11 @@
             "hostname": "tom.ns.cloudflare.com"
         }
     ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "address": "MM"
+        }
+    ],
     "dnssec": "unsigned"
 }

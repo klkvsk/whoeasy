@@ -11,22 +11,22 @@
     },
     "nameservers": [
         {
-            "hostname": "ns2.zaccodns.se"
-        },
-        {
-            "hostname": "ns1.zaccodns.com"
-        },
-        {
-            "hostname": "dns4.zaccodigitaltrustlabs.se"
-        },
-        {
-            "hostname": "dns3.zaccodigitaltrustlabs.se"
+            "hostname": "dns1.zaccodigitaltrustlabs.com"
         },
         {
             "hostname": "dns2.zaccodigitaltrustlabs.net"
         },
         {
-            "hostname": "dns1.zaccodigitaltrustlabs.com"
+            "hostname": "dns3.zaccodigitaltrustlabs.se"
+        },
+        {
+            "hostname": "dns4.zaccodigitaltrustlabs.se"
+        },
+        {
+            "hostname": "ns1.zaccodns.com"
+        },
+        {
+            "hostname": "ns2.zaccodns.se"
         }
     ],
     "dnssec": false

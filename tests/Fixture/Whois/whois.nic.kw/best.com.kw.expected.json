@@ -15,10 +15,10 @@
     ],
     "nameservers": [
         {
-            "hostname": "maria.ns.cloudflare.com"
+            "hostname": "chris.ns.cloudflare.com"
         },
         {
-            "hostname": "chris.ns.cloudflare.com"
+            "hostname": "maria.ns.cloudflare.com"
         }
     ],
     "contacts": [

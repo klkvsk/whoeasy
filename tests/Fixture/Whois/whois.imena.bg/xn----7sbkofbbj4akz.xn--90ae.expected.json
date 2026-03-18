@@ -1,11 +1,15 @@
 {
     "name": "xn----7sbkofbbj4akz.xn--90ae",
+    "status": [
+        "active",
+        "busy"
+    ],
     "nameservers": [
         {
-            "hostname": "mimi.ns.cloudflare.com"
+            "hostname": "jonah.ns.cloudflare.com"
         },
         {
-            "hostname": "jonah.ns.cloudflare.com"
+            "hostname": "mimi.ns.cloudflare.com"
         }
     ],
     "dnssec": false

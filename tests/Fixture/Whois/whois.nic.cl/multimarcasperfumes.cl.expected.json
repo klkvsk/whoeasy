@@ -2,7 +2,8 @@
     "name": "multimarcasperfumes.cl",
     "registrar": {
         "name": "NIC Chile",
-        "url": "https://www.nic.cl"
+        "url": "https://www.nic.cl",
+        "abuseEmail": "abuse@nic.cl"
     },
     "createdDate": "2018-06-25 13:01:20",
     "expiresDate": "2033-06-25 13:01:20",

@@ -7,8 +7,8 @@
     "updatedDate": "2025-12-28 15:41:24",
     "expiresDate": "2027-01-29 11:16:22",
     "status": [
-        "clientTransferProhibited",
-        "clientDeleteProhibited"
+        "clientDeleteProhibited",
+        "clientTransferProhibited"
     ],
     "nameservers": [
         {
@@ -24,7 +24,6 @@
             "hostname": "ns4.google.com"
         }
     ],
-    "dnssec": "unsigned",
     "contacts": [
         {
             "type": "registrant",
@@ -36,12 +35,17 @@
             "address": "1600 Amphitheatre Parkway, Mountain View, CA, 94043, US"
         },
         {
+            "type": "admin",
+            "organization": "Afriregister S.A"
+        },
+        {
             "type": "tech",
             "name": "Domain Administrator",
             "organization": "Google LLC",
+            "email": "dns-admin@google.com",
             "phone": "+1.6502530000",
-            "fax": "+1.6502530001",
-            "email": "dns-admin@google.com"
+            "fax": "+1.6502530001"
         }
-    ]
+    ],
+    "dnssec": "unsigned"
 }

@@ -3,8 +3,8 @@
     "createdDate": "2005-09-15 04:49:39",
     "updatedDate": "2023-03-13 05:54:12",
     "status": [
-        "clientTransferProhibited",
-        "clientRenewProhibited"
+        "clientRenewProhibited",
+        "clientTransferProhibited"
     ],
     "nameservers": [
         {

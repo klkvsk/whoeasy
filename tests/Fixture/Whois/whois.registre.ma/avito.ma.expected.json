@@ -1,7 +1,8 @@
 {
     "name": "avito.ma",
     "registrar": {
-        "name": "GENIOUS COMMUNICATIONS"
+        "name": "GENIOUS COMMUNICATIONS",
+        "abuseEmail": "contact@genious.net"
     },
     "createdDate": "2011-09-21 00:00:00",
     "updatedDate": "2021-07-09 06:53:47",

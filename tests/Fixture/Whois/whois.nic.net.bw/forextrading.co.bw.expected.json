@@ -8,15 +8,15 @@
     "updatedDate": "2026-01-12 09:24:59",
     "expiresDate": "2028-02-03 11:12:41",
     "status": [
-        "clientTransferProhibited",
-        "clientDeleteProhibited"
+        "clientDeleteProhibited",
+        "clientTransferProhibited"
     ],
     "nameservers": [
         {
-            "hostname": "johnathan.ns.cloudflare.com"
+            "hostname": "joan.ns.cloudflare.com"
         },
         {
-            "hostname": "joan.ns.cloudflare.com"
+            "hostname": "johnathan.ns.cloudflare.com"
         }
     ],
     "dnssec": "unsigned"

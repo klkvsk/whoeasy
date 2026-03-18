@@ -2,6 +2,9 @@
     "name": "apat.pt",
     "createdDate": "1997-04-28 00:00:00",
     "expiresDate": "2026-07-02 23:59:00",
+    "status": [
+        "Registered"
+    ],
     "nameservers": [
         {
             "hostname": "ns01.dns-host-servers.com"

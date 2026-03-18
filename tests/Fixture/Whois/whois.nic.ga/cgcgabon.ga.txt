@@ -1,0 +1,71 @@
+
+Domain ID:                     DOM3101-GA
+Nom de domaine:                cgcgabon.ga
+Date de création:              2023-06-05T00:00:00Z
+Dernière modification:         2025-07-20T00:08:55.886142Z
+Date d'expiration:             2026-06-05T00:00:00Z
+Registrar:                     ANINF
+Statut:                        actif
+
+[TECH_C]
+ID Contact:                    REDACTED_FOR_PRIVACY
+Type:                          Organisation
+Nom:                           REDACTED_FOR_PRIVACY
+Adresse:                       REDACTED_FOR_PRIVACY,REDACTED_FOR_PRIVACY,REDACTED_FOR_PRIVACY
+Code postal:                   REDACTED_FOR_PRIVACY
+Ville:                         REDACTED_FOR_PRIVACY
+Pays:                          REDACTED_FOR_PRIVACY
+Téléphone:                     REDACTED_FOR_PRIVACY
+Fax:                           REDACTED_FOR_PRIVACY
+Courriel:                      REDACTED_FOR_PRIVACY
+Dernière modification:         2023-06-07T16:33:19.94126Z
+
+[HOLDER]
+ID Contact:                    REDACTED_FOR_PRIVACY
+Type:                          Organisation
+Nom:                           REDACTED_FOR_PRIVACY
+Adresse:                       REDACTED_FOR_PRIVACY,REDACTED_FOR_PRIVACY,REDACTED_FOR_PRIVACY
+Code postal:                   REDACTED_FOR_PRIVACY
+Ville:                         REDACTED_FOR_PRIVACY
+Pays:                          REDACTED_FOR_PRIVACY
+Téléphone:                     REDACTED_FOR_PRIVACY
+Fax:                           REDACTED_FOR_PRIVACY
+Courriel:                      REDACTED_FOR_PRIVACY
+Dernière modification:         2023-06-07T16:33:19.94126Z
+
+[BILLING_C]
+ID Contact:                    REDACTED_FOR_PRIVACY
+Type:                          Organisation
+Nom:                           REDACTED_FOR_PRIVACY
+Adresse:                       REDACTED_FOR_PRIVACY,REDACTED_FOR_PRIVACY,REDACTED_FOR_PRIVACY
+Code postal:                   REDACTED_FOR_PRIVACY
+Ville:                         REDACTED_FOR_PRIVACY
+Pays:                          REDACTED_FOR_PRIVACY
+Téléphone:                     REDACTED_FOR_PRIVACY
+Fax:                           REDACTED_FOR_PRIVACY
+Courriel:                      REDACTED_FOR_PRIVACY
+Dernière modification:         2023-06-07T16:33:19.94126Z
+
+[ADMIN_C]
+ID Contact:                    REDACTED_FOR_PRIVACY
+Type:                          Organisation
+Nom:                           REDACTED_FOR_PRIVACY
+Adresse:                       REDACTED_FOR_PRIVACY,REDACTED_FOR_PRIVACY,REDACTED_FOR_PRIVACY
+Code postal:                   REDACTED_FOR_PRIVACY
+Ville:                         REDACTED_FOR_PRIVACY
+Pays:                          REDACTED_FOR_PRIVACY
+Téléphone:                     REDACTED_FOR_PRIVACY
+Fax:                           REDACTED_FOR_PRIVACY
+Courriel:                      REDACTED_FOR_PRIVACY
+Dernière modification:         2023-06-07T16:33:19.94126Z
+
+Serveur de noms:               ns1.dns-parking.com
+Serveur de noms:               ns2.dns-parking.com
+
+DNSSEC:                        unsigned
+
+>>> Last update of WHOIS database: 2026-03-17T17:49:17.755753Z <<<
+
+%% This is the ANINF Whois server.
+%%
+%% complete date format: YYYY-MM-DDThh:mm:ssZ

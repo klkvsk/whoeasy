@@ -24,7 +24,8 @@
     "contacts": [
         {
             "type": "registrant",
-            "organization": "The China Press Berhad"
+            "organization": "The China Press Berhad",
+            "address": "Wilayah Persekutuan, MY"
         }
     ]
 }

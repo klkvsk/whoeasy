@@ -3,12 +3,12 @@
     "createdDate": "2019-09-11 00:00:00",
     "nameservers": [
         {
-            "hostname": "ns1.is.co.za",
-            "ipv4": "196.4.160.7"
-        },
-        {
             "hostname": "jupiter.is.co.za",
             "ipv4": "196.4.160.3"
+        },
+        {
+            "hostname": "ns1.is.co.za",
+            "ipv4": "196.4.160.7"
         }
     ],
     "contacts": [

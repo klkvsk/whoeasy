@@ -12,7 +12,7 @@ Registrar City: FRANCE
 Registrar State: FRANCE
 Registrar Postal Code: 0033
 Registrar Email: tld@netim.com
-Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientTransfer/b/Prohibited https://icann.org/epp#clientTransferProhibited
 Registry Registrant ID: 94354-CoCCA
 Registry Billing ID: 94355-CoCCA
 Name Server: edna.ns.cloudflare.com

@@ -14,10 +14,10 @@
     ],
     "nameservers": [
         {
-            "hostname": "ns2.siteground.net"
+            "hostname": "ns1.siteground.net"
         },
         {
-            "hostname": "ns1.siteground.net"
+            "hostname": "ns2.siteground.net"
         }
     ],
     "dnssec": "unsigned"

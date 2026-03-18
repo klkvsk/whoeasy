@@ -7,16 +7,16 @@
     },
     "nameservers": [
         {
-            "hostname": "ns3.supercp.com"
-        },
-        {
-            "hostname": "ns4.supercp.com"
-        },
-        {
             "hostname": "ns1.supercp.com"
         },
         {
             "hostname": "ns2.supercp.com"
+        },
+        {
+            "hostname": "ns3.supercp.com"
+        },
+        {
+            "hostname": "ns4.supercp.com"
         }
     ],
     "contacts": [

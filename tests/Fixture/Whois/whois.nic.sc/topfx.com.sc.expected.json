@@ -15,17 +15,18 @@
     ],
     "nameservers": [
         {
-            "hostname": "lloyd.ns.cloudflare.com"
+            "hostname": "keyla.ns.cloudflare.com"
         },
         {
-            "hostname": "keyla.ns.cloudflare.com"
+            "hostname": "lloyd.ns.cloudflare.com"
         }
     ],
     "dnssec": "unsigned",
     "contacts": [
         {
             "type": "registrant",
-            "organization": "TopFX LTD"
+            "organization": "TopFX LTD",
+            "address": "Agios Athanasios, CY"
         }
     ]
 }

@@ -10,16 +10,16 @@
     ],
     "nameservers": [
         {
-            "hostname": "gns24.cloudns.net"
+            "hostname": "gns21.cloudns.net"
         },
         {
-            "hostname": "gns21.cloudns.net"
+            "hostname": "gns22.cloudns.net"
         },
         {
             "hostname": "gns23.cloudns.net"
         },
         {
-            "hostname": "gns22.cloudns.net"
+            "hostname": "gns24.cloudns.net"
         }
     ]
 }

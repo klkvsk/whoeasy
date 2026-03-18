@@ -9,19 +9,19 @@
             "hostname": "a1-156.akam.net"
         },
         {
-            "hostname": "a2-67.akam.net"
-        },
-        {
             "hostname": "a12-65.akam.net"
         },
         {
             "hostname": "a16-66.akam.net"
         },
         {
-            "hostname": "a7-65.akam.net"
+            "hostname": "a2-67.akam.net"
         },
         {
             "hostname": "a3-64.akam.net"
+        },
+        {
+            "hostname": "a7-65.akam.net"
         }
     ],
     "contacts": [

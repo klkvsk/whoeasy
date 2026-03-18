@@ -5,6 +5,10 @@
         "name": "Webreality",
         "url": "http://www.webreality.co.uk"
     },
+    "status": [
+        "Active",
+        "Registered until cancelled"
+    ],
     "nameservers": [
         {
             "hostname": "ns-1156.awsdns-16.org"

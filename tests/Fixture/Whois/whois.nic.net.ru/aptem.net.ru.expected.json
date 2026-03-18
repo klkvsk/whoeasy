@@ -6,8 +6,8 @@
     "createdDate": "2005-06-21 19:00:00",
     "expiresDate": "2026-06-21 21:00:00",
     "status": [
-        "REGISTERED",
         "DELEGATED",
+        "REGISTERED",
         "UNVERIFIED"
     ],
     "nameservers": [

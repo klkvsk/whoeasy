@@ -8,16 +8,16 @@
     "expiresDate": "2027-11-28 00:00:00",
     "nameservers": [
         {
-            "hostname": "ns0.gwynedd.gov.uk"
-        },
-        {
-            "hostname": "ns1.gwynedd.gov.uk"
-        },
-        {
             "hostname": "dns0.wnl.net"
         },
         {
             "hostname": "dns1.wnl.net"
+        },
+        {
+            "hostname": "ns0.gwynedd.gov.uk"
+        },
+        {
+            "hostname": "ns1.gwynedd.gov.uk"
         }
     ],
     "contacts": [

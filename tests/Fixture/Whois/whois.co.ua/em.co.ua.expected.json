@@ -4,9 +4,9 @@
     "updatedDate": "2025-08-26 15:47:54",
     "expiresDate": "2026-09-25 12:47:52",
     "status": [
-        "clientUpdateProhibited",
         "clientDeleteProhibited",
-        "clientTransferProhibited"
+        "clientTransferProhibited",
+        "clientUpdateProhibited"
     ],
     "nameservers": [
         {

@@ -64,6 +64,10 @@ class WhoisFixtureTest extends TestCase
         $compare = $expected;
         unset($compare['queryType']);
 
+        // Normalize key order for comparison (expected JSON key order may vary)
+        $this->sortArrayKeys($compare);
+        $this->sortArrayKeys($actual);
+
         $this->assertSame($compare, $actual, sprintf(
             "Parsed output mismatch for %s/%s\nExpected: %s\nActual: %s",
             $serverHostname,
@@ -71,5 +75,21 @@ class WhoisFixtureTest extends TestCase
             json_encode($compare, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
             json_encode($actual, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         ));
+    }
+
+    private function sortArrayKeys(array &$array): void
+    {
+        ksort($array);
+        foreach ($array as &$value) {
+            if (is_array($value) && !array_is_list($value)) {
+                $this->sortArrayKeys($value);
+            } elseif (is_array($value)) {
+                foreach ($value as &$item) {
+                    if (is_array($item) && !array_is_list($item)) {
+                        $this->sortArrayKeys($item);
+                    }
+                }
+            }
+        }
     }
 }

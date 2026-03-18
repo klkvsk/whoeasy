@@ -15,10 +15,10 @@
     ],
     "nameservers": [
         {
-            "hostname": "5296.ns2.abovedomains.com"
+            "hostname": "5296.ns1.abovedomains.com"
         },
         {
-            "hostname": "5296.ns1.abovedomains.com"
+            "hostname": "5296.ns2.abovedomains.com"
         }
     ],
     "dnssec": "unsigned"

@@ -1,0 +1,35 @@
+{
+    "name": "airgunshop.in",
+    "registrar": {
+        "name": "GoDaddy",
+        "ianaId": "146",
+        "url": "www.godaddy.com",
+        "abuseEmail": "reg_admin@godaddy.com",
+        "abusePhone": "+1.4805058800"
+    },
+    "createdDate": "2018-09-11 17:39:20",
+    "updatedDate": "2026-01-17 16:28:48",
+    "expiresDate": "2026-09-11 17:39:20",
+    "status": [
+        "clientDeleteProhibited",
+        "clientRenewProhibited",
+        "clientTransferProhibited",
+        "clientUpdateProhibited"
+    ],
+    "nameservers": [
+        {
+            "hostname": "alex.ns.cloudflare.com"
+        },
+        {
+            "hostname": "heather.ns.cloudflare.com"
+        }
+    ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "organization": "Airgun Shop",
+            "address": "Chhattisgarh, IN"
+        }
+    ],
+    "dnssec": "unsigned"
+}

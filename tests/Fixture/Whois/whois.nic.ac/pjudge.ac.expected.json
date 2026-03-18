@@ -25,7 +25,8 @@
     "contacts": [
         {
             "type": "registrant",
-            "organization": "See PrivacyGuardian.org"
+            "organization": "See PrivacyGuardian.org",
+            "address": "AZ, US"
         }
     ]
 }

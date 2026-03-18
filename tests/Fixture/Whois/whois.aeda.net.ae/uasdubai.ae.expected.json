@@ -11,13 +11,13 @@
             "hostname": "ns1.etisalatdomains.ae"
         },
         {
-            "hostname": "ns4.etisalatdomains.ae"
-        },
-        {
             "hostname": "ns2.etisalatdomains.ae"
         },
         {
             "hostname": "ns3.etisalatdomains.ae"
+        },
+        {
+            "hostname": "ns4.etisalatdomains.ae"
         }
     ],
     "contacts": [

@@ -9,6 +9,9 @@
             "hostname": "ns2.hurrah.it"
         }
     ],
+    "status": [
+        "Active"
+    ],
     "contacts": [
         {
             "type": "registrant",

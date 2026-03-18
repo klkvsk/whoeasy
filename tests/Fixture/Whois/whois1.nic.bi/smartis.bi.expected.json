@@ -11,10 +11,10 @@
     ],
     "nameservers": [
         {
-            "hostname": "dns2.yandex.net"
+            "hostname": "dns1.yandex.net"
         },
         {
-            "hostname": "dns1.yandex.net"
+            "hostname": "dns2.yandex.net"
         }
     ],
     "dnssec": "unsigned",

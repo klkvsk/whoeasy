@@ -1,11 +1,13 @@
 {
     "name": "google.com.hk",
-    "createdDate": "2001-07-14 00:00:00",
-    "expiresDate": "2026-11-20 00:00:00",
-    "dnssec": false,
     "registrar": {
         "name": "MARKMONITOR INC."
     },
+    "createdDate": "2001-07-14 00:00:00",
+    "expiresDate": "2026-11-20 00:00:00",
+    "status": [
+        "Active"
+    ],
     "nameservers": [
         {
             "hostname": "ns1.google.com"
@@ -45,5 +47,6 @@
             "email": "dns-admin@google.com",
             "address": "1600 AMPHITHEATRE PARKWAY  MOUNTAIN VIEW 94043 CA, United States"
         }
-    ]
+    ],
+    "dnssec": false
 }

@@ -5,6 +5,11 @@
         "name": "NameCheap, Inc",
         "url": "https://www.namecheap.com"
     },
+    "status": [
+        "Active",
+        "Registered until cancelled",
+        "Transfer Prohibited by Registrar"
+    ],
     "nameservers": [
         {
             "hostname": "ns-1309.awsdns-35.org"

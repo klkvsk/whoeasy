@@ -28,7 +28,7 @@
             "email": "dnsadmin@zadna.org.za",
             "phone": "+27.100203910",
             "fax": "+27.100203919",
-            "address": "44 Grand Central Blvd Sanofi House Halfway house\nMidrand\nGauteng\n1685\nZA"
+            "address": "44 Grand Central Blvd Sanofi House Halfway house, Midrand, Gauteng, 1685, ZA"
         },
         {
             "type": "admin",
@@ -37,7 +37,7 @@
             "email": "dnsadmin@zadna.org.za",
             "phone": "+27.100203910",
             "fax": "+27.100203919",
-            "address": "44 Grand Central Blvd Sanofi House Halfway house\nMidrand\nGauteng\n1685\nZA"
+            "address": "44 Grand Central Blvd Sanofi House Halfway house, Midrand, Gauteng, 1685, ZA"
         },
         {
             "type": "tech",
@@ -46,7 +46,7 @@
             "email": "dnsadmin@zadna.org.za",
             "phone": "+27.100203910",
             "fax": "+27.100203919",
-            "address": "44 Grand Central Blvd Sanofi House Halfway house\nMidrand\nGauteng\n1685\nZA"
+            "address": "44 Grand Central Blvd Sanofi House Halfway house, Midrand, Gauteng, 1685, ZA"
         }
     ],
     "dnssec": "signedDelegation"

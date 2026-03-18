@@ -2,7 +2,8 @@
     "name": "luxair.lu",
     "registrar": {
         "name": "Gandi SAS",
-        "url": "http://www.gandi.net/"
+        "url": "http://www.gandi.net/",
+        "abuseEmail": "reg.lu-support@gandi.net"
     },
     "nameservers": [
         {

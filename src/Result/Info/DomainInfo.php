@@ -22,7 +22,7 @@ readonly class DomainInfo extends AbstractInfo
         public array $nameservers = [],
         /** @var Contact[] */
         public array $contacts = [],
-        public ?string $dnssec = null,
+        public string|false|null $dnssec = null,
     ) {}
 
     public function toArray(): array

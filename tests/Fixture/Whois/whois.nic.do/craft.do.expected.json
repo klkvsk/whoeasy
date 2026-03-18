@@ -11,16 +11,16 @@
     ],
     "nameservers": [
         {
-            "hostname": "ns-1798.awsdns-32.co.uk"
-        },
-        {
-            "hostname": "ns-765.awsdns-31.net"
-        },
-        {
             "hostname": "ns-1416.awsdns-49.org"
         },
         {
             "hostname": "ns-170.awsdns-21.com"
+        },
+        {
+            "hostname": "ns-1798.awsdns-32.co.uk"
+        },
+        {
+            "hostname": "ns-765.awsdns-31.net"
         }
     ],
     "dnssec": "unsigned",

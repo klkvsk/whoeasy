@@ -12,10 +12,10 @@
     ],
     "nameservers": [
         {
-            "hostname": "tegan.ns.cloudflare.com"
+            "hostname": "lex.ns.cloudflare.com"
         },
         {
-            "hostname": "lex.ns.cloudflare.com"
+            "hostname": "tegan.ns.cloudflare.com"
         }
     ],
     "dnssec": "unsigned"

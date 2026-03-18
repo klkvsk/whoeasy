@@ -1,8 +1,8 @@
 {
     "name": "pokerstars.bg",
     "status": [
-        "busy",
-        "active"
+        "active",
+        "busy"
     ],
     "nameservers": [
         {

@@ -19,5 +19,11 @@
             "hostname": "ns32.infomaniak.com"
         }
     ],
+    "contacts": [
+        {
+            "type": "registrant",
+            "address": "Ouagadougou, BF"
+        }
+    ],
     "dnssec": "unsigned"
 }

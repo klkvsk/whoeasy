@@ -1,0 +1,21 @@
+{
+    "name": "cgcgabon.ga",
+    "registrar": {
+        "name": "ANINF"
+    },
+    "createdDate": "2023-06-05 00:00:00",
+    "updatedDate": "2025-07-20 00:08:55",
+    "expiresDate": "2026-06-05 00:00:00",
+    "status": [
+        "actif"
+    ],
+    "nameservers": [
+        {
+            "hostname": "ns1.dns-parking.com"
+        },
+        {
+            "hostname": "ns2.dns-parking.com"
+        }
+    ],
+    "dnssec": "unsigned"
+}

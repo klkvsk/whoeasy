@@ -1,15 +1,18 @@
 {
     "name": "galam.tm",
     "expiresDate": "2033-05-24 00:00:00",
+    "status": [
+        "Live"
+    ],
     "nameservers": [
+        {
+            "hostname": "ns1.timeweb.ru"
+        },
         {
             "hostname": "ns2.timeweb.ru"
         },
         {
             "hostname": "ns3.timeweb.org"
-        },
-        {
-            "hostname": "ns1.timeweb.ru"
         }
     ],
     "contacts": [

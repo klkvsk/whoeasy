@@ -11,7 +11,7 @@
     ],
     "nameservers": [
         {
-            "hostname": "dns4.allegro.pl"
+            "hostname": "dns1.allegro.pl"
         },
         {
             "hostname": "dns2.allegro.pl"
@@ -20,7 +20,7 @@
             "hostname": "dns3.allegro.pl"
         },
         {
-            "hostname": "dns1.allegro.pl"
+            "hostname": "dns4.allegro.pl"
         }
     ],
     "contacts": [
