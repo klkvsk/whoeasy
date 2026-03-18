@@ -89,6 +89,8 @@ class ResultMergerTest extends TestCase
 
     public function testContactsMergedByType(): void
     {
+        // When same-type contacts have conflicting non-null fields (different names),
+        // they are preserved as distinct contacts
         $rdap = new DomainInfo(contacts: [
             new Contact(type: ContactType::Tech, name: 'RDAP Tech', email: 'tech@rdap.test'),
         ]);
@@ -100,16 +102,18 @@ class ResultMergerTest extends TestCase
         $merged = $this->merger->merge($rdap, $whois);
 
         $this->assertInstanceOf(DomainInfo::class, $merged);
-        $this->assertCount(2, $merged->contacts);
+        // 3 contacts: RDAP tech, WHOIS tech (distinct names), WHOIS registrant
+        $this->assertCount(3, $merged->contacts);
 
-        // Tech contact: RDAP fields + WHOIS phone fill
-        $tech = array_values(array_filter(
+        $techs = array_values(array_filter(
             $merged->contacts,
             fn(Contact $c) => $c->type === ContactType::Tech,
-        ))[0];
-        $this->assertSame('RDAP Tech', $tech->name);
-        $this->assertSame('tech@rdap.test', $tech->email);
-        $this->assertSame('+1-555-0000', $tech->phone);
+        ));
+        $this->assertCount(2, $techs);
+        $this->assertSame('RDAP Tech', $techs[0]->name);
+        $this->assertSame('tech@rdap.test', $techs[0]->email);
+        $this->assertSame('WHOIS Tech', $techs[1]->name);
+        $this->assertSame('+1-555-0000', $techs[1]->phone);
 
         // Registrant: from WHOIS only
         $registrant = array_values(array_filter(
@@ -117,6 +121,27 @@ class ResultMergerTest extends TestCase
             fn(Contact $c) => $c->type === ContactType::Registrant,
         ))[0];
         $this->assertSame('Owner', $registrant->name);
+    }
+
+    public function testContactsSubsetMerged(): void
+    {
+        // When one contact is a subset of another (compatible non-null fields),
+        // they are merged with primary winning on conflicts
+        $rdap = new DomainInfo(contacts: [
+            new Contact(type: ContactType::Tech, name: 'Tech Support', email: 'tech@test.com'),
+        ]);
+        $whois = new DomainInfo(contacts: [
+            new Contact(type: ContactType::Tech, name: 'Tech Support', phone: '+1-555-0000'),
+        ]);
+
+        $merged = $this->merger->merge($rdap, $whois);
+
+        $this->assertInstanceOf(DomainInfo::class, $merged);
+        $this->assertCount(1, $merged->contacts);
+        $tech = $merged->contacts[0];
+        $this->assertSame('Tech Support', $tech->name);
+        $this->assertSame('tech@test.com', $tech->email);   // from RDAP
+        $this->assertSame('+1-555-0000', $tech->phone);     // filled from WHOIS
     }
 
     public function testMergeWithSingleItem(): void

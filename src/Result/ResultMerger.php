@@ -82,6 +82,7 @@ class ResultMerger
             range: $primary->range ?? $secondary->range,
             networkName: $primary->networkName ?? $secondary->networkName,
             description: $primary->description ?? $secondary->description,
+            asNumber: $primary->asNumber ?? $secondary->asNumber,
             country: $primary->country ?? $secondary->country,
             createdDate: $primary->createdDate ?? $secondary->createdDate,
             updatedDate: $primary->updatedDate ?? $secondary->updatedDate,
@@ -123,35 +124,75 @@ class ResultMerger
     }
 
     /**
+     * Merge contact arrays. Multiple contacts of the same type are preserved.
+     * If a contact in B is a subset of a contact in A (same type, all non-null
+     * fields in B match A), it's merged into A rather than added as duplicate.
+     *
      * @param Contact[] $primary
      * @param Contact[] $secondary
      * @return Contact[]
      */
     private function mergeContacts(array $primary, array $secondary): array
     {
-        $byType = [];
-        foreach ($primary as $contact) {
-            $byType[$contact->type->value] = $contact;
-        }
+        $result = [...$primary];
 
         foreach ($secondary as $contact) {
-            if (!isset($byType[$contact->type->value])) {
-                $byType[$contact->type->value] = $contact;
-            } else {
-                $existing = $byType[$contact->type->value];
-                $byType[$contact->type->value] = new Contact(
-                    type: $existing->type,
-                    name: $existing->name ?? $contact->name,
-                    organization: $existing->organization ?? $contact->organization,
-                    email: $existing->email ?? $contact->email,
-                    phone: $existing->phone ?? $contact->phone,
-                    fax: $existing->fax ?? $contact->fax,
-                    address: $existing->address ?? $contact->address,
-                );
+            $merged = false;
+
+            foreach ($result as $i => $existing) {
+                if ($existing->type !== $contact->type) {
+                    continue;
+                }
+
+                // Check if one is a subset of the other (non-null fields match)
+                if ($this->contactIsSubset($contact, $existing)) {
+                    // B is subset of A — merge B's fields into A (A wins on conflicts)
+                    $result[$i] = $this->mergeContact($existing, $contact);
+                    $merged = true;
+                    break;
+                }
+
+                if ($this->contactIsSubset($existing, $contact)) {
+                    // A is subset of B — merge A's fields into B (A still wins on conflicts)
+                    $result[$i] = $this->mergeContact($existing, $contact);
+                    $merged = true;
+                    break;
+                }
+            }
+
+            if (!$merged) {
+                $result[] = $contact;
             }
         }
 
-        return array_values($byType);
+        return $result;
+    }
+
+    /**
+     * Check if $a's non-null fields are all present and equal in $b.
+     */
+    private function contactIsSubset(Contact $a, Contact $b): bool
+    {
+        if ($a->name !== null && $b->name !== null && $a->name !== $b->name) return false;
+        if ($a->organization !== null && $b->organization !== null && $a->organization !== $b->organization) return false;
+        if ($a->email !== null && $b->email !== null && $a->email !== $b->email) return false;
+        if ($a->phone !== null && $b->phone !== null && $a->phone !== $b->phone) return false;
+        if ($a->fax !== null && $b->fax !== null && $a->fax !== $b->fax) return false;
+        if ($a->address !== null && $b->address !== null && $a->address !== $b->address) return false;
+        return true;
+    }
+
+    private function mergeContact(Contact $primary, Contact $secondary): Contact
+    {
+        return new Contact(
+            type: $primary->type,
+            name: $primary->name ?? $secondary->name,
+            organization: $primary->organization ?? $secondary->organization,
+            email: $primary->email ?? $secondary->email,
+            phone: $primary->phone ?? $secondary->phone,
+            fax: $primary->fax ?? $secondary->fax,
+            address: $primary->address ?? $secondary->address,
+        );
     }
 
     /**
