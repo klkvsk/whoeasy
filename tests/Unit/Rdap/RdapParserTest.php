@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Tests\Unit\Rdap;
 
-use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
-use Klkvsk\Whoeasy\Result\Info\AsnInfo;
-use Klkvsk\Whoeasy\Result\Info\DomainInfo;
-use Klkvsk\Whoeasy\Result\Info\IpInfo;
+use Klkvsk\Whoeasy\Registry\QueryType;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

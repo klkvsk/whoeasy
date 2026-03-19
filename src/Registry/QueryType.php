@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Klkvsk\Whoeasy\Enum;
+namespace Klkvsk\Whoeasy\Registry;
 
 enum QueryType: string
 {

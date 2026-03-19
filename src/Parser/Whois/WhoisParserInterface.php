@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Parser\Whois;
 
-use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Parser\Exception\ParserException;
+use Klkvsk\Whoeasy\Registry\QueryType;
 use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
 
 /**

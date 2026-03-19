@@ -6,10 +6,8 @@ namespace Klkvsk\Whoeasy\Client\Rdap;
 
 use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
-use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
-use Klkvsk\Whoeasy\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Exception\RateLimitException;
+use Klkvsk\Whoeasy\Registry\QueryType;
 
 /**
  * RDAP client that queries RDAP servers over HTTP/HTTPS per RFC 7480/9083.

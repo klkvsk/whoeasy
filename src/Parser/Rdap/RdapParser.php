@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Parser\Rdap;
 
-use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Exception\NotFoundException;
 use Klkvsk\Whoeasy\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Parser\Exception\ParserException;
+use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
 use Klkvsk\Whoeasy\Result\Info\AsnInfo;
 use Klkvsk\Whoeasy\Result\Info\DomainInfo;
 use Klkvsk\Whoeasy\Result\Info\Field\Contact;
@@ -15,7 +15,6 @@ use Klkvsk\Whoeasy\Result\Info\Field\ContactType;
 use Klkvsk\Whoeasy\Result\Info\Field\Nameserver;
 use Klkvsk\Whoeasy\Result\Info\Field\Registrar;
 use Klkvsk\Whoeasy\Result\Info\IpInfo;
-use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
 
 /**
  * Parses RDAP JSON responses (RFC 9083) into structured info.

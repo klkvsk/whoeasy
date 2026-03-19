@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Tests\Unit\Registry;
 
-use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
+use Klkvsk\Whoeasy\Registry\QueryType;
 use Klkvsk\Whoeasy\Registry\ServerRegistry;
 use PHPUnit\Framework\TestCase;
 
