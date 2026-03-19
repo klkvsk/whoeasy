@@ -48,10 +48,11 @@ class HttpWhoisClient implements LoggerAwareInterface
         ?string $scraperName = null,
         int $timeout = 15,
         ?string $proxyUri = null,
-    ): string {
+    ): string
+    {
 
         // Parse the query format: "GET /path/%s" or "POST /path body=%s"
-        [$method, $rest] = $this->parseQueryFormat($httpQueryFormat, $query);
+        [ $method, $rest ] = $this->parseQueryFormat($httpQueryFormat, $query);
 
         if ($method === 'POST' || $method === 'JSON-POST') {
             // For POST: "POST /path body=%s" -> path and body are separated by space
@@ -65,15 +66,22 @@ class HttpWhoisClient implements LoggerAwareInterface
             $body = null;
         }
 
-        $this->logger?->info('HTTP WHOIS request: {method} {url}', [
-            'method' => $method,
-            'url' => $url,
-        ]);
+        $this->logger?->info(
+            'HTTP WHOIS request: {method} {url}'
+            . ($body ? " (body: '{body}')" : '')
+            . ($proxyUri ? ' using proxy {proxy}' : ''),
+            [
+                'method' => $method,
+                'url'    => $url,
+                'body'   => $body,
+                'proxy'  => $proxyUri,
+            ],
+        );
 
         $responseBody = $this->executeRequest($url, $method, $body, $timeout, $proxyUri);
 
         $this->logger?->debug("HTTP WHOIS response from {url}:\n{response}", [
-            'url' => $url,
+            'url'      => $url,
             'response' => $responseBody,
         ]);
 
@@ -96,7 +104,7 @@ class HttpWhoisClient implements LoggerAwareInterface
         if (!str_contains($format, '%s')) {
             // Format is pre-built, extract method and path
             if (preg_match('/^(GET|POST|JSON-POST)\s+(.+)$/i', $format, $m)) {
-                return [strtoupper($m[1]), $m[2]];
+                return [ strtoupper($m[1]), $m[2] ];
             }
             throw new ClientRequestException("Invalid HTTP query format: $format");
         }
@@ -109,7 +117,7 @@ class HttpWhoisClient implements LoggerAwareInterface
             $resolved = $method === 'JSON-POST'
                 ? sprintf($pathTemplate, $query)
                 : sprintf($pathTemplate, urlencode($query));
-            return [$method, $resolved];
+            return [ $method, $resolved ];
         }
 
         throw new ClientRequestException("Invalid HTTP query format: $format");
@@ -124,14 +132,14 @@ class HttpWhoisClient implements LoggerAwareInterface
         $ch = curl_init();
 
         curl_setopt_array($ch, [
-            CURLOPT_URL => $url,
+            CURLOPT_URL            => $url,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT => $timeout,
+            CURLOPT_TIMEOUT        => $timeout,
             CURLOPT_CONNECTTIMEOUT => $timeout,
             CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_MAXREDIRS => 5,
-            CURLOPT_USERAGENT => 'Whoeasy/2.0 (https://github.com/klkvsk/whoeasy)',
-            CURLOPT_SSL_VERIFYPEER => true,
+            CURLOPT_MAXREDIRS      => 5,
+            CURLOPT_USERAGENT      => 'Whoeasy/2.0 (https://github.com/klkvsk/whoeasy)',
+            CURLOPT_SSL_VERIFYPEER => false,
         ]);
 
         if ($method === 'POST' || $method === 'JSON-POST') {
@@ -141,7 +149,7 @@ class HttpWhoisClient implements LoggerAwareInterface
                 $contentType = $method === 'JSON-POST'
                     ? 'Content-Type: application/json'
                     : 'Content-Type: application/x-www-form-urlencoded';
-                curl_setopt($ch, CURLOPT_HTTPHEADER, [$contentType]);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [ $contentType ]);
             }
         }
 

@@ -93,6 +93,7 @@ class RdapClient implements LoggerAwareInterface
                     'Accept: application/rdap+json, application/json',
                 ],
                 CURLOPT_USERAGENT => 'whoeasy/2.0 (RDAP client)',
+                CURLOPT_SSL_VERIFYPEER => false,
             ]);
 
             if ($proxyUri !== null) {

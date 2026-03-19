@@ -63,16 +63,27 @@ class WhoisClient implements LoggerAwareInterface
             $port = (int)$parts[1];
         }
 
-        $this->logger?->info('WHOIS query: {server}:{port} <- {query}', [
-            'server' => $server,
-            'port' => $port,
-            'query' => $query,
-        ]);
+        $queryFormatted = ($queryFormat !== null ? sprintf($queryFormat, $query) : $query);
+
+        // remove auth data from proxyUri (e.g. socks5://user:pass@127.0.0.1:1080 or user:pass@127.0.0.1:1080)
+        if ($proxyUri !== null) {
+            $proxyUri = preg_replace('#(//|^)([^@]+@)?#', '', $proxyUri);
+        }
+
+        $this->logger?->info(
+            'WHOIS query: "{query}" at {server}:{port}'
+            . ($proxyUri ? ' using proxy {proxy}' : ''),
+            [
+                'server' => $server,
+                'port' => $port,
+                'query' => $query,
+                'proxy' => $proxyUri,
+            ],
+        );
 
         // Prepare query input as a stream (curl reads from CURLOPT_INFILE for telnet)
-        $queryLine = ($queryFormat !== null ? sprintf($queryFormat, $query) : $query) . "\r\n";
         $input = fopen('php://temp', 'r+') ?: throw new \RuntimeException('Failed to open temp stream');
-        fwrite($input, $queryLine);
+        fwrite($input, $queryFormatted . "\r\n");
         rewind($input);
 
         // Verbose log for diagnostics
