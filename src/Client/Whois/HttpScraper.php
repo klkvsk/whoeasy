@@ -30,6 +30,7 @@ final class HttpScraper
             'gr' => self::processGr($data),
             'tt' => self::processTt($data),
             'tj' => self::processTj($data),
+            'uy' => self::processUy($data),
             default => throw new \InvalidArgumentException("Unknown scraper: $scraperName"),
         };
     }
@@ -188,6 +189,69 @@ final class HttpScraper
             $key = preg_replace('/registration data /', '', $key) ?? $key;
             $text .= "$key: " . implode(', ', $value) . "\n";
         }
+        return $text;
+    }
+
+    /**
+     * Convert .uy JSON API response to WHOIS-like text.
+     */
+    public static function processUy(string $data): string
+    {
+        $json = json_decode($data, true);
+        if (!is_array($json)) {
+            throw new NotScrapeableException("Failed to decode .uy JSON response");
+        }
+
+        /** @var array<string, mixed> $json */
+        $estado = isset($json['estado']) && is_string($json['estado']) ? $json['estado'] : '';
+        if ($estado !== 'REGISTRADO') {
+            return 'Domain not found';
+        }
+
+        $text = '';
+        $text .= "Status: $estado\n";
+
+        if (isset($json['fechaAlta']) && is_string($json['fechaAlta'])) {
+            $text .= "Creation Date: " . $json['fechaAlta'] . "\n";
+        }
+
+        $contactMap = [
+            'titular' => 'Registrant',
+            'administrador' => 'Admin',
+            'tecnico' => 'Tech',
+        ];
+
+        foreach ($contactMap as $jsonKey => $prefix) {
+            $contact = $json[$jsonKey] ?? null;
+            if (!is_array($contact)) {
+                continue;
+            }
+            /** @var array<string, mixed> $contact */
+            if (isset($contact['nombre']) && is_string($contact['nombre'])) {
+                $text .= "$prefix Name: " . $contact['nombre'] . "\n";
+            }
+            if (isset($contact['email']) && is_string($contact['email'])) {
+                $text .= "$prefix Email: " . $contact['email'] . "\n";
+            }
+            if (isset($contact['telefono']) && is_string($contact['telefono'])) {
+                $text .= "$prefix Phone: " . $contact['telefono'] . "\n";
+            }
+            if (isset($contact['direccion']) && is_string($contact['direccion'])) {
+                $text .= "$prefix Address: " . trim($contact['direccion']) . "\n";
+            }
+            if (isset($contact['nicHandler']) && is_string($contact['nicHandler'])) {
+                $text .= "$prefix NIC-Handle: " . $contact['nicHandler'] . "\n";
+            }
+        }
+
+        if (isset($json['nameServers']) && is_array($json['nameServers'])) {
+            foreach ($json['nameServers'] as $ns) {
+                if (is_string($ns)) {
+                    $text .= "Name Server: " . rtrim($ns, '.') . "\n";
+                }
+            }
+        }
+
         return $text;
     }
 }

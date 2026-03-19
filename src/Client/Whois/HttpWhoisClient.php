@@ -48,7 +48,7 @@ class HttpWhoisClient
         // Parse the query format: "GET /path/%s" or "POST /path body=%s"
         [$method, $rest] = $this->parseQueryFormat($httpQueryFormat, $query);
 
-        if ($method === 'POST') {
+        if ($method === 'POST' || $method === 'JSON-POST') {
             // For POST: "POST /path body=%s" -> path and body are separated by space
             $parts = explode(' ', $rest, 2);
             $path = $parts[0];
@@ -80,17 +80,20 @@ class HttpWhoisClient
         // Check if format already has the query baked in (e.g., .tj special case)
         if (!str_contains($format, '%s')) {
             // Format is pre-built, extract method and path
-            if (preg_match('/^(GET|POST)\s+(.+)$/i', $format, $m)) {
+            if (preg_match('/^(GET|POST|JSON-POST)\s+(.+)$/i', $format, $m)) {
                 return [strtoupper($m[1]), $m[2]];
             }
             throw new ClientRequestException("Invalid HTTP query format: $format");
         }
 
-        // Standard format: "GET /path/%s" or "POST /path field=%s"
-        if (preg_match('/^(GET|POST)\s+(.+)$/i', $format, $m)) {
+        // Standard format: "GET /path/%s", "POST /path field=%s", or "JSON-POST /path {...}"
+        if (preg_match('/^(GET|POST|JSON-POST)\s+(.+)$/i', $format, $m)) {
             $method = strtoupper($m[1]);
             $pathTemplate = $m[2];
-            $resolved = sprintf($pathTemplate, urlencode($query));
+            // JSON-POST: don't urlencode the query — it goes into a JSON body template
+            $resolved = $method === 'JSON-POST'
+                ? sprintf($pathTemplate, $query)
+                : sprintf($pathTemplate, urlencode($query));
             return [$method, $resolved];
         }
 
@@ -116,13 +119,14 @@ class HttpWhoisClient
             CURLOPT_SSL_VERIFYPEER => true,
         ]);
 
-        if ($method === 'POST') {
+        if ($method === 'POST' || $method === 'JSON-POST') {
             curl_setopt($ch, CURLOPT_POST, true);
             if ($body !== null) {
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                    'Content-Type: application/x-www-form-urlencoded',
-                ]);
+                $contentType = $method === 'JSON-POST'
+                    ? 'Content-Type: application/json'
+                    : 'Content-Type: application/x-www-form-urlencoded';
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [$contentType]);
             }
         }
 

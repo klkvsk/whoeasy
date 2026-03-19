@@ -56,6 +56,7 @@ final class ServerRegistry
         'www.innoview.gr' => ['https://www.innoview.gr', 'POST /members/whoisdomain.php whoisdomainname=%s', 'gr'],
         'www.nic.tt' => ['https://www.nic.tt', 'POST /cgi-bin/search.pl name=%s', 'tt'],
         'www.nic.tj' => ['http://www.nic.tj', 'GET /cgi/whois2?domain=%s', 'tj'],
+        'whois.nic.org.uy' => ['https://dns2-edge.sva.antel.com.uy', 'JSON-POST /dominio/consulta/whois {"dominio":{"nombre":"%s"},"captchaResponse":"","wcv":false}', 'uy'],
 
     ];
 

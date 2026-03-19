@@ -31,7 +31,7 @@ class RdapClient
      * @param string $rdapBaseUrl RDAP base URL (e.g., "https://rdap.verisign.com/com/v1/")
      * @param string $query The query input (domain name, IP address, or ASN like "AS15169")
      * @param QueryType|null $queryType Type of query; if null, guessed from $query
-     * @return array Decoded JSON response
+     * @return array<mixed> Decoded JSON response
      */
     public function query(string $rdapBaseUrl, string $query, ?QueryType $queryType = null): array
     {
@@ -63,7 +63,7 @@ class RdapClient
     /**
      * Query a specific RDAP URL directly
      *
-     * @return array Decoded JSON response
+     * @return array<mixed> Decoded JSON response
      */
     public function queryUrl(string $url): array
     {
