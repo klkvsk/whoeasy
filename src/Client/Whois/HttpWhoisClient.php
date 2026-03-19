@@ -15,11 +15,11 @@ use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
  * Handles WHOIS servers that expose data via HTTP endpoints
  * rather than the standard TCP:43 protocol.
  */
-final class HttpWhoisClient
+class HttpWhoisClient
 {
     public function __construct(
-        private int $timeout = 30,
-        private ?string $proxyUri = null,
+        protected int $timeout = 30,
+        protected ?string $proxyUri = null,
     ) {
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('ext-curl is required for HTTP WHOIS queries');
@@ -102,6 +102,7 @@ final class HttpWhoisClient
      */
     private function executeRequest(string $url, string $method, ?string $body, int $timeout): string
     {
+        assert($url !== '');
         $ch = curl_init();
 
         curl_setopt_array($ch, [
@@ -134,14 +135,16 @@ final class HttpWhoisClient
         $error = curl_error($ch);
         curl_close($ch);
 
-        if ($response === false) {
-            if ($errno === CURLE_OPERATION_TIMEDOUT || $errno === CURLE_OPERATION_TIMEOUTED) {
+        if (!is_string($response)) {
+            $host = parse_url($url, PHP_URL_HOST);
+            $server = is_string($host) ? $host : $url;
+            if ($errno === CURLE_OPERATION_TIMEDOUT) {
                 throw (new ClientTimeoutException("HTTP request timed out after {$timeout}s: $url"))
-                    ->withServer(parse_url($url, PHP_URL_HOST) ?: $url);
+                    ->withServer($server);
             }
             if ($errno === CURLE_COULDNT_CONNECT || $errno === CURLE_COULDNT_RESOLVE_HOST) {
                 throw (new ClientConnectException("HTTP connection failed: $error"))
-                    ->withServer(parse_url($url, PHP_URL_HOST) ?: $url);
+                    ->withServer($server);
             }
             throw new ClientRequestException("HTTP request failed: [$errno] $error");
         }

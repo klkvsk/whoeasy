@@ -17,8 +17,8 @@ use Klkvsk\Whoeasy\Registry\QueryType;
 class RdapClient
 {
     public function __construct(
-        private int $timeout = 15,
-        private ?string $proxyUri = null,
+        protected int $timeout = 15,
+        protected ?string $proxyUri = null,
     ) {
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('Curl extension is required for RDAP');
@@ -67,6 +67,10 @@ class RdapClient
      */
     public function queryUrl(string $url): array
     {
+        if ($url === '') {
+            throw new ClientException('RDAP URL must not be empty');
+        }
+
         $curl = curl_init();
         if (!$curl) {
             throw new ClientException('Unable to create cURL handler');
@@ -98,9 +102,13 @@ class RdapClient
                 throw new ClientException("RDAP request failed: $error (code $errno)");
             }
 
+            if (!is_string($body)) {
+                $body = '';
+            }
+
             if ($httpCode < 200 || $httpCode >= 500) {
                 throw (new ClientResponseException("RDAP server returned HTTP $httpCode for $url"))
-                    ->withRawBody($body ?: '')
+                    ->withRawBody($body)
                     ->withHttpCode($httpCode);
             }
 
@@ -108,7 +116,7 @@ class RdapClient
 
             if (!is_array($json)) {
                 throw (new ClientResponseException("RDAP: invalid JSON response from $url"))
-                    ->withRawBody($body ?: '')
+                    ->withRawBody($body)
                     ->withHttpCode($httpCode);
             }
 

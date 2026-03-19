@@ -1,9 +1,7 @@
 parameters:
     level: max
     paths:
-        - src/Enum
         - src/Exception
-        - src/Result
-        - src/Config.php
-        - src/QueryOptions.php
+        - src/Registry
         - src/Whoeasy.php
+        - src/Client

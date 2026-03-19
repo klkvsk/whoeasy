@@ -78,6 +78,12 @@ final class ServerRegistry
         return self::$instance ??= new self();
     }
 
+    /**
+     * @param array<string, array{0: ?string, 1: ?string}>|null $tldServers
+     * @param array<int, array{0: int, 1: int, 2: string, 3: ?string}>|null $ipv4Ranges
+     * @param array<int, array{0: int, 1: int, 2: string, 3: ?string}>|null $ipv6Ranges
+     * @param array<int, array{0: int, 1: int, 2: string, 3: ?string}>|null $asnRanges
+     */
     public function __construct(
         ?array $tldServers = null,
         ?array $ipv4Ranges = null,
@@ -105,6 +111,7 @@ final class ServerRegistry
             QueryType::Ipv4 => $this->resolveIpv4($query),
             QueryType::Ipv6 => $this->resolveIpv6($query),
             QueryType::Asn => $this->resolveAsn($query),
+            QueryType::NicHandle => throw new InvalidArgumentException("NicHandle queries are not supported"),
         };
 
         return $this->applyCustomizations($info);
@@ -159,7 +166,7 @@ final class ServerRegistry
 
         // Handle .tj special case: strip TLD from query in the format
         if ($server === 'www.nic.tj' && $info->queryType === QueryType::Domain) {
-            $domainWithoutTld = preg_replace('/\.tj$/', '', $info->query);
+            $domainWithoutTld = preg_replace('/\.tj$/', '', $info->query) ?? $info->query;
             $httpQueryFormat = 'GET /cgi/whois2?domain=' . urlencode($domainWithoutTld);
         }
 
@@ -237,6 +244,10 @@ final class ServerRegistry
 
         // Get first 4 bytes as unsigned long
         $bytes = unpack('N', substr($expanded, 0, 4));
+        if ($bytes === false) {
+            throw new InvalidArgumentException("Failed to unpack IPv6 address: $query");
+        }
+        /** @var int $ipLong */
         $ipLong = $bytes[1];
 
         foreach ($this->ipv6Ranges as [$rangeIp, $rangeMask, $server, $rdap]) {

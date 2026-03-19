@@ -42,7 +42,7 @@ final class HttpScraper
         if (str_contains($data, 'Domain is available.')) {
             return 'Domain is available.';
         }
-        return preg_replace('/^.*<pre>(.*)<\/pre>.*$/s', '$1', $data);
+        return preg_replace('/^.*<pre>(.*)<\/pre>.*$/s', '$1', $data) ?? $data;
     }
 
     /**
@@ -75,10 +75,9 @@ final class HttpScraper
         if (str_contains($data, 'does not appear to be registered yet')) {
             return 'Domain is available.';
         }
-        $text = preg_replace('@^.*<pre>(.*)</pre>.*$@si', '$1', $data);
-        $text = preg_replace('@\r?\n@', '', $text);
-        $text = preg_replace('@<br( /)?>@i', "\n", $text);
-        return $text;
+        $text = preg_replace('@^.*<pre>(.*)</pre>.*$@si', '$1', $data) ?? $data;
+        $text = preg_replace('@\r?\n@', '', $text) ?? $text;
+        return preg_replace('@<br( /)?>@i', "\n", $text) ?? $text;
     }
 
     /**
@@ -92,13 +91,18 @@ final class HttpScraper
         $dom = new \DOMDocument();
         @$dom->loadHTML($data);
         $xpath = new \DOMXPath($dom);
-        /** @var \DOMNodeList|\DOMNode[] $tableRows */
         $tableRows = $xpath->query('//div[@class="main"]//tr');
         $text = '';
+        if ($tableRows === false) {
+            throw new NotScrapeableException("Failed to query DOM");
+        }
         foreach ($tableRows as $tableRow) {
-            $key = $tableRow->firstChild->textContent;
-            $value = $tableRow->lastChild->textContent;
-            $value = preg_replace('/\(.+?\)/', '', $value);
+            if (!$tableRow instanceof \DOMElement) {
+                continue;
+            }
+            $key = $tableRow->firstChild->textContent ?? '';
+            $value = $tableRow->lastChild->textContent ?? '';
+            $value = preg_replace('/\(.+?\)/', '', $value) ?? $value;
             if ($key === 'Expiration Date'
                 && preg_match('/^(.+?)\s+(?:&nbsp;?)*\s+(.+)$/', $value, $m)
             ) {
@@ -126,27 +130,41 @@ final class HttpScraper
         $dom = new \DOMDocument();
         @$dom->loadHTML($data);
         $xpath = new \DOMXPath($dom);
-        /** @var \DOMNodeList|\DOMNode[] $tableRows */
         $tableRows = $xpath->query('//tr');
+        if ($tableRows === false) {
+            throw new NotScrapeableException("Failed to query DOM");
+        }
+        /** @var array<int|string, list<string>> $result */
         $result = [];
         $section = '';
+        /** @var list<string>|null $last */
         $last = null;
         foreach ($tableRows as $tableRow) {
+            if (!$tableRow instanceof \DOMElement) {
+                continue;
+            }
             foreach ($tableRow->childNodes as $child) {
                 if ($child->nodeType === XML_TEXT_NODE) {
                     $tableRow->removeChild($child);
                 }
             }
-            $type = $tableRow->firstChild->attributes->getNamedItem('class');
-            $fieldName = trim($tableRow->firstChild->textContent);
-            $fieldValue = trim($tableRow->childNodes->item(1)->textContent);
-            if ($type->textContent === 'section') {
-                $section = $fieldName;
-                $result[] = '';
+            $firstChild = $tableRow->firstChild;
+            if (!$firstChild instanceof \DOMElement) {
                 continue;
             }
-            if ($type->textContent === 'subfield') {
-                array_push($last, $fieldValue);
+            $type = $firstChild->getAttribute('class');
+            $fieldName = trim($firstChild->textContent);
+            $secondChild = $tableRow->childNodes->item(1);
+            $fieldValue = $secondChild !== null ? trim($secondChild->textContent) : '';
+            if ($type === 'section') {
+                $section = $fieldName;
+                $result[] = [];
+                continue;
+            }
+            if ($type === 'subfield') {
+                if (is_array($last)) {
+                    $last[] = $fieldValue;
+                }
                 continue;
             }
 
@@ -164,10 +182,10 @@ final class HttpScraper
                 $text .= "\n";
                 continue;
             }
-            $key = preg_replace('/submitted by/', 'registrant', $key);
-            $key = preg_replace('/dns-servers for domain.+/', 'Nameservers', $key);
-            $key = preg_replace('/:$/', '', $key);
-            $key = preg_replace('/registration data /', '', $key);
+            $key = preg_replace('/submitted by/', 'registrant', (string)$key) ?? (string)$key;
+            $key = preg_replace('/dns-servers for domain.+/', 'Nameservers', $key) ?? $key;
+            $key = preg_replace('/:$/', '', $key) ?? $key;
+            $key = preg_replace('/registration data /', '', $key) ?? $key;
             $text .= "$key: " . implode(', ', $value) . "\n";
         }
         return $text;

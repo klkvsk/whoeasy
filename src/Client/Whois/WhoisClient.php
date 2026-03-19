@@ -16,13 +16,13 @@ use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
  * Curl telnet allows plain-text TCP communication to port 43,
  * with native support for HTTP/SOCKS proxies via CURLOPT_PROXY.
  */
-final class WhoisClient
+class WhoisClient
 {
-    private const DEFAULT_PORT = 43;
+    protected const DEFAULT_PORT = 43;
 
     public function __construct(
-        private int $timeout = 15,
-        private ?string $proxyUri = null,
+        protected int $timeout = 15,
+        protected ?string $proxyUri = null,
     ) {
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('ext-curl is required for ' . self::class);
@@ -55,12 +55,12 @@ final class WhoisClient
 
         // Prepare query input as a stream (curl reads from CURLOPT_INFILE for telnet)
         $queryLine = ($queryFormat !== null ? sprintf($queryFormat, $query) : $query) . "\r\n";
-        $input = fopen('php://temp', 'r+');
+        $input = fopen('php://temp', 'r+') ?: throw new \RuntimeException('Failed to open temp stream');
         fwrite($input, $queryLine);
         rewind($input);
 
         // Verbose log for diagnostics
-        $verboseLog = fopen('php://temp', 'w+');
+        $verboseLog = fopen('php://temp', 'w+') ?: throw new \RuntimeException('Failed to open temp stream');
 
         $curl = curl_init();
         curl_setopt_array($curl, [
@@ -84,10 +84,10 @@ final class WhoisClient
 
             if ($errno !== 0) {
                 rewind($verboseLog);
-                $log = stream_get_contents($verboseLog);
+                $log = stream_get_contents($verboseLog) ?: '';
 
                 // Map curl error codes to typed exceptions
-                if (in_array($errno, [CURLE_OPERATION_TIMEDOUT, CURLE_OPERATION_TIMEOUTED ?? 28], true)) {
+                if (in_array($errno, [CURLE_OPERATION_TIMEDOUT, CURLE_OPERATION_TIMEOUTED], true)) {
                     throw (new ClientTimeoutException("Timeout from $server:$port after {$timeout}s ($error)"))
                         ->withServer($server)
                         ->withQuery($query);
@@ -115,7 +115,7 @@ final class WhoisClient
                     ->withQuery($query);
             }
 
-            if ($response === false) {
+            if (!is_string($response)) {
                 $response = '';
             }
         } finally {
@@ -126,10 +126,7 @@ final class WhoisClient
 
         // Convert encoding if needed (best-effort UTF-8)
         if (!mb_check_encoding($response, 'UTF-8')) {
-            $converted = mb_convert_encoding($response, 'UTF-8', 'ISO-8859-1');
-            if ($converted !== false) {
-                $response = $converted;
-            }
+            $response = mb_convert_encoding($response, 'UTF-8', 'ISO-8859-1');
         }
 
         return $response;
