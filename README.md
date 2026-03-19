@@ -1,5 +1,5 @@
 # Whoeasy
-
+![README-logo.png](README-logo.png)
 [![Packagist Version](https://img.shields.io/packagist/v/klkvsk/whoeasy)](https://packagist.org/packages/klkvsk/whoeasy)
 [![PHP Version](https://img.shields.io/packagist/dependency-v/klkvsk/whoeasy/php)](https://packagist.org/packages/klkvsk/whoeasy)
 [![License](https://img.shields.io/packagist/l/klkvsk/whoeasy)](https://github.com/klkvsk/whoeasy/blob/master/LICENSE)
@@ -232,11 +232,13 @@ The parser is tested against stored fixtures — raw WHOIS/RDAP responses paired
 
 ```bash
 vendor/bin/phpunit
+vendor/bin/phpstan analyse
 ```
 
 - 260+ WHOIS fixtures across domains, IPs, and ASNs
 - 35+ RDAP fixtures for domains, IPs, and ASNs
 - Expected outputs validated against raw data
+- PHPStan at level max for static analysis
 
 ## Contributing
 

@@ -6,14 +6,15 @@ Iteratively fix the WHOIS parser so that all fixture tests pass — parsed outpu
 
 1. **Run tests**: `./dev php vendor/bin/phpunit tests/Unit/WhoisFixtureTest.php` (use `--testdox` for readable output)
 2. **Analyze failures**: For each failing test, compare expected vs actual output. Group failures by root cause (e.g. "missing field X for all .za servers", "date not parsed for format D-M-Y").
-3. **Fix**: Apply the smallest change that fixes the most tests. Prefer changes in this order:
+3. **Run PHPStan**: `vendor/bin/phpstan analyse` — all code must pass at level max.
+4. **Fix**: Apply the smallest change that fixes the most tests. Prefer changes in this order:
    a. Fix field name normalization in `normalizeKey()` — add missing aliases
    b. Fix extraction logic in `parseDomain()` / `parseIp()` / `parseAsn()` — handle missing fields
    c. Fix date parsing in `parseDate()` — add missing date formats
    d. Fix contact/registrar/nameserver extraction — handle edge cases
    e. Add server-specific parsing only as a last resort — when a server uses a fundamentally different format (like Nominet indented sections)
-4. **Re-run tests** to verify fixes and check for regressions.
-5. **Repeat** until all fixture tests pass (or only known-broken fixtures remain).
+5. **Re-run tests and PHPStan** to verify fixes and check for regressions.
+6. **Repeat** until all fixture tests and PHPStan pass (or only known-broken fixtures remain).
 
 ## Architecture context
 
@@ -53,6 +54,7 @@ Special formats already handled:
 
 - **Never modify `.expected.json` files** — those are ground truth. Fix the parser instead.
 - **Never modify test files** — only modify parser source code in `src/`.
+- **All changes must pass PHPStan at level max** — no new type errors. Use proper type guards (`is_string()`, `is_array()`) instead of casts on `mixed`.
 - Keep changes minimal and focused. Don't refactor unrelated code.
 - When adding a field alias to `normalizeKey()`, check if other servers use the same alias to avoid regressions.
 - When adding date formats to `parseDate()`, add them in specificity order (most specific first) to avoid ambiguous parsing.
