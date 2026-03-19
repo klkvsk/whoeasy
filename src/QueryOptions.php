@@ -27,12 +27,12 @@ readonly class QueryOptions
     public function merge(?self $overrides): self
     {
         return new self(
-            mode: $overrides?->mode ?? $this->mode ?? QueryMode::PreferRdap,
-            proxyUri: $overrides?->proxyUri ?? $this->proxyUri,
-            whoisTimeout: $overrides?->whoisTimeout ?? $this->whoisTimeout ?? self::DEFAULT_TIMEOUT,
-            rdapTimeout: $overrides?->rdapTimeout ?? $this->rdapTimeout ?? self::DEFAULT_TIMEOUT,
-            recursive: $overrides?->recursive ?? $this->recursive ?? true,
-            maxReferrals: $overrides?->maxReferrals ?? $this->maxReferrals ?? self::DEFAULT_MAX_REFERRALS,
+            mode: $overrides->mode ?? $this->mode,
+            proxyUri: $overrides->proxyUri ?? $this->proxyUri,
+            whoisTimeout: $overrides->whoisTimeout ?? $this->whoisTimeout,
+            rdapTimeout: $overrides->rdapTimeout ?? $this->rdapTimeout,
+            recursive: $overrides->recursive ?? $this->recursive,
+            maxReferrals: $overrides->maxReferrals ?? $this->maxReferrals,
         );
     }
 }
