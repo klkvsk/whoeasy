@@ -9,6 +9,9 @@ use Klkvsk\Whoeasy\Client\Exception\ClientTimeoutException;
 use Klkvsk\Whoeasy\Client\Exception\CurlRequestException;
 use Klkvsk\Whoeasy\Client\Exception\ProxyConnectException;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 
 /**
  * WHOIS protocol client using curl in telnet mode.
@@ -16,14 +19,17 @@ use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
  * Curl telnet allows plain-text TCP communication to port 43,
  * with native support for HTTP/SOCKS proxies via CURLOPT_PROXY.
  */
-class WhoisClient
+class WhoisClient implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     protected const DEFAULT_PORT = 43;
 
     public function __construct(
         protected int $timeout = 15,
         protected ?string $proxyUri = null,
     ) {
+        $this->logger = new NullLogger();
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('ext-curl is required for ' . self::class);
         }
@@ -52,6 +58,12 @@ class WhoisClient
             $server = $parts[0];
             $port = (int)$parts[1];
         }
+
+        $this->logger?->info('WHOIS query: {server}:{port} <- {query}', [
+            'server' => $server,
+            'port' => $port,
+            'query' => $query,
+        ]);
 
         // Prepare query input as a stream (curl reads from CURLOPT_INFILE for telnet)
         $queryLine = ($queryFormat !== null ? sprintf($queryFormat, $query) : $query) . "\r\n";
@@ -128,6 +140,11 @@ class WhoisClient
         if (!mb_check_encoding($response, 'UTF-8')) {
             $response = mb_convert_encoding($response, 'UTF-8', 'ISO-8859-1');
         }
+
+        $this->logger?->debug("WHOIS response from {server}:\n{response}", [
+            'server' => $server,
+            'response' => $response,
+        ]);
 
         return $response;
     }

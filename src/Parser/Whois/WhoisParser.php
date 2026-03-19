@@ -16,9 +16,19 @@ use Klkvsk\Whoeasy\Result\Info\Field\ContactType;
 use Klkvsk\Whoeasy\Result\Info\Field\Nameserver;
 use Klkvsk\Whoeasy\Result\Info\Field\Registrar;
 use Klkvsk\Whoeasy\Result\Info\IpInfo;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 
-class WhoisParser implements WhoisParserInterface
+class WhoisParser implements WhoisParserInterface, LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
+    public function __construct()
+    {
+        $this->logger = new NullLogger();
+    }
+
     /**
      * Strip legal boilerplate, comment lines, and informational banners from raw WHOIS text.
      * Returns only the data-bearing portion of the response.

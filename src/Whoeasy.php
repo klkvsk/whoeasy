@@ -26,6 +26,10 @@ use Klkvsk\Whoeasy\Result\Info\IpInfo;
 use Klkvsk\Whoeasy\Result\ProtocolResult;
 use Klkvsk\Whoeasy\Result\QueryResult;
 use Klkvsk\Whoeasy\Result\ResultMerger;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 /**
  * Unified WHOIS + RDAP query API (v2).
@@ -33,8 +37,10 @@ use Klkvsk\Whoeasy\Result\ResultMerger;
  * Manages recursion/referral chains at the orchestrator level.
  * Clients do single requests; Whoeasy follows referrals and merges results.
  */
-class Whoeasy
+class Whoeasy implements LoggerAwareInterface
 {
+    private LoggerInterface $logger;
+
     private QueryOptions $defaultOptions;
     private ServerRegistry $registry;
     private WhoisClient $whoisClient;
@@ -42,9 +48,13 @@ class Whoeasy
     private RdapParser $rdapParser;
     private ResultMerger $resultMerger;
 
-    public static function create(?QueryOptions $defaultOptions = null): self
+    public static function create(?QueryOptions $defaultOptions = null, ?LoggerInterface $logger = null): self
     {
-        return new self($defaultOptions);
+        $instance = new self($defaultOptions);
+        if ($logger !== null) {
+            $instance->setLogger($logger);
+        }
+        return $instance;
     }
 
     public function __construct(
@@ -55,6 +65,7 @@ class Whoeasy
         ?RdapParser $rdapParser = null,
         ?ResultMerger $resultMerger = null,
     ) {
+        $this->logger = new NullLogger();
         $this->defaultOptions = $defaultOptions ?? new QueryOptions();
         $this->registry = $registry ?? ServerRegistry::getInstance();
         $this->whoisClient = $whoisClient ?? new WhoisClient(
@@ -72,6 +83,11 @@ class Whoeasy
     public function query(string $input, ?QueryOptions $options = null): QueryResult
     {
         $merged = $this->defaultOptions->merge($options);
+
+        $this->logger->info('Query: {input} (mode: {mode})', [
+            'input' => $input,
+            'mode' => $merged->mode->value,
+        ]);
 
         $result = match ($merged->mode) {
             QueryMode::WhoisOnly => $this->queryWhoisOnly($input, $merged),
@@ -132,6 +148,14 @@ class Whoeasy
             );
         }
         return $result; // @phpstan-ignore return.type
+    }
+
+    public function setLogger(LoggerInterface $logger): void
+    {
+        $this->logger = $logger;
+        $this->whoisClient->setLogger($logger);
+        $this->whoisParser instanceof LoggerAwareInterface && $this->whoisParser->setLogger($logger);
+        $this->rdapParser->setLogger($logger);
     }
 
     public function getDefaultOptions(): QueryOptions
@@ -294,6 +318,7 @@ class Whoeasy
         }
 
         if ($serverInfo->whoisServer === null) {
+            $this->logger->info('WHOIS: no server available for {input}', ['input' => $input]);
             $hop = new WhoisHop(
                 server: '(none)',
                 query: $input,
@@ -316,12 +341,30 @@ class Whoeasy
             $info = null;
             $error = null;
 
+            $this->logger->info('WHOIS hop #{hop}: {server} <- {query}', [
+                'hop' => $hopIndex,
+                'server' => $currentServer,
+                'query' => $input,
+            ]);
+
             try {
                 $queryFormat = $hopIndex === 0 ? $serverInfo->queryFormat : null;
                 $rawText = $this->whoisClient->query($currentServer, $input, $options->whoisTimeout, $queryFormat);
-                $info = $this->whoisParser->parse($rawText, $currentServer, $serverInfo->queryType);
+                try {
+                    $info = $this->whoisParser->parse($rawText, $currentServer, $serverInfo->queryType);
+                } catch (\Throwable $parseError) {
+                    $error = $parseError;
+                    $this->logger->warning('WHOIS hop #{hop} parse error: {error}', [
+                        'hop' => $hopIndex,
+                        'error' => $parseError->getMessage(),
+                    ]);
+                }
             } catch (\Throwable $e) {
                 $error = $e;
+                $this->logger->warning('WHOIS hop #{hop} error: {error}', [
+                    'hop' => $hopIndex,
+                    'error' => $e->getMessage(),
+                ]);
             }
 
             $hops[] = new WhoisHop(
@@ -343,6 +386,7 @@ class Whoeasy
                 break;
             }
 
+            $this->logger->info('WHOIS referral: {referral}', ['referral' => $referral]);
             $currentServer = $referral;
         }
 
@@ -372,11 +416,17 @@ class Whoeasy
         $info = null;
         $error = null;
 
+        $this->logger->info('WHOIS HTTP: {server} <- {query}', [
+            'server' => $server,
+            'query' => $input,
+        ]);
+
         try {
             $httpClient = new HttpWhoisClient(
                 timeout: $options->whoisTimeout,
                 proxyUri: $options->proxyUri,
             );
+            $httpClient->setLogger($this->logger);
             $rawText = $httpClient->query(
                 httpUrl: $serverInfo->httpUrl,
                 query: $input,
@@ -389,9 +439,11 @@ class Whoeasy
                 $info = $this->whoisParser->parse($rawText, $server, $serverInfo->queryType);
             } catch (\Throwable $parseError) {
                 $error = $parseError;
+                $this->logger->warning('WHOIS HTTP parse error: {error}', ['error' => $parseError->getMessage()]);
             }
         } catch (\Throwable $e) {
             $error = $e;
+            $this->logger->warning('WHOIS HTTP request error: {error}', ['error' => $e->getMessage()]);
         }
 
         $hop = new WhoisHttpHop(
@@ -417,6 +469,7 @@ class Whoeasy
         $serverInfo = $this->registry->resolve($input);
 
         if ($serverInfo->rdapUrl === null) {
+            $this->logger->info('RDAP: no server available for {input}', ['input' => $input]);
             $hop = new RdapHop(
                 server: '(none)',
                 query: $input,
@@ -431,6 +484,7 @@ class Whoeasy
             timeout: $options->rdapTimeout,
             proxyUri: $options->proxyUri,
         );
+        $rdapClient->setLogger($this->logger);
 
         $hops = [];
         $currentUrl = $rdapClient->createUrl($serverInfo->rdapUrl, $input, $serverInfo->queryType);
@@ -449,6 +503,11 @@ class Whoeasy
             $error = null;
             $url = $currentUrl;
 
+            $this->logger->info('RDAP hop #{hop}: {url}', [
+                'hop' => $hopIndex,
+                'url' => $currentUrl,
+            ]);
+
             try {
                 $json = $rdapClient->queryUrl($currentUrl);
                 $rawBody = json_encode($json, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?: '';
@@ -457,9 +516,17 @@ class Whoeasy
                     $info = $this->rdapParser->parse($json);
                 } catch (\Throwable $parseError) {
                     $error = $parseError;
+                    $this->logger->warning('RDAP hop #{hop} parse error: {error}', [
+                        'hop' => $hopIndex,
+                        'error' => $parseError->getMessage(),
+                    ]);
                 }
             } catch (\Throwable $e) {
                 $error = $e;
+                $this->logger->warning('RDAP hop #{hop} error: {error}', [
+                    'hop' => $hopIndex,
+                    'error' => $e->getMessage(),
+                ]);
             }
 
             $hops[] = new RdapHop(
@@ -482,6 +549,7 @@ class Whoeasy
                 break;
             }
 
+            $this->logger->info('RDAP referral: {url}', ['url' => $referralUrl]);
             $currentUrl = $referralUrl;
         }
 

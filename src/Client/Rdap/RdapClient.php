@@ -8,18 +8,24 @@ use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Exception\ClientResponseException;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
 use Klkvsk\Whoeasy\Registry\QueryType;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 
 /**
  * RDAP client that queries RDAP servers over HTTP/HTTPS per RFC 7480/9083.
  *
  * Returns raw JSON arrays. The caller is responsible for parsing.
  */
-class RdapClient
+class RdapClient implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     public function __construct(
         protected int $timeout = 15,
         protected ?string $proxyUri = null,
     ) {
+        $this->logger = new NullLogger();
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('Curl extension is required for RDAP');
         }
@@ -71,6 +77,8 @@ class RdapClient
             throw new ClientException('RDAP URL must not be empty');
         }
 
+        $this->logger?->info('RDAP request: {url}', ['url' => $url]);
+
         $curl = curl_init();
         if (!$curl) {
             throw new ClientException('Unable to create cURL handler');
@@ -119,6 +127,11 @@ class RdapClient
                     ->withRawBody($body)
                     ->withHttpCode($httpCode);
             }
+
+            $this->logger?->debug("RDAP response from {url}:\n{body}", [
+                'url' => $url,
+                'body' => $body,
+            ]);
 
             /** @var array<string, mixed> $json */
             return $json;

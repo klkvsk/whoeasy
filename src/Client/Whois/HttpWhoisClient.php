@@ -8,6 +8,9 @@ use Klkvsk\Whoeasy\Client\Exception\ClientConnectException;
 use Klkvsk\Whoeasy\Client\Exception\ClientTimeoutException;
 use Klkvsk\Whoeasy\Client\Exception\ClientRequestException;
 use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 
 /**
  * HTTP-based WHOIS client using ext-curl.
@@ -15,12 +18,15 @@ use Klkvsk\Whoeasy\Exception\MissingRequirementsException;
  * Handles WHOIS servers that expose data via HTTP endpoints
  * rather than the standard TCP:43 protocol.
  */
-class HttpWhoisClient
+class HttpWhoisClient implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     public function __construct(
         protected int $timeout = 30,
         protected ?string $proxyUri = null,
     ) {
+        $this->logger = new NullLogger();
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('ext-curl is required for HTTP WHOIS queries');
         }
@@ -60,7 +66,17 @@ class HttpWhoisClient
             $body = null;
         }
 
+        $this->logger?->info('HTTP WHOIS request: {method} {url}', [
+            'method' => $method,
+            'url' => $url,
+        ]);
+
         $responseBody = $this->executeRequest($url, $method, $body, $timeout);
+
+        $this->logger?->debug("HTTP WHOIS response from {url}:\n{response}", [
+            'url' => $url,
+            'response' => $responseBody,
+        ]);
 
         // Apply scraper if specified
         if ($scraperName !== null) {

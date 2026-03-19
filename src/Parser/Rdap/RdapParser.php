@@ -15,12 +15,22 @@ use Klkvsk\Whoeasy\Result\Info\Field\ContactType;
 use Klkvsk\Whoeasy\Result\Info\Field\Nameserver;
 use Klkvsk\Whoeasy\Result\Info\Field\Registrar;
 use Klkvsk\Whoeasy\Result\Info\IpInfo;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 
 /**
  * Parses RDAP JSON responses (RFC 9083) into structured info.
  */
-class RdapParser
+class RdapParser implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
+    public function __construct()
+    {
+        $this->logger = new NullLogger();
+    }
+
     /**
      * Parse an RDAP JSON array into structured info.
      *
