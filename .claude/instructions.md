@@ -121,7 +121,8 @@ Options:
   -r, --recursive          follow referrals [default]
       --no-recursive       do not follow referrals
   -F, --full               output full result with hops (default: info only)
-  -v, --verbose            show debug output and traces
+  -v, --verbose            show info-level log output
+  -vv, --debug             show debug-level log output (includes raw responses)
   -h, --help               show this message
 ```
 

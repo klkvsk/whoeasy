@@ -5,6 +5,8 @@ require $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
 use Klkvsk\Whoeasy\QueryMode;
 use Klkvsk\Whoeasy\Whoeasy;
 use Klkvsk\Whoeasy\QueryOptions;
+use Psr\Log\AbstractLogger;
+use Psr\Log\LogLevel;
 
 set_error_handler(
         fn($severity, $msg, $file = null, $line = null) => new ErrorException($msg, 0, $severity, $file, $line),
@@ -14,10 +16,7 @@ error_reporting(E_ALL);
 
 return new class($argv) {
 
-    protected bool $verbose;
-
     const FLAGS = [
-            'v' => 'verbose',
             'h' => 'help',
             'F' => 'full',
             'r' => 'recursive',
@@ -31,6 +30,23 @@ return new class($argv) {
     const NEGATED_FLAGS = [
             'no-recursive' => 'recursive',
     ];
+    // Verbosity levels mapped by flag name
+    const VERBOSITY_FLAGS = [
+            'verbose' => LogLevel::INFO,
+            'debug'   => LogLevel::DEBUG,
+    ];
+
+    /** @var array<string, int> */
+    private const LOG_LEVEL_PRIORITY = [
+        LogLevel::DEBUG     => 0,
+        LogLevel::INFO      => 1,
+        LogLevel::NOTICE    => 2,
+        LogLevel::WARNING   => 3,
+        LogLevel::ERROR     => 4,
+        LogLevel::CRITICAL  => 5,
+        LogLevel::ALERT     => 6,
+        LogLevel::EMERGENCY => 7,
+    ];
 
     public function __construct(
             protected array $argv,
@@ -42,7 +58,6 @@ return new class($argv) {
             $this->printUsage();
             exit(0);
         }
-        $this->verbose = $args['verbose'];
         try {
             $server = $args['server'];
             if ($server) {
@@ -68,7 +83,10 @@ return new class($argv) {
                 throw new InvalidArgumentException('Target query is not specified');
             }
 
-            $whoeasy = Whoeasy::create();
+            $logLevel = $args['_logLevel'] ?? LogLevel::WARNING;
+            $logger = $this->createLogger($logLevel);
+
+            $whoeasy = Whoeasy::create(logger: $logger);
 
             $recursive = $args['recursive'] ?? QueryOptions::DEFAULT_RECURSIVE;
 
@@ -80,24 +98,6 @@ return new class($argv) {
                             recursive: $recursive,
                     ),
             );
-
-            if ($this->verbose) {
-                $actualMode = $mode ?? QueryMode::PreferRdap;
-                fwrite(STDERR, '## mode:   ' . $actualMode->value . "\n");
-                if ($result->whois !== null) {
-                    foreach ($result->whois->hops as $i => $hop) {
-                        fwrite(STDERR, "## whois[{$i}]: {$hop->server} -> {$hop->query}\n");
-                    }
-                }
-                if ($result->rdap !== null) {
-                    foreach ($result->rdap->hops as $i => $hop) {
-                        fwrite(STDERR, "## rdap[{$i}]: {$hop->url}\n");
-                    }
-                }
-                if ($proxyAddress) {
-                    fwrite(STDERR, '## proxy:  ' . $proxyAddress . "\n");
-                }
-            }
 
             $outputData = $args['full']
                     ? $result->toArray()
@@ -118,33 +118,54 @@ return new class($argv) {
                         ) . PHP_EOL;
             }
 
-            // Print hop errors to stderr
-            if ($result->whois !== null) {
-                foreach ($result->whois->hops as $i => $hop) {
-                    if ($hop->error !== null) {
-                        fwrite(STDERR, "# Error in WHOIS hop #{$i}: {$hop->error->getMessage()}\n");
-                    }
-                }
-            }
-            if ($result->rdap !== null) {
-                foreach ($result->rdap->hops as $i => $hop) {
-                    if ($hop->error !== null) {
-                        fwrite(STDERR, "# Error in RDAP hop #{$i}: {$hop->error->getMessage()}\n");
-                    }
-                }
-            }
-
         } catch (\InvalidArgumentException $e) {
             fwrite(STDERR, $e->getMessage() . PHP_EOL);
             $this->printUsage();
             exit(2);
         } catch (\Throwable $e) {
             fwrite(STDERR, $e::class . ': ' . $e->getMessage() . PHP_EOL);
-            if ($this->verbose) {
+            if (($args['_logLevel'] ?? LogLevel::WARNING) === LogLevel::DEBUG) {
                 fwrite(STDERR, $e->getTraceAsString() . PHP_EOL);
             }
             exit(1);
         }
+    }
+
+    private function createLogger(string $minLevel): AbstractLogger
+    {
+        $minPriority = self::LOG_LEVEL_PRIORITY[$minLevel] ?? 3;
+
+        return new class($minPriority) extends AbstractLogger {
+            /** @param int $minPriority */
+            public function __construct(private int $minPriority) {}
+
+            /** @param array<mixed> $context */
+            public function log($level, string|\Stringable $message, array $context = []): void
+            {
+                $levelStr = is_string($level) ? $level : LogLevel::INFO;
+                $priority = [
+                    LogLevel::DEBUG => 0, LogLevel::INFO => 1, LogLevel::NOTICE => 2,
+                    LogLevel::WARNING => 3, LogLevel::ERROR => 4, LogLevel::CRITICAL => 5,
+                    LogLevel::ALERT => 6, LogLevel::EMERGENCY => 7,
+                ][$levelStr] ?? 3;
+
+                if ($priority < $this->minPriority) {
+                    return;
+                }
+
+                $msg = (string)$message;
+                // Replace {key} placeholders with context values
+                foreach ($context as $key => $val) {
+                    if (is_string($key) && (is_string($val) || is_numeric($val))) {
+                        $msg = str_replace('{' . $key . '}', (string)$val, $msg);
+                    }
+                }
+
+                foreach (explode("\n", $msg) as $line) {
+                    fwrite(STDERR, "# $line\n");
+                }
+            }
+        };
     }
 
     public function printUsage(): void
@@ -159,7 +180,8 @@ return new class($argv) {
         echo "  -r, --recursive          follow referrals [default]\n";
         echo "      --no-recursive       do not follow referrals\n";
         echo "  -F, --full               output full result with hops (default: info only)\n";
-        echo "  -v, --verbose            show debug output and traces\n";
+        echo "  -v, --verbose            show info-level log output\n";
+        echo "  -vv, --debug             show debug-level log output (includes raw responses)\n";
         echo "  -h, --help               show this message\n";
         echo "\n";
         echo "Modes:\n";
@@ -188,6 +210,7 @@ return new class($argv) {
         array_shift($args); // remove script name
 
         $positional = [];
+        $verbosityCount = 0;
         $i = 0;
         while ($i < count($args)) {
             $arg = $args[$i];
@@ -199,6 +222,12 @@ return new class($argv) {
                 $flagKey = array_search($name, self::FLAGS, true);
                 if ($flagKey !== false) {
                     $result[$name] = true;
+                    $i++;
+                    continue;
+                }
+                // Check verbosity flags
+                if (isset(self::VERBOSITY_FLAGS[$name])) {
+                    $result['_logLevel'] = self::VERBOSITY_FLAGS[$name];
                     $i++;
                     continue;
                 }
@@ -223,7 +252,9 @@ return new class($argv) {
                 $chars = substr($arg, 1);
                 for ($j = 0; $j < strlen($chars); $j++) {
                     $ch = $chars[$j];
-                    if (isset(self::FLAGS[$ch])) {
+                    if ($ch === 'v') {
+                        $verbosityCount++;
+                    } elseif (isset(self::FLAGS[$ch])) {
                         $result[self::FLAGS[$ch]] = true;
                     } elseif (isset(self::OPTIONS[$ch])) {
                         // Value is rest of this arg or next arg
@@ -245,6 +276,11 @@ return new class($argv) {
             // Positional
             $positional[] = $arg;
             $i++;
+        }
+
+        // Map verbosity count to log level
+        if ($verbosityCount > 0) {
+            $result['_logLevel'] = $verbosityCount >= 2 ? LogLevel::DEBUG : LogLevel::INFO;
         }
 
         foreach ($positional as $idx => $val) {

@@ -185,7 +185,8 @@ vendor/bin/whoeasy [options] <domain|ip|asn>
 | `-r, --recursive` | Follow referrals (default) |
 | `--no-recursive` | Do not follow referrals |
 | `-F, --full` | Output full result with hops (default: info only) |
-| `-v, --verbose` | Show debug output and traces |
+| `-v, --verbose` | Show info-level log output |
+| `-vv, --debug` | Show debug-level log output (includes raw responses) |
 | `-h, --help` | Show help message |
 
 ```bash
