@@ -53,7 +53,7 @@ readonly class QueryResult
     }
 
     /** @return \Throwable[] */
-    private function getAllErrors(): array
+    public function getAllErrors(): array
     {
         $errors = [];
         foreach ($this->whois?->hops ?? [] as $hop) {
