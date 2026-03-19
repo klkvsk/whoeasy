@@ -15,6 +15,7 @@ use Klkvsk\Whoeasy\Parser\Whois\WhoisParser;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParserInterface;
 use Klkvsk\Whoeasy\Registry\ServerInfo;
 use Klkvsk\Whoeasy\Registry\ServerRegistry;
+use Klkvsk\Whoeasy\Result\Hop\ProtocolHop;
 use Klkvsk\Whoeasy\Result\Hop\RdapHop;
 use Klkvsk\Whoeasy\Result\Hop\WhoisHop;
 use Klkvsk\Whoeasy\Result\Hop\WhoisHttpHop;
@@ -220,7 +221,7 @@ class Whoeasy
 
     /**
      * Check if a protocol result has a NotFoundException in any hop.
-     * @param ProtocolResult<AbstractInfo> $result
+     * @param ProtocolResult<AbstractInfo, ProtocolHop> $result
      */
     private function hasNotFoundError(ProtocolResult $result): bool
     {
@@ -234,7 +235,7 @@ class Whoeasy
 
     /**
      * Execute WHOIS query chain (with optional referral following).
-     * @return ProtocolResult<AbstractInfo>
+     * @return ProtocolResult<AbstractInfo, WhoisHop<AbstractInfo>>
      */
     private function executeWhois(string $input, QueryOptions $options): ProtocolResult
     {
@@ -311,7 +312,7 @@ class Whoeasy
 
     /**
      * Execute HTTP-based WHOIS query (single hop, no recursion).
-     * @return ProtocolResult<AbstractInfo>
+     * @return ProtocolResult<AbstractInfo, WhoisHttpHop<AbstractInfo>>
      */
     private function executeHttpWhois(
         string $input,
@@ -364,7 +365,7 @@ class Whoeasy
 
     /**
      * Execute RDAP query chain (with optional referral following).
-     * @return ProtocolResult<AbstractInfo>
+     * @return ProtocolResult<AbstractInfo, RdapHop<AbstractInfo>>
      */
     private function executeRdap(string $input, QueryOptions $options): ProtocolResult
     {
