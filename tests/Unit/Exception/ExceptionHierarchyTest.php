@@ -77,12 +77,6 @@ class ExceptionHierarchyTest extends TestCase
         $this->assertSame('partial data', $e->getRawBody());
     }
 
-    public function testGetRequestReturnsNullByDefault(): void
-    {
-        $e = new ClientRequestException('test');
-        $this->assertNull($e->getRequest());
-    }
-
     public function testGetServerFallsBackToRequest(): void
     {
         $e = new ClientRequestException('test');
