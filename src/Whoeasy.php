@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy;
 
-use Klkvsk\Whoeasy\Client\Exception\ClientException;
 use Klkvsk\Whoeasy\Client\Rdap\RdapClient;
 use Klkvsk\Whoeasy\Client\Whois\HttpWhoisClient;
 use Klkvsk\Whoeasy\Client\Whois\WhoisClient;
 use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
 use Klkvsk\Whoeasy\Exception\NotFoundException;
+use Klkvsk\Whoeasy\Exception\NotSupportedException;
 use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParser;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParserInterface;
@@ -73,13 +73,28 @@ class Whoeasy
     {
         $merged = $this->defaultOptions->merge($options);
 
-        return match ($merged->mode) {
+        $result = match ($merged->mode) {
             QueryMode::WhoisOnly => $this->queryWhoisOnly($input, $merged),
             QueryMode::PreferWhois => $this->queryPreferWhois($input, $merged),
             QueryMode::PreferRdap => $this->queryPreferRdap($input, $merged),
             QueryMode::RdapOnly => $this->queryRdapOnly($input, $merged),
             QueryMode::Both => $this->queryBoth($input, $merged),
         };
+
+        // If all hops across all protocols are "(none)", no servers were available
+        if ($result->info === null && $this->allHopsEmpty($result)) {
+            $noWhois = $result->whois !== null && $this->isEmptyProtocol($result->whois);
+            $noRdap = $result->rdap !== null && $this->isEmptyProtocol($result->rdap);
+            $message = match (true) {
+                $noWhois && $noRdap => "No WHOIS or RDAP server available for: $input",
+                $noWhois => "No WHOIS server available for: $input",
+                $noRdap => "No RDAP server available for: $input",
+                default => "No server available for: $input",
+            };
+            throw new NotSupportedException($message);
+        }
+
+        return $result;
     }
 
     /** @return QueryResult<DomainInfo> */
@@ -234,6 +249,38 @@ class Whoeasy
     }
 
     /**
+     * Check if all hops in all protocols have server "(none)" (no server available).
+     * @param QueryResult<AbstractInfo> $result
+     */
+    private function allHopsEmpty(QueryResult $result): bool
+    {
+        $protocols = array_filter([$result->whois, $result->rdap]);
+        if ($protocols === []) {
+            return true;
+        }
+        foreach ($protocols as $protocol) {
+            if (!$this->isEmptyProtocol($protocol)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Check if a protocol result only has "(none)" hops.
+     * @param ProtocolResult<AbstractInfo, ProtocolHop> $result
+     */
+    private function isEmptyProtocol(ProtocolResult $result): bool
+    {
+        foreach ($result->hops as $hop) {
+            if ($hop->server !== '(none)') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Execute WHOIS query chain (with optional referral following).
      * @return ProtocolResult<AbstractInfo, WhoisHop<AbstractInfo>>
      */
@@ -251,8 +298,6 @@ class Whoeasy
                 server: '(none)',
                 query: $input,
                 rawText: '',
-                info: null,
-                error: new ClientException("No WHOIS server available for: $input"),
             );
             return new ProtocolResult(info: null, hops: [$hop]);
         }
@@ -378,8 +423,6 @@ class Whoeasy
                 url: '',
                 json: null,
                 rawBody: '',
-                info: null,
-                error: new ClientException("No RDAP server available for: $input"),
             );
             return new ProtocolResult(info: null, hops: [$hop]);
         }
