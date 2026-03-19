@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Klkvsk\Whoeasy\Registry;
 
-use Klkvsk\Whoeasy\Enum\QueryType;
 use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
 use Klkvsk\Whoeasy\Registry\Data\AsnRanges;
 use Klkvsk\Whoeasy\Registry\Data\Ipv4Ranges;
@@ -19,7 +18,7 @@ use Klkvsk\Whoeasy\Registry\Data\TldServers;
 final class ServerRegistry
 {
     /** @var array<string, array<string, string>> Server -> QueryType->value -> format */
-    private const QUERY_FORMATS = [
+    protected const QUERY_FORMATS = [
         'whois.arin.net' => [
             'ipv4' => 'n + %s',
             'ipv6' => 'n + %s',
@@ -33,7 +32,7 @@ final class ServerRegistry
     ];
 
     /** @var array<string, string> Original server -> replacement server */
-    private const SERVER_REMAPS = [
+    protected const SERVER_REMAPS = [
         'whois.nic.ad.jp' => 'whois.apnic.net',
         'whois.twnic.net' => 'whois.apnic.net',
         'whois.nic.or.kr' => 'whois.apnic.net',
@@ -48,7 +47,7 @@ final class ServerRegistry
      * Maps whois server hostname -> [httpUrl, httpQueryFormat, scraperName|null]
      * @var array<string, array{0: string, 1: string, 2: ?string}>
      */
-    private const HTTP_SERVERS = [
+    protected const HTTP_SERVERS = [
         'www.dnsbelgium.be' => ['https://api.dnsbelgium.be', 'GET /whois/registration/%s', null],
         'www.vnnic.vn' => ['https://whois.net.vn', 'GET /whois.php?domain=%s&act=getwhois', null],
         'www.tonic.to' => ['https://www.tonic.to', 'GET /whois?%s', null],
@@ -140,22 +139,22 @@ final class ServerRegistry
         $server = $info->whoisServer;
 
         // Apply server remaps
-        if ($server !== null && isset(self::SERVER_REMAPS[$server])) {
-            $server = self::SERVER_REMAPS[$server];
+        if ($server !== null && isset(static::SERVER_REMAPS[$server])) {
+            $server = static::SERVER_REMAPS[$server];
         }
 
         // Look up query format for this server + query type combination
         $queryFormat = null;
-        if ($server !== null && isset(self::QUERY_FORMATS[$server][$info->queryType->value])) {
-            $queryFormat = self::QUERY_FORMATS[$server][$info->queryType->value];
+        if ($server !== null && isset(static::QUERY_FORMATS[$server][$info->queryType->value])) {
+            $queryFormat = static::QUERY_FORMATS[$server][$info->queryType->value];
         }
 
         // Look up HTTP server configuration
         $httpUrl = null;
         $httpQueryFormat = null;
         $httpScraper = null;
-        if ($server !== null && isset(self::HTTP_SERVERS[$server])) {
-            [$httpUrl, $httpQueryFormat, $httpScraper] = self::HTTP_SERVERS[$server];
+        if ($server !== null && isset(static::HTTP_SERVERS[$server])) {
+            [$httpUrl, $httpQueryFormat, $httpScraper] = static::HTTP_SERVERS[$server];
         }
 
         // Handle .tj special case: strip TLD from query in the format
