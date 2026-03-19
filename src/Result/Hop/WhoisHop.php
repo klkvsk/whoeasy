@@ -11,21 +11,25 @@ use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
  */
 readonly class WhoisHop extends ProtocolHop
 {
+    /**
+     * @param TInfo|null $info
+     */
     public function __construct(
-        public string $server,
-        public string $query,
-        public string $rawText,
-        /** @var TInfo */
-        public ?AbstractInfo $info = null,
-        public ?\Throwable $error = null,
-    ) {}
+        string $server,
+        string $query,
+        string $rawText,
+        ?AbstractInfo $info = null,
+        ?\Throwable $error = null,
+    ) {
+        parent::__construct($server, $query, $rawText, $info, $error);
+    }
 
     public function toArray(): array
     {
         $data = [
             'server' => $this->server,
             'query' => $this->query,
-            'rawText' => $this->rawText,
+            'response' => $this->response,
         ];
 
         if ($this->info !== null) {

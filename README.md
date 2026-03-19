@@ -161,13 +161,14 @@ $result = $whoeasy->domain('example.com', new QueryOptions(
 // Raw WHOIS text from each server in the referral chain
 foreach ($result->whois?->hops ?? [] as $hop) {
     echo "Server: {$hop->server}\n";
-    echo $hop->rawText . "\n\n";
+    echo $hop->response . "\n\n";
 }
 
 // Raw RDAP JSON
 foreach ($result->rdap?->hops ?? [] as $hop) {
     echo "URL: {$hop->url}\n";
-    print_r($hop->json); // decoded JSON array
+    echo $hop->response . "\n";    // raw JSON string
+    print_r($hop->json);           // decoded JSON array
 }
 ```
 

@@ -11,16 +11,21 @@ use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
  */
 readonly class RdapHop extends ProtocolHop
 {
+    /**
+     * @param TInfo|null $info
+     * @param array<mixed>|null $json
+     */
     public function __construct(
-        public string $server,
-        public string $query,
+        string $server,
+        string $query,
         public string $url,
         public ?array $json,
-        public string $rawBody,
-        /** @var TInfo */
-        public ?AbstractInfo $info = null,
-        public ?\Throwable $error = null,
-    ) {}
+        string $rawBody,
+        ?AbstractInfo $info = null,
+        ?\Throwable $error = null,
+    ) {
+        parent::__construct($server, $query, $rawBody, $info, $error);
+    }
 
     public function toArray(): array
     {
@@ -31,7 +36,9 @@ readonly class RdapHop extends ProtocolHop
         ];
 
         if ($this->json !== null) {
-            $data['json'] = $this->json;
+            $data['responseJson'] = $this->json;
+        } else {
+            $data['response'] = $this->response;
         }
 
         if ($this->info !== null) {
