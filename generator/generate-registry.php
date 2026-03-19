@@ -633,7 +633,7 @@ $generator = new class {
         foreach ($this->tldServers as $tld => $info) {
             $whois = $info['whois_server'] !== null ? var_export($info['whois_server'], true) : 'null';
             $rdap = $info['rdap_url'] !== null ? var_export($info['rdap_url'], true) : 'null';
-            $entries[] = "    " . var_export($tld, true) . " => [$whois, $rdap],";
+            $entries[] = "            " . var_export($tld, true) . " => [ $whois, $rdap ],";
         }
 
         $content = $this->fileHeader() . <<<'PHP'
@@ -702,7 +702,7 @@ PHP;
         foreach ($this->ipv4Ranges as $range) {
             [$ip, $mask, $server, $rdap] = $range;
             $rdapStr = $rdap !== null ? var_export($rdap, true) : 'null';
-            $entries[] = "    [$ip, $mask, '$server', $rdapStr],";
+            $entries[] = "            [ $ip, $mask, '$server', $rdapStr ],";
         }
 
         $content = $this->fileHeader() . <<<'PHP'
@@ -740,7 +740,7 @@ PHP;
         foreach ($this->ipv6Ranges as $range) {
             [$ip, $mask, $server, $rdap] = $range;
             $rdapStr = $rdap !== null ? var_export($rdap, true) : 'null';
-            $entries[] = "    [$ip, $mask, '$server', $rdapStr],";
+            $entries[] = "            [ $ip, $mask, '$server', $rdapStr ],";
         }
 
         $content = $this->fileHeader() . <<<'PHP'
@@ -778,7 +778,7 @@ PHP;
         foreach ($this->asnRanges as $range) {
             [$start, $end, $server, $rdap] = $range;
             $rdapStr = $rdap !== null ? var_export($rdap, true) : 'null';
-            $entries[] = "    [$start, $end, '$server', $rdapStr],";
+            $entries[] = "            [ $start, $end, '$server', $rdapStr ],";
         }
 
         $content = $this->fileHeader() . <<<'PHP'
