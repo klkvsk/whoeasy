@@ -5,3 +5,4 @@ parameters:
         - src/Registry
         - src/Whoeasy.php
         - src/Client
+        - src/Parser

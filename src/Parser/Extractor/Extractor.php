@@ -12,9 +12,9 @@ abstract class Extractor
 
     public static function parseDate(string $value): ?\DateTimeInterface
     {
-        $value = preg_replace('/[$;#(].+$/', '', $value);
-        $value = preg_replace('/^before /i', '', $value);
-        $value = preg_replace('@^(\d{1,2})/(\d{1,2})/(\d{4})@', '$3-$2-$1', $value);
+        $value = preg_replace('/[$;#(].+$/', '', $value) ?? $value;
+        $value = preg_replace('/^before /i', '', $value) ?? $value;
+        $value = preg_replace('@^(\d{1,2})/(\d{1,2})/(\d{4})@', '$3-$2-$1', $value) ?? $value;
         if (preg_match_all('/[0-9]/', $value) < 4) {
             // less than 4 digits are present, it's not a date for sure
             return null;
@@ -65,6 +65,9 @@ abstract class Extractor
             // so we take the last one, but it is not guaranteed to be the correct way
             $value = array_pop($value);
         }
+        if (!is_string($value)) {
+            return null;
+        }
 
         return static::parseDate($value);
     }
@@ -72,11 +75,17 @@ abstract class Extractor
     public function string(string ...$patterns): ?string
     {
         $value = $this->field(...$patterns);
+        if ($value === null) {
+            return null;
+        }
         if (is_array($value)) {
             $value = array_unique($value);
             $value = implode(', ', $value);
         }
-        $value = trim((string)$value);
+        if (!is_string($value)) {
+            return null;
+        }
+        $value = trim($value);
         return $value ?: null;
     }
 
@@ -86,6 +95,7 @@ abstract class Extractor
         return $value ? strtolower($value) : null;
     }
 
+    /** @return string[] */
     public function arr(string ...$patterns): array
     {
         $value = $this->field(...$patterns);
@@ -95,11 +105,15 @@ abstract class Extractor
         if (is_string($value)) {
             $value = explode(',', $value);
         }
-        $value = array_map(trim(...), $value);
+        if (!is_array($value)) {
+            return [];
+        }
+        $value = array_map(fn (mixed $v) => is_string($v) ? trim($v) : '', $value);
         sort($value);
         return $value;
     }
 
+    /** @return string[] */
     public function lcarr(string ...$patterns): array
     {
         $value = $this->arr(...$patterns);

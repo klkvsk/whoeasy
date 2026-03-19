@@ -236,7 +236,7 @@ class Whoeasy
 
     /**
      * Check if a protocol result has a NotFoundException in any hop.
-     * @param ProtocolResult<AbstractInfo, ProtocolHop> $result
+     * @param ProtocolResult<AbstractInfo, ProtocolHop<AbstractInfo>> $result
      */
     private function hasNotFoundError(ProtocolResult $result): bool
     {
@@ -268,7 +268,7 @@ class Whoeasy
 
     /**
      * Check if a protocol result only has "(none)" hops.
-     * @param ProtocolResult<AbstractInfo, ProtocolHop> $result
+     * @param ProtocolResult<AbstractInfo, ProtocolHop<AbstractInfo>> $result
      */
     private function isEmptyProtocol(ProtocolResult $result): bool
     {

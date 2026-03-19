@@ -9,14 +9,16 @@ class GroupsExtractor extends Extractor
     /** @var FieldsExtractor[] */
     public readonly array $groups;
 
+    /** @param array<array<string, mixed>|FieldsExtractor> $groups */
     public function __construct(array $groups)
     {
-        $groups = array_map(
-            fn ($g) => $g instanceof Extractor ? $g : new FieldsExtractor($g),
+        /** @var FieldsExtractor[] $mapped */
+        $mapped = array_map(
+            fn (array|FieldsExtractor $g) => $g instanceof FieldsExtractor ? $g : new FieldsExtractor($g),
             $groups
         );
 
-        $this->groups = $groups;
+        $this->groups = $mapped;
     }
 
     public function group(string ...$patterns): FieldsExtractor

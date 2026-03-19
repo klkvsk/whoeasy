@@ -6,8 +6,10 @@ namespace Klkvsk\Whoeasy\Parser\Extractor;
 
 class FieldsExtractor extends Extractor
 {
+    /** @var array<string, mixed> */
     public readonly array $fields;
 
+    /** @param array<string, mixed> $fields */
     public function __construct(array $fields)
     {
         $this->fields = $fields;
@@ -40,7 +42,7 @@ class FieldsExtractor extends Extractor
         return new FieldsExtractor([]);
     }
 
-    protected function matchKey($pattern, $key): bool
+    protected function matchKey(string $pattern, string $key): bool
     {
         return fnmatch($pattern, $key, FNM_CASEFOLD | FNM_NOESCAPE);
     }
