@@ -32,7 +32,7 @@ class WhoisParser implements WhoisParserInterface
         // Remove >>> marker lines (VeriSign/Identity Digital/Afilias boundary)
         // Don't truncate everything after it, as some servers (e.g., .st) include
         // detailed data in a second section after the marker
-        $response = preg_replace('/^>>>.*<<<\s*$/m', '', $response);
+        $response = preg_replace('/^>>>.*<<<\s*$/m', '', $response) ?? $response;
 
         // Strip trailing legal blocks that appear without >>> marker
         $boilerplateStarts = [
@@ -194,10 +194,10 @@ class WhoisParser implements WhoisParserInterface
                 $referral = trim($m[1]);
 
                 // Strip protocol prefix if present
-                $referral = preg_replace('#^(whois|rwhois)://#i', '', $referral);
+                $referral = preg_replace('#^(whois|rwhois)://#i', '', $referral) ?? $referral;
 
                 // Strip port suffix and path
-                $referral = preg_replace('#[:/].*$#', '', $referral);
+                $referral = preg_replace('#[:/].*$#', '', $referral) ?? $referral;
 
                 // Validate it looks like a hostname
                 if (preg_match('/^[a-z0-9]([a-z0-9\-.]+[a-z0-9])?$/i', $referral)) {
@@ -238,7 +238,7 @@ class WhoisParser implements WhoisParserInterface
         }
 
         return match ($queryType) {
-            QueryType::Domain => $this->parseDomain($fields, $text, $serverHostname),
+            QueryType::Domain, QueryType::NicHandle => $this->parseDomain($fields, $text, $serverHostname),
             QueryType::Ipv4, QueryType::Ipv6 => $this->parseIp($fields, $text, $rawResponse),
             QueryType::Asn => $this->parseAsn($fields, $text, $rawResponse),
         };
@@ -259,18 +259,19 @@ class WhoisParser implements WhoisParserInterface
      */
     private function extractFromBoilerplate(string $rawResponse, string $serverHostname): array
     {
+        /** @var array<string, string[]> $fields */
         $fields = [];
 
         // NIC Chile: domain name from "Whois.do?d=domain.cl" URL in comments
-        if ($serverHostname === 'whois.nic.cl'
-            && preg_match('/[?&]d=([a-z0-9.-]+\.cl)\b/i', $rawResponse, $m)
-        ) {
-            $fields['domain_name'][] = strtolower($m[1]);
+        if ($serverHostname === 'whois.nic.cl') {
+            if (preg_match('/[?&]d=([a-z0-9.-]+\.cl)\b/i', $rawResponse, $mCl)) {
+                $fields['domain_name'] = array_merge($fields['domain_name'] ?? [], [strtolower($mCl[1])]);
+            }
         }
 
         // Registry Abuse Contact Email from comments (e.g. NIC Chile)
-        if (preg_match('/Registry Abuse Contact Email:\s*(\S+@\S+)/i', $rawResponse, $m)) {
-            $fields['registry_abuse_email'][] = trim($m[1]);
+        if (preg_match('/Registry Abuse Contact Email:\s*(\S+@\S+)/i', $rawResponse, $mAbuse)) {
+            $fields['registry_abuse_email'] = array_merge($fields['registry_abuse_email'] ?? [], [trim($mAbuse[1])]);
         }
 
         return $fields;
@@ -384,6 +385,9 @@ class WhoisParser implements WhoisParserInterface
         };
     }
 
+    /**
+     * @param array<string, string[]> $fields
+     */
     private function parseIndentedSections(string $text, array &$fields, string $serverHostname): void
     {
         // --- Nominet UK / .ac.uk / .gg / .je format ---
@@ -489,6 +493,9 @@ class WhoisParser implements WhoisParserInterface
         $this->parseNameserverBlocks($text, $fields);
     }
 
+    /**
+     * @param array<string, string[]> $fields
+     */
     private function parseNominetFormat(string $text, array &$fields, string $server): void
     {
         // Nominet-style: indented domain name
@@ -498,8 +505,8 @@ class WhoisParser implements WhoisParserInterface
 
         // "Registered on 01st April 2018 at 04:14:07.826" (.gg/.je)
         if (preg_match('/Registered on\s+(\d{1,2}(?:st|nd|rd|th)\s+\w+\s+\d{4}(?:\s+at\s+[\d:.]+)?)/i', $text, $m)) {
-            $dateStr = preg_replace('/(\d)(st|nd|rd|th)/i', '$1', $m[1]);
-            $dateStr = preg_replace('/\s+at\s+/', ' ', $dateStr);
+            $dateStr = preg_replace('/(\d)(st|nd|rd|th)/i', '$1', $m[1]) ?? $m[1];
+            $dateStr = preg_replace('/\s+at\s+/', ' ', $dateStr) ?? $dateStr;
             $parsed = $this->parseDate($dateStr);
             if ($parsed !== null) {
                 $fields['creation_date'][] = $parsed;
@@ -540,7 +547,7 @@ class WhoisParser implements WhoisParserInterface
             $nsBlock = trim($m[1]);
             foreach (explode("\n", $nsBlock) as $ns) {
                 $ns = trim($ns);
-                if ($ns !== '' && preg_match('/^[a-z0-9.-]+$/i', explode("\t", $ns)[0] ?? '')) {
+                if ($ns !== '' && preg_match('/^[a-z0-9.-]+$/i', explode("\t", $ns)[0])) {
                     $fields['name_server'][] = explode("\t", $ns)[0];
                 }
             }
@@ -563,6 +570,9 @@ class WhoisParser implements WhoisParserInterface
         $this->parseAcUkFormat($text, $fields);
     }
 
+    /**
+     * @param array<string, string[]> $fields
+     */
     private function parseAcUkFormat(string $text, array &$fields): void
     {
         // Registered By: / Registered For: / Domain Owner:
@@ -602,11 +612,7 @@ class WhoisParser implements WhoisParserInterface
             }
             if ($addrLines) {
                 // Use newlines if any line contains a comma, otherwise commas
-                $hasComma = false;
-                foreach ($addrLines as $al) {
-                    if (str_contains($al, ',')) { $hasComma = true; break; }
-                }
-                $sep = $hasComma ? "\n" : ", ";
+                $sep = str_contains(implode('', $addrLines), ',') ? "\n" : ", ";
                 $fields['registrant_address'][] = implode($sep, $addrLines);
             }
             if ($phone) $fields['registrant_phone'][] = $phone;
@@ -620,7 +626,8 @@ class WhoisParser implements WhoisParserInterface
             foreach (explode("\n", trim($m[1])) as $line) {
                 $line = trim($line);
                 if ($line === '') continue;
-                $parts = preg_split('/\s+/', $line);
+                $normalizedLine = trim(preg_replace('/\s+/', ' ', $line) ?? $line);
+                $parts = explode(' ', $normalizedLine);
                 $hostname = strtolower($parts[0]);
                 $ip = $parts[1] ?? null;
                 if (!isset($nsData[$hostname])) {
@@ -639,11 +646,14 @@ class WhoisParser implements WhoisParserInterface
                 }
             }
             foreach ($nsData as $host => $ips) {
+                $hostname = (string)$host;
+                $ipv4Val = is_string($ips['ipv4']) ? $ips['ipv4'] : null;
+                $ipv6Val = is_string($ips['ipv6']) ? $ips['ipv6'] : null;
                 $fields['name_server_detail'][] = json_encode([
-                    'hostname' => $host,
-                    'ipv4' => $ips['ipv4'],
-                    'ipv6' => $ips['ipv6'],
-                ]);
+                    'hostname' => $hostname,
+                    'ipv4' => $ipv4Val,
+                    'ipv6' => $ipv6Val,
+                ], JSON_THROW_ON_ERROR);
             }
         }
 
@@ -659,6 +669,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseIanaFormat(string $text, array &$fields): void
     {
         if (!str_contains($text, 'IANA')) {
@@ -682,22 +693,25 @@ class WhoisParser implements WhoisParserInterface
                 $ipv4 = null;
                 $ipv6 = null;
                 if ($rest !== '') {
-                    foreach (preg_split('/\s+/', $rest) as $ip) {
+                    $normalizedRest = trim(preg_replace('/\s+/', ' ', $rest) ?? $rest);
+                    foreach (explode(' ', $normalizedRest) as $ip) {
                         $ip = trim($ip);
                         if (str_contains($ip, ':')) {
                             // Normalize IPv6 to shortened form
                             $packed = @inet_pton($ip);
-                            $ipv6 = ($packed !== false) ? inet_ntop($packed) : $ip;
+                            $normalized = ($packed !== false) ? inet_ntop($packed) : false;
+                            $ipv6 = (is_string($normalized)) ? $normalized : $ip;
                         } elseif (preg_match('/^\d+\.\d+\.\d+\.\d+$/', $ip)) {
                             $ipv4 = $ip;
                         }
                     }
                 }
-                $fields['name_server_detail'][] = json_encode([
+                $detail = json_encode([
                     'hostname' => $hostname,
                     'ipv4' => $ipv4,
                     'ipv6' => $ipv6,
-                ]);
+                ], JSON_THROW_ON_ERROR);
+                $fields['name_server_detail'][] = $detail;
             }
         }
 
@@ -757,6 +771,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @return array<string, string> */
     private function parseKeyValueBlock(string $block): array
     {
         $result = [];
@@ -771,6 +786,7 @@ class WhoisParser implements WhoisParserInterface
         return $result;
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseItalianFormat(string $text, array &$fields): void
     {
         // .it format: sections with 2-space indented key: value
@@ -836,6 +852,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseItContactBlock(string $block, string $prefix, array &$fields): void
     {
         if (preg_match('/Name:\s+(.+)/m', $block, $m)) {
@@ -861,6 +878,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseEduFormat(string $text, array &$fields): void
     {
         if (!preg_match('/Domain Name:\s+\S+\.EDU/i', $text)) {
@@ -870,12 +888,10 @@ class WhoisParser implements WhoisParserInterface
         // Registrant block (tab-indented, no "key: value", just lines)
         if (preg_match('/^Registrant:\s*\n((?:\t.+\n)+)/m', $text, $m)) {
             $lines = array_map('trim', explode("\n", trim($m[1])));
-            if (count($lines) >= 1) {
-                $fields['registrant_organization'][] = $lines[0];
-                $addrLines = array_slice($lines, 1);
-                if ($addrLines) {
-                    $fields['registrant_address'][] = implode(', ', $addrLines);
-                }
+            $fields['registrant_organization'][] = $lines[0];
+            $addrLines = array_slice($lines, 1);
+            if ($addrLines) {
+                $fields['registrant_address'][] = implode(', ', $addrLines);
             }
         }
 
@@ -890,7 +906,7 @@ class WhoisParser implements WhoisParserInterface
                 $email = null;
 
                 // First line is name
-                if (isset($lines[0])) $name = $lines[0];
+                $name = $lines[0];
                 // Second line might be org if different from name
                 $idx = 1;
                 if (isset($lines[$idx]) && !preg_match('/^\d/', $lines[$idx]) && !preg_match('/^[\+]/', $lines[$idx])) {
@@ -939,6 +955,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseArmenianFormat(string $text, array &$fields): void
     {
         if (!preg_match('/AM TLD|\.am$/m', $text)) {
@@ -974,7 +991,7 @@ class WhoisParser implements WhoisParserInterface
                 if ($addrLines) {
                     $addr = implode(', ', $addrLines);
                     // Normalize multiple spaces (e.g., "Kyiv,  02095" -> "Kyiv, 02095")
-                    $addr = preg_replace('/,\s{2,}/', ', ', $addr);
+                    $addr = preg_replace('/,\s{2,}/', ', ', $addr) ?? $addr;
                     $fields["{$prefix}_address"][] = $addr;
                 }
             }
@@ -991,6 +1008,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseBelgianFormat(string $text, array &$fields): void
     {
         // Belgian format: tab-indented sections with Registrar/Nameservers/Registrant
@@ -1020,6 +1038,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseEuFormat(string $text, array &$fields): void
     {
         if (!preg_match('/EURid|eurid\.eu|WHOIS \S+\.eu$/m', $text)) {
@@ -1059,6 +1078,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseSanMarinoFormat(string $text, array &$fields): void
     {
         if (!preg_match('/\.sm$/m', $text)) {
@@ -1142,6 +1162,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseMexicoFormat(string $text, array &$fields): void
     {
         // .mx format has indented contact sections
@@ -1182,11 +1203,13 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseAeFormat(string $text, array &$fields): void
     {
         // Already handled by standard key:value parsing
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseGovZaFormat(string $text, array &$fields): void
     {
         // .gov.za format: "1a.  Domain Name : xxx"
@@ -1235,7 +1258,7 @@ class WhoisParser implements WhoisParserInterface
             if (preg_match('/Primary NS IP\s*:\s*(\S+)/m', $text, $ipm)) {
                 $ipv4 = trim($ipm[1]);
             }
-            $fields['name_server_detail'][] = json_encode(['hostname' => $hostname, 'ipv4' => $ipv4, 'ipv6' => null]);
+            $fields['name_server_detail'][] = json_encode(['hostname' => $hostname, 'ipv4' => $ipv4, 'ipv6' => null], JSON_THROW_ON_ERROR);
         }
         if (preg_match('/1st Secondary NS\s*:\s*(.+)/m', $text, $m)) {
             $hostname = strtolower(trim($m[1]));
@@ -1243,7 +1266,7 @@ class WhoisParser implements WhoisParserInterface
             if (preg_match('/1st Secondary NS IP\s*:\s*(\S+)/m', $text, $ipm)) {
                 $ipv4 = trim($ipm[1]);
             }
-            $fields['name_server_detail'][] = json_encode(['hostname' => $hostname, 'ipv4' => $ipv4, 'ipv6' => null]);
+            $fields['name_server_detail'][] = json_encode(['hostname' => $hostname, 'ipv4' => $ipv4, 'ipv6' => null], JSON_THROW_ON_ERROR);
         }
 
         // Date
@@ -1252,6 +1275,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseLatvianFormat(string $text, array &$fields): void
     {
         if (!preg_match('/^\[Domain\]/m', $text)) {
@@ -1287,6 +1311,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseHkFormat(string $text, array &$fields): void
     {
         if (!preg_match('/HKIRC|\.hk/i', $text)) {
@@ -1309,12 +1334,12 @@ class WhoisParser implements WhoisParserInterface
             }
         }
         if (preg_match('/Registrant Contact Information:.*?Address:\s*([^\n]+?)(?:\n.*?Country:\s*([^\n]+?))?(?:\n.*?Email:\s*([^\n]+?))?(?:\n)/ms', $text, $m)) {
-            $addr = trim($m[1] ?? '');
+            $addr = trim($m[1]);
             $country = isset($m[2]) ? trim($m[2]) : '';
             $email = isset($m[3]) ? trim($m[3]) : '';
 
             // Extract country from "Hong Kong (HK)" or "United States (US)"
-            $countryName = preg_replace('/\s*\([A-Z]+\)\s*$/', '', $country);
+            $countryName = preg_replace('/\s*\([A-Z]+\)\s*$/', '', $country) ?? $country;
 
             if ($addr !== '' && $countryName !== '') {
                 $fields['registrant_address'][] = $addr . ', ' . $countryName;
@@ -1342,7 +1367,7 @@ class WhoisParser implements WhoisParserInterface
                 if (preg_match('/Family name:\s*(.+)/m', $block, $rm)) $family = trim($rm[1]);
                 if (preg_match('/Company name:\s*(.+)/m', $block, $rm)) $company = trim($rm[1]);
                 if (preg_match('/Address:\s*(.+)/m', $block, $rm)) $addr = trim($rm[1]);
-                if (preg_match('/Country:\s*(.+)/m', $block, $rm)) $country = preg_replace('/\s*\([A-Z]+\)\s*$/', '', trim($rm[1]));
+                if (preg_match('/Country:\s*(.+)/m', $block, $rm)) $country = preg_replace('/\s*\([A-Z]+\)\s*$/', '', trim($rm[1])) ?? trim($rm[1]);
                 if (preg_match('/Phone:\s*(.+)/m', $block, $rm)) $phone = trim($rm[1]);
                 if (preg_match('/Fax:\s*(.+)/m', $block, $rm)) $fax = trim($rm[1]);
                 if (preg_match('/Email:\s*(.+)/m', $block, $rm)) $email = trim($rm[1]);
@@ -1370,6 +1395,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseKoreanFormat(string $text, array &$fields): void
     {
         if (!str_contains($text, '# ENGLISH')) {
@@ -1413,8 +1439,8 @@ class WhoisParser implements WhoisParserInterface
         // Parse Korean date format: "2004. 10. 07."
         $parseKrDate = function(string $s): string {
             $s = trim($s);
-            $s = preg_replace('/\.\s*$/', '', $s); // remove trailing dot
-            $s = preg_replace('/\.\s+/', '-', $s); // "2004. 10. 07" -> "2004-10-07"
+            $s = preg_replace('/\.\s*$/', '', $s) ?? $s; // remove trailing dot
+            $s = preg_replace('/\.\s+/', '-', $s) ?? $s; // "2004. 10. 07" -> "2004-10-07"
             return $s;
         };
         if (isset($engFields['Registered Date'])) $fields['creation_date'][] = $parseKrDate($engFields['Registered Date'][0]);
@@ -1440,11 +1466,12 @@ class WhoisParser implements WhoisParserInterface
                     'hostname' => $hostname,
                     'ipv4' => $ip,
                     'ipv6' => null,
-                ]);
+                ], JSON_THROW_ON_ERROR);
             }
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseFredFormat(string $text, array &$fields): void
     {
         // FRED format used by .mw, .mk, etc: contact blocks with "contact: ID"
@@ -1465,18 +1492,18 @@ class WhoisParser implements WhoisParserInterface
         if (preg_match('/^nsset:\s+(\S+)/m', $text, $m)) $nssetRef = $m[1];
 
         // Parse nsset DEFINITION block for nservers (find the block that contains nserver: lines)
+        $nssetMatch = null;
         if ($nssetRef && preg_match_all('/^nsset:\s+' . preg_quote($nssetRef, '/') . '\s*\n((?:(?:nserver|tech-c|registrar|created):\s+.+\n)*)/m', $text, $allNssets, PREG_SET_ORDER)) {
             // Find the block that has nserver: lines (the definition, not the reference)
-            $m = null;
             foreach ($allNssets as $candidate) {
                 if (preg_match('/^nserver:/m', $candidate[1])) {
-                    $m = $candidate;
+                    $nssetMatch = $candidate;
                     break;
                 }
             }
         }
-        if ($nssetRef && isset($m)) {
-            $nsBlock = $m[1];
+        if ($nssetRef && $nssetMatch !== null) {
+            $nsBlock = $nssetMatch[1];
             if (preg_match_all('/^nserver:\s+(\S+)(?:\s+\(([^)]+)\))?/m', $nsBlock, $nsm, PREG_SET_ORDER)) {
                 foreach ($nsm as $ns) {
                     $hostname = strtolower(rtrim(trim($ns[1]), '.'));
@@ -1486,7 +1513,7 @@ class WhoisParser implements WhoisParserInterface
                             'hostname' => $hostname,
                             'ipv4' => $ip,
                             'ipv6' => null,
-                        ]);
+                        ], JSON_THROW_ON_ERROR);
                     } else {
                         $fields['name_server'][] = $hostname;
                     }
@@ -1526,14 +1553,13 @@ class WhoisParser implements WhoisParserInterface
         }
 
         // Map contacts to types
-        $typeMap = [
-            $registrantRef => 'registrant',
-            $adminRef => 'admin',
-            $techRef => 'tech',
-        ];
+        $typeMap = [];
+        if ($registrantRef !== null) $typeMap[$registrantRef] = 'registrant';
+        if ($adminRef !== null) $typeMap[$adminRef] = 'admin';
+        if ($techRef !== null) $typeMap[$techRef] = 'tech';
 
         foreach ($typeMap as $ref => $prefix) {
-            if ($ref === null || !isset($contacts[$ref])) continue;
+            if (!isset($contacts[$ref])) continue;
             $c = $contacts[$ref];
 
             // Override any values set by the standard parser (e.g., contact ID as name)
@@ -1546,6 +1572,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseAtFormat(string $text, array &$fields): void
     {
         // .at format: RIPE-like with personname, organization blocks after domain
@@ -1577,7 +1604,7 @@ class WhoisParser implements WhoisParserInterface
                     'hostname' => $host,
                     'ipv4' => $data['ipv4'],
                     'ipv6' => null,
-                ]);
+                ], JSON_THROW_ON_ERROR);
             }
         }
 
@@ -1593,10 +1620,9 @@ class WhoisParser implements WhoisParserInterface
             if ($personPos !== false) {
                 $domainBlock = substr($text, 0, $personPos);
             }
-            if (preg_match_all('/^changed:\s+\S+\s+(\d{8})/m', $domainBlock, $cm)) {
+            if (preg_match_all('/^changed:\s+\S+\s+(\d{8})/m', $domainBlock, $cm) && $cm[1] !== []) {
                 // Use the last changed date
-                $lastDate = end($cm[1]);
-                $fields['updated_date'][] = $lastDate;
+                $fields['updated_date'][] = end($cm[1]);
             }
         }
 
@@ -1686,6 +1712,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseTunisianFormat(string $text, array &$fields): void
     {
         if (!preg_match('/NIC Whois server.*\.tn/i', $text)) {
@@ -1731,8 +1758,8 @@ class WhoisParser implements WhoisParserInterface
 
                 $fullName = trim(($firstName ? $firstName . ' ' : '') . ($name ?? ''));
                 if ($fullName !== '') $fields["{$prefix}_name"][] = $fullName;
-                if ($email && $email !== '') $fields["{$prefix}_email"][] = $email;
-                if ($phone && $phone !== '') $fields["{$prefix}_phone"][] = $phone;
+                if ($email !== null && $email !== '') $fields["{$prefix}_email"][] = $email;
+                if ($phone !== null && $phone !== '') $fields["{$prefix}_phone"][] = $phone;
                 if ($addrLines) $fields["{$prefix}_address"][] = implode(', ', $addrLines);
             }
         }
@@ -1750,6 +1777,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parsePfFormat(string $text, array &$fields): void
     {
         if (!preg_match('/\.pf top level domain/i', $text) && !preg_match('/\.pf$/m', $text)) {
@@ -1849,6 +1877,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseAwFormat(string $text, array &$fields): void
     {
         if (!preg_match('/\.aw$/m', $text)) {
@@ -1874,6 +1903,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseKzFormat(string $text, array &$fields): void
     {
         if (!preg_match('/KZ top level domain/i', $text)) {
@@ -1918,7 +1948,7 @@ class WhoisParser implements WhoisParserInterface
                     'hostname' => strtolower(trim($m[1])),
                     'ipv4' => trim($m[2]),
                     'ipv6' => null,
-                ]);
+                ], JSON_THROW_ON_ERROR);
             }
         }
 
@@ -1953,6 +1983,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseIsraeliFormat(string $text, array &$fields): void
     {
         if (!preg_match('/ISOC-IL|\.il$/m', $text)) {
@@ -2041,6 +2072,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseJpContactSection(string $text, array &$fields): void
     {
         // JP WHOIS: "Contact Information:\n[Name]  value\n[Email]  value"
@@ -2063,6 +2095,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseEstonianFormat(string $text, array &$fields): void
     {
         if (!preg_match('/Estonia.*\.ee/i', $text)) {
@@ -2075,6 +2108,7 @@ class WhoisParser implements WhoisParserInterface
 
         // Parse section-based format: "Section:\nkey: value"
         $sections = preg_split('/^(\w[\w ]*?):\s*$/m', $text, -1, PREG_SPLIT_DELIM_CAPTURE);
+        if ($sections === false) return;
 
         for ($i = 1; $i < count($sections) - 1; $i += 2) {
             $sectionName = strtolower(trim($sections[$i]));
@@ -2090,7 +2124,7 @@ class WhoisParser implements WhoisParserInterface
             if ($sectionName === 'domain') {
                 if (isset($sectionFields['name'])) $fields['domain_name'][] = strtolower($sectionFields['name'][0]);
                 if (isset($sectionFields['status'])) {
-                    $status = preg_replace('/\s*\(.*\)/', '', $sectionFields['status'][0]);
+                    $status = preg_replace('/\s*\(.*\)/', '', $sectionFields['status'][0]) ?? $sectionFields['status'][0];
                     $fields['status'][] = trim($status);
                 }
                 if (isset($sectionFields['registered'])) $fields['creation_date'][] = $sectionFields['registered'][0];
@@ -2116,6 +2150,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseDkFormat(string $text, array &$fields): void
     {
         if (!preg_match('/Punktum dk/i', $text) && !preg_match('/^Nameservers\nHostname:/m', $text)) {
@@ -2142,6 +2177,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseImFormat(string $text, array &$fields): void
     {
         if (!preg_match('/\.im$/m', $text)) {
@@ -2164,6 +2200,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseMoFormat(string $text, array &$fields): void
     {
         if (!preg_match('/Record created on|Record expires on/m', $text)) {
@@ -2189,6 +2226,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseNcFormat(string $text, array &$fields): void
     {
         if (!preg_match('/OPT Whois/i', $text)) {
@@ -2203,6 +2241,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseTgFormat(string $text, array &$fields): void
     {
         // JWhoisServer .tg format: "Key:...........Value" with contact blocks separated by "---"
@@ -2225,6 +2264,7 @@ class WhoisParser implements WhoisParserInterface
 
         // Split into blocks by "---"
         $blocks = preg_split('/^-{3,}\s*$/m', $text);
+        if ($blocks === false) return;
         $seenContactTypes = [];
 
         foreach ($blocks as $block) {
@@ -2291,6 +2331,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseJWhoisBracketFormat(string $text, array &$fields): void
     {
         // JWhoisServer bracket-section format: [holder], [admin_c], [tech_c], [zone_c]
@@ -2301,6 +2342,7 @@ class WhoisParser implements WhoisParserInterface
 
         // Split into sections by [bracket_header]
         $sections = preg_split('/^\[(\w+)\]\s*$/m', $text, -1, PREG_SPLIT_DELIM_CAPTURE);
+        if ($sections === false) return;
 
         // First section is the domain header (before any bracket)
         // Already parsed by extractFields(), but ensure domain name is set
@@ -2381,6 +2423,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseSkFormat(string $text, array &$fields): void
     {
         // SK-NIC format: section-based with "Domain registrant:", "Registrar:", "Administrative Contact:", "Technical Contact:"
@@ -2400,6 +2443,7 @@ class WhoisParser implements WhoisParserInterface
 
         // Split into blocks by blank lines
         $blocks = preg_split('/\n\n+/', $text);
+        if ($blocks === false) return;
 
         foreach ($blocks as $block) {
             $blockFields = [];
@@ -2444,6 +2488,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseTaiwaneseFormat(string $text, array &$fields): void
     {
         // Taiwanese .tw format: "Record expires on 2035-07-14 16:00:00 (UTC+8)"
@@ -2493,6 +2538,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseTurkishFormat(string $text, array &$fields): void
     {
         // Turkish .tr format uses "** " prefixed section headers
@@ -2562,6 +2608,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseSerbianFormat(string $text, array &$fields): void
     {
         // Only apply for RNIDS .rs format (has "Domain name:" and "Registrant:" on same level)
@@ -2620,6 +2667,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseNameserverBlocks(string $text, array &$fields): void
     {
         // Generic: "Nameservers\n  hostname" (when not already parsed)
@@ -2654,8 +2702,8 @@ class WhoisParser implements WhoisParserInterface
             'î' => 'i', 'ï' => 'i',
             'ç' => 'c', 'ñ' => 'n',
         ]);
-        $key = preg_replace('/[\s\'-]+/', '_', $key);
-        $key = preg_replace('/[^a-z0-9_]/', '', $key);
+        $key = preg_replace('/[\s\'-]+/', '_', $key) ?? $key;
+        $key = preg_replace('/[^a-z0-9_]/', '', $key) ?? $key;
 
         return match ($key) {
             'domain', 'domain_name', 'domainname', 'domaintype',
@@ -2753,6 +2801,7 @@ class WhoisParser implements WhoisParserInterface
         };
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseDomain(array $fields, string $text, string $serverHostname): DomainInfo
     {
         $domainName = $this->firstValue($fields, 'domain_name');
@@ -2845,7 +2894,7 @@ class WhoisParser implements WhoisParserInterface
             // Remove generic state values when EPP statuses are also present
             $hasEppStatus = false;
             foreach ($statusValues as $sv) {
-                $svLower = strtolower(trim(preg_replace('/\s*\(?https?:\/\/.*$/', '', $sv)));
+                $svLower = strtolower(trim(preg_replace('/\s*\(?https?:\/\/.*$/', '', $sv) ?? $sv));
                 if (in_array($svLower, ['ok', 'clienttransferprohibited', 'servertransferprohibited',
                     'clientdeleteprohibited', 'serverdeleteprohibited', 'clientupdateprohibited',
                     'serverupdateprohibited', 'clienthold', 'serverhold'], true)) {
@@ -2862,7 +2911,7 @@ class WhoisParser implements WhoisParserInterface
         }
         $statuses = [];
         foreach ($statusValues as $status) {
-            $status = preg_replace('/\s*\(?https?:\/\/.*$/', '', $status);
+            $status = preg_replace('/\s*\(?https?:\/\/.*$/', '', $status) ?? $status;
             $status = trim($status);
             // Handle comma-separated statuses
             if (str_contains($status, ',')) {
@@ -2896,7 +2945,7 @@ class WhoisParser implements WhoisParserInterface
             foreach ($m[2] as $statusBlock) {
                 foreach (explode("\n", trim($statusBlock)) as $line) {
                     $s = trim($line);
-                    $s = preg_replace('/\s*\(?https?:\/\/.*$/', '', $s);
+                    $s = preg_replace('/\s*\(?https?:\/\/.*$/', '', $s) ?? $s;
                     if ($s !== '' && $s !== '-') {
                         $statuses[] = $s;
                     }
@@ -2911,16 +2960,19 @@ class WhoisParser implements WhoisParserInterface
         // First, process detailed nameservers (with IPs)
         foreach ($fields['name_server_detail'] ?? [] as $nsJson) {
             $nsData = json_decode($nsJson, true);
-            if ($nsData && isset($nsData['hostname'])) {
-                $hostname = strtolower($nsData['hostname']);
-                if (!isset($seenHosts[$hostname])) {
-                    $seenHosts[$hostname] = true;
-                    $nameservers[] = new Nameserver(
-                        hostname: $hostname,
-                        ipv4: $nsData['ipv4'] ?? null,
-                        ipv6: $nsData['ipv6'] ?? null,
-                    );
-                }
+            if (!is_array($nsData) || !isset($nsData['hostname']) || !is_string($nsData['hostname'])) {
+                continue;
+            }
+            $hostname = strtolower($nsData['hostname']);
+            if (!isset($seenHosts[$hostname])) {
+                $seenHosts[$hostname] = true;
+                $ipv4 = isset($nsData['ipv4']) && is_string($nsData['ipv4']) ? $nsData['ipv4'] : null;
+                $ipv6 = isset($nsData['ipv6']) && is_string($nsData['ipv6']) ? $nsData['ipv6'] : null;
+                $nameservers[] = new Nameserver(
+                    hostname: $hostname,
+                    ipv4: $ipv4,
+                    ipv6: $ipv6,
+                );
             }
         }
 
@@ -2929,9 +2981,10 @@ class WhoisParser implements WhoisParserInterface
             $ns = strtolower(rtrim(trim($ns), '.'));
             // Some servers include IP after hostname
             $parts = preg_split('/\s+/', $ns, 2);
+            if ($parts === false) continue;
             $hostname = $parts[0];
             // Strip " | IPv4:  and IPv6: " suffixes (.pt format)
-            $hostname = preg_replace('/\s*\|.*$/', '', $hostname);
+            $hostname = preg_replace('/\s*\|.*$/', '', $hostname) ?? $hostname;
             $hostname = rtrim($hostname, '.');
             if (!isset($seenHosts[$hostname]) && preg_match('/^[a-z0-9]([a-z0-9.-]*[a-z0-9])?\.[a-z]{2,}$/i', $hostname)) {
                 $seenHosts[$hostname] = true;
@@ -3027,6 +3080,7 @@ class WhoisParser implements WhoisParserInterface
         return $value;
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseIp(array $fields, string $text, string $rawResponse): IpInfo
     {
         // Try RPSL object parsing for RIPE/APNIC/AFRINIC/LACNIC
@@ -3076,6 +3130,7 @@ class WhoisParser implements WhoisParserInterface
         );
     }
 
+    /** @param array<string, string[]> $fields */
     private function parseAsn(array $fields, string $text, string $rawResponse): AsnInfo
     {
         // Try RPSL object parsing for RIPE/APNIC/AFRINIC/LACNIC
@@ -3152,10 +3207,8 @@ class WhoisParser implements WhoisParserInterface
             } elseif (preg_match('/^\s+(.+)/', $line, $m) && $currentFields !== []) {
                 // Continuation line — append to last key's last value
                 $lastKey = array_key_last($currentFields);
-                if ($lastKey !== null) {
-                    $lastIdx = array_key_last($currentFields[$lastKey]);
-                    $currentFields[$lastKey][$lastIdx] .= "\n" . trim($m[1]);
-                }
+                $lastIdx = array_key_last($currentFields[$lastKey]);
+                $currentFields[$lastKey][$lastIdx] .= "\n" . trim($m[1]);
             }
         }
 
@@ -3168,6 +3221,9 @@ class WhoisParser implements WhoisParserInterface
 
     /**
      * Find the primary object of a given type from parsed RPSL objects.
+     * @param array<int, array{type: string, fields: array<string, string[]>}> $objects
+     * @param string[] $types
+     * @return array{type: string, fields: array<string, string[]>}|null
      */
     private function findPrimaryObject(array $objects, array $types): ?array
     {
@@ -3181,6 +3237,8 @@ class WhoisParser implements WhoisParserInterface
 
     /**
      * Resolve a nic-hdl reference to a person/role/organisation object.
+     * @param array<int, array{type: string, fields: array<string, string[]>}> $objects
+     * @return array{type: string, fields: array<string, string[]>}|null
      */
     private function resolveRpslContact(string $handle, array $objects): ?array
     {
@@ -3196,6 +3254,8 @@ class WhoisParser implements WhoisParserInterface
 
     /**
      * Resolve an org reference to an organisation object.
+     * @param array<int, array{type: string, fields: array<string, string[]>}> $objects
+     * @return array{type: string, fields: array<string, string[]>}|null
      */
     private function resolveRpslOrg(string $orgId, array $objects): ?array
     {
@@ -3213,6 +3273,7 @@ class WhoisParser implements WhoisParserInterface
 
     /**
      * Build a Contact from a RPSL person/role object.
+     * @param array{type: string, fields: array<string, string[]>} $obj
      */
     private function contactFromRpslObject(array $obj, ContactType $type, bool $appendCountry = false): ?Contact
     {
@@ -3271,6 +3332,8 @@ class WhoisParser implements WhoisParserInterface
 
     /**
      * Build IpInfo from RPSL objects (RIPE/APNIC/LACNIC/AFRINIC format).
+     * @param array{type: string, fields: array<string, string[]>} $primaryObj
+     * @param array<int, array{type: string, fields: array<string, string[]>}> $objects
      */
     private function buildIpFromRpslObjects(array $primaryObj, array $objects, string $text): IpInfo
     {
@@ -3333,6 +3396,8 @@ class WhoisParser implements WhoisParserInterface
 
     /**
      * Build AsnInfo from RPSL objects (RIPE/APNIC/LACNIC/AFRINIC format).
+     * @param array{type: string, fields: array<string, string[]>} $primaryObj
+     * @param array<int, array{type: string, fields: array<string, string[]>}> $objects
      */
     private function buildAsnFromRpslObjects(array $primaryObj, array $objects, string $text): AsnInfo
     {
@@ -3392,6 +3457,8 @@ class WhoisParser implements WhoisParserInterface
 
     /**
      * Resolve contacts from RPSL objects using admin-c, tech-c, abuse-c, org references.
+     * @param array{type: string, fields: array<string, string[]>} $primaryObj
+     * @param array<int, array{type: string, fields: array<string, string[]>}> $objects
      * @return Contact[]
      */
     private function resolveRpslContacts(array $primaryObj, array $objects, string $text): array
@@ -3507,6 +3574,10 @@ class WhoisParser implements WhoisParserInterface
      * Extract contacts from ARIN format (OrgTechName, OrgAbuseName, etc.).
      * @return Contact[]
      */
+    /**
+     * @param array<string, string[]> $fields
+     * @return Contact[]
+     */
     private function extractArinContacts(array $fields, string $text): array
     {
         $contacts = [];
@@ -3582,6 +3653,7 @@ class WhoisParser implements WhoisParserInterface
 
     /**
      * Extract IP status from flat fields.
+     * @param array<string, string[]> $fields
      * @return string[]
      */
     private function extractIpStatus(array $fields): array
@@ -3597,6 +3669,7 @@ class WhoisParser implements WhoisParserInterface
     }
 
     /**
+     * @param array<string, string[]> $fields
      * @return Contact[]
      */
     private function extractContacts(array $fields, string $text): array
@@ -3654,16 +3727,12 @@ class WhoisParser implements WhoisParserInterface
                         $address = implode(', ', $parts);
                     }
                 } else {
-                    // Just address lines, combine
+                    // Just address lines, combine (city/state/country are all null in this branch)
                     if (count($addrValues) > 1) {
                         // Use newlines if these are separate address lines (multiple field entries)
                         $address = $this->filterRedacted(implode("\n", $addrValues));
                     } else {
                         $address = $this->filterRedacted($addrValues[0]);
-                    }
-                    // Append country if available from bare field
-                    if ($countryVal !== null && $address !== null && !str_contains($address, $countryVal)) {
-                        $address .= ', ' . $countryVal;
                     }
                 }
             } elseif ($cityVal !== null || $stateVal !== null) {
@@ -3679,14 +3748,9 @@ class WhoisParser implements WhoisParserInterface
                 $hasRedactedFields = ($rawStreet !== null && $this->filterRedacted($rawStreet) === null)
                     || ($rawCity !== null && $this->filterRedacted($rawCity) === null);
 
-                if ($hasRedactedFields && $stateVal !== null) {
-                    // Street/city redacted but state is visible — use state + country
-                    $address = implode(', ', array_filter([$stateVal, $countryVal]));
-                } elseif ($hasRedactedFields) {
+                if ($hasRedactedFields) {
                     // All address data redacted — don't construct from scraps
                     $address = null;
-                } elseif ($stateVal !== null) {
-                    $address = implode(', ', array_filter([$stateVal, $countryVal]));
                 } else {
                     $address = $countryVal;
                 }
@@ -3758,33 +3822,6 @@ class WhoisParser implements WhoisParserInterface
         return $contacts;
     }
 
-    /**
-     * @return Contact[]
-     */
-    private function extractIpContacts(array $fields, string $text): array
-    {
-        $contacts = [];
-
-        if (preg_match('/Abuse contact.*?is \'([^\']+)\'/i', $text, $m)) {
-            $contacts[] = new Contact(
-                type: ContactType::Abuse,
-                email: $m[1],
-            );
-        }
-
-        $orgName = $this->firstValue($fields, 'orgname')
-            ?? $this->firstValue($fields, 'description');
-
-        if ($orgName !== null) {
-            $contacts[] = new Contact(
-                type: ContactType::Registrant,
-                organization: $orgName,
-            );
-        }
-
-        return $contacts;
-    }
-
     private function parseDate(?string $dateStr): ?string
     {
         if ($dateStr === null || $dateStr === '') {
@@ -3797,17 +3834,17 @@ class WhoisParser implements WhoisParserInterface
         }
 
         // Strip ordinal suffixes: 1st, 2nd, 3rd, 23rd, etc.
-        $dateStr = preg_replace('/(\d)(st|nd|rd|th)\b/i', '$1', $dateStr);
+        $dateStr = preg_replace('/(\d)(st|nd|rd|th)\b/i', '$1', $dateStr) ?? $dateStr;
 
         // Strip day names
-        $dateStr = preg_replace('/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+/i', '', $dateStr);
+        $dateStr = preg_replace('/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+/i', '', $dateStr) ?? $dateStr;
 
         // Strip timezone abbreviations like "(JST)" or "CLST" or "(UTC+8)"
-        $dateStr = preg_replace('/\s*\([A-Z]{2,5}(?:[+-]\d{1,2}(?::\d+)?)?\)\s*$/', '', $dateStr);
-        $dateStr = preg_replace('/\s+[A-Z]{3,5}\s*$/', '', $dateStr);
+        $dateStr = preg_replace('/\s*\([A-Z]{2,5}(?:[+-]\d{1,2}(?::\d+)?)?\)\s*$/', '', $dateStr) ?? $dateStr;
+        $dateStr = preg_replace('/\s+[A-Z]{3,5}\s*$/', '', $dateStr) ?? $dateStr;
 
         // Handle timezone offsets like "+03:00" or "+0000"
-        $dateStr = preg_replace('/\s*\+\d{2}:\d{2}\s*$/', '', $dateStr);
+        $dateStr = preg_replace('/\s*\+\d{2}:\d{2}\s*$/', '', $dateStr) ?? $dateStr;
 
         // Korean date: "2004. 10. 07." -> "2004-10-07"
         if (preg_match('/^(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})\.\s*$/', $dateStr, $m)) {
@@ -3823,10 +3860,10 @@ class WhoisParser implements WhoisParserInterface
                 return $dt->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s');
             }
         }
-        $dateStr = preg_replace('/\s*GMT[+-]\d+\s*$/', '', $dateStr);
+        $dateStr = preg_replace('/\s*GMT[+-]\d+\s*$/', '', $dateStr) ?? $dateStr;
 
         // Formats with microseconds: strip sub-second parts
-        $dateStr = preg_replace('/(\d{2}:\d{2}:\d{2})\.\d+/', '$1', $dateStr);
+        $dateStr = preg_replace('/(\d{2}:\d{2}:\d{2})\.\d+/', '$1', $dateStr) ?? $dateStr;
 
         $formats = [
             'Y-m-d\TH:i:sP',
@@ -3877,6 +3914,7 @@ class WhoisParser implements WhoisParserInterface
         }
     }
 
+    /** @param array<string, string[]> $fields */
     private function bestDateValue(array $fields, string $key): ?string
     {
         $values = $fields[$key] ?? [];
@@ -3895,11 +3933,16 @@ class WhoisParser implements WhoisParserInterface
         return $dateValues[0];
     }
 
+    /** @param array<string, string[]> $fields */
     private function firstValue(array $fields, string $key): ?string
     {
         return $fields[$key][0] ?? null;
     }
 
+    /**
+     * @param array<string, string[]> $fields
+     * @param string[] $keys
+     */
     private function transliterateFields(array &$fields, array $keys): void
     {
         foreach ($keys as $key) {
@@ -3915,7 +3958,8 @@ class WhoisParser implements WhoisParserInterface
     private function transliterate(string $value): string
     {
         if (function_exists('transliterator_transliterate')) {
-            return transliterator_transliterate('Any-Latin; Latin-ASCII', $value);
+            $result = transliterator_transliterate('Any-Latin; Latin-ASCII', $value);
+            return is_string($result) ? $result : $value;
         }
 
         // Manual Cyrillic (Ukrainian/Russian) transliteration
@@ -3960,6 +4004,7 @@ class WhoisParser implements WhoisParserInterface
         ];
 
         // Apply character mapping
+        /** @var array<string, string> $cyrillicMap */
         $result = strtr($value, $cyrillicMap);
 
         return $result;
