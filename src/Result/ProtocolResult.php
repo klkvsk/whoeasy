@@ -9,13 +9,12 @@ use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
 
 /**
  * @template TInfo of AbstractInfo
- * @template THop of ProtocolHop
  */
 readonly class ProtocolResult
 {
     /**
-     * @param TInfo $info
-     * @param THop[] $hops
+     * @param TInfo|null $info
+     * @param ProtocolHop[] $hops
      */
     public function __construct(
         public ?AbstractInfo $info = null,

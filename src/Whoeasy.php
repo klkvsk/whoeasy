@@ -10,8 +10,6 @@ use Klkvsk\Whoeasy\Client\Whois\HttpWhoisClient;
 use Klkvsk\Whoeasy\Client\Whois\WhoisClient;
 use Klkvsk\Whoeasy\Exception\InvalidArgumentException;
 use Klkvsk\Whoeasy\Exception\NotFoundException;
-use Klkvsk\Whoeasy\Exception\NotSupportedException;
-use Klkvsk\Whoeasy\Exception\RateLimitException;
 use Klkvsk\Whoeasy\Parser\Rdap\RdapParser;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParser;
 use Klkvsk\Whoeasy\Parser\Whois\WhoisParserInterface;
@@ -20,6 +18,7 @@ use Klkvsk\Whoeasy\Registry\ServerRegistry;
 use Klkvsk\Whoeasy\Result\Hop\RdapHop;
 use Klkvsk\Whoeasy\Result\Hop\WhoisHop;
 use Klkvsk\Whoeasy\Result\Hop\WhoisHttpHop;
+use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
 use Klkvsk\Whoeasy\Result\Info\AsnInfo;
 use Klkvsk\Whoeasy\Result\Info\DomainInfo;
 use Klkvsk\Whoeasy\Result\Info\IpInfo;
@@ -42,9 +41,9 @@ class Whoeasy
     private RdapParser $rdapParser;
     private ResultMerger $resultMerger;
 
-    public static function create(?QueryOptions $defaultOptions = null): static
+    public static function create(?QueryOptions $defaultOptions = null): self
     {
-        return new static($defaultOptions);
+        return new self($defaultOptions);
     }
 
     public function __construct(
@@ -66,6 +65,9 @@ class Whoeasy
         $this->resultMerger = $resultMerger ?? new ResultMerger();
     }
 
+    /**
+     * @return QueryResult<AbstractInfo>
+     */
     public function query(string $input, ?QueryOptions $options = null): QueryResult
     {
         $merged = $this->defaultOptions->merge($options);
@@ -88,7 +90,8 @@ class Whoeasy
                 "Expected DomainInfo, got " . $result->info::class . " for: $input"
             );
         }
-        return $result;
+
+        return $result; // @phpstan-ignore return.type
     }
 
     /** @return QueryResult<IpInfo> */
@@ -100,7 +103,7 @@ class Whoeasy
                 "Expected IpInfo, got " . $result->info::class . " for: $input"
             );
         }
-        return $result;
+        return $result; // @phpstan-ignore return.type
     }
 
     /** @return QueryResult<AsnInfo> */
@@ -112,7 +115,7 @@ class Whoeasy
                 "Expected AsnInfo, got " . $result->info::class . " for: $input"
             );
         }
-        return $result;
+        return $result; // @phpstan-ignore return.type
     }
 
     public function getDefaultOptions(): QueryOptions
@@ -120,6 +123,7 @@ class Whoeasy
         return $this->defaultOptions;
     }
 
+    /** @return QueryResult<AbstractInfo> */
     protected function queryWhoisOnly(string $input, QueryOptions $options): QueryResult
     {
         $whois = $this->executeWhois($input, $options);
@@ -130,6 +134,7 @@ class Whoeasy
         );
     }
 
+    /** @return QueryResult<AbstractInfo> */
     protected function queryRdapOnly(string $input, QueryOptions $options): QueryResult
     {
         $rdap = $this->executeRdap($input, $options);
@@ -140,6 +145,7 @@ class Whoeasy
         );
     }
 
+    /** @return QueryResult<AbstractInfo> */
     protected function queryPreferWhois(string $input, QueryOptions $options): QueryResult
     {
         $whois = $this->executeWhois($input, $options);
@@ -159,6 +165,7 @@ class Whoeasy
         );
     }
 
+    /** @return QueryResult<AbstractInfo> */
     protected function queryPreferRdap(string $input, QueryOptions $options): QueryResult
     {
         $rdap = $this->executeRdap($input, $options);
@@ -178,6 +185,7 @@ class Whoeasy
         );
     }
 
+    /** @return QueryResult<AbstractInfo> */
     protected function queryBoth(string $input, QueryOptions $options): QueryResult
     {
         $whois = $this->executeWhois($input, $options);
@@ -212,6 +220,7 @@ class Whoeasy
 
     /**
      * Check if a protocol result has a NotFoundException in any hop.
+     * @param ProtocolResult<AbstractInfo> $result
      */
     private function hasNotFoundError(ProtocolResult $result): bool
     {
@@ -225,17 +234,18 @@ class Whoeasy
 
     /**
      * Execute WHOIS query chain (with optional referral following).
+     * @return ProtocolResult<AbstractInfo>
      */
     private function executeWhois(string $input, QueryOptions $options): ProtocolResult
     {
         $serverInfo = $this->registry->resolve($input);
 
         // HTTP-based WHOIS: single hop, no recursion
-        if ($serverInfo->hasHttpWhois()) {
+        if ($serverInfo->httpUrl !== null) {
             return $this->executeHttpWhois($input, $serverInfo, $options);
         }
 
-        if (!$serverInfo->hasWhois()) {
+        if ($serverInfo->whoisServer === null) {
             $hop = new WhoisHop(
                 server: '(none)',
                 query: $input,
@@ -263,12 +273,7 @@ class Whoeasy
             try {
                 $queryFormat = $hopIndex === 0 ? $serverInfo->queryFormat : null;
                 $rawText = $this->whoisClient->query($currentServer, $input, $options->whoisTimeout, $queryFormat);
-
-                try {
-                    $info = $this->whoisParser->parse($rawText, $currentServer, $serverInfo->queryType);
-                } catch (\Throwable $parseError) {
-                    $error ??= $parseError;
-                }
+                $info = $this->whoisParser->parse($rawText, $currentServer, $serverInfo->queryType);
             } catch (\Throwable $e) {
                 $error = $e;
             }
@@ -306,12 +311,16 @@ class Whoeasy
 
     /**
      * Execute HTTP-based WHOIS query (single hop, no recursion).
+     * @return ProtocolResult<AbstractInfo>
      */
     private function executeHttpWhois(
         string $input,
         ServerInfo $serverInfo,
         QueryOptions $options,
     ): ProtocolResult {
+        assert($serverInfo->httpUrl !== null);
+        assert($serverInfo->httpQueryFormat !== null);
+
         $server = parse_url($serverInfo->httpUrl, PHP_URL_HOST) ?: $serverInfo->httpUrl;
         $rawText = null;
         $info = null;
@@ -355,12 +364,13 @@ class Whoeasy
 
     /**
      * Execute RDAP query chain (with optional referral following).
+     * @return ProtocolResult<AbstractInfo>
      */
     private function executeRdap(string $input, QueryOptions $options): ProtocolResult
     {
         $serverInfo = $this->registry->resolve($input);
 
-        if (!$serverInfo->hasRdap()) {
+        if ($serverInfo->rdapUrl === null) {
             $hop = new RdapHop(
                 server: '(none)',
                 query: $input,

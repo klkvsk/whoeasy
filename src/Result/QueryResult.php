@@ -6,25 +6,21 @@ namespace Klkvsk\Whoeasy\Result;
 
 use Klkvsk\Whoeasy\Exception\NotFoundException;
 use Klkvsk\Whoeasy\Exception\RetryableException;
-use Klkvsk\Whoeasy\Result\Hop\RdapHop;
-use Klkvsk\Whoeasy\Result\Hop\WhoisHop;
 use Klkvsk\Whoeasy\Result\Info\AbstractInfo;
 
 /**
- * @psalm-template TInfo of AbstractInfo
+ * @template TInfo of AbstractInfo
  */
 readonly class QueryResult
 {
     /**
-     * @psalm-var ProtocolResult<TInfo,WhoisHop> $whois
-     * @psalm-var ProtocolResult<TInfo,RdapHop> $rdap
+     * @param TInfo|null $info
+     * @param ProtocolResult<AbstractInfo>|null $whois
+     * @param ProtocolResult<AbstractInfo>|null $rdap
      */
     public function __construct(
-        /** @var TInfo */
         public ?AbstractInfo $info = null,
-        /** @var ProtocolResult<TInfo, WhoisHop> */
         public ?ProtocolResult $whois = null,
-        /** @var ProtocolResult<TInfo, RdapHop> */
         public ?ProtocolResult $rdap = null,
     ) {}
 
