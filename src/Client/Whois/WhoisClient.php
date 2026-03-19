@@ -25,10 +25,8 @@ class WhoisClient implements LoggerAwareInterface
 
     protected const DEFAULT_PORT = 43;
 
-    public function __construct(
-        protected int $timeout = 15,
-        protected ?string $proxyUri = null,
-    ) {
+    public function __construct()
+    {
         $this->logger = new NullLogger();
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('ext-curl is required for ' . self::class);
@@ -40,16 +38,22 @@ class WhoisClient implements LoggerAwareInterface
      *
      * @param string $server WHOIS server hostname (e.g., "whois.verisign-grs.com")
      * @param string $query  The query string (e.g., "example.com")
-     * @param int|null $timeout Override timeout for this request
+     * @param int $timeout Request timeout in seconds
+     * @param string|null $queryFormat Optional query format string (e.g. "n + %s")
+     * @param string|null $proxyUri Optional SOCKS5/HTTP proxy URI
      * @return string Raw WHOIS response text
      *
      * @throws ClientConnectException If connection to the server fails
      * @throws ClientTimeoutException If the connection or read times out
      * @throws CurlRequestException On curl-level errors
      */
-    public function query(string $server, string $query, ?int $timeout = null, ?string $queryFormat = null): string
-    {
-        $timeout ??= $this->timeout;
+    public function query(
+        string $server,
+        string $query,
+        int $timeout = 15,
+        ?string $queryFormat = null,
+        ?string $proxyUri = null,
+    ): string {
         $port = self::DEFAULT_PORT;
 
         // Parse server:port if specified
@@ -85,8 +89,8 @@ class WhoisClient implements LoggerAwareInterface
             CURLOPT_STDERR         => $verboseLog,
         ]);
 
-        if ($this->proxyUri !== null) {
-            curl_setopt($curl, CURLOPT_PROXY, $this->proxyUri);
+        if ($proxyUri !== null) {
+            curl_setopt($curl, CURLOPT_PROXY, $proxyUri);
         }
 
         try {
@@ -112,7 +116,7 @@ class WhoisClient implements LoggerAwareInterface
                 }
 
                 // Proxy-related errors
-                if (in_array($errno, [5, 7, 97], true) && $this->proxyUri !== null) {
+                if (in_array($errno, [5, 7, 97], true) && $proxyUri !== null) {
                     throw (new ProxyConnectException("Proxy connection failed for $server:$port: $error"))
                         ->withServer($server)
                         ->withQuery($query);

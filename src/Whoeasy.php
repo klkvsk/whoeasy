@@ -44,6 +44,8 @@ class Whoeasy implements LoggerAwareInterface
     private QueryOptions $defaultOptions;
     private ServerRegistry $registry;
     private WhoisClient $whoisClient;
+    private HttpWhoisClient $httpWhoisClient;
+    private RdapClient $rdapClient;
     private WhoisParserInterface $whoisParser;
     private RdapParser $rdapParser;
     private ResultMerger $resultMerger;
@@ -61,6 +63,8 @@ class Whoeasy implements LoggerAwareInterface
         ?QueryOptions $defaultOptions = null,
         ?ServerRegistry $registry = null,
         ?WhoisClient $whoisClient = null,
+        ?HttpWhoisClient $httpWhoisClient = null,
+        ?RdapClient $rdapClient = null,
         ?WhoisParserInterface $whoisParser = null,
         ?RdapParser $rdapParser = null,
         ?ResultMerger $resultMerger = null,
@@ -68,10 +72,9 @@ class Whoeasy implements LoggerAwareInterface
         $this->logger = new NullLogger();
         $this->defaultOptions = $defaultOptions ?? new QueryOptions();
         $this->registry = $registry ?? ServerRegistry::getInstance();
-        $this->whoisClient = $whoisClient ?? new WhoisClient(
-            timeout: $this->defaultOptions->whoisTimeout ?? QueryOptions::DEFAULT_TIMEOUT,
-            proxyUri: $this->defaultOptions->proxyUri,
-        );
+        $this->whoisClient = $whoisClient ?? new WhoisClient();
+        $this->httpWhoisClient = $httpWhoisClient ?? new HttpWhoisClient();
+        $this->rdapClient = $rdapClient ?? new RdapClient();
         $this->whoisParser = $whoisParser ?? new WhoisParser();
         $this->rdapParser = $rdapParser ?? new RdapParser();
         $this->resultMerger = $resultMerger ?? new ResultMerger();
@@ -154,6 +157,8 @@ class Whoeasy implements LoggerAwareInterface
     {
         $this->logger = $logger;
         $this->whoisClient->setLogger($logger);
+        $this->httpWhoisClient->setLogger($logger);
+        $this->rdapClient->setLogger($logger);
         $this->whoisParser instanceof LoggerAwareInterface && $this->whoisParser->setLogger($logger);
         $this->rdapParser->setLogger($logger);
     }
@@ -349,7 +354,7 @@ class Whoeasy implements LoggerAwareInterface
 
             try {
                 $queryFormat = $hopIndex === 0 ? $serverInfo->queryFormat : null;
-                $rawText = $this->whoisClient->query($currentServer, $input, $options->whoisTimeout, $queryFormat);
+                $rawText = $this->whoisClient->query($currentServer, $input, $options->whoisTimeout, $queryFormat, $options->proxyUri);
                 try {
                     $info = $this->whoisParser->parse($rawText, $currentServer, $serverInfo->queryType);
                 } catch (\Throwable $parseError) {
@@ -422,17 +427,13 @@ class Whoeasy implements LoggerAwareInterface
         ]);
 
         try {
-            $httpClient = new HttpWhoisClient(
-                timeout: $options->whoisTimeout,
-                proxyUri: $options->proxyUri,
-            );
-            $httpClient->setLogger($this->logger);
-            $rawText = $httpClient->query(
+            $rawText = $this->httpWhoisClient->query(
                 httpUrl: $serverInfo->httpUrl,
                 query: $input,
                 httpQueryFormat: $serverInfo->httpQueryFormat,
                 scraperName: $serverInfo->httpScraper,
                 timeout: $options->whoisTimeout,
+                proxyUri: $options->proxyUri,
             );
 
             try {
@@ -480,14 +481,8 @@ class Whoeasy implements LoggerAwareInterface
             return new ProtocolResult(info: null, hops: [$hop]);
         }
 
-        $rdapClient = new RdapClient(
-            timeout: $options->rdapTimeout,
-            proxyUri: $options->proxyUri,
-        );
-        $rdapClient->setLogger($this->logger);
-
         $hops = [];
-        $currentUrl = $rdapClient->createUrl($serverInfo->rdapUrl, $input, $serverInfo->queryType);
+        $currentUrl = $this->rdapClient->createUrl($serverInfo->rdapUrl, $input, $serverInfo->queryType);
         $visited = [];
 
         for ($hopIndex = 0; $hopIndex <= $options->maxReferrals; $hopIndex++) {
@@ -509,7 +504,7 @@ class Whoeasy implements LoggerAwareInterface
             ]);
 
             try {
-                $json = $rdapClient->queryUrl($currentUrl);
+                $json = $this->rdapClient->queryUrl($currentUrl, $options->rdapTimeout, $options->proxyUri);
                 $rawBody = json_encode($json, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?: '';
 
                 try {

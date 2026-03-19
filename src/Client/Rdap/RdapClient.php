@@ -21,10 +21,8 @@ class RdapClient implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
-    public function __construct(
-        protected int $timeout = 15,
-        protected ?string $proxyUri = null,
-    ) {
+    public function __construct()
+    {
         $this->logger = new NullLogger();
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('Curl extension is required for RDAP');
@@ -67,11 +65,11 @@ class RdapClient implements LoggerAwareInterface
     }
 
     /**
-     * Query a specific RDAP URL directly
+     * Query a specific RDAP URL directly.
      *
      * @return array<string, mixed> Decoded JSON response
      */
-    public function queryUrl(string $url): array
+    public function queryUrl(string $url, int $timeout = 15, ?string $proxyUri = null): array
     {
         if ($url === '') {
             throw new ClientException('RDAP URL must not be empty');
@@ -90,15 +88,15 @@ class RdapClient implements LoggerAwareInterface
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_MAXREDIRS => 5,
-                CURLOPT_TIMEOUT => $this->timeout,
+                CURLOPT_TIMEOUT => $timeout,
                 CURLOPT_HTTPHEADER => [
                     'Accept: application/rdap+json, application/json',
                 ],
                 CURLOPT_USERAGENT => 'whoeasy/2.0 (RDAP client)',
             ]);
 
-            if ($this->proxyUri !== null) {
-                curl_setopt($curl, CURLOPT_PROXY, $this->proxyUri);
+            if ($proxyUri !== null) {
+                curl_setopt($curl, CURLOPT_PROXY, $proxyUri);
             }
 
             $body = curl_exec($curl);

@@ -22,10 +22,8 @@ class HttpWhoisClient implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
-    public function __construct(
-        protected int $timeout = 30,
-        protected ?string $proxyUri = null,
-    ) {
+    public function __construct()
+    {
         $this->logger = new NullLogger();
         if (!extension_loaded('curl')) {
             throw new MissingRequirementsException('ext-curl is required for HTTP WHOIS queries');
@@ -39,7 +37,8 @@ class HttpWhoisClient implements LoggerAwareInterface
      * @param string $query The domain/IP to look up
      * @param string $httpQueryFormat Format string like "GET /path/%s" or "POST /path field=%s"
      * @param string|null $scraperName Scraper name to process the response, or null for raw text
-     * @param int|null $timeout Override timeout for this request
+     * @param int $timeout Request timeout in seconds
+     * @param string|null $proxyUri Optional SOCKS5/HTTP proxy URI
      * @return string Raw WHOIS text (scraped if scraper is configured)
      */
     public function query(
@@ -47,9 +46,9 @@ class HttpWhoisClient implements LoggerAwareInterface
         string $query,
         string $httpQueryFormat,
         ?string $scraperName = null,
-        ?int $timeout = null,
+        int $timeout = 15,
+        ?string $proxyUri = null,
     ): string {
-        $timeout ??= $this->timeout;
 
         // Parse the query format: "GET /path/%s" or "POST /path body=%s"
         [$method, $rest] = $this->parseQueryFormat($httpQueryFormat, $query);
@@ -71,7 +70,7 @@ class HttpWhoisClient implements LoggerAwareInterface
             'url' => $url,
         ]);
 
-        $responseBody = $this->executeRequest($url, $method, $body, $timeout);
+        $responseBody = $this->executeRequest($url, $method, $body, $timeout, $proxyUri);
 
         $this->logger?->debug("HTTP WHOIS response from {url}:\n{response}", [
             'url' => $url,
@@ -119,7 +118,7 @@ class HttpWhoisClient implements LoggerAwareInterface
     /**
      * Execute the HTTP request using curl.
      */
-    private function executeRequest(string $url, string $method, ?string $body, int $timeout): string
+    private function executeRequest(string $url, string $method, ?string $body, int $timeout, ?string $proxyUri = null): string
     {
         assert($url !== '');
         $ch = curl_init();
@@ -146,8 +145,8 @@ class HttpWhoisClient implements LoggerAwareInterface
             }
         }
 
-        if ($this->proxyUri !== null) {
-            curl_setopt($ch, CURLOPT_PROXY, $this->proxyUri);
+        if ($proxyUri !== null) {
+            curl_setopt($ch, CURLOPT_PROXY, $proxyUri);
         }
 
         $response = curl_exec($ch);
