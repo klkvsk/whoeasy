@@ -290,7 +290,8 @@ $generator = new class {
         }
         echo "Merged IANA RDAP: $ianaMerged existing, $ianaNew new TLDs\n";
 
-        // Second pass: resolve.rs (preferred, overwrites IANA, includes unofficial)
+        // Second pass: resolve.rs (includes unofficial)
+        $rsAllowOverwrite = false; // turns out many rdap urls are outdated, but we add some additional ones anyway
         $rsOverwritten = 0;
         $rsNew = 0;
         $rsAdded = 0;
@@ -300,16 +301,20 @@ $generator = new class {
                 $existing = $this->tldServers[$key]['rdap_url'];
                 if ($existing === null) {
                     $rsAdded++;
-                } elseif ($existing !== $url) {
+                    echo "RDAP resolve.rs add: [$tld] $url\n";
+                    $this->tldServers[$key]['rdap_url'] = $url;
+                } elseif ($existing !== $url && $rsAllowOverwrite) {
                     $rsOverwritten++;
+                    echo "RDAP resolve.rs overwrite: [$tld] $existing -> $url\n";
+                    $this->tldServers[$key]['rdap_url'] = $url;
                 }
-                $this->tldServers[$key]['rdap_url'] = $url;
             } else {
                 $this->tldServers[$key] = [
                     'whois_server' => null,
                     'rdap_url' => $url,
                     'sample_domain' => null,
                 ];
+                echo "RDAP resolve.rs new: [$tld] $url\n";
                 $rsNew++;
             }
         }
