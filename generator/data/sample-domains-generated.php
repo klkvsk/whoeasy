@@ -1183,7 +1183,6 @@ return [
     '.uol' => 'conteudo.uol',
     '.ups' => 'nic.ups',
     '.us' => 'samplicio.us',
-    '.uy' => 'sport890.com.uy',
     '.uz' => 'tahrirchi.uz',
     '.va' => 'educatio.va',
     '.vacations' => 'pirateandmermaid.vacations',

@@ -1,6 +1,6 @@
 {
   "description": "RDAP bootstrap file for Autonomous System Number allocations",
-  "publication": "2026-02-26T00:00:01Z",
+  "publication": "2026-03-14T14:00:01Z",
   "services": [
     [
       [
@@ -99,7 +99,9 @@
         "398237-399260",
         "399261-400284",
         "400285-401308",
-        "401309-402332"
+        "401309-402332",
+        "402333-403356",
+        "403357-404380"
       ],
       [
         "https://rdap.arin.net/registry/",

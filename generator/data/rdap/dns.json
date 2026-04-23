@@ -1,6 +1,6 @@
 {
   "description": "RDAP bootstrap file for Domain Name System registrations",
-  "publication": "2026-03-12T20:00:01Z",
+  "publication": "2026-04-18T17:52:34Z",
   "services": [
     [
       [
@@ -110,6 +110,14 @@
       ],
       [
         "https://pubapi.registry.google/rdap/"
+      ]
+    ],
+    [
+      [
+        "merck"
+      ],
+      [
+        "https://rdap-merck.dns.business/rdap/"
       ]
     ],
     [
@@ -410,14 +418,6 @@
     ],
     [
       [
-        "fun"
-      ],
-      [
-        "https://rdap.centralnic.com/fun/"
-      ]
-    ],
-    [
-      [
         "game"
       ],
       [
@@ -474,14 +474,6 @@
     ],
     [
       [
-        "host"
-      ],
-      [
-        "https://rdap.centralnic.com/host/"
-      ]
-    ],
-    [
-      [
         "hosting"
       ],
       [
@@ -502,14 +494,6 @@
       ],
       [
         "https://rdap.centralnic.com/inc/"
-      ]
-    ],
-    [
-      [
-        "kfh"
-      ],
-      [
-        "https://rdap.centralnic.com/kfh/"
       ]
     ],
     [
@@ -642,14 +626,6 @@
     ],
     [
       [
-        "online"
-      ],
-      [
-        "https://rdap.centralnic.com/online/"
-      ]
-    ],
-    [
-      [
         "ooo"
       ],
       [
@@ -674,26 +650,10 @@
     ],
     [
       [
-        "press"
-      ],
-      [
-        "https://rdap.centralnic.com/press/"
-      ]
-    ],
-    [
-      [
         "protection"
       ],
       [
         "https://rdap.centralnic.com/protection/"
-      ]
-    ],
-    [
-      [
-        "pw"
-      ],
-      [
-        "https://rdap.centralnic.com/pw/"
       ]
     ],
     [
@@ -778,14 +738,6 @@
     ],
     [
       [
-        "site"
-      ],
-      [
-        "https://rdap.centralnic.com/site/"
-      ]
-    ],
-    [
-      [
         "skin"
       ],
       [
@@ -798,14 +750,6 @@
       ],
       [
         "https://rdap.centralnic.com/smart/"
-      ]
-    ],
-    [
-      [
-        "space"
-      ],
-      [
-        "https://rdap.centralnic.com/space/"
       ]
     ],
     [
@@ -834,22 +778,6 @@
     ],
     [
       [
-        "store"
-      ],
-      [
-        "https://rdap.centralnic.com/store/"
-      ]
-    ],
-    [
-      [
-        "tech"
-      ],
-      [
-        "https://rdap.centralnic.com/tech/"
-      ]
-    ],
-    [
-      [
         "theatre"
       ],
       [
@@ -874,14 +802,6 @@
     ],
     [
       [
-        "uno"
-      ],
-      [
-        "https://rdap.centralnic.com/uno/"
-      ]
-    ],
-    [
-      [
         "vg"
       ],
       [
@@ -898,14 +818,6 @@
     ],
     [
       [
-        "website"
-      ],
-      [
-        "https://rdap.centralnic.com/website/"
-      ]
-    ],
-    [
-      [
         "wme"
       ],
       [
@@ -918,14 +830,6 @@
       ],
       [
         "https://rdap.centralnic.com/xn--4gbrim/"
-      ]
-    ],
-    [
-      [
-        "xn--ngbe9e0a"
-      ],
-      [
-        "https://rdap.centralnic.com/xn--ngbe9e0a/"
       ]
     ],
     [
@@ -4780,6 +4684,24 @@
     ],
     [
       [
+        "fun",
+        "host",
+        "online",
+        "press",
+        "pw",
+        "site",
+        "space",
+        "store",
+        "tech",
+        "uno",
+        "website"
+      ],
+      [
+        "https://rdap.radix.host/rdap/"
+      ]
+    ],
+    [
+      [
         "si"
       ],
       [
@@ -4854,6 +4776,15 @@
       ],
       [
         "https://rdap.registry.hiphop/rdap/"
+      ]
+    ],
+    [
+      [
+        "kfh",
+        "xn--ngbe9e0a"
+      ],
+      [
+        "https://rdap.registry.kfh/rdap/"
       ]
     ],
     [
